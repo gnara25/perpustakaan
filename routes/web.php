@@ -24,4 +24,7 @@ Route::get('/daftar_buku',[LandingController::class,'daftarbuku'])->name('daftar
 
 // login register
 Route::get('/loginn',[LoginController::class,'login'])->name('login');
+Route::post('/logined', [LoginController::class, 'logined'])->name('logined');
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
 

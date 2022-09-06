@@ -17,40 +17,55 @@
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('login/css/style.css') }}">
 
-    <title>Login || Perpustakaan</title>
+    <title>Register || Perpustakaan</title>
 </head>
 
 <body>
-
 
     <div class="content">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 order-md-2">
-                    <img src="{{ asset('login/images/bg20.png') }}" alt="Image" class="img-fluid">
+                    <img src="login/images/bg20.png" alt="Image" class="img-fluid">
                 </div>
                 <div class="col-md-6 contents">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <div class="mb-4">
-                                <h3>Masuk Ke <strong>Perpustakaan</strong></h3>
+                                <h3>Register <strong>Perpustakaan</strong></h3>
                                 <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
                             </div>
-                            <form action="/logined" class="user" method="post">
-                              {{ csrf_field() }}
-                              @if (session("salah"))
-                                  <div class="alert alert-danger" role="alert">
-                                     {{session("salah")}}
-                                  </div>    
-                              @endif
+                            <form action="/registeruser" class="user" method="POST">
                                 @csrf
                                 <div class="form-group first">
+                                    <label for="username">Nisn</label>
+                                    <input type="text" class="form-control" name="nisn">
+                                    @error('nisn')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                                <div class="form-group first">
+                                    <label for="username">Nama</label>
+                                    <input type="text" class="form-control" name="name">
+                                    @error('name')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                                <div class="form-group first">
+                                    <label for="username">Kelas</label>
+                                    <input type="text" class="form-control" name="kelas">
+                                    @error('kelas')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                                <div class="form-group first">
                                     <label for="username">Email</label>
-                                    <input type="text" class="form-control" name="email">
+                                    <input type="email" class="form-control" name="email">
                                     @error('email')
                                         {{ $message }}
                                     @enderror
                                 </div>
+
                                 <div class="form-group last mb-4">
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" name="password">
@@ -62,7 +77,11 @@
                                 <input type="submit" class="btn text-white btn-block btn-primary">
 
                             </form>
-                            <a class="d-block text-left my-4 text-center" href="/register"> Register</span>
+                            <p class="d-block text-left my-4 text-center">
+                                Sudah Punya Akun?
+                                <a href="/loginn"> Kembali</span>
+                            </p>
+
                         </div>
                     </div>
                 </div>
