@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('daftarbukus', function (Blueprint $table) {
             $table->id();
+            $table->string('foto');
+            $table->string('nama');
+            $table->string('kategoribuku');
+            $table->string('kodebuku');
+            $table->string('penerbit');
+            $table->bigInteger('tahunterbit');
+            $table->bigInteger('jumlah');
             $table->timestamps();
         });
     }

@@ -62,7 +62,9 @@
                             <!-- <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
                                     href="#rule">Peraturan</a></li>  -->
                             <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
-                                    href="/login">Masuk</a></li>
+                                    href="login.html">Masuk</a></li>
+                            {{-- <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
+                                    href="login.html">Masuk</a></li> --}}
                         </ul>
                     </div>
                 </div>

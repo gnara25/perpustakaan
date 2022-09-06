@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DaftarbukuController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LandingController;
@@ -19,6 +20,8 @@ Route::get('/', function () {
     return view('landing');
 });
 
+Route::get('/daftar_buku',[LandingController::class,'daftarbuku'])->name('daftarbuku');
+
  // landing page
 Route::get('/daftar_buku',[LandingController::class,'daftarbuku'])->name('daftarbuku');
 
@@ -27,4 +30,9 @@ Route::get('/loginn',[LoginController::class,'login'])->name('login');
 Route::post('/logined', [LoginController::class, 'logined'])->name('logined');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
+
+
+//Menu Admin
+Route::get('/beranda',[DaftarbukuController::class,'beranda'])->name('beranda');
+
 
