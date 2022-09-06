@@ -37,16 +37,15 @@
                                 <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
                             </div>
                             <form action="/logined" class="user" method="post">
-                              {{ csrf_field() }}
+                              @csrf
                               @if (session("salah"))
                                   <div class="alert alert-danger" role="alert">
                                      {{session("salah")}}
                                   </div>    
                               @endif
-                                @csrf
                                 <div class="form-group first">
                                     <label for="username">Email</label>
-                                    <input type="text" class="form-control" name="email">
+                                    <input type="email" class="form-control" name="email">
                                     @error('email')
                                         {{ $message }}
                                     @enderror

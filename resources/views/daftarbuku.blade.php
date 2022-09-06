@@ -52,7 +52,7 @@
                     <div class="menu-container">
                         <ul class="nav navbar-nav navbar-nav-right" >
                             <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
-                                    href="landing.html">Beranda</a></li>
+                                    href="/landing">Beranda</a></li>
                             <li class="js_nav-item nav-item active"><a class="nav-item-child nav-item-hover"
                                     href="/daftar_buku">Daftar Buku</a></li>
                             <!-- <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
@@ -60,7 +60,7 @@
                             <!-- <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
                                     href="#">Peraturan</a></li> -->
                             <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
-                                    href="login.html">Masuk</a></li>
+                                    href="/loginn">Masuk</a></li>
                         </ul>
                     </div>
                 </div>

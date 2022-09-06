@@ -24,8 +24,9 @@ class LoginController extends Controller
             'password.required' => 'password Harus Diisi'
         ]);
         if(Auth::attempt($request->only('email','password'))){
-            return redirect('index');
+            return redirect('beranda');
          }
+        //  dd($request);
          
          return redirect('loginn')->with('salah', 'Email atau Password Salah!');
     }
@@ -57,11 +58,16 @@ class LoginController extends Controller
             'name' => $request->name,
             'kelas' => $request->kelas,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'role' => 'user',
             'remember_token' => Str::random(60),
         ]);
         // dd ($data);
         return redirect('/loginn');
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/landing');
     }
 }

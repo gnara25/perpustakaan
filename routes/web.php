@@ -16,11 +16,11 @@ use App\Http\Controllers\LandingController;
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-});
+// Route::get('/', function () {
+//     return view('landing');
+// });
 
-Route::get('/daftar_buku',[LandingController::class,'daftarbuku'])->name('daftarbuku');
+Route::get('/landing',[LandingController::class,'landing'])->name('landing');
 
  // landing page
 Route::get('/daftar_buku',[LandingController::class,'daftarbuku'])->name('daftarbuku');
@@ -30,6 +30,7 @@ Route::get('/loginn',[LoginController::class,'login'])->name('login');
 Route::post('/logined', [LoginController::class, 'logined'])->name('logined');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 
 //Menu Admin
