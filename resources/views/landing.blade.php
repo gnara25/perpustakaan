@@ -1,24 +1,28 @@
+
 <!DOCTYPE html>
 
 <html lang="en" class="no-js">
 
-    <head>
-        <meta charset="utf-8" />
-        <title>Perpustakaan || Kita</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta content="FlameOnePage freebie theme for web startups by FairTech SEO." name="description" />
-        <meta content="FairTech" name="author" />
-        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-        <link href="{{ asset('landingpage/vendor/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('landingpage/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('landingpage/css/animate.css')}}" rel="stylesheet">
-        <link href="{{ asset('landingpage/vendor/swiper/css/swiper.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('landingpage/css/layout.min.css')}}" rel="stylesheet" type="text/css" />
-        <link rel="shortcut icon" href="favicon.ico" />
-    </head>
-    
+<head>
+    <meta charset="utf-8" />
+    <title>Perpustakaan || Kita</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="FlameOnePage freebie theme for web startups by FairTech SEO." name="description" />
+    <meta content="FairTech" name="author" />
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="{{asset('landingpage/vendor/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('landingpage/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('landingpage/css/animate.css')}}" rel="stylesheet">
+    <link href="{{asset('landingpage/vendor/swiper/css/swiper.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('landingpage/css/layout.min.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+            integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
 
 <body id="body" data-spy="scroll" data-target=".header">
 
@@ -56,14 +60,8 @@
                                     href="/">Beranda</a></li>
                             <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
                                     href="/daftar_buku">Daftar Buku</a></li>
-                            <!-- <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
-                                    href="#">Rekomendasi</a></li> -->
-                            <!-- <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
-                                    href="#rule">Peraturan</a></li>  -->
                             <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
                                     href="/loginn">Masuk</a></li>
-                            {{-- <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
-                                    href="login.html">Masuk</a></li> --}}
                         </ul>
                     </div>
                 </div>
@@ -134,7 +132,7 @@
                             <a class="" href="#" style="float: left; margin-left: 20px;">Detail Buku </a>
                             <a class="" href="#" style="float: right; margin-right: 60px;">Pinjam Buku </a>
                     </div>
-
+                    
                 </div>
                 <!-- End Latest Products -->
 
@@ -215,7 +213,7 @@
                         <a class="" href="#" style="float: right; margin-right: 60px;">Pinjam Buku </a>
                 </div>
                 <div class="">
-                    <center><a href="daftarbuku.html" class="content-lg container mb-4 ">lihat Selengkapnya ->></a>
+                    <center><a href="/daftar_buku" class="content-lg container mb-4 ">lihat Selengkapnya ->></a>
                     </center>
                 </div>
                 <!-- End Latest Products -->
@@ -232,7 +230,7 @@
     <!-- <div class="masonry-grid row">
                 <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div>
                 <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 sm-margin-b-30">
-                  <center><h2>Peraturan Perpustakaan</h2></center>
+                  <center><h2>Peraturan Perpustakaan</h2></center>  
                     <img class="full-width img-responsive wow fadeInUp" style="justify-items: center;" src="img/1920x1080/rule.jpg" alt="Portfolio Image"
                         data-wow-duration=".3" data-wow-delay=".2s">
                     <div class="margin-left ">
@@ -255,7 +253,7 @@
             <div class="content-lg container">
                 <div class="row row-space-1">
                     <div class="col-sm-4 sm-margin-b-2">
-                         Pricing
+                         Pricing 
                         <div class="pricing">
                             <div class="margin-b-30">
                                 <i class="pricing-icon icon-chemistry"></i>
@@ -270,10 +268,10 @@
                             <a href="pricing.html" class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Start
                                 Now</a>
                         </div>
-                         End Pricing
+                         End Pricing 
                     </div>
                     <div class="col-sm-4 sm-margin-b-2">
-                        Pricing
+                        Pricing 
                         <div class="pricing pricing-active">
                             <div class="margin-b-30">
                                 <i class="pricing-icon icon-badge"></i>
@@ -288,10 +286,10 @@
                             <a href="pricing.html" class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Start
                                 Now</a>
                         </div>
-                        End Pricing
+                        End Pricing 
                     </div>
                     <div class="col-sm-4">
-                        <Pricing
+                        <Pricing 
                         <div class="pricing">
                             <div class="margin-b-30">
                                 <i class="pricing-icon icon-shield"></i>
@@ -324,45 +322,45 @@
                 <div class="content-md container">
                     <div class="row">
                         <div class="col-sm-2 sm-margin-b-30">
-
+                         
                             <ul class="list-unstyled footer-list">
                                 <li class="footer-list-item"><a href="#body">Home</a></li>
                                 <li class="footer-list-item"><a href="#about">Team</a></li>
                                 <li class="footer-list-item"><a href="#work">Credentials</a></li>
                                 <li class="footer-list-item"><a href="#contact">Contact</a></li>
                             </ul>
-
+                          
                         </div>
                         <div class="col-sm-2 sm-margin-b-30">
-
+                          
                             <ul class="list-unstyled footer-list">
                                 <li class="footer-list-item"><a href="#">Twitter</a></li>
                                 <li class="footer-list-item"><a href="#">Facebook</a></li>
                                 <li class="footer-list-item"><a href="#">Instagram</a></li>
                                 <li class="footer-list-item"><a href="#">YouTube</a></li>
                             </ul>
-
+                          
                         </div>
                         <div class="col-sm-3">
-
+                      
                             <ul class="list-unstyled footer-list">
                                 <li class="footer-list-item"><a href="#">Subscribe to Our Newsletter</a></li>
                                 <li class="footer-list-item"><a href="#">Privacy Policy</a></li>
                                 <li class="footer-list-item"><a href="#">Terms &amp; Conditions</a></li>
                             </ul>
-
+                       
                         </div>
                     </div>
-
+                  
                 </div>
-            </div>
+            </div>  
             <!-- End Links -->
 
         <!-- Copyright -->
         <div class="content container">
             <div class="row">
                 <div class="col-xs-6">
-                    <img class="footer-logo" src="{{asset('landingpage/img/logo-dark.png')}}" alt="flameonepage Logo">
+                    <img class="footer-logo" src="landingpage/img/logo-dark.png" alt="flameonepage Logo">
                 </div>
                 <div class="col-xs-6 text-right">
                     <p class="margin-b-0"><a class="fweight-700" href="#">FlameOnePage</a> Theme Powered by: Asrori <a
@@ -384,25 +382,25 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
 
-        <!-- CORE PLUGINS -->
-    <script src="{{ asset('landingpage/vendor/jquery.min.js" type="text/javascript')}}"></script>
-    <script src="{{ asset('landingpage/vendor/jquery-migrate.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('landingpage/vendor/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
+    <!-- CORE PLUGINS -->
+    <script src="{{asset('landingpage/vendor/jquery.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/vendor/jquery-migrate.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/vendor/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
 
     <!-- PAGE LEVEL PLUGINS -->
-    <script src="{{ asset('landingpage/vendor/jquery.easing.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('landingpage/vendor/jquery.back-to-top.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('landingpage/vendor/jquery.smooth-scroll.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('landingpage/vendor/jquery.wow.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('landingpage/vendor/swiper/js/swiper.jquery.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('landingpage/vendor/masonry/jquery.masonry.pkgd.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('landingpage/vendor/masonry/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/vendor/jquery.easing.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/vendor/jquery.back-to-top.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/vendor/jquery.smooth-scroll.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/vendor/jquery.wow.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/vendor/swiper/js/swiper.jquery.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/vendor/masonry/jquery.masonry.pkgd.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/vendor/masonry/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
 
     <!-- PAGE LEVEL SCRIPTS -->
-    <script src="{{ asset('landingpage/js/layout.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('landingpage/js/components/wow.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('landingpage/js/components/swiper.min.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('landingpage/js/components/masonry.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/js/layout.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/js/components/wow.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/js/components/swiper.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('landingpage/js/components/masonry.min.js')}}" type="text/javascript"></script>
 
 </body>
 <!-- END BODY -->

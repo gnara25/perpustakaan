@@ -1,10 +1,15 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\DaftarbukuController;
 use App\Http\Controllers\KategoriController;
+=======
+>>>>>>> 3bb288a1d0fcb2b7cc327e327b2d22e1b7d8c5d9
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\DaftarbukuController;
+use App\Http\Controllers\PeminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,16 +32,18 @@ Route::get('/',[LandingController::class,'landing'])->name('landing');
 Route::get('/daftar_buku',[LandingController::class,'daftarbuku'])->name('daftarbuku');
 
 // login register
-Route::get('/loginn',[LoginController::class,'login'])->name('login');
+Route::get('/loginn',[LoginController::class,'login'])->name('login')->middleware('guest');
 Route::post('/logined', [LoginController::class, 'logined'])->name('logined');
-Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::get('/register', [LoginController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 
 //Menu Admin
+
 Route::get('/beranda',[DaftarbukuController::class,'beranda'])->name('beranda');
 
+<<<<<<< HEAD
 Route::get('/buku',[DaftarbukuController::class,'buku'])->name('buku');
 Route::get('/tambahbuku',[DaftarbukuController::class,'tambahbuku'])->name('tambahbuku');
 Route::post('/tambahbukupost',[DaftarbukuController::class,'tambahbukupost'])->name('tambahbukupost');
@@ -50,4 +57,12 @@ Route::post('/editkategoripost/{id}',[KategoriController::class,'editkategoripos
 
 
 
+=======
+// peminjaman
+Route::get('/peminjaman',[PeminjamanController::class,'peminjaman'])->name('peminjaman');
+Route::get('/tambahpeminjaman',[PeminjamanController::class,'tambahpeminjaman'])->name('tambahpeminjaman');
+Route::post('/insert', [PeminjamanController::class, 'insert'])->name('insert');
+>>>>>>> 3bb288a1d0fcb2b7cc327e327b2d22e1b7d8c5d9
 
+// pengembalian
+Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');

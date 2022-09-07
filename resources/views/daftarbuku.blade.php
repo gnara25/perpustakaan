@@ -11,12 +11,15 @@
         <meta content="FairTech" name="author" />
         <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-        <link href="{{ asset('landingpage/vendor/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('landingpage/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('landingpage/css/animate.css')}}" rel="stylesheet">
-        <link href="{{ asset('landingpage/vendor/swiper/css/swiper.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('landingpage/css/layout.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('landingpage/vendor/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('landingpage/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('landingpage/css/animate.css')}}" rel="stylesheet">
+        <link href="{{asset('landingpage/vendor/swiper/css/swiper.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('landingpage/css/layout.min.css')}}" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+                integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+                crossorigin="anonymous" referrerpolicy="no-referrer">
     </head>
 
 
@@ -52,13 +55,9 @@
                     <div class="menu-container">
                         <ul class="nav navbar-nav navbar-nav-right" >
                             <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
-                                    href="/landing">Beranda</a></li>
+                                    href="/">Beranda</a></li>
                             <li class="js_nav-item nav-item active"><a class="nav-item-child nav-item-hover"
                                     href="/daftar_buku">Daftar Buku</a></li>
-                            <!-- <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
-                                    href="#">Rekomendasi</a></li> -->
-                            <!-- <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
-                                    href="#">Peraturan</a></li> -->
                             <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
                                     href="/loginn">Masuk</a></li>
                         </ul>
@@ -199,34 +198,34 @@
     </footer>
     <!--========== END FOOTER ==========-->
 
-    <!-- Back To Top -->
-    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+     <!-- Back To Top -->
+     <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
 
-    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->\
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
-
-          <!-- CORE PLUGINS -->
-          <script src="{{ asset('landingpage/vendor/jquery.min.js" type="text/javascript')}}"></script>
-          <script src="{{ asset('landingpage/vendor/jquery-migrate.min.js')}}" type="text/javascript"></script>
-          <script src="{{ asset('landingpage/vendor/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
-      
-          <!-- PAGE LEVEL PLUGINS -->
-          <script src="{{ asset('landingpage/vendor/jquery.easing.js')}}" type="text/javascript"></script>
-          <script src="{{ asset('landingpage/vendor/jquery.back-to-top.js')}}" type="text/javascript"></script>
-          <script src="{{ asset('landingpage/vendor/jquery.smooth-scroll.js')}}" type="text/javascript"></script>
-          <script src="{{ asset('landingpage/vendor/jquery.wow.min.js')}}" type="text/javascript"></script>
-          <script src="{{ asset('landingpage/vendor/swiper/js/swiper.jquery.min.js')}}" type="text/javascript"></script>
-          <script src="{{ asset('landingpage/vendor/masonry/jquery.masonry.pkgd.min.js')}}" type="text/javascript"></script>
-          <script src="{{ asset('landingpage/vendor/masonry/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
-      
-          <!-- PAGE LEVEL SCRIPTS -->
-          <script src="{{ asset('landingpage/js/layout.min.js')}}" type="text/javascript"></script>
-          <script src="{{ asset('landingpage/js/components/wow.min.js')}}" type="text/javascript"></script>
-          <script src="{{ asset('landingpage/js/components/swiper.min.js')}}" type="text/javascript"></script>
-          <script src="{{ asset('landingpage/js/components/masonry.min.js')}}" type="text/javascript"></script>
+     <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->\
+ 
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+         </script>
+ 
+     <!-- CORE PLUGINS -->
+     <script src="{{asset('landingpage/vendor/jquery.min.js')}}" type="text/javascript"></script>
+     <script src="{{asset('landingpage/vendor/jquery-migrate.min.js')}}" type="text/javascript"></script>
+     <script src="{{asset('landingpage/vendor/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
+ 
+     <!-- PAGE LEVEL PLUGINS -->
+     <script src="{{asset('landingpage/vendor/jquery.easing.js')}}" type="text/javascript"></script>
+     <script src="{{asset('landingpage/vendor/jquery.back-to-top.js')}}" type="text/javascript"></script>
+     <script src="{{asset('landingpage/vendor/jquery.smooth-scroll.js')}}" type="text/javascript"></script>
+     <script src="{{asset('landingpage/vendor/jquery.wow.min.js')}}" type="text/javascript"></script>
+     <script src="{{asset('landingpage/vendor/swiper/js/swiper.jquery.min.js')}}" type="text/javascript"></script>
+     <script src="{{asset('landingpage/vendor/masonry/jquery.masonry.pkgd.min.js')}}" type="text/javascript"></script>
+     <script src="{{asset('landingpage/vendor/masonry/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
+ 
+     <!-- PAGE LEVEL SCRIPTS -->
+     <script src="{{asset('landingpage/js/layout.min.js')}}" type="text/javascript"></script>
+     <script src="{{asset('landingpage/js/components/wow.min.js')}}" type="text/javascript"></script>
+     <script src="{{asset('landingpage/js/components/swiper.min.js')}}" type="text/javascript"></script>
+     <script src="{{asset('landingpage/js/components/masonry.min.js')}}" type="text/javascript"></script>
 
 </body>
 <!-- END BODY -->
