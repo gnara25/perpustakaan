@@ -83,7 +83,7 @@
        </svg>
      </span>
      <span class="app-brand-text demo menu-text fw-bolder ms-2"
-       >Sneat</span
+       >Perpustakaan</span
      >
    </a>
 
@@ -99,8 +99,8 @@
 
  <ul class="menu-inner py-1">
        <!-- Dashboard -->
-       <li class="menu-item active">
-       <a href="index.html" class="menu-link">
+       <li class="menu-item ">
+       <a href="/beranda" class="menu-link">
            <i class="menu-icon tf-icons bx bx-home-circle"></i>
            <div data-i18n="Analytics">Dashboard</div>
        </a>
@@ -113,15 +113,15 @@
        </a>
        </li>
 
-       <li class="menu-item">
-       <a href="Peminjaman.html" class="menu-link">
+       <li class="menu-item ">
+       <a href="/peminjaman" class="menu-link">
            <i class="menu-icon tf-icons bx bx-detail"></i>
            <div data-i18n="Analytics">Peminjaman</div>
        </a>
        </li>
 
        <li class="menu-item">
-           <a href="pengembalian.html" class="menu-link">
+           <a href="/pengembalian" class="menu-link">
            <i class="menu-icon tf-icons bx bx-detail"></i>
            <div data-i18n="Analytics">Pengembalian</div>
            </a>
