@@ -60,21 +60,20 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4">
-                <center><span class="text-muted fw-light"></span>Peminjaman</center>
+               <center><span class="text-muted fw-light">Peminjaman</span></center> 
               </h4>
               <!-- Bordered Table -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <a href="/tambahpeminjaman" class="btn btn-warning" class="icon text-white-50">Pinjam Buku</a>
                     <a href="#" class="btn btn-info" class="icon text-white-50"> kode QR</a>
-                
                 </div>
                
-              <div class="card">
-                <h5 class="card-header"></h5>
-                <div class="card-body">
-                  <div class="table-responsive ">
-                    <table class="table table-bordered" id="myTable">
+                <div class="card">
+                  <h5 class="card-header"></h5>
+                  <div class="card-body">
+                    <div class="table-responsive ">
+                      <table class="table table-bordered" id="myTable">
                       <thead>
                         <tr>
                           <th>No</th>
@@ -84,7 +83,7 @@
                           <th>Tgl. Peminjaman</th>
                           <th>Tgl. Pengembalian</th>
                           <th>Jumlah Buku</th>
-                          <th>Aksi</th>
+                          <th >Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -102,9 +101,9 @@
                           <td>{{ $row->tanggalpinjam }}</td>
                           <td>{{ $row->tanggalpengembalian }}</td>
                           <td>{{ $row->jumlah }}</td>
-
-                          <td class="b">
-                              <a href="/editmanajer/{{ $row->id }}"
+                          
+                         <td class="b">
+                              <a href="/editpeminjaman/{{ $row->id }}"
                                   class="btn btn-success">
                                   <i class="fa-solid fa-square-pen"></i>
                               </a>
@@ -113,7 +112,7 @@
                                   data-nama="{{ $row->nama }}">
                                   <i class="fa-solid fa-trash"></i>
                               </a>
-                          </td>
+                          </td> 
                       </tr>
                     @endforeach
                       </tbody>
@@ -150,6 +149,30 @@
           $('#myTable').DataTable();
       });
   </script>
+
+<script>
+  $('.delete').click(function() {
+      var mahasiswaid = $(this).attr('data-id');
+      var nama = $(this).attr('data-nama');
+      swal({
+              title: "YAKIN?",
+              text: "Kamu Akan Menghapus Data Manajer Dengan Nama " + nama + " ",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+              if (willDelete) {
+                  window.location = "/deletepeminjaman/" + mahasiswaid + ""
+                  swal("Data Ini Berhasil Dihapus!", {
+                      icon: "success",
+                  });
+              } else {
+                  swal("Data Ini Tidak Jadi Dihapus!");
+              }
+          });
+  });
+</script>
 
 
   </body>

@@ -227,6 +227,8 @@
      <script src="{{asset('landingpage/js/components/swiper.min.js')}}" type="text/javascript"></script>
      <script src="{{asset('landingpage/js/components/masonry.min.js')}}" type="text/javascript"></script>
 
+     
+
 </body>
 <!-- END BODY -->
 

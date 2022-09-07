@@ -1,12 +1,13 @@
 <?php
 
 
-use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DaftarbukuController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PengembalianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,12 +55,13 @@ Route::get('/editkategori/{id}',[KategoriController::class,'editkategori'])->nam
 Route::post('/editkategoripost/{id}',[KategoriController::class,'editkategoripost'])->name('editkategoripost');
 
 
-
-
 // peminjaman
 Route::get('/peminjaman',[PeminjamanController::class,'peminjaman'])->name('peminjaman');
 Route::get('/tambahpeminjaman',[PeminjamanController::class,'tambahpeminjaman'])->name('tambahpeminjaman');
 Route::post('/insert', [PeminjamanController::class, 'insert'])->name('insert');
+Route::get('/editpeminjaman/{id}', [PeminjamanController::class, 'editpeminjaman'])->name('editpeminjaman');
+Route::post('/editpeminjamanpost/{id}', [PeminjamanController::class, 'editpeminjamanpost'])->name('editpeminjamanpost');
+Route::get('/deletepeminjaman/{id}', [PeminjamanController::class, 'deletepeminjaman'])->name('deletepeminjaman');
 
 // pengembalian
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');

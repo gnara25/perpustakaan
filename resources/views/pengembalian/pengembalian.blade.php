@@ -60,9 +60,14 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4">
-                <span class="text-muted fw-light"></span>Pengembalian
+             <center><span class="text-muted fw-light"></span>Pengembalian</center>   
               </h4>
               <!-- Bordered Table -->
+              <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <a href="/tambahpeminjaman" class="btn btn-warning" class="icon text-white-50">Pengembalian</a>
+                <a href="#" class="btn btn-info" class="icon text-white-50"> kode QR</a>
+            </div>
               <div class="card">
                 <h5 class="card-header"></h5>
                 <div class="card-body">
