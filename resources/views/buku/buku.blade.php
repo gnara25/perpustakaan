@@ -60,10 +60,15 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4">
-                <span class="text-muted fw-light">Daftar Buku</span>
+               <center><span class="text-muted fw-light ">Daftar Buku</span></center> 
               </h4>
-              <a href="/tambahbuku" type="button" class="btn btn-success mb-4">Tambah Data</a>
+              
               <!-- Bordered Table -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <a href="/tambahbuku" type="button" class="btn btn-success mb-4">Tambah buku</a>
+                    
+                </div>
               <div class="card">
                 <h5 class="card-header"></h5>
                 <div class="card-body">

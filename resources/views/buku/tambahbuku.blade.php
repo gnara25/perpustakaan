@@ -64,10 +64,10 @@
                 <!-- Basic Layout -->
                 <div class="col-xxl">
                   <div class="card mb-4">
-                    <div class="card-header d-flex align-items-center justify-content-between">
+                    {{-- <div class="card-header d-flex align-items-center justify-content-between">
                       <h5 class="mb-0">Tambah Buku</h5>
                       <small class="text-muted float-end"></small>
-                    </div>
+                    </div> --}}
                     <div class="card-body">
                       <form action="/tambahbukupost" method="post" enctype="multipart/form-data">
                         @csrf
@@ -82,7 +82,7 @@
                             <div class="col-sm-10">
                                 <select id="datavilla" class="form-control @error('kategori') is-invalid @enderror"
                                 name="kategoribuku" aria-label="Default select example">
-                                <option value=""></option>
+                                <option value="" disabled selected>Pilih Kategori</option>
                                 @foreach ($idkategori as $kategori)
                                     <option value="{{ $kategori->id }}" >
                                         {{ $kategori->kategori }}</option>
@@ -154,7 +154,8 @@
                         </div>
                         <div class="row justify-content-end">
                           <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
+                          <a type="submit" href="/buku" class="btn btn-dark">Kembali</a>
                           </div>
                         </div>
                       </form>
