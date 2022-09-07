@@ -51,6 +51,9 @@
       rel="stylesheet"
       href="{{ asset('template/assets/vendor/libs/apex-charts/apex-charts.css')}}"
     />
+    <link rel="stylesheet" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     <!-- Page CSS -->
 

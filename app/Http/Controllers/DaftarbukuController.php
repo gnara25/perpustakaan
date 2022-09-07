@@ -50,4 +50,39 @@ class DaftarbukuController extends Controller
         }
         return redirect()-> route('buku')->with('success','Data berhasil ditambah');
     }
+
+    public function editbuku ($id){
+        $idkategori = Kategori::all();
+        $data = Daftarbuku::findOrFail($id);
+        return view('buku.editbuku', compact('data','idkategori'));
+    }
+    public function editbukupost(Request $request, $id){
+
+        $data = Daftarbuku::find($id);
+        $this->validate($request,[
+            'foto' => ['mimes:png,jpg,jpeg,gif,jfif'],
+            'nama' => 'required',
+            'kategoribuku' => 'required',
+            'kodebuku' => 'required',
+            'penerbit' => 'required',
+            'tahunterbit' => 'required',
+            'jumlah' => 'required',
+            'deskripsi' => 'required',
+        ]);
+        $data->update([
+            'nama' => $request->nama,
+            'kategoribuku' => $request->kategoribuku,
+            'kodebuku' => $request->kodebuku,
+            'penerbit' => $request->penerbit,
+            'tahunterbit' => $request->tahunterbit,
+            'jumlah' => $request->jumlah,
+            'deskripsi' => $request->tahunterbit,
+        ]);
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('fotobuku/',$request->file('foto')->getClientOriginalName());
+            $data->foto = $request->file('foto')->getClientOriginalName();
+            $data->save();
+        }
+        return redirect()-> route('buku')->with('success','Data berhasil diupdate');
+    }
 }

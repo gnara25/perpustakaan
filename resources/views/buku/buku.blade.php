@@ -33,6 +33,8 @@
 
     <!-- Favicon -->
    @include('template.head')
+
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css"/>
   </head>
 
   <body>
@@ -65,8 +67,8 @@
               <div class="card">
                 <h5 class="card-header"></h5>
                 <div class="card-body">
-                  <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered">
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="myTable">
                       <thead>
                         <tr>
                           <th>No</th>
@@ -100,11 +102,41 @@
                                     <td>{{$row->penerbit}}</td>
                                     <td>{{$row->tahunterbit}}</td>
                                     <td>{{$row->jumlah}}</td>
-                                
-                                        <td>
-                                            <a href="/editbuku/{{ $row->id }}" class="btn btn-info">Edit</a>
-                                            <a href="#" class="btn btn-danger delete" data-id="{{ $row->id }}" data-nama="{{ $row->nama }}">Hapus</a>
-                                        </td>                     
+                                    <td>
+                                        <div class="dropdown">
+                                          <button
+                                            type="button"
+                                            class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown"
+                                          >
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                          </button>
+                                          <div class="dropdown-menu">
+                                            <a
+                                              class="dropdown-item"
+                                              href="/editbuku/{{$row->id}}"
+                                              ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                                            >
+                                            <a
+                                              class="dropdown-item"
+                                              href="javascript:void(0);"
+                                              ><i class="bx bx-trash me-1"></i> Delete</a
+                                            >
+                                          </div>
+                                        </div>
+                                      </td>
+                                    {{-- <td>
+                                        <a href="/editbuku/{{ $row->id }}"
+                                            class="btn btn-success">
+                                            <i class="fa-solid fa-square-pen"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-danger delete"
+                                            data-id="{{ $row->id }}"
+                                            data-nama="{{ $row->nama }}">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </td>     --}}
+                                 
                                     
                                     </tr>
                                 @endforeach
@@ -134,5 +166,12 @@
     <!-- / Layout wrapper -->
 
     @include('template.script')
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>
+    <script>
+      $(document).ready( function () {
+          $('#myTable').DataTable();
+      });
+  </script>
   </body>
 </html>
