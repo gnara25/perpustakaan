@@ -20,7 +20,6 @@
     </head>
     
 
-
 <body id="body" data-spy="scroll" data-target=".header">
 
     <header class="header navbar-fixed-top">
@@ -54,7 +53,7 @@
                     <div class="menu-container ">
                         <ul class="nav navbar-nav navbar-nav-right">
                             <li class="js_nav-item nav-item active"><a class="nav-item-child nav-item-hover"
-                                    href="/landing">Beranda</a></li>
+                                    href="/">Beranda</a></li>
                             <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
                                     href="/daftar_buku">Daftar Buku</a></li>
                             <!-- <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"

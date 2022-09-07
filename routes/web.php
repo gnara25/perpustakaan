@@ -20,7 +20,7 @@ use App\Http\Controllers\LandingController;
 //     return view('landing');
 // });
 
-Route::get('/landing',[LandingController::class,'landing'])->name('landing');
+Route::get('/',[LandingController::class,'landing'])->name('landing');
 
  // landing page
 Route::get('/daftar_buku',[LandingController::class,'daftarbuku'])->name('daftarbuku');
