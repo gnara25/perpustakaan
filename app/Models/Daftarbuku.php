@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Daftarbuku extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    protected $dates = ['created_at'];
+
+    public function idkategori()
+    {
+        return $this->belongsTo(Kategori::class,'kategori','id');
+    }
 }
+

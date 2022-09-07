@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('penerbit');
             $table->bigInteger('tahunterbit');
             $table->bigInteger('jumlah');
+            $table->string('deskripsi');
             $table->timestamps();
         });
     }

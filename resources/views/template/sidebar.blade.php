@@ -99,15 +99,21 @@
 
  <ul class="menu-inner py-1">
        <!-- Dashboard -->
-       <li class="menu-item active">
-       <a href="index.html" class="menu-link">
+       <li class="menu-item">
+       <a href="/beranda" class="menu-link">
            <i class="menu-icon tf-icons bx bx-home-circle"></i>
-           <div data-i18n="Analytics">Dashboard</div>
+           <div data-i18n="Analytics">Beranda</div>
        </a>
        </li>
-       <!-- Daftar Buku -->
        <li class="menu-item">
-       <a href="daftarbuku.html" class="menu-link">
+           <a href="/kategori" class="menu-link">
+               <i class="menu-icon fa-solid fa-book-bookmark"></i>
+               <div data-i18n="Analytics">Ketegori</div>
+            </a>
+        </li>
+        <!-- Daftar Buku -->
+       <li class="menu-item">
+       <a href="/buku" class="menu-link">
            <i class="menu-icon fa-solid fa-book-bookmark"></i>
            <div data-i18n="Analytics">Daftar Buku</div>
        </a>

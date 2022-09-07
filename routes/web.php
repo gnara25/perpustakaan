@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DaftarbukuController;
+use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LandingController;
@@ -35,5 +36,18 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 //Menu Admin
 Route::get('/beranda',[DaftarbukuController::class,'beranda'])->name('beranda');
+
+Route::get('/buku',[DaftarbukuController::class,'buku'])->name('buku');
+Route::get('/tambahbuku',[DaftarbukuController::class,'tambahbuku'])->name('tambahbuku');
+Route::post('/tambahbukupost',[DaftarbukuController::class,'tambahbukupost'])->name('tambahbukupost');
+
+
+Route::get('/kategori',[KategoriController::class,'kategori'])->name('kategori');
+Route::get('/tambahkategori',[KategoriController::class,'tambahkategori'])->name('tambahkategori');
+Route::post('/tambahkategoripost',[KategoriController::class,'tambahkategoripost'])->name('tambahkategoripost');
+Route::get('/editkategori/{id}',[KategoriController::class,'editkategori'])->name('editkategori');
+Route::post('/editkategoripost/{id}',[KategoriController::class,'editkategoripost'])->name('editkategoripost');
+
+
 
 

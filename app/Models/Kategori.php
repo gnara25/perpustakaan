@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Kategori extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    protected $dates = ['created_at'];
+
+    public function kategori()
+    {
+        return $this->hasMany(Daftarbuku::class);
+    }
+
 }
