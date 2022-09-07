@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
-use App\Http\Controllers\DaftarbukuController;
+
 use App\Http\Controllers\KategoriController;
-=======
->>>>>>> 3bb288a1d0fcb2b7cc327e327b2d22e1b7d8c5d9
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LandingController;
@@ -43,7 +40,7 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 Route::get('/beranda',[DaftarbukuController::class,'beranda'])->name('beranda');
 
-<<<<<<< HEAD
+
 Route::get('/buku',[DaftarbukuController::class,'buku'])->name('buku');
 Route::get('/tambahbuku',[DaftarbukuController::class,'tambahbuku'])->name('tambahbuku');
 Route::post('/tambahbukupost',[DaftarbukuController::class,'tambahbukupost'])->name('tambahbukupost');
@@ -57,12 +54,11 @@ Route::post('/editkategoripost/{id}',[KategoriController::class,'editkategoripos
 
 
 
-=======
+
 // peminjaman
 Route::get('/peminjaman',[PeminjamanController::class,'peminjaman'])->name('peminjaman');
 Route::get('/tambahpeminjaman',[PeminjamanController::class,'tambahpeminjaman'])->name('tambahpeminjaman');
 Route::post('/insert', [PeminjamanController::class, 'insert'])->name('insert');
->>>>>>> 3bb288a1d0fcb2b7cc327e327b2d22e1b7d8c5d9
 
 // pengembalian
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');
