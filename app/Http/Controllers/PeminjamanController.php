@@ -33,4 +33,29 @@ class PeminjamanController extends Controller
         
         return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
     }
+
+    public function editpeminjaman($id){
+
+        $data = Peminjaman::find($id);
+        return view('peminjaman.editpeminjaman',compact('data'));
+    }
+
+    public function editpeminjamanpost(request $request, $id){
+        $data = Peminjaman::find($id);
+        $data->update([
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+            'namabuku' => $request->namabuku,
+            'tanggalpinjam' => $request->tanggalpinjam,
+            'tanggalpengembalian' => $request->tanggalpengembalian,
+            'jumlah' => $request->jumlah,
+        ]);
+        return redirect()->route('peminjaman')->with('success', 'Data berhasil di edit');
+    }
+
+    public function deletepeminjaman($id){
+        $data = Peminjaman::find($id);
+        $data->delete();
+        return redirect()->route('peminjaman')->with('success', 'Data berhasil di hapus');
+    }
 }
