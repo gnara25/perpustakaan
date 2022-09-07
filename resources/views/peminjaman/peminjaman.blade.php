@@ -73,7 +73,7 @@
               <div class="card">
                 <h5 class="card-header"></h5>
                 <div class="card-body">
-                  <div class="table text-nowrap">
+                  <div class="table-responsive ">
                     <table class="table table-bordered" id="myTable">
                       <thead>
                         <tr>
@@ -96,7 +96,6 @@
                     @foreach ($data as $row)
                        <tr>
                           <th scope="row">{{ $no++ }}</th>
-                          <td> {{ showDateHari($row->created_at, 'l, d F Y') }}</td>
                           <td> {{ $row->nama }} </td>
                           <td>{{ $row->kelas }}</td>
                           <td>{{ $row->namabuku }}</td>

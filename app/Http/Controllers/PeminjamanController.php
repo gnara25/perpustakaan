@@ -30,7 +30,7 @@ class PeminjamanController extends Controller
             'tanggalpengembalian' => $request->tanggalpengembalian,
             'jumlah' => $request->jumlah,
         ]);
-        dd($data);
-        return redirect()->route('peminjaman.peminjaman')->with('success', 'Data Berhasil ditambahkan');
+        
+        return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
     }
 }

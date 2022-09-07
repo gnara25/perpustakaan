@@ -99,11 +99,9 @@
 
  <ul class="menu-inner py-1">
        <!-- Dashboard -->
-<<<<<<< HEAD
        <li class="menu-item">
-=======
+
        <li class="menu-item ">
->>>>>>> 3bb288a1d0fcb2b7cc327e327b2d22e1b7d8c5d9
        <a href="/beranda" class="menu-link">
            <i class="menu-icon tf-icons bx bx-home-circle"></i>
            <div data-i18n="Analytics">Beranda</div>
