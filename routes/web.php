@@ -45,6 +45,7 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 Route::get('/buku',[DaftarbukuController::class,'buku'])->name('buku');
 Route::get('/tambahbuku',[DaftarbukuController::class,'tambahbuku'])->name('tambahbuku');
+Route::post('/tambahbukupost',[DaftarbukuController::class,'tambahbukupost'])->name('tambahbukupost');
 Route::get('/editbuku/{id}',[DaftarbukuController::class,'editbuku'])->name('editbuku');
 Route::post('/editbukupost/{id}',[DaftarbukuController::class,'editbukupost'])->name('editbukupost');
 
