@@ -59,13 +59,13 @@
                                                 class="bx bx-user me-1"></i> Account</a></li>
                                     <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i
                                                 class="bx bx-lock-alt me-1"></i> Security</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="account-settings-billing.html"><i
+                                    {{-- <li class="nav-item"><a class="nav-link" href="account-settings-billing.html"><i
                                                 class="bx bx-detail me-1"></i> Billing & Plans</a></li>
                                     <li class="nav-item"><a class="nav-link"
                                             href="account-settings-notifications.html"><i class="bx bx-bell me-1"></i>
                                             Notifications</a></li>
                                     <li class="nav-item"><a class="nav-link" href="account-settings-connections.html"><i
-                                                class="bx bx-link-alt me-1"></i> Connections</a></li>
+                                                class="bx bx-link-alt me-1"></i> Connections</a></li> --}}
                                 </ul>
                                 <!-- Change Password -->
                                 <div class="card mb-4">

@@ -146,11 +146,11 @@
 
       <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle">
-        @include('modal.tambahbuku')
+        
       </div>
     </div>
     <!-- / Layout wrapper -->
-
+    @include('modal.tambahbuku')
     @include('templates.script')
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>

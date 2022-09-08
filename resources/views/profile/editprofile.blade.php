@@ -59,13 +59,13 @@
                                                 class="bx bx-user me-1"></i> Account</a></li>
                                     <li class="nav-item"><a class="nav-link" href="/profile/gantipassword"><i
                                                 class="bx bx-lock-alt me-1"></i> Security</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="account-settings-billing.html"><i
+                                    {{-- <li class="nav-item"><a class="nav-link" href="account-settings-billing.html"><i
                                                 class="bx bx-detail me-1"></i> Billing & Plans</a></li>
                                     <li class="nav-item"><a class="nav-link"
                                             href="account-settings-notifications.html"><i class="bx bx-bell me-1"></i>
                                             Notifications</a></li>
                                     <li class="nav-item"><a class="nav-link" href="account-settings-connections.html"><i
-                                                class="bx bx-link-alt me-1"></i> Connections</a></li>
+                                                class="bx bx-link-alt me-1"></i> Connections</a></li> --}}
                                 </ul>
                                 <div class="card mb-4">
                                     <h5 class="card-header">Profile Details</h5>

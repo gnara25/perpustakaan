@@ -19,9 +19,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>User Profile - Profile |
-      Sneat -
-      Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Perpustakaan || Kita</title>
     <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
     <!-- laravel CRUD token -->
@@ -627,23 +625,6 @@
                                     <!--/ Teams -->
                                 </div>
                                 <!-- Projects table -->
-                                <div class="card mb-4">
-                                    <div class="card-datatable table-responsive">
-                                        <table class="datatables-projects border-top table">
-                                            <thead>
-                                                <tr>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th>Name</th>
-                                                    <th>Leader</th>
-                                                    <th>Team</th>
-                                                    <th class="w-px-200">Status</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div>
                                 <!--/ Projects table -->
                             </div>
                         </div>
@@ -675,11 +656,6 @@
     <!-- / Layout wrapper -->
     <!--/ Layout Content -->
 
-
-    <div class="buy-now">
-        <a href="https://themeselection.com/item/sneat-bootstrap-html-laravel-admin-template/" target="_blank"
-            class="btn btn-danger btn-buy-now">Buy Now</a>
-    </div>
 
 
     <!-- Include Scripts -->
