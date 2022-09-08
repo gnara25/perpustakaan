@@ -870,6 +870,7 @@
     </div>
     <!-- / Layout wrapper -->
     <!--/ Layout Content -->
+    
 
     @include('templates.script')
 

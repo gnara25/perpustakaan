@@ -37,7 +37,7 @@
 
   <body>
     <!-- data tabel -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css"/>
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css"/> --}}
 
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
@@ -129,12 +129,12 @@
     <!-- / Layout wrapper -->
     <!-- data tabel -->
 
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>
+    {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>
     <script>
       $(document).ready( function () {
           $('#myTable').DataTable();
       });
-  </script>
+  </script> --}}
 
     @include('templates.script')
 
