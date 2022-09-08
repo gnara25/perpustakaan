@@ -23,6 +23,15 @@ use App\Http\Controllers\PengembalianController;
 Route::get('/beranda', function () {
     return view('beranda');
 });
+Route::get('/profile', function () {
+    return view('profile.profile');
+});
+Route::get('/profile/edit', function () {
+    return view('profile.editprofile');
+});
+Route::get('/profile/gantipassword', function () {
+    return view('profile.gantipassword');
+});
 
 Route::get('/',[LandingController::class,'landing'])->name('landing');
 
@@ -35,6 +44,8 @@ Route::post('/logined', [LoginController::class, 'logined'])->name('logined');
 Route::get('/register', [LoginController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+
+
 
 
 //Menu Admin

@@ -12,20 +12,9 @@ id="layout-navbar">
 
 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 
-    <!-- Search -->
-    <div class="navbar-nav align-items-center">
-        <div class="nav-item navbar-search-wrapper mb-0">
-            <a class="nav-item nav-link search-toggler px-0" href="javascript:void(0);">
-                <i class="bx bx-search bx-sm"></i>
-                <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
-            </a>
-        </div>
-    </div>
-    <!-- /Search -->
-
     <ul class="navbar-nav flex-row align-items-center ms-auto">
         <!-- Language -->
-        <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
+        {{-- <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                 data-bs-toggle="dropdown">
                 <i class='fi fi-us fis rounded-circle fs-3 me-1'></i>
@@ -56,20 +45,20 @@ id="layout-navbar">
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
         <!--/ Language -->
 
 
         <!-- Style Switcher -->
-        <li class="nav-item me-2 me-xl-0">
+        {{-- <li class="nav-item me-2 me-xl-0">
             <a class="nav-link style-switcher-toggle hide-arrow" href="javascript:void(0);">
                 <i class='bx bx-sm'></i>
             </a>
-        </li>
+        </li> --}}
         <!--/ Style Switcher -->
 
         <!-- Quick links  -->
-        <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
+        {{-- <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                 data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                 <i class='bx bx-grid-alt bx-sm'></i>
@@ -137,7 +126,7 @@ id="layout-navbar">
                                 class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
                                 <i class="bx bx-cog fs-4"></i>
                             </span>
-                            <a href="../pages/account-settings-account.html"
+                            <a href="/profile/edit"
                                 class="stretched-link">Setting</a>
                             <small class="text-muted mb-0">Account Settings</small>
                         </div>
@@ -163,7 +152,7 @@ id="layout-navbar">
                     </div>
                 </div>
             </div>
-        </li>
+        </li> --}}
         <!-- Quick links -->
 
         <!-- Notification -->
@@ -189,7 +178,7 @@ id="layout-navbar">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar">
-                                        <img src="demo/assets/img/avatars/1.png" alt
+                                        <img src="{{ asset('template/demo/assets/img/avatars/1.png')}}" alt
                                             class="w-px-40 h-auto rounded-circle">
                                     </div>
                                 </div>
@@ -423,7 +412,7 @@ id="layout-navbar">
             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                 data-bs-toggle="dropdown">
                 <div class="avatar avatar-online">
-                    <img src="demo/assets/img/avatars/1.png" alt
+                    <img src="{{ asset('templates/demo/assets/img/avatars/1.png')}}" alt
                         class="w-px-40 h-auto rounded-circle">
                 </div>
             </a>
@@ -433,7 +422,7 @@ id="layout-navbar">
                         <div class="d-flex">
                             <div class="flex-shrink-0 me-3">
                                 <div class="avatar avatar-online">
-                                    <img src="demo/assets/img/avatars/1.png" alt
+                                    <img src="{{ asset('templates/demo/assets/img/avatars/1.png')}}" alt
                                         class="w-px-40 h-auto rounded-circle">
                                 </div>
                             </div>
@@ -450,15 +439,15 @@ id="layout-navbar">
                     <div class="dropdown-divider"></div>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="../pages/profile-user.html">
+                    <a class="dropdown-item" href="/profile">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">My Profile</span>
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="../app/invoice/list.html">
-                        <i class="bx bx-credit-card me-2"></i>
-                        <span class="align-middle">Billing</span>
+                    <a class="dropdown-item" href="/profile/edit">
+                        <i class="bx bx-cog me-2"></i>
+                        <span class="align-middle">Setting</span>
                     </a>
                 </li>
                 <li>

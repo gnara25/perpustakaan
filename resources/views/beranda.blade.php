@@ -15,9 +15,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>eCommerce - Dashboards |
-        Sneat -
-        Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Perpustaakan || Kita</title>
     <meta name="description"
         content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
@@ -67,7 +65,7 @@
                                             </div>
                                         </div>
                                         <div class="col-4 pt-3 ps-0">
-                                            <img src="demo/assets/img/illustrations/prize-light.png" width="90"
+                                            <img src="{{ asset('templates/demo/assets/img/illustrations/prize-light.png')}}" width="90"
                                                 height="140" class="rounded-start" alt="View Sales">
                                         </div>
                                     </div>
@@ -118,7 +116,7 @@
                                                 <div
                                                     class="card-title d-flex align-items-start justify-content-between">
                                                     <div class="avatar flex-shrink-0">
-                                                        <img src="demo/assets/img/icons/unicons/wallet-info.png"
+                                                        <img src="{{ asset('templates/demo/assets/img/icons/unicons/wallet-info.png')}}"
                                                             alt="Credit Card" class="rounded">
                                                     </div>
                                                     <div class="dropdown">
@@ -169,7 +167,7 @@
                                                 <div
                                                     class="card-title d-flex align-items-start justify-content-between">
                                                     <div class="avatar flex-shrink-0">
-                                                        <img src="demo/assets/img/icons/unicons/briefcase.png"
+                                                        <img src="{{ asset('templates/demo/assets/img/icons/unicons/briefcase.png')}}"
                                                             alt="Credit Card" class="rounded">
                                                     </div>
                                                     <div class="dropdown">
@@ -424,7 +422,7 @@
                                                 <div
                                                     class="card-title d-flex align-items-start justify-content-between">
                                                     <div class="avatar flex-shrink-0">
-                                                        <img src="demo/assets/img/icons/unicons/cc-warning.png"
+                                                        <img src="{{ asset('templates/demo/assets/img/icons/unicons/cc-warning.png')}}"
                                                             alt="Credit Card" class="rounded">
                                                     </div>
                                                     <div class="dropdown">
@@ -510,7 +508,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="d-flex align-items-center">
-                                                            <img src="demo/assets/img/icons/products/oneplus.png"
+                                                            <img src="{{ asset('templates/demo/assets/img/icons/products/oneplus.png')}}"
                                                                 alt="Oneplus" height="32" width="32"
                                                                 class="me-2">
                                                             <div class="d-flex flex-column">
@@ -550,7 +548,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="d-flex align-items-center">
-                                                            <img src="demo/assets/img/icons/products/magic-mouse.png"
+                                                            <img src="{{ asset('templates/demo/assets/img/icons/products/magic-mouse.png')}}"
                                                                 alt="Apple" height="32" width="32"
                                                                 class="me-2">
                                                             <div class="d-flex flex-column">
