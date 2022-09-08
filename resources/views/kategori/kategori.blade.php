@@ -65,11 +65,10 @@
               </h4>
               
               <!-- Bordered Table -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <a href="/tambahkategori" type="button" class="btn btn-warning mb-4">Tambah Kategori</a>
-                </div>
               <div class="card">
+                <div class="card-body text-right">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CreateBuku"> tambah </button>
+                </div>
                 <h5 class="card-header"></h5>
                 <div class="card-body">
                   <div class="table-responsive text-nowrap">
@@ -103,6 +102,7 @@
                                     </tr>
                                 @endforeach
                       </tbody>
+                      
                     </table>
                   </div>
                 </div>
@@ -110,6 +110,7 @@
               <!--/ Bordered Table -->
             </div>
             <!-- / Content -->
+            
 
             <!-- Footer -->
             @include('templates.footer')
@@ -136,5 +137,7 @@
   </script>
 
     @include('templates.script')
+
+    @include('modal.createbuku')
   </body>
 </html>

@@ -19,4 +19,7 @@
     <!-- END: Pricing Modal JS-->
     <!-- BEGIN: Page JS-->
     <script src="{{asset('templates/demo/assets/js/dashboards-ecommerce.js')}}"></script>
+    <script src="{{asset('templates/demo/assets/js/app-access-permission.js')}}"></script>
+    <script src="{{asset('templates/demo/assets/js/modal-add-permission.js')}}"></script>
+    <script src="{{asset('templates/demo/assets/js/modal-edit-permission.js')}}"></script>
     <!-- END: Page JS-->
