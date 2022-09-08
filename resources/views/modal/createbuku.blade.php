@@ -35,7 +35,7 @@
           <div class="text-center mb-4">
             <h3 class="address-title">Tambah Kategori Buku Baru</h3>
           </div>
-          <form id="CreateBuku" class="row g-3" onsubmit="return false" action="/tambahkategoripost" method="POST" enctype="multipart/form-data">
+          <form id="CreateBuku" class="row g-3" action="/tambahkategoripost" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="col-12">
                 <div class="row">
