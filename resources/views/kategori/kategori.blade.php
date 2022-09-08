@@ -32,23 +32,26 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-   @include('template.head')
+   @include('templates.head')
   </head>
 
   <body>
+    <!-- data tabel -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css"/>
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
 
-        @include('template.sidebar')
+        @include('templates.sidebar')
         <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
 
-            @include('template.navbar')
+            @include('templates.navbar')
 
           <!-- / Navbar -->
 
@@ -58,20 +61,23 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4">
-                <span class="text-muted fw-light">Kategori Buku</span>
+              <center><span class="text-muted fw-light">Kategori Buku</span></center>  
               </h4>
-              <a href="/tambahkategori" type="button" class="btn btn-success mb-4">Tambah Data</a>
+              
               <!-- Bordered Table -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <a href="/tambahkategori" type="button" class="btn btn-warning mb-4">Tambah Kategori</a>
+                </div>
               <div class="card">
                 <h5 class="card-header"></h5>
                 <div class="card-body">
                   <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="myTable">
                       <thead>
                         <tr>
                           <th>No</th>
                           <th>Kategori buku</th>
-                          
                           <th>Opsi</th>
                         </tr>
                       </thead>
@@ -106,7 +112,7 @@
             <!-- / Content -->
 
             <!-- Footer -->
-            @include('template.footer')
+            @include('templates.footer')
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
@@ -120,7 +126,15 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
+    <!-- data tabel -->
 
-    @include('template.script')
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>
+    <script>
+      $(document).ready( function () {
+          $('#myTable').DataTable();
+      });
+  </script>
+
+    @include('templates.script')
   </body>
 </html>

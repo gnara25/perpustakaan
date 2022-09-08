@@ -20,9 +20,9 @@ use App\Http\Controllers\PengembalianController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('landing');
-// });
+Route::get('/beranda', function () {
+    return view('beranda');
+});
 
 Route::get('/',[LandingController::class,'landing'])->name('landing');
 
@@ -39,15 +39,16 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 //Menu Admin
 
-Route::get('/beranda',[DaftarbukuController::class,'beranda'])->name('beranda');
+// Route::get('/beranda',[DaftarbukuController::class,'beranda'])->name('beranda');
 
+// buku
 
 Route::get('/buku',[DaftarbukuController::class,'buku'])->name('buku');
 Route::get('/tambahbuku',[DaftarbukuController::class,'tambahbuku'])->name('tambahbuku');
 Route::get('/editbuku/{id}',[DaftarbukuController::class,'editbuku'])->name('editbuku');
 Route::post('/editbukupost/{id}',[DaftarbukuController::class,'editbukupost'])->name('editbukupost');
 
-
+// kategori
 Route::get('/kategori',[KategoriController::class,'kategori'])->name('kategori');
 Route::get('/tambahkategori',[KategoriController::class,'tambahkategori'])->name('tambahkategori');
 Route::post('/tambahkategoripost',[KategoriController::class,'tambahkategoripost'])->name('tambahkategoripost');

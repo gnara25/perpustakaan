@@ -32,7 +32,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-   @include('template.head')
+   @include('templates.head')
 
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css"/>
   </head>
@@ -43,14 +43,14 @@
       <div class="layout-container">
         <!-- Menu -->
 
-        @include('template.sidebar')
+        @include('templates.sidebar')
         <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
 
-            @include('template.navbar')
+            @include('templates.navbar')
 
           <!-- / Navbar -->
 
@@ -155,7 +155,7 @@
             <!-- / Content -->
 
             <!-- Footer -->
-            @include('template.footer')
+            @include('templates.footer')
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
@@ -170,7 +170,7 @@
     </div>
     <!-- / Layout wrapper -->
 
-    @include('template.script')
+    @include('templates.script')
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>
     <script>

@@ -90,7 +90,7 @@
                                 <br /> dan berkontribusi untuk meningkatkan kualitas hidup kita."
                             </p>
                         </div>
-                        <a href="login.html" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Masuk</a>
+                        <a href="/loginn" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Masuk</a>
                     </div>
                 </div>
             </div>

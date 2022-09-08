@@ -30,7 +30,7 @@
     <title>Perpustakaan || Kita</title>
 
     <meta name="description" content="" />
-    @include('template.head')
+    @include('templates.head')
     
   </head>
 
@@ -43,14 +43,14 @@
       <div class="layout-container">
         <!-- Menu -->
 
-        @include('template.sidebar')
+        @include('templates.sidebar')
         <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
 
-        @include('template.navbar')
+        @include('templates.navbar')
             
           <!-- / Navbar -->
 
@@ -147,7 +147,7 @@
             </div>
             <!-- / Content -->
 
-           @include('template.footer')
+           @include('templates.footer')
 
             <div class="content-backdrop fade"></div>
           </div>
@@ -162,7 +162,7 @@
     <!-- / Layout wrapper -->
 
     <!-- Core JS -->
-    @include('template.script')
+    @include('templates.script')
 
     <!-- data tabel -->
 

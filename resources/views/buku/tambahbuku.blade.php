@@ -33,7 +33,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    @include('template.head')
+    @include('templates.head')
   </head>
 
   <body>
@@ -41,14 +41,14 @@
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
-        @include('template.sidebar')
+        @include('templates.sidebar')
         <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
 
-            @include('template.navbar')
+            @include('templates.navbar')
 
           <!-- / Navbar -->
 
@@ -167,7 +167,7 @@
             <!-- / Content -->
 
             <!-- Footer -->
-            @include('template.footer')
+            @include('templates.footer')
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
@@ -185,6 +185,6 @@
     
 
     <!-- Core JS -->
-    @include('template.script')
+    @include('templates.script')
   </body>
 </html>
