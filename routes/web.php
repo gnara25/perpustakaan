@@ -78,3 +78,5 @@ Route::get('/deletepeminjaman/{id}', [PeminjamanController::class, 'deletepeminj
 
 // pengembalian
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');
+Route::get('/tambahpengembalian',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
+Route::post('/tambahpengembalianpost',[PengembalianController::class,'tambahpengembalianpost'])->name('tambahpengembalianpost');

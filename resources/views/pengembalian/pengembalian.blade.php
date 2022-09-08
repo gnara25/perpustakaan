@@ -64,10 +64,9 @@
               </h4>
               <!-- Bordered Table -->
               <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <a href="/tambahpeminjaman" class="btn btn-warning" class="icon text-white-50">Pengembalian</a>
-                <a href="#" class="btn btn-info" class="icon text-white-50"> kode QR</a>
-            </div>
+                <div class="card-body text-right">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CreatePengembalian"> tambah </button>
+                </div>
               <div class="card">
                 <h5 class="card-header"></h5>
                 <div class="card-body">
@@ -138,6 +137,8 @@
 
     <!-- Core JS -->
     @include('templates.script')
+
+    @include('modal.createpengembalian')
 
     <!-- data tabel -->
 

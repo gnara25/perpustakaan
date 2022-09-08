@@ -67,7 +67,7 @@
               <!-- Bordered Table -->
               <div class="card">
                 <div class="card-body text-right">
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CreateBuku"> tambah </button>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CreateKategori"> tambah </button>
                 </div>
                 <h5 class="card-header"></h5>
                 <div class="card-body">
