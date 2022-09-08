@@ -12,9 +12,10 @@ class DaftarbukuController extends Controller
         return view('index');
     }
     public function buku(){
-        $data = Daftarbuku::with('idkategori')->get();
+        $data = Daftarbuku::all();
+        $idkategori = Kategori::all();
         // dd(Daftarbuku::with('idkategori'));
-        return view('buku.buku',compact('data'));
+        return view('buku.buku',compact('data','idkategori'));
     }
     public function tambahbuku(){
         $idkategori = Kategori::all();
@@ -26,7 +27,7 @@ class DaftarbukuController extends Controller
         $this->validate($request,[
             'foto' => ['required','mimes:png,jpg,jpeg,gif,jfif'],
             'nama' => 'required',
-            'kategoribuku' => 'required',
+            'kategori' => 'required',
             'kodebuku' => 'required',
             'penerbit' => 'required',
             'tahunterbit' => 'required',
@@ -36,7 +37,7 @@ class DaftarbukuController extends Controller
         $data = Daftarbuku::create([
             'foto' => $request->foto,
             'nama' => $request->nama,
-            'kategoribuku' => $request->kategoribuku,
+            'kategori' => $request->kategori,
             'kodebuku' => $request->kodebuku,
             'penerbit' => $request->penerbit,
             'tahunterbit' => $request->tahunterbit,
@@ -62,7 +63,7 @@ class DaftarbukuController extends Controller
         $this->validate($request,[
             'foto' => ['mimes:png,jpg,jpeg,gif,jfif'],
             'nama' => 'required',
-            'kategoribuku' => 'required',
+            'kategori' => 'required',
             'kodebuku' => 'required',
             'penerbit' => 'required',
             'tahunterbit' => 'required',
@@ -71,12 +72,12 @@ class DaftarbukuController extends Controller
         ]);
         $data->update([
             'nama' => $request->nama,
-            'kategoribuku' => $request->kategoribuku,
+            'kategori' => $request->kategori,
             'kodebuku' => $request->kodebuku,
             'penerbit' => $request->penerbit,
             'tahunterbit' => $request->tahunterbit,
             'jumlah' => $request->jumlah,
-            'deskripsi' => $request->tahunterbit,
+            'deskripsi' => $request->deskripsi,
         ]);
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('fotobuku/',$request->file('foto')->getClientOriginalName());

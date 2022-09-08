@@ -13,7 +13,7 @@ class Kategori extends Model
     protected $guarded = [];
     protected $dates = ['created_at'];
 
-    public function kategori()
+    public function idkategori()
     {
         return $this->hasMany(Daftarbuku::class);
     }

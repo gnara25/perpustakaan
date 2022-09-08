@@ -81,8 +81,8 @@
                             <label class="col-sm-2 col-form-label" for="basic-default-name">Kategori Buku</label>
                             <div class="col-sm-10">
                                 <select id="datavilla" class="form-control @error('kategori') is-invalid @enderror"
-                                name="kategoribuku" aria-label="Default select example">
-                                <option value=""></option>
+                                name="kategori" aria-label="Default select example">
+                                <option selected value="{{$data->kategori}}">{{$data->idkategori->kategori}}</option>
                                 @foreach ($idkategori as $kategori)
                                     <option value="{{ $kategori->id }}" >
                                         {{ $kategori->kategori }}</option>
@@ -136,14 +136,22 @@
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="basic-default-message">Deskripsi</label>
                           <div class="col-sm-10">
-                            <textarea
+                            <input
+                            type="text"
+                            id="basic-default-phone"
+                            class="form-control phone-mask"
+                            aria-describedby="basic-default-phone"
+                            name="deskripsi"
+                            value="{{$data->deskripsi}}"
+                          />
+                            {{-- <textarea
                               id="basic-default-message"
                               class="form-control"
                               aria-label="Hi, Do you have a moment to talk Joe?"
                               aria-describedby="basic-icon-default-message2"
                               name="deskripsi"
                               value="{{$data->deskripsi}}"
-                            ></textarea>
+                            ></textarea> --}}
                           </div>
                         </div>
                         <div class="row mb-3">

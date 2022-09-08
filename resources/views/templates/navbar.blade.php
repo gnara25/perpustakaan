@@ -454,9 +454,9 @@ id="layout-navbar">
                     <div class="dropdown-divider"></div>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="javascript:void(0)">
+                    <a class="dropdown-item" href="/logout">
                         <i class='bx bx-log-in me-2'></i>
-                        <span class="align-middle">Login</span>
+                        <span class="align-middle">logout</span>
                     </a>
                 </li>
             </ul>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('foto');
             $table->string('nama');
-            $table->string('kategoribuku');
+            $table->string('kategori');
             $table->string('kodebuku');
             $table->string('penerbit');
             $table->bigInteger('tahunterbit');

@@ -66,7 +66,7 @@
               <!-- Bordered Table -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <a href="/tambahbuku" type="button" class="btn btn-success mb-4">Tambah buku</a>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editUser"> Tambah Buku </button>
                     
                 </div>
               <div class="card">
@@ -102,7 +102,7 @@
                                         <img src="{{ asset('fotobuku/'.$row->foto)}}" style="width: 100px; height: 100px;">
                                     </td>
                                     <td>{{$row->nama}}</td>
-                                    <td>{{$row->idkategori ? $row->idkategori->id : '-' }}</td>
+                                    <td>{{$row->idkategori ? $row->idkategori->kategori : '-' }}</td>
                                     <td>{{$row->kodebuku}}</td>
                                     <td>{{$row->penerbit}}</td>
                                     <td>{{$row->tahunterbit}}</td>
@@ -145,7 +145,9 @@
       </div>
 
       <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
+      <div class="layout-overlay layout-menu-toggle">
+        @include('modal.tambahbuku')
+      </div>
     </div>
     <!-- / Layout wrapper -->
 

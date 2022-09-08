@@ -81,7 +81,7 @@
                             <label class="col-sm-2 col-form-label" for="basic-default-name">Kategori Buku</label>
                             <div class="col-sm-10">
                                 <select id="datavilla" class="form-control @error('kategori') is-invalid @enderror"
-                                name="kategoribuku" aria-label="Default select example">
+                                name="kategori" aria-label="Default select example">
                                 <option value="" disabled selected>Pilih Kategori</option>
                                 @foreach ($idkategori as $kategori)
                                     <option value="{{ $kategori->id }}" >
