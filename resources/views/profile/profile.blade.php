@@ -154,14 +154,14 @@
                                     <div
                                         class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                                         <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
-                                            <img src="{{ asset('templates/demo/assets/img/avatars/1.png')}}" alt="user image"
+                                            <img src="/fotosiswa/{{ Auth::User()->foto}}" alt="user image"
                                                 class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">
                                         </div>
                                         <div class="flex-grow-1 mt-3 mt-sm-5">
                                             <div
                                                 class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
                                                 <div class="user-profile-info">
-                                                    <h4>John Doe</h4>
+                                                    <h4>{{ Auth::User()->name}}</h4>
                                                     <ul
                                                         class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                                                         <li class="list-inline-item fw-semibold">
@@ -192,12 +192,6 @@
                                 <ul class="nav nav-pills flex-column flex-sm-row mb-4">
                                     <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i
                                                 class='bx bx-user'></i> Profile</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="profile-teams.html"><i
-                                                class='bx bx-group'></i> Teams</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="profile-projects.html"><i
-                                                class='bx bx-grid-alt'></i> Projects</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="profile-connections.html"><i
-                                                class='bx bx-link-alt'></i> Connections</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -212,16 +206,16 @@
                                         <small class="text-muted text-uppercase">About</small>
                                         <ul class="list-unstyled mb-4 mt-3">
                                             <li class="d-flex align-items-center mb-3"><i class="bx bx-user"></i><span
-                                                    class="fw-semibold mx-2">Full Name:</span> <span>John Doe</span>
+                                                    class="fw-semibold mx-2">Nama</span> <span>{{ Auth::User()->name}}</span>
                                             </li>
                                             <li class="d-flex align-items-center mb-3"><i class="bx bx-check"></i><span
                                                     class="fw-semibold mx-2">Status:</span> <span>Active</span></li>
                                             <li class="d-flex align-items-center mb-3"><i class="bx bx-star"></i><span
-                                                    class="fw-semibold mx-2">Role:</span> <span>Developer</span></li>
-                                            <li class="d-flex align-items-center mb-3"><i class="bx bx-flag"></i><span
+                                                    class="fw-semibold mx-2">Role:</span> <span>{{ Auth::User()->role}}</span></li>
+                                            {{-- <li class="d-flex align-items-center mb-3"><i class="bx bx-flag"></i><span
                                                     class="fw-semibold mx-2">Country:</span> <span>USA</span></li>
                                             <li class="d-flex align-items-center mb-3"><i class="bx bx-detail"></i><span
-                                                    class="fw-semibold mx-2">Languages:</span> <span>English</span></li>
+                                                    class="fw-semibold mx-2">Languages:</span> <span>English</span></li> --}}
                                         </ul>
                                         <small class="text-muted text-uppercase">Contacts</small>
                                         <ul class="list-unstyled mb-4 mt-3">
@@ -233,7 +227,7 @@
                                             <li class="d-flex align-items-center mb-3"><i
                                                     class="bx bx-envelope"></i><span
                                                     class="fw-semibold mx-2">Email:</span>
-                                                <span>john.doe@example.com</span></li>
+                                                <span>{{ Auth::User()->email}}</span></li>
                                         </ul>
                                         <small class="text-muted text-uppercase">Teams</small>
                                         <ul class="list-unstyled mt-3 mb-0">

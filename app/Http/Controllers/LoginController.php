@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 class LoginController extends Controller
@@ -27,7 +28,7 @@ class LoginController extends Controller
             return redirect('beranda');
          }
         //  dd($request);
-         
+
          return redirect('loginn')->with('salah', 'Email atau Password Salah!');
     }
 
@@ -52,7 +53,7 @@ class LoginController extends Controller
             'password.required' => 'Password Harus Diisi',
             'password.min' => 'Password harus minimal 8 karakter',
         ]);
-        
+
        User::create([
             'nisn' => $request->nisn,
             'name' => $request->name,
@@ -70,4 +71,65 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    // public function profileedit(){
+    //     return view('profile.editprofile');
+    // }
+
+    public function editfoto(Request $request)
+    {
+        $request->validate([
+            'foto' => ['mimes:png,jpg,jpeg,gif']
+        ]);
+
+        $user = user::findOrFail(Auth::user()->id);
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('fotosiswa/',$request->file('foto')->getClientOriginalName());
+            $user->foto = $request->file('foto')->getClientOriginalName();
+            $user->save();
+        }
+
+        return redirect()->back()->with('success','Berhasil Mengubah Foto');
+    }
+
+    public function editprofile(Request $request){
+
+        $request->validate([
+            'kelas' => ['required','min:5'],
+            'nisn' => ['required','min:5,'],
+            'name' => ['string','min:4','alpha_num','required'],
+            'email' => ['email', 'string','min:4','required']
+        ]);
+
+        $user = user::findOrFail(Auth::user()->id);
+        $user -> update([
+            'name' => $request->name,
+            'kelas' => $request->kelas,
+            'nisn' => $request->nisn,
+            'email' => $request->email
+        ]);
+        return redirect()->back()->with('success','Profile Berhasil Di Ubah');
+    }
+
+    public function editpassword(Request $request){
+        $request->validate([
+           'old_password' => 'required',
+           'password' => 'required|confirmed|min:8',
+       ]);
+       $hashpassword = Auth::user()->password;
+       if (Hash::check($request->old_password,$hashpassword)){
+           $user = User::findOrFail(Auth::id());
+           $user->password = Hash::make($request->password);
+           $user->save();
+           Auth::logout();
+
+           return redirect()->route('login')->with('success','Kata Sandi Berhasil Diubah');
+       }else{
+           return redirect()->back()->with('error','Kata Sandi Lama Tidak Cocok');
+       }
+
+   }
+
+
+
 }

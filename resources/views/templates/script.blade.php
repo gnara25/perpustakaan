@@ -24,4 +24,3 @@
     <script src="{{asset('templates/demo/assets/js/modal-edit-permission.js')}}"></script>
     <!-- END: Page JS-->
 
-    

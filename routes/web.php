@@ -41,6 +41,9 @@ Route::get('/daftar_buku',[LandingController::class,'daftarbuku'])->name('daftar
 // login register
 Route::get('/loginn',[LoginController::class,'login'])->name('login')->middleware('guest');
 Route::post('/logined', [LoginController::class, 'logined'])->name('logined');
+Route::post('/editfoto', [LoginController::class, 'editfoto'])->name('editfoto');
+Route::post('/editprofile', [LoginController::class, 'editprofile'])->name('editprofile');
+Route::post('/editpassword', [LoginController::class, 'editpassword'])->name('editpassword');
 Route::get('/register', [LoginController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
