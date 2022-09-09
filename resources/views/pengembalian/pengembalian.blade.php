@@ -92,7 +92,7 @@
                     @foreach ($data as $row)
                        <tr>
                           <th scope="row">{{ $no++ }}</th>
-                          <td> {{ showDateHari($row->created_at, 'l, d F Y') }}</td>
+                          {{-- <td> {{ showDateHari($row->created_at, 'l, d F Y') }}</td> --}}
                           <td> {{ $row->nama }} </td>
                           <td>{{ $row->kelas }}</td>
                           <td>{{ $row->namabuku }}</td>
@@ -121,6 +121,8 @@
             </div>
             <!-- / Content -->
 
+            
+
            @include('templates.footer')
 
             <div class="content-backdrop fade"></div>
@@ -136,9 +138,10 @@
     <!-- / Layout wrapper -->
 
     <!-- Core JS -->
+    @include('modal.createpengembalian')
+    
     @include('templates.script')
 
-    @include('modal.createpengembalian')
 
     <!-- data tabel -->
 
@@ -148,6 +151,30 @@
           $('#myTable').DataTable();
       });
   </script>
+
+<script>
+  $('.delete').click(function() {
+      var mahasiswaid = $(this).attr('data-id');
+      var nama = $(this).attr('data-nama');
+      swal({
+              title: "YAKIN?",
+              text: "Kamu Akan Menghapus Data Manajer Dengan Nama " + nama + " ",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+              if (willDelete) {
+                  window.location = "/deletepengembalian/" + mahasiswaid + ""
+                  swal("Data Ini Berhasil Dihapus!", {
+                      icon: "success",
+                  });
+              } else {
+                  swal("Data Ini Tidak Jadi Dihapus!");
+              }
+          });
+  });
+</script>
 
 
   </body>

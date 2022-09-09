@@ -23,6 +23,10 @@ use App\Http\Controllers\PengembalianController;
 Route::get('/beranda', function () {
     return view('beranda');
 });
+Route::get('/tes', function () {
+    return view('tes');
+});
+
 Route::get('/profile', function () {
     return view('profile.profile');
 });
@@ -83,3 +87,4 @@ Route::get('/deletepeminjaman/{id}', [PeminjamanController::class, 'deletepeminj
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');
 Route::get('/tambahpengembalian',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
 Route::post('/tambahpengembalianpost',[PengembalianController::class,'tambahpengembalianpost'])->name('tambahpengembalianpost');
+Route::get('/deletepengembalian/{id}',[PengembalianController::class,'deletepengembalian'])->name('deletepengembalian');

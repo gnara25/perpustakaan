@@ -79,7 +79,7 @@
                           <th>No</th>
                           <th>Nama Siswa</th>
                           <th>Kelas</th>
-                          <th>Judul Buku</th>
+                          <th>Nama Buku</th>
                           <th>Tgl. Peminjaman</th>
                           <th>Tgl. Pengembalian</th>
                           <th>Jumlah Buku</th>

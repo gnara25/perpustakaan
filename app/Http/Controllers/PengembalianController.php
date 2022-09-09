@@ -22,7 +22,7 @@ class PengembalianController extends Controller
     }
 
     public function tambahpengembalianpost(request $request){
-        $this->validate($request,[
+        $this->validate($request, [
             'nama' => 'required',
             'kelas' => 'required',
             'namabuku' => 'required',
@@ -46,6 +46,12 @@ class PengembalianController extends Controller
         ]);
          
         return redirect()->route('pengembalian')->with('success', 'data berhasil ditambah');
+    }
+
+    public function deletepengembalian($id){
+        $data = Pengembalian::find($id);
+        $data->delete();
+        return redirect()->route('pengembalian');
     }
 
 }
