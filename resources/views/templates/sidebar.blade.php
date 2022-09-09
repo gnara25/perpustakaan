@@ -49,7 +49,7 @@
                     </g>
                 </svg>
             </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2">Perpustakaan</span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2">PERPUS</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -78,14 +78,14 @@
          <!-- Daftar Buku -->
         <li class="menu-item">
         <a href="/buku" class="menu-link">
-            <i class="menu-icon fa-solid fa-book-bookmark"></i>
+            <i class="menu-icon fa-solid fa-bars-staggered"></i>
             <div data-i18n="Analytics">Daftar Buku</div>
         </a>
         </li>
  
         <li class="menu-item ">
         <a href="/peminjaman" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-detail"></i>
+            <i class="menu-icon fa-solid fa-book-medical"></i>
             <div data-i18n="Analytics">Peminjaman</div>
         </a>
         </li>

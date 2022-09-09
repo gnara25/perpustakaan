@@ -65,7 +65,7 @@
               <!-- Bordered Table -->
               <div class="card shadow mb-4">
                 <div class="card-body text-right">
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CreatePengembalian"> tambah </button>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewCCForm"> tambah </button>
                 </div>
               <div class="card">
                 <h5 class="card-header"></h5>
@@ -141,10 +141,7 @@
     @include('modal.createpengembalian')
     
     @include('templates.script')
-
-
     <!-- data tabel -->
-
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>
     <script>
       $(document).ready( function () {

@@ -33,3 +33,7 @@
 <script src="{{ asset('templates/demo/assets/js/modal-edit-permission.js') }}"></script>
 <script src="{{ asset('templates/demo/assets/js/ui-toasts.js') }}"></script>
 <!-- END: Page JS-->
+<script src="..demo/assets/js/modal-add-new-cc.js"></script>
+<script src="../demo/assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
+<script src="../demo/assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
+<script src="../demo/assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
