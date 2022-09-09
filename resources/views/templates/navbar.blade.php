@@ -441,13 +441,13 @@ id="layout-navbar">
                 <li>
                     <a class="dropdown-item" href="/profile">
                         <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
+                        <span class="align-middle">Profil Saya</span>
                     </a>
                 </li>
                 <li>
                     <a class="dropdown-item" href="/profile/edit">
                         <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Setting</span>
+                        <span class="align-middle">Pengaturan</span>
                     </a>
                 </li>
                 <li>

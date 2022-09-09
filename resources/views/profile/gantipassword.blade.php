@@ -49,16 +49,16 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
 
                         <h4 class="fw-bold py-3 mb-4">
-                            <span class="text-muted fw-light">Account Settings /</span> Security
+                            <span class="text-muted fw-light">Pengaturan Akun /</span> Keamanan
                         </h4>
 
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
                                     <li class="nav-item"><a class="nav-link" href="/profile/edit"><i
-                                                class="bx bx-user me-1"></i> Account</a></li>
+                                                class="bx bx-user me-1"></i> Akun</a></li>
                                     <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i
-                                                class="bx bx-lock-alt me-1"></i> Security</a></li>
+                                                class="bx bx-lock-alt me-1"></i> Keamanan</a></li>
                                     {{-- <li class="nav-item"><a class="nav-link" href="account-settings-billing.html"><i
                                                 class="bx bx-detail me-1"></i> Billing & Plans</a></li>
                                     <li class="nav-item"><a class="nav-link"
@@ -69,7 +69,7 @@
                                 </ul>
                                 <!-- Change Password -->
                                 <div class="card mb-4">
-                                    <h5 class="card-header">Change Password</h5>
+                                    <h5 class="card-header">Ubah  Password</h5>
                                     <div class="card-body">
                                         <form id="formAccountSettings" method="POST" action="/editpassword" enctype="multipart/form-data">
                                             @csrf
@@ -110,20 +110,19 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12 mb-4">
-                                                    <p class="fw-semibold mt-2">Password Requirements:</p>
+                                                    <p class="fw-semibold mt-2">Password Persyaratan:</p>
                                                     <ul class="ps-3 mb-0">
                                                         <li class="mb-1">
-                                                            Minimum 8 characters long - the more, the better
+                                                            Panjang minimal 8 karakter - semakin banyak, semakin baik
                                                         </li>
-                                                        <li class="mb-1">At least one lowercase character</li>
-                                                        <li>At least one number, symbol, or whitespace character</li>
+                                                        <li class="mb-1">Setidaknya satu karakter huruf kecil</li>
+                                                        <li>Setidaknya satu angka, simbol, atau karakter spasi putih</li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-12 mt-1">
-                                                    <button type="submit" class="btn btn-primary me-2">Save
-                                                        changes</button>
+                                                    <button type="submit" class="btn btn-primary me-2">Simpan</button>
                                                     <button type="reset"
-                                                        class="btn btn-label-secondary">Cancel</button>
+                                                        class="btn btn-label-secondary">Batal</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -188,6 +187,17 @@
     @include('templates.script')
 
 </body>
+
+<script>
+    @if (Session::has('success'))
+        toastr.success("{{ Session::get('success') }}")
+    @endif
+</script>
+  <script>
+    @if (Session::has('error'))
+        toastr.error("{{ Session::get('error') }}")
+    @endif
+</script>
 
 
 <!-- Mirrored from demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/account-settings-security by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Aug 2022 10:55:46 GMT -->

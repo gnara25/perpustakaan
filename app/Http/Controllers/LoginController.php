@@ -123,9 +123,9 @@ class LoginController extends Controller
            $user->save();
            Auth::logout();
 
-           return redirect()->route('login')->with('success','Kata Sandi Berhasil Diubah');
+           return redirect()->route('login')->with('success','password Berhasil Diubah');
        }else{
-           return redirect()->back()->with('error','Kata Sandi Lama Tidak Cocok');
+           return redirect()->back()->with('error','password Lama Tidak Cocok');
        }
 
    }

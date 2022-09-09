@@ -96,18 +96,21 @@
             <!--// end row -->
 
             <div class="row">
-                <!-- Latest Products -->
+                @foreach ( $data as $row )
+                    
                 <div class="col-sm-4 sm-margin-b-50">
                     <div class="margin-b-20">
-                        <h4 class="text-center"><a href="#">Senja Pagi</a> </h4>
-                        <img class="img-responsive" style="width: 250px; height: 230px; margin-right: auto; margin-left: auto;" src="{{ asset('landingpage/img/970x647/04.jpg')}}" alt="Latest Products Image">
+                        <h4 class="text-center"><a href="#">{{$row->nama}}</a> </h4>
+                        <img class="img-responsive" style="width: 250px; height: 230px; margin-right: auto; margin-left: auto;" src="{{ asset('fotobuku/'.$row->foto)}}" alt="Latest Products Image">
                     </div>
-                    <p>Katamu, setiap perasaan yang tumbuh adalah sebuah alasan. Alasan bahwa hati patut dipertahankan.
-                        Namun, cinta saja belum cukup menyatukan mimpi yang berbeda di antara kita. Dan, menepati janji
-                        ternyata tak semudah mengucapkannya.</p>
-                    <a class="" href="#">Detail Buku </a>
+                    <p>{{$row->deskripsi}}</p>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+                        Launch demo modal
+                      </button>
                     <a class="" href="#">Pinjam Buku </a>
                 </div>
+                @endforeach
+                <!-- Latest Products -->
                 <!-- End Latest Products -->
 
                 <!-- Latest Products -->
@@ -196,6 +199,8 @@
         </div>
         <!-- End Copyright -->
     </footer>
+
+    @include('modal.detailbuku')
     <!--========== END FOOTER ==========-->
 
      <!-- Back To Top -->
@@ -227,7 +232,25 @@
      <script src="{{asset('landingpage/js/components/swiper.min.js')}}" type="text/javascript"></script>
      <script src="{{asset('landingpage/js/components/masonry.min.js')}}" type="text/javascript"></script>
 
-     
+
+     <script>
+     const exampleModal = document.getElementById('exampleModal')
+    exampleModal.addEventListener('show.bs.modal', event => {
+    // Button that triggered the modal
+    const button = event.relatedTarget
+    // Extract info from data-bs-* attributes
+    const recipient = button.getAttribute('data-bs-whatever')
+    // If necessary, you could initiate an AJAX request here
+    // and then do the updating in a callback.
+    //
+    // Update the modal's content.
+    const modalTitle = exampleModal.querySelector('.modal-title')
+    const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+    modalTitle.textContent = `New message to ${recipient}`
+    modalBodyInput.value = recipient
+    })
+     </script>
 
 </body>
 <!-- END BODY -->

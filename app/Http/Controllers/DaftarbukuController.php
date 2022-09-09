@@ -42,7 +42,7 @@ class DaftarbukuController extends Controller
             'penerbit' => $request->penerbit,
             'tahunterbit' => $request->tahunterbit,
             'jumlah' => $request->jumlah,
-            'deskripsi' => $request->tahunterbit,
+            'deskripsi' => $request->deskripsi,
         ]);
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('fotobuku/',$request->file('foto')->getClientOriginalName());

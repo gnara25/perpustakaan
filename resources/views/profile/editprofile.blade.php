@@ -49,16 +49,16 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
 
                         <h4 class="fw-bold py-3 mb-4">
-                            <span class="text-muted fw-light">Account Settings /</span> Account
+                            <span class="text-muted fw-light">Pengaturan Akun/</span> Akun
                         </h4>
 
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
                                     <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i
-                                                class="bx bx-user me-1"></i> Account</a></li>
+                                                class="bx bx-user me-1"></i> Akun</a></li>
                                     <li class="nav-item"><a class="nav-link" href="/profile/gantipassword"><i
-                                                class="bx bx-lock-alt me-1"></i> Security</a></li>
+                                                class="bx bx-lock-alt me-1"></i> Keamanan</a></li>
                                     {{-- <li class="nav-item"><a class="nav-link" href="account-settings-billing.html"><i
                                                 class="bx bx-detail me-1"></i> Billing & Plans</a></li>
                                     <li class="nav-item"><a class="nav-link"
@@ -68,7 +68,7 @@
                                                 class="bx bx-link-alt me-1"></i> Connections</a></li> --}}
                                 </ul>
                                 <div class="card mb-4">
-                                    <h5 class="card-header">Profile Details</h5>
+                                    <h5 class="card-header">Detail Profil</h5>
                                     <!-- Account -->
                                     <div class="card-body">
                         
@@ -79,7 +79,7 @@
                                                     id="uploadedAvatar" />
                                                 <div class="button-wrapper">
                                                     <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                                                        <span class="d-none d-sm-block">Upload new photo</span>
+                                                        <span class="d-none d-sm-block">Unggah foto baru</span>
                                                         <i class="bx bx-upload d-block d-sm-none"></i>
                                                         <input type="file" id="upload" class="account-file-input"
                                                             hidden accept="image/png, image/jpeg" name="foto" />
@@ -90,7 +90,7 @@
                                                         <span class="d-none d-sm-block">Simpan</span>
                                                     </button>
     
-                                                    <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                                                    <p class="text-muted mb-0">DIizinkan JPG, GIF atau PNG. Ukuran maksimum 800K</p>
                                                 </div>
                                             </form>
                                     </div>
@@ -130,15 +130,14 @@
                                                 </div> --}}
                                                
                                             <div class="mt-2">
-                                                <button type="submit" class="btn btn-primary me-2">Save
-                                                    changes</button>
-                                                <button type="reset" class="btn btn-label-secondary">Cancel</button>
+                                                <button type="submit" class="btn btn-primary me-2">Simpan</button>
+                                                <button type="reset" class="btn btn-label-secondary">Batal</button>
                                             </div>
                                         </form>
                                     </div>
                                     <!-- /Account -->
                                 </div>
-                                <div class="card">
+                                {{-- <div class="card">
                                     <h5 class="card-header">Delete Account</h5>
                                     <div class="card-body">
                                         <div class="mb-3 col-12 mb-0">
@@ -160,7 +159,7 @@
                                                 class="btn btn-danger deactivate-account">Deactivate Account</button>
                                         </form>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
@@ -196,6 +195,17 @@
     @include('templates.script')
 
 </body>
+
+<script>
+    @if (Session::has('success'))
+        toastr.success("{{ Session::get('success') }}")
+    @endif
+</script>
+  <script>
+    @if (Session::has('error'))
+        toastr.error("{{ Session::get('error') }}")
+    @endif
+</script>
 
 
 <!-- Mirrored from demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo-1/pages/account-settings-account by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Aug 2022 10:55:42 GMT -->

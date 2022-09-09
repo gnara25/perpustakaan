@@ -23,18 +23,6 @@
 <!-- BEGIN: Theme JS-->
 <script src="{{ asset('templates/demo/assets/js/mainc3d7.js?id=3c628e87a9befaa350e1f822744b8142') }}"></script>
 
-<<<<<<< HEAD
-    <!-- END: Theme JS-->
-    <!-- Pricing Modal JS-->
-    <!-- END: Pricing Modal JS-->
-    <!-- BEGIN: Page JS-->
-    <script src="{{asset('templates/demo/assets/js/dashboards-ecommerce.js')}}"></script>
-    <script src="{{asset('templates/demo/assets/js/app-access-permission.js')}}"></script>
-    <script src="{{asset('templates/demo/assets/js/modal-add-permission.js')}}"></script>
-    <script src="{{asset('templates/demo/assets/js/modal-edit-permission.js')}}"></script>
-    <!-- END: Page JS-->
-
-=======
 <!-- END: Theme JS-->
 <!-- Pricing Modal JS-->
 <!-- END: Pricing Modal JS-->
@@ -45,4 +33,3 @@
 <script src="{{ asset('templates/demo/assets/js/modal-edit-permission.js') }}"></script>
 <script src="{{ asset('templates/demo/assets/js/ui-toasts.js') }}"></script>
 <!-- END: Page JS-->
->>>>>>> 9a50d6b9d553096ea168e1fee8e04f2a176d7f14
