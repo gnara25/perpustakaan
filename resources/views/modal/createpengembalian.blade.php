@@ -1,5 +1,4 @@
-
-<div class="modal fade" id="CreatePengembalian" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="addNewCCForm" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-simple modal-add-new-address">
       <div class="modal-content p-3 p-md-5">
         <div class="modal-body">
@@ -7,7 +6,7 @@
           <div class="text-center mb-4">
             <h3 class="address-title">Pengembalian Buku</h3>
           </div>
-          <form id="CreatePengembalian" class="row g-3" action="/tambahpengembalianpost" method="POST" enctype="multipart/form-data">
+          <form id="addNewCCForm"  class="row g-3" action="/tambahpengembalianpost" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="col-12">
                 <div class="row">
@@ -84,14 +83,16 @@
                   </div>
                 </div>  
             </div>
-            <div class="col-md-3">
+          <br>
+            {{-- <div class="col-md-3 text-center">
               <label class="form-label" for="showToastPlacement">&nbsp;</label>
               <button id="showToastAnimation" class="btn btn-primary d-block">Show Toast</button>
-            </div>
-            {{-- <div class="col- text-center">
+              <a type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
+            </div> --}}
+            <div class="col-md-3- text-center">
               <button type="submit" class="btn btn-primary me-sm-3 me-1">Submit</button>
               <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
-            </div> --}}
+            </div>
           </form>
         </div>
       </div>
