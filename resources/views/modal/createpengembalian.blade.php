@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="CreatePengembalian" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-simple modal-add-new-address">
       <div class="modal-content p-3 p-md-5">
@@ -83,20 +84,40 @@
                   </div>
                 </div>  
             </div>
-            <div class="col- text-center">
+            <div class="col-md-3">
+              <label class="form-label" for="showToastPlacement">&nbsp;</label>
+              <button id="showToastAnimation" class="btn btn-primary d-block">Show Toast</button>
+            </div>
+            {{-- <div class="col- text-center">
               <button type="submit" class="btn btn-primary me-sm-3 me-1">Submit</button>
               <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
-            </div>
+            </div> --}}
           </form>
         </div>
       </div>
     </div>
   </div>
 
-  @include('templates.script')
+  {{-- <div class="bs-toast toast toast-ex animate__animated my-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2000">
+    <div class="toast-header">
+      <i class='bx bx-bell me-2'></i>
+      <div class="me-auto fw-semibold">Bootstrap</div>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Fruitcake chocolate bar tootsie roll gummies gummies jelly beans cake.
+    </div>
+  </div> --}}
+
 
   <script>
-    @if (Session::has('error'))
-        toastr.error("{{ Session::get('error') }}")
+    @if (Session::has('success'))
+        toastr.success("{{ Session::get('success') }}")
+    @endif
+</script>
+  <script>
+    @if (Session::has('message'))
+        toastr.error("{{ Session::get('message') }}")
     @endif
 </script>
