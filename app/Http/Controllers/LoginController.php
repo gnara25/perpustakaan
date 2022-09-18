@@ -33,38 +33,34 @@ class LoginController extends Controller
     }
 
     public function register(){
-        return view('login.register');
+        return view('masuk.register');
     }
 
     public function registeruser(Request $request){
         $this->validate($request,[
-            'nisn' => 'required',
             'name' => 'required',
-            'kelas' => 'required',
+            'notelepon' => 'required',
             'email' => 'required|email:rfc,dns|unique:users',
             'password' => 'required|min:8',
         ],[
-            'nisn.required' => 'NISN Wajib Di Isi ',
             'name.required' => 'Nama Harus Di isi',
-            'kelas.required' => 'Kelas Harus Di Isi',
+            'notelepon.required' => 'No Telepon Harus Di Isi',
             'email.required' => 'Email Harus Diisi',
             'email' => 'Email Yang Anda Masukan Tidak Benar',
             'unique' => 'Email Ini Suadah Digunakan',
             'password.required' => 'Password Harus Diisi',
             'password.min' => 'Password harus minimal 8 karakter',
         ]);
-
        User::create([
-            'nisn' => $request->nisn,
             'name' => $request->name,
-            'kelas' => $request->kelas,
+            'notelepon' => $request->notelepon,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'role' => 'user',
+            'role' => 'petugas',
             'remember_token' => Str::random(60),
         ]);
         // dd ($data);
-        return redirect('/loginn');
+        return redirect('/login');
     }
 
     public function logout(){
