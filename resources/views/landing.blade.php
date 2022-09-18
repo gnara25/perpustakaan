@@ -12,7 +12,7 @@
     <title>Perpustakaan || Kita</title>
 
     <!-- ========== Favicon Icon ========== -->
-    <link rel="shortcut icon" href="asset/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="asset/img/logo-icon.png" type="image/x-icon">
 
     <!-- ========== Start Stylesheet ========== -->
     <link href="asset/css/bootstrap.min.css" rel="stylesheet" />
@@ -69,7 +69,10 @@
                         <div class="collapse navbar-collapse" id="navbar-menu">
                             <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
                                 <li class="">
-                                    <a href="/" class="dropdown-toggle smooth-menu" data-toggle="dropdown" >Beranda</a>
+                                    <a href="#beranda" class="dropdown-toggle smooth-menu" data-toggle="dropdown" >Beranda</a>
+                                </li>
+                                <li>
+                                    <a class="smooth-menu" href="#rules">Rules</a>
                                 </li>
                                 <li>
                                     <a class="smooth-menu" href="#visi">Visi Misi Perpustakaan</a>
@@ -77,7 +80,7 @@
                                 <div class="attr-nav button-light">
                                     <ul>
                                         <li>
-                                            <a href="/login" target="_blank">login</a>
+                                            <a href="/login">Masuk</a>
                                         </li>
                                     </ul>
                                 </div>  
@@ -95,7 +98,7 @@
     ============================================= -->
     <div class="banner-area content-double box-nav background-move bg-gray" style="background-image: url(asset/img/bg-2.png);">
         <div class="container">
-            <div class="row">
+            <div class="row" id="beranda">
                 <div class="double-items">
                     <div class="col-md-6 left-info simple-video">
                         <div class="content" data-animation="animated fadeInUpBig">
@@ -295,7 +298,7 @@
 
     <!-- Start Work Process Area 
     ============================================= -->
-    <div id="process" class="work-process-area default-padding">
+    <div id="rules" class="work-process-area default-padding">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">

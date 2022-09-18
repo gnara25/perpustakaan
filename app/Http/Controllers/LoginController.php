@@ -22,6 +22,7 @@ class LoginController extends Controller
             'password' => 'required'
         ], [
             'email.required' => 'Email Harus Diisi',
+            'email.inuque' => 'email sudah di pakai',
             'password.required' => 'password Harus Diisi'
         ]);
         if(Auth::attempt($request->only('email','password'))){
@@ -29,7 +30,7 @@ class LoginController extends Controller
          }
         //  dd($request);
 
-         return redirect('login')->with('salah', 'Email atau Password Salah!');
+         return redirect('login')->with('error', 'Email atau Password Salah!');
     }
 
     public function register(){

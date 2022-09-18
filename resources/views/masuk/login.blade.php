@@ -35,34 +35,39 @@
 													<label for="inputEmailAddress" class="form-label">Masukan Email</label>
 													<input type="email" name="email" class="form-control" id="inputEmailAddress" placeholder="Masukan Email">
 													@error('email')
-													<div class="alert alert-danger">{{ $message }}</div>
+													<div>{{ $message }}</div>
 												@enderror
 												</div>
 												<div class="col-12">
 													<label for="inputChoosePassword" class="form-label">Masukan Password</label>
 													<div class="input-group" id="show_hide_password">
-														<input type="password" name="password" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
+														<input type="password" name="password" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Masukan Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
 														@error('password')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<div>{{ $message }}</div>
 													@enderror
 													</div>
 												</div>
-												<div class="col-md-6">
+												{{-- <div class="col-md-6">
 													<div class="form-check form-switch">
 														<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
 														<label class="form-check-label" for="flexSwitchCheckChecked">Ingat Saya</label>
 													</div>
-												</div>
+												</div> --}}
 												{{-- <div class="col-md-6 text-end">	<a href="authentication-forgot-password.html">Forgot Password ?</a>
 												</div> --}}
 												<div class="col-12">
 													<div class="d-grid">
 														<button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Masuk</button>
 													</div>
+													<br>
+													<div class="d-grid">
+														<a href="/" class="btn btn-primary"><i class="fa-solid fa-backward"></i>Kembali</a>
+													</div>
 												</div>
 												<div class="col-12 text-center">
-													<p>Belum punya akun?  <a href="authentication-signup.html">Daftar disini</a></p>
+													<p>Belum punya akun?  <a href="#">Daftar disini</a></p>
 												</div>
+												
 											</form>
 										</div>
 									</div>
@@ -83,4 +88,9 @@
 
 @include('template.script')
 
+<script>
+    @if (Session::has('error'))
+    toastr.error("{{ Session::get('error') }}")
+    @endif
+</script>
 </html>
