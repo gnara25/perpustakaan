@@ -46,7 +46,7 @@
     <div class="se-pre-con"></div>
     <!-- Preloader Ends -->
 
-    <!-- Header 
+    <!-- Header
     ============================================= -->
     <header id="home">
         <div class="container">
@@ -54,7 +54,7 @@
                 <!-- Start Navigation -->
                 <nav id="mainNav" class="navbar navbar-default navbar-fixed white bootsnav on no-full nav-box no-background">
 
-                    <div class="container">            
+                    <div class="container">
 
                         <!-- Start Header Navigation -->
                         <div class="navbar-header">
@@ -80,13 +80,13 @@
                                 <div class="attr-nav button-light">
                                     <ul>
                                         <li>
-                                            <a href="/login">Masuk</a>
+                                            <a href="/login">login</a>
                                         </li>
                                     </ul>
-                                </div>  
+                                </div>
                             </ul>
                         </div>
-                    </div>   
+                    </div>
                 </nav>
                 <!-- End Navigation -->
             </div>
@@ -94,7 +94,7 @@
     </header>
     <!-- End Header -->
 
-    <!-- Start Banner 
+    <!-- Start Banner
     ============================================= -->
     <div class="banner-area content-double box-nav background-move bg-gray" style="background-image: url(asset/img/bg-2.png);">
         <div class="container">
@@ -122,7 +122,7 @@
     </div>
     <!-- End Banner -->
 
-    <!-- Start About 
+    <!-- Start About
     ============================================= -->
     <div id="about" class="about-area border-top default-padding">
         <div class="container">
@@ -130,7 +130,7 @@
                 <div class="col-lg-6 col-md-6 info">
                     <h2>We're Building Modern <br> And High Software</h2>
                     <p>
-                        Both rest of know draw fond post as. It agreement defective to excellent. Feebly do engage of narrow. Extensive repulsive belonging depending if promotion be zealously as. Preference inquietude ask now are dispatched led appearance. Small meant in so doubt hopes. 
+                        Both rest of know draw fond post as. It agreement defective to excellent. Feebly do engage of narrow. Extensive repulsive belonging depending if promotion be zealously as. Preference inquietude ask now are dispatched led appearance. Small meant in so doubt hopes.
                     </p>
                     <ul>
                         <li>Chapter too parties its letters</li>
@@ -168,7 +168,7 @@
                                 <i class="flaticon-ticket"></i>
                                 <h4>Ticket manage</h4>
                                 <p>
-                                    Downs those still witty an balls so chief so. Moment an little remain no lively 
+                                    Downs those still witty an balls so chief so. Moment an little remain no lively
                                 </p>
                             </div>
                         </div>
@@ -177,7 +177,7 @@
                                 <i class="flaticon-speech-bubble"></i>
                                 <h4>Live messaging</h4>
                                 <p>
-                                    Downs those still witty an balls so chief so. Moment an little remain no lively 
+                                    Downs those still witty an balls so chief so. Moment an little remain no lively
                                 </p>
                             </div>
                         </div>
@@ -186,7 +186,7 @@
                                 <i class="flaticon-email"></i>
                                 <h4>Email workflow</h4>
                                 <p>
-                                    Downs those still witty an balls so chief so. Moment an little remain no lively 
+                                    Downs those still witty an balls so chief so. Moment an little remain no lively
                                 </p>
                             </div>
                         </div>
@@ -195,7 +195,7 @@
                                 <i class="flaticon-file"></i>
                                 <h4>File upload</h4>
                                 <p>
-                                    Downs those still witty an balls so chief so. Moment an little remain no lively 
+                                    Downs those still witty an balls so chief so. Moment an little remain no lively
                                 </p>
                             </div>
                         </div>
@@ -206,7 +206,7 @@
     </div>
     <!-- End About -->
 
-    <!-- Start Features Area 
+    <!-- Start Features Area
     ============================================= -->
     <div id="features" class="features-area carousel-shadow default-padding bg-gray">
         <div class="container">
@@ -215,7 +215,7 @@
                     <div class="site-heading text-center">
                         <h2>Daftar Buku Yang Tersedia</h2>
                         <p>
-                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose. 
+                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose.
                         </p>
                     </div>
                 </div>
@@ -296,7 +296,7 @@
     </div>
     <!-- End Features Area -->
 
-    <!-- Start Work Process Area 
+    <!-- Start Work Process Area
     ============================================= -->
     <div id="rules" class="work-process-area default-padding">
         <div class="container">
@@ -348,7 +348,7 @@
                                 <div class="content">
                                     <h4>Targeting</h4>
                                     <p>
-                                        Sentiments projection particular companions interested do at my delightful listening newspaper 
+                                        Sentiments projection particular companions interested do at my delightful listening newspaper
                                     </p>
                                 </div>
                             </li>
@@ -369,7 +369,7 @@
                     <div class="site-heading text-center">
                         <h2>Visi Perpustakaan</h2>
                         <p>
-                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose. 
+                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose.
                         </p>
                     </div>
                 </div>
@@ -377,7 +377,7 @@
                     <div class="site-heading text-center">
                         <h2>Misi Perpustakaan</h2>
                         <p>
-                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose. 
+                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose.
                         </p>
                     </div>
                 </div>
@@ -395,7 +395,7 @@
                     <div class="site-heading text-center">
                         <h2>Innovative Team</h2>
                         <p>
-                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose. 
+                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose.
                         </p>
                     </div>
                 </div>
@@ -501,7 +501,7 @@
                     <div class="site-heading text-center">
                         <h2>Recent News</h2>
                         <p>
-                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose. 
+                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose.
                         </p>
                     </div>
                 </div>
@@ -523,7 +523,7 @@
                                         <a href="single.html">Direct wicket little of talked lasted formed</a>
                                     </h4>
                                     <p>
-                                        Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till. 
+                                        Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till.
                                     </p>
                                     <a href="single.html">Read More <i class="fas fa-angle-right"></i></a>
                                 </div>
@@ -568,7 +568,7 @@
                                         <a href="single.html">Supported neglected met therefore unwilling</a>
                                     </h4>
                                     <p>
-                                        Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till. 
+                                        Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till.
                                     </p>
                                     <a href="single.html">Read More <i class="fas fa-angle-right"></i></a>
                                 </div>
@@ -613,7 +613,7 @@
                                         <a href="single.html">Concerns greatest margaret absolute entrance</a>
                                     </h4>
                                     <p>
-                                        Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till. 
+                                        Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till.
                                     </p>
                                     <a href="single.html">Read More <i class="fas fa-angle-right"></i></a>
                                 </div>
@@ -648,8 +648,8 @@
         </div>
     </div>
     <!-- End Blog Area -->
-  
-    <!-- Start Footer 
+
+    <!-- Start Footer
     ============================================= -->
     <footer class="default-padding bg-light">
         <div class="container">
@@ -670,7 +670,7 @@
                                         <input type="email" name="email" class="form-control" placeholder="Enter your e-mail here">
                                         <button type="submit">
                                             <i class="fa fa-paper-plane"></i>
-                                        </button>  
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -696,7 +696,7 @@
                                 <ul>
                                     <li>
                                         <div class="icon">
-                                            <i class="fas fa-home"></i> 
+                                            <i class="fas fa-home"></i>
                                         </div>
                                         <div class="info">
                                             <h5>Website:</h5>
@@ -705,7 +705,7 @@
                                     </li>
                                     <li>
                                         <div class="icon">
-                                            <i class="fas fa-envelope"></i> 
+                                            <i class="fas fa-envelope"></i>
                                         </div>
                                         <div class="info">
                                             <h5>Email:</h5>
@@ -714,7 +714,7 @@
                                     </li>
                                     <li>
                                         <div class="icon">
-                                            <i class="fas fa-phone"></i> 
+                                            <i class="fas fa-phone"></i>
                                         </div>
                                         <div class="info">
                                             <h5>Phone:</h5>

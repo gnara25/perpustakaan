@@ -15,7 +15,7 @@ class DaftarbukuController extends Controller
         $data = Daftarbuku::all();
         $idkategori = Kategori::all();
         // dd(Daftarbuku::with('idkategori'));
-        return view('buku.buku',compact('data','idkategori'));
+        return view('buku.daftarbuku',compact('data','idkategori'));
     }
     public function tambahbuku(){
         $idkategori = Kategori::all();
@@ -23,7 +23,7 @@ class DaftarbukuController extends Controller
         return view('buku.tambahbuku',compact('data','idkategori'));
     }
     public function tambahbukupost(Request $request){
-        
+
         $this->validate($request,[
             'foto' => ['required','mimes:png,jpg,jpeg,gif,jfif'],
             'nama' => 'required',

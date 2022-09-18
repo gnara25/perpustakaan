@@ -27,7 +27,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" >
+						<a href="/kategori" >
 							<div class="parent-icon icon-color-2"><i class='bx bx-briefcase-alt'></i>
 							</div>
 							<div class="menu-title">Menu Kategori</div>

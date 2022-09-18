@@ -65,7 +65,7 @@
 													</div>
 												</div>
 												<div class="col-12 text-center">
-													<p>Belum punya akun?  <a href="#">Daftar disini</a></p>
+													<p>Belum punya akun?  <a href="/register">Daftar disini</a></p>
 												</div>
 												
 											</form>
