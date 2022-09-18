@@ -73,6 +73,7 @@ Route::get('/tambahkategori',[KategoriController::class,'tambahkategori'])->name
 Route::post('/tambahkategoripost',[KategoriController::class,'tambahkategoripost'])->name('tambahkategoripost');
 Route::get('/editkategori/{id}',[KategoriController::class,'editkategori'])->name('editkategori');
 Route::post('/editkategoripost/{id}',[KategoriController::class,'editkategoripost'])->name('editkategoripost');
+Route::get('/deletekategori/{id}',[KategoriController::class,'deletekategori'])->name('deletekategori');
 
 
 // peminjaman

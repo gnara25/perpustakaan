@@ -40,8 +40,8 @@
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
                         <div class="d-flex user-box align-items-center">
                             <div class="user-info">
-                                {{-- <span
-                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span> --}}
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                             </div>
                             <img src="assets/images/avatars/avatar-1.png" class="user-img" alt="user avatar">
                         </div>

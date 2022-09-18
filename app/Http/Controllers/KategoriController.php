@@ -19,11 +19,13 @@ class KategoriController extends Controller
     public function tambahkategoripost(Request $request){
         $this->validate($request,[
             'kategori' => 'required',
+        ],[
+            'kategori'
         ]);
         $data = Kategori::create([
             'kategori' => $request->kategori,
         ]);
-        return Redirect()->route('kategori')->with('succes','Data Berhasil Ditambahkan');
+        return Redirect()->route('kategori')->with('success','Data Berhasil Ditambahkan');
        
     }
     public function editkategori($id){
@@ -44,5 +46,13 @@ class KategoriController extends Controller
             'kategori' => $request->kategori,
         ]);       
         return redirect('kategori')->with('success','Data berhasil diupdate');
+    }
+
+    public function deletekategori($id)
+    {
+
+        $data = Kategori::find($id);
+        $data->delete();
+        return redirect()->route('kategori')->with('success', 'Data Berhasil di Hapus');
     }
 }

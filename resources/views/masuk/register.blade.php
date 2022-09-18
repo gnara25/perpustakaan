@@ -37,20 +37,32 @@
                                                 <div class="col-12">
                                                     <label for="inputEmailAddress" class="form-label">Nama</label>
                                                     <input type="text" class="form-control" id="inputEmailAddress" placeholder="Suhardi" name="name">
+													@error('name')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="inputEmailAddress" class="form-label">No Telepon</label>
                                                     <input type="number" class="form-control" id="inputEmailAddress" placeholder="081732" name="notelepon">
+													@error('notelepon')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="inputEmailAddress" class="form-label">Email Address</label>
                                                     <input type="email" class="form-control" id="inputEmailAddress" placeholder="example@user.com" name="email">
+													@error('email')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
                                                 </div>
 												<div class="col-12">
 													<label for="inputChoosePassword" class="form-label">Password</label>
 													<div class="input-group" id="show_hide_password">
 														<input type="password" class="form-control border-end-0" id="inputChoosePassword" placeholder="Enter Password" name="password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
 													</div>
+													@error('password')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 												<div class="col-12">
 													{{-- <div class="form-check form-switch">

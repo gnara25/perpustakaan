@@ -24,12 +24,7 @@
 										</div>
 										<div class="form-body">
 											<form class="row g-3" action="/logined" class="user" method="POST">
-												{{ csrf_field() }}
-                                     @if (session("salah"))
-                                         <div class="alert alert-danger" role="alert">
-                                            {{session("salah")}}
-                                         </div>    
-                                     @endif
+												@csrf
 												<div class="col-12">
 													@csrf
 													<label for="inputEmailAddress" class="form-label">Masukan Email</label>
