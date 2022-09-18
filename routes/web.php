@@ -43,7 +43,7 @@ Route::get('/',[LandingController::class,'landing'])->name('landing');
 Route::get('/daftar_buku',[LandingController::class,'daftarbuku'])->name('daftarbuku');
 
 // login register
-Route::get('/loginn',[LoginController::class,'login'])->name('login')->middleware('guest');
+Route::get('/login',[LoginController::class,'login'])->name('login')->middleware('guest');
 Route::post('/logined', [LoginController::class, 'logined'])->name('logined');
 Route::post('/editfoto', [LoginController::class, 'editfoto'])->name('editfoto');
 Route::post('/editprofile', [LoginController::class, 'editprofile'])->name('editprofile');

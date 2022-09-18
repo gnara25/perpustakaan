@@ -1,408 +1,775 @@
-
 <!DOCTYPE html>
-
-<html lang="en" class="no-js">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Perpustakaan || Kita</title>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="FlameOnePage freebie theme for web startups by FairTech SEO." name="description" />
-    <meta content="FairTech" name="author" />
-    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link href="{{asset('landingpage/vendor/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('landingpage/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('landingpage/css/animate.css')}}" rel="stylesheet">
-    <link href="{{asset('landingpage/vendor/swiper/css/swiper.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('landingpage/css/layout.min.css')}}" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-            integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-            crossorigin="anonymous" referrerpolicy="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Boxass - Startup Landing Page Template">
+
+    <!-- ========== Page Title ========== -->
+    <title>Perpustakaan || Kita</title>
+
+    <!-- ========== Favicon Icon ========== -->
+    <link rel="shortcut icon" href="asset/img/favicon.png" type="image/x-icon">
+
+    <!-- ========== Start Stylesheet ========== -->
+    <link href="asset/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="asset/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="asset/css/flaticon-set.css" rel="stylesheet" />
+    <link href="asset/css/magnific-popup.css" rel="stylesheet" />
+    <link href="asset/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="asset/css/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="asset/css/animate.css" rel="stylesheet" />
+    <link href="asset/css/bootsnav.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
+    <link href="asset/css/responsive.css" rel="stylesheet" />
+    <!-- ========== End Stylesheet ========== -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="asset/js/html5/html5shiv.min.js"></script>
+      <script src="asset/js/html5/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ========== Google Fonts ========== -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet">
+
 </head>
 
+<body>
 
-<body id="body" data-spy="scroll" data-target=".header">
+    <!-- Preloader Start -->
+    <div class="se-pre-con"></div>
+    <!-- Preloader Ends -->
 
-    <header class="header navbar-fixed-top">
-        <nav class="navbar" role="navigation">
-            <div class="container">
-                <div class="menu-container js_nav-item">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="toggle-icon"></span>
-                    </button>
+    <!-- Header 
+    ============================================= -->
+    <header id="home">
+        <div class="container">
+            <div class="row">
+                <!-- Start Navigation -->
+                <nav id="mainNav" class="navbar navbar-default navbar-fixed white bootsnav on no-full nav-box no-background">
 
-                    <!-- <div class="logo">
-                        <a class="logo-wrap" href="#body">
-                            <img class="logo-img logo-img-main" src="landingpage/img/logo1.jpg" alt="FlameOnePage Logo">
-                            <img class="logo-img logo-img-active" src="landingpage/img/logo-dark.png"
-                                alt="FlameOnePage Dark Logo">
-                        </a>
-                    </div> -->
+                    <div class="container">            
+
+                        <!-- Start Header Navigation -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <a class="navbar-brand" href="/"><img src="asset/img/logo.png" class="logo" alt="Logo"></a>
+                        </div>
+                        <!-- End Header Navigation -->
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="navbar-menu">
+                            <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
+                                <li class="">
+                                    <a href="/" class="dropdown-toggle smooth-menu" data-toggle="dropdown" >Beranda</a>
+                                </li>
+                                <li>
+                                    <a class="smooth-menu" href="#visi">Visi Misi Perpustakaan</a>
+                                </li>
+                                <div class="attr-nav button-light">
+                                    <ul>
+                                        <li>
+                                            <a href="/login" target="_blank">login</a>
+                                        </li>
+                                    </ul>
+                                </div>  
+                            </ul>
+                        </div>
+                    </div>   
+                </nav>
+                <!-- End Navigation -->
+            </div>
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- Start Banner 
+    ============================================= -->
+    <div class="banner-area content-double box-nav background-move bg-gray" style="background-image: url(asset/img/bg-2.png);">
+        <div class="container">
+            <div class="row">
+                <div class="double-items">
+                    <div class="col-md-6 left-info simple-video">
+                        <div class="content" data-animation="animated fadeInUpBig">
+                            <h1>
+                                Perpustakan  <span>Kita Bersama</span> Ayo Kesini
+                            </h1>
+                            <p>
+                                "Perpustakaan akan membantumu melewati masa-masa tanpa uang lebih baik daripada uang akan membantumu melewati masa-masa tanpa perpustakaan."
+                            </p>
+                            <a class="btn btn-theme border btn-md" href="#">Ayo Masuk</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 right-info">
+                        <div class="thumb animated">
+                            <img src="asset/img/illustrations/31.png" alt="Thumb">
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
 
-                <div class="collapse navbar-collapse nav-collapse">
+    <!-- Start About 
+    ============================================= -->
+    <div id="about" class="about-area border-top default-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 info">
+                    <h2>We're Building Modern <br> And High Software</h2>
+                    <p>
+                        Both rest of know draw fond post as. It agreement defective to excellent. Feebly do engage of narrow. Extensive repulsive belonging depending if promotion be zealously as. Preference inquietude ask now are dispatched led appearance. Small meant in so doubt hopes. 
+                    </p>
+                    <ul>
+                        <li>Chapter too parties its letters</li>
+                        <li>Answered one fat indulged margaret sir shutters together</li>
+                        <li>Conveying or northward offending admitting</li>
+                    </ul>
+                    <div class="fun-facts">
+                        <h3>Outstanding annual results from our awesome Team</h3>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 item">
+                                <div class="fun-fact">
+                                    <div class="timer" data-to="75" data-speed="5000">75</div>
+                                    <span class="medium">Higher Profits</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 item">
+                                <div class="fun-fact">
+                                    <div class="timer" data-to="100" data-speed="5000">100</div>
+                                    <span class="medium">Satisfied</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 item">
+                                <div class="fun-fact">
+                                    <div class="timer" data-to="98" data-speed="5000">98</div>
+                                    <span class="medium">Success Rate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 features">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 equal-height">
+                            <div class="item">
+                                <i class="flaticon-ticket"></i>
+                                <h4>Ticket manage</h4>
+                                <p>
+                                    Downs those still witty an balls so chief so. Moment an little remain no lively 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 equal-height">
+                            <div class="item">
+                                <i class="flaticon-speech-bubble"></i>
+                                <h4>Live messaging</h4>
+                                <p>
+                                    Downs those still witty an balls so chief so. Moment an little remain no lively 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 equal-height">
+                            <div class="item">
+                                <i class="flaticon-email"></i>
+                                <h4>Email workflow</h4>
+                                <p>
+                                    Downs those still witty an balls so chief so. Moment an little remain no lively 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 equal-height">
+                            <div class="item">
+                                <i class="flaticon-file"></i>
+                                <h4>File upload</h4>
+                                <p>
+                                    Downs those still witty an balls so chief so. Moment an little remain no lively 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End About -->
 
-                    <!--div class="language-switcher">
-					  <ul class="nav-lang">
-                        <li><a class="active" href="#">EN</a></li>
-					    <li><a href="#">DE</a></li>
-						<li><a href="#">FR</a></li>
-					  </ul>
-					</div--->
+    <!-- Start Features Area 
+    ============================================= -->
+    <div id="features" class="features-area carousel-shadow default-padding bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h2>Daftar Buku Yang Tersedia</h2>
+                        <p>
+                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="features-items features-carousel owl-carousel owl-theme">
+                        <!-- Single Item -->
+                        <div class="item">
+                            <div class="icon">
+                                <span>01</span>
+                                <i class="flaticon-drag-2"></i>
+                            </div>
+                            <div class="info">
+                                <h4>Drag And Drop</h4>
+                                <p>
+                                    Situation perpetual allowance offending as principle.
+                                </p>
+                                <div class="bottom">
+                                    <a href="#">View Details <i class="fas fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                        <!-- Single Item -->
+                        <div class="item">
+                            <div class="img" style="height: 200px; width:200px;">
+                                <img src="asset/img/buku/df3.jpg" alt="Thumb">
+                            </div>
+                             <div class="info">
+                                <h4>Novel Angkasa</h4>
+                                <p>
+                                    Situation perpetual allowance offending as principle.
+                                </p>
+                                <div class="bottom">
+                                    <a href="#">Lihat Detail <i class="fas fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div> -
+                        <!-- End Single Item -->
+                        <!-- Single Item -->
+                        <div class="item">
+                            <div class="">
+                                <img src="asset/img/buku/df4.jpg" alt="Thumb">
+                            </div>
+                            <div class="info">
+                                <h4>Color Schemes</h4>
+                                <p>
+                                    Situation perpetual allowance offending as principle.
+                                </p>
+                                <div class="bottom">
+                                    <a href="#">View Details <i class="fas fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                        <!-- Single Item -->
+                        <div class="item">
+                            <div class="icon">
+                                <span>04</span>
+                                <i class="flaticon-video"></i>
+                            </div>
+                            <div class="info">
+                                <h4>High Resolution</h4>
+                                <p>
+                                    Situation perpetual allowance offending as principle.
+                                </p>
+                                <div class="bottom">
+                                    <a href="#">View Details <i class="fas fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Features Area -->
 
-                    <div class="menu-container ">
-                        <ul class="nav navbar-nav navbar-nav-right">
-                            <li class="js_nav-item nav-item active"><a class="nav-item-child nav-item-hover"
-                                    href="/">Beranda</a></li>
-                            <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
-                                    href="/daftar_buku">Daftar Buku</a></li>
-                            <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
-                                    href="/loginn">Masuk</a></li>
+    <!-- Start Work Process Area 
+    ============================================= -->
+    <div id="process" class="work-process-area default-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h2>Peraturan Perpustakaan</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="process-items">
+                    <div class="col-md-6 thumb">
+                        <h3><img src="asset/img/illustrations/4.svg" alt="Thumb"></h3>
+                    </div>
+                    <div class="col-md-6 info">
+                        <ul>
+                            <li>
+                                <div class="list">
+                                </div>
+                                <div class="content">
+                                    <h4>1. Tidak Boleh Membawa Makanan</h4>
+                                    <h4>2. Tidak Boleh Berisik</h4>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="list">
+                                </div>
+                                <div class="content">
+                                    <h4>1. Tidak Boleh Membawa Makanan</h4>
+                                    <h4>2. Tidak Boleh Berisik</h4>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="list">
+                                    <h3><i class="fas fa-check"></i></h3>
+                                </div>
+                                <div class="content">
+                                    <h4>Result</h4>
+                                    <p>
+                                        Talking chamber as shewing projection particular companions interested do at my delightful. Particular companions
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="list">
+                                    <h3><i class="fas fa-crosshairs"></i></h3>
+                                </div>
+                                <div class="content">
+                                    <h4>Targeting</h4>
+                                    <p>
+                                        Sentiments projection particular companions interested do at my delightful listening newspaper 
+                                    </p>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
+    <!-- End Work Process Area -->
 
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Start Pricing Area
+    ============================================= -->
+    <div id="visi" class="pricing-area default-padding bg-gray">
         <div class="container">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            </ol>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h2>Visi Perpustakaan</h2>
+                        <p>
+                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose. 
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h2>Misi Perpustakaan</h2>
+                        <p>
+                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose. 
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <!-- End Pricing Area -->
 
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img class="img-responsive" src="{{asset('landingpage/img/1920x1080/kon.jpg')}}" alt="Slider Image">
-                <div class="container">
-                    <div class="carousel-centered">
-                        <div class="margin-b-40">
-                            <h1 class="carousel-title">Selamat Datang <br /> DI Perpustakaan</h1>
-                            <p class="color-white">"Perpustakaan menyimpan energi yang memicu imajinasi.
-                                <br />Perpustakaan membuka jendela ke dunia dan menginspirasi kita untuk mengeksplorasi
-                                dan mencapai,
-                                <br /> dan berkontribusi untuk meningkatkan kualitas hidup kita."
+    <!-- Start Team Area
+    ============================================= -->
+    <div id="team" class="team-area default-padding bottom-less">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h2>Innovative Team</h2>
+                        <p>
+                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="team-items text-center">
+                    <!-- Single Item -->
+                    <div class="col-md-4 equal-height single-item">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="asset/img/team/1.jpg" alt="Thumb">
+                                <ul>
+                                    <li class="facebook">
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li class="twitter">
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li class="instagram">
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                    </li>
+                                    <li class="linkedin">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="info">
+                                <h4>Ahmed Kamal</h4>
+                                <span>Co-Founder</span>
+                                <h5><i class="fas fa-envelope"></i> kamal@admin.com</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="col-md-4 equal-height single-item">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="asset/img/team/2.jpg" alt="Thumb">
+                                <ul>
+                                    <li class="facebook">
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li class="twitter">
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li class="instagram">
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                    </li>
+                                    <li class="linkedin">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="info">
+                                <h4>Munia Ankor</h4>
+                                <span>Project Manager</span>
+                                <h5><i class="fas fa-envelope"></i> munia@admin.com</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Single Item -->
+                    <div class="col-md-4 equal-height single-item">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="asset/img/team/3.jpg" alt="Thumb">
+                                <ul>
+                                    <li class="facebook">
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li class="twitter">
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li class="instagram">
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                    </li>
+                                    <li class="linkedin">
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="info">
+                                <h4>Ahel Natasha</h4>
+                                <span>Developer</span>
+                                <h5><i class="fas fa-envelope"></i> natasha@admin.com</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Team Area -->
+
+    <!-- Start Blog Area
+    ============================================= -->
+    <div id="blog" class="blog-area default-padding bottom-less">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h2>Recent News</h2>
+                        <p>
+                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="blog-items">
+                    <!-- Single Item -->
+                    <div class="col-md-4 single-item">
+                        <div class="item">
+                            <div class="thumb">
+                                <a href="single.html"><img src="asset/img/blog/1.jpg" alt="Thumb"></a>
+                            </div>
+                            <div class="info">
+                                <div class="content">
+                                    <div class="date">
+                                        15 Aug, 2019
+                                    </div>
+                                    <h4>
+                                        <a href="single.html">Direct wicket little of talked lasted formed</a>
+                                    </h4>
+                                    <p>
+                                        Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till. 
+                                    </p>
+                                    <a href="single.html">Read More <i class="fas fa-angle-right"></i></a>
+                                </div>
+                                <div class="meta">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <img src="asset/img/team/4.jpg" alt="Author">
+                                                <span>Author</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-comments"></i>
+                                                <span>05</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-share-alt"></i>
+                                                <span>37</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Item -->
+                    <!-- Single Item -->
+                    <div class="col-md-4 single-item">
+                        <div class="item">
+                            <div class="thumb">
+                                <a href="single.html"><img src="asset/img/blog/2.jpg" alt="Thumb"></a>
+                            </div>
+                            <div class="info">
+                                <div class="content">
+                                    <div class="date">
+                                        27 Nov, 2019
+                                    </div>
+                                    <h4>
+                                        <a href="single.html">Supported neglected met therefore unwilling</a>
+                                    </h4>
+                                    <p>
+                                        Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till. 
+                                    </p>
+                                    <a href="single.html">Read More <i class="fas fa-angle-right"></i></a>
+                                </div>
+                                <div class="meta">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <img src="asset/img/team/2.jpg" alt="Author">
+                                                <span>Author</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-comments"></i>
+                                                <span>17</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-share-alt"></i>
+                                                <span>22</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Item -->
+                    <!-- Single Item -->
+                    <div class="col-md-4 single-item">
+                        <div class="item">
+                            <div class="thumb">
+                                <a href="single.html"><img src="asset/img/blog/3.jpg" alt="Thumb"></a>
+                            </div>
+                            <div class="info">
+                                <div class="content">
+                                    <div class="date">
+                                        18 Sep, 2019
+                                    </div>
+                                    <h4>
+                                        <a href="single.html">Concerns greatest margaret absolute entrance</a>
+                                    </h4>
+                                    <p>
+                                        Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till. 
+                                    </p>
+                                    <a href="single.html">Read More <i class="fas fa-angle-right"></i></a>
+                                </div>
+                                <div class="meta">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <img src="asset/img/team/1.jpg" alt="Author">
+                                                <span>Author</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-comments"></i>
+                                                <span>25</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-share-alt"></i>
+                                                <span>50</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Item -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Blog Area -->
+  
+    <!-- Start Footer 
+    ============================================= -->
+    <footer class="default-padding bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="f-items">
+                    <div class="col-md-4 col-sm-6 equal-height item">
+                        <div class="f-item">
+                            <img src="asset/img/logo.png" alt="Logo">
+                            <p>
+                                "Perpustakaan akan membantumu melewati masa-masa tanpa uang lebih baik daripada uang akan membantumu melewati masa-masa tanpa perpustakaan."
                             </p>
-                        </div>
-                        <a href="/loginn" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Masuk</a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img class="img-responsive" src="{{asset('landingpage/img/1920x1080/31705.jpg')}}" alt="Slider Image">
-                <div class="container">
-                    <div class="carousel-centered">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--========== SLIDER ==========-->
-
-    <!--========== PAGE LAYOUT ==========-->
-    <!-- Latest Products -->
-    <div id="buku">
-        <div class="content-lg container ">
-            <div class="row margin-b-40">
-                <div class="col-sm-6">
-                    <h2>Daftar Buku</h2>
-                </div>
-            </div>
-            <!--// end row -->
-
-            <div class="row">
-                <!-- Latest Products -->
-                <div class="col-sm-4 sm-margin-b-50">
-                    <div class="margin-b-20">
-                        <h4 class="text-center"><a href="#">Senja Pagi</a> </h4>
-                        <img class="img-responsive"
-                            style="width: 250px; height: 230px; margin-right: auto; margin-left: auto;"
-                            src="{{asset('landingpage/img/970x647/04.jpg')}}" alt="Latest Products Image">
-                    </div>
-                    <p>Katamu, setiap perasaan yang tumbuh adalah sebuah alasan. Alasan bahwa hati patut dipertahankan.
-                        Namun, cinta saja belum cukup menyatukan mimpi yang berbeda di antara kita. Dan, menepati janji
-                        ternyata tak semudah mengucapkannya.</p>
-                        <div>
-                            <a class="" href="#" style="float: left; margin-left: 20px;">Detail Buku </a>
-                            <a class="" href="#" style="float: right; margin-right: 60px;">Pinjam Buku </a>
-                    </div>
-                    
-                </div>
-                <!-- End Latest Products -->
-
-                <!-- Latest Products -->
-                <div class="col-sm-4 sm-margin-b-50">
-                    <h4 class="text-center"><a href="#">Rentang Waktu</a></h4>
-                    <div class="margin-b-20">
-                        <img class="img-responsive"
-                            style="width: 250px; height: 230px; margin-right: auto; margin-left: auto;"
-                            src="{{asset('landingpage/img/970x647/df2.jpg')}}" alt="Latest Products Image">
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor
-                        magna ut consequat siad esqudiat dolor</p>
-                        <a class="" href="#" style="float: left; margin-left: 20px;">Detail Buku </a>
-                        <a class="" href="#" style="float: right; margin-right: 60px;">Pinjam Buku </a>
-                </div>
-                <!-- End Latest Products -->
-
-                <!-- Latest Products -->
-                <div class="col-sm-4 sm-margin-b-50">
-                    <h4 class="text-center"><a href="#">Senja di Mata Bintang</a></h4>
-                    <div class="margin-b-20">
-                        <img class="img-responsive"
-                            style="width: 250px; height: 240px; margin-right: auto; margin-left: auto;"
-                            src="{{asset('landingpage/img/970x647/df4.jpg')}}" alt="Latest Products Image">
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor
-                        magna ut consequat siad esqudiat dolor</p>
-                        <a class="" href="#" style="float: left; margin-left: 20px;">Detail Buku </a>
-                        <a class="" href="#" style="float: right; margin-right: 60px;">Pinjam Buku </a>
-                </div>
-                <!-- End Latest Products -->
-            </div>
-
-            <div class="content-lg container ">
-
-                <!-- Latest Products -->
-                <div class="col-sm-4 sm-margin-b-50 mt-4">
-                    <div class="margin-b-20">
-                        <h4 class="text-center mb-4"><a href="#">Laskar Pelangi</a> </h4>
-                        <img class="img-responsive"
-                            style="width: 280px; height: 200px; margin-right: auto; margin-left: auto;"
-                            src="{{asset('landingpage/img/970x647/df5.jpg')}}" alt="Latest Products Image">
-                    </div>
-                    <p>Katamu, setiap perasaan yang tumbuh adalah sebuah alasan. Alasan bahwa hati patut dipertahankan.
-                        Namun, cinta saja belum cukup menyatukan mimpi yang berbeda di antara kita. Dan, menepati janji
-                        ternyata tak semudah mengucapkannya.</p>
-                    <a class="" href="#" style="float: left; margin-left: 20px;">Detail Buku </a>
-                    <a class="" href="#" style="float: right; margin-right: 60px;">Pinjam Buku </a>
-                </div>
-                <!-- End Latest Products -->
-                <!-- Latest Products -->
-                <div class="col-sm-4 sm-margin-b-50">
-                    <div class="margin-b-20">
-                        <h4 class="text-center"><a href="#">Bukan Buku Nikah </a> </h4>
-                        <img style="width: 150px; height: 200px; margin-right: auto; margin-left: auto;"
-                            class="img-responsive" src="{{asset('landingpage/img/970x647/df7.jpg')}}" alt="Latest Products Image">
-                    </div>
-                    <p>Katamu, setiap perasaan yang tumbuh adalah sebuah alasan. Alasan bahwa hati patut dipertahankan.
-                        Namun, cinta saja belum cukup menyatukan mimpi yang berbeda di antara kita. Dan, menepati janji
-                        ternyata tak semudah mengucapkannya.</p>
-                        <a class="" href="#" style="float: left; margin-left: 20px;">Detail Buku </a>
-                        <a class="" href="#" style="float: right; margin-right: 60px;">Pinjam Buku </a>
-                </div>
-                <!-- End Latest Products -->
-                <!-- Latest Products -->
-                <div class="col-sm-4 sm-margin-b-50">
-                    <div class="margin-b-20">
-                        <h4 class="text-center"><a href="#">Angkasa</a> </h4>
-                        <img class="img-responsive"
-                            style="width: 150px; height: 200px; margin-right: auto; margin-left: auto;"
-                            src="{{asset('landingpage/img/970x647/df3.jpg')}}" alt="Latest Products Image">
-                    </div>
-                    <p>Katamu, setiap perasaan yang tumbuh adalah sebuah alasan. Alasan bahwa hati patut dipertahankan.
-                        Namun, cinta saja belum cukup menyatukan mimpi yang berbeda di antara kita. Dan, menepati janji
-                        ternyata tak semudah mengucapkannya.</p>
-                        <a class="" href="#" style="float: left; margin-left: 20px;">Detail Buku </a>
-                        <a class="" href="#" style="float: right; margin-right: 60px;">Pinjam Buku </a>
-                </div>
-                <div class="">
-                    <center><a href="/daftar_buku" class="content-lg container mb-4 ">lihat Selengkapnya ->></a>
-                    </center>
-                </div>
-                <!-- End Latest Products -->
-            </div>
-            <!--// end row -->
-        </div>
-    </div>
-    <!-- End Latest Products -->
-
-    <!-- About -->
-    <!-- <div id="rule">
-        <div class=" container"> -->
-    <!-- Masonry Grid -->
-    <!-- <div class="masonry-grid row">
-                <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div>
-                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 sm-margin-b-30">
-                  <center><h2>Peraturan Perpustakaan</h2></center>  
-                    <img class="full-width img-responsive wow fadeInUp" style="justify-items: center;" src="img/1920x1080/rule.jpg" alt="Portfolio Image"
-                        data-wow-duration=".3" data-wow-delay=".2s">
-                    <div class="margin-left ">
-                        <p>1. njhugtdrseewaesrtuhj</p>
-                        <p>2. bhygtftctcytvuy</p>
-                    </div>
-                </div>
-            </div>  -->
-    <!-- End Masonry Grid -->
-    </div>
-
-    </div>
-
-
-    <!-- End About -->
-
-    <!-- Pricing -->
-    <!-- <div id="pricing">
-        <div class="bg-color-sky-light">
-            <div class="content-lg container">
-                <div class="row row-space-1">
-                    <div class="col-sm-4 sm-margin-b-2">
-                         Pricing 
-                        <div class="pricing">
-                            <div class="margin-b-30">
-                                <i class="pricing-icon icon-chemistry"></i>
-                                <h3>Silver Package <span> - $</span> 74.99</h3>
-                                <p>Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                            <p>
+                                <i>Saya Harap Kalian Semua Terus Dukung kami</i>
+                            </p>
+                            <div class="newsletter">
+                                <form action="#">
+                                    <div class="input-group stylish-input-group">
+                                        <input type="email" name="email" class="form-control" placeholder="Enter your e-mail here">
+                                        <button type="submit">
+                                            <i class="fa fa-paper-plane"></i>
+                                        </button>  
+                                    </div>
+                                </form>
                             </div>
-                            <ul class="list-unstyled pricing-list margin-b-50">
-                                <li class="pricing-list-item">Starter Kit</li>
-                                <li class="pricing-list-item">Basic Features</li>
-                                <li class="pricing-list-item">Annual Report</li>
-                            </ul>
-                            <a href="pricing.html" class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Start
-                                Now</a>
                         </div>
-                         End Pricing 
                     </div>
-                    <div class="col-sm-4 sm-margin-b-2">
-                        Pricing 
-                        <div class="pricing pricing-active">
-                            <div class="margin-b-30">
-                                <i class="pricing-icon icon-badge"></i>
-                                <h3>Gold Package <span> - $</span> 199.99</h3>
-                                <p>Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                    <div class="col-md-2 col-sm-6 equal-height item">
+                        <div class="f-item link">
+                            <h4>Tautan</h4>
+                            <ul>
+                                <li>
+                                    <a href="/">Beranda</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 equal-height item">
+                        <div class="f-item twitter-widget">
+                            <h4>Info Kontak</h4>
+                            <p>
+                                Sekolah Smk Negri 1 Sukorejo
+                            </p>
+                            <div class="address">
+                                <ul>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-home"></i> 
+                                        </div>
+                                        <div class="info">
+                                            <h5>Website:</h5>
+                                            <span>smkn1sukorejo.sch.id</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-envelope"></i> 
+                                        </div>
+                                        <div class="info">
+                                            <h5>Email:</h5>
+                                            <span>smkn1sukorejo@gmail.com</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-phone"></i> 
+                                        </div>
+                                        <div class="info">
+                                            <h5>Phone:</h5>
+                                            <span>+62 8567366754</span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
-                            <ul class="list-unstyled pricing-list margin-b-50">
-                                <li class="pricing-list-item">Professional Kit</li>
-                                <li class="pricing-list-item">Full Options</li>
-                                <li class="pricing-list-item">Bi-anual Report</li>
-                            </ul>
-                            <a href="pricing.html" class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Start
-                                Now</a>
-                        </div>
-                        End Pricing 
-                    </div>
-                    <div class="col-sm-4">
-                        <Pricing 
-                        <div class="pricing">
-                            <div class="margin-b-30">
-                                <i class="pricing-icon icon-shield"></i>
-                                <h3>Platinum Package <span> - $</span> 500</h3>
-                                <p>Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-                            </div>
-                            <ul class="list-unstyled pricing-list margin-b-50">
-                                <li class="pricing-list-item">Complete Kit</li>
-                                <li class="pricing-list-item">Advanced Options</li>
-                                <li class="pricing-list-item">Monthly Report</li>
-                            </ul>
-                            <a href="pricing.html" class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Start
-                                Now</a>
-                        </div>
-                         End Pricing
-                    </div>
-                </div>
-                end row -->
-    </div>
-    </div>
-    </div>
-    <!-- End Pricing -->
-
-    <!--========== END PAGE LAYOUT ==========-->
-
-    <!--========== FOOTER ==========-->
-    <footer class="footer">
-        <!-- Links -->
-        <!-- <div class="section-seperator">
-                <div class="content-md container">
-                    <div class="row">
-                        <div class="col-sm-2 sm-margin-b-30">
-                         
-                            <ul class="list-unstyled footer-list">
-                                <li class="footer-list-item"><a href="#body">Home</a></li>
-                                <li class="footer-list-item"><a href="#about">Team</a></li>
-                                <li class="footer-list-item"><a href="#work">Credentials</a></li>
-                                <li class="footer-list-item"><a href="#contact">Contact</a></li>
-                            </ul>
-                          
-                        </div>
-                        <div class="col-sm-2 sm-margin-b-30">
-                          
-                            <ul class="list-unstyled footer-list">
-                                <li class="footer-list-item"><a href="#">Twitter</a></li>
-                                <li class="footer-list-item"><a href="#">Facebook</a></li>
-                                <li class="footer-list-item"><a href="#">Instagram</a></li>
-                                <li class="footer-list-item"><a href="#">YouTube</a></li>
-                            </ul>
-                          
-                        </div>
-                        <div class="col-sm-3">
-                      
-                            <ul class="list-unstyled footer-list">
-                                <li class="footer-list-item"><a href="#">Subscribe to Our Newsletter</a></li>
-                                <li class="footer-list-item"><a href="#">Privacy Policy</a></li>
-                                <li class="footer-list-item"><a href="#">Terms &amp; Conditions</a></li>
-                            </ul>
-                       
                         </div>
                     </div>
-                  
-                </div>
-            </div>  
-            <!-- End Links -->
-
-        <!-- Copyright -->
-        <div class="content container">
-            <div class="row">
-                <div class="col-xs-6">
-                    <img class="footer-logo" src="landingpage/img/logo-dark.png" alt="flameonepage Logo">
-                </div>
-                <div class="col-xs-6 text-right">
-                    <p class="margin-b-0"><a class="fweight-700" href="#">FlameOnePage</a> Theme Powered by: Asrori <a
-                            class="fweight-700" href="http://ft-seo.ch/">FairTech Studio</a></p>
                 </div>
             </div>
-            <!--// end row -->
+            <!-- Start Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="col-lg-6 col-md-6 col-sm-7">
+                            <p>&copy; Copyright 2022. All Rights Reserved by <a href="#">validthemes</a></p>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-5 text-right social">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Footer Bottom -->
         </div>
-        <!-- End Copyright -->
     </footer>
-    <!--========== END FOOTER ==========-->
+    <!-- End Footer -->
 
-    <!-- Back To Top -->
-    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
-
-    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->\
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
-
-    <!-- CORE PLUGINS -->
-    <script src="{{asset('landingpage/vendor/jquery.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('landingpage/vendor/jquery-migrate.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('landingpage/vendor/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
-
-    <!-- PAGE LEVEL PLUGINS -->
-    <script src="{{asset('landingpage/vendor/jquery.easing.js')}}" type="text/javascript"></script>
-    <script src="{{asset('landingpage/vendor/jquery.back-to-top.js')}}" type="text/javascript"></script>
-    <script src="{{asset('landingpage/vendor/jquery.smooth-scroll.js')}}" type="text/javascript"></script>
-    <script src="{{asset('landingpage/vendor/jquery.wow.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('landingpage/vendor/swiper/js/swiper.jquery.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('landingpage/vendor/masonry/jquery.masonry.pkgd.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('landingpage/vendor/masonry/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
-
-    <!-- PAGE LEVEL SCRIPTS -->
-    <script src="{{asset('landingpage/js/layout.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('landingpage/js/components/wow.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('landingpage/js/components/swiper.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('landingpage/js/components/masonry.min.js')}}" type="text/javascript"></script>
+    <!-- jQuery Frameworks
+    ============================================= -->
+    <script src="asset/js/jquery-1.12.4.min.js"></script>
+    <script src="asset/js/bootstrap.min.js"></script>
+    <script src="asset/js/equal-height.min.js"></script>
+    <script src="asset/js/jquery.appear.js"></script>
+    <script src="asset/js/jquery.easing.min.js"></script>
+    <script src="asset/js/jquery.magnific-popup.min.js"></script>
+    <script src="asset/js/modernizr.custom.13711.js"></script>
+    <script src="asset/js/owl.carousel.min.js"></script>
+    <script src="asset/js/count-to.js"></script>
+    <script src="asset/js/wow.min.js"></script>
+    <script src="asset/js/jquery.backgroundMove.js"></script>
+    <script src="asset/js/bootsnav.js"></script>
+    <script src="asset/js/main.js"></script>
 
 </body>
-<!-- END BODY -->
-
 </html>

@@ -104,9 +104,8 @@
                         <img class="img-responsive" style="width: 250px; height: 230px; margin-right: auto; margin-left: auto;" src="{{ asset('fotobuku/'.$row->foto)}}" alt="Latest Products Image">
                     </div>
                     <p>{{$row->deskripsi}}</p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
-                        Launch demo modal
-                      </button>
+
+                    <a class="" href="#">Detail Buku </a>
                     <a class="" href="#">Pinjam Buku </a>
                 </div>
                 @endforeach

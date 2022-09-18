@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     public function Login(){
-        return view('login.login');
+        return view('masuk.login');
     }
 
     public function logined(Request $request){
@@ -29,7 +29,7 @@ class LoginController extends Controller
          }
         //  dd($request);
 
-         return redirect('loginn')->with('salah', 'Email atau Password Salah!');
+         return redirect('login')->with('salah', 'Email atau Password Salah!');
     }
 
     public function register(){
