@@ -7,7 +7,21 @@ $(function () {
 	$(".search-arrow-back").on("click", function () {
 		$(".search-bar").removeClass("full-search-bar");
 	});
-	
+	$(document).ready(function () {
+		$(window).on("scroll", function () {
+			if ($(this).scrollTop() > 300) {
+				$('.top-header').addClass('sticky-top-header');
+			} else {
+				$('.top-header').removeClass('sticky-top-header');
+			}
+		});
+		$('.back-to-top').on("click", function () {
+			$("html, body").animate({
+				scrollTop: 0
+			}, 600);
+			return false;
+		});
+	});
 	$(function () {
 		$('.metismenu-card').metisMenu({
 			toggle: false,
@@ -72,9 +86,9 @@ $(function () {
 	$(function () {
 		for (var i = window.location, o = $(".metismenu li a").filter(function () {
 			return this.href == i;
-		}).addClass("").parent().addClass("");;) {
+		}).addClass("").parent().addClass("mm-active");;) {
 			if (!o.is("li")) break;
-			o = o.parent("").addClass("").parent("").addClass("");
+			o = o.parent("").addClass("mm-show").parent("").addClass("mm-active");
 		}
 	}),
 	// metismenu

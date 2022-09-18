@@ -108,7 +108,7 @@
                             <p>
                                 "Perpustakaan akan membantumu melewati masa-masa tanpa uang lebih baik daripada uang akan membantumu melewati masa-masa tanpa perpustakaan."
                             </p>
-                            <a class="btn btn-theme border btn-md" href="#">Ayo Masuk</a>
+                            <a class="btn btn-theme border btn-md" href="/login">Ayo Masuk</a>
                         </div>
                     </div>
                     <div class="col-md-6 right-info">
@@ -122,89 +122,6 @@
     </div>
     <!-- End Banner -->
 
-    <!-- Start About
-    ============================================= -->
-    <div id="about" class="about-area border-top default-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 info">
-                    <h2>We're Building Modern <br> And High Software</h2>
-                    <p>
-                        Both rest of know draw fond post as. It agreement defective to excellent. Feebly do engage of narrow. Extensive repulsive belonging depending if promotion be zealously as. Preference inquietude ask now are dispatched led appearance. Small meant in so doubt hopes.
-                    </p>
-                    <ul>
-                        <li>Chapter too parties its letters</li>
-                        <li>Answered one fat indulged margaret sir shutters together</li>
-                        <li>Conveying or northward offending admitting</li>
-                    </ul>
-                    <div class="fun-facts">
-                        <h3>Outstanding annual results from our awesome Team</h3>
-                        <div class="row">
-                            <div class="col-md-4 col-sm-4 item">
-                                <div class="fun-fact">
-                                    <div class="timer" data-to="75" data-speed="5000">75</div>
-                                    <span class="medium">Higher Profits</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-4 item">
-                                <div class="fun-fact">
-                                    <div class="timer" data-to="100" data-speed="5000">100</div>
-                                    <span class="medium">Satisfied</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-4 item">
-                                <div class="fun-fact">
-                                    <div class="timer" data-to="98" data-speed="5000">98</div>
-                                    <span class="medium">Success Rate</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 features">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 equal-height">
-                            <div class="item">
-                                <i class="flaticon-ticket"></i>
-                                <h4>Ticket manage</h4>
-                                <p>
-                                    Downs those still witty an balls so chief so. Moment an little remain no lively
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 equal-height">
-                            <div class="item">
-                                <i class="flaticon-speech-bubble"></i>
-                                <h4>Live messaging</h4>
-                                <p>
-                                    Downs those still witty an balls so chief so. Moment an little remain no lively
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 equal-height">
-                            <div class="item">
-                                <i class="flaticon-email"></i>
-                                <h4>Email workflow</h4>
-                                <p>
-                                    Downs those still witty an balls so chief so. Moment an little remain no lively
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 equal-height">
-                            <div class="item">
-                                <i class="flaticon-file"></i>
-                                <h4>File upload</h4>
-                                <p>
-                                    Downs those still witty an balls so chief so. Moment an little remain no lively
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End About -->
 
     <!-- Start Features Area
     ============================================= -->
@@ -318,38 +235,34 @@
                                 <div class="list">
                                 </div>
                                 <div class="content">
-                                    <h4>1. Tidak Boleh Membawa Makanan</h4>
-                                    <h4>2. Tidak Boleh Berisik</h4>
+                                    <h4>1. Pengunjung perpustakaan harus menunjukkan kartu perpustakaan jika ingin meminjam buku</h4>
+                                    <h4>2. Harus melepas sepatu</h4>
                                 </div>
                             </li>
                             <li>
                                 <div class="list">
                                 </div>
                                 <div class="content">
-                                    <h4>1. Tidak Boleh Membawa Makanan</h4>
-                                    <h4>2. Tidak Boleh Berisik</h4>
+                                    <h4>3. Harus mengikuti aturan yang berlaku di perpustakaan</h4>
+                                    <h4>4. Di perpustakaan harus tenang</h4>
                                 </div>
                             </li>
                             <li>
                                 <div class="list">
-                                    <h3><i class="fas fa-check"></i></h3>
+                                    
                                 </div>
                                 <div class="content">
-                                    <h4>Result</h4>
-                                    <p>
-                                        Talking chamber as shewing projection particular companions interested do at my delightful. Particular companions
-                                    </p>
+                                    <h4>5. Harus menunjukkan buku yang ingin dipinjam</h4>
+                                    <h4>6. Wajib mengisi buku pengunjung perpustakaan</h4>
                                 </div>
                             </li>
                             <li>
                                 <div class="list">
-                                    <h3><i class="fas fa-crosshairs"></i></h3>
+                                    
                                 </div>
                                 <div class="content">
-                                    <h4>Targeting</h4>
-                                    <p>
-                                        Sentiments projection particular companions interested do at my delightful listening newspaper
-                                    </p>
+                                    <h4>7. Tidak Boleh Membawa Makanan Dan Minuman</h4>
+                                    <h4>8. Jika buku hilang, harus diganti/diganti</h4>
                                 </div>
                             </li>
                         </ul>

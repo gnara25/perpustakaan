@@ -8,6 +8,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DaftarbukuController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
+use App\Http\Controllers\DaftarAnggotaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,7 @@ Route::get('/tambahbuku',[DaftarbukuController::class,'tambahbuku'])->name('tamb
 Route::post('/tambahbukupost',[DaftarbukuController::class,'tambahbukupost'])->name('tambahbukupost');
 Route::get('/editbuku/{id}',[DaftarbukuController::class,'editbuku'])->name('editbuku');
 Route::post('/editbukupost/{id}',[DaftarbukuController::class,'editbukupost'])->name('editbukupost');
+Route::get('/deletebuku/{id}',[DaftarbukuController::class,'deletebuku'])->name('deletebuku');
 
 // kategori
 Route::get('/kategori',[KategoriController::class,'kategori'])->name('kategori');
@@ -89,3 +91,6 @@ Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name
 Route::get('/tambahpengembalian',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
 Route::post('/tambahpengembalianpost',[PengembalianController::class,'tambahpengembalianpost'])->name('tambahpengembalianpost');
 Route::get('/deletepengembalian/{id}',[PengembalianController::class,'deletepengembalian'])->name('deletepengembalian');
+
+// anggota
+Route::get('/daftaranggota',[DaftarAnggotaController::class,'daftaranggota'])->name('daftaranggota');

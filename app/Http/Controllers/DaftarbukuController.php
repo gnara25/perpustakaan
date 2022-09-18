@@ -23,26 +23,26 @@ class DaftarbukuController extends Controller
         return view('buku.tambahbuku',compact('data','idkategori'));
     }
     public function tambahbukupost(Request $request){
-
+        
         $this->validate($request,[
-            'foto' => ['required','mimes:png,jpg,jpeg,gif,jfif'],
             'nama' => 'required',
             'kategori' => 'required',
             'kodebuku' => 'required',
             'penerbit' => 'required',
             'tahunterbit' => 'required',
             'jumlah' => 'required',
-            'deskripsi' => 'required',
+            'foto' => ['required','mimes:png,jpg,jpeg,gif,jfif'],
+            
         ]);
         $data = Daftarbuku::create([
-            'foto' => $request->foto,
             'nama' => $request->nama,
             'kategori' => $request->kategori,
             'kodebuku' => $request->kodebuku,
             'penerbit' => $request->penerbit,
             'tahunterbit' => $request->tahunterbit,
             'jumlah' => $request->jumlah,
-            'deskripsi' => $request->deskripsi,
+            'foto' => $request->foto,
+            
         ]);
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('fotobuku/',$request->file('foto')->getClientOriginalName());
@@ -85,5 +85,13 @@ class DaftarbukuController extends Controller
             $data->save();
         }
         return redirect()-> route('buku')->with('success','Data berhasil diupdate');
+    }
+
+    public function deletebuku($id)
+    {
+
+        $data = Daftarbuku::find($id);
+        $data->delete();
+        return redirect()->route('buku')->with('success', 'Data Berhasil di Hapus');
     }
 }
