@@ -17,13 +17,13 @@
 			<div class="page-content-wrapper">
 				<div class="page-content">
                     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-						<div class="breadcrumb-title pe-3">Daftar Buku</div>
+						<div class="breadcrumb-title pe-3">Pengembalian</div>
 						<div class="ps-3">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb mb-0 p-0">
 									<li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-home-alt'></i></a>
 									</li>
-									<li class="breadcrumb-item active" aria-current="page">Daftar Buku</li>
+									<li class="breadcrumb-item active" aria-current="page">Pengembalian</li>
 								</ol>
 							</nav>
 						</div>
@@ -31,11 +31,14 @@
                     <div class="card radius-15">
 						<div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered mb-0">
+                                <table class="table table-bordered">
                                     <thead>
-                                        <tr>
-                                            <th>Kategori</th>
-                                          
+                                        <tr>                                         
+                                            <th>Nama Buku </th>
+                                            <th>kelas</th>
+                                            <th>Nama Buku</th>
+                                            <th>Tanggal Peminjaman</th>
+                                            <th>Tanggal Pengembalian</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -43,7 +46,11 @@
                                         @foreach ( $data as $row )
         
                                         <tr>
-                                            <td>{{$row->kategori}}</td>
+                                            <td>{{$row->nama}}</td>
+                                            <td>{{$row->kelas}}</td>
+                                            <td>{{$row->namabuku}}</td>
+                                            <td>{{$row->tanggalpengebalian}}</td>
+                                            <td>{{$row->jumlah}}</td>
                                         </tr>
                                         @endforeach
         

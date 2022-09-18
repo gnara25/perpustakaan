@@ -27,28 +27,28 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" >
+						<a href="/kategori" >
 							<div class="parent-icon icon-color-2"><i class='bx bx-briefcase-alt'></i>
 							</div>
 							<div class="menu-title">Menu Kategori</div>
 						</a>
 					</li>
 					<li>
-						<a  href="#">
+						<a  href="/buku">
 							<div class="parent-icon icon-color-3"><i class="bx bx-line-chart"></i>
 							</div>
 							<div class="menu-title">Daftar Buku</div>
 						</a>
 					</li>
 					<li>
-						<a href="javascript:;">
+						<a href="/peminjaman">
 							<div class="parent-icon icon-color-4"><i class="bx bx-spa"></i>
 							</div>
 							<div class="menu-title">Peminjaman</div>
 						</a>
 					</li>
 					<li>
-						<a href="javascript:;">
+						<a href="/pengembalian">
 							<div class="parent-icon icon-color-5"><i class="bx bx-lock"></i>
 							</div>
 							<div class="menu-title">Pengembalian</div>
