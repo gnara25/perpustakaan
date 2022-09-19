@@ -25,15 +25,15 @@ class DaftarbukuController extends Controller
     public function tambahbukupost(Request $request){
 
         $this->validate($request,[
-            'foto' => ['required','mimes:png,jpg,jpeg,gif,jfif'],
+            'foto' => 'required|mimes:png,jpg,jpeg,gif,jfif',
             'nama' => 'required',
             'kategori' => 'required',
             'kodebuku' => 'required',
             'penerbit' => 'required',
             'tahunterbit' => 'required',
             'jumlah' => 'required',
-            'deskripsi' => 'required',
         ]);
+        // dd($request);
         $data = Daftarbuku::create([
             'foto' => $request->foto,
             'nama' => $request->nama,
@@ -42,7 +42,6 @@ class DaftarbukuController extends Controller
             'penerbit' => $request->penerbit,
             'tahunterbit' => $request->tahunterbit,
             'jumlah' => $request->jumlah,
-            'deskripsi' => $request->deskripsi,
         ]);
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('fotobuku/',$request->file('foto')->getClientOriginalName());

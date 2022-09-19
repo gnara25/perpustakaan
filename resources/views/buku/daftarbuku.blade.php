@@ -16,6 +16,7 @@
 			<!--page-content-wrapper-->
 			<div class="page-content-wrapper">
 				<div class="page-content">
+
                     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
 						<div class="breadcrumb-title pe-3">Daftar Buku</div>
 						<div class="ps-3">
@@ -30,10 +31,12 @@
 					</div>
                     <div class="card radius-15">
 						<div class="card-body">
+                            <a href="/tambahbuku" class="btn btn-success mb-3">tambah Buku</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered mb-0">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>Foto</th>
                                             <th>Nama Buku </th>
                                             <th>Kategori Buku</th>
@@ -44,23 +47,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $no = 1;
+                                        @endphp
                                         @foreach ( $data as $row )
-        
+
                                         <tr>
+                                            <td>{{ $no++ }}</td>
                                             <td>  <img src="{{asset('fotobuku/'.$row->foto)}}" alt="" style="width: 100px; height: 100px"></td>
                                             <td>{{$row->nama}}</td>
                                             <td>{{$row->idkategori->kategori}}</td>
-                                            <td>{{$row->Kodeuku}}</td>
+                                            <td>{{$row->kodebuku}}</td>
                                             <td>{{$row->penerbit}}</td>
                                             <td>{{$row->tahunterbit}}</td>
+                                            <td>
+                                                <a href="/editbuku/{{$row->id}}" class="btn btn-info"> Edit</a>
+                                                <a href="#" class="btn btn-danger"> Hapus </a>
+                                            </td>
                                         </tr>
                                         @endforeach
-        
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>        
+                    </div>
 				</div>
 			</div>
 			<!--end page-content-wrapper-->
