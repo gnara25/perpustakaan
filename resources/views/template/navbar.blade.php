@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand">
         <div class="sidebar-header">
             <div class="d-none d-lg-flex">
-                <img src="assets/images/logo-icon.png" class="logo-icon-2" alt="">
+                <img src="{{asset('assets/images/logo-icon.png')}}" class="logo-icon-2" alt="">
             </div>
             <div>
                 <h4 class="d-none d-lg-flex logo-text">Perpusatakaan</h4>
@@ -22,7 +22,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item dropdown dropdown-lg">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="javascript:;" data-bs-toggle="dropdown">	<i class="bx bx-bell vertical-align-middle"></i>
-                    
+
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
                         <a href="javascript:;">
@@ -43,10 +43,10 @@
                                 <span
                                     class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                             </div>
-                            <img src="assets/images/avatars/avatar-1.png" class="user-img" alt="user avatar">
+                            <img src="{{asset('assets/images/avatars/avatar-1.png')}}" class="user-img" alt="user avatar">
                         </div>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end">	
+                    <div class="dropdown-menu dropdown-menu-end">
                         <a class="dropdown-item" href="javascript:;"><i
                                 class="bx bx-user"></i><span>Profil</span></a>
                         <a class="dropdown-item" href="javascript:;"><i

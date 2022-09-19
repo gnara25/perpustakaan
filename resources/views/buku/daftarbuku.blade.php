@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 @include('template.head')
 
 <body>
@@ -33,7 +35,7 @@
 						<div class="card-body">
                             <a href="/tambahbuku" class="btn btn-success mb-3">tambah Buku</a>
                             <div class="table-responsive">
-                                <table class="table table-bordered mb-0">
+                                <table class="table table-bordered mb-0" id="myTable">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -60,9 +62,15 @@
                                             <td>{{$row->kodebuku}}</td>
                                             <td>{{$row->penerbit}}</td>
                                             <td>{{$row->tahunterbit}}</td>
-                                            <td>
-                                                <a href="/editbuku/{{$row->id}}" class="btn btn-info"> Edit</a>
-                                                <a href="#" class="btn btn-danger"> Hapus </a>
+                                            <td class="c">
+                                                <a href="/editbuku/{{ $row->id }}"
+                                                    class="btn btn-success">
+                                                    <i class="fa-solid fa-square-pen"></i></a>
+                                                <a href="#" class="btn btn-danger delete"
+                                                    data-id="{{ $row->id }}"
+                                                    data-kategori="{{ $row->nama }}">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -115,6 +123,41 @@
 	   </div>
 	   <!--end switcher--> --}}
 	@include('template.script')
+    <script>
+        @if (Session::has('success'))
+            toastr.success("{{ Session::get('success') }}")
+        @endif
+    </script>
+
+    <script>
+        $('.delete').click(function() {
+            var mahasiswaid = $(this).attr('data-id');
+            var kategori = $(this).attr('data-kategori');
+            swal({
+                    title: "YAKIN?",
+                    text: "Akan Menghapus Data Dengan Kategori " + kategori + " ",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location = "/deletebuku/" + mahasiswaid + ""
+                        swal("Data Ini Berhasil Dihapus!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Data Ini Tidak Jadi Dihapus!");
+                    }
+                });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
 </body>
 
 </html>
