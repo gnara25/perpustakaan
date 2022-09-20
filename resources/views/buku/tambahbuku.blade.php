@@ -48,9 +48,13 @@
                                     <div class="form-group row mb-3">
                                         <label for="kategori" class="col-sm-4 col-form-label">Kategori Buku   :</label>
                                         <div class="col-sm-8">
-                                            <input type="text"
-                                                class="form-control @error('kategori') is-invalid @enderror"
-                                                id="kategori" name="kategori" value="{{ old('kategori') }}">
+                                                <select class="form-control @error('kategori') is-invalid @enderror"
+                                                name="kategori" aria-label="Default select example" >
+                                                @foreach ($idkategori as $kategori)
+                                                    <option value="{{ $kategori->id }}">
+                                                        {{ $kategori->kategori }}</option>
+                                                @endforeach
+                                            </select>
                                             @error('kategori')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror

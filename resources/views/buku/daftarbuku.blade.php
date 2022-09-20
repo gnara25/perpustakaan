@@ -42,6 +42,7 @@
                                             style="width:100%">
 											<thead>
 												<tr>
+                                                    <th>No</th>
 													<th>Nama Buku </th>
 													<th>Kategori Buku</th>
 													<th>Kode Buku</th>
@@ -53,18 +54,22 @@
 												</tr>
 											</thead>
 											<tbody>
+                                                @php
+                                                    $no = 1;
+                                                @endphp
 												@foreach ( $data as $row )
 				
 												<tr>
+                                                    <td>{{$no++}}</td>
 													<td>{{$row->nama}}</td>
-													<td>{{$row->kategori}}</td>
+													<td>{{$row->idkategori->kategori}}</td>
 													<td>{{$row->kodebuku}}</td>
 													<td>{{$row->penerbit}}</td>
 													<td>{{$row->tahunterbit}}</td>
 													<td>{{$row->jumlah}}</td>
 													<td>  <img src="{{asset('fotobuku/'.$row->foto)}}" alt="" style="width: 70px; height: 70px"></td>
                                                     <td class="b">
-                                                        <a href="/editkategori/{{ $row->id }}"
+                                                        <a href="/editbuku/{{ $row->id }}"
                                                             class="btn btn-success">
                                                             <i class="fa-solid fa-square-pen"></i></a>
                                                         <a href="#" class="btn btn-danger delete"
