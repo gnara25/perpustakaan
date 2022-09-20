@@ -41,7 +41,7 @@
                             <img src="../assets/images/avatars/avatar-1.png" class="user-img" alt="user avatar">
                         </div>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end">	
+                    <div class="dropdown-menu dropdown-menu-end">
                         <a class="dropdown-item" href="javascript:;"><i
                                 class="bx bx-user"></i><span>Profil</span></a>
                         <a class="dropdown-item" href="javascript:;"><i

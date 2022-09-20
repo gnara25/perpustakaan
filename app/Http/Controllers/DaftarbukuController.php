@@ -34,6 +34,7 @@ class DaftarbukuController extends Controller
             'foto' => ['required','mimes:png,jpg,jpeg,gif,jfif'],
             
         ]);
+        // dd($request);
         $data = Daftarbuku::create([
             'nama' => $request->nama,
             'kategori' => $request->kategori,
