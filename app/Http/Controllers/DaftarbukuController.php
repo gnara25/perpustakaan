@@ -93,4 +93,8 @@ class DaftarbukuController extends Controller
         $data->delete();
         return redirect()->route('buku')->with('success', 'Data Berhasil di Hapus');
     }
+
+    public function cetakbarcode(Request $request){
+        return $request;
+    }
 }

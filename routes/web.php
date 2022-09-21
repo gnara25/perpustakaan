@@ -67,6 +67,7 @@ Route::get('/tambahbuku',[DaftarbukuController::class,'tambahbuku'])->name('tamb
 Route::post('/tambahbukupost',[DaftarbukuController::class,'tambahbukupost'])->name('tambahbukupost');
 Route::get('/editbuku/{id}',[DaftarbukuController::class,'editbuku'])->name('editbuku');
 Route::post('/editbukupost/{id}',[DaftarbukuController::class,'editbukupost'])->name('editbukupost');
+Route::post('/cetakbarcode',[DaftarbukuController::class,'cetakbarcode'])->name('cetakbarcode');
 Route::get('/deletebuku/{id}',[DaftarbukuController::class,'deletebuku'])->name('deletebuku');
 
 // kategori
