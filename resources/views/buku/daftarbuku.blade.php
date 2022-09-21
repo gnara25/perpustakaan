@@ -35,6 +35,7 @@
                         <div class="card-body">
                             <div>
                                 <a id="table2-new-row-button" href="tambahbuku" class="btn btn-outline-info btn-sm mb-2">Tambah Buku</a>
+                        
                                 <div class="table-responsive">
                                     <hr>
                                     <div class="table-responsive">

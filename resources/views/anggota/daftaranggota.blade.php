@@ -18,13 +18,13 @@
                 <div class="page-content">
                     <!--breadcrumb-->
                     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">Kategori</div>
+                        <div class="breadcrumb-title pe-3">Anggota</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item"><a href="beranda"><i class="bx bx-home-alt"></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Kategori Buku</li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Daftar Anggota</li>
                                 </ol>
                             </nav>
                         </div>
@@ -34,7 +34,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                <a id="table2-new-row-button" href="tambahkategori" class="btn btn-outline-info btn-sm mb-2">Tambah Anggota</a>
+                                <a id="table2-new-row-button" href="tambahanggota" class="btn btn-outline-info btn-sm mb-2">Tambah Anggota</a>
                                 <div class="table-responsive">
                                     <hr>
                                     <div class="table-responsive">
@@ -70,9 +70,12 @@
                                                                 <i class="fa-solid fa-square-pen"></i></a>
                                                             <a href="#" class="btn btn-danger delete"
                                                                 data-id="{{ $row->id }}"
-                                                                data-kategori="{{ $row->kategori }}">
+                                                                data-nama="{{ $row->nama }}">
                                                                 <i class="fa-solid fa-trash"></i>
                                                             </a>
+                                                            <a href="/detailanggota/{{ $row->id }}"
+                                                                class="btn btn-primary">
+                                                                <i class="fa-solid fa-eye"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -98,17 +101,17 @@
                 <script>
                     $('.delete').click(function() {
                         var mahasiswaid = $(this).attr('data-id');
-                        var kategori = $(this).attr('data-kategori');
+                        var nama = $(this).attr('data-nama');
                         swal({
                                 title: "YAKIN?",
-                                text: "Akan Menghapus Data Dengan Kategori " + kategori + " ",
+                                text: "Akan Menghapus Data Dengan Nama " + nama + " ",
                                 icon: "warning",
                                 buttons: true,
                                 dangerMode: true,
                             })
                             .then((willDelete) => {
                                 if (willDelete) {
-                                    window.location = "/deletekategori/" + mahasiswaid + ""
+                                    window.location = "/deleteanggota/" + mahasiswaid + ""
                                     swal("Data Ini Berhasil Dihapus!", {
                                         icon: "success",
                                     });

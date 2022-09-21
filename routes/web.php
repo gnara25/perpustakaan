@@ -94,3 +94,8 @@ Route::get('/deletepengembalian/{id}',[PengembalianController::class,'deletepeng
 
 // anggota
 Route::get('/daftaranggota',[DaftarAnggotaController::class,'daftaranggota'])->name('daftaranggota');
+Route::get('/tambahanggota',[DaftarAnggotaController::class,'tambahanggota'])->name('tambahanggota');
+Route::post('/tambahanggotapost',[DaftarAnggotaController::class,'tambahanggotapost'])->name('tambahanggotapost');
+Route::get('/detailanggota/{id}',[DaftarAnggotaController::class,'detailanggota'])->name('detailanggota');
+Route::get('/deleteanggota/{id}',[DaftarAnggotaController::class,'deleteanggota'])->name('deleteanggota');
+

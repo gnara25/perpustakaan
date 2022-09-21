@@ -5,7 +5,7 @@
 			<img src="assets/images/logo-icon.png" class="logo-icon-2" alt="" />
 		</div>
 		<div>
-			<h4 class="logo-text">MyPerpus</h4>
+			<h4 class="logo-text">Perpus</h4>
 		</div>
 		<a href="javascript:;" class="toggle-btn ms-auto"> <i class="bx bx-menu"></i>
 		</a>
