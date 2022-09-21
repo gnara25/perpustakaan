@@ -19,7 +19,7 @@
                 </li>
                 <li class="nav-item dropdown dropdown-lg">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="javascript:;" data-bs-toggle="dropdown">	<i class="bx bx-bell vertical-align-middle"></i>
-                        
+
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
                         <a href="javascript:;">
@@ -38,9 +38,9 @@
                         <div class="d-flex user-box align-items-center">
                             <div class="user-info">
                                 <p class="user-name mb-0">{{ Auth::user()->username }}</p>
-                                
+
                             </div>
-                            <img src="fotosiswa/{{ Auth::User()->foto }}" class="user-img" alt="user avatar">
+                            <img src="/fotosiswa/{{ Auth::User()->foto }}" class="user-img" alt="user avatar">
                         </div>
                     </a>
                     {{-- <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
@@ -61,7 +61,7 @@
                                 class="bx bx-power-off"></i><span>Keluar</span></a>
                     </div>
                 </li>
-                
+
             </ul>
         </div>
     </nav>

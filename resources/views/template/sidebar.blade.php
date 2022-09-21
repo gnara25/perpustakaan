@@ -13,7 +13,7 @@
 	<!--navigation-->
 	<ul class="metismenu" id="menu">
 		<li>
-			<a href="beranda">
+			<a href="/beranda">
 				<div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
 				</div>
 				<div class="menu-title">Beranda</div>
@@ -21,14 +21,14 @@
 		</li>
 		<li class="menu-label">Menu Buku</li>
 		<li>
-			<a href="kategori">
+			<a href="/kategori">
 				<div class="parent-icon icon-color-2"><i class="bx bx-envelope"></i>
 				</div>
 				<div class="menu-title">Kategori Buku</div>
 			</a>
 		</li>
 		<li>
-			<a href="buku">
+			<a href="/buku">
 				<div class="parent-icon icon-color-3"> <i class="bx bx-conversation"></i>
 				</div>
 				<div class="menu-title">Daftar Buku</div>
@@ -36,23 +36,23 @@
 		</li>
 		<li class="menu-label">Menu</li>
 		<li>
-			<a href="peminjaman">
+			<a href="/peminjaman">
 				<div class="parent-icon icon-color-9"><i class="bx bx-ghost"></i>
 				</div>
 				<div class="menu-title">Peminjaman</div>
 			</a>
 		</li>
 		<li>
-			<a  href="pengembalian">
+			<a  href="/pengembalian">
 				<div class="parent-icon icon-color-10"><i class="bx bx-spa"></i>
 				</div>
 				<div class="menu-title">Pengembalian</div>
 			</a>
-			
+
 		</li>
 		<li class="menu-label">Anggota</li>
 		<li>
-			<a  href="daftaranggota">
+			<a  href="/daftaranggota">
 				<div class="parent-icon icon-color-1"> <i class="bx bx-comment-edit"></i>
 				</div>
 				<div class="menu-title">Daftar Anggota</div>
