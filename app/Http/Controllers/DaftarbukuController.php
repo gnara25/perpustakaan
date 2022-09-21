@@ -12,7 +12,7 @@ class DaftarbukuController extends Controller
         return view('index');
     }
     public function buku(){
-        $data = Daftarbuku::all();
+        $data = Daftarbuku::with('idkategori')->get();
         $idkategori = Kategori::all();
         // dd(Daftarbuku::with('idkategori'));
         return view('buku.daftarbuku',compact('data','idkategori'));
@@ -23,7 +23,7 @@ class DaftarbukuController extends Controller
         return view('buku.tambahbuku',compact('data','idkategori'));
     }
     public function tambahbukupost(Request $request){
-        
+
         $this->validate($request,[
             'nama' => 'required',
             'kategori' => 'required',
@@ -32,7 +32,7 @@ class DaftarbukuController extends Controller
             'tahunterbit' => 'required',
             'jumlah' => 'required',
             'foto' => ['required','mimes:png,jpg,jpeg,gif,jfif'],
-            
+
         ]);
         // dd($request);
         $data = Daftarbuku::create([
@@ -43,7 +43,7 @@ class DaftarbukuController extends Controller
             'tahunterbit' => $request->tahunterbit,
             'jumlah' => $request->jumlah,
             'foto' => $request->foto,
-            
+
         ]);
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('fotobuku/',$request->file('foto')->getClientOriginalName());
@@ -69,7 +69,6 @@ class DaftarbukuController extends Controller
             'penerbit' => 'required',
             'tahunterbit' => 'required',
             'jumlah' => 'required',
-            'deskripsi' => 'required',
         ]);
         $data->update([
             'nama' => $request->nama,
@@ -78,7 +77,6 @@ class DaftarbukuController extends Controller
             'penerbit' => $request->penerbit,
             'tahunterbit' => $request->tahunterbit,
             'jumlah' => $request->jumlah,
-            'deskripsi' => $request->deskripsi,
         ]);
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('fotobuku/',$request->file('foto')->getClientOriginalName());

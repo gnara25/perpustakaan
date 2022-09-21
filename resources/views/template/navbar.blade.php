@@ -36,11 +36,20 @@
                 <li class="nav-item dropdown dropdown-user-profile">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
                         <div class="d-flex user-box align-items-center">
-                            <span
-                            class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                            <img src="../assets/images/avatars/avatar-1.png" class="user-img" alt="user avatar">
+                            <div class="user-info">
+                                <p class="user-name mb-0">{{ Auth::user()->username }}</p>
+                                
+                            </div>
+                            <img src="fotosiswa/{{ Auth::User()->foto }}" class="user-img" alt="user avatar">
                         </div>
                     </a>
+                    {{-- <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+                        <div class="d-flex user-box align-items-center">
+                            <span
+                            class="mr-4 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->username }}</span>
+                            <img src="fotosiswa/{{ Auth::User()->foto }}" class="user-img" alt="user avatar">
+                        </div>
+                    </a> --}}
                     <div class="dropdown-menu dropdown-menu-end">
                         <a class="dropdown-item" href="javascript:;"><i
                                 class="bx bx-user"></i><span>Profil</span></a>

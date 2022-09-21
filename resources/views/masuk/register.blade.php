@@ -35,7 +35,14 @@
                                             <form class="row g-3" action="/registeruser" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="col-12">
-                                                    <label for="inputEmailAddress" class="form-label">Nama</label>
+                                                    <label for="inputEmailAddress" class="form-label">Username</label>
+                                                    <input type="text" class="form-control" id="inputEmailAddress" placeholder="Suhardi" name="username">
+													@error('username')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="inputEmailAddress" class="form-label">Nama Panjang</label>
                                                     <input type="text" class="form-control" id="inputEmailAddress" placeholder="Suhardi" name="name">
 													@error('name')
 														<div class="alert alert-danger">{{ $message }}</div>

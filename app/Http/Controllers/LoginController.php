@@ -39,11 +39,13 @@ class LoginController extends Controller
 
     public function registeruser(Request $request){
         $this->validate($request,[
+            'username' => 'required',
             'name' => 'required',
             'notelepon' => 'required',
             'email' => 'required|email:rfc,dns|unique:users',
             'password' => 'required|min:8',
         ],[
+            'username.required' => 'Username Harus Di isi',
             'name.required' => 'Nama Harus Di isi',
             'notelepon.required' => 'No Telepon Harus Di Isi',
             'email.required' => 'Email Harus Diisi',
@@ -53,6 +55,7 @@ class LoginController extends Controller
             'password.min' => 'Password harus minimal 8 karakter',
         ]);
        User::create([
+            'username' => $request->username,
             'name' => $request->name,
             'notelepon' => $request->notelepon,
             'email' => $request->email,
@@ -73,38 +76,57 @@ class LoginController extends Controller
     //     return view('profile.editprofile');
     // }
 
-    public function editfoto(Request $request)
-    {
+    // public function editfoto(Request $request)
+    // {
+    //     $request->validate([
+    //         'foto' => ['mimes:png,jpg,jpeg,gif']
+    //     ]);
+
+    //     $user = user::findOrFail(Auth::user()->id);
+    //     if ($request->hasFile('foto')) {
+    //         $request->file('foto')->move('fotosiswa/',$request->file('foto')->getClientOriginalName());
+    //         $user->foto = $request->file('foto')->getClientOriginalName();
+    //         $user->save();
+    //     }
+
+    //     return redirect()->back()->with('success','Berhasil Mengubah Foto');
+    // }
+
+    public function editprofile(Request $request){
+
         $request->validate([
-            'foto' => ['mimes:png,jpg,jpeg,gif']
+            'username' => ['required','min:3'],
+            'notelepon' => ['required','min:5'],
+            'name' => ['string','min:4','required'],
+            'email' => ['email', 'string','min:4','required','email:dns'],
+            'foto' => ['mimes:png,jpg,jpeg,gif'],
+
+        ],[
+            'username.required' => 'Username Harus Di isi',
+            'username.min' => 'Username Minimal 3 karakter',
+            'name.required' => 'Nama Harus Di isi',
+            'name.min' => 'Nama Minimal 4 karakter',
+            'notelepon.required' => 'No Telepon Harus Di Isi',
+            'notelepon.min' => 'No Telepon Minimal 4 karakter',
+            'email.required' => 'Email Harus Diisi',
+            'email.min' => 'Email Minimal 3 karakter',
+            'email' => 'Email Yang Anda Masukan Tidak Benar',
+            'unique' => 'Email Ini Suadah Digunakan',
         ]);
 
         $user = user::findOrFail(Auth::user()->id);
+        // dd($request);
+        $user -> update([
+            'username' => $request->username,
+            'name' => $request->name,
+            'notelepon' => $request->notelepon,
+            'email' => $request->email,
+        ]);
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('fotosiswa/',$request->file('foto')->getClientOriginalName());
             $user->foto = $request->file('foto')->getClientOriginalName();
             $user->save();
         }
-
-        return redirect()->back()->with('success','Berhasil Mengubah Foto');
-    }
-
-    public function editprofile(Request $request){
-
-        $request->validate([
-            'kelas' => ['required','min:5'],
-            'nisn' => ['required','min:5,'],
-            'name' => ['string','min:4','alpha_num','required'],
-            'email' => ['email', 'string','min:4','required']
-        ]);
-
-        $user = user::findOrFail(Auth::user()->id);
-        $user -> update([
-            'name' => $request->name,
-            'kelas' => $request->kelas,
-            'nisn' => $request->nisn,
-            'email' => $request->email
-        ]);
         return redirect()->back()->with('success','Profile Berhasil Di Ubah');
     }
 
