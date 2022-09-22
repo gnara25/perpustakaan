@@ -66,7 +66,7 @@
                                                     @endphp
                                                     @foreach ($data as $row)
                                                         <tr>
-                                                            <td><input type="checkbox" name="example" id="example">
+                                                            <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
                                                             </td>
                                                             <td>{{ $no++ }}</td>
                                                             <td>{{ $row->nama }}</td>
