@@ -51,12 +51,12 @@
                         </div>
                     </a> --}}
                     <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="javascript:;"><i
+                        <a class="dropdown-item" href="/profile"><i
                                 class="bx bx-user"></i><span>Profil</span></a>
-                        <a class="dropdown-item" href="javascript:;"><i
+                       <!--  <a class="dropdown-item" href="javascript:;"><i
                                 class="bx bx-cog"></i><span>Pengaturan</span></a>
                         <a class="dropdown-item" href="beranda"><i
-                                class="bx bx-tachometer"></i><span>Beranda</span></a>
+                                class="bx bx-tachometer"></i><span>Beranda</span></a> -->
                         <div class="dropdown-divider mb-0"></div>	<a class="dropdown-item" href="/logout"><i
                                 class="bx bx-power-off"></i><span>Keluar</span></a>
                     </div>
