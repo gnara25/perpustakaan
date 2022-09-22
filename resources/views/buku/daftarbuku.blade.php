@@ -47,7 +47,7 @@
                                                 <thead>
 
                                                     <th>
-                                                        <input type="checkbox" name="example" id="example">
+                                                        <input type="checkbox" name="select_all" id="select_all">
                                                     </th>
                                                     <th>No</th>
                                                     <th>Nama Buku </th>
@@ -66,7 +66,7 @@
                                                     @endphp
                                                     @foreach ($data as $row)
                                                         <tr>
-                                                            <td><input type="checkbox" name="example" id="example">
+                                                            <td><input type="checkbox" name="select_all" id="select_all">
                                                             </td>
                                                             <td>{{ $no++ }}</td>
                                                             <td>{{ $row->nama }}</td>
@@ -166,16 +166,17 @@
                                     });
                             }
                         });
-                        $('[name=example]').on('click', function() {
+
+                        $('[name=select_all]').on('click', function () {
                             $(':checkbox').prop('checked', this.checked);
                         });
 
                     function cetakbarcode(url) {
                         if ($('input:checked').length < 1) {
-                            alert('bismillah');
+                            alert('kk');
                             return;
                         } else if ($('input:checked').length < 3) {
-                            alert('bismillah');
+                            alert('pilih minimal 3');
                             return;
                         } else {
                             $('.from-buku')
