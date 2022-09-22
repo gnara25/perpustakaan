@@ -35,11 +35,11 @@
                         <div class="card-body">
                             <div>
                                 <a id="table2-new-row-button" href="tambahbuku"
-                                    class="btn btn-outline-info btn-sm mb-2">Tambah Buku</a>
-                                    <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')" class="btn btn-info btn-xs btn-flat"><i class="fa fa-barcode"></i> Cetak Barcode</button>
-                                <div class="table-responsive">
+                                    class="btn btn-outline-info btn-sm mb-2"><i class="fa-solid fa-plus"></i>Tambah Buku</a>
+                                    <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak Barcode</button>
+                                <div class="row">
                                     <hr>
-                                    <div class="table-responsive">
+                                    <div class="row">
                                         <form action="" method="POST" class="from-buku">
                                             @csrf
                                             <table id="example" class="table table-striped table-bordered"
@@ -66,7 +66,7 @@
                                                     @endphp
                                                     @foreach ($data as $row)
                                                         <tr>
-                                                            <td><input type="checkbox" name="select_all" id="select_all">
+                                                            <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
                                                             </td>
                                                             <td>{{ $no++ }}</td>
                                                             <td>{{ $row->nama }}</td>
@@ -117,9 +117,7 @@
                     @if (Session::has('success'))
                         toastr.success("{{ Session::get('success') }}")
                     @endif
-                </script>
-
-                <script>
+                
                     $('.delete').click(function() {
                         var mahasiswaid = $(this).attr('data-id');
                         var nama = $(this).attr('data-nama');
@@ -141,8 +139,7 @@
                                 }
                             });
                     });
-                </script>
-                <script>
+                
                     $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
                         var button = $(event.relatedTarget) // Button that triggered the modal
                         var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -173,10 +170,10 @@
 
                     function cetakbarcode(url) {
                         if ($('input:checked').length < 1) {
-                            alert('kk');
-                            return;
-                        } else if ($('input:checked').length < 3) {
-                            alert('pilih minimal 3');
+                            swal ({
+                                icon: "warning",
+                               text : "Harap Pilih Buku"
+                            });
                             return;
                         } else {
                             $('.from-buku')

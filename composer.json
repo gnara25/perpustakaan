@@ -7,7 +7,6 @@
     "require": {
         "php": "^8.0.2",
         "barryvdh/laravel-dompdf": "^2.0",
-        "doctrine/dbal": "^3.4",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
@@ -67,3 +66,4 @@
     "minimum-stability": "dev",
     "prefer-stable": true
 }
+

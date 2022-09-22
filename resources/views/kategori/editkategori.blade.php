@@ -18,7 +18,7 @@
 			<div class="page-content-wrapper">
 				<div class="page-content">
                     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-						<div class="breadcrumb-title pe-3">Edit Kategori</div>
+						<div class="breadcrumb-title pe-3">Menu Buku</div>
 						<div class="ps-3">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb mb-0 p-0">
@@ -31,7 +31,7 @@
 					</div>
                     <div class="card radius-15">
 						<div class="card-body">
-                            <div class="table-responsive">
+                            <div class="row">
                                 <form action="/editkategoripost/{{$data->id}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row mb-3">

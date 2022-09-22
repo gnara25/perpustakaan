@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Daftarbuku;
+use \PDF;
+// use \DNS1D;
 use App\Models\Kategori;
+// use Barryvdh\DomPDF\Facade as PDF;
+use App\Models\Daftarbuku;
 use Illuminate\Http\Request;
 
 class DaftarbukuController extends Controller
@@ -14,7 +17,6 @@ class DaftarbukuController extends Controller
     public function buku(){
         $data = Daftarbuku::with('idkategori')->get();
         $idkategori = Kategori::all();
-        // dd(Daftarbuku::with('idkategori'));
         return view('buku.daftarbuku',compact('data','idkategori'));
     }
     public function tambahbuku(){
@@ -95,6 +97,15 @@ class DaftarbukuController extends Controller
     }
 
     public function cetakbarcode(Request $request){
-        return $request;
+        $databuku = array();
+        foreach($request->id as $id){
+            $buku = Daftarbuku::find($id);
+            $databuku[] = $buku;
+        }
+        // return $databuku;
+        $no  = 1;
+        $pdf = PDF::loadView('buku.barcode', compact('databuku', 'no'));
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('buku.pdf');
     }
 }

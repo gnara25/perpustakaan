@@ -31,7 +31,7 @@
 					</div>
                     <div class="card radius-15">
 						<div class="card-body">
-                            <div class="table-responsive">
+                            <div class="row">
                                 <form action="/tambahbukupost" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row mb-3">
