@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
+use App\Models\Daftarbuku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -50,9 +51,15 @@ class KategoriController extends Controller
 
     public function deletekategori($id)
     {
+        $count = Daftarbuku::where('kategori' ,$id)->count();
 
-        $data = Kategori::find($id);
-        $data->delete();
-        return redirect()->route('kategori')->with('success', 'Data Berhasil di Hapus');
+        if ($count > 0) {
+            return back()->with('error', 'Nama Barang Sedang Digunakan');
+        } else{
+            $data = Kategori::find($id);
+            $data->delete();
+            return redirect()->route('kategori')->with('success', 'Data Berhasil di Hapus'); 
+        }
+       
     }
 }

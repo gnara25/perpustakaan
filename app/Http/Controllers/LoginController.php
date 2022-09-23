@@ -95,23 +95,12 @@ class LoginController extends Controller
     public function editprofile(Request $request){
 
         $request->validate([
-            'username' => ['required','min:3'],
-            'notelepon' => ['required','min:5'],
-            'name' => ['string','min:4','required'],
-            'email' => ['email', 'string','min:4','required','email:dns'],
+            'username' => ['required'],
+            'notelepon' => ['required'],
+            'name' => ['required'],
+            'email' => [ 'required'],
             'foto' => ['mimes:png,jpg,jpeg,gif'],
 
-        ],[
-            'username.required' => 'Username Harus Di isi',
-            'username.min' => 'Username Minimal 3 karakter',
-            'name.required' => 'Nama Harus Di isi',
-            'name.min' => 'Nama Minimal 4 karakter',
-            'notelepon.required' => 'No Telepon Harus Di Isi',
-            'notelepon.min' => 'No Telepon Minimal 4 karakter',
-            'email.required' => 'Email Harus Diisi',
-            'email.min' => 'Email Minimal 3 karakter',
-            'email' => 'Email Yang Anda Masukan Tidak Benar',
-            'unique' => 'Email Ini Suadah Digunakan',
         ]);
 
         $user = user::findOrFail(Auth::user()->id);
@@ -140,9 +129,9 @@ class LoginController extends Controller
            $user = User::findOrFail(Auth::id());
            $user->password = Hash::make($request->password);
            $user->save();
-           Auth::logout();
+           
 
-           return redirect()->route('login')->with('success','password Berhasil Diubah');
+           return redirect()->back()->with('success','password Berhasil Diubah');
        }else{
            return redirect()->back()->with('error','password Lama Tidak Cocok');
        }

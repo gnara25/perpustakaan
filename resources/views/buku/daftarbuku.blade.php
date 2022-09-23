@@ -96,7 +96,7 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        @include('buku.modalbuku')
+                                                        
                                                     @endforeach
 
                                                 </tbody>
@@ -107,6 +107,10 @@
                             </div>
                         </div>
                     </div>
+                    @foreach ( $data as $row )
+                        
+                    @include('buku.modalbuku')
+                    @endforeach
                     <!--end page-content-wrapper-->
                 </div>
 
@@ -116,6 +120,9 @@
                 <script>
                     @if (Session::has('success'))
                         toastr.success("{{ Session::get('success') }}")
+                    @endif
+                    @if (Session::has('error'))
+                        toastr.error("{{ Session::get('error') }}")
                     @endif
                 
                     $('.delete').click(function() {
@@ -165,7 +172,7 @@
                         });
 
                         $('[name=select_all]').on('click', function () {
-                            $(':checkbox').prop('checked', this.checked);
+                            $(':example').prop('checked', this.checked);
                         });
 
                     function cetakbarcode(url) {
@@ -183,8 +190,6 @@
                         }
                     }
                 </script>
-
-
 </body>
 
 </html>

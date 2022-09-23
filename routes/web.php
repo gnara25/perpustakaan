@@ -24,6 +24,9 @@ use App\Http\Controllers\DaftarAnggotaController;
 Route::get('/beranda', function () {
     return view('beranda');
 });
+// Route::get('/idcard', function () {
+//     return view('anggota.idcard');
+// });
 Route::get('/tes', function () {
     return view('tes');
 });
@@ -99,4 +102,7 @@ Route::get('/tambahanggota',[DaftarAnggotaController::class,'tambahanggota'])->n
 Route::post('/tambahanggotapost',[DaftarAnggotaController::class,'tambahanggotapost'])->name('tambahanggotapost');
 Route::get('/detailanggota/{id}',[DaftarAnggotaController::class,'detailanggota'])->name('detailanggota');
 Route::get('/deleteanggota/{id}',[DaftarAnggotaController::class,'deleteanggota'])->name('deleteanggota');
+
+Route::post('/cetakidcard',[DaftarAnggotaController::class,'cetakidcard'])->name('cetakidcard');
+Route::get('/idcard/{id}',[DaftarAnggotaController::class,'idcard'])->name('idcard');
 

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('daftar_anggotas', function (Blueprint $table) {
             $table->id();
+            $table->string('foto');
             $table->string('nisn');
             $table->string('nama');
             $table->string('tgl_lahir');

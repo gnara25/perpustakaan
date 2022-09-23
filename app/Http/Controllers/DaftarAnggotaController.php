@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use \PDF;
 use Illuminate\Http\Request;
 use App\Models\DaftarAnggota;
 use App\Http\Controllers\DaftarAnggotaController;
@@ -16,6 +17,10 @@ class DaftarAnggotaController extends Controller
     public function tambahanggota(){
         return view('anggota.tambahanggota');
     }
+    public function idcard ($id){
+        $data = DaftarAnggota::findOrFail($id);
+        return view('anggota.idcard', compact('data'));
+    }
 
     public function tambahanggotapost(Request $request){
         $this->validate($request,[
@@ -24,6 +29,7 @@ class DaftarAnggotaController extends Controller
             'tgl_lahir' => 'required',
             'kelas' => 'required',
             'alamat' => 'required',
+            'foto' => ['required','mimes:png,jpg,jpeg,gif,jfif'],
         ],[
             'nisn.required' => 'NISN Wajib Diisi',
             'nisn.unique' => 'Nisn Tidak Boleh Sama',
@@ -38,8 +44,13 @@ class DaftarAnggotaController extends Controller
             'tgl_lahir' => $request->tgl_lahir,
             'kelas' => $request->kelas,
             'alamat' => $request->alamat,
+            'foto' => $request->foto,
         ]);
-
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('fotobuku/',$request->file('foto')->getClientOriginalName());
+            $data->foto = $request->file('foto')->getClientOriginalName();
+            $data->save();
+        }
         return redirect()->route('daftaranggota')->with('success','Data Berhasil Ditambahkan');
     }
 
@@ -57,4 +68,19 @@ class DaftarAnggotaController extends Controller
 
         return view('anggota.detailanggota', compact('title', 'data'));
     }
+    
+    public function cetakidcard(Request $request){
+        $dataanggota = array();
+        foreach ($request->id as $id) {
+            # code...
+            $anggota = DaftarAnggota::find($id);
+            $dataanggota[] = $anggota;
+        }
+        
+        // return $databuku;
+        $pdf = PDF::loadView('anggota.idcard', compact('anggota'));
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('idcard.pdf');
+    }
+    
 }

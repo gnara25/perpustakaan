@@ -35,14 +35,21 @@
                         <div class="card-body">
                             <div>
                                 <a id="table2-new-row-button" href="tambahanggota" class="btn btn-outline-info btn-sm mb-2">Tambah Anggota</a>
+                                <button onclick="cetakidcard('{{ route('cetakidcard') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak ID Card</button>
                                 <div class="table-responsive">
                                     <hr>
                                     <div class="table-responsive">
+                                        <form action="" method="POST" class="from-anggota">
+                                            @csrf
                                         <table id="example" class="table table-striped table-bordered"
                                             style="width:100%">
                                             <thead>
                                                 <tr>
+                                                    {{-- <th>
+                                                        <input type="checkbox" name="select_all" id="select_all">
+                                                    </th> --}}
                                                     <th>No.</th>
+                                                    <th>Foto</th>
                                                     <th>Nisn</th>
                                                     <th>Nama Siswa</th>
                                                     <th>Tgl.Lahir</th>
@@ -58,12 +65,17 @@
                                             <tbody>
                                                 @foreach ($data as $row)
                                                     <tr>
+                                                        {{-- <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
+                                                        </td> --}}
                                                         <td scope="row">{{ $no++ }}</td>
+                                                        <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
+                                                            alt="" style="width: 70px; height: 70px">
+                                                        </td>
                                                         <td>{{ $row->nisn }}</td>
                                                         <td>{{ $row->nama }}</td>
                                                         <td>{{ $row->tgl_lahir }}</td>
                                                         <td>{{ $row->kelas }}</td>
-                                                        <td>{{ $row->alamat }}</td>
+                                                        <td>{{ $row->alamat }}</td>                                                     
                                                         <td class="b">
                                                             <a href="/editkategori/{{ $row->id }}"
                                                                 class="btn btn-success">
@@ -73,7 +85,7 @@
                                                                 data-nama="{{ $row->nama }}">
                                                                 <i class="fa-solid fa-trash"></i>
                                                             </a>
-                                                            <a href="/detailanggota/{{ $row->id }}"
+                                                            <a href="/idcard/{{$row->id}}" target="_blank"
                                                                 class="btn btn-primary">
                                                                 <i class="fa-solid fa-eye"></i></a>
                                                         </td>
@@ -120,6 +132,25 @@
                                 }
                             });
                     });
+
+                    $('[name=select_all]').on('click', function () {
+                            $(':example').prop('checked', this.checked);
+                        });
+
+                    function cetakidcard(url) {
+                        if ($('input:checked').length < 1) {
+                            swal ({
+                                icon: "warning",
+                               text : "Harap Pilih Buku"
+                            });
+                            return;
+                        } else {
+                            $('.from-anggota')
+                                .attr('action', url)
+                                .attr('target', '_blank')
+                                .submit();
+                        }
+                    }
                 </script>
 
 

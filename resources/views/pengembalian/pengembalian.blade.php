@@ -34,7 +34,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                <a id="table2-new-row-button" href="tambahkategori" class="btn btn-outline-info btn-sm mb-2">Tambah Kategori</a>
+                                <a id="table2-new-row-button" href="#" class="btn btn-outline-info btn-sm mb-2">Tambah Pengembalian</a>
                                 <div class="table-responsive">
                                     <hr>
                                     <div class="table-responsive">
