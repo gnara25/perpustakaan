@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
+    @include('template.head')
 <body>
     <!-- wrapper -->
     <div class="wrapper">
-        @include('template.head')
+        
 
         @include('template.navbar')
 
@@ -117,6 +117,8 @@
                 <!-- end wrapper -->
                 @include('template.script')
 
+                @include('vendor.sweetalert.alert')
+
                 <script>
                     @if (Session::has('success'))
                         toastr.success("{{ Session::get('success') }}")
@@ -157,19 +159,19 @@
                         modal.find('.modal-body input').val(recipient)
                     });
 
-                        $('#modal-form').validator().on('submit', function(e) {
-                            if (!e.preventDefault()) {
-                                $.post($('#modal-form form').attr('action'), $('#modal-form form').serialize())
-                                    .done((response) => {
-                                        $('#modal-form').modal('hide');
-                                        table.ajax.reload();
-                                    })
-                                    .fail((errors) => {
-                                        alert('Tidak dapat menyimpan data');
-                                        return;
-                                    });
-                            }
-                        });
+                        // $('#modal-form').validator().on('submit', function(e) {
+                        //     if (!e.preventDefault()) {
+                        //         $.post($('#modal-form form').attr('action'), $('#modal-form form').serialize())
+                        //             .done((response) => {
+                        //                 $('#modal-form').modal('hide');
+                        //                 table.ajax.reload();
+                        //             })
+                        //             .fail((errors) => {
+                        //                 alert('Tidak dapat menyimpan data');
+                        //                 return;
+                        //             });
+                        //     }
+                        // });
 
                         $('[name=select_all]').on('click', function () {
                             $(':example').prop('checked', this.checked);

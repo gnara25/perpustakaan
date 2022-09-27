@@ -54,7 +54,7 @@ class KategoriController extends Controller
         $count = Daftarbuku::where('kategori' ,$id)->count();
 
         if ($count > 0) {
-            return back()->with('error', 'Nama Barang Sedang Digunakan');
+            return back()->with('error', 'Kategori Buku Sedang Digunakan');
         } else{
             $data = Kategori::find($id);
             $data->delete();

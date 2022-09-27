@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
+    @include('template.head')
 <body>
     <!-- wrapper -->
     <div class="wrapper">
-        @include('template.head')
+        
 
         @include('template.navbar')
 
@@ -35,10 +35,10 @@
                         <div class="card-body">
                             <div>
                                 <a id="table2-new-row-button" href="tambahanggota" class="btn btn-outline-info btn-sm mb-2">Tambah Anggota</a>
-                                <button onclick="cetakidcard('{{ route('cetakidcard') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak ID Card</button>
-                                <div class="table-responsive">
+                                {{-- <button onclick="cetakidcard('{{ route('cetakidcard') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak ID Card</button> --}}
+                                <div class="">
                                     <hr>
-                                    <div class="table-responsive">
+                                    <div class="roq">
                                         <form action="" method="POST" class="from-anggota">
                                             @csrf
                                         <table id="example" class="table table-striped table-bordered"
@@ -85,9 +85,9 @@
                                                                 data-nama="{{ $row->nama }}">
                                                                 <i class="fa-solid fa-trash"></i>
                                                             </a>
-                                                            <a href="/idcard/{{$row->id}}" target="_blank"
+                                                            {{-- <a href="/idcard/{{$row->id}}" target="_blank"
                                                                 class="btn btn-primary">
-                                                                <i class="fa-solid fa-eye"></i></a>
+                                                                <i class="fa-solid fa-eye"></i></a> --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach

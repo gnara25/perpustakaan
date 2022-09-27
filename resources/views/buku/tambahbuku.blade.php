@@ -119,7 +119,7 @@
                                             <span class="text">Tambah Buku</span>
                                         </button>
                                         <div class=" mb-3">
-                                            <a href="kategori" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
+                                            <a href="/buku" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-arrow-circle-left"></i>
                                                 </span>
