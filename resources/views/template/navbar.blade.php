@@ -4,13 +4,6 @@
             <a href="javascript:;" class="toggle-btn">	<i class="bx bx-menu"></i>
             </a>
         </div>
-        <div class="flex-grow-1 search-bar">
-            <div class="input-group">
-                 <button class="btn btn-search-back search-arrow-back" type="button"><i class="bx bx-arrow-back"></i></button>
-                 <input type="text" class="form-control" placeholder="Cari" />
-                 <button class="btn btn-search" type="button"><i class="lni lni-search-alt"></i></button>
-            </div>
-        </div>
         <div class="right-topbar ms-auto">
             <ul class="navbar-nav">
                 <li class="nav-item search-btn-mobile">

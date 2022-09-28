@@ -34,15 +34,16 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                <a id="table2-new-row-button" href="#" class="btn btn-outline-info btn-sm mb-2">Tambah Peminjaman</a>
+                                <a id="table2-new-row-button" href="/tambahpeminjaman" class="btn btn-outline-info btn-sm mb-2">Tambah Peminjaman</a>
                                 <div class="table-responsive">
                                     <hr>
                                     <div class="table-responsive">
 										<table id="example" class="table table-striped table-bordered"
                                             style="width:100%">
 											<thead>
-												<tr>                                         
-													<th>Nama Buku </th>
+												<tr>      
+                                                    <th>No</th>                                   
+													<th>Judul Buku </th>
 													<th>kelas</th>
 													<th>Nama Buku</th>
 													<th>Tanggal Peminjaman</th>
@@ -51,9 +52,13 @@
 												</tr>
 											</thead>
 											<tbody>
+                                               @php
+                                                    $no = 1;
+                                                @endphp
 												@foreach ( $data as $row )
 				
 												<tr>
+                                                    <td>{{$no++}}</td>
 													<td>{{$row->nama}}</td>
 													<td>{{$row->kelas}}</td>
 													<td>{{$row->namabuku}}</td>
