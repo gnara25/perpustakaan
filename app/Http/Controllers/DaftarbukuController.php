@@ -30,9 +30,13 @@ class DaftarbukuController extends Controller
             'nama' => 'required',
             'kategori' => 'required',
             'kodebuku' => 'required',
+            'penulis' => 'required',
             'penerbit' => 'required',
             'tahunterbit' => 'required',
+            'halbuku' => 'required',
             'jumlah' => 'required',
+            'lokasibuku' => 'required',
+            'deskripsi' => 'required',
             'foto' => ['required','mimes:png,jpg,jpeg,gif,jfif'],
 
         ]);
@@ -41,9 +45,13 @@ class DaftarbukuController extends Controller
             'nama' => $request->nama,
             'kategori' => $request->kategori,
             'kodebuku' => $request->kodebuku,
+            'penulis' => $request->penulis,
             'penerbit' => $request->penerbit,
             'tahunterbit' => $request->tahunterbit,
+            'halbuku' => $request->halbuku,
             'jumlah' => $request->jumlah,
+            'lokasibuku' => $request->lokasibuku,
+            'deskripsi' => $request->deskripsi,
             'foto' => $request->foto,
 
         ]);

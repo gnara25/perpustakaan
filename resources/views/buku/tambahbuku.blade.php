@@ -35,7 +35,7 @@
                                 <form action="/tambahbukupost" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row mb-3">
-                                        <label for="nama" class="col-sm-4 col-form-label">Nama Buku   :</label>
+                                        <label for="nama" class="col-sm-4 col-form-label">Judul Buku   :</label>
                                         <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('nama') is-invalid @enderror"
@@ -72,6 +72,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
+                                        <label for="penulis" class="col-sm-4 col-form-label">Penulis   :</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('penulis') is-invalid @enderror"
+                                                id="penulis" name="penulis" value="{{ old('penulis') }}">
+                                            @error('penulis')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">
                                         <label for="penerbit" class="col-sm-4 col-form-label">Penerbit   :</label>
                                         <div class="col-sm-8">
                                             <input type="text"
@@ -89,12 +100,43 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
+                                        <label for="halbuku" class="col-sm-4 col-form-label">Halaman Buku   :</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('halbuku') is-invalid @enderror"
+                                                id="halbuku" name="halbuku" value="{{ old('halbuku') }}">
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">
                                         <label for="jumlah" class="col-sm-4 col-form-label">Jumlah Buku   :</label>
                                         <div class="col-sm-8">
                                             <input type="number"
                                                 class="form-control @error('jumlah') is-invalid @enderror"
                                                 id="jumlah" name="jumlah" value="{{ old('jumlah') }}">
                                             @error('jumlah')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">
+                                        <label for="lokasibuku" class="col-sm-4 col-form-label">Lokasi Buku   :</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('lokasibuku') is-invalid @enderror"
+                                                id="lokasibuku" name="lokasibuku" value="{{ old('lokasibuku') }}">
+                                            @error('lokasibuku')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">
+                                        <label for="deskripsi" class="col-sm-4 col-form-label">Deskripsi  :</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('deskripsi') is-invalid @enderror"
+                                                id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}">
+                                            @error('deskripsi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>

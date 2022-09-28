@@ -50,12 +50,16 @@
                                                         <input type="checkbox" name="select_all" id="select_all">
                                                     </th>
                                                     <th>No</th>
-                                                    <th>Nama Buku </th>
+                                                    <th>Judul Buku </th>
                                                     <th>Kategori Buku</th>
                                                     <th>Kode Buku</th>
-                                                    <th>Penerit</th>
+                                                    <th>Penulis Buku</th>
+                                                    <th>Penerbit</th>
                                                     <th>Tahun Terbit</th>
+                                                    <th>Halaman Buku</th>
                                                     <th>Jumlah</th>
+                                                    <th>Lokasi Buku</th>
+                                                    <th>Deskripsi</th>
                                                     <th>Foto</th>
                                                     <th>Aksi</th>
 
@@ -72,9 +76,13 @@
                                                             <td>{{ $row->nama }}</td>
                                                             <td>{{ $row->idkategori->kategori }}</td>
                                                             <td>{{ $row->kodebuku }}</td>
+                                                            <td>{{ $row->penulis }}</td>
                                                             <td>{{ $row->penerbit }}</td>
                                                             <td>{{ $row->tahunterbit }}</td>
+                                                            <td>{{ $row->halbuku }}</td>
                                                             <td>{{ $row->jumlah }}</td>
+                                                            <td>{{ $row->lokasibuku }}</td>
+                                                            <td>{{ $row->deskripsi }}</td>
                                                             <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
                                                                     alt="" style="width: 70px; height: 70px">
                                                             </td>
@@ -153,20 +161,6 @@
                         modal.find('.modal-title').text('New message to ' + recipient)
                         modal.find('.modal-body input').val(recipient)
                     });
-
-                        // $('#modal-form').validator().on('submit', function(e) {
-                        //     if (!e.preventDefault()) {
-                        //         $.post($('#modal-form form').attr('action'), $('#modal-form form').serialize())
-                        //             .done((response) => {
-                        //                 $('#modal-form').modal('hide');
-                        //                 table.ajax.reload();
-                        //             })
-                        //             .fail((errors) => {
-                        //                 alert('Tidak dapat menyimpan data');
-                        //                 return;
-                        //             });
-                        //     }
-                        // });
 
                         $('[name=select_all]').on('click', function () {
                             $(':example').prop('checked', this.checked);
