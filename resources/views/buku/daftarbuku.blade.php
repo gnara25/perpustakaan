@@ -50,13 +50,13 @@
                                                         <input type="checkbox" name="select_all" id="select_all">
                                                     </th>
                                                     <th>No</th>
-                                                    <th>Nama Buku </th>
+                                                    <th>Judul Buku </th>
                                                     <th>Kategori Buku</th>
                                                     <th>Kode Buku</th>
-                                                    <th>Penerit</th>
+                                                    <th>Penerbit</th>
                                                     <th>Tahun Terbit</th>
                                                     <th>Jumlah</th>
-                                                    <th>Foto</th>
+                                                    <th>Foto Buku</th>
                                                     <th>Aksi</th>
 
                                                 </thead>

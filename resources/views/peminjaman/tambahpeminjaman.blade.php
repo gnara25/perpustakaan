@@ -18,13 +18,13 @@
 			<div class="page-content-wrapper">
 				<div class="page-content">
                     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-						<div class="breadcrumb-title pe-3">Tambah Buku</div>
+						<div class="breadcrumb-title pe-3">Tambah Peminjaman</div>
 						<div class="ps-3">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb mb-0 p-0">
 									<li class="breadcrumb-item"><a href="beranda"><i class='bx bx-home-alt'></i></a>
 									</li>
-									<li class="breadcrumb-item active" aria-current="page">Daftar Buku/Tambah Buku</li>
+									<li class="breadcrumb-item active" aria-current="page">Peminjamn/Tambah Peminjaman</li>
 								</ol>
 							</nav>
 						</div>
@@ -35,7 +35,7 @@
                                 <form action="/tambahbukupost" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row mb-3">
-                                        <label for="nama" class="col-sm-4 col-form-label">Nama Buku   :</label>
+                                        <label for="nama" class="col-sm-4 col-form-label"> Nama Siswa</label>
                                         <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('nama') is-invalid @enderror"
@@ -46,66 +46,52 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
-                                        <label for="kategori" class="col-sm-4 col-form-label">Kategori Buku   :</label>
+                                        <label for="kategori" class="col-sm-4 col-form-label">Kelas   </label>
                                         <div class="col-sm-8">
-                                                <select class="form-control @error('kategori') is-invalid @enderror"
-                                                name="kategori" aria-label="Default select example" >
-                                                @foreach ($idkategori as $kategori)
-                                                    <option value="{{ $kategori->id }}">
-                                                        {{ $kategori->kategori }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('kategori')
+                                            <input type="text"
+                                                class="form-control @error('kelas') is-invalid @enderror"
+                                                id="kelas" name="kelas" value="{{ old('kelas') }}">
+                                            @error('kelas')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group row mb-3">
+                                        <label for="kodebuku" class="col-sm-4 col-form-label">Judul Buku   :</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('namabuku') is-invalid @enderror"
+                                                id="namabuku" name="namabuku" value="{{ old('namabuku') }}">
+                                            @error('namabuku')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
-                                        <label for="kodebuku" class="col-sm-4 col-form-label">Kode Buku   :</label>
+                                        <label for="penerbit" class="col-sm-4 col-form-label">Tanggal Peminjaman </label>
                                         <div class="col-sm-8">
-                                            <input type="text"
-                                                class="form-control @error('kodebuku') is-invalid @enderror"
-                                                id="kodebuku" name="kodebuku" value="{{ old('kodebuku') }}">
-                                            @error('kodebuku')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                            <input type="date"
+                                                class="form-control @error('tanggalpeminjaman') is-invalid @enderror"
+                                                id="tanggalpeminjaman" name="tanggalpeminjaman" value="{{ old('tanggalpeminjaman') }}">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
-                                        <label for="penerbit" class="col-sm-4 col-form-label">Penerbit   :</label>
+                                        <label for="tahunterbit" class="col-sm-4 col-form-label">Tanggal Pengembalian    </label>
                                         <div class="col-sm-8">
-                                            <input type="text"
-                                                class="form-control @error('penerbit') is-invalid @enderror"
-                                                id="penerbit" name="penerbit" value="{{ old('penerbit') }}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="tahunterbit" class="col-sm-4 col-form-label">Tahun Terbit   :</label>
-                                        <div class="col-sm-8">
-                                            <input type="text"
-                                                class="form-control @error('tahunterbit') is-invalid @enderror"
-                                                id="tahunterbit" name="tahunterbit" value="{{ old('tahunterbit') }}">
+                                            <input type="date"
+                                                class="form-control @error('tanggalpengembalian') is-invalid @enderror"
+                                                id="tanggalpengembalian" name="tanggalpengembalian" value="{{ old('tanggalpengembalian') }}">
                                            
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
-                                        <label for="jumlah" class="col-sm-4 col-form-label">Jumlah Buku   :</label>
+                                        <label for="jumlah" class="col-sm-4 col-form-label">Jumlah Buku   </label>
                                         <div class="col-sm-8">
                                             <input type="number"
                                                 class="form-control @error('jumlah') is-invalid @enderror"
                                                 id="jumlah" name="jumlah" value="{{ old('jumlah') }}">
                                             @error('jumlah')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="foto" class="col-sm-4 col-form-label">Foto Buku   :</label>
-                                        <div class="col-sm-8">
-                                            <input type="file"
-                                                class="form-control @error('foto') is-invalid @enderror"
-                                                id="foto" name="foto" value="{{ old('foto') }}">
-                                            @error('foto')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -116,10 +102,10 @@
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-plus-circle"></i>
                                             </span>
-                                            <span class="text">Tambah Buku</span>
+                                            <span class="text">Tambah Peminjaman</span>
                                         </button>
                                         <div class=" mb-3">
-                                            <a href="/buku" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
+                                            <a href="/peminjaman" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-arrow-circle-left"></i>
                                                 </span>

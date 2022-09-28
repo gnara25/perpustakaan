@@ -72,7 +72,6 @@ class DaftarAnggotaController extends Controller
     public function cetakidcard(Request $request){
         $dataanggota = array();
         foreach ($request->id as $id) {
-            # code...
             $anggota = DaftarAnggota::find($id);
             $dataanggota[] = $anggota;
         }
