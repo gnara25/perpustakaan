@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
+@include('template.head')
 <body>
     <!-- wrapper -->
     <div class="wrapper">
-        @include('template.head')
+        
 
         @include('template.navbar')
 
@@ -18,13 +18,13 @@
                 <div class="page-content">
                     <!--breadcrumb-->
                     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">Kategori</div>
+                        <div class="breadcrumb-title pe-3">Peminjaman</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item"><a href="beranda"><i class="bx bx-home-alt"></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Kategori Buku</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Peminjaman Buku</li>
                                 </ol>
                             </nav>
                         </div>
@@ -42,10 +42,11 @@
                                             style="width:100%">
 											<thead>
 												<tr>      
-                                                    <th>No</th>                                   
-													<th>Judul Buku </th>
-													<th>kelas</th>
-													<th>Nama Buku</th>
+                                                    <th>No</th>     
+                                                    <th>Nama Siswa</th>                              
+													<th>kelas</th>		
+                                                    <th>Judul Buku </th>
+                                                    <th>Jumlah</th>
 													<th>Tanggal Peminjaman</th>
 													<th>Tanggal Pengembalian</th>
 													<th>Aksi</th>
@@ -59,12 +60,25 @@
 				
 												<tr>
                                                     <td>{{$no++}}</td>
-													<td>{{$row->nama}}</td>
+                                                    <td>{{$row->anggota->nama}}</td>
 													<td>{{$row->kelas}}</td>
-													<td>{{$row->namabuku}}</td>
-													<td>{{$row->tanggalpeminjaman}}</td>
-													<td>{{$row->tanggalpengebalian}}</td>
-													<td>{{$row->jumlah}}</td>
+													<td>{{$row->idbuku->namabuku}}</td>
+                                                    <td>{{$row->jumlah}}</td>
+													<td>{{ Carbon\Carbon::parse ($row->tanggalpinjam)->format('d-m-Y')}}</td>
+													<td>{{ Carbon\Carbon::parse ($row->tanggalpengembalian)->format('d-m-Y')}}</td>
+                                                    <td>
+                                                          <a data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleExtraLargeModal{{ $row->id }}"
+                                                                    class="btn btn-success">
+                                                                    <i class="fa-solid fa-square-pen"></i>
+                                                                </a>
+                                                                <a href="#" class="btn btn-danger delete"
+                                                                    data-id="{{ $row->id }}"
+                                                                    data-nama="{{ $row->nama }}">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </a>
+                                                    </td>
+													
 												</tr>
 												@endforeach
 				
@@ -84,9 +98,11 @@
                     @if (Session::has('success'))
                         toastr.success("{{ Session::get('success') }}")
                     @endif
-                </script>
 
-                <script>
+                    @if (Session::has('error'))
+                        toastr.error("{{ Session::get('error') }}")
+                    @endif
+               
                     $('.delete').click(function() {
                         var mahasiswaid = $(this).attr('data-id');
                         var kategori = $(this).attr('data-kategori');
@@ -99,7 +115,7 @@
                             })
                             .then((willDelete) => {
                                 if (willDelete) {
-                                    window.location = "/deletekategori/" + mahasiswaid + ""
+                                    window.location = "/deletepeminjaman/" + mahasiswaid + ""
                                     swal("Data Ini Berhasil Dihapus!", {
                                         icon: "success",
                                     });

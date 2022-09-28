@@ -73,7 +73,7 @@
                                                             <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
                                                             </td>
                                                             <td>{{ $no++ }}</td>
-                                                            <td>{{ $row->nama }}</td>
+                                                            <td>{{ $row->namabuku }}</td>
                                                             <td>{{ $row->idkategori->kategori }}</td>
                                                             <td>{{ $row->kodebuku }}</td>
                                                             <td>{{ $row->penulis }}</td>

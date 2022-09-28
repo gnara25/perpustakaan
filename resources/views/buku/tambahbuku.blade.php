@@ -38,9 +38,9 @@
                                         <label for="nama" class="col-sm-4 col-form-label">Judul Buku   :</label>
                                         <div class="col-sm-8">
                                             <input type="text"
-                                                class="form-control @error('nama') is-invalid @enderror"
-                                                id="nama" name="nama" value="{{ old('nama') }}">
-                                            @error('nama')
+                                                class="form-control @error('namabuku') is-invalid @enderror"
+                                                id="nama" name="namabuku" value="{{ old('namabuku') }}">
+                                            @error('namabuku')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>

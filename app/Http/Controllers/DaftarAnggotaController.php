@@ -54,6 +54,40 @@ class DaftarAnggotaController extends Controller
         return redirect()->route('daftaranggota')->with('success','Data Berhasil Ditambahkan');
     }
 
+    public function editanggotapost(Request $request, $id){
+        $data = DaftarAnggota::findOrFail($id);
+        $this->validate($request,[
+            'nisn' => 'required',
+            'nama' => 'required',
+            'tgl_lahir' => 'required',
+            'kelas' => 'required',
+            'alamat' => 'required',
+            'foto' => ['mimes:png,jpg,jpeg,gif,jfif'],
+        ],[
+            'nisn.required' => 'NISN Wajib Diisi',
+            'nisn.unique' => 'Nisn Tidak Boleh Sama',
+            'nama.required' => 'Nama Wajib Diisi',
+            'tgl_lahir.required' => 'Tanggal Lahir Wajib Diisi',
+            'kelas.required' => 'Kelas Wajib Diisi',
+            'alamat.required' => 'Alamat Wajib Diisi',
+            'foto.mimes' => 'Format yang diperbolehkan hanya png,jpeg,gif,jfif'
+        ]);
+        $data->update([
+            'nisn' => $request->nisn,
+            'nama' => $request->nama,
+            'tgl_lahir' => $request->tgl_lahir,
+            'kelas' => $request->kelas,
+            'alamat' => $request->alamat,
+        ]);
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('fotobuku/',$request->file('foto')->getClientOriginalName());
+            $data->foto = $request->file('foto')->getClientOriginalName();
+            $data->save();
+        }
+        return redirect()->route('daftaranggota')->with('success','Data Berhasil Diubah');
+    }
+
+
     public function deleteanggota($id)
     {
 

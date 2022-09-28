@@ -32,14 +32,18 @@
                     <div class="card radius-15">
 						<div class="card-body">
                             <div class="row">
-                                <form action="/tambahbukupost" method="POST" enctype="multipart/form-data">
+                                <form action="/insert" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row mb-3">
                                         <label for="nama" class="col-sm-4 col-form-label"> Nama Siswa</label>
                                         <div class="col-sm-8">
-                                            <input type="text"
-                                                class="form-control @error('nama') is-invalid @enderror"
-                                                id="nama" name="nama" value="{{ old('nama') }}">
+                                            <select  class="form-control @error('nama') is-invalid @enderror" name="nama" aria-label="Default select example" id="nama" >
+                                                <option value="" disabled selected>Pilih Nama</option>
+                                                @foreach ($data as $nama)
+                                                    <option value="{{ $nama->id }}" data-kelas='{{ $nama->kelas }}'>
+                                                        {{ $nama->nama }}</option>
+                                                @endforeach
+                                            </select>
                                             @error('nama')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -60,9 +64,14 @@
                                     <div class="form-group row mb-3">
                                         <label for="kodebuku" class="col-sm-4 col-form-label">Judul Buku   :</label>
                                         <div class="col-sm-8">
-                                            <input type="text"
-                                                class="form-control @error('namabuku') is-invalid @enderror"
-                                                id="namabuku" name="namabuku" value="{{ old('namabuku') }}">
+                                              <select  class="form-control @error('namabuku') is-invalid @enderror" 
+                                                name="namabuku" aria-label="Default select example" >
+                                                <option value="" disabled selected>Pilih Judul Buku</option>
+                                                @foreach ($buku as $buku)
+                                                    <option value="{{ $buku->id }}">
+                                                        {{ $buku->namabuku }}</option>
+                                                @endforeach
+                                            </select>
                                             @error('namabuku')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -72,8 +81,8 @@
                                         <label for="penerbit" class="col-sm-4 col-form-label">Tanggal Peminjaman </label>
                                         <div class="col-sm-8">
                                             <input type="date"
-                                                class="form-control @error('tanggalpeminjaman') is-invalid @enderror"
-                                                id="tanggalpeminjaman" name="tanggalpeminjaman" value="{{ old('tanggalpeminjaman') }}">
+                                                class="form-control @error('tanggalpinjam') is-invalid @enderror"
+                                                id="tanggalpinjam" name="tanggalpinjam" value="{{ old('tanggalpinjam') }}">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
@@ -132,6 +141,19 @@
 	</div>
 	<!-- end wrapper -->
 	@include('template.script')
+
+    <script type="text/javascript">
+
+        @if (Session::has('error'))
+            toastr.error("{{ Session::get('error') }}")
+        @endif
+
+        const selection = document.getElementById('nama');
+        selection.onchange = function(e) {
+        const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
+        document.getElementById('kelas').value = kelas;
+    }
+    </script>
 </body>
 
 </html>

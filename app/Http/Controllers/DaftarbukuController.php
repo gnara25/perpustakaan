@@ -27,7 +27,7 @@ class DaftarbukuController extends Controller
     public function tambahbukupost(Request $request){
 
         $this->validate($request,[
-            'nama' => 'required',
+            'namabuku' => 'required',
             'kategori' => 'required',
             'kodebuku' => 'required',
             'penulis' => 'required',
@@ -42,7 +42,7 @@ class DaftarbukuController extends Controller
         ]);
         // dd($request);
         $data = Daftarbuku::create([
-            'nama' => $request->nama,
+            'namabuku' => $request->namabuku,
             'kategori' => $request->kategori,
             'kodebuku' => $request->kodebuku,
             'penulis' => $request->penulis,

@@ -39,67 +39,73 @@
                                 <div class="">
                                     <hr>
                                     <div class="roq">
-                                        <form action="" method="POST" class="from-anggota">
+                                        <form action="" method="POST" class="from-buku">
                                             @csrf
-                                        <table id="example" class="table table-striped table-bordered"
-                                            style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    {{-- <th>
-                                                        <input type="checkbox" name="select_all" id="select_all">
-                                                    </th> --}}
-                                                    <th>No.</th>
-                                                    <th>Foto</th>
-                                                    <th>Nisn</th>
-                                                    <th>Nama Siswa</th>
-                                                    <th>Tgl.Lahir</th>
-                                                    <th>Kelas</th>
-                                                    <th>Alamat</th>
-                                                    <th>Aksi</th>
-
-                                                </tr>
-                                            </thead>
-                                            @php
-                                                $no = 1;
-                                            @endphp
-                                            <tbody>
-                                                @foreach ($data as $row)
+                                            <table id="example" class="table table-striped table-bordered"
+                                                style="width:100%">
+                                                <thead>
                                                     <tr>
-                                                        {{-- <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
-                                                        </td> --}}
-                                                        <td scope="row">{{ $no++ }}</td>
-                                                        <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
-                                                            alt="" style="width: 70px; height: 70px">
-                                                        </td>
-                                                        <td>{{ $row->nisn }}</td>
-                                                        <td>{{ $row->nama }}</td>
-                                                        <td>{{ Carbon\Carbon::parse ($row->tgl_lahir)->format('d-m-Y')}}</td>
-                                                        <td>{{ $row->kelas }}</td>
-                                                        <td>{{ $row->alamat }}</td>                                                     
-                                                        <td class="b">
-                                                            <a href="/editkategori/{{ $row->id }}"
-                                                                class="btn btn-success">
-                                                                <i class="fa-solid fa-square-pen"></i></a>
-                                                            <a href="#" class="btn btn-danger delete"
-                                                                data-id="{{ $row->id }}"
-                                                                data-nama="{{ $row->nama }}">
-                                                                <i class="fa-solid fa-trash"></i>
-                                                            </a>
-                                                            {{-- <a href="/idcard/{{$row->id}}" target="_blank"
-                                                                class="btn btn-primary">
-                                                                <i class="fa-solid fa-eye"></i></a> --}}
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
+                                                        {{-- <th>
+                                                            <input type="checkbox" name="select_all" id="select_all">
+                                                        </th> --}}
+                                                        <th>No.</th>
+                                                        <th>Foto</th>
+                                                        <th>Nisn</th>
+                                                        <th>Nama Siswa</th>
+                                                        <th>Tgl.Lahir</th>
+                                                        <th>Kelas</th>
+                                                        <th>Alamat</th>
+                                                        <th>Aksi</th>
 
-                                        </table>
+                                                    </tr>
+                                                </thead>
+                                                @php
+                                                    $no = 1;
+                                                @endphp
+                                                <tbody>
+                                                    @foreach ($data as $row)
+                                                        <tr>
+                                                            {{-- <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
+                                                            </td> --}}
+                                                            <td scope="row">{{ $no++ }}</td>
+                                                            <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
+                                                                alt="" style="width: 70px; height: 70px">
+                                                            </td>
+                                                            <td>{{ $row->nisn }}</td>
+                                                            <td>{{ $row->nama }}</td>
+                                                            <td>{{ Carbon\Carbon::parse ($row->tgl_lahir)->format('d-m-Y')}}</td>
+                                                            <td>{{ $row->kelas }}</td>
+                                                            <td>{{ $row->alamat }}</td>                                                     
+                                                            <td class="b">
+                                                               <a data-bs-toggle="modal"
+                                                                        data-bs-target="#exampleExtraLargeModal{{ $row->id }}"
+                                                                        class="btn btn-success">
+                                                                        <i class="fa-solid fa-square-pen"></i>
+                                                                    </a>
+                                                                <a href="#" class="btn btn-danger delete"
+                                                                    data-id="{{ $row->id }}"
+                                                                    data-nama="{{ $row->nama }}">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </a>
+                                                                {{-- <a href="/idcard/{{$row->id}}" target="_blank"
+                                                                    class="btn btn-primary">
+                                                                    <i class="fa-solid fa-eye"></i></a> --}}
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--end page-content-wrapper-->
+                     @foreach ( $data as $row )
+                        
+                    @include('anggota.editanggota')
+                    @endforeach
                 </div>
                 <!-- end wrapper -->
                 @include('template.script')
@@ -108,9 +114,11 @@
                     @if (Session::has('success'))
                         toastr.success("{{ Session::get('success') }}")
                     @endif
-                </script>
 
-                <script>
+                      @if (Session::has('error'))
+                        toastr.error("{{ Session::get('error') }}")
+                    @endif
+
                     $('.delete').click(function() {
                         var mahasiswaid = $(this).attr('data-id');
                         var nama = $(this).attr('data-nama');
@@ -133,24 +141,34 @@
                             });
                     });
 
-                    $('[name=select_all]').on('click', function () {
-                            $(':example').prop('checked', this.checked);
-                        });
+                    $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
+                        var button = $(event.relatedTarget) // Button that triggered the modal
+                        var recipient = button.data('whatever') // Extract info from data-* attributes
+                        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                        var modal = $(this)
+                        modal.find('.modal-title').text('New message to ' + recipient)
+                        modal.find('.modal-body input').val(recipient)
+                    });
 
-                    function cetakidcard(url) {
-                        if ($('input:checked').length < 1) {
-                            swal ({
-                                icon: "warning",
-                               text : "Harap Pilih Buku"
-                            });
-                            return;
-                        } else {
-                            $('.from-anggota')
-                                .attr('action', url)
-                                .attr('target', '_blank')
-                                .submit();
-                        }
-                    }
+                    // $('[name=select_all]').on('click', function () {
+                    //         $(':example').prop('checked', this.checked);
+                    //     });
+
+                    // function cetakidcard(url) {
+                    //     if ($('input:checked').length < 1) {
+                    //         swal ({
+                    //             icon: "warning",
+                    //            text : "Harap Pilih Buku"
+                    //         });
+                    //         return;
+                    //     } else {
+                    //         $('.from-anggota')
+                    //             .attr('action', url)
+                    //             .attr('target', '_blank')
+                    //             .submit();
+                    //     }
+                    // }
                 </script>
 
 

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('daftarbukus', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('namabuku');
             $table->string('kategori');
             $table->string('kodebuku');
             $table->string('penerbit');
