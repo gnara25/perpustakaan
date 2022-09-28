@@ -84,11 +84,6 @@
                                                                     class="btn btn-success">
                                                                     <i class="fa-solid fa-square-pen"></i>
                                                                 </a>
-                                                                {{-- <a href="#" class="btn btn-primary"
-                                                                    data-id="{{ $row->id }}"
-                                                                    data-nama="{{ $row->nama }}">
-                                                                    <i class="fa-solid fa-print"></i>
-                                                                </a> --}}
                                                                 <a href="#" class="btn btn-danger delete"
                                                                     data-id="{{ $row->id }}"
                                                                     data-nama="{{ $row->nama }}">
