@@ -50,6 +50,7 @@
                                         <div class="col-sm-8">
                                                 <select class="form-control @error('kategori') is-invalid @enderror"
                                                 name="kategori" aria-label="Default select example" >
+                                                <option value="" disabled selected>Pilih Kategori Buku</option>
                                                 @foreach ($idkategori as $kategori)
                                                     <option value="{{ $kategori->id }}">
                                                         {{ $kategori->kategori }}</option>
@@ -111,7 +112,7 @@
                                     <div class="form-group row mb-3">
                                         <label for="jumlah" class="col-sm-4 col-form-label">Jumlah Buku   :</label>
                                         <div class="col-sm-8">
-                                            <input type="number"
+                                            <input type="number" min="1"
                                                 class="form-control @error('jumlah') is-invalid @enderror"
                                                 id="jumlah" name="jumlah" value="{{ old('jumlah') }}">
                                             @error('jumlah')

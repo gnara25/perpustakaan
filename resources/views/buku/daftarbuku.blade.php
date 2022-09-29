@@ -34,12 +34,14 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
+                                @if (auth()->user()->role == 'admin')
                                 <a id="table2-new-row-button" href="tambahbuku"
                                     class="btn btn-outline-info btn-sm mb-2"><i class="fa-solid fa-plus"></i>Tambah Buku</a>
+                                    @endif
                                     <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak Barcode</button>
-                                <div class="row">
+                                <div class="table-responsive">
                                     <hr>
-                                    <div class="row">
+                                    <div class="table-responsive">
                                         <form action="" method="POST" class="from-buku">
                                             @csrf
                                             <table id="example" class="table table-striped table-bordered"
@@ -61,7 +63,9 @@
                                                     <th>Lokasi Buku</th>
                                                     <th>Deskripsi</th>
                                                     <th>Foto</th>
+                                                    @if (auth()->user()->role == 'admin')      
                                                     <th>Aksi</th>
+                                                    @endif
 
                                                 </thead>
                                                 <tbody>
@@ -86,6 +90,7 @@
                                                             <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
                                                                     alt="" style="width: 70px; height: 70px">
                                                             </td>
+                                                            @if (auth()->user()->role == 'admin')
                                                             <td class="b">
                                                                 <a data-bs-toggle="modal"
                                                                     data-bs-target="#exampleExtraLargeModal{{ $row->id }}"
@@ -98,6 +103,7 @@
                                                                     <i class="fa-solid fa-trash"></i>
                                                                 </a>
                                                             </td>
+                                                            @endif
                                                         </tr>
                                                         
                                                     @endforeach

@@ -56,15 +56,13 @@ Route::get('/register', [LoginController::class, 'register'])->name('register')-
 Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
-
-
-
 //Menu Admin
 
 // Route::get('/beranda',[DaftarbukuController::class,'beranda'])->name('beranda');
 
-// buku
+Route::group(['middleware' => ['auth', 'Cekrole:admin,petugas']], function(){
 
+// buku
 Route::get('/buku',[DaftarbukuController::class,'buku'])->name('buku');
 Route::get('/tambahbuku',[DaftarbukuController::class,'tambahbuku'])->name('tambahbuku');
 Route::post('/tambahbukupost',[DaftarbukuController::class,'tambahbukupost'])->name('tambahbukupost');
@@ -80,7 +78,6 @@ Route::post('/tambahkategoripost',[KategoriController::class,'tambahkategoripost
 Route::get('/editkategori/{id}',[KategoriController::class,'editkategori'])->name('editkategori');
 Route::post('/editkategoripost/{id}',[KategoriController::class,'editkategoripost'])->name('editkategoripost');
 Route::get('/deletekategori/{id}',[KategoriController::class,'deletekategori'])->name('deletekategori');
-
 
 // peminjaman
 Route::get('/peminjaman',[PeminjamanController::class,'peminjaman'])->name('peminjaman');
@@ -107,3 +104,4 @@ Route::get('/deleteanggota/{id}',[DaftarAnggotaController::class,'deleteanggota'
 Route::post('/cetakidcard',[DaftarAnggotaController::class,'cetakidcard'])->name('cetakidcard');
 Route::get('/idcard/{id}',[DaftarAnggotaController::class,'idcard'])->name('idcard');
 
+});
