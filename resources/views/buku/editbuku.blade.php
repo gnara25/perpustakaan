@@ -7,7 +7,7 @@
 	<!-- wrapper -->
 	<div class="wrapper">
 
-        {{-- @include('template.navbar') --}}
+        @include('template.navbar')
 
 		@include('template.sidebar')
 
@@ -31,15 +31,16 @@
 					</div>
                     <div class="card radius-15">
 						<div class="card-body">
-                            <div class="table-responsive">
-                                <form action="/editbukupost/{{$data->id}}" method="POST" enctype="multipart/form-data">
+                            <div class="">
+                                <form action="/editbukupost/{{ $data->id }}" method="POST"
+                                       enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row mb-3">
                                         <label for="nama" class="col-sm-4 col-form-label">Nama Buku   :</label>
                                         <div class="col-sm-8">
                                             <input type="text"
-                                                class="form-control @error('nama') is-invalid @enderror"
-                                                id="nama" name="nama" value="{{$data->nama}}">
+                                                class="form-control @error('namabuku') is-invalid @enderror"
+                                                id="nama" name="namabuku" value="{{$data->namabuku}}">
                                             @error('nama')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -50,11 +51,11 @@
                                         <div class="col-sm-8">
                                                 <select class="form-control @error('kategori') is-invalid @enderror"
                                                 name="kategori" aria-label="Default select example" >
-                                                <option value="{{$data->idkategori->id}}" >{{$data->idkategori->kategori}}</option>
-                                                @foreach ($idkategori as $kategori)
-                                                    <option value="{{ $kategori->id }}">
-                                                        {{ $kategori->kategori }}</option>
-                                                @endforeach
+                                                    @foreach ($idkategori as $p)
+                                                        <option value="{{ $p->id }}"
+                                                            <?php if ($data->kategori == $p->id) {
+                                                                echo 'selected'; } ?>>{{ $p->kategori }}</option>
+                                                    @endforeach
                                             </select>
                                             @error('kategori')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -68,6 +69,17 @@
                                                 class="form-control @error('kodebuku') is-invalid @enderror"
                                                 id="kodebuku" name="kodebuku" value="{{$data->kodebuku}}">
                                             @error('kodebuku')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">
+                                        <label for="penulis" class="col-sm-4 col-form-label">Penulis   :</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('penulis') is-invalid @enderror"
+                                                id="penulis" name="penulis" value="{{ $data->penulis }}">
+                                            @error('penulis')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -90,12 +102,43 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
+                                        <label for="halbuku" class="col-sm-4 col-form-label">Halaman Buku   :</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('halbuku') is-invalid @enderror"
+                                                id="halbuku" name="halbuku" value="{{ $data->halbuku }}">
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">
                                         <label for="jumlah" class="col-sm-4 col-form-label">Jumlah Buku   :</label>
                                         <div class="col-sm-8">
                                             <input type="number"
                                                 class="form-control @error('jumlah') is-invalid @enderror"
                                                 id="jumlah" name="jumlah" value="{{$data->jumlah}}">
                                             @error('jumlah')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                          <div class="form-group row mb-3">
+                                        <label for="lokasibuku" class="col-sm-4 col-form-label">Lokasi Buku   :</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('lokasibuku') is-invalid @enderror"
+                                                id="lokasibuku" name="lokasibuku" value="{{ $data->lokasibuku }}">
+                                            @error('lokasibuku')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">
+                                        <label for="deskripsi" class="col-sm-4 col-form-label">Deskripsi  :</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('deskripsi') is-invalid @enderror"
+                                                id="deskripsi" name="deskripsi" value="{{ $data->deskripsi }}">
+                                            @error('deskripsi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -113,7 +156,7 @@
                                             @enderror
                                         </div>
                                     </div>
-									<br>
+                                    <br>
                                     <center> <button type="submit"
                                             class="btn btn-info btn-icon-split col-sm-3 mb-3">
                                             <span class="icon text-white-50">
@@ -121,17 +164,12 @@
                                             </span>
                                             <span class="text">Edit Buku</span>
                                         </button>
-                                        <div class=" mb-3">
-                                            <a href="kategori" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-arrow-circle-left"></i>
-                                                </span>
-                                                <span class="text">Kembali</span>
-                                            </a>
+
                                     </center>
                                     {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
-                                <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
+                                    <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
                                 </form>
+
                             </div>
                         </div>
                     </div>

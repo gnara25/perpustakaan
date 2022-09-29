@@ -1,15 +1,3 @@
-<div class="col">
-    <!-- Button trigger modal -->
-    <!-- Modal -->
-    <div class="modal fade" id="exampleExtraLargeModal{{$row->id}}" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="text-center">Edit Daftar Buku</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
                     <form action="/editbukupost/{{$row->id}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row mb-3">
@@ -28,10 +16,11 @@
                             <div class="col-sm-8">
                                     <select class="form-control @error('kategori') is-invalid @enderror"
                                     name="kategori" aria-label="Default select example" >
-                                    @foreach ($idkategori as $kategori)
-                                        <option value="{{ $kategori->id }}">
-                                            {{ $kategori->kategori }}</option>
-                                    @endforeach
+                                        @foreach ($idkategori as $p)
+                                            <option value="{{ $p->id }}"
+                                                <?php if ($data->kategori == $p->id) {
+                                                    echo 'selected'; } ?>>{{ $p->kategori }}</option>
+                                        @endforeach
                                 </select>
                                 @error('kategori')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -101,15 +90,5 @@
 
                         </center>
                         {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
-                    <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
+                        <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
                     </form>
-                        {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
-                    <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

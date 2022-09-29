@@ -71,22 +71,31 @@ class DaftarbukuController extends Controller
     public function editbukupost(Request $request, $id){
 
         $data = Daftarbuku::find($id);
-        $this->validate($request,[
-            'foto' => ['mimes:png,jpg,jpeg,gif,jfif'],
-            'nama' => 'required',
+       $this->validate($request,[
+            'namabuku' => 'required',
             'kategori' => 'required',
             'kodebuku' => 'required',
+            'penulis' => 'required',
             'penerbit' => 'required',
             'tahunterbit' => 'required',
+            'halbuku' => 'required',
             'jumlah' => 'required',
+            'lokasibuku' => 'required',
+            'deskripsi' => 'required',
+            'foto' => ['mimes:png,jpg,jpeg,gif,jfif'],
+
         ]);
         $data->update([
-            'nama' => $request->nama,
+            'namabuku' => $request->namabuku,
             'kategori' => $request->kategori,
             'kodebuku' => $request->kodebuku,
+            'penulis' => $request->penulis,
             'penerbit' => $request->penerbit,
             'tahunterbit' => $request->tahunterbit,
+            'halbuku' => $request->halbuku,
             'jumlah' => $request->jumlah,
+            'lokasibuku' => $request->lokasibuku,
+            'deskripsi' => $request->deskripsi,
         ]);
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('fotobuku/',$request->file('foto')->getClientOriginalName());

@@ -42,53 +42,55 @@
                                 @endif
                                 <div class="table-responsive">
                                     <hr>
-                                    <div class="table-responsive">
-										<table id="example" class="table table-striped table-bordered"
-                                            style="width:100%">
-											<thead>
-												<tr>      
-                                                    <th>No</th>     
-                                                    <th>Nama Siswa</th>                              
-													<th>kelas</th>		
-                                                    <th>Judul Buku </th>
-                                                    <th>Jumlah</th>
-													<th>Tanggal Peminjaman</th>
-													<th>Tanggal Pengembalian</th>
-													<th>Aksi</th>
-												</tr>
-											</thead>
-											<tbody>
-                                               @php
-                                                    $no = 1;
-                                                @endphp
-												@foreach ( $data as $row )
-				
-												<tr>
-                                                    <td>{{$no++}}</td>
-                                                    <td>{{$row->anggota->nama}}</td>
-													<td>{{$row->kelas}}</td>
-													<td>{{$row->idbuku->namabuku}}</td>
-                                                    <td>{{$row->jumlah}}</td>
-													<td>{{ Carbon\Carbon::parse ($row->tanggalpinjam)->format('d-m-Y')}}</td>
-													<td>{{ Carbon\Carbon::parse ($row->tanggalpengembalian)->format('d-m-Y')}}</td>
-                                                    <td>
-                                                          <a data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleExtraLargeModal{{ $row->id }}"
-                                                                    class="btn btn-success">
+                                    <div class="">
+                                        <form action="" method="POST" class="from-buku">
+                                            @csrf
+    										<table id="example" class="table table-striped table-bordered"
+                                                style="width:100%">
+    											<thead>
+    												<tr>      
+                                                        <th>No</th>     
+                                                        <th>Nama Siswa</th>                              
+    													<th>kelas</th>		
+                                                        <th>Judul Buku </th>
+                                                        <th>Jumlah</th>
+    													<th>Tanggal Peminjaman</th>
+    													<th>Tanggal Pengembalian</th>
+    													<th>Aksi</th>
+    												</tr>
+    											</thead>
+    											<tbody>
+                                                   @php
+                                                        $no = 1;
+                                                    @endphp
+    												@foreach ( $data as $row )
+    				
+    												<tr>
+                                                        <td>{{$no++}}</td>
+                                                        <td>{{$row->anggota->nama}}</td>
+    													<td>{{$row->kelas}}</td>
+    													<td>{{$row->idbuku->namabuku}}</td>
+                                                        <td>{{$row->jumlah}}</td>
+    													<td>{{ Carbon\Carbon::parse ($row->tanggalpinjam)->format('d-m-Y')}}</td>
+    													<td>{{ Carbon\Carbon::parse ($row->tanggalpengembalian)->format('d-m-Y')}}</td>
+                                                        <td>
+                                                            <a href="/editpeminjaman/{{ $row->id }}" 
+                                                            class="btn btn-success" >
                                                                     <i class="fa-solid fa-square-pen"></i>
-                                                                </a>
-                                                                <a href="#" class="btn btn-danger delete"
-                                                                    data-id="{{ $row->id }}"
-                                                                    data-nama="{{ $row->nama }}">
-                                                                    <i class="fa-solid fa-trash"></i>
-                                                                </a>
-                                                    </td>
-													
-												</tr>
-												@endforeach
-				
-											</tbody>
-										</table>
+                                                            </a>                                    
+                                                            <a href="#" class="btn btn-danger delete"
+                                                                        data-id="{{ $row->id }}"
+                                                                        data-nama="{{ $row->nama }}">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                            </a>
+                                                        </td>
+    													
+    												</tr>
+    												@endforeach
+    				
+    											</tbody>
+    										</table>
+                                        </form>    
                                     </div>
                                 </div>
                             </div>
@@ -128,6 +130,16 @@
                                     swal("Data Ini Tidak Jadi Dihapus!");
                                 }
                             });
+                    });
+
+                    $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
+                        var button = $(event.relatedTarget) // Button that triggered the modal
+                        var recipient = button.data('whatever') // Extract info from data-* attributes
+                        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                        var modal = $(this)
+                        modal.find('.modal-title').text('New message to ' + recipient)
+                        modal.find('.modal-body input').val(recipient)
                     });
                 </script>
 

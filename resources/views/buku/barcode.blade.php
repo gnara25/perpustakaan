@@ -17,7 +17,7 @@
         <tr>
             @foreach ($databuku as $buku)
                 <td class="text-center" style="border: 1px solid #333;">
-                    <p>{{ $buku->nama}}</p>
+                    <p>{{ $buku->namabuku}}</p>
                     <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($buku->kodebuku, 'C39') }}" 
                         alt="{{ $buku->kodebuku }}"
                         width="180"
