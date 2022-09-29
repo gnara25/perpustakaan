@@ -36,9 +36,9 @@
                             <div>
                                 <a id="table2-new-row-button" href="tambahanggota" class="btn btn-outline-info btn-sm mb-2">Tambah Anggota</a>
                                 {{-- <button onclick="cetakidcard('{{ route('cetakidcard') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak ID Card</button> --}}
-                                <div class="">
+                                <div class="table-responsive">
                                     <hr>
-                                    <div class="roq">
+                                    <div class="table-responsive">
                                         <form action="" method="POST" class="from-buku">
                                             @csrf
                                             <table id="example" class="table table-striped table-bordered"

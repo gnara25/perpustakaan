@@ -18,13 +18,13 @@
             <div class="page-content-wrapper">
                 <div class="page-content">
                     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">Edit Buku</div>
+                        <div class="breadcrumb-title pe-3">Edit Peminjaman</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item"><a href="beranda"><i class='bx bx-home-alt'></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Daftar Buku/Edit Buku</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Peminjaman/Edit Peminjaman</li>
                                 </ol>
                             </nav>
                         </div>
@@ -52,9 +52,7 @@
                             <div class="form-group row mb-3">
                                 <label for="kategori" class="col-sm-4 col-form-label">Kelas   </label>
                                 <div class="col-sm-8">
-                                    <input type="text"
-                                                class="form-control @error('kelas') is-invalid @enderror"
-                                                id="kelas" name="kelas" value="{{ $data->kelas}}" readonly>
+                                    <input type="text" class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas" value="{{ $data->kelas}}" readonly>
                                     @error('kelas')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -116,13 +114,14 @@
                                     <!-- <button type="submit"  class="btn btn-primary">Tambah</button> -->
                                     <!--  <a href="/peminjaman" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> -->
                                 </form>
-                                 <center> <a type="submit" href="/peminjaman" 
+                                 <center> <a href="/peminjaman" 
                                             class="btn btn-dark btn-icon-split col-sm-3 mb-3">
                                             <span class="icon text-white-50">
-                                                <i class="fas fa-plus-circle"></i>
+                                                <i class="fas fa-arrow-circle-left"></i>
                                             </span>
                                             <span class="text">Kembali</span>
                                         </a></center>
+
 
                             </div>
                         </div>
@@ -144,7 +143,6 @@
 
     <script type="text/javascript">
         const selection = document.getElementById('nama');
-        alert(selection);
         selection.onchange = function(e) {
         const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
         document.getElementById('kelas').value = kelas;

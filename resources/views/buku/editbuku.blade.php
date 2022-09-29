@@ -169,6 +169,14 @@
                                     {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
                                     <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
                                 </form>
+                                 <center>
+                                    <a href="/buku" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-arrow-circle-left"></i>
+                                        </span>
+                                        <span class="text">Kembali</span>
+                                    </a>
+                                 </center> 
 
                             </div>
                         </div>
