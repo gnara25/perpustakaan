@@ -11,7 +11,9 @@ class PeminjamanController extends Controller
 {
     public function peminjaman(){
         $data = Peminjaman::all();
-        return view('peminjaman.peminjaman', compact('data'));
+        $namasiswa = DaftarAnggota::all();
+        $namabuku = Daftarbuku::all();
+        return view('peminjaman.peminjaman', compact('data','namasiswa','namabuku'));
     }
 
     public function table(){
@@ -52,8 +54,11 @@ class PeminjamanController extends Controller
 
     public function editpeminjaman($id){
 
-        $data = Peminjaman::find($id);
-        return view('peminjaman.editpeminjaman',compact('data'));
+        $data = Peminjaman::findOrFail($id);
+        // dd($data);
+        $namasiswa = DaftarAnggota::all();
+        $namabuku = Daftarbuku::all();
+        return view('peminjaman.editpeminjaman',compact('data','namasiswa','namabuku'));
     }
 
     public function editpeminjamanpost(request $request, $id){

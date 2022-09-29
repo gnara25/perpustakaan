@@ -87,8 +87,7 @@
                                                                     alt="" style="width: 70px; height: 70px">
                                                             </td>
                                                             <td class="b">
-                                                                <a data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleExtraLargeModal{{ $row->id }}"
+                                                                <a href="/editbuku/{{ $row->id }}" 
                                                                     class="btn btn-success">
                                                                     <i class="fa-solid fa-square-pen"></i>
                                                                 </a>
@@ -110,10 +109,6 @@
                             </div>
                         </div>
                     </div>
-                    @foreach ( $data as $row )
-                        
-                    @include('buku.modalbuku')
-                    @endforeach
                     <!--end page-content-wrapper-->
                 </div>
 
