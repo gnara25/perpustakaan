@@ -86,6 +86,8 @@ Route::post('/insert', [PeminjamanController::class, 'insert'])->name('insert');
 Route::get('/editpeminjaman/{id}', [PeminjamanController::class, 'editpeminjaman'])->name('editpeminjaman');
 Route::post('/editpeminjamanpost/{id}', [PeminjamanController::class, 'editpeminjamanpost'])->name('editpeminjamanpost');
 Route::get('/deletepeminjaman/{id}', [PeminjamanController::class, 'deletepeminjaman'])->name('deletepeminjaman');
+Route::get('/scane',[PeminjamanController::class,'scane'])->name('scane');
+Route::post('/validasi',[PeminjamanController::class,'validasi'])->name('validasi');
 
 // pengembalian
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');
@@ -100,6 +102,7 @@ Route::post('/tambahanggotapost',[DaftarAnggotaController::class,'tambahanggotap
 Route::post('/editanggotapost/{id}',[DaftarAnggotaController::class,'editanggotapost'])->name('editanggotapost');
 Route::get('/detailanggota/{id}',[DaftarAnggotaController::class,'detailanggota'])->name('detailanggota');
 Route::get('/deleteanggota/{id}',[DaftarAnggotaController::class,'deleteanggota'])->name('deleteanggota');
+// Route::get('/qr_code/{id}',[DaftarAnggotaController::class,'qr_code'])->name('qr_code');
 
 Route::post('/cetakidcard',[DaftarAnggotaController::class,'cetakidcard'])->name('cetakidcard');
 Route::get('/idcard/{id}',[DaftarAnggotaController::class,'idcard'])->name('idcard');

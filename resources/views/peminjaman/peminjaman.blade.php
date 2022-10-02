@@ -38,9 +38,9 @@
                                 <a id="table2-new-row-button" href="/tambahpeminjaman" class="btn btn-outline-info btn-sm mb-2">Tambah Peminjaman</a>
                                 @endif
                                 @if (auth()->user()->role == 'petugas')
-                                <a id="table2-new-row-button" href="/tambahpeminjaman" class="btn btn-outline-info btn-sm mb-2">Scane QR Code</a>
+                                <a id="table2-new-row-button" href="/scane" class="btn btn-outline-info btn-sm mb-2">Scane QR Code</a>
                                 @endif
-                                <div class="table-responsive">
+                                <div class="row">
                                     <hr>
                                     <div class="">
                                         <form action="" method="POST" class="from-buku">

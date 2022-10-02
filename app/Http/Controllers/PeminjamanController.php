@@ -79,4 +79,12 @@ class PeminjamanController extends Controller
         $data->delete();
         return redirect()->route('peminjaman')->with('success', 'Data berhasil di hapus');
     }
+
+    public function scane(){
+        return view('peminjaman.scane');
+    }
+
+    public function validasi(request $request){
+        dd($request->validasi());
+    }
 }

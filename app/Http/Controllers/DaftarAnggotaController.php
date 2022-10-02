@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use \PDF;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\DaftarAnggota;
 use App\Http\Controllers\DaftarAnggotaController;
@@ -38,12 +39,16 @@ class DaftarAnggotaController extends Controller
             'kelas.required' => 'Kelas Wajib Diisi',
             'alamat.required' => 'Alamat Wajib Diisi',
         ]);
+
+        $qr_code = Str :: random(20);
+
         $data = DaftarAnggota::create([
             'nisn' => $request->nisn,
             'nama' => $request->nama,
             'tgl_lahir' => $request->tgl_lahir,
             'kelas' => $request->kelas,
             'alamat' => $request->alamat,
+            'qr_code' => $ $qr_code,
             'foto' => $request->foto,
         ]);
         if ($request->hasFile('foto')) {

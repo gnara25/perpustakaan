@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    @include('template.head')
+@include('template.head')
+
 <body>
     <!-- wrapper -->
     <div class="wrapper">
-        
+
 
         @include('template.navbar')
 
@@ -34,11 +35,12 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                <a id="table2-new-row-button" href="tambahanggota" class="btn btn-outline-info btn-sm mb-2">Tambah Anggota</a>
+                                <a id="table2-new-row-button" href="tambahanggota"
+                                    class="btn btn-outline-info btn-sm mb-2">Tambah Anggota</a>
                                 {{-- <button onclick="cetakidcard('{{ route('cetakidcard') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak ID Card</button> --}}
-                                <div class="table-responsive">
+                                <div class="row">
                                     <hr>
-                                    <div class="table-responsive">
+                                    <div class="row">
                                         <form action="" method="POST" class="from-buku">
                                             @csrf
                                             <table id="example" class="table table-striped table-bordered"
@@ -55,6 +57,7 @@
                                                         <th>Tgl.Lahir</th>
                                                         <th>Kelas</th>
                                                         <th>Alamat</th>
+                                                        <th>Qr Code</th>
                                                         <th>Aksi</th>
 
                                                     </tr>
@@ -68,20 +71,24 @@
                                                             {{-- <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
                                                             </td> --}}
                                                             <td scope="row">{{ $no++ }}</td>
-                                                            <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
-                                                                alt="" style="width: 70px; height: 70px">
-                                                            </td>
                                                             <td>{{ $row->nisn }}</td>
                                                             <td>{{ $row->nama }}</td>
-                                                            <td>{{ Carbon\Carbon::parse ($row->tgl_lahir)->format('d-m-Y')}}</td>
+                                                            <td>{{ Carbon\Carbon::parse($row->tgl_lahir)->format('d-m-Y') }}
+                                                            </td>
                                                             <td>{{ $row->kelas }}</td>
-                                                            <td>{{ $row->alamat }}</td>                                                     
+                                                            <td>{{ $row->alamat }}
+                                                            <td> {!! QrCode::size(100)->generate(Request::url()) !!}
+                                                            </td>
+                                                            <td>
+                                                            <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
+                                                                    alt="" style="width: 70px; height: 70px">
+                                                            </td>
                                                             <td class="b">
-                                                               <a data-bs-toggle="modal"
-                                                                        data-bs-target="#exampleExtraLargeModal{{ $row->id }}"
-                                                                        class="btn btn-success">
-                                                                        <i class="fa-solid fa-square-pen"></i>
-                                                                    </a>
+                                                                <a data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleExtraLargeModal{{ $row->id }}"
+                                                                    class="btn btn-success">
+                                                                    <i class="fa-solid fa-square-pen"></i>
+                                                                </a>
                                                                 <a href="#" class="btn btn-danger delete"
                                                                     data-id="{{ $row->id }}"
                                                                     data-nama="{{ $row->nama }}">
@@ -102,9 +109,8 @@
                         </div>
                     </div>
                     <!--end page-content-wrapper-->
-                     @foreach ( $data as $row )
-                        
-                    @include('anggota.editanggota')
+                    @foreach ($data as $row)
+                        @include('anggota.editanggota')
                     @endforeach
                 </div>
                 <!-- end wrapper -->
@@ -115,7 +121,7 @@
                         toastr.success("{{ Session::get('success') }}")
                     @endif
 
-                      @if (Session::has('error'))
+                    @if (Session::has('error'))
                         toastr.error("{{ Session::get('error') }}")
                     @endif
 
