@@ -71,18 +71,17 @@
                                                             {{-- <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
                                                             </td> --}}
                                                             <td scope="row">{{ $no++ }}</td>
+                                                            <td><img src="{{ asset('fotobuku/' . $row->foto) }}"
+                                                                    alt="" style="width: 70px; height: 70px"></td>
                                                             <td>{{ $row->nisn }}</td>
                                                             <td>{{ $row->nama }}</td>
                                                             <td>{{ Carbon\Carbon::parse($row->tgl_lahir)->format('d-m-Y') }}
                                                             </td>
                                                             <td>{{ $row->kelas }}</td>
-                                                            <td>{{ $row->alamat }}
-                                                            <td> {!! QrCode::size(100)->generate(Request::url()) !!}
+                                                            <td>{{ $row->alamat }}</td>
+                                                            <td> {!! QrCode::size(100)->generate($row->qr_code) !!}
                                                             </td>
-                                                            <td>
-                                                            <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
-                                                                    alt="" style="width: 70px; height: 70px">
-                                                            </td>
+                                                
                                                             <td class="b">
                                                                 <a data-bs-toggle="modal"
                                                                     data-bs-target="#exampleExtraLargeModal{{ $row->id }}"
