@@ -18,13 +18,13 @@
             <div class="page-content-wrapper">
                 <div class="page-content">
                     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">Tambah Peminjaman</div>
+                        <div class="breadcrumb-title pe-3">Scane Qr Code</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item"><a href="beranda"><i class='bx bx-home-alt'></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Peminjamn/Tambah Peminjaman
+                                    <li class="breadcrumb-item active" aria-current="page">Peminjamn/Scane Qr Code
                                     </li>
                                 </ol>
                             </nav>
@@ -37,7 +37,7 @@
                                     <div id="reader" width="600px"></div>
                                 </div>
                                 <div class="col-4">
-                                    <input type="text" name="scane" id="scane">
+                                    <input type="text" name="scane" id="scane" readonly>
                                 </div>
                             </div>
                         </div>
@@ -58,6 +58,8 @@
     </div>
     <!-- end wrapper -->
     @include('template.script')
+
+    @include('vendor.sweetalert.alert')
 
     {{-- <script type="text/javascript">
         @if (Session::has('error'))
@@ -80,6 +82,46 @@
             // handle the scanned code as you like, for example:
             // console.log(`Code matched = ${decodedText}`, decodedResult);
             $("#scane").val(decodedText)
+
+            let id = decodedText
+
+            csrf_token = $('meta[name="csrf-token"]').attr('content');
+
+            swal.fire({
+                title: 'success',
+                text: 'Berhasil Scane Barcode',
+                showCancelButton : true,
+                confirmButtoncollor : '#3085d6',
+                cancelButtoncollor : '#d33',
+                confirmButtonText: 'Ok '
+            }).then((scane) => {
+                if(scane.value){
+                    $.ajax({
+                        url : "{{ route('validasi')}}",
+                        type : 'post',
+                        data : {
+                            '_method' : 'POST',
+                            '_token' : csrf_token,
+                            'qr_code' : id
+                        },
+                        success: function(response){
+                            swal.fire({
+                                icon : 'success',
+                                type : 'success',
+                                title : 'success!',
+                                text : 'ok'
+                            });
+                        },
+                        error: function(xhr){
+                            swal.fire({
+                                type : 'error',
+                                title : 'opps!',
+                                text : 'error'
+                            })
+                        }  
+                    })
+                }
+            })
         }
 
         function onScanFailure(error) {

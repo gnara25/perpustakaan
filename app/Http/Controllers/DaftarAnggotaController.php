@@ -48,7 +48,7 @@ class DaftarAnggotaController extends Controller
             'tgl_lahir' => $request->tgl_lahir,
             'kelas' => $request->kelas,
             'alamat' => $request->alamat,
-            'qr_code' => $qr_code,
+            'qr_code' => $request->nisn,
             'foto' => $request->foto,
         ]);
         if ($request->hasFile('foto')) {
