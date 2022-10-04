@@ -9,7 +9,6 @@
             <div id="modal_body" class="modal-body fileSelection1">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
-
                         <th>
                             <input type="checkbox" name="select_all" id="select_all">
                         </th>
