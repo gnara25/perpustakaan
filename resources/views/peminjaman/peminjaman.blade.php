@@ -34,9 +34,9 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                @if (auth()->user()->role == 'petugas')
+                               
                                 <a id="table2-new-row-button" href="/tambahpeminjaman" class="btn btn-outline-info btn-sm mb-2">Tambah Peminjaman</a>
-                                @endif
+                            
                                 @if (auth()->user()->role == 'petugas')
                                 <a id="table2-new-row-button" href="/scane" class="btn btn-outline-info btn-sm mb-2">Scane QR Code</a>
                                 @endif

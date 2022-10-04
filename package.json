@@ -12,6 +12,10 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
+<<<<<<< HEAD
+=======
+        "@fortawesome/fontawesome-free": "^6.2.0",
+>>>>>>> 1e5ca229c17ac3744974bb094e5450de03bb7b3e
         "html5-qrcode": "^2.2.1"
     }
 }

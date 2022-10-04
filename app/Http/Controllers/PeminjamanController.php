@@ -85,6 +85,6 @@ class PeminjamanController extends Controller
     }
 
     public function validasi(request $request){
-        dd($request->validasi());
+        dd($request->all);
     }
 }

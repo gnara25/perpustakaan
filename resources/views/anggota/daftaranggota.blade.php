@@ -35,8 +35,10 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
+                                @if (auth()->user()->role == 'admin')       
                                 <a id="table2-new-row-button" href="tambahanggota"
                                     class="btn btn-outline-info btn-sm mb-2">Tambah Anggota</a>
+                                @endif
                                 {{-- <button onclick="cetakidcard('{{ route('cetakidcard') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak ID Card</button> --}}
                                 <div class="row">
                                     <hr>
@@ -59,7 +61,6 @@
                                                         <th>Alamat</th>
                                                         <th>Qr Code</th>
                                                         <th>Aksi</th>
-
                                                     </tr>
                                                 </thead>
                                                 @php
@@ -79,15 +80,17 @@
                                                             </td>
                                                             <td>{{ $row->kelas }}</td>
                                                             <td>{{ $row->alamat }}</td>
-                                                            <td> {!! QrCode::size(100)->generate($row->qr_code) !!}
+                                                            <td> {!! QrCode::size(100)->generate($row->nisn) !!}
                                                             </td>
                                                 
                                                             <td class="b">
+                                                                @if (auth()->user()->role == 'admin')        
                                                                 <a data-bs-toggle="modal"
                                                                     data-bs-target="#exampleExtraLargeModal{{ $row->id }}"
                                                                     class="btn btn-success">
                                                                     <i class="fa-solid fa-square-pen"></i>
                                                                 </a>
+                                                                @endif
                                                                 <a href="#" class="btn btn-danger delete"
                                                                     data-id="{{ $row->id }}"
                                                                     data-nama="{{ $row->nama }}">
