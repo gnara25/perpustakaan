@@ -78,7 +78,7 @@
                                                             class="btn btn-success" >
                                                                     <i class="fa-solid fa-square-pen"></i>
                                                             </a>                                    
-                                                            <a href="/tambahpengembalian/{{ $row->id }}" 
+                                                            <a href="/tambahpengembalian" 
                                                             class="btn btn-success" >
                                                                     <i class="fa-solid fa-square-pen"></i>
                                                             </a>                                    

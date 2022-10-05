@@ -103,8 +103,10 @@ Route::post('/editanggotapost/{id}',[DaftarAnggotaController::class,'editanggota
 Route::get('/detailanggota/{id}',[DaftarAnggotaController::class,'detailanggota'])->name('detailanggota');
 Route::get('/deleteanggota/{id}',[DaftarAnggotaController::class,'deleteanggota'])->name('deleteanggota');
 // Route::get('/qr_code/{id}',[DaftarAnggotaController::class,'qr_code'])->name('qr_code');
-
 Route::post('/cetakidcard',[DaftarAnggotaController::class,'cetakidcard'])->name('cetakidcard');
 Route::get('/idcard/{id}',[DaftarAnggotaController::class,'idcard'])->name('idcard');
+
+// petugas
+Route::get('/petugas',[LoginController::class,'petugas'])->name('petugas');
 
 });

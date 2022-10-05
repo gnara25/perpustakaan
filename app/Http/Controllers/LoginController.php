@@ -134,10 +134,11 @@ class LoginController extends Controller
            return redirect()->back()->with('success','password Berhasil Diubah');
        }else{
            return redirect()->back()->with('error','password Lama Tidak Cocok');
-       }
-
+       }  
    }
 
-
-
+   public function petugas(){
+    $data = User::all();
+    return view('daftar petugas.petugas', compact('data'));
+   }
 }

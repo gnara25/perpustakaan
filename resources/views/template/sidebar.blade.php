@@ -59,7 +59,7 @@
 			</a>
 		</li>
 		<li>
-			<a  href="javascript:;">
+			<a  href="/petugas">
 				<div class="parent-icon icon-color-1"> <i class="fadeIn animated bx bx-group"></i>
 				</div>
 				<div class="menu-title"> Petugas Perpus</div>
