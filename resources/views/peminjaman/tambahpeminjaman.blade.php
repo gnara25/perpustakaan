@@ -92,7 +92,7 @@
                                         <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             :</label>
                                         <div class="">
-                                            <input type="date" value="<?= date('Y-m-d') ?>"
+                                            <input type="date" value=""
                                                 class="form-control @error('tanggalpengembalian')
                                                 is-invalid
                                                 @enderror"
@@ -116,7 +116,7 @@
                                             <div class="col-md-4">
                                                 <label for="validationCustom02" class="form-label"> Judul Buku</label>
                                                 <input type="text" class="form-control" id="validationCustom02"
-                                                    value="Otto" name="namabuku">
+                                                    value="" name="namabuku">
                                                 <div class="valid-feedback">
                                                     Looks good!
                                                 </div>
@@ -235,8 +235,8 @@
                        var html = '' ;
                        html+= '<div class="row mb-3 mr-4 ml-4" id="konten">';
                        html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <input type="text" class="form-control" id="validationCustom01" value="" name="kodebuku"> <div class="valid-feedback"> Looks good! </div> </div>' ;
-                       html+= '<div class="col-md-4"> <label for="validationCustom02" class="form-label"> Judul Buku</label> <input type="text" class="form-control" id="validationCustom02" value="Otto" name="namabuku"> <div class="valid-feedback"> Looks good! </div> </div>';
-                       html+= '<div class="col-md-4"> <label for="validationCustomUsername" class="form-label">Jumlah Buku</label> <div class="input-group has-validation"> <input type="text" class="form-control" id="validationCustomUsername" name="Jumlah"> <div class="invalid-feedback"> Please choose a username. </div> <div class="col-md-4"> <span class="input-group-btn"> <a data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal" class="btn btn-primary"> <i class="fa-solid fa fa-search"></i> </a> </span><span class="input-group-btn"><a id="remove" class="btn btn-danger"><i class="fa-solid fa-plus-circle"></i></a></span></div></div></div>';
+                       html+= '<div class="col-md-4"> <label for="validationCustom02" class="form-label"> Judul Buku</label> <input type="text" class="form-control" id="validationCustom02" value="" name="namabuku"> <div class="valid-feedback"> Looks good! </div> </div>';
+                       html+= '<div class="col-md-4"> <label for="validationCustomUsername" class="form-label">Jumlah Buku</label> <div class="input-group has-validation"> <input type="text" class="form-control" id="validationCustomUsername" name="Jumlah"> <div class="invalid-feedback"> Please choose a username. </div> <div class="col-md-4"> <span class="input-group-btn"> <a data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal" class="btn btn-primary"> <i class="fa-solid fa fa-search"></i> </a> </span><span class="input-group-btn"><a id="remove" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></span></div></div></div>';
                        html+= '</div>';
                        $('#table_field').append(html);
                             
