@@ -55,7 +55,7 @@
                                                     <option value="{{ $kategori->id }}">
                                                         {{ $kategori->kategori }}</option>
                                                 @endforeach
-                                            </select>
+                                                </select>
                                             @error('kategori')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
