@@ -33,14 +33,23 @@
                     <div class="card radius-15">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form action="/tambahanggotapost" method="POST" enctype="multipart/form-data">
+                                <form action="/insert" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group mb-3">
                                         <label for="nisn" class="col-sm-4 col-form-label">No Transaksi :</label>
                                         <div class="form-group">
-                                            <input type="number"
+                                            
+                                            @php
+                                                
+                                                $urutan = (int)substr(1,3);
+                                                $urutan++;
+                                                $huruf = "PJM";
+                                                $angka = $huruf . sprintf("%03s",$urutan);
+                                            @endphp
+                                        
+                                            <input type="text"
                                                 class="form-control @error('transaksi') is-invalid @enderror" id="transaksi"
-                                                name="transaksi" value="{{ old('transaksi') }}">
+                                                name="transaksi" value="{{$angka}}" readonly>
                                             @error('transaksi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -52,7 +61,7 @@
                                             <select class="form-control @error('nama') is-invalid @enderror"
                                             name="nama" aria-label="Default select example" id="nama">
                                             <option value="" disabled selected> Pilih Nama Siswa </option>
-                                            @foreach ($data as $anggota)
+                                            @foreach ($anggota as $anggota)
                                                 <option value="{{ $anggota->id }}" data-kelas='{{$anggota->kelas}}'>
                                                     {{ $anggota->nama }}</option>
                                             @endforeach
@@ -107,15 +116,24 @@
 
                                             <div class="col-md-4">
                                                 <label for="validationCustom01" class="form-label"> Kode Buku </label>
-                                                <input type="text" class="form-control" id="validationCustom01"
-                                                    value="" name="kodebuku">
+                                                <select class="form-control @error('kodebuku') is-invalid @enderror"
+                                                name="kodebuku" aria-label="Default select example" id="kodebuku">
+                                                <option value="" disabled selected> Pilih kodebuku Siswa </option>
+                                                @foreach ($buku as $buku)
+                                                    <option value="{{ $buku->id }}" data-namabuku='{{$buku->namabuku}}'>
+                                                        {{ $buku->kodebuku }}</option>
+                                                @endforeach
+                                                </select>
+                                                @error('kodebuku')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                                 <div class="valid-feedback">
                                                     Looks good!
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <label for="validationCustom02" class="form-label"> Judul Buku</label>
-                                                <input type="text" class="form-control" id="validationCustom02"
+                                                <input type="text" class="form-control" id="namabuku"
                                                     value="" name="namabuku">
                                                 <div class="valid-feedback">
                                                     Looks good!
@@ -181,7 +199,7 @@
 
                 </div>
                 <!--end page-content-wrapper-->
-                @include('peminjaman.modalbuku')
+                {{-- @include('peminjaman.modalbuku') --}}
                 {{-- @include('peminjaman.modalanggota') --}}
             </div>
             <!--end page-wrapper-->
@@ -207,6 +225,11 @@
             selection.onchange = function(e) {
                 const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
                 document.getElementById('kelas').value = kelas;
+            }
+            const selection1 = document.getElementById('kodebuku');
+                selection1.onchange = function(e) {
+                const namabuku = e.target.options[e.target.selectedIndex].dataset.namabuku
+                document.getElementById('namabuku').value = namabuku;
             }
 
             $(document).ready(function() {
@@ -234,20 +257,20 @@
                     $('#add').on('click',function(){
                        var html = '' ;
                        html+= '<div class="row mb-3 mr-4 ml-4" id="konten">';
-                       html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <input type="text" class="form-control" id="validationCustom01" value="" name="kodebuku"> <div class="valid-feedback"> Looks good! </div> </div>' ;
-                       html+= '<div class="col-md-4"> <label for="validationCustom02" class="form-label"> Judul Buku</label> <input type="text" class="form-control" id="validationCustom02" value="" name="namabuku"> <div class="valid-feedback"> Looks good! </div> </div>';
+                       html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <select class="form-control @error('kodebuku') is-invalid @enderror" name="kodebuku" aria-label="Default select example" id="kodebuku"> <option value="" disabled selected> Pilih kodebuku Siswa </option> @foreach ($buku as $buku) <option value="{{ $buku->id }}" data-namabuku='{{$buku->namabuku}}'> {{ $buku->kodebuku }}</option> @endforeach </select> @error('kodebuku') <div class="invalid-feedback">{{ $message }}</div> @enderror <div class="valid-feedback"> Looks good! </div></div>' ;
+                       html+= '<div class="col-md-4"> <label for="validationCustom02" class="form-label"> Judul Buku</label> <input type="text" class="form-control" id="namabuku" value="" name="namabuku"> <div class="valid-feedback"> Looks good! </div> </div>';
                        html+= '<div class="col-md-4"> <label for="validationCustomUsername" class="form-label">Jumlah Buku</label> <div class="input-group has-validation"> <input type="text" class="form-control" id="validationCustomUsername" name="Jumlah"> <div class="invalid-feedback"> Please choose a username. </div> <div class="col-md-4"> <span class="input-group-btn"> <a data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal" class="btn btn-primary"> <i class="fa-solid fa fa-search"></i> </a> </span><span class="input-group-btn"><a id="remove" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></span></div></div></div>';
                        html+= '</div>';
                        $('#table_field').append(html);
-                            
+
                     });
                 });
 
                 $(document).on('click','#remove',function(){
                     $(this).closest('#konten').remove();
                 });
-                
-              
+
+             
             </script>
 
 

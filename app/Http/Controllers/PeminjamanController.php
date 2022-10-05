@@ -22,9 +22,10 @@ class PeminjamanController extends Controller
     }
 
     public function tambahpeminjaman(){
-        $data = DaftarAnggota::all();
+        $data = Peminjaman::all();
+        $anggota = DaftarAnggota::all();
         $buku = Daftarbuku::all();
-        return view('peminjaman.tambahpeminjaman', compact('data','buku'));
+        return view('peminjaman.tambahpeminjaman', compact('data','anggota','buku'));
     }
 
     public function insert(Request $request){
