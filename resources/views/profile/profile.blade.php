@@ -79,10 +79,6 @@
                                 </div>
                                 <!--end row-->
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab"
-                                            href="#Experience"><span class="p-tab-name">Experience</span><i
-                                                class='bx bx-donate-blood font-24 d-sm-none'></i></a>
-                                    </li>
                                     <li class="nav-item"> <a class="nav-link" id="profile-tab" data-bs-toggle="tab"
                                             href="#Biography"><span class="p-tab-name">Edit Profile</span><i
                                                 class='bx bxs-user-rectangle font-24 d-sm-none'></i></a>
@@ -93,93 +89,6 @@
                                     </li>
                                 </ul>
                                 <div class="tab-content mt-3">
-                                    <div class="tab-pane fade show active" id="Experience">
-                                        <div class="card shadow-none border mb-0 radius-15">
-                                            <div class="card-body">
-                                                <div class="d-sm-flex align-items-center mb-3">
-                                                    <h4 class="mb-0">Job Experience</h4>
-                                                    <p class="mb-0 ms-sm-3 text-muted">3 Job History</p> <a
-                                                        href="javascript:;" class="btn btn-primary ms-auto radius-10"><i
-                                                            class='bx bx-plus'></i> Add More</a>
-                                                </div>
-                                                <div class="d-flex"> <i
-                                                        class='bx bxl-dribbble media-icons bg-dribbble'></i>
-                                                    <div class="ms-3">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-lg-4">
-                                                                <h5 class="mb-0">Graphic Designer</h5>
-                                                                <p class="mb-0">Dribbble Inc</p>
-                                                            </div>
-                                                            <div class="col-lg-4">
-                                                                <h5 class="text-muted mb-0"><i class='bx bx-time'></i>
-                                                                    Feb-2017-Dec-2017</h5>
-                                                            </div>
-                                                            <div class="col-lg-4">
-                                                                <h5 class="text-muted mb-0"><i class='bx bxs-map'></i>
-                                                                    New York, USA</h5>
-                                                            </div>
-                                                        </div>
-                                                        <p class="mt-2">Lorem Ipsum is simply dummy text of the
-                                                            printing and typesetting industry. Lorem Ipsum has been the
-                                                            industry's standard dummy text ever since the 1500s, when an
-                                                            unknown printer took a galley of type and scrambled it to
-                                                            make a type specimen book. It has survived not only five
-                                                            centuries, but also the leap into electronic typesetting,
-                                                            remaining essentially unchanged. It was popularised in the
-                                                            1960s with the release of Letraset sheets containing.</p>
-                                                        <h6>Media Files(2)</h6>
-                                                        <div class="row g-3">
-                                                            <div class="col-12 col-lg-3">
-                                                                <img src="assets/images/gallery/35.jpg"
-                                                                    class="img-thumbnail" alt="">
-                                                            </div>
-                                                            <div class="col-12 col-lg-3">
-                                                                <img src="assets/images/gallery/36.jpg"
-                                                                    class="img-thumbnail" alt="">
-                                                            </div>
-                                                            <div class="col-12 col-lg-3">
-                                                                <img src="assets/images/gallery/37.jpg"
-                                                                    class="img-thumbnail" alt="">
-                                                            </div>
-                                                            <div class="col-12 col-lg-3">
-                                                                <img src="assets/images/gallery/38.jpg"
-                                                                    class="img-thumbnail" alt="">
-                                                            </div>
-                                                        </div>
-                                                        <hr />
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex"> <i
-                                                        class='bx bxs-diamond media-icons bg-warning'></i>
-                                                    <div class="ms-3">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-lg-4">
-                                                                <h5 class="mb-0">Lead Designer</h5>
-                                                                <p class="mb-0">Sketch App</p>
-                                                            </div>
-                                                            <div class="col-lg-4">
-                                                                <h5 class="text-muted mb-0"><i class='bx bx-time'></i>
-                                                                    Apr-2011-Sep-2013</h5>
-                                                            </div>
-                                                            <div class="col-lg-4">
-                                                                <h5 class="text-muted mb-0"><i class='bx bxs-map'></i>
-                                                                    Sydney, Australia</h5>
-                                                            </div>
-                                                        </div>
-                                                        <p class="mt-2">It is a long established fact that a reader
-                                                            will be distracted by the readable content of a page when
-                                                            looking at its layout. The point of using Lorem Ipsum is
-                                                            that it has a more-or-less normal distribution of letters,
-                                                            as opposed to using 'Content here, content here', making it
-                                                            look like readable English. Many desktop publishing packages
-                                                            and web page editors now use Lorem Ipsum as their default
-                                                            model text, and a search for 'lorem ipsum' will uncover many
-                                                            web sites still in their infancy.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="tab-pane fade" id="Biography">
                                        
                                         <div class="card shadow-none border mb-0 radius-15">
