@@ -34,12 +34,12 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                @if (auth()->user()->role == 'petugas')
+                               
                                 <a id="table2-new-row-button" href="/tambahpeminjaman" class="btn btn-outline-info btn-sm mb-2">Tambah Peminjaman</a>
-                                @endif
-                                {{-- @if (auth()->user()->role == 'petugas')
-                                <a id="table2-new-row-button" href="/scane" class="btn btn-outline-info btn-sm mb-2">Scane QR Code</a>
-                                @endif --}}
+                            
+                                    {{-- @if (auth()->user()->role == 'petugas')
+                                    <a id="table2-new-row-button" href="/scane" class="btn btn-outline-info btn-sm mb-2">Scane QR Code</a>
+                                    @endif  --}}
                                 <div class="row">
                                     <hr>
                                     <div class="">
@@ -75,6 +75,10 @@
     													<td>{{ Carbon\Carbon::parse ($row->tanggalpengembalian)->format('d-m-Y')}}</td>
                                                         <td>
                                                             <a href="/editpeminjaman/{{ $row->id }}" 
+                                                            class="btn btn-success" >
+                                                                    <i class="fa-solid fa-square-pen"></i>
+                                                            </a>                                    
+                                                            <a href="/tambahpengembalian/{{ $row->id }}" 
                                                             class="btn btn-success" >
                                                                     <i class="fa-solid fa-square-pen"></i>
                                                             </a>                                    

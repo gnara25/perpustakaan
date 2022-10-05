@@ -59,7 +59,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>ID Anggota</td>
+                                                    <td>ID Siswa</td>
                                                     <td>:</td>
                                                     <td>
                                                         <div class="input-group">
@@ -67,10 +67,13 @@
                                                                 autocomplete="off" name="anggota_id" id="search-box"
                                                                 placeholder="Contoh ID Anggota : AG001" type="text"
                                                                 value="">
+                                                           
                                                             <span class="input-group-btn">
-                                                                <a data-toggle="modal" data-target="#TableAnggota"
-                                                                    class="btn btn-primary"><i
-                                                                        class="fa fa-search"></i></a>
+                                                             <a data-bs-toggle="modal"
+                                                                    data-bs-target="#Anggota"
+                                                                    class="btn btn-primary">
+                                                                    <i class="fa-solid fa fa-search"></i>
+                                                                </a>
                                                             </span>
                                                         </div>
                                                     </td>
@@ -107,15 +110,23 @@
                                                     <td>
                                                         <div class="input-group">
                                                             <input type="text" class="form-control"
-                                                                autocomplete="off" name="buku_id" id="buku-search"
+                                                                autocomplete="off" name="buku_id" id="exampleExtraLargeModa"
                                                                 placeholder="Contoh ID Buku : BK001" type="text"
                                                                 value="">
+
                                                             <span class="input-group-btn">
-                                                                <a data-toggle="modal" data-target="#TableBuku"
-                                                                    class="btn btn-primary"><i
-                                                                        class="fa fa-search"></i></a>
+                                                             <a data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleExtraLargeModal"
+                                                                    class="btn btn-primary">
+                                                                    <i class="fa-solid fa fa-search"></i>
+                                                                </a>
                                                             </span>
-                                                        </div>
+                                                              <!--   <a data-bs-toggle="modal"
+                                                                    data-bs-target="#exampleExtraLargeModa"
+                                                                    class="btn btn-primary"><i
+                                                                        class="fa fa-search"></i></a> -->
+                                                            
+                                                       </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -156,10 +167,9 @@
                     </div>
                 </div>
             </div>
-
-            @include('peminjaman.modalbuku')
-
             <!--end page-content-wrapper-->
+            @include('peminjaman.modalbuku')
+            @include('peminjaman.modalanggota')
         </div>
         <!--end page-wrapper-->
         <!--start overlay-->
@@ -185,26 +195,26 @@
             const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
             document.getElementById('kelas').value = kelas;
         }
-    </script>
 
-<script>
-	$(".fileSelection1 #Select_File2").click(function (e) {
-		document.getElementsByName('buku_id')[0].value = $(this).attr("data_id");
-		$('#TableBuku').modal('hide');
-		$.ajax({
-			type: "POST",
-			url: "",
-			data:'kode_buku='+$(this).attr("data_id"),
-			beforeSend: function(){
-				$("#result_buku").html("");
-				$("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
-			},
-			success: function(html){
-				$("#result_buku").load();
-				$("#result_tunggu_buku").html('');
-			}
-		});
-	});
+          $(document).ready(function() {
+        //Default data table
+        $('#mytable').DataTable();
+        var table = $('#example2').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
+        });
+        table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+    });
+
+	   $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
+                        var button = $(event.relatedTarget) // Button that triggered the modal
+                        var recipient = button.data('whatever') // Extract info from data-* attributes
+                        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                        var modal = $(this)
+                        modal.find('.modal-title').text('New message to ' + recipient)
+                        modal.find('.modal-body input').val(recipient)
+                    });
 	</script>
 </body>
 
