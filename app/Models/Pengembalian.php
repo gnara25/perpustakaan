@@ -12,4 +12,11 @@ class Pengembalian extends Model
 
     protected $guarded = [];
     protected $dates = ['created_at'];
+
+    public function idpengembalian()
+    {
+        return $this->belongsTo(DaftarAnggota::class,'nama','id');
+    }
 }
+
+

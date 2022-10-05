@@ -54,6 +54,7 @@
 												@foreach ( $data as $row )
 				
 												<tr>
+													<td>{{$row->pengembalian->transaksi}}</td>
 													<td>{{$row->nama}}</td>
 													<td>{{$row->kelas}}</td>
 													<td>{{$row->namabuku}}</td>

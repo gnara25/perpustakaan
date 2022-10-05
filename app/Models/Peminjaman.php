@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Pengembalian;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -17,6 +18,10 @@ class Peminjaman extends Model
     }
     public function idbuku()
     {
-        return $this->belongsTo(Daftarbuku::class,'nama','id');
+        return $this->belongsTo(Daftarbuku::class,'namabuku','id');
+    }
+    public function pengembalian()
+    {
+        return $this->hasMany(Pengembalian::class);
     }
 }

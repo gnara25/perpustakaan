@@ -50,8 +50,10 @@
     											<thead>
     												<tr>      
                                                         <th>No</th>     
+                                                        <th>Transaksi</th>                              
                                                         <th>Nama Siswa</th>                              
     													<th>kelas</th>		
+    													<th>Kode Buku</th>		
                                                         <th>Judul Buku </th>
                                                         <th>Jumlah</th>
     													<th>Tanggal Peminjaman</th>
@@ -67,8 +69,10 @@
     				
     												<tr>
                                                         <td>{{$no++}}</td>
+                                                        <td>{{$row->transaksi}}</td>
                                                         <td>{{$row->anggota->nama}}</td>
     													<td>{{$row->kelas}}</td>
+    													<td>{{$row->kodebuku}}</td>
     													<td>{{$row->idbuku->namabuku}}</td>
                                                         <td>{{$row->jumlah}}</td>
     													<td>{{ Carbon\Carbon::parse ($row->tanggalpinjam)->format('d-m-Y')}}</td>
@@ -79,8 +83,8 @@
                                                                     <i class="fa-solid fa-square-pen"></i>
                                                             </a>                                    
                                                             <a href="/tambahpengembalian" 
-                                                            class="btn btn-success" >
-                                                                    <i class="fa-solid fa-square-pen"></i>
+                                                            class="btn btn-primary" >
+                                                            <i class="fadeIn animated bx bx-download"></i>
                                                             </a>                                    
                                                             <a href="#" class="btn btn-danger delete"
                                                                         data-id="{{ $row->id }}"
