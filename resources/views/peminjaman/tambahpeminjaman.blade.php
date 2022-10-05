@@ -30,90 +30,80 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="card radius-15">
+                 <div class="card radius-15">
                         <div class="card-body">
-                            <div class="row">
-                                <form action="/insert" method="POST" enctype="multipart/form-data">
+                            <div class="table-responsive">
+                                <form action="/tambahanggotapost" method="POST" enctype="multipart/form-data">
                                     @csrf
-
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <table class="table table-striped">
-                                                <tr style="background:yellowgreen">
-                                                    <td colspan="3">Data Transaksi</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>No Peminjaman</td>
-                                                    <td>:</td>
-                                                    <td>
-                                                        <input type="text" name="nopinjam" value="" readonly
-                                                            class="form-control">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tgl Peminjaman</td>
-                                                    <td>:</td>
-                                                    <td>
-                                                        <input type="date" value="<?= date('Y-m-d') ?>"
-                                                            name="tgl" class="form-control">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>ID Anggota</td>
-                                                    <td>:</td>
-                                                    <td>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" required
-                                                                autocomplete="off" name="anggota_id" id="search-box"
-                                                                placeholder="Contoh ID Anggota : AG001" type="text"
-                                                                value="">
-                                                           
-                                                            <span class="input-group-btn">
-                                                             <a data-bs-toggle="modal"
-                                                                    data-bs-target="#Anggota"
-                                                                    class="btn btn-primary">
-                                                                    <i class="fa-solid fa fa-search"></i>
-                                                                </a>
-                                                            </span>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Biodata</td>
-                                                    <td>:</td>
-                                                    <td>
-                                                        <div id="result_tunggu">
-                                                            <p style="color:red">* Belum Ada Hasil</p>
-                                                        </div>
-                                                        <div id="result"></div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Lama Peminjaman</td>
-                                                    <td>:</td>
-                                                    <td>
-                                                        <input type="number" required
-                                                            placeholder="Lama Pinjam Contoh : 2 Hari (2)" name="lama"
-                                                            class="form-control">
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                    <div class="form-group mb-3">
+                                        <label for="nisn" class="col-sm-4 col-form-label">Nisn   :</label>
+                                        <div class="form-group">
+                                            <input type="number"
+                                                class="form-control @error('nisn') is-invalid @enderror"
+                                                id="nisn" name="nisn" value="{{ old('nisn') }}">
+                                            @error('nisn')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div> 
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="nama" class="col-sm-4 col-form-label">Nama Siswa   :</label>
+                                        <div class="">
+                                            <input type="text"
+                                                class="form-control @error('nama') is-invalid @enderror"
+                                                id="nama" name="nama" value="{{ old('nama') }}">
+                                            @error('nama')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                        <div class="col-sm-7">
-                                            <table class="table table-striped">
-                                                <tr style="background:yellowgreen">
-                                                    <td colspan="3">Pinjam Buku</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Kode Buku</td>
-                                                    <td>:</td>
-                                                    <td>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control"
-                                                                autocomplete="off" name="buku_id" id="exampleExtraLargeModa"
-                                                                placeholder="Contoh ID Buku : BK001" type="text"
-                                                                value="">
-
+                                    </div>
+                                    <div class="">
+                                        <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Peminjaman   :</label>
+                                        <div class="">
+                                            <input type="date" value="<?= date('Y-m-d') ?>"
+                                                class="form-control @error('tanggalpeminjaman') is-invalid @enderror"
+                                                id="tanggalpeminjaman" name="tanggalpeminjaman">
+                                            @error('tanggalpeminjaman')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="kelas" class="col-sm-4 col-form-label">Kelas   :</label>
+                                        <div class="">
+                                            <input type="text   "
+                                                class="form-control @error('kelas') is-invalid @enderror"
+                                                id="kelas" name="kelas" value="{{ old('kelas') }}">
+                                            @error('kelas')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mr-4 ml-4" id="add_item_btn"> 
+                                                        <div class="col-md-4">
+                                                                <label for="validationCustom01" class="form-label"> Kode Buku </label>
+                                                                <input type="text" class="form-control" id="validationCustom01" value="" name="kodebuku" >
+                                                                <div class="valid-feedback">
+                                                                Looks good!
+                                                                </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                                <label for="validationCustom02" class="form-label"> Judul Buku</label>
+                                                                <input type="text" class="form-control" id="validationCustom02" value="Otto" name="namabuku">
+                                                                <div class="valid-feedback">
+                                                                Looks good!
+                                                                </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                                <label for="validationCustomUsername" class="form-label">Jumlah Buku</label>
+                                                                <div class="input-group has-validation">
+                                                                <input type="text" class="form-control" id="validationCustomUsername" name="Jumlah" >
+                                                                <div class="invalid-feedback">
+                                                                Please choose a username.
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            
+                                                        
                                                             <span class="input-group-btn">
                                                              <a data-bs-toggle="modal"
                                                                     data-bs-target="#exampleExtraLargeModal"
@@ -121,51 +111,44 @@
                                                                     <i class="fa-solid fa fa-search"></i>
                                                                 </a>
                                                             </span>
-                                                              <!--   <a data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleExtraLargeModa"
-                                                                    class="btn btn-primary"><i
-                                                                        class="fa fa-search"></i></a> -->
-                                                            
-                                                       </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Data Buku</td>
-                                                    <td>:</td>
-                                                    <td>
-                                                        <div id="result_tunggu_buku">
-                                                            <p style="color:red">* Belum Ada Hasil</p>
-                                                        </div>
-                                                        <div id="result_buku"></div>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
+                                                            <span class="input-group-btn">
+                                                             <a id="showitem" 
+                                                                    class="btn btn-primary">
+                                                                    <i class="fa-solid fa-plus-circle"></i>
+                                                                </a>
+                                                            </span>
+                                                            </div>
+                                                        </div>   
                                     </div>
                                     <br>
-                                    <div class="pull-left">
-                                         <button type="submit" class="btn btn-info btn-icon-split col-sm-3 mb-3">
+                                    <center>
+                                        <div class="mb-4 mt-4">
+                                            
+                                        
+                                     <button type="submit"
+                                            class="btn btn-info btn-icon-split col-sm-3 mb-3">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-plus-circle"></i>
                                             </span>
                                             <span class="text">Tambah Peminjaman</span>
                                         </button>
                                         <div class=" mb-3">
-                                            <a href="/peminjaman" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
+                                            <a href="daftaranggota" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-arrow-circle-left"></i>
                                                 </span>
                                                 <span class="text">Kembali</span>
                                             </a>
-                                    
+                                        </div>
                                     </div>
+                                    </center>
                                     {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
                                 <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
                                 </form>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div>    
+
             </div>
             <!--end page-content-wrapper-->
             @include('peminjaman.modalbuku')
@@ -201,7 +184,7 @@
         $('#mytable').DataTable();
         var table = $('#example2').DataTable({
             lengthChange: false,
-            buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
+            buttons: ['copy', 'excel',  'pdf', 'print', 'colvis']
         });
         table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
     });
@@ -215,6 +198,14 @@
                         modal.find('.modal-title').text('New message to ' + recipient)
                         modal.find('.modal-body input').val(recipient)
                     });
+
+       $(document).ready(function(){
+        $(".add_item_btn").click(function(e){
+            e.preventDefault();
+            $("#showitem").prepend("");
+        alert("showitem");    
+        });
+       });
 	</script>
 </body>
 
