@@ -1,0 +1,79 @@
+  /*
+    Flaticon icon font: Flaticon
+    Creation date: 08/09/2018 00:19
+    */
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("../fonts/Flaticon.html");
+  src: url("../fonts/Flaticond41d.html?#iefix") format("embedded-opentype"),
+       url("../fonts/Flaticon.woff") format("woff"),
+       url("../fonts/Flaticon.ttf") format("truetype"),
+       url("../fonts/Flaticon-2.html#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("Flaticon.html#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-ticket:before { content: "\f100"; }
+.flaticon-movie-tickets:before { content: "\f101"; }
+.flaticon-speech-bubble:before { content: "\f102"; }
+.flaticon-conversation:before { content: "\f103"; }
+.flaticon-email:before { content: "\f104"; }
+.flaticon-mail:before { content: "\f105"; }
+.flaticon-upload-to-cloud:before { content: "\f106"; }
+.flaticon-file:before { content: "\f107"; }
+.flaticon-file-1:before { content: "\f108"; }
+.flaticon-drag:before { content: "\f109"; }
+.flaticon-drag-1:before { content: "\f10a"; }
+.flaticon-drag-2:before { content: "\f10b"; }
+.flaticon-drag-3:before { content: "\f10c"; }
+.flaticon-scroll:before { content: "\f10d"; }
+.flaticon-scroll-1:before { content: "\f10e"; }
+.flaticon-intersect:before { content: "\f10f"; }
+.flaticon-intersection:before { content: "\f110"; }
+.flaticon-rgb:before { content: "\f111"; }
+.flaticon-color:before { content: "\f112"; }
+.flaticon-resolution:before { content: "\f113"; }
+.flaticon-video:before { content: "\f114"; }
+.flaticon-computer:before { content: "\f115"; }
+.flaticon-research:before { content: "\f116"; }
+.flaticon-coding:before { content: "\f117"; }
+.flaticon-support:before { content: "\f118"; }
+.flaticon-help:before { content: "\f119"; }
+.flaticon-analysis-1:before { content: "\f11a"; }
+.flaticon-speed:before { content: "\f11b"; }
+.flaticon-car:before { content: "\f11c"; }
+.flaticon-rocket:before { content: "\f11d"; }
+.flaticon-software:before { content: "\f11e"; }
+.flaticon-project:before { content: "\f11f"; }
+.flaticon-project-1:before { content: "\f120"; }
+.flaticon-concept:before { content: "\f121"; }
+.flaticon-updated:before { content: "\f122"; }
+.flaticon-bar-chart-reload:before { content: "\f123"; }
+.flaticon-insurance:before { content: "\f124"; }
+.flaticon-file-2:before { content: "\f125"; }
+.flaticon-develop:before { content: "\f126"; }
+.flaticon-add-contact:before { content: "\f127"; }
+.flaticon-talk:before { content: "\f128"; }
