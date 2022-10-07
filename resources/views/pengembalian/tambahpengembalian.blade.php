@@ -125,11 +125,11 @@ is-invalid
                                                             <i class="fa-solid fa fa-search"></i>
                                                         </a>
                                                     </span>
-                                                    <span class="input-group-btn">
+                                                    {{-- <span class="input-group-btn">
                                                         <a id="showitem" class="btn btn-primary">
                                                             <i class="fa-solid fa-plus-circle"></i>
                                                         </a>
-                                                    </span>
+                                                    </span> --}}
                                                 </div>
                                             </div>
                                         </div>
