@@ -28,15 +28,28 @@ class PeminjamanController extends Controller
         return view('peminjaman.tambahpeminjaman', compact('data','anggota','buku'));
     }
 
-    public function tamahpinjampost(Request $request){
-     $databuku =  Daftarbuku::find($request->kodebuku);
+    public function insert(Request $request){
+     
+        // dd($databuku);
+        $this->validate($request,[
+            'transaksi' => ['required','unique:peminjamen,transaksi,'],
+            'nama' => 'required',
+            'kelas' => 'required',
+            'kodebuku' => 'required',
+            'namabuku' => 'required',
+            'jumlah' => 'required',
+
+        ]);
+
+        
+        $databuku =  Daftarbuku::findOrFail($request->kodebuku);
         if ($databuku->jumlah >= $request->jumlah) {
             $data = Peminjaman::create([
-            'transaksi' => $request->transaksi,    
+            'transaksi' => $request->transaksi,
             'nama' => $request->nama,
             'kelas' => $request->kelas,
-            'namabuku' => $request->namabuku,
             'kodebuku' => $request->kodebuku,
+            'namabuku' => $request->namabuku,
             'tanggalpinjam' => $request->tanggalpinjam,
             'tanggalpengembalian' => $request->tanggalpengembalian,
             'jumlah' => $request->jumlah,
@@ -50,33 +63,6 @@ class PeminjamanController extends Controller
         
         return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
     }
-
-    // public function tambahpeminjamanpost(Request $request){
-     
-    //     // dd($databuku);
-
-        
-        // $databuku =  Daftarbuku::findOrFail($request->namabuku);
-        // if ($databuku->jumlah >= $request->jumlah) {
-        //     $data = Peminjaman::create([
-        //     'transaksi' => $request->transaksi,    
-        //     'nama' => $request->nama,
-        //     'kelas' => $request->kelas,
-        //     'namabuku' => $request->namabuku,
-        //     'kodebuku' => $request->kodebuku,
-        //     'tanggalpinjam' => $request->tanggalpinjam,
-        //     'tanggalpengembalian' => $request->tanggalpengembalian,
-        //     'jumlah' => $request->jumlah,
-        // ]);
-        //     $databuku->jumlah -= $request->jumlah;
-        //     $databuku->save();
-        // }else  {
-        //     return redirect()->back()->with('error','Jumlah Buku Kurang');
-        // }
-        
-        
-        // return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
-    // }
 
     public function editpeminjaman($id){
 

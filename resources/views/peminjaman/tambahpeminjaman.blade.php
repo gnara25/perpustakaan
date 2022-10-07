@@ -33,21 +33,19 @@
                     <div class="card radius-15">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form action="/tamahpinjampost" method="POST" enctype="multipart/form-data">
+                                <form action="/insert" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group mb-3">
                                         <label for="nisn" class="col-sm-4 col-form-label">No Transaksi :</label>
                                         <div class="form-group">
-                                            @foreach ($data as $pinjam)
+                                            
                                             @php
-                                                $code = $pinjam->transaksi;
-                                                $urutan = (int)substr($code,1,3);
+                                                
+                                                $urutan = (int)substr(1,3);
                                                 $urutan++;
                                                 $huruf = "PJM";
                                                 $angka = $huruf . sprintf("%03s",$urutan);
                                             @endphp
-                                            @endforeach
-
                                             <input type="text"
                                                 class="form-control @error('transaksi') is-invalid @enderror" id="transaksi"
                                                 name="transaksi" value="" >
@@ -102,7 +100,7 @@
                                         <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             :</label>
                                         <div class="">
-                                            <input type="date" value="{{date('Y-m-d', strtotime('+5 days'));}}"
+                                            <input type="date" value="{{date('Y-m-d',strtotime('+5 days'))}}"
                                                 class="form-control @error('tanggalpengembalian')
                                                 is-invalid
                                                 @enderror"
@@ -178,7 +176,7 @@
                                                     </span>
                                                     <span class="text">Tambah Peminjaman</span>
                                                 </button>
-                                                <div class="mb-3">
+                                                <div class=" mb-3">
                                                     <a href="daftaranggota"
                                                         class="btn btn-dark btn-icon-split mb-3 col-sm-3">
                                                         <span class="icon text-white-50">
@@ -190,7 +188,7 @@
                                             </div>
                                         </center>
                                        {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
-                                        <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
+                                <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
                                 </form>
                             </div>
                         </div>
@@ -250,14 +248,14 @@
                 modal.find('.modal-title').text('New message to ' + recipient)
                 modal.find('.modal-body input').val(recipient)
             });
-        </script>
-        <script type="text/javascript">
+            </script>
+            <script>
 
                 $(document).ready(function() {
                     $('#add').on('click',function(){
                        var html = '' ;
                        html+= '<div class="row mb-3 mr-4 ml-4" id="konten">';
-                       html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <select class="form-control" name="kodebuku" aria-label="Default select example" id="kodebuku"> <option value="" disabled selected> Pilih kodebuku Siswa </option> @foreach ($buku as $bukuid) <option value=""> </option> @endforeach </select> <div class="valid-feedback"> Looks good! </div></div>' ;
+                       html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <select class="form-control" name="kodebuku" aria-label="Default select example" id="kodebuku"> <option value="" disabled selected> Pilih kodebuku Siswa </option> @foreach ($buku as $buku) <option value="" > </option> @endforeach </select> @error('kodebuku') <div class="invalid-feedback">{{ $message }}</div> @enderror <div class="valid-feedback"> Looks good! </div></div>' ;
                        html+= '<div class="col-md-4"> <label for="validationCustom02" class="form-label"> Judul Buku</label> <input type="text" class="form-control" id="namabuku" value="" name="namabuku"> <div class="valid-feedback"> Looks good! </div> </div>';
                        html+= '<div class="col-md-4"> <label for="validationCustomUsername" class="form-label">Jumlah Buku</label> <div class="input-group has-validation"> <input type="text" class="form-control" id="validationCustomUsername" name="Jumlah"> <div class="invalid-feedback"> Please choose a username. </div> <div class="col-md-4"> <span class="input-group-btn"> <a data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal" class="btn btn-primary"> <i class="fa-solid fa fa-search"></i> </a> </span><span class="input-group-btn"><a id="remove" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></span></div></div></div>';
                        html+= '</div>';
@@ -269,9 +267,9 @@
                 $(document).on('click','#remove',function(){
                     $(this).closest('#konten').remove();
                 });
+             
+            </script>
 
-
-        </script>
 
 
 

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Daftarbuku;
+use App\Models\Peminjaman;
 use Illuminate\Support\Str;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -11,6 +12,11 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
+
+    public function beranda(){
+        $buku = Peminjaman::all()->count();
+        return view('beranda', compact('buku'));
+    }
     public function Login(){
         return view('masuk.login');
     }

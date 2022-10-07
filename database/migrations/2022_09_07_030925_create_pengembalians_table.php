@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('kelas');
             $table->string('namabuku');
+            $table->string('kodebuku');
             $table->string('tanggalpengembalian');
             $table->string('jumlah');
             $table->timestamps();
