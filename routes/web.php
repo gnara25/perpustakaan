@@ -83,7 +83,7 @@ Route::get('/deletekategori/{id}',[KategoriController::class,'deletekategori'])-
 Route::get('/peminjaman',[PeminjamanController::class,'peminjaman'])->name('peminjaman');
 Route::get('/tambahpeminjaman',[PeminjamanController::class,'tambahpeminjaman'])->name('tambahpeminjaman');
 Route::post('/insert', [PeminjamanController::class, 'insert'])->name('insert');
->>>>>>> 6483b28293f6ab6975280054154bed5ae874c24e
+
 Route::get('/editpeminjaman/{id}', [PeminjamanController::class, 'editpeminjaman'])->name('editpeminjaman');
 Route::post('/editpeminjamanpost/{id}', [PeminjamanController::class, 'editpeminjamanpost'])->name('editpeminjamanpost');
 Route::get('/deletepeminjaman/{id}', [PeminjamanController::class, 'deletepeminjaman'])->name('deletepeminjaman');

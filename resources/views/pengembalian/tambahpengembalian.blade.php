@@ -42,11 +42,11 @@
                                                 id="transaksi" name="transaksi" aria-label="Default select example">
                                                 <option value="" disabled selected>Pilih No.Transaksi</option>
                                                 @foreach ($pengembalin as $transaksi)
-                                                    <option value="{{ $transaksi->id }}"
-                                                        data-nama='{{ $transaksi->anggota->nama }}'
-                                                        data-kelas='{{ $transaksi->kelas }}'
-                                                        data-kodebuku='{{ $transaksi->idbuku->kodebuku }}'
-                                                        data-judul='{{ $transaksi->namabuku }}'data-jumlah='{{ $transaksi->jumlah }}'>
+                                                    <option value="{{ $transaksi->id}}"
+                                                        data-nama='{{$transaksi->anggota->nama}}'
+                                                        data-kelas='{{ $transaksi->kelas }'
+                                                        data-kodebuku='{{ $transaksi->idbuku->kodebuku}}'
+                                                        data-judul='{{ $transaksi->namabuku}}'data-jumlah='{{ $transaksi->jumlah}'>
                                                         {{ $transaksi->transaksi }}</option>
                                                 @endforeach
                                             </select>
@@ -71,12 +71,11 @@
                                             :</label>
                                         <div class="">
                                             <input type="date" value="<?= date('Y-m-d') ?>"
-                                                class="form-control @error('tanggalpengembalian')
-is-invalid
-@enderror"
-                                                id="tanggalpengembalian" name="tanggalpengembalian" >
+                                                class="form-control @error('tanggalpengembalian') 
+                                                    is-invalid
+                                                @enderror" id="tanggalpengembalian" name="tanggalpengembalian" >
                                             @error('tanggalpengembalian')
-                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                <div class="invalid-feedback">{{ $message }} </div>
                                             @enderror
                                         </div>
                                     </div>
@@ -85,25 +84,22 @@ is-invalid
                                         <div class="">
                                             <input type="text   "
                                                 class="form-control @error('kelas') is-invalid @enderror" id="kelas" >
-
                                             @error('kelas')
-                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                <div class="invalid-feedback">{{ $message }} </div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="row mb-3 mr-4 ml-4" id="add_item_btn">
                                         <div class="col-md-4">
                                             <label for="validationCustom01" class="form-label"> Kode Buku </label>
-                                            <input type="text" class="form-control" value="{{old('kodebuku')}}" name="kodebuku"
-                                                id="kodebuku" readonly>
+                                            <input type="text" class="form-control" value="{{old('kodebuku')}}" name="kodebuku" id="kodebuku" readonly>
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="validationCustom02" class="form-label"> Judul Buku</label>
-                                            <input type="text" class="form-control" id="judul" value="{{old('namabuku')}}"
-                                                name="namabuku" readonly>
+                                            <input type="text" class="form-control" id="judul" value="{{old('namabuku')}}" name="namabuku" readonly>
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
