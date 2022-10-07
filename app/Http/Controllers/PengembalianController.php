@@ -29,6 +29,7 @@ class PengembalianController extends Controller
 
     public function tambahpengembalianpost(request $request){
         $this->validate($request, [
+            'transaksi' => ['required','unique:pengembalians,transaksi'],
             'nama' => 'required',
             'kelas' => 'required',
             'namabuku' => 'required',
@@ -36,6 +37,7 @@ class PengembalianController extends Controller
             'jumlah' => 'required',
     
         ],[
+            'transaksi.unique' => 'No transaksi sudah digunakan',
             'nama.required' => 'Nama Harus Di isi',
             'kelas.required' => 'Kelas Harus Di Isi',
             'namabuku.required' => 'Silahkan Pilih Buku',
@@ -44,12 +46,18 @@ class PengembalianController extends Controller
         ]);
 
         $data = Pengembalian::create([
+            'transaksi' => $request->transaksi,
             'nama' => $request->nama,
             'kelas' => $request->kelas,
             'namabuku' => $request->namabuku,
+            'kodebuku' => $request->kodebuku,
             'tanggalpengembalian' => $request->tanggalpengembalian,
             'jumlah' => $request->jumlah,
         ]);
+
+        $databuku =  Daftarbuku::findOrFail($request->kodebuku);
+        $databuku->jumlah += $request->jumlah;
+        $databuku->save();
          
         return redirect()->route('pengembalian')->with('success', 'data berhasil ditambah');
     }

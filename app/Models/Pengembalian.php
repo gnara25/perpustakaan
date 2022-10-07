@@ -15,7 +15,11 @@ class Pengembalian extends Model
 
     public function idpengembalian()
     {
-        return $this->belongsTo(DaftarAnggota::class,'nama','id');
+        return $this->belongsTo(Daftarbuku::class,'kodebuku','id');
+    }
+    public function idtransaksi()
+    {
+        return $this->belongsTo(Peminjaman::class,'transaksi','id');
     }
 }
 

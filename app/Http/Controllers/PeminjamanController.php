@@ -31,13 +31,24 @@ class PeminjamanController extends Controller
     public function insert(Request $request){
      
         // dd($databuku);
+        $this->validate($request,[
+            'transaksi' => ['required','unique:peminjamen,transaksi,'],
+            'nama' => 'required',
+            'kelas' => 'required',
+            'kodebuku' => 'required',
+            'namabuku' => 'required',
+            'jumlah' => 'required',
+
+        ]);
 
         
-        $databuku =  Daftarbuku::findOrFail($request->namabuku);
+        $databuku =  Daftarbuku::findOrFail($request->kodebuku);
         if ($databuku->jumlah >= $request->jumlah) {
             $data = Peminjaman::create([
+            'transaksi' => $request->transaksi,
             'nama' => $request->nama,
             'kelas' => $request->kelas,
+            'kodebuku' => $request->kodebuku,
             'namabuku' => $request->namabuku,
             'tanggalpinjam' => $request->tanggalpinjam,
             'tanggalpengembalian' => $request->tanggalpengembalian,

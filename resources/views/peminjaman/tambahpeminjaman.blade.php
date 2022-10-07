@@ -49,7 +49,7 @@
                                         
                                             <input type="text"
                                                 class="form-control @error('transaksi') is-invalid @enderror" id="transaksi"
-                                                name="transaksi" value="{{$angka}}" readonly>
+                                                name="transaksi" value="" >
                                             @error('transaksi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -91,7 +91,7 @@
                                                 class="form-control @error('tanggalpinjam')
                                                 is-invalid
                                                 @enderror"
-                                                id="tanggalpinjam" name="tanggalpinjam">
+                                                id="tanggalpinjam" name="tanggalpinjam" readonly>
                                             @error('tanggalpinjam')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -101,11 +101,11 @@
                                         <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             :</label>
                                         <div class="">
-                                            <input type="date" value=""
+                                            <input type="date" value="{{date('Y-m-d',strtotime('+5 days'))}}"
                                                 class="form-control @error('tanggalpengembalian')
                                                 is-invalid
                                                 @enderror"
-                                                id="tanggalpengembalian" name="tanggalpengembalian">
+                                                id="tanggalpengembalian" name="tanggalpengembalian" readonly>
                                             @error('tanggalpengembalian')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -143,7 +143,7 @@
                                                 <label for="validationCustomUsername" class="form-label">Jumlah Buku</label>
                                                 <div class="input-group has-validation">
                                                     <input type="text" class="form-control" id="validationCustomUsername"
-                                                        name="Jumlah">
+                                                        name="jumlah">
                                                     <div class="invalid-feedback">
                                                         Please choose a username.
                                                     </div>
@@ -257,7 +257,7 @@
                     $('#add').on('click',function(){
                        var html = '' ;
                        html+= '<div class="row mb-3 mr-4 ml-4" id="konten">';
-                       html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <select class="form-control @error('kodebuku') is-invalid @enderror" name="kodebuku" aria-label="Default select example" id="kodebuku"> <option value="" disabled selected> Pilih kodebuku Siswa </option> @foreach ($buku as $buku) <option value="{{ $buku->id }}" data-namabuku='{{$buku->namabuku}}'> {{ $buku->kodebuku }}</option> @endforeach </select> @error('kodebuku') <div class="invalid-feedback">{{ $message }}</div> @enderror <div class="valid-feedback"> Looks good! </div></div>' ;
+                       html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <select class="form-control" name="kodebuku" aria-label="Default select example" id="kodebuku"> <option value="" disabled selected> Pilih kodebuku Siswa </option> @foreach ($buku as $buku) <option value="" > </option> @endforeach </select> @error('kodebuku') <div class="invalid-feedback">{{ $message }}</div> @enderror <div class="valid-feedback"> Looks good! </div></div>' ;
                        html+= '<div class="col-md-4"> <label for="validationCustom02" class="form-label"> Judul Buku</label> <input type="text" class="form-control" id="namabuku" value="" name="namabuku"> <div class="valid-feedback"> Looks good! </div> </div>';
                        html+= '<div class="col-md-4"> <label for="validationCustomUsername" class="form-label">Jumlah Buku</label> <div class="input-group has-validation"> <input type="text" class="form-control" id="validationCustomUsername" name="Jumlah"> <div class="invalid-feedback"> Please choose a username. </div> <div class="col-md-4"> <span class="input-group-btn"> <a data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal" class="btn btn-primary"> <i class="fa-solid fa fa-search"></i> </a> </span><span class="input-group-btn"><a id="remove" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></span></div></div></div>';
                        html+= '</div>';

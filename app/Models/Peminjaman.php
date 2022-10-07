@@ -18,7 +18,7 @@ class Peminjaman extends Model
     }
     public function idbuku()
     {
-        return $this->belongsTo(Daftarbuku::class,'namabuku','id');
+        return $this->belongsTo(Daftarbuku::class,'kodebuku','id');
     }
     public function pengembalian()
     {

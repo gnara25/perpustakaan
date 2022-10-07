@@ -36,22 +36,22 @@
                                 <form action="/tambahpengembalianpost" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group mb-3">
-                                        <label for="nisn" class="col-sm-4 col-form-label">No.Transaksi :</label>
+                                        <label for="transaksi" class="col-sm-4 col-form-label">No.Transaksi :</label>
                                         <div class="form-group">
-                                            <select class="form-control @error('kategori') is-invalid @enderror"
-                                                id="transaksi" name="kategori" aria-label="Default select example">
+                                            <select class="form-control @error('transaksi') is-invalid @enderror"
+                                                id="transaksi" name="transaksi" aria-label="Default select example">
                                                 <option value="" disabled selected>Pilih No.Transaksi</option>
                                                 @foreach ($pengembalin as $transaksi)
                                                     <option value="{{ $transaksi->id }}"
                                                         data-nama='{{ $transaksi->anggota->nama }}'
                                                         data-kelas='{{ $transaksi->kelas }}'
-                                                        data-kodebuku='{{ $transaksi->kodebuku }}'
-                                                        data-judul='{{ $transaksi->idbuku->namabuku }}'
+                                                        data-kodebuku='{{ $transaksi->idbuku->kodebuku }}'
+                                                        data-judul='{{ $transaksi->namabuku }}'
                                                         data-jumlah='{{ $transaksi->jumlah }}'>
                                                         {{ $transaksi->transaksi }}</option>
                                                 @endforeach
                                             </select>
-                                            @error('nisn')
+                                            @error('transaksi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -61,22 +61,22 @@
                                         <div class="">
                                             <input type="text"
                                                 class="form-control @error('nama') is-invalid @enderror" id="nama"
-                                                name="nama" value="{{ old('nama') }}">
+                                                name="nama" value="{{ old('nama') }}" readonly>
                                             @error('nama')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="">
-                                        <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
+                                        <label for="tanggalpengembalian" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             :</label>
                                         <div class="">
                                             <input type="date" value="<?= date('Y-m-d') ?>"
-                                                class="form-control @error('tanggalpeminjaman')
+                                                class="form-control @error('tanggalpengembalian')
 is-invalid
 @enderror"
-                                                id="tanggalpeminjaman" name="tanggalpeminjaman">
-                                            @error('tanggalpeminjaman')
+                                                id="tanggalpengembalian" name="tanggalpengembalian" >
+                                            @error('tanggalpengembalian')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -86,7 +86,7 @@ is-invalid
                                         <div class="">
                                             <input type="text   "
                                                 class="form-control @error('kelas') is-invalid @enderror" id="kelas"
-                                                name="kelas" value="{{ old('kelas') }}">
+                                                name="kelas" value="{{ old('kelas') }}" readonly>
                                             @error('kelas')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -95,16 +95,16 @@ is-invalid
                                     <div class="row mb-3 mr-4 ml-4" id="add_item_btn">
                                         <div class="col-md-4">
                                             <label for="validationCustom01" class="form-label"> Kode Buku </label>
-                                            <input type="text" class="form-control" value="" name="kodebuku"
-                                                id="kodebuku">
+                                            <input type="text" class="form-control" value="{{old('kodebuku')}}" name="kodebuku"
+                                                id="kodebuku" readonly>
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="validationCustom02" class="form-label"> Judul Buku</label>
-                                            <input type="text" class="form-control" id="judul" value=""
-                                                name="namabuku">
+                                            <input type="text" class="form-control" id="judul" value="{{old('namabuku')}}"
+                                                name="namabuku" readonly>
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
@@ -113,7 +113,7 @@ is-invalid
                                             <label for="validationCustomUsername" class="form-label">Jumlah Buku</label>
                                             <div class="input-group has-validation">
                                                 <input type="text" class="form-control" id="jumlah"
-                                                    name="Jumlah">
+                                                    name="jumlah" readonly>
                                                 <div class="invalid-feedback">
                                                     Please choose a username.
                                                 </div>
@@ -144,7 +144,7 @@ is-invalid
                                                     <span class="text">Proses Pengembalian</span>
                                                 </button>
                                                 <div class=" mb-3">
-                                                    <a href="daftaranggota"
+                                                    <a href="/pengembalian"
                                                         class="btn btn-dark btn-icon-split mb-3 col-sm-3">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-arrow-circle-left"></i>

@@ -42,7 +42,7 @@
                                     @endif  --}}
                                 <div class="row">
                                     <hr>
-                                    <div class="">
+                                    <div class="table-responsive">
                                         <form action="" method="POST" class="from-buku">
                                             @csrf
     										<table id="example" class="table table-striped table-bordered"
@@ -72,8 +72,8 @@
                                                         <td>{{$row->transaksi}}</td>
                                                         <td>{{$row->anggota->nama}}</td>
     													<td>{{$row->kelas}}</td>
-    													<td>{{$row->kodebuku}}</td>
-    													<td>{{$row->idbuku->namabuku}}</td>
+    													<td>{{$row->idbuku->kodebuku}}</td>
+    													<td>{{$row->namabuku}}</td>
                                                         <td>{{$row->jumlah}}</td>
     													<td>{{ Carbon\Carbon::parse ($row->tanggalpinjam)->format('d-m-Y')}}</td>
     													<td>{{ Carbon\Carbon::parse ($row->tanggalpengembalian)->format('d-m-Y')}}</td>
