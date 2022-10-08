@@ -44,9 +44,10 @@
                                                 @foreach ($pengembalin as $transaksi)
                                                     <option value="{{ $transaksi->id}}"
                                                         data-nama='{{$transaksi->anggota->nama}}'
-                                                        data-kelas='{{ $transaksi->kelas }'
+                                                        data-kelas='{{ $transaksi->kelas}}'
                                                         data-kodebuku='{{ $transaksi->idbuku->kodebuku}}'
-                                                        data-judul='{{ $transaksi->namabuku}}'data-jumlah='{{ $transaksi->jumlah}'>
+                                                        data-judul='{{ $transaksi->namabuku}}' 
+                                                        data-jumlah='{{ $transaksi->jumlah}}'>
                                                         {{ $transaksi->transaksi }}</option>
                                                 @endforeach
                                             </select>
@@ -82,8 +83,8 @@
                                     <div class="form-group mb-3">
                                         <label for="kelas" class="col-sm-4 col-form-label">Kelas :</label>
                                         <div class="">
-                                            <input type="text   "
-                                                class="form-control @error('kelas') is-invalid @enderror" id="kelas" >
+                                            <input type="text"
+                                                class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas">
                                             @error('kelas')
                                                 <div class="invalid-feedback">{{ $message }} </div>
                                             @enderror

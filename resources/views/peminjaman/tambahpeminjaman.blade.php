@@ -38,17 +38,9 @@
                                     <div class="form-group row mb-3">
                                         <label for="nisn" class="col-sm-4 col-form-label">No Transaksi :</label>
                                         <div class="col-sm-8">
-                                            
-                                            @php
-                                                
-                                                $urutan = (int)substr(1,3);
-                                                $urutan++;
-                                                $huruf = "PJM";
-                                                $angka = $huruf . sprintf("%03s",$urutan);
-                                            @endphp
                                             <input type="text"
                                                 class="form-control @error('transaksi') is-invalid @enderror" id="transaksi"
-                                                name="transaksi" value="" >
+                                                name="transaksi">
                                             @error('transaksi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -87,11 +79,11 @@
                                         <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Peminjaman
                                             :</label>
                                         <div class="col-md-4">
-                                            <input type="date" value="<?= date('Y-m-d') ?>"
+                                            <input type="date" value=""
                                                 class="form-control @error('tanggalpinjam')
                                                 is-invalid
                                                 @enderror"
-                                                id="tanggalpinjam" name="tanggalpinjam" readonly>
+                                                id="tanggalpinjam" name="tanggalpinjam" >
                                             @error('tanggalpinjam')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -101,11 +93,11 @@
                                         <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             :</label>
                                         <div class="col-md-4">
-                                            <input type="date" value="{{date('Y-m-d',strtotime('+5 days'))}}"
+                                            <input type="date" value=""
                                                 class="form-control @error('tanggalpengembalian')
                                                 is-invalid
                                                 @enderror"
-                                                id="tanggalpengembalian" name="tanggalpengembalian" readonly>
+                                                id="tanggalpengembalian" name="tanggalpengembalian" >
                                             @error('tanggalpengembalian')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -117,12 +109,12 @@
                                             <div class="col-md-4">
                                                 <label for="validationCustom01" class="form-label"> Kode Buku :</label>
                                                 <select class="form-control c-kodebuku @error('kodebuku') is-invalid @enderror"
-                                                name="kodebuku" aria-label="Default select example" id="kodebuku1">
+                                                name="kodebuku" aria-label="Default select example" id="kodebuku">
                                                 <option value="" disabled selected> Pilih kodebuku Siswa </option>
-                                                {{-- @foreach ($buku as $buku)
+                                                @foreach ($buku as $buku)
                                                     <option value="{{ $buku->id }}" data-namabuku='{{$buku->namabuku}}'>
                                                         {{ $buku->kodebuku }}</option>
-                                                @endforeach --}}
+                                                @endforeach 
                                                 </select>
                                                 @error('kodebuku')
                                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -254,25 +246,25 @@
             <script>
 
                 $(document).ready(function() {
-                    getBooks();
-                    function getBooks(){
-                        $.ajax({
-                            method: 'GET',
-                            url : '/getBooks',
-                            dataType: 'JSON',
-                            success: function(e){
-                                var html = ""
-                                e.map(val => {
-                                    html += `<option value="${val.id}"> ${val.kodebuku} </option>`
-                                })
-                                $('.c-kodebuku').html(html)
-                                $('.c-namabuku').val(e[0].namabuku)
-                                console.log($('.c-namabuku'))
-                            }
-                        })
-                    }
-                    //add field
-                    var aidi = 1;
+                    // getBooks();
+                    // function getBooks(){
+                    //     $.ajax({
+                    //         method: 'GET',
+                    //         url : '/getBooks',
+                    //         dataType: 'JSON',
+                    //         success: function(e){
+                    //             var html = ""
+                    //             e.map(val => {
+                    //                 html += `<option value="${val.id}"> ${val.kodebuku} </option>`
+                    //             })
+                    //             $('.c-kodebuku').html(html)
+                    //             $('.c-namabuku').val(e[0].namabuku)
+                    //             console.log($('.c-namabuku'))
+                    //         }
+                    //     })
+                    // }
+                    // //add field
+                    // var aidi = 1;
                     $('#add').on('click',function(){
                         aidi++
                        var html = '' ;
@@ -282,7 +274,7 @@
                        html+= '<div class="col-md-4"> <label for="validationCustomUsername" class="form-label">Jumlah Buku</label> <div class="input-group has-validation"> <input type="text" class="form-control" id="validationCustomUsername" name="Jumlah"> <div class="invalid-feedback"> Please choose a username. </div> <div class="col-md-4"> <span class="input-group-btn"> <a data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal" class="btn btn-primary"> <i class="fa-solid fa fa-search"></i> </a> </span><span class="input-group-btn"><a id="remove" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></span></div></div></div>';
                        html+= '</div>';
                        $('#table_field').append(html);
-                        getBooks()
+                        // getBooks()
                     });
                 });
 
