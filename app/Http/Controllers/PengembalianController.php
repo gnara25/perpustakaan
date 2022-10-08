@@ -29,6 +29,7 @@ class PengembalianController extends Controller
 
     public function tambahpengembalianpost(request $request){
         $this->validate($request, [
+
             'transaksi' => ['required','unique:pengembalians,transaksi'],
             'nama' => 'required',
             'kelas' => 'required',

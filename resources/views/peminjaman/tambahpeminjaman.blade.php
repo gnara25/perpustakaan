@@ -46,7 +46,6 @@
                                                 $huruf = "PJM";
                                                 $angka = $huruf . sprintf("%03s",$urutan);
                                             @endphp
-                                        
                                             <input type="text"
                                                 class="form-control @error('transaksi') is-invalid @enderror" id="transaksi"
                                                 name="transaksi" value="" >
@@ -169,8 +168,6 @@
                                     </div>
                                         <center>
                                             <div class="mb-4 mt-4">
-
-
                                                 <button type="submit"
                                                     class="btn btn-info btn-icon-split col-sm-3 mb-3">
                                                     <span class="icon text-white-50">
@@ -255,6 +252,7 @@
             });
             </script>
             <script>
+
                 $(document).ready(function() {
                     getBooks();
                     function getBooks(){
@@ -291,9 +289,15 @@
                 $(document).on('click','#remove',function(){
                     $(this).closest('#konten').remove();
                 });
-
              
             </script>
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 5f7ef72aca958374e11c0c5efbc267671635b506
 </body>
 
 </html>

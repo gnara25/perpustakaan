@@ -20,6 +20,7 @@ class Pengembalian extends Model
     public function idtransaksi()
     {
         return $this->belongsTo(Peminjaman::class,'transaksi','id');
+
     }
 }
 
