@@ -32,12 +32,12 @@
                     </div>
                     <div class="card radius-15">
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="row">
                                 <form action="/insert" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="form-group mb-3">
+                                    <div class="form-group row mb-3">
                                         <label for="nisn" class="col-sm-4 col-form-label">No Transaksi :</label>
-                                        <div class="form-group">
+                                        <div class="col-sm-8">
                                             
                                             @php
                                                 
@@ -55,9 +55,9 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group mb-3">
+                                    <div class="form-group row mb-3">
                                         <label for="nama" class="col-sm-4 col-form-label">Nama Siswa :</label>
-                                        <div class="">
+                                        <div class="col-sm-8">
                                             <select class="form-control @error('nama') is-invalid @enderror"
                                             name="nama" aria-label="Default select example" id="nama">
                                             <option value="" disabled selected> Pilih Nama Siswa </option>
@@ -72,9 +72,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group mb-3">
+                                    <div class="form-group row mb-3">
                                         <label for="kelas" class="col-sm-4 col-form-label">Kelas :</label>
-                                        <div class="">
+                                        <div class="col-sm-8">
                                             <input type="text   "
                                                 class="form-control @error('kelas') is-invalid @enderror" id="kelas"
                                                 name="kelas" value="{{ old('kelas') }}">
@@ -83,10 +83,11 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group mb-3">
+                                    
+                                    <div class="form-group row mb-3">
                                         <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Peminjaman
                                             :</label>
-                                        <div class="">
+                                        <div class="col-md-4">
                                             <input type="date" value="<?= date('Y-m-d') ?>"
                                                 class="form-control @error('tanggalpinjam')
                                                 is-invalid
@@ -97,10 +98,10 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group mb-3">
+                                    <div class="form-group row mb-3">
                                         <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             :</label>
-                                        <div class="">
+                                        <div class="col-md-4">
                                             <input type="date" value="{{date('Y-m-d',strtotime('+5 days'))}}"
                                                 class="form-control @error('tanggalpengembalian')
                                                 is-invalid
@@ -115,14 +116,14 @@
                                         <div class="row mb-3 mr-4 ml-4">
 
                                             <div class="col-md-4">
-                                                <label for="validationCustom01" class="form-label"> Kode Buku </label>
-                                                <select class="form-control @error('kodebuku') is-invalid @enderror"
-                                                name="kodebuku" aria-label="Default select example" id="kodebuku">
+                                                <label for="validationCustom01" class="form-label"> Kode Buku :</label>
+                                                <select class="form-control c-kodebuku @error('kodebuku') is-invalid @enderror"
+                                                name="kodebuku" aria-label="Default select example" id="kodebuku1">
                                                 <option value="" disabled selected> Pilih kodebuku Siswa </option>
-                                                @foreach ($buku as $buku)
+                                                {{-- @foreach ($buku as $buku)
                                                     <option value="{{ $buku->id }}" data-namabuku='{{$buku->namabuku}}'>
                                                         {{ $buku->kodebuku }}</option>
-                                                @endforeach
+                                                @endforeach --}}
                                                 </select>
                                                 @error('kodebuku')
                                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -132,15 +133,15 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="validationCustom02" class="form-label"> Judul Buku</label>
-                                                <input type="text" class="form-control" id="namabuku"
+                                                <label for="validationCustom02" class="form-label"> Judul Buku :</label>
+                                                <input type="text" class="form-control c-namabuku" id="namabuku"
                                                     value="" name="namabuku">
                                                 <div class="valid-feedback">
                                                     Looks good!
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="validationCustomUsername" class="form-label">Jumlah Buku</label>
+                                                <label for="validationCustomUsername" class="form-label">Jumlah Buku :</label>
                                                 <div class="input-group has-validation">
                                                     <input type="text" class="form-control" id="validationCustomUsername"
                                                         name="jumlah">
@@ -148,8 +149,6 @@
                                                         Please choose a username.
                                                     </div>
                                                     <div class="col-md-4">
-
-
                                                         <span class="input-group-btn">
                                                             <a data-bs-toggle="modal"
                                                                 data-bs-target="#exampleExtraLargeModal"
@@ -199,7 +198,10 @@
 
                 </div>
                 <!--end page-content-wrapper-->
-                {{-- @include('peminjaman.modalbuku') --}}
+            
+                {{-- @include('peminjaman.modalbuku')     --}}
+                
+                
                 {{-- @include('peminjaman.modalanggota') --}}
             </div>
             <!--end page-wrapper-->
@@ -254,15 +256,35 @@
             </script>
             <script>
                 $(document).ready(function() {
+                    getBooks();
+                    function getBooks(){
+                        $.ajax({
+                            method: 'GET',
+                            url : '/getBooks',
+                            dataType: 'JSON',
+                            success: function(e){
+                                var html = ""
+                                e.map(val => {
+                                    html += `<option value="${val.id}"> ${val.kodebuku} </option>`
+                                })
+                                $('.c-kodebuku').html(html)
+                                $('.c-namabuku').val(e[0].namabuku)
+                                console.log($('.c-namabuku'))
+                            }
+                        })
+                    }
+                    //add field
+                    var aidi = 1;
                     $('#add').on('click',function(){
+                        aidi++
                        var html = '' ;
                        html+= '<div class="row mb-3 mr-4 ml-4" id="konten">';
-                       html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <select class="form-control" name="kodebuku" aria-label="Default select example" id="kodebuku"> <option value="" disabled selected> Pilih kodebuku Siswa </option> @foreach ($buku as $buku) <option value="" > </option> @endforeach </select> @error('kodebuku') <div class="invalid-feedback">{{ $message }}</div> @enderror <div class="valid-feedback"> Looks good! </div></div>' ;
-                       html+= '<div class="col-md-4"> <label for="validationCustom02" class="form-label"> Judul Buku</label> <input type="text" class="form-control" id="namabuku" value="" name="namabuku"> <div class="valid-feedback"> Looks good! </div> </div>';
+                       html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <select class="form-control c-kodebuku" id="kodebuku" name="kodebuku" aria-label="Default select example"> <option value="" disabled selected> Pilih kodebuku Siswa </option> </select> @error('kodebuku') <div class="invalid-feedback">{{ $message }}</div> @enderror <div class="valid-feedback"> Looks good! </div></div>' ;
+                       html+= `<div class="col-md-4"> <label for="validationCustom02" class="form-label"> Judul Buku</label> <input type="text" class="form-control c-namabuku" id="namabuku" value="" name="namabuku"> <div class="valid-feedback"> Looks good! </div> </div>`;
                        html+= '<div class="col-md-4"> <label for="validationCustomUsername" class="form-label">Jumlah Buku</label> <div class="input-group has-validation"> <input type="text" class="form-control" id="validationCustomUsername" name="Jumlah"> <div class="invalid-feedback"> Please choose a username. </div> <div class="col-md-4"> <span class="input-group-btn"> <a data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal" class="btn btn-primary"> <i class="fa-solid fa fa-search"></i> </a> </span><span class="input-group-btn"><a id="remove" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></span></div></div></div>';
                        html+= '</div>';
                        $('#table_field').append(html);
-
+                        getBooks()
                     });
                 });
 
@@ -272,9 +294,6 @@
 
              
             </script>
-
-
-
 </body>
 
 </html>

@@ -16,9 +16,9 @@
                                                 style="width:100%">
                                                 <thead>
 
-                                                    <th>
+                                                    {{-- <th>
                                                         <input type="checkbox" name="select_all" id="select_all">
-                                                    </th>
+                                                    </th> --}}
                                                     <th>No</th>
                                                     <th>Judul Buku </th>
                                                     <th>Kategori Buku</th>
@@ -32,7 +32,7 @@
                                                     <th>Deskripsi</th>
                                                     <th>Foto</th>
                                                           
-                                                    {{-- <th>Aksi</th> --}}
+                                                    <th>Aksi</th>
                                                     
 
                                                 </thead>
@@ -40,10 +40,10 @@
                                                     @php
                                                         $no = 1;
                                                     @endphp
-                                                    @foreach ($buku as $row)
+                                                    @foreach ( $buku as $row)
                                                         <tr>
-                                                            <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
-                                                            </td>
+                                                            {{-- <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
+                                                            </td> --}}
                                                             <td>{{ $no++ }}</td>
                                                             <td>{{ $row->namabuku }}</td>
                                                             <td>{{ $row->idkategori->kategori }}</td>
@@ -59,12 +59,12 @@
                                                                     alt="" style="width: 70px; height: 70px">
                                                             </td>
                                                             
-                                                            {{-- <td class="b">
+                                                            <td class="b">
                                                                 <a href="/editbuku/{{ $row->id }}" 
                                                                     class="btn btn-success">
                                                                     <i class="fa-solid fa-square-pen"></i>
                                                                 </a>
-                                                            </td> --}}
+                                                            </td>
                                                             
                                                         </tr>
                                                         

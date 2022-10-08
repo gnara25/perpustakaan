@@ -69,7 +69,6 @@
                                                         <td>{{ $row->jumlah }}</td>
                                                     </tr>
                                                 @endforeach
-
                                             </tbody>
                                         </table>
                                     </div>
@@ -101,7 +100,7 @@
                             })
                             .then((willDelete) => {
                                 if (willDelete) {
-                                    window.location = "/deletekategori/" + mahasiswaid + ""
+                                    window.location = "/deletepengembalian/" + mahasiswaid + ""
                                     swal("Data Ini Berhasil Dihapus!", {
                                         icon: "success",
                                     });

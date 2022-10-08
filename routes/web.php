@@ -88,6 +88,7 @@ Route::post('/editpeminjamanpost/{id}', [PeminjamanController::class, 'editpemin
 Route::get('/deletepeminjaman/{id}', [PeminjamanController::class, 'deletepeminjaman'])->name('deletepeminjaman');
 Route::get('/scane',[PeminjamanController::class,'scane'])->name('scane');
 Route::post('/validasi',[PeminjamanController::class,'validasi'])->name('validasi');
+Route::get('/getBooks', [PeminjamanController::class, 'getBooks'])->name('getBooks');
 
 // pengembalian
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');

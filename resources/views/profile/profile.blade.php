@@ -195,7 +195,7 @@
     </div>
     <!-- end wrapper -->
     <!--start switcher-->
-    <div class="switcher-body">
+    {{-- <div class="switcher-body">
         <button class="btn btn-primary btn-switcher shadow-sm" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i
                 class="bx bx-cog bx-spin"></i></button>
@@ -233,7 +233,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!--end switcher-->
     <!-- JavaScript -->
     <!-- Bootstrap JS -->
