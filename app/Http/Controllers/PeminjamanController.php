@@ -6,6 +6,7 @@ use App\Models\Peminjaman;
 use App\Models\DaftarAnggota;
 use App\Models\Daftarbuku;
 use Illuminate\Http\Request;
+use DB;
 
 class PeminjamanController extends Controller
 {
@@ -26,11 +27,26 @@ class PeminjamanController extends Controller
         return json_encode($data);
     }
 
-    public function tambahpeminjaman(){
+    public function tambahpeminjaman() 
+    {
         $data = Peminjaman::all();
         $anggota = DaftarAnggota::all();
         $buku = Daftarbuku::all();
-        return view('peminjaman.tambahpeminjaman', compact('data','anggota','buku'));
+        $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
+        $kd="";
+        if($q->count()>0) 
+        {
+            foreach ($q->get() as $k) 
+            {
+                $tmp = ((int)$k->kode)+1;
+                $kd = sprintf("%05s",$tmp);
+            }
+        }
+        else
+        {
+            $kd = "00001";
+        }
+        return view('peminjaman.tambahpeminjaman', compact('data','anggota','buku','kd'));
     }
 
     public function insert(Request $request){

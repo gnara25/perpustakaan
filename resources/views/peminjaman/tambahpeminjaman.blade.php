@@ -39,16 +39,17 @@
                                         <label for="nisn" class="col-sm-4 col-form-label">No Transaksi :</label>
                                         <div class="col-sm-8">
                                             <input type="text"
-                                                class="form-control @error('transaksi') is-invalid @enderror" id="transaksi"
-                                                name="transaksi">
+                                                class="form-control @error('transaksi') is-invalid @enderror" id="transaksi" value="{{ 'PJM-'.$kd }}" 
+                                                name="transaksi" readonly>
                                             @error('transaksi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
-                                        <label for="nama" class="col-sm-4 col-form-label">Nama Siswa :</label>
+                                        <label for="nama" class="col-sm-4 col-form-label">Nama Siswa </label>
                                         <div class="col-sm-8">
+                                            
                                             <select class="form-control @error('nama') is-invalid @enderror"
                                             name="nama" aria-label="Default select example" id="nama">
                                             <option value="" disabled selected> Pilih Nama Siswa </option>
@@ -60,47 +61,50 @@
                                             @error('nama')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
+                                            
                                         </div>
                                     </div>
-
-                                    <div class="form-group row mb-3">
-                                        <label for="kelas" class="col-sm-4 col-form-label">Kelas :</label>
+                                    <div class="form-group row mb-3">  
+                                      <label for="kelas" class="col-sm-4 col-form-label">Kelas </label> 
                                         <div class="col-sm-8">
-                                            <input type="text   "
+                                            <input type="text"
                                                 class="form-control @error('kelas') is-invalid @enderror" id="kelas"
                                                 name="kelas" value="{{ old('kelas') }}">
                                             @error('kelas')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
+                                            
                                         </div>
                                     </div>
                                     
-                                    <div class="form-group row mb-3">
-                                        <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Peminjaman
-                                            :</label>
-                                        <div class="col-md-4">
+                                    <div class="row g-3 mb-3">
+                                        <div class="col">
+                                            <center>
+                                            <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Peminjaman
+                                            </label>
                                             <input type="date" value=""
-                                                class="form-control @error('tanggalpinjam')
+                                                class="form-control text-center @error('tanggalpinjam')
                                                 is-invalid
                                                 @enderror"
                                                 id="tanggalpinjam" name="tanggalpinjam" >
                                             @error('tanggalpinjam')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
+                                            </center>
                                         </div>
-                                    </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
-                                            :</label>
-                                        <div class="col-md-4">
+                                        <div class="col">
+                                            <center>
+                                                 <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
+                                            </label>
                                             <input type="date" value=""
-                                                class="form-control @error('tanggalpengembalian')
+                                                class="form-control text-center @error('tanggalpengembalian')
                                                 is-invalid
                                                 @enderror"
                                                 id="tanggalpengembalian" name="tanggalpengembalian" >
                                             @error('tanggalpengembalian')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
+                                            </center>
                                         </div>
                                     </div>
                                     <div id="table_field">
@@ -266,7 +270,6 @@
                     // //add field
                     // var aidi = 1;
                     $('#add').on('click',function(){
-                        aidi++
                        var html = '' ;
                        html+= '<div class="row mb-3 mr-4 ml-4" id="konten">';
                        html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <select class="form-control c-kodebuku" id="kodebuku" name="kodebuku" aria-label="Default select example"> <option value="" disabled selected> Pilih kodebuku Siswa </option> </select> @error('kodebuku') <div class="invalid-feedback">{{ $message }}</div> @enderror <div class="valid-feedback"> Looks good! </div></div>' ;
