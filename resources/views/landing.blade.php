@@ -52,16 +52,19 @@
         <div class="container">
             <div class="row">
                 <!-- Start Navigation -->
-                <nav id="mainNav" class="navbar navbar-default navbar-fixed white bootsnav on no-full nav-box no-background">
+                <nav id="mainNav"
+                    class="navbar navbar-default navbar-fixed white bootsnav on no-full nav-box no-background">
 
                     <div class="container">
 
                         <!-- Start Header Navigation -->
                         <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target="#navbar-menu">
                                 <i class="fa fa-bars"></i>
                             </button>
-                            <a class="navbar-brand" href="/"><img src="asset/img/logo.png" class="logo" alt="Logo"></a>
+                            <a class="navbar-brand" href="/"><img src="asset/img/logo.png" class="logo"
+                                    alt="Logo"></a>
                         </div>
                         <!-- End Header Navigation -->
 
@@ -69,7 +72,8 @@
                         <div class="collapse navbar-collapse" id="navbar-menu">
                             <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
                                 <li class="">
-                                    <a href="#beranda" class="dropdown-toggle smooth-menu" data-toggle="dropdown" >Beranda</a>
+                                    <a href="#beranda" class="dropdown-toggle smooth-menu"
+                                        data-toggle="dropdown">Beranda</a>
                                 </li>
                                 <li>
                                     <a class="smooth-menu" href="#rules">Rules</a>
@@ -80,7 +84,7 @@
                                 <div class="attr-nav button-light">
                                     <ul>
                                         <li>
-                                            <a href="/login">login</a>
+                                            <a href="/login">Masuk</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -96,19 +100,21 @@
 
     <!-- Start Banner
     ============================================= -->
-    <div class="banner-area content-double box-nav background-move bg-gray" style="background-image: url(asset/img/bg-2.png);">
+    <div class="banner-area content-double box-nav background-move bg-gray"
+        style="background-image: url(asset/img/bg-2.png);">
         <div class="container">
             <div class="row" id="beranda">
                 <div class="double-items">
                     <div class="col-md-6 left-info simple-video">
                         <div class="content" data-animation="animated fadeInUpBig">
                             <h1>
-                                Perpustakan  <span>Kita Bersama</span> Ayo Kesini
+                                Perpustakan <span>Kita Bersama</span> Ayo Kesini
                             </h1>
                             <p>
-                                "Perpustakaan akan membantumu melewati masa-masa tanpa uang lebih baik daripada uang akan membantumu melewati masa-masa tanpa perpustakaan."
+                                "Perpustakaan akan membantumu melewati masa-masa tanpa uang lebih baik daripada uang
+                                akan membantumu melewati masa-masa tanpa perpustakaan."
                             </p>
-                            <a class="btn btn-theme border btn-md" href="/login">Ayo Masuk</a>
+                            {{-- <a class="btn btn-theme border btn-md" href="/login">Ayo Masuk</a> --}}
                         </div>
                     </div>
                     <div class="col-md-6 right-info">
@@ -125,7 +131,7 @@
 
     <!-- Start Features Area
     ============================================= -->
-    <div id="features" class="features-area carousel-shadow default-padding bg-gray">
+    {{-- <div id="features" class="features-area carousel-shadow default-padding bg-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
@@ -210,7 +216,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Features Area -->
 
     <!-- Start Work Process Area
@@ -227,7 +233,7 @@
             <div class="row">
                 <div class="process-items">
                     <div class="col-md-6 thumb">
-                        <h3><img src="asset/img/illustrations/4.svg" alt="Thumb"></h3>
+                        <h3><img src="asset/img/illustrations/6.svg" alt="Thumb"></h3>
                     </div>
                     <div class="col-md-6 info">
                         <ul>
@@ -235,7 +241,8 @@
                                 <div class="list">
                                 </div>
                                 <div class="content">
-                                    <h4>1. Pengunjung perpustakaan harus menunjukkan kartu perpustakaan jika ingin meminjam buku</h4>
+                                    <h4>1. Pengunjung perpustakaan harus menunjukkan kartu perpustakaan jika ingin
+                                        meminjam buku</h4>
                                     <h4>2. Harus melepas sepatu</h4>
                                 </div>
                             </li>
@@ -249,7 +256,7 @@
                             </li>
                             <li>
                                 <div class="list">
-                                    
+
                                 </div>
                                 <div class="content">
                                     <h4>5. Harus menunjukkan buku yang ingin dipinjam</h4>
@@ -258,7 +265,7 @@
                             </li>
                             <li>
                                 <div class="list">
-                                    
+
                                 </div>
                                 <div class="content">
                                     <h4>7. Tidak Boleh Membawa Makanan Dan Minuman</h4>
@@ -282,16 +289,21 @@
                     <div class="site-heading text-center">
                         <h2>Visi Perpustakaan</h2>
                         <p>
-                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose.
+                            Menjadikan perpustakaan sekolah sebagai pusat informasi dan pusat ilmu pengetahuan dengan
+                            pelayanan yang efektif, cepat, dan mudah sehingga mampu menjadi penopang keberhasilan proses
+                            kegiatan belajar mengajar di sekolah.
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
                     <div class="site-heading text-center">
                         <h2>Misi Perpustakaan</h2>
-                        <p>
-                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose.
-                        </p>
+                        <p>1. Meningkatkan pelayanan pemakai dengan memberikan layanan yang mudah </p>
+                        <p>2. Peningkatan sarana penunjang untuk pelayanan pemakai</p>
+                        <p>3. Peningkatan sumber daya manusia dengan mengikutsertakan pengelola dalam setiap event
+                            kegiatan keperpustakaan</p>
+                        <p>4. Menyediakan sumber informasi dan ilmu pengetahuan yang dapat menunjang keberhasilan
+                            pembelajaran di sekolah</p>
                     </div>
                 </div>
             </div>
@@ -299,9 +311,10 @@
     </div>
     <!-- End Pricing Area -->
 
+
     <!-- Start Team Area
     ============================================= -->
-    <div id="team" class="team-area default-padding bottom-less">
+    {{-- <div id="team" class="team-area default-padding bottom-less">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
@@ -402,164 +415,164 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Team Area -->
 
     <!-- Start Blog Area
     ============================================= -->
-    <div id="blog" class="blog-area default-padding bottom-less">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
-                    <div class="site-heading text-center">
-                        <h2>Recent News</h2>
-                        <p>
-                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose.
-                        </p>
+    {{-- <div id="blog" class="blog-area default-padding bottom-less">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                        <div class="site-heading text-center">
+                            <h2>Recent News</h2>
+                            <p>
+                                Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="blog-items">
+                        <!-- Single Item -->
+                        <div class="col-md-4 single-item">
+                            <div class="item">
+                                <div class="thumb">
+                                    <a href="single.html"><img src="asset/img/blog/1.jpg" alt="Thumb"></a>
+                                </div>
+                                <div class="info">
+                                    <div class="content">
+                                        <div class="date">
+                                            15 Aug, 2019
+                                        </div>
+                                        <h4>
+                                            <a href="single.html">Direct wicket little of talked lasted formed</a>
+                                        </h4>
+                                        <p>
+                                            Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till.
+                                        </p>
+                                        <a href="single.html">Read More <i class="fas fa-angle-right"></i></a>
+                                    </div>
+                                    <div class="meta">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="asset/img/team/4.jpg" alt="Author">
+                                                    <span>Author</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fas fa-comments"></i>
+                                                    <span>05</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fas fa-share-alt"></i>
+                                                    <span>37</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Item -->
+                        <!-- Single Item -->
+                        <div class="col-md-4 single-item">
+                            <div class="item">
+                                <div class="thumb">
+                                    <a href="single.html"><img src="asset/img/blog/2.jpg" alt="Thumb"></a>
+                                </div>
+                                <div class="info">
+                                    <div class="content">
+                                        <div class="date">
+                                            27 Nov, 2019
+                                        </div>
+                                        <h4>
+                                            <a href="single.html">Supported neglected met therefore unwilling</a>
+                                        </h4>
+                                        <p>
+                                            Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till.
+                                        </p>
+                                        <a href="single.html">Read More <i class="fas fa-angle-right"></i></a>
+                                    </div>
+                                    <div class="meta">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="asset/img/team/2.jpg" alt="Author">
+                                                    <span>Author</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fas fa-comments"></i>
+                                                    <span>17</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fas fa-share-alt"></i>
+                                                    <span>22</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Item -->
+                        <!-- Single Item -->
+                        <div class="col-md-4 single-item">
+                            <div class="item">
+                                <div class="thumb">
+                                    <a href="single.html"><img src="asset/img/blog/3.jpg" alt="Thumb"></a>
+                                </div>
+                                <div class="info">
+                                    <div class="content">
+                                        <div class="date">
+                                            18 Sep, 2019
+                                        </div>
+                                        <h4>
+                                            <a href="single.html">Concerns greatest margaret absolute entrance</a>
+                                        </h4>
+                                        <p>
+                                            Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till.
+                                        </p>
+                                        <a href="single.html">Read More <i class="fas fa-angle-right"></i></a>
+                                    </div>
+                                    <div class="meta">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <img src="asset/img/team/1.jpg" alt="Author">
+                                                    <span>Author</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fas fa-comments"></i>
+                                                    <span>25</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fas fa-share-alt"></i>
+                                                    <span>50</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Item -->
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="blog-items">
-                    <!-- Single Item -->
-                    <div class="col-md-4 single-item">
-                        <div class="item">
-                            <div class="thumb">
-                                <a href="single.html"><img src="asset/img/blog/1.jpg" alt="Thumb"></a>
-                            </div>
-                            <div class="info">
-                                <div class="content">
-                                    <div class="date">
-                                        15 Aug, 2019
-                                    </div>
-                                    <h4>
-                                        <a href="single.html">Direct wicket little of talked lasted formed</a>
-                                    </h4>
-                                    <p>
-                                        Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till.
-                                    </p>
-                                    <a href="single.html">Read More <i class="fas fa-angle-right"></i></a>
-                                </div>
-                                <div class="meta">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <img src="asset/img/team/4.jpg" alt="Author">
-                                                <span>Author</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-comments"></i>
-                                                <span>05</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-share-alt"></i>
-                                                <span>37</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Item -->
-                    <!-- Single Item -->
-                    <div class="col-md-4 single-item">
-                        <div class="item">
-                            <div class="thumb">
-                                <a href="single.html"><img src="asset/img/blog/2.jpg" alt="Thumb"></a>
-                            </div>
-                            <div class="info">
-                                <div class="content">
-                                    <div class="date">
-                                        27 Nov, 2019
-                                    </div>
-                                    <h4>
-                                        <a href="single.html">Supported neglected met therefore unwilling</a>
-                                    </h4>
-                                    <p>
-                                        Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till.
-                                    </p>
-                                    <a href="single.html">Read More <i class="fas fa-angle-right"></i></a>
-                                </div>
-                                <div class="meta">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <img src="asset/img/team/2.jpg" alt="Author">
-                                                <span>Author</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-comments"></i>
-                                                <span>17</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-share-alt"></i>
-                                                <span>22</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Item -->
-                    <!-- Single Item -->
-                    <div class="col-md-4 single-item">
-                        <div class="item">
-                            <div class="thumb">
-                                <a href="single.html"><img src="asset/img/blog/3.jpg" alt="Thumb"></a>
-                            </div>
-                            <div class="info">
-                                <div class="content">
-                                    <div class="date">
-                                        18 Sep, 2019
-                                    </div>
-                                    <h4>
-                                        <a href="single.html">Concerns greatest margaret absolute entrance</a>
-                                    </h4>
-                                    <p>
-                                        Pronounce we attention admitting on assurance of suspicion conveying. That his west quit had met till.
-                                    </p>
-                                    <a href="single.html">Read More <i class="fas fa-angle-right"></i></a>
-                                </div>
-                                <div class="meta">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <img src="asset/img/team/1.jpg" alt="Author">
-                                                <span>Author</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-comments"></i>
-                                                <span>25</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fas fa-share-alt"></i>
-                                                <span>50</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Item -->
-                </div>
-            </div>
-        </div>
-    </div>
+        </div> --}}
     <!-- End Blog Area -->
 
     <!-- Start Footer
@@ -572,7 +585,8 @@
                         <div class="f-item">
                             <img src="asset/img/logo.png" alt="Logo">
                             <p>
-                                "Perpustakaan akan membantumu melewati masa-masa tanpa uang lebih baik daripada uang akan membantumu melewati masa-masa tanpa perpustakaan."
+                                "Perpustakaan akan membantumu melewati masa-masa tanpa uang lebih baik daripada uang
+                                akan membantumu melewati masa-masa tanpa perpustakaan."
                             </p>
                             <p>
                                 <i>Saya Harap Kalian Semua Terus Dukung kami</i>
@@ -580,7 +594,8 @@
                             <div class="newsletter">
                                 <form action="#">
                                     <div class="input-group stylish-input-group">
-                                        <input type="email" name="email" class="form-control" placeholder="Enter your e-mail here">
+                                        <input type="email" name="email" class="form-control"
+                                            placeholder="Enter your e-mail here">
                                         <button type="submit">
                                             <i class="fa fa-paper-plane"></i>
                                         </button>
@@ -589,16 +604,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 col-sm-6 equal-height item">
+                    {{-- <div class="col-md-2 col-sm-6 equal-height item">
                         <div class="f-item link">
-                            <h4>Tautan</h4>
+                            <h4>Layanan</h4>
                             <ul>
                                 <li>
-                                    <a href="/">Beranda</a>
+                                    <p>Perpustakaan SMKN 1 Sukorejo melayani pemustaka setiap hari mulai pukul 07.30 – 13.00 WIB. Layanan yang pemustaka dapatkan di perpustakaan antara lain:</p>
+                                    <p> * Layanan sirkulasi atau peminjaman dan pengembalian buku </p>
+                                      <p> * Layanan peminjaman buku paket untuk pembelajaran</p>  
+                                      <p>* Layanan referensi untuk buku-buku rujukan</p>  
+                                      <p>* Layanan internet dengan menyediakan wifi area</p>  
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-md-4 col-sm-6 equal-height item">
                         <div class="f-item twitter-widget">
                             <h4>Info Kontak</h4>
@@ -688,4 +707,5 @@
     <script src="asset/js/main.js"></script>
 
 </body>
+
 </html>

@@ -38,7 +38,7 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            ccc
+                                            
                                         </div>
                                         <div class="ms-auto font-35 text-white"><i class="bx bx-support"></i>
                                         </div>
