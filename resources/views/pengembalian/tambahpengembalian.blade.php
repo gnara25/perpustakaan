@@ -32,12 +32,12 @@
                     </div>
                     <div class="card radius-15">
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="row">
                                 <form action="/tambahpengembalianpost" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="form-group mb-3">
+                                    <div class="form-group row mb-3">
                                         <label for="transaksi" class="col-sm-4 col-form-label">No.Transaksi :</label>
-                                        <div class="form-group">
+                                        <div class="col-sm-8">
                                             <select class="form-control @error('transaksi') is-invalid @enderror"
                                                 id="transaksi" name="transaksi" aria-label="Default select example">
                                                 <option value="" disabled selected>Pilih No.Transaksi</option>
@@ -56,9 +56,9 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group mb-3">
+                                    <div class="form-group row mb-3">
                                         <label for="nama" class="col-sm-4 col-form-label">Nama Siswa :</label>
-                                        <div class="">
+                                        <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('nama') is-invalid @enderror" id="nama"
                                                 name="nama" value="{{ old('nama') }}" readonly>
@@ -67,10 +67,10 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="">
+                                    <div class="form-group row mb-3">
                                         <label for="tanggalpengembalian" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             :</label>
-                                        <div class="">
+                                        <div class="col-sm-8">
                                             <input type="date" value="<?= date('Y-m-d') ?>"
                                                 class="form-control @error('tanggalpengembalian') 
                                                     is-invalid
@@ -80,9 +80,9 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group mb-3">
+                                    <div class="form-group row mb-3">
                                         <label for="kelas" class="col-sm-4 col-form-label">Kelas :</label>
-                                        <div class="">
+                                        <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas">
                                             @error('kelas')

@@ -29,9 +29,9 @@ class PeminjamanController extends Controller
 
     public function tambahpeminjaman() 
     {
-        $data = Peminjaman::all();
+        // $data = Peminjaman::all();
         $anggota = DaftarAnggota::all();
-        $buku = Daftarbuku::all();
+        $bukuid= Daftarbuku::all();
         $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
         $kd="";
         if($q->count()>0) 
@@ -46,7 +46,7 @@ class PeminjamanController extends Controller
         {
             $kd = "00001";
         }
-        return view('peminjaman.tambahpeminjaman', compact('data','anggota','buku','kd'));
+        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd'));
     }
 
     public function insert(Request $request){

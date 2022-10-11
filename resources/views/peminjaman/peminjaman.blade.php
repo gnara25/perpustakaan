@@ -2,10 +2,11 @@
 <html lang="en">
 
 @include('template.head')
+
 <body>
     <!-- wrapper -->
     <div class="wrapper">
-        
+
 
         @include('template.navbar')
 
@@ -34,10 +35,11 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                               
-                                <a id="table2-new-row-button" href="/tambahpeminjaman" class="btn btn-outline-info btn-sm mb-2">Tambah Peminjaman</a>
-                            
-                                    {{-- @if (auth()->user()->role == 'petugas')
+
+                                <a id="table2-new-row-button" href="/tambahpeminjaman"
+                                    class="btn btn-outline-info btn-sm mb-2">Tambah Peminjaman</a>
+
+                                {{-- @if (auth()->user()->role == 'petugas')
                                     <a id="table2-new-row-button" href="/scane" class="btn btn-outline-info btn-sm mb-2">Scane QR Code</a>
                                     @endif  --}}
                                 <div class="row">
@@ -45,97 +47,98 @@
                                     <div class="table-responsive">
                                         <form action="" method="POST" class="from-buku">
                                             @csrf
-    										<table id="example" class="table table-striped table-bordered"
+                                            <table id="example" class="table table-striped table-bordered"
                                                 style="width:100%">
-    											<thead>
-    												<tr>      
-                                                        <th>No</th>     
-                                                        <th>Transaksi</th>                              
-                                                        <th>Nama Siswa</th>                              
-    													<th>kelas</th>		
-    													<th>Kode Buku</th>		
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Transaksi</th>
+                                                        <th>Nama Siswa</th>
+                                                        <th>kelas</th>
+                                                        <th>Kode Buku</th>
                                                         <th>Judul Buku </th>
                                                         <th>Jumlah</th>
-    													<th>Tanggal Peminjaman</th>
-    													<th>Tanggal Pengembalian</th>
+                                                        <th>Tanggal Peminjaman</th>
+                                                        <th>Tanggal Pengembalian</th>
                                                         <th>Denda</th>
-    													<th>Aksi</th>
-    												</tr>
-    											</thead>
-    											<tbody>
-                                                   @php
+                                                        <th>Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @php
                                                         $no = 1;
                                                     @endphp
-    												@foreach ( $data as $row )
-    				                                        <?php
-
-                                    $u_denda = 1000;
-
-                                    $tgl1 = date("Y-m-d");
-                                    $tgl2 = $row->tanggalpengembalian;
-
-                                    $pecah1 = explode("-", $tgl1);
-                                    $date1 = $pecah1[2];
-                                    $month1 = $pecah1[1];
-                                    $year1 = $pecah1[0];
-
-                                    $pecah2 = explode("-", $tgl2);
-                                    $date2 = $pecah2[2];
-                                    $month2 = $pecah2[1];
-                                    $year2 =  $pecah2[0];
-
-                                    $jd1 = GregorianToJD($month1, $date1, $year1);
-                                    $jd2 = GregorianToJD($month2, $date2, $year2);
-
-                                        $selisih = $jd1 - $jd2;
-                                        $denda = $selisih * $u_denda;
-                                        ?>
-    												<tr>
-                                                        <td>{{$no++}}</td>
-                                                        <td>{{$row->transaksi}}</td>
-                                                        <td>{{$row->anggota->nama}}</td>
-    													<td>{{$row->kelas}}</td>
-    													<td>{{$row->idbuku->kodebuku}}</td>
-    													<td>{{$row->namabuku}}</td>
-                                                        <td>{{$row->jumlah}}</td>
-    													<td>{{ Carbon\Carbon::parse ($row->tanggalpinjam)->format('d-m-Y')}}</td>
-    													<td>{{ Carbon\Carbon::parse ($row->tanggalpengembalian)->format('d-m-Y')}}</td>
+                                                    @foreach ($data as $row)
+                                                        <?php
+                                                        
+                                                        $u_denda = 1000;
+                                                        
+                                                        $tgl1 = date('Y-m-d');
+                                                        $tgl2 = $row->tanggalpengembalian;
+                                                        
+                                                        $pecah1 = explode('-', $tgl1);
+                                                        $date1 = $pecah1[2];
+                                                        $month1 = $pecah1[1];
+                                                        $year1 = $pecah1[0];
+                                                        
+                                                        $pecah2 = explode('-', $tgl2);
+                                                        $date2 = $pecah2[2];
+                                                        $month2 = $pecah2[1];
+                                                        $year2 = $pecah2[0];
+                                                        
+                                                        $jd1 = GregorianToJD($month1, $date1, $year1);
+                                                        $jd2 = GregorianToJD($month2, $date2, $year2);
+                                                        
+                                                        $selisih = $jd1 - $jd2;
+                                                        $denda = $selisih * $u_denda;
+                                                        ?>
+                                                        <tr>
+                                                            <td>{{ $no++ }}</td>
+                                                            <td>{{ $row->transaksi }}</td>
+                                                            <td>{{ $row->anggota->nama }}</td>
+                                                            <td>{{ $row->kelas }}</td>
+                                                            <td>{{ $row->idbuku->kodebuku }}</td>
+                                                            <td>{{ $row->namabuku }}</td>
+                                                            <td>{{ $row->jumlah }}</td>
+                                                            <td>{{ Carbon\Carbon::parse($row->tanggalpinjam)->format('d-m-Y') }}
+                                                            </td>
+                                                            <td>{{ Carbon\Carbon::parse($row->tanggalpengembalian)->format('d-m-Y') }}
+                                                            </td>
                                                             <td>
-                                        <?php if ($selisih <= 0) { ?>
-                                        <span class="label label-primary">Masa Peminjaman</span>
-                                        <?php } elseif ($selisih > 0) { ?>
-                                        <span class="label label-danger">
-                                            Rp.
-                                            <?=$denda?>
-                                        </span>
-                                        <br> Terlambat :
-                                        <?=$selisih?>
-                                        Hari
-                                    </td>
-                                    <?php } ?>
+                                                                <?php if ($selisih <= 0) { ?>
+                                                                <span class="label label-primary">Masa Peminjaman</span>
+                                                                <?php } elseif ($selisih > 0) { ?>
+                                                                <span class="label label-danger">
+                                                                    Rp.
+                                                                    <?= $denda ?>
+                                                                </span>
+                                                                <br> Terlambat :
+                                                                <?= $selisih ?>
+                                                                Hari
+                                                            </td>
+                                                            <?php } ?>
 
-                                                        <td>
-                                                            <a href="/editpeminjaman/{{ $row->id }}" 
-                                                            class="btn btn-success" >
+                                                            <td>
+                                                                <a href="/editpeminjaman/{{ $row->id }}"
+                                                                    class="btn btn-success">
                                                                     <i class="fa-solid fa-square-pen"></i>
-                                                            </a>                                    
-                                                            <a href="/tambahpengembalian" 
-                                                            class="btn btn-primary" >
-                                                            <i class="fadeIn animated bx bx-download"></i>
-                                                            </a>                                    
-                                                            <a href="#" class="btn btn-danger delete"
-                                                                        data-id="{{ $row->id }}"
-                                                                        data-nama="{{ $row->nama }}">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                            </a>
-                                                        </td>
-    													
-    												</tr>
-    												@endforeach
-    				
-    											</tbody>
-    										</table>
-                                        </form>    
+                                                                </a>
+                                                                <a href="/tambahpengembalian" class="btn btn-primary">
+                                                                    <i class="fadeIn animated bx bx-download"></i>
+                                                                </a>
+                                                                <a href="#" class="btn btn-danger delete"
+                                                                    data-id="{{ $row->id }}"
+                                                                    data-nama="{{ $row->nama }}">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </a>
+                                                            </td>
+
+                                                        </tr>
+                                                    @endforeach
+
+                                                </tbody>
+                                            </table>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +157,7 @@
                     @if (Session::has('error'))
                         toastr.error("{{ Session::get('error') }}")
                     @endif
-               
+
                     $('.delete').click(function() {
                         var mahasiswaid = $(this).attr('data-id');
                         var kategori = $(this).attr('data-kategori');

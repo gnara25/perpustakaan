@@ -115,7 +115,7 @@
                                                 <select class="form-control c-kodebuku @error('kodebuku') is-invalid @enderror"
                                                 name="kodebuku" aria-label="Default select example" id="kodebuku">
                                                 <option value="" disabled selected> Pilih kodebuku Siswa </option>
-                                                @foreach ($buku as $buku)
+                                                @foreach ($bukuid as $buku)
                                                     <option value="{{ $buku->id }}" data-namabuku='{{$buku->namabuku}}'>
                                                         {{ $buku->kodebuku }}</option>
                                                 @endforeach 
@@ -172,7 +172,7 @@
                                                     <span class="text">Tambah Peminjaman</span>
                                                 </button>
                                                 <div class=" mb-3">
-                                                    <a href="daftaranggota"
+                                                    <a href="/peminjaman"
                                                         class="btn btn-dark btn-icon-split mb-3 col-sm-3">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-arrow-circle-left"></i>
@@ -247,8 +247,7 @@
                 modal.find('.modal-body input').val(recipient)
             });
             </script>
-            <script>
-
+            <script type="text/javascript">
                 $(document).ready(function() {
                     // getBooks();
                     // function getBooks(){
@@ -272,10 +271,11 @@
                     $('#add').on('click',function(){
                        var html = '' ;
                        html+= '<div class="row mb-3 mr-4 ml-4" id="konten">';
-                       html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <select class="form-control c-kodebuku" id="kodebuku" name="kodebuku" aria-label="Default select example"> <option value="" disabled selected> Pilih kodebuku Siswa </option> </select> @error('kodebuku') <div class="invalid-feedback">{{ $message }}</div> @enderror <div class="valid-feedback"> Looks good! </div></div>' ;
-                       html+= `<div class="col-md-4"> <label for="validationCustom02" class="form-label"> Judul Buku</label> <input type="text" class="form-control c-namabuku" id="namabuku" value="" name="namabuku"> <div class="valid-feedback"> Looks good! </div> </div>`;
+                       html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <select class="form-control c-kodebuku" id="kodeid" name="kodebuku" aria-label="Default select example"> <option value="" disabled selected> Pilih kodebuku Siswa </option> @foreach ($bukuid as $k) <option value="{{ $k->id }}" data-judulbuku="{{$k->namabuku}}"> {{ $k->kodebuku }}</option> @endforeach  </select> @error('kodebuku') <div class="invalid-feedback">{{ $message }}</div> @enderror <div class="valid-feedback"> Looks good! </div></div>' ;
+                       html+= `<div class="col-md-4"> <label for="validationCustom02" class="form-label"> Judul Buku</label> <input type="text" class="form-control c-namabuku" id="namabukuid" value="" name="namabuku"> <div class="valid-feedback"> Looks good! </div> </div>`;
                        html+= '<div class="col-md-4"> <label for="validationCustomUsername" class="form-label">Jumlah Buku</label> <div class="input-group has-validation"> <input type="text" class="form-control" id="validationCustomUsername" name="Jumlah"> <div class="invalid-feedback"> Please choose a username. </div> <div class="col-md-4"> <span class="input-group-btn"> <a data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal" class="btn btn-primary"> <i class="fa-solid fa fa-search"></i> </a> </span><span class="input-group-btn"><a id="remove" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></span></div></div></div>';
                        html+= '</div>';
+                       
                        $('#table_field').append(html);
                         // getBooks()
                     });
@@ -284,15 +284,13 @@
                 $(document).on('click','#remove',function(){
                     $(this).closest('#konten').remove();
                 });
+
              
             </script>
-<<<<<<< HEAD
-=======
 
 
 
 
->>>>>>> 5f7ef72aca958374e11c0c5efbc267671635b506
 </body>
 
 </html>
