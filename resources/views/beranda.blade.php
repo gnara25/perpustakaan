@@ -20,7 +20,7 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div class="col-auto">
-                                            <div class="mb-0 text-white" > </div>
+                                            <div class="mb-0 text-white" > {{$buku}} </div>
                                         </div> 
                                         <div class="ms-auto font-35 text-white"><i class="bx bx-cart-alt"></i>
                                         </div>
@@ -37,15 +37,15 @@
                             <div class="card radius-15 bg-primary-blue">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
-                                        <div>
-                                            ccc
-                                        </div>
+                                        <div class="col-auto">
+                                            <div class="mb-0 text-white" > {{$anggota}} </div>
+                                        </div> 
                                         <div class="ms-auto font-35 text-white"><i class="bx bx-support"></i>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <p class="mb-0 text-white">Refund Request</p>
+                                            <p class="mb-0 text-white">Daftar Anggota</p>
                                         </div>
                                     </div>
                                 </div>
