@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DendaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\KategoriController;
@@ -108,5 +109,10 @@ Route::get('/idcard/{id}',[DaftarAnggotaController::class,'idcard'])->name('idca
 
 // petugas
 Route::get('/petugas',[LoginController::class,'petugas'])->name('petugas');
+
+// laporan
+Route::get('/denda',[DendaController::class,'denda'])->name('denda');
+Route::get('/laporanpinjam',[DendaController::class,'laporanpinjam'])->name('laporanpinjam');
+
 
 });

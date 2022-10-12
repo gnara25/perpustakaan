@@ -42,14 +42,6 @@
 				<div class="menu-title">Peminjaman</div>
 			</a>
 		</li>
-		<li>
-			<a  href="/pengembalian">
-				<div class="parent-icon icon-color-10"><i class="fadeIn animated bx bx-download"></i>
-				</div>
-				<div class="menu-title">Pengembalian</div>
-			</a>
-
-		</li>
 		<li class="menu-label">Daftar Anggota</li>
 		<li>
 			<a  href="/daftaranggota">
@@ -65,9 +57,25 @@
 				<div class="menu-title"> Petugas Perpus</div>
 			</a>
 		</li>
-		<li class="menu-label">Menu Denda</li>
+		<li class="menu-label">laporan</li>
 		<li>
-			<a  href="javascript:;">
+			<a  href="/laporanpinjam">
+				<div class="parent-icon icon-color-20"><i class="fadeIn animated bx bx-upload"></i>
+				</div>
+				<div class="menu-title">Peminjaman</div>
+			</a>
+
+		</li>
+		<li>
+			<a  href="/pengembalian">
+				<div class="parent-icon icon-color-10"><i class="fadeIn animated bx bx-download"></i>
+				</div>
+				<div class="menu-title">Pengembalian</div>
+			</a>
+
+		</li>
+		<li>
+			<a  href="/denda">
 				<div class="parent-icon icon-color-9"><i class="fadeIn animated bx bx-coin-stack"></i>
 				</div>
 				<div class="menu-title">Denda </div>
