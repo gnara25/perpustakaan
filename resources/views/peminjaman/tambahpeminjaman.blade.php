@@ -50,7 +50,7 @@
                                         <label for="nama" class="col-sm-4 col-form-label">Nama Siswa </label>
                                         <div class="col-sm-8">
                                             
-                                            <select class="form-control @error('nama') is-invalid @enderror"
+                                            <select class="form-control single-select @error('nama') is-invalid @enderror"
                                             name="nama" aria-label="Default select example" id="nama">
                                             <option value="" disabled selected> Pilih Nama Siswa </option>
                                             @foreach ($anggota as $anggota)
@@ -69,7 +69,7 @@
                                         <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('kelas') is-invalid @enderror" id="kelas"
-                                                name="kelas" value="{{ old('kelas') }}">
+                                                name="kelas" value="{{ old('kelas') }}" readonly>
                                             @error('kelas')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -112,7 +112,7 @@
 
                                             <div class="col-md-4">
                                                 <label for="validationCustom01" class="form-label"> Kode Buku :</label>
-                                                <select class="form-control @error('kodebuku') is-invalid @enderror"
+                                                <select class="form-control single-select @error('kodebuku') is-invalid @enderror"
                                                 name="kodebuku" aria-label="Default select example" id="kodebuku">
                                                 <option value="" disabled selected> Pilih kodebuku Siswa </option>
                                                 @foreach ($bukuid as $buku)
@@ -282,6 +282,21 @@
         });
     });
             </script>
+            <script src="assets/plugins/select2/js/select2.min.js"></script>
+    <script>
+        $('.single-select').select2({
+            theme: 'bootstrap4',
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            allowClear: Boolean($(this).data('allow-clear')),
+        });
+        $('.multiple-select').select2({
+            theme: 'bootstrap4',
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            allowClear: Boolean($(this).data('allow-clear')),
+        });
+    </script>
             <!-- <script type="text/javascript">
                 $(document).ready(function() {
                     getBooks();
