@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Daftarbuku;
 use App\Models\Peminjaman;
+use App\Models\DaftarAnggota;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,8 +15,11 @@ class LoginController extends Controller
 {
 
     public function beranda(){
-        $buku = Peminjaman::all()->count();
-        return view('beranda', compact('buku'));
+        $buku = Daftarbuku::all()->count();
+        $anggota = DaftarAnggota::all()->count();
+        $pinjam = Peminjaman::all()->count();
+        $petugas = User::all()->count();
+        return view('beranda', compact('buku','anggota','pinjam','petugas') );
     }
     public function Login(){
         return view('masuk.login');

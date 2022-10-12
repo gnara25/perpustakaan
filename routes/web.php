@@ -21,9 +21,6 @@ use App\Http\Controllers\DaftarAnggotaController;
 |
 */
 
-Route::get('/beranda', function () {
-    return view('beranda');
-});
 // Route::get('/idcard', function () {
 //     return view('anggota.idcard');
 // });
@@ -58,7 +55,8 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 //Menu Admin
 
-// Route::get('/beranda',[DaftarbukuController::class,'beranda'])->name('beranda');
+Route::get('/beranda',[LoginController::class,'beranda'])->name('beranda');
+
 
 Route::group(['middleware' => ['auth', 'Cekrole:admin,petugas']], function(){
 

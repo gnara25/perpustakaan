@@ -19,10 +19,10 @@
                             <div class="card radius-15 bg-voilet">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
-                                        <div class="col-auto">
-                                            <div class="mb-0 text-white" > </div>
-                                        </div> 
-                                        <div class="ms-auto font-35 text-white"><i class="bx bx-cart-alt"></i>
+                                        <div>
+                                            <h2 class="mb-0 text-white">{{$buku}}  </h2>
+                                        </div>
+                                        <div class="ms-auto font-35 text-white"><i class="fadeIn animated bx bx-book-alt"></i>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center">
@@ -38,14 +38,14 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            
+                                            <h2 class="mb-0 text-white">{{$anggota}}  </h2>
                                         </div>
-                                        <div class="ms-auto font-35 text-white"><i class="bx bx-support"></i>
+                                        <div class="ms-auto font-35 text-white"><i class="fadeIn animated bx bx-user-circle"></i>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <p class="mb-0 text-white">Refund Request</p>
+                                            <p class="mb-0 text-white">Daftar Anggota</p>
                                         </div>
                                     </div>
                                 </div>

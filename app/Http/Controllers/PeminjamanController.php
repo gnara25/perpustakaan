@@ -21,11 +21,16 @@ class PeminjamanController extends Controller
         $data = Peminjaman::with('buku',);
         return view('peminjaman.peminjaman', compact('data'));
     }
+   public function getBooks(Request $request)
+{
+    $data = Daftarbuku::all();
+    return json_encode($data);
+}
 
-    public function getBooks(){
-        $data = Daftarbuku::all();
-        return json_encode($data);
-    }
+    // public function getBooks(){
+    //     $data = Daftarbuku::all();
+    //     return json_encode($data);
+    // }
 
     public function tambahpeminjaman() 
     {

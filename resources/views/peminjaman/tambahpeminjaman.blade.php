@@ -78,7 +78,7 @@
                                     </div>
                                     
                                     <div class="row g-3 mb-3">
-                                        <div class="col">
+                                        <div class="col table-responsive">
                                             <center>
                                             <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Peminjaman
                                             </label>
@@ -92,7 +92,7 @@
                                             @enderror
                                             </center>
                                         </div>
-                                        <div class="col">
+                                        <div class="col table-responsive">
                                             <center>
                                                  <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             </label>
@@ -112,7 +112,7 @@
 
                                             <div class="col-md-4">
                                                 <label for="validationCustom01" class="form-label"> Kode Buku :</label>
-                                                <select class="form-control c-kodebuku @error('kodebuku') is-invalid @enderror"
+                                                <select class="form-control @error('kodebuku') is-invalid @enderror"
                                                 name="kodebuku" aria-label="Default select example" id="kodebuku">
                                                 <option value="" disabled selected> Pilih kodebuku Siswa </option>
                                                 @foreach ($bukuid as $buku)
@@ -129,7 +129,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <label for="validationCustom02" class="form-label"> Judul Buku :</label>
-                                                <input type="text" class="form-control c-namabuku" id="namabuku"
+                                                <input type="text" class="form-control " id="namabuku"
                                                     value="" name="namabuku">
                                                 <div class="valid-feedback">
                                                     Looks good!
@@ -144,17 +144,20 @@
                                                         Please choose a username.
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <span class="input-group-btn">
+                                                        {{-- <span class="input-group-btn">
                                                             <a data-bs-toggle="modal"
                                                                 data-bs-target="#exampleExtraLargeModal"
                                                                 class="btn btn-primary">
                                                                 <i class="fa-solid fa fa-search"></i>
                                                             </a>
-                                                        </span>
+                                                        </span> --}}
                                                         <span class="input-group-btn">
-                                                            <a id="add" class="btn btn-primary">
+                                                               <a id="idf" class="btn btn-primary" onclick="AddMasterDetail()">
                                                                 <i class="fa-solid fa-plus-circle"></i>
                                                             </a>
+                                                         <!--    <a id="add" class="btn btn-primary">
+                                                                <i class="fa-solid fa-plus-circle"></i>
+                                                            </a> -->
                                                         </span>
                                                     </div>
                                                 </div>
@@ -171,7 +174,7 @@
                                                     </span>
                                                     <span class="text">Tambah Peminjaman</span>
                                                 </button>
-                                                <div class=" mb-3">
+                                                <div class="mb-3">
                                                     <a href="/peminjaman"
                                                         class="btn btn-dark btn-icon-split mb-3 col-sm-3">
                                                         <span class="icon text-white-50">
@@ -248,24 +251,56 @@
             });
             </script>
             <script type="text/javascript">
+                 function AddMasterDetail() {
+                var idf = document.getElementById("idf").value;
+                stre=" <div class='row mb-3 mr-4 ml-4' id='srow" + idf + "'>";
+                stre=stre+"<div class='col-md-4 mb-4'> <label for='validationCustom01' class='form-label'> Kode Buku </label> <select class='form-control autofill' id='kodebukus" + idf + "' data-idf='" + idf + "' name='kodebuku[]'  aria-label='Default select example'> <option value='' disabled selected> Pilih kodebuku Siswa </option> @foreach ($bukuid as $k) <option value='{{ $k->id }}' data-judulbuku='{{$k->namabuku}}''> {{ $k->kodebuku }}</option> @endforeach  </select> @error('kodebuku') <div class='invalid-feedback'>{{ $message }}</div> @enderror <div class='valid-feedback'> Looks good! </div></div>";
+                stre=stre+"<div class='col-md-4 mb-4'> <label for='validationCustom02' class='form-label'> Judul Buku</label> <input type='text' class='form-control c-namabuku' id='total_stock_" + idf + "' value='' name='namabuku[]'> <div class='valid-feedback'> Looks good! </div> </div>";
+
+                stre=stre+"<div class='col-md-4 mb-4'> <label for='validationCustomUsername' class='form-label'>Jumlah Buku</label> <div class='input-group has-validation'> <input type='text' class='form-control' id='validationCustomUsername' name='Jumlah'> <div class='invalid-feedback'> Please choose a username. </div> <div class='col-md-4'> <span class='input-group-btn'> <a data-bs-toggle='modal' data-bs-target='#exampleExtraLargeModal' class='btn btn-primary'> <i class='fa-solid fa fa-search'></i> </a> </span><span class='input-group-btn'><a  onclick='removeFormField(\"#srow" + idf + "\"); return false;' class='btn btn-danger'><i class='fa-solid fa-trash'></i></a></span></div></div></div>";
+                stre=stre+"</div>";         
+
+            $("#table_field").append(stre);    
+            idf++;
+            document.getElementById("idf").value = idf;
+        }
+         function removeFormField(idf) {
+            $(idf).remove();
+        }
+        $(document).on("change", ".autofill", function(e) {
+            var select = $(this);
+            var kodebuku = select.val();
+            var idf = select.data("idf");
+
+         $.ajax({
+            url:'/getBooks',
+            method: 'GET',
+            data: { kodebukus: kodebuku },
+            dataType: 'JSON',
+                }).done(function(data) {
+            $("#total_stock_" + idf).val(data[0].namabuku);
+        });
+    });
+            </script>
+            <!-- <script type="text/javascript">
                 $(document).ready(function() {
-                    // getBooks();
-                    // function getBooks(){
-                    //     $.ajax({
-                    //         method: 'GET',
-                    //         url : '/getBooks',
-                    //         dataType: 'JSON',
-                    //         success: function(e){
-                    //             var html = ""
-                    //             e.map(val => {
-                    //                 html += `<option value="${val.id}"> ${val.kodebuku} </option>`
-                    //             })
-                    //             $('.c-kodebuku').html(html)
-                    //             $('.c-namabuku').val(e[0].namabuku)
-                    //             console.log($('.c-namabuku'))
-                    //         }
-                    //     })
-                    // }
+                    getBooks();
+                    function getBooks(){
+                        $.ajax({
+                            method: 'GET',
+                            url : '/getBooks',
+                            dataType: 'JSON',
+                            success: function(e){
+                                var html = ""
+                                e.map(val => {
+                                    html += `<option value="${val.id}"> ${val.kodebuku} </option>`
+                                })
+                                $('.c-kodebuku').html(html)
+                                $('.c-namabuku').val(e[0].namabuku)
+                                console.log($('.c-namabuku'))
+                            }
+                        })
+                    }
                     // //add field
                     // var aidi = 1;
                     $('#add').on('click',function(){
@@ -277,7 +312,7 @@
                        html+= '</div>';
                        
                        $('#table_field').append(html);
-                        // getBooks()
+                        getBooks();
                     });
                 });
 
@@ -287,7 +322,7 @@
 
              
             </script>
-
+ -->
 
 
 

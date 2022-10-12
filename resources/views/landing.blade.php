@@ -604,6 +604,31 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-2 col-sm-6 equal-height item">
+                        <div class="f-item link">
+                            <h4>Quick LInk</h4>
+                            <ul>
+                                <li>
+                                    <a href="#">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#">About us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Compnay History</a>
+                                </li>
+                                <li>
+                                    <a href="#">Management </a>
+                                </li>
+                                <li>
+                                    <a href="#">Features</a>
+                                </li>
+                                <li>
+                                    <a href="#">Blog Page</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     {{-- <div class="col-md-2 col-sm-6 equal-height item">
                         <div class="f-item link">
                             <h4>Layanan</h4>
