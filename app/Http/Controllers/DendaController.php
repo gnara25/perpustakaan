@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class DendaController extends Controller
 {
     public function denda (){
-        return view('laporan.denda');
+        $data = Denda::all();
+        return view('laporan.denda', compact('data'));
     }
    
 }

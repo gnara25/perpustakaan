@@ -53,7 +53,12 @@
                                                 $no = 1;
                                             @endphp
                                             <tbody>
-
+                                                @foreach ($data as $row)
+                                                <td>{{$no++}}</td>
+                                                <td>{{$row->nama}}</td>
+                                                <td>{{$row->kelas}}</td>
+                                                <td>Rp {{ number_format($row['denda'],2,'.','.') }}</td>
+                                                @endforeach
                                             </tbody>
 
                                         </table>

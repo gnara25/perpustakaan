@@ -7,6 +7,7 @@ use App\Models\Peminjaman;
 use App\Models\Pengembalian;
 use Illuminate\Http\Request;
 use App\Models\DaftarAnggota;
+use App\Models\Denda;
 
 class PengembalianController extends Controller
 {
@@ -46,7 +47,8 @@ class PengembalianController extends Controller
             'jumlah.required' => 'Isi Jumlah Yang Ingi diPinjam',
         ]);
 
-        $data = Pengembalian::create([
+        if ($request->denda > 0) {
+             $data = Pengembalian::create([
             'transaksi' => $request->transaksi,
             'nama' => $request->nama,
             'kelas' => $request->kelas,
@@ -55,11 +57,31 @@ class PengembalianController extends Controller
             'tanggalpengembalian' => $request->tanggalpengembalian,
             'jumlah' => $request->jumlah,
         ]);
+            $denda = Denda::create([
+                'nama' => $request->nama,
+                'kelas' => $request->kelas,
+                'denda' => $request->denda,
+            ]);
 
         $databuku =  Daftarbuku::findOrFail($request->kodebuku);
         $databuku->jumlah += $request->jumlah;
         $databuku->save();
-         
+
+        } else {
+               $data = Pengembalian::create([
+            'transaksi' => $request->transaksi,
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+            'namabuku' => $request->namabuku,
+            'kodebuku' => $request->kodebuku,
+            'tanggalpengembalian' => $request->tanggalpengembalian,
+            'jumlah' => $request->jumlah,
+        ]);
+        $databuku =  Daftarbuku::findOrFail($request->kodebuku);
+        $databuku->jumlah += $request->jumlah;
+        $databuku->save();
+        }
+               
         return redirect()->route('pengembalian')->with('success', 'data berhasil ditambah');
     }
 
