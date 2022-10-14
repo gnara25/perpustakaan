@@ -82,7 +82,7 @@
                                             <center>
                                             <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Peminjaman
                                             </label>
-                                            <input type="date" value=""
+                                            <input type="date" value="{{date('Y-m-d')}}"
                                                 class="form-control text-center @error('tanggalpinjam')
                                                 is-invalid
                                                 @enderror"
@@ -96,7 +96,7 @@
                                             <center>
                                                  <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             </label>
-                                            <input type="date" value=""
+                                            <input type="date" value="{{date('Y-m-d', strtotime('+3 days'))}}"
                                                 class="form-control text-center @error('tanggalpengembalian')
                                                 is-invalid
                                                 @enderror"

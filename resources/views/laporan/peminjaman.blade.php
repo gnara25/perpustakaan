@@ -44,7 +44,7 @@
                                                 <tr>
                                                     <th>No.</th>
                                                     <th>Nama Siswa</th>
-                                                    <th>kelas</th>
+                                                    <th>Kelas</th>
                                                     <th>Judul Buku</th>
                                                     <th>Jumlah</th>
                                                     <th>Tanggal Peminjaman</th>
@@ -55,7 +55,14 @@
                                                 $no = 1;
                                             @endphp
                                             <tbody>
-
+                                                @foreach ($data as $row )
+                                                   <td>{{$no++}}</td>
+                                                   <td>{{$row->idnama->nama}}</td>
+                                                   <td>{{$row->kelas}}</td>
+                                                   <td>{{$row->namabuku}}</td>
+                                                   <td>{{$row->jumlah}}</td>
+                                                   <td>{{$row->tanggalpinjam}}</td> 
+                                                @endforeach
                                             </tbody>
 
                                         </table>

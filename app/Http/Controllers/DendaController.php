@@ -10,7 +10,5 @@ class DendaController extends Controller
     public function denda (){
         return view('laporan.denda');
     }
-    public function laporanpinjam (){
-        return view('laporan.peminjaman');
-    }
+   
 }

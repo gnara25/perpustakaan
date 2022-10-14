@@ -10,6 +10,7 @@ use App\Http\Controllers\DaftarbukuController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\DaftarAnggotaController;
+use App\Http\Controllers\LaporanpinjamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,7 +113,7 @@ Route::get('/petugas',[LoginController::class,'petugas'])->name('petugas');
 
 // laporan
 Route::get('/denda',[DendaController::class,'denda'])->name('denda');
-Route::get('/laporanpinjam',[DendaController::class,'laporanpinjam'])->name('laporanpinjam');
+Route::get('/laporanpinjam',[LaporanpinjamController::class,'laporanpinjam'])->name('laporanpinjam');
 
 
 });
