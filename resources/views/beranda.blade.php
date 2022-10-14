@@ -20,7 +20,8 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <h2 class="mb-0 text-white">{{$buku}}  </h2>
+                                            <h2 class="mb-0 text-white">{{$buku}} <i
+                                                    class='font-14 text-white'>Buku</i>  </h2>
                                         </div>
                                         <div class="ms-auto font-35 text-white"><i class="fadeIn animated bx bx-book-alt"></i>
                                         </div>
@@ -38,7 +39,8 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <h2 class="mb-0 text-white">{{$anggota}}  </h2>
+                                            <h2 class="mb-0 text-white">{{$anggota}}<i
+                                                    class='font-14 text-white'> Orang</i>  </h2>
                                         </div>
                                         <div class="ms-auto font-35 text-white"><i class="fadeIn animated bx bx-user-circle"></i>
                                         </div>

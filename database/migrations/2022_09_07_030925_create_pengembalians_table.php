@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('kodebuku');
             $table->string('tanggalpengembalian');
             $table->string('jumlah');
+            $table->string('denda')->nullable();
             $table->timestamps();
         });
     }

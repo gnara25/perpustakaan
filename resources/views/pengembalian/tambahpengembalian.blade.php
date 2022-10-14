@@ -38,7 +38,7 @@
                                     <div class="form-group row mb-3">
                                         <label for="transaksi" class="col-sm-4 col-form-label">No.Transaksi :</label>
                                         <div class="col-sm-8">
-                                            <select class="form-control @error('transaksi') is-invalid @enderror"
+                                            <select class="form-control single-select @error('transaksi') is-invalid @enderror"
                                                 id="transaksi" name="transaksi" aria-label="Default select example">
                                                 <option value="" disabled selected>Pilih No.Transaksi</option>
                                                 @foreach ($pengembalin as $transaksi)
@@ -86,6 +86,16 @@
                                             <input type="text"
                                                 class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas">
                                             @error('kelas')
+                                                <div class="invalid-feedback">{{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                     <div class="form-group row mb-3">
+                                        <label for="kelas" class="col-sm-4 col-form-label">Denda </label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('denda') is-invalid @enderror" id="denda" name="denda">
+                                            @error('denda')
                                                 <div class="invalid-feedback">{{ $message }} </div>
                                             @enderror
                                         </div>
@@ -222,6 +232,21 @@
                 });
             });
         </script>
+         <script src="assets/plugins/select2/js/select2.min.js"></script>
+    <script>
+        $('.single-select').select2({
+            theme: 'bootstrap4',
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            allowClear: Boolean($(this).data('allow-clear')),
+        });
+        $('.multiple-select').select2({
+            theme: 'bootstrap4',
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            allowClear: Boolean($(this).data('allow-clear')),
+        });
+    </script>
 </body>
 
 </html>
