@@ -33,24 +33,16 @@
                     <div class="card radius-15">
                         <div class="card-body">
                             <div class="row">
-                                <form action="/tambahpengembalianpost" method="POST" enctype="multipart/form-data">
+                                <form action="/tambahpengembalianpost/{{$pengembalin->id}}" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                
                                     <div class="form-group row mb-3">
                                         <label for="transaksi" class="col-sm-4 col-form-label">No.Transaksi :</label>
+                                        
                                         <div class="col-sm-8">
-                                            <select class="form-control single-select @error('transaksi') is-invalid @enderror"
-                                                id="transaksi" name="transaksi" aria-label="Default select example">
-                                                <option value="" disabled selected>Pilih No.Transaksi</option>
-                                                @foreach ($pengembalin as $transaksi)
-                                                    <option value="{{ $transaksi->id}}"
-                                                        data-nama='{{$transaksi->anggota->nama}}'
-                                                        data-kelas='{{ $transaksi->kelas}}'
-                                                        data-kodebuku='{{ $transaksi->idbuku->kodebuku}}'
-                                                        data-judul='{{ $transaksi->namabuku}}' 
-                                                        data-jumlah='{{ $transaksi->jumlah}}'>
-                                                        {{ $transaksi->transaksi }}</option>
-                                                @endforeach
-                                            </select>
+                                            <input type="text"
+                                                class="form-control @error('transaksi') is-invalid @enderror" id="nama"
+                                                name="transaksi" value="{{$pengembalin->transaksi}}" readonly>
                                             @error('transaksi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -61,20 +53,22 @@
                                         <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('nama') is-invalid @enderror" id="nama"
-                                                name="nama" value="{{ old('nama') }}" readonly>
+                                                name="nama" value="{{$pengembalin->anggota->nama}}" readonly>
                                             @error('nama')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
-                                        <label for="tanggalpengembalian" class="col-sm-4 col-form-label">Tanggal Pengembalian
+                                        <label for="tanggalpengembalian" class="col-sm-4 col-form-label">Tanggal
+                                            Pengembalian
                                             :</label>
                                         <div class="col-sm-8">
                                             <input type="date" value="<?= date('Y-m-d') ?>"
-                                                class="form-control @error('tanggalpengembalian') 
-                                                    is-invalid
-                                                @enderror" id="tanggalpengembalian" name="tanggalpengembalian" >
+                                                class="form-control @error('tanggalpengembalian')
+is-invalid
+@enderror"
+                                                id="tanggalpengembalian" name="tanggalpengembalian">
                                             @error('tanggalpengembalian')
                                                 <div class="invalid-feedback">{{ $message }} </div>
                                             @enderror
@@ -84,33 +78,47 @@
                                         <label for="kelas" class="col-sm-4 col-form-label">Kelas :</label>
                                         <div class="col-sm-8">
                                             <input type="text"
-                                                class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas">
+                                                class="form-control @error('kelas') is-invalid @enderror" id="kelas" value="{{$pengembalin->kelas}}"
+                                                name="kelas">
                                             @error('kelas')
                                                 <div class="invalid-feedback">{{ $message }} </div>
                                             @enderror
                                         </div>
                                     </div>
-                                     <div class="form-group row mb-3">
+                                    <div class="form-group row mb-3">
                                         <label for="kelas" class="col-sm-4 col-form-label">Denda </label>
                                         <div class="col-sm-8">
+                                            @if ($pengembalin->denda[0]->denda > 0)
                                             <input type="text"
-                                                class="form-control @error('denda') is-invalid @enderror" id="denda" name="denda">
+                                            class="form-control @error('denda') is-invalid @enderror" id="denda" value="{{$pengembalin->denda[0]->denda}}"
+                                            name="denda">
+                                        @error('denda')
+                                            <div class="invalid-feedback">{{ $message }} </div>
+                                        @enderror
+                                        @else
+                                        <input type="text"
+                                                class="form-control @error('denda') is-invalid @enderror" id="denda" value="Masa Peminjaman"
+                                                name="denda">
                                             @error('denda')
                                                 <div class="invalid-feedback">{{ $message }} </div>
                                             @enderror
+                                            @endif
+                                            
                                         </div>
                                     </div>
                                     <div class="row mb-3 mr-4 ml-4" id="add_item_btn">
                                         <div class="col-md-4">
                                             <label for="validationCustom01" class="form-label"> Kode Buku </label>
-                                            <input type="text" class="form-control" value="{{old('kodebuku')}}" name="kodebuku" id="kodebuku" readonly>
+                                            <input type="text" class="form-control" value="{{$pengembalin->idbuku->kodebuku}}"
+                                                name="kodebuku" id="kodebuku"  readonly>
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="validationCustom02" class="form-label"> Judul Buku</label>
-                                            <input type="text" class="form-control" id="judul" value="{{old('namabuku')}}" name="namabuku" readonly>
+                                            <input type="text" class="form-control" id="judul"
+                                                value="{{$pengembalin->namabuku}}" name="namabuku" readonly>
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
@@ -118,7 +126,8 @@
                                         <div class="col-md-4">
                                             <label for="validationCustomUsername" class="form-label">Jumlah Buku</label>
                                             <div class="input-group has-validation">
-                                                <input type="text" class="form-control" id="jumlah" name="jumlah" readonly>
+                                                <input type="text" class="form-control" id="jumlah"
+                                                    name="jumlah" value="{{$pengembalin->jumlah}}" readonly>
                                                 <div class="invalid-feedback">
                                                     Please choose a username.
                                                 </div>
@@ -149,7 +158,8 @@
                                                     <span class="text">Proses Pengembalian</span>
                                                 </button>
                                                 <div class=" mb-3">
-                                                    <a href="/pengembalian" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
+                                                    <a href="/pengembalian"
+                                                        class="btn btn-dark btn-icon-split mb-3 col-sm-3">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-arrow-circle-left"></i>
                                                         </span>
@@ -197,11 +207,13 @@
                 const kodebuku = e.target.options[e.target.selectedIndex].dataset.kodebuku
                 const judul = e.target.options[e.target.selectedIndex].dataset.judul
                 const jumlah = e.target.options[e.target.selectedIndex].dataset.jumlah
+                const denda = e.target.options[e.target.selectedIndex].dataset.denda
                 document.getElementById('nama').value = nama;
                 document.getElementById('kelas').value = kelas;
                 document.getElementById('kodebuku').value = kodebuku;
                 document.getElementById('judul').value = judul;
                 document.getElementById('jumlah').value = jumlah;
+                document.getElementById('denda').value = denda;
             }
 
             $(document).ready(function() {
@@ -232,21 +244,21 @@
                 });
             });
         </script>
-         <script src="assets/plugins/select2/js/select2.min.js"></script>
-    <script>
-        $('.single-select').select2({
-            theme: 'bootstrap4',
-            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-            placeholder: $(this).data('placeholder'),
-            allowClear: Boolean($(this).data('allow-clear')),
-        });
-        $('.multiple-select').select2({
-            theme: 'bootstrap4',
-            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-            placeholder: $(this).data('placeholder'),
-            allowClear: Boolean($(this).data('allow-clear')),
-        });
-    </script>
+        <script src="assets/plugins/select2/js/select2.min.js"></script>
+        <script>
+            $('.single-select').select2({
+                theme: 'bootstrap4',
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+                placeholder: $(this).data('placeholder'),
+                allowClear: Boolean($(this).data('allow-clear')),
+            });
+            $('.multiple-select').select2({
+                theme: 'bootstrap4',
+                width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+                placeholder: $(this).data('placeholder'),
+                allowClear: Boolean($(this).data('allow-clear')),
+            });
+        </script>
 </body>
 
 </html>

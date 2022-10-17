@@ -39,33 +39,43 @@
                                     <hr>
                                     <div class="table-responsive">
                                         <table id="example" class="table table-striped table-bordered"
-                                            style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>No.</th>
-                                                    <th>Nama Siswa</th>
-                                                    <th>Kelas</th>
-                                                    <th>Judul Buku</th>
-                                                    <th>Jumlah</th>
-                                                    <th>Tanggal Peminjaman</th>
-
-                                                </tr>
-                                            </thead>
-                                            @php
-                                                $no = 1;
-                                            @endphp
-                                            <tbody>
-                                                @foreach ($data as $row )
-                                                   <td>{{$no++}}</td>
-                                                   <td>{{$row->idnama->nama}}</td>
-                                                   <td>{{$row->kelas}}</td>
-                                                   <td>{{$row->namabuku}}</td>
-                                                   <td>{{$row->jumlah}}</td>
-                                                   <td>{{$row->tanggalpinjam}}</td> 
-                                                @endforeach
-                                            </tbody>
-
-                                        </table>
+                                                style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        {{-- <th>
+                                                            <input type="checkbox" name="select_all" id="select_all">
+                                                        </th> --}}
+                                                        <th>No.</th>
+                                                        <th>Nama Siswa</th>
+                                                        <th>Kelas</th>
+                                                        <th>Judul Buku</th>
+                                                        <th>Jumlah</th>
+                                                        <th>Tanggal Peminjaman</th>
+                                                    </tr>
+                                                </thead>
+                                                @php
+                                                    $no = 1;
+                                                @endphp
+                                                <tbody>
+                                                    @foreach ($data as $row)
+                                                        <tr>
+                                                            {{-- <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
+                                                            </td> --}}
+                                                            <td scope="row">{{ $no++ }}</td>
+                                                            <td>{{$row->idnama->nama}}</td>
+                                                            <td>{{ $row->kelas }}</td>
+                                                            <td>{{ $row->namabuku }}</td>
+                                                            <td>{{ $row->jumlah }}</td>
+                                                            <td>{{ Carbon\Carbon::parse($row->tanggalpinjam)->format('d-m-Y') }}
+                                                            </td>
+                                                            
+                                                            <td> 
+                                                            </td>
+                                        
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
                                     </div>
                                 </div>
                             </div>

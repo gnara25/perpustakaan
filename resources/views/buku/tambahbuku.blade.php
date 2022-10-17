@@ -134,9 +134,9 @@
                                     <div class="form-group row mb-3">
                                         <label for="deskripsi" class="col-sm-4 col-form-label">Deskripsi  :</label>
                                         <div class="col-sm-8">
-                                            <input type="text"
+                                            <textarea type="text"
                                                 class="form-control @error('deskripsi') is-invalid @enderror"
-                                                id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}">
+                                                id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}"></textarea>
                                             @error('deskripsi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror

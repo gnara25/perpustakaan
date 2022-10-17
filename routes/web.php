@@ -93,8 +93,8 @@ Route::get('/getBooks', [PeminjamanController::class, 'getBooks'])->name('getBoo
 
 // pengembalian
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');
-Route::get('/tambahpengembalian',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
-Route::post('/tambahpengembalianpost',[PengembalianController::class,'tambahpengembalianpost'])->name('tambahpengembalianpost');
+Route::get('/tambahpengembalian/{id}',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
+Route::post('/tambahpengembalianpost/{id}',[PengembalianController::class,'tambahpengembalianpost'])->name('tambahpengembalianpost');
 Route::get('/deletepengembalian/{id}',[PengembalianController::class,'deletepengembalian'])->name('deletepengembalian');
 
 // anggota

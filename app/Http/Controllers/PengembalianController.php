@@ -21,14 +21,15 @@ class PengembalianController extends Controller
         return view('pengembalian.pengembalian', compact('data'));
     }
 
-    public function tambahpengembalian(){
+    public function tambahpengembalian($id){
         $data = DaftarAnggota::all();
         $buku = Daftarbuku::all();
-        $pengembalin = Peminjaman::all();
+        $pengembalin = Peminjaman::with('anggota','idbuku','denda')->findOrFail($id);
+        
         return view('pengembalian.tambahpengembalian', compact('data','buku','pengembalin'));
     }
 
-    public function tambahpengembalianpost(request $request){
+    public function tambahpengembalianpost(request $request,$id){
         $this->validate($request, [
 
             'transaksi' => ['required','unique:pengembalians,transaksi'],
@@ -57,17 +58,19 @@ class PengembalianController extends Controller
             'tanggalpengembalian' => $request->tanggalpengembalian,
             'jumlah' => $request->jumlah,
         ]);
-            $denda = Denda::create([
-                'nama' => $request->nama,
-                'kelas' => $request->kelas,
-                'denda' => $request->denda,
+        $ss=Peminjaman::findOrFail($id);
+            $ss->update([
+                'status'=>'1',
             ]);
-
         $databuku =  Daftarbuku::findOrFail($request->kodebuku);
         $databuku->jumlah += $request->jumlah;
         $databuku->save();
 
         } else {
+            $ss=Peminjaman::findOrFail($id);
+            $ss->update([
+                'status'=>'1',
+            ]);
                $data = Pengembalian::create([
             'transaksi' => $request->transaksi,
             'nama' => $request->nama,

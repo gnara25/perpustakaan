@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 class DendaController extends Controller
 {
     public function denda (){
-        $data = Denda::all();
+        $data = Denda::with('peminjaman.anggota')->get();
+        // $denda=Denda::whereRaw('tanggalpengembalian > now()')->update([
+        //     'denda'=> '1000'
+        // ])->daily();
         return view('laporan.denda', compact('data'));
     }
    
