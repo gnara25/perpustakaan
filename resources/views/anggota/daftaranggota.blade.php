@@ -35,10 +35,10 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                @if (auth()->user()->role == 'admin')       
+                                {{-- @if (auth()->user()->role == 'admin')        --}}
                                 <a id="table2-new-row-button" href="tambahanggota"
                                     class="btn btn-outline-info btn-sm mb-2">Tambah Anggota</a>
-                                @endif
+                            
                                 {{-- <button onclick="cetakidcard('{{ route('cetakidcard') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak ID Card</button> --}}
                                 <div class="row">
                                     <hr>

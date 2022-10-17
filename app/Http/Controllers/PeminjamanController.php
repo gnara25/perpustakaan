@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Peminjaman;
-use App\Models\DaftarAnggota;
-use App\Models\Daftarbuku;
-use Illuminate\Http\Request;
 use DB;
+use App\Models\Daftarbuku;
+use App\Models\Denda;
+use App\Models\Peminjaman;
+use Illuminate\Http\Request;
+use App\Models\DaftarAnggota;
+use App\Models\laporanpinjam;
 
 class PeminjamanController extends Controller
 {
@@ -76,10 +78,22 @@ class PeminjamanController extends Controller
             'kelas' => $request->kelas,
             'kodebuku' => $request->kodebuku,
             'namabuku' => $request->namabuku,
-            'tanggalpinjam' => $request->tanggalpinjam,
             'tanggalpengembalian' => $request->tanggalpengembalian,
             'jumlah' => $request->jumlah,
+        ])->id;
+        $denda = Denda::create([
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+        'peminjaman_id'=>  $data,
         ]);
+
+        $pinjam = laporanpinjam::create([
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+            'namabuku' => $request->namabuku,
+            'jumlah' => $request->jumlah,
+        ]);
+
             $databuku->jumlah -= $request->jumlah;
             $databuku->save();
         }else  {

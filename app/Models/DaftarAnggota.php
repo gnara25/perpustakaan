@@ -14,5 +14,6 @@ class DaftarAnggota extends Model
      public function idanggota()
     {
         return $this->hasMany(Peminjaman::class);
+        return $this->hasMany(laporanpinjam::class);
     }
 }

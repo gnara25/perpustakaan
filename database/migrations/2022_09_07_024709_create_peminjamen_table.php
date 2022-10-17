@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('kelas');
             $table->string('kodebuku');
             $table->string('namabuku');
-            $table->date('tanggalpinjam');
+            $table->string('status')->default(0);
             $table->date('tanggalpengembalian');
             $table->string('jumlah');
             $table->timestamps();

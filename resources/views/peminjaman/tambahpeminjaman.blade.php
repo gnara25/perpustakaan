@@ -77,26 +77,12 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="row g-3 mb-3">
-                                        <div class="col table-responsive">
-                                            <center>
-                                            <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Peminjaman
-                                            </label>
-                                            <input type="date" value=""
-                                                class="form-control text-center @error('tanggalpinjam')
-                                                is-invalid
-                                                @enderror"
-                                                id="tanggalpinjam" name="tanggalpinjam" >
-                                            @error('tanggalpinjam')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                            </center>
-                                        </div>
-                                        <div class="col table-responsive">
-                                            <center>
+                                   
+                                        <div class="form-group row mb-3">
                                                  <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             </label>
-                                            <input type="date" value=""
+                                            <div class="col-sm-8">
+                                            <input type="date" value="{{date('Y-m-d', strtotime('+3 days'))}}"
                                                 class="form-control text-center @error('tanggalpengembalian')
                                                 is-invalid
                                                 @enderror"
@@ -104,8 +90,9 @@
                                             @error('tanggalpengembalian')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-                                            </center>
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                     <div id="table_field">
                                         <div class="row mb-3 mr-4 ml-4">

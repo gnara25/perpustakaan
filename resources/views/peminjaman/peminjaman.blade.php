@@ -69,6 +69,8 @@
                                                         $no = 1;
                                                     @endphp
                                                     @foreach ($data as $row)
+                                                    @if ($row->status == 0)
+                                                        
                                                         <?php
                                                         
                                                         $u_denda = 1000;
@@ -100,7 +102,7 @@
                                                             <td>{{ $row->idbuku->kodebuku }}</td>
                                                             <td>{{ $row->namabuku }}</td>
                                                             <td>{{ $row->jumlah }}</td>
-                                                            <td>{{ Carbon\Carbon::parse($row->tanggalpinjam)->format('d-m-Y') }}
+                                                            <td>{{ Carbon\Carbon::parse($row->created_at)->format('d-m-Y') }}
                                                             </td>
                                                             <td>{{ Carbon\Carbon::parse($row->tanggalpengembalian)->format('d-m-Y') }}
                                                             </td>
@@ -123,7 +125,7 @@
                                                                     class="btn btn-success">
                                                                     <i class="fa-solid fa-square-pen"></i>
                                                                 </a>
-                                                                <a href="/tambahpengembalian" class="btn btn-primary">
+                                                                <a href="/tambahpengembalian/{{$row->id}}" class="btn btn-primary">
                                                                     <i class="fadeIn animated bx bx-download"></i>
                                                                 </a>
                                                                 <a href="#" class="btn btn-danger delete"
@@ -134,6 +136,7 @@
                                                             </td>
 
                                                         </tr>
+                                                        @endif
                                                     @endforeach
 
                                                 </tbody>

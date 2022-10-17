@@ -34,10 +34,10 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                @if (auth()->user()->role == 'admin')
+                               
                                 <a id="table2-new-row-button" href="tambahbuku"
                                     class="btn btn-outline-info btn-sm mb-2"><i class="fa-solid fa-plus"></i>Tambah Buku</a>
-                                    @endif
+                                  
                                     <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak Barcode</button>
                                 <div class="table-responsive">
                                     <hr>

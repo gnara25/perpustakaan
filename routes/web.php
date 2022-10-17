@@ -10,6 +10,7 @@ use App\Http\Controllers\DaftarbukuController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\DaftarAnggotaController;
+use App\Http\Controllers\LaporanpinjamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,8 +95,8 @@ Route::get('/result',[PeminjamanController::class,'result'])->name('result');
 
 // pengembalian
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');
-Route::get('/tambahpengembalian',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
-Route::post('/tambahpengembalianpost',[PengembalianController::class,'tambahpengembalianpost'])->name('tambahpengembalianpost');
+Route::get('/tambahpengembalian/{id}',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
+Route::post('/tambahpengembalianpost/{id}',[PengembalianController::class,'tambahpengembalianpost'])->name('tambahpengembalianpost');
 Route::get('/deletepengembalian/{id}',[PengembalianController::class,'deletepengembalian'])->name('deletepengembalian');
 
 // anggota
@@ -114,7 +115,7 @@ Route::get('/petugas',[LoginController::class,'petugas'])->name('petugas');
 
 // laporan
 Route::get('/denda',[DendaController::class,'denda'])->name('denda');
-Route::get('/laporanpinjam',[DendaController::class,'laporanpinjam'])->name('laporanpinjam');
+Route::get('/laporanpinjam',[LaporanpinjamController::class,'laporanpinjam'])->name('laporanpinjam');
 
 
 });

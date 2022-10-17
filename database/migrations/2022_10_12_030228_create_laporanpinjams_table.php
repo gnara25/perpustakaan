@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('kelas');
             $table->string('namabuku');
             $table->string('jumlah');
-            $table->date('tanggalpinjam');
             $table->timestamps();
         });
     }

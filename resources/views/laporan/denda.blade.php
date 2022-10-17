@@ -54,10 +54,15 @@
                                             @endphp
                                             <tbody>
                                                 @foreach ($data as $row)
+                                                @if ($row->denda > 0)              
+                                                <tr>
                                                 <td>{{$no++}}</td>
-                                                <td>{{$row->nama}}</td>
+                                                <td>{{$row->peminjaman->anggota->nama}}</td>
                                                 <td>{{$row->kelas}}</td>
                                                 <td>Rp {{ number_format($row['denda'],2,'.','.') }}</td>
+                                                </tr>
+                                                @endif
+
                                                 @endforeach
                                             </tbody>
 

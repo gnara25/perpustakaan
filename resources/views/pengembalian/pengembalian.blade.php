@@ -61,7 +61,7 @@
                                                 @foreach ($data as $row)
                                                     <tr>
                                                         <td>{{ $no++ }}</td>
-                                                        <td>{{ $row->idtransaksi->transaksi }}</td>
+                                                        <td>{{ $row->transaksi }}</td>
                                                         <td>{{ $row->nama }}</td>
                                                         <td>{{ $row->kelas }}</td>
                                                         <td>{{ $row->idpengembalian->kodebuku }}</td>

@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('dendas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('peminjaman_id');
             $table->string('kelas');
-            $table->string('denda');
+            $table->string('denda')->default(0);
             $table->timestamps();
         });
     }

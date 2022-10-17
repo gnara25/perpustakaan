@@ -52,7 +52,7 @@ class LoginController extends Controller
             'username' => 'required',
             'name' => 'required',
             'notelepon' => 'required',
-            'email' => 'required|email:rfc,dns|unique:users',
+            'email' => 'required|unique:users',
             'password' => 'required|min:8',
         ],[
             'username.required' => 'Username Harus Di isi',
@@ -60,7 +60,7 @@ class LoginController extends Controller
             'notelepon.required' => 'No Telepon Harus Di Isi',
             'email.required' => 'Email Harus Diisi',
             'email' => 'Email Yang Anda Masukan Tidak Benar',
-            'unique' => 'Email Ini Suadah Digunakan',
+            'unique' => 'Email Ini Sudah Digunakan',
             'password.required' => 'Password Harus Diisi',
             'password.min' => 'Password harus minimal 8 karakter',
         ]);

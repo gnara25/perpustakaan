@@ -34,9 +34,9 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                @if (auth()->user()->role == 'admin')
+                                
                                 <a id="table2-new-row-button" href="tambahkategori" class="btn btn-outline-info btn-sm mb-2">Tambah Kategori</a>
-                                @endif
+                               
                                 <div class="table-responsive">
                                     <hr>
                                     <div class="table-responsive">
