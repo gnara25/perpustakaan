@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    @include('template.head')
+@include('template.head')
+
 <body>
     <!-- wrapper -->
     <div class="wrapper">
-        
+
 
         @include('template.navbar')
 
@@ -34,11 +35,14 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                               
+
                                 <a id="table2-new-row-button" href="tambahbuku"
-                                    class="btn btn-outline-info btn-sm mb-2"><i class="fa-solid fa-plus"></i>Tambah Buku</a>
-                                  
-                                    <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak Barcode</button>
+                                    class="btn btn-outline-info btn-sm mb-2"><i class="fa-solid fa-plus"></i>Tambah
+                                    Buku</a>
+
+                                <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"
+                                    class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak
+                                    Barcode</button>
                                 <div class="table-responsive">
                                     <hr>
                                     <div class="table-responsive">
@@ -63,8 +67,8 @@
                                                     <th>Lokasi Buku</th>
                                                     <th>Deskripsi</th>
                                                     <th>Foto</th>
-                                                    @if (auth()->user()->role == 'admin')      
-                                                    <th>Aksi</th>
+                                                    @if (auth()->user()->role == 'admin')
+                                                        <th>Aksi</th>
                                                     @endif
 
                                                 </thead>
@@ -74,7 +78,8 @@
                                                     @endphp
                                                     @foreach ($data as $row)
                                                         <tr>
-                                                            <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
+                                                            <td><input type="checkbox" id="example" name="id[]"
+                                                                    value="{{ $row->id }}">
                                                             </td>
                                                             <td>{{ $no++ }}</td>
                                                             <td>{{ $row->namabuku }}</td>
@@ -91,20 +96,19 @@
                                                                     alt="" style="width: 70px; height: 70px">
                                                             </td>
                                                             @if (auth()->user()->role == 'admin')
-                                                            <td class="b">
-                                                                <a href="/editbuku/{{ $row->id }}" 
-                                                                    class="btn btn-success">
-                                                                    <i class="fa-solid fa-square-pen"></i>
-                                                                </a>
-                                                                <a href="#" class="btn btn-danger delete"
-                                                                    data-id="{{ $row->id }}"
-                                                                    data-nama="{{ $row->nama }}">
-                                                                    <i class="fa-solid fa-trash"></i>
-                                                                </a>
-                                                            </td>
+                                                                <td class="b">
+                                                                    <a href="/editbuku/{{ $row->id }}"
+                                                                        class="btn btn-success">
+                                                                        <i class="fa-solid fa-square-pen"></i>
+                                                                    </a>
+                                                                    <a href="#" class="btn btn-danger delete"
+                                                                        data-id="{{ $row->id }}"
+                                                                        data-nama="{{ $row->nama }}">
+                                                                        <i class="fa-solid fa-trash"></i>
+                                                                    </a>
+                                                                </td>
                                                             @endif
                                                         </tr>
-                                                        
                                                     @endforeach
 
                                                 </tbody>
@@ -130,7 +134,7 @@
                     @if (Session::has('error'))
                         toastr.error("{{ Session::get('error') }}")
                     @endif
-                
+
                     $('.delete').click(function() {
                         var mahasiswaid = $(this).attr('data-id');
                         var nama = $(this).attr('data-nama');
@@ -152,7 +156,7 @@
                                 }
                             });
                     });
-                
+
                     $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
                         var button = $(event.relatedTarget) // Button that triggered the modal
                         var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -163,15 +167,15 @@
                         modal.find('.modal-body input').val(recipient)
                     });
 
-                        $('[name=select_all]').on('click', function () {
-                            $(':example').prop('checked', this.checked);
-                        });
+                    $('[name=select_all]').on('click', function() {
+                        $(':example').prop('checked', this.checked);
+                    });
 
                     function cetakbarcode(url) {
                         if ($('input:checked').length < 1) {
-                            swal ({
+                            swal({
                                 icon: "warning",
-                               text : "Harap Pilih Buku"
+                                text: "Harap Pilih Buku"
                             });
                             return;
                         } else {

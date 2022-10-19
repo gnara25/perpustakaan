@@ -128,11 +128,11 @@
                                                                 <a href="/tambahpengembalian/{{$row->id}}" class="btn btn-primary">
                                                                     <i class="fadeIn animated bx bx-download"></i>
                                                                 </a>
-                                                                <a href="#" class="btn btn-danger delete"
+                                                                {{-- <a href="#" class="btn btn-danger delete"
                                                                     data-id="{{ $row->id }}"
                                                                     data-nama="{{ $row->nama }}">
                                                                     <i class="fa-solid fa-trash"></i>
-                                                                </a>
+                                                                </a> --}}
                                                             </td>
 
                                                         </tr>

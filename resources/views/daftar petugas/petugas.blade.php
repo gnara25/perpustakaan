@@ -18,13 +18,13 @@
                 <div class="page-content">
                     <!--breadcrumb-->
                     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">Menu Buku</div>
+                        <div class="breadcrumb-title pe-3">Daftar Anggota</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item"><a href="beranda"><i class="bx bx-home-alt"></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Kategori Buku</li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Petugas</li>
                                 </ol>
                             </nav>
                         </div>

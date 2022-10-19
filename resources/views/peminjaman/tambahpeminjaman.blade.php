@@ -76,20 +76,20 @@
                                             
                                         </div>
                                     </div>
-                                    
-                                   
-                                        <div class="form-group row mb-3">
-                                                 <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
+                            
+                                    <div class="form-group row mb-3">
+                                              <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             </label>
                                             <div class="col-sm-8">
-                                            <input type="date" value="{{date('Y-m-d', strtotime('+3 days'))}}"
+                                             <input type="date" value="{{date('Y-m-d', strtotime('+3 days'))}}"
                                                 class="form-control text-center @error('tanggalpengembalian')
                                                 is-invalid
                                                 @enderror"
                                                 id="tanggalpengembalian" name="tanggalpengembalian" >
-                                            @error('tanggalpengembalian')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                             @error('tanggalpengembalian')
+                                                <div class="invalid-feedback">{{ $message }}
+                                                </div>
+                                             @enderror
                                             </div>
                                         </div>
                                         

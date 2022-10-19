@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class DendaController extends Controller
 {
+    
     public function denda (){
         $data = Denda::with('peminjaman.anggota')->get();
         // $denda=Denda::whereRaw('tanggalpengembalian > now()')->update([

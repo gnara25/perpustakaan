@@ -19,13 +19,13 @@
                 <div class="page-content">
                     <!--breadcrumb-->
                     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">Menu Buku</div>
+                        <div class="breadcrumb-title pe-3">Laporan</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item"><a href="beranda"><i class="bx bx-home-alt"></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Kategori Buku</li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Peminjaman</li>
                                 </ol>
                             </nav>
                         </div>
@@ -39,43 +39,35 @@
                                     <hr>
                                     <div class="table-responsive">
                                         <table id="example" class="table table-striped table-bordered"
-                                                style="width:100%">
-                                                <thead>
+                                            style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Nama Siswa</th>
+                                                    <th>Kelas</th>
+                                                    <th>Judul Buku</th>
+                                                    <th>Jumlah</th>
+                                                    <th>Tanggal Peminjaman</th>
+                                                </tr>
+                                            </thead>
+                                            @php
+                                                $no = 1;
+                                            @endphp
+                                            <tbody>
+                                                @foreach ($data as $row)
                                                     <tr>
-                                                        {{-- <th>
-                                                            <input type="checkbox" name="select_all" id="select_all">
-                                                        </th> --}}
-                                                        <th>No.</th>
-                                                        <th>Nama Siswa</th>
-                                                        <th>Kelas</th>
-                                                        <th>Judul Buku</th>
-                                                        <th>Jumlah</th>
-                                                        <th>Tanggal Peminjaman</th>
+                                                        <td >{{ $no++ }}</td>
+                                                        <td>{{$row->idnama->nama}}</td>
+                                                        <td>{{ $row->kelas }}</td>
+                                                        <td>{{ $row->namabuku }}</td>
+                                                        <td>{{ $row->jumlah }}</td>
+                                                        <td>{{ Carbon\Carbon::parse($row->tanggalpinjam)->format('d-m-Y') }}
+                                                        </td>
+                                                    
                                                     </tr>
-                                                </thead>
-                                                @php
-                                                    $no = 1;
-                                                @endphp
-                                                <tbody>
-                                                    @foreach ($data as $row)
-                                                        <tr>
-                                                            {{-- <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
-                                                            </td> --}}
-                                                            <td scope="row">{{ $no++ }}</td>
-                                                            <td>{{$row->idnama->nama}}</td>
-                                                            <td>{{ $row->kelas }}</td>
-                                                            <td>{{ $row->namabuku }}</td>
-                                                            <td>{{ $row->jumlah }}</td>
-                                                            <td>{{ Carbon\Carbon::parse($row->tanggalpinjam)->format('d-m-Y') }}
-                                                            </td>
-                                                            
-                                                            <td> 
-                                                            </td>
-                                        
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
