@@ -97,10 +97,10 @@
                                         <td>:</td>
                                         <td>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" autocomplete="off" name="buku_id" id="buku-search" placeholder="Contoh ID Buku : BK001" type="text" value="">
+                                                <input type="text" class="form-control" autocomplete="off" name="kodebuku" id="buku-search" placeholder="Contoh ID Buku : BK001" type="text" value="">
                                                 <span class="input-group-btn">
                                                     <a data-bs-toggle="modal"
-                                                                data-bs-target="#Buku"
+                                                                data-bs-target="#Bukuid"
                                                                 class="btn btn-primary">
                                                                 <i class="fa-solid fa fa-search"></i>
                                                             </a>
@@ -132,7 +132,7 @@
                 </div>
                 <!--end page-content-wrapper-->
             
-                {{-- @include('peminjaman.modalbuku')     --}}
+                @include('peminjaman.modalbuku') 
                 
                 
                 @include('peminjaman.modalanggota')
@@ -206,5 +206,45 @@
                 modal.find('.modal-title').text('New message to ' + recipient)
                 modal.find('.modal-body input').val(recipient)
             });
+    </script>
+
+    <script>
+    $(".fileSelection1 #Select_File2").click(function (e) {
+        document.getElementsByName('kodebuku')[0].value = $(this).attr("data_id");
+        $('#Bukuid').modal('hide');
+        $.ajax({
+            type: "POST",
+            url: "/cart",
+            data:'kodebuku='+$(this).attr("data_id"),
+            beforeSend: function(){
+                $("#result_buku").html("");
+                $("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
+            },
+            success: function(html){
+                $("#result_buku").load("/buku_list");
+                $("#result_tunggu_buku").html('');
+            }
+        });
+    });
+    </script>
+      
+    <script>
+    // AJAX call for autocomplete 
+    $(document).ready(function(){
+        $("#buku-search").keyup(function(){
+            $.ajax({
+                type: "POST",
+                url: "/cart",
+                data:'kodebuku='+$(this).val(),
+                beforeSend: function(){
+                    $("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
+                },
+                success: function(html){
+                    $("#result_buku").load("/buku_list");
+                    $("#result_tunggu_buku").html('');
+                }
+            });
+        });
+    });
     </script>
 </html>

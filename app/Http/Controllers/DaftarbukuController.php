@@ -8,6 +8,7 @@ use App\Models\Kategori;
 // use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\Daftarbuku;
 use Illuminate\Http\Request;
+use DB;
 
 class DaftarbukuController extends Controller
 {
@@ -22,7 +23,22 @@ class DaftarbukuController extends Controller
     public function tambahbuku(){
         $idkategori = Kategori::all();
         $data = Daftarbuku::all();
-        return view('buku.tambahbuku',compact('data','idkategori'));
+
+         $q = DB::table('Daftarbukus')->select(DB::raw('MAX(RIGHT(kodebuku,4)) as kode'));
+        $kd="";
+        if($q->count()>0) 
+        {
+            foreach ($q->get() as $k) 
+            {
+                $tmp = ((int)$k->kode)+1;
+                $kd = sprintf("%05s",$tmp);
+            }
+        }
+        else
+        {
+            $kd = "0001";
+        }
+        return view('buku.tambahbuku',compact('data','idkategori','kd'));
     }
     public function tambahbukupost(Request $request){
 

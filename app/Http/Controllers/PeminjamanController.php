@@ -26,6 +26,10 @@ class PeminjamanController extends Controller
    public function getBooks(Request $request)
 {
     $data = Daftarbuku::all();
+    // $data = Daftarbuku::where('id', $id)
+    //         ->select('Daftarbuku.namabuku', 'Daftarbuku.kodebuku',)
+    //         ->first();
+
     return json_encode($data);
 }
 
@@ -39,6 +43,8 @@ class PeminjamanController extends Controller
         // $data = Peminjaman::all();
         $anggota = DaftarAnggota::all();
         $bukuid= Daftarbuku::all();
+        $cartItems = \Cart::getContent();
+        // dd($cartItems);
         $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
         $kd="";
         if($q->count()>0) 
@@ -53,7 +59,7 @@ class PeminjamanController extends Controller
         {
             $kd = "00001";
         }
-        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd'));
+        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd','cartItems'));
     }
 
     public function insert(Request $request){
@@ -189,6 +195,22 @@ class PeminjamanController extends Controller
             echo 'Anggota Tidak Ditemukan !';
         }
         
+    }
+
+    public function cart(){
+        $Product = Daftarbuku::find($productId); // assuming you have a Product model with id, name, description & price
+$rowId = 456; // generate a unique() row ID
+$userID = 2; // the user ID to bind the cart contents
+
+// add the product to cart
+\Cart::session($userID)->add(array(
+    'id' => $rowId,
+    'name' => $Product->name,
+    'price' => $Product->price,
+    'quantity' => 4,
+    'attributes' => array(),
+    'associatedModel' => $Product
+));
     }
 
 
