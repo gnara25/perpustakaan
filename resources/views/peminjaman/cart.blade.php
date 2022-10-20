@@ -46,7 +46,7 @@
                                 <div class="row">
                                     <hr>
                                     <div class="table-responsive">
-                                      <table  class="table table-striped table-bordered"
+                                        <table  class="table table-striped table-bordered"
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
@@ -68,18 +68,18 @@
                                                             <td>{{ $row->attributes->kodebuku }}</td>
                                                             <td>{{ $row->quantity }}</td>
                                                             <td class="hidden text-right md:table-cell">
-                                                            <form action="{{ route('cart.remove') }}" method="POST">
+                                                            <form action="{{ route('remove') }}" method="POST">
                                                             @csrf
                                                             <input type="hidden" value="{{ $row->id }}" name="id">
                                                             <button class="btn btn-danger">x</button>
                                                             </form>
                                 
-                              </td>
+                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
-                                            </table>                                   
-                                      </div>
+                                        </table>                                   
+                                    </div>
                                 </div>
                             </div>
                         </div>

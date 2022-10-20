@@ -19,7 +19,7 @@ class CartController extends Controller
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');
 
-        return redirect()->route('tambahpeminjaman') ;
+        return redirect()->back() ;
     }
     public function cartList()
     {
@@ -28,12 +28,12 @@ class CartController extends Controller
         return view('peminjaman.cart', compact('cartItems'));
     }
 
-    public function removeCart(Request $request)
+    public function remove(Request $request)
     {
         \Cart::remove($request->id);
         session()->flash('success', 'Item Cart Remove Successfully !');
 
-        return redirect()->route('tambahpeminjaman');
+        return redirect()->back();
     }
 
     public function buku_list()

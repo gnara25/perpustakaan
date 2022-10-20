@@ -24,7 +24,7 @@
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item"><a href="beranda"><i class='bx bx-home-alt'></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Peminjamn/Tambah Peminjaman
+                                    <li class="breadcrumb-item active" aria-current="page">Peminjaman/Tambah Peminjaman
                                     </li>
                                 </ol>
                             </nav>
@@ -78,7 +78,7 @@
                                     </div>
                                     
                                    
-                                       <!--  <div class="form-group row mb-3">
+                                        <div class="form-group row mb-3">
                                                  <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             </label>
                                             <div class="col-sm-8">
@@ -95,14 +95,23 @@
 
                                     <div class="form-group row mb-3">  
                                       <label for="kelas" class="col-sm-4 col-form-label">Kode Buku </label> 
-                                        <div class="col-sm-8">
-                                            <input type="text"
-                                                class="form-control @error('kodebuku') is-invalid @enderror" id="kodebuku"
-                                                name="kodebuku" value="{{ old('kodebuku') }}" readonly>
-                                            @error('kodebuku')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                            <div class="col-md-4">
+                                             <div class="col-sm-8">
+                                                <div class="input-group has-validation">
+                                                     <select class="form-control single-select @error('kodebuku') is-invalid @enderror"
+                                                name="kodebuku" aria-label="Default select example" id="kodebuku">
+                                                <option value="" disabled selected> Pilih kodebuku Siswa </option>
+                                                @foreach ($bukuid as $buku)
+                                                    <option value="{{ $buku->id }}" data-namabuku='{{$buku->namabuku}}'>
+                                                        {{ $buku->kodebuku }}</option>
+                                                @endforeach 
+                                                </select>
+                                                @error('kodebuku')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                                    <div class="invalid-feedback">
+                                                        Please choose a username.
+                                                    </div>
+                                                    <div class="col-md-4">
                                                         <span class="input-group-btn">
                                                             <a data-bs-toggle="modal"
                                                                 data-bs-target="#Bukuid"
@@ -110,16 +119,47 @@
                                                                 <i class="fa-solid fa fa-search"></i>
                                                             </a>
                                                         </span>
-                                                        </div>
-                                            
-                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                     </div>
-
-                                    <div id="result_tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div>
+                                    @if(count($cartItems) > 0 )
+                                          <table  class="table table-striped table-bordered"
+                                                style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>Judul Buku</th>
+                                                        <th>Kode Buku</th>
+                                                        <th>Jumlah</th>
+                                                        <th>Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                @php
+                                                    $no = 1;
+                                                @endphp
+                                                <tbody>
+                                                    @foreach ($cartItems as $row)
+                                                        <tr>
+                                                            <td scope="row">{{ $no++ }}</td>
+                                                            <td>{{ $row->name }}</td>
+                                                            <td>{{ $row->attributes->kodebuku }}</td>
+                                                            <td>{{ $row->quantity }}</td>
+                                                            <td class="hidden text-right md:table-cell">
+                                                           <a href="/remove/{{$row->id}} "onclick="return confirm('apakah anda yakin ingin menghapus data ini');"
+                                                        class="btn btn-danger"> X</a>
+                                
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                        </table> 
+                                    @endif                                      
+                                    <!-- <div id="result_tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div>
                                             <div id="result_buku"></div>
                                         
                                     </div> -->
-                                <div id="table_field">
+                                  <!--   <div id="table_field">
                                         <div class="row mb-3 mr-4 ml-4">
 
                                             <div class="col-md-4">
@@ -173,7 +213,7 @@
                                             </div>
                                         </div>
                                         <br>
-                                    </div>
+                                    </div> -->
                                         <center>
                                             <div class="mb-4 mt-4">
                                                 <button type="submit"
@@ -260,7 +300,7 @@
                 modal.find('.modal-body input').val(recipient)
             });
             </script>
-            <script type="text/javascript">
+           <!--  <script type="text/javascript">
                  function AddMasterDetail() {
                 var idf = document.getElementById("idf").value;
                 stre=" <div class='row mb-3 mr-4 ml-4' id='srow" + idf + "'>";
@@ -290,7 +330,7 @@
             $("#namabuku" + idf).val(data[0].namabuku);
         });
     });
-            </script>
+            </script> -->
             <script src="assets/plugins/select2/js/select2.min.js"></script>
     <script>
         $('.single-select').select2({
@@ -347,7 +387,9 @@
              
             </script>
  -->
-<!-- 
+
+
+
  <script>
     $(".fileSelection1 #Select_File2").click(function (e) {
         document.getElementsByName('kodebuku')[0].value = $(this).attr("data_id");
@@ -386,7 +428,7 @@
             });
         });
     });
-    </script> -->
+    </script>
 
 
 

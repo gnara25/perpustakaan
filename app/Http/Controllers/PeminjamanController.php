@@ -70,22 +70,21 @@ class PeminjamanController extends Controller
             'nama' => 'required',
             'kelas' => 'required',
             'kodebuku' => 'required',
-            'namabuku' => 'required',
-            'jumlah' => 'required',
+            
 
         ]);
 
         
         $databuku =  Daftarbuku::findOrFail($request->kodebuku);
-        if ($databuku->jumlah >= $request->jumlah) {
+        // if ($databuku->jumlah >= $request->jumlah) {
             $data = Peminjaman::create([
             'transaksi' => $request->transaksi,
             'nama' => $request->nama,
             'kelas' => $request->kelas,
             'kodebuku' => $request->kodebuku,
-            'namabuku' => $request->namabuku,
+            // 'namabuku' => $request->namabuku,
             'tanggalpengembalian' => $request->tanggalpengembalian,
-            'jumlah' => $request->jumlah,
+            // 'jumlah' => $request->jumlah,
         ])->id;
         $denda = Denda::create([
             'nama' => $request->nama,
@@ -93,18 +92,18 @@ class PeminjamanController extends Controller
         'peminjaman_id'=>  $data,
         ]);
 
-        $pinjam = laporanpinjam::create([
-            'nama' => $request->nama,
-            'kelas' => $request->kelas,
-            'namabuku' => $request->namabuku,
-            'jumlah' => $request->jumlah,
-        ]);
+        // $pinjam = laporanpinjam::create([
+        //     'nama' => $request->nama,
+        //     'kelas' => $request->kelas,
+        //     'namabuku' => $request->namabuku,
+        //     'jumlah' => 1,
+        // ]);
 
-            $databuku->jumlah -= $request->jumlah;
-            $databuku->save();
-        }else  {
-            return redirect()->back()->with('error','Jumlah Buku Kurang');
-        }
+        //     $databuku->jumlah -= $request->jumlah;
+        //     $databuku->save();
+        // }else  {
+        //     return redirect()->back()->with('error','Jumlah Buku Kurang');
+        // }
         
         
         return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');

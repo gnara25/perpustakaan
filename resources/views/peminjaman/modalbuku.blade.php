@@ -52,7 +52,7 @@
                                                             </td>
                                                             
                                                             <td style="width:17%">
-                                                                      <!-- <button class="btn btn-primary"    id="Select_File2" data_id="{{ $row->kodebuku }}">
+                                                                     <!--  <button class="btn btn-primary"    id="Select_File2" data_id="{{ $row->kodebuku }}">
                                                                 <i class="fa fa-check"> </i> Pilih
                                                                 </button> -->
                                                             <form action="/cartpost" method="POST" enctype="multipart/form-data">
@@ -63,8 +63,9 @@
                                                                 <input type="hidden" value="1" name="quantity">
                         
 
-                                                                
-                                                                <button class="btn btn-primary rounded">Add To Cart</button>
+                                                                 <button class="btn btn-primary"    id="Select_File2" data_id="{{ $row->kodebuku }}">
+                                                                <i class="fa fa-check"> </i> Pilih
+                                                                </button>
                                                                 <a href="" target="_blank">
                                                                 <button class="btn btn-success"><i class="fa fa-sign-in"></i> Detail</button></a>
                                                             </form>    
