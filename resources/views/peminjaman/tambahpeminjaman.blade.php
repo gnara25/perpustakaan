@@ -143,7 +143,7 @@
                                                         <tr>
                                                             <td scope="row">{{ $no++ }}</td>
                                                             <td>{{ $row->name }}</td>
-                                                            <td>{{ $row->attributes->kodebuku }}</td>
+                                                            <td>{{ $row->id }}</td>
                                                             <td>{{ $row->quantity }}</td>
                                                             <td class="hidden text-right md:table-cell">
                                                            <a href="/remove/{{$row->id}} "onclick="return confirm('apakah anda yakin ingin menghapus data ini');"
@@ -155,10 +155,10 @@
                                                 </tbody>
                                         </table> 
                                     @endif                                      
-                                    <!-- <div id="result_tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div>
+                                    <div id="result_tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div>
                                             <div id="result_buku"></div>
                                         
-                                    </div> -->
+                                    </div>
                                   <!--   <div id="table_field">
                                         <div class="row mb-3 mr-4 ml-4">
 

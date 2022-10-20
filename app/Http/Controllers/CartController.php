@@ -8,13 +8,17 @@ class CartController extends Controller
 {
     public function cartpost(Request $request)
     {
+
+        $id = $this->input->post('kodebuku');
+        $row = Daftarbuku::where('kodebuku','=','$id' );
+
         \Cart::add([
-            'id' => $request->id,
+            'id' => $id,
             'name' => $request->namabuku,
             'price' => 1000,
             'quantity' => 1,
             'attributes' => array(
-                'kodebuku' => $request->kodebuku,
+                // 'kodebuku' => $request->kodebuku,
              )
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');
@@ -58,7 +62,7 @@ class CartController extends Controller
                                                         <tr>
                                                             <td scope="row">{{ $no++ }}</td>
                                                             <td>{{ $row->name }}</td>
-                                                            <td>{{ $row->attributes->kodebuku }}</td>
+                                                            <td>{{ $row->id }}</td>
                                                             <td>{{ $row->quantity }}</td>
                                                             <td class="hidden text-right md:table-cell">
                                                             

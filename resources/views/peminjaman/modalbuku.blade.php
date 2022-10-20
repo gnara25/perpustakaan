@@ -52,10 +52,10 @@
                                                             </td>
                                                             
                                                             <td style="width:17%">
-                                                                     <!--  <button class="btn btn-primary"    id="Select_File2" data_id="{{ $row->kodebuku }}">
+                                                                      <button class="btn btn-primary"    id="Select_File2" data_id="{{ $row->kodebuku }}">
                                                                 <i class="fa fa-check"> </i> Pilih
-                                                                </button> -->
-                                                            <form action="/cartpost" method="POST" enctype="multipart/form-data">
+                                                                </button>
+                                                          <!--   <form action="/cartpost" method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 <input type="hidden" value="{{ $row->id }}" name="id">
                                                                 <input type="hidden" value="{{ $row->namabuku }}" name="namabuku">
@@ -68,7 +68,7 @@
                                                                 </button>
                                                                 <a href="" target="_blank">
                                                                 <button class="btn btn-success"><i class="fa fa-sign-in"></i> Detail</button></a>
-                                                            </form>    
+                                                            </form>     -->
                                                             </td>
                                                             
                                                         </tr>
