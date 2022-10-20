@@ -11,6 +11,7 @@ use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\DaftarAnggotaController;
 use App\Http\Controllers\LaporanpinjamController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,6 +91,19 @@ Route::get('/deletepeminjaman/{id}', [PeminjamanController::class, 'deletepeminj
 Route::get('/scane',[PeminjamanController::class,'scane'])->name('scane');
 Route::post('/validasi',[PeminjamanController::class,'validasi'])->name('validasi');
 Route::get('/getBooks', [PeminjamanController::class, 'getBooks'])->name('getBooks');
+Route::get('/tambahpinjam2',[PeminjamanController::class,'tambahpinjam2'])->name('tambahpinjam2');
+Route::get('/result',[PeminjamanController::class,'result'])->name('result');
+// Route::get('/buku_list',[PeminjamanController::class,'buku_list'])->name('buku_list');
+
+//Cart
+// Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
+Route::post('/cartpost', [CartController::class, 'cartpost'])->name('cartpost');
+Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
+Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
+Route::get('buku_list', [CartController::class, 'buku_list'])->name('buku_list');
+Route::get('cartlist', [CartController::class, 'cartlist'])->name('cartlist');
+
 
 // pengembalian
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');

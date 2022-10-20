@@ -76,9 +76,10 @@
                                             
                                         </div>
                                     </div>
-                            
-                                    <div class="form-group row mb-3">
-                                              <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
+                                    
+                                   
+                                      <div class="form-group row mb-3">
+                                                 <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
                                             </label>
                                             <div class="col-sm-8">
                                              <input type="date" value="{{date('Y-m-d', strtotime('+3 days'))}}"
@@ -92,9 +93,34 @@
                                              @enderror
                                             </div>
                                         </div>
+
+                                    {{-- <div class="form-group row mb-3">  
+                                      <label for="kelas" class="col-sm-4 col-form-label">Kode Buku </label> 
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('kodebuku') is-invalid @enderror" id="kodebuku"
+                                                name="kodebuku" value="{{ old('kodebuku') }}" readonly>
+                                            @error('kodebuku')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                            <div class="col-md-4">
+                                                        <span class="input-group-btn">
+                                                            <a data-bs-toggle="modal"
+                                                                data-bs-target="#Bukuid"
+                                                                class="btn btn-primary">
+                                                                <i class="fa-solid fa fa-search"></i>
+                                                            </a>
+                                                        </span>
+                                                        </div>
+                                            
+                                        </div>
+                                    </div> --}}
+
+                                    <div id="result_tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div>
+                                            <div id="result_buku"></div>
                                         
-                                    </div>
-                                    <div id="table_field">
+                                    </div> 
+                                <div id="table_field">
                                         <div class="row mb-3 mr-4 ml-4">
 
                                             <div class="col-md-4">
@@ -131,20 +157,17 @@
                                                         Please choose a username.
                                                     </div>
                                                     <div class="col-md-4">
-                                                        {{-- <span class="input-group-btn">
+                                                        <span class="input-group-btn">
                                                             <a data-bs-toggle="modal"
-                                                                data-bs-target="#exampleExtraLargeModal"
+                                                                data-bs-target="#Bukuid"
                                                                 class="btn btn-primary">
                                                                 <i class="fa-solid fa fa-search"></i>
                                                             </a>
-                                                        </span> --}}
+                                                        </span>
                                                         <span class="input-group-btn">
                                                                <a id="idf" class="btn btn-primary" onclick="AddMasterDetail()">
                                                                 <i class="fa-solid fa-plus-circle"></i>
                                                             </a>
-                                                         <!--    <a id="add" class="btn btn-primary">
-                                                                <i class="fa-solid fa-plus-circle"></i>
-                                                            </a> -->
                                                         </span>
                                                     </div>
                                                 </div>
@@ -175,6 +198,7 @@
                                        {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
                                 <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
                                 </form>
+
                             </div>
                         </div>
                     </div>
@@ -182,7 +206,7 @@
                 </div>
                 <!--end page-content-wrapper-->
             
-                {{-- @include('peminjaman.modalbuku')     --}}
+                @include('peminjaman.modalbuku')
                 
                 
                 {{-- @include('peminjaman.modalanggota') --}}
@@ -241,8 +265,8 @@
                  function AddMasterDetail() {
                 var idf = document.getElementById("idf").value;
                 stre=" <div class='row mb-3 mr-4 ml-4' id='srow" + idf + "'>";
-                stre=stre+"<div class='col-md-4 mb-4'> <label for='validationCustom01' class='form-label'> Kode Buku </label> <select class='form-control autofill' id='kodebukus" + idf + "' data-idf='" + idf + "' name='kodebuku[]'  aria-label='Default select example'> <option value='' disabled selected> Pilih kodebuku Siswa </option> @foreach ($bukuid as $k) <option value='{{ $k->id }}' data-judulbuku='{{$k->namabuku}}''> {{ $k->kodebuku }}</option> @endforeach  </select> @error('kodebuku') <div class='invalid-feedback'>{{ $message }}</div> @enderror <div class='valid-feedback'> Looks good! </div></div>";
-                stre=stre+"<div class='col-md-4 mb-4'> <label for='validationCustom02' class='form-label'> Judul Buku</label> <input type='text' class='form-control c-namabuku' id='total_stock_" + idf + "' value='' name='namabuku[]'> <div class='valid-feedback'> Looks good! </div> </div>";
+                stre=stre+"<div class='col-md-4 mb-4'> <label for='validationCustom01' class='form-label'> Kode Buku </label> <select class='form-control kodebuku' id='kodebukus" + idf + "' data-idf='" + idf + "' name='kodebuku[]'  aria-label='Default select example'> <option value='' disabled selected> Pilih kodebuku Siswa </option> @foreach ($bukuid as $k) <option value='{{ $k->id }}' data-judulbuku='{{$k->namabuku}}'> {{ $k->kodebuku }}</option> @endforeach  </select> @error('kodebuku') <div class='invalid-feedback'>{{ $message }}</div> @enderror <div class='valid-feedback'> Looks good! </div></div>";
+                stre=stre+"<div class='col-md-4 mb-4'> <label for='validationCustom02' class='form-label'> Judul Buku</label> <input type='text' class='form-control c-namabuku' id='namabuku" + idf + "' value='' name='namabuku[]'> <div class='valid-feedback'> Looks good! </div> </div>";
 
                 stre=stre+"<div class='col-md-4 mb-4'> <label for='validationCustomUsername' class='form-label'>Jumlah Buku</label> <div class='input-group has-validation'> <input type='text' class='form-control' id='validationCustomUsername' name='Jumlah'> <div class='invalid-feedback'> Please choose a username. </div> <div class='col-md-4'> <span class='input-group-btn'> <a data-bs-toggle='modal' data-bs-target='#exampleExtraLargeModal' class='btn btn-primary'> <i class='fa-solid fa fa-search'></i> </a> </span><span class='input-group-btn'><a  onclick='removeFormField(\"#srow" + idf + "\"); return false;' class='btn btn-danger'><i class='fa-solid fa-trash'></i></a></span></div></div></div>";
                 stre=stre+"</div>";         
@@ -254,18 +278,17 @@
          function removeFormField(idf) {
             $(idf).remove();
         }
-        $(document).on("change", ".autofill", function(e) {
+        $(document).on("change", ".kodebuku", function(e) {
             var select = $(this);
-            var kodebuku = select.val();
+            var id = select.val();
             var idf = select.data("idf");
 
          $.ajax({
             url:'/getBooks',
             method: 'GET',
-            data: { kodebukus: kodebuku },
             dataType: 'JSON',
                 }).done(function(data) {
-            $("#total_stock_" + idf).val(data[0].namabuku);
+            $("#namabuku" + idf).val(data[0].namabuku);
         });
     });
             </script>
@@ -325,6 +348,46 @@
              
             </script>
  -->
+<!-- 
+ <script>
+    $(".fileSelection1 #Select_File2").click(function (e) {
+        document.getElementsByName('kodebuku')[0].value = $(this).attr("data_id");
+        $('#Bukuid').modal('hide');
+        $.ajax({
+            type: "POST",
+            url: "/cartpost",
+            data:'kodebuku='+$(this).attr("data_id"),
+            beforeSend: function(){
+                $("#result_buku").html("");
+                $("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
+            },
+            success: function(html){
+                $("#result_buku").load("/buku_list");
+                $("#result_tunggu_buku").html('');
+            }
+        });
+    });
+    </script>
+
+ <script>
+    // AJAX call for autocomplete 
+    $(document).ready(function(){
+        $("#kodebuku").keyup(function(){
+            $.ajax({
+                type: "POST",
+                url: "/cartpost",
+                data:'kodebuku='+$(this).val(),
+                beforeSend: function(){
+                    $("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
+                },
+                success: function(html){
+                    $("#result_buku").load("/buku_list");
+                    $("#result_tunggu_buku").html('');
+                }
+            });
+        });
+    });
+    </script> -->
 
 
 

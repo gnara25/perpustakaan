@@ -37,7 +37,7 @@
                             <div>
 
                                 <a id="table2-new-row-button" href="tambahbuku"
-                                    class="btn btn-outline-info btn-sm mb-2"><i class="fa-solid fa-plus"></i>Tambah
+                                    class="btn btn-outline-info btn-sm mb-2"></i>Tambah
                                     Buku</a>
 
                                 <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"

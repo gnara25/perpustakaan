@@ -88,13 +88,13 @@ is-invalid
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
-                                        <label for="kelas" class="col-sm-4 col-form-label">Denda </label>
+                                        <label for="kelas" class="col-sm-4 col-form-label">Denda/buku </label>
                                         <div class="col-sm-8">
                                             @if ($pengembalin->denda[0]->denda > 0)
                                                 <input type="text"
                                                     class="form-control @error('denda') is-invalid @enderror"
                                                     id="denda" value="{{ $pengembalin->denda[0]->denda }}"
-                                                    name="denda" readonly >
+                                                    name="denda" readonly>
                                                 {{-- @error('denda')
                                                     <div class="invalid-feedback">{{ $message }} </div>
                                                 @enderror --}}
@@ -203,49 +203,49 @@ is-invalid
                 toastr.error("{{ Session::get('error') }}")
             @endif
 
-            const selection = document.getElementById('transaksi');
-            selection.onchange = function(e) {
-            //     const nama = e.target.options[e.target.selectedIndex].dataset.nama
-            //     const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
-            //     const kodebuku = e.target.options[e.target.selectedIndex].dataset.kodebuku
-            //     const judul = e.target.options[e.target.selectedIndex].dataset.judul
-            //     const jumlah = e.target.options[e.target.selectedIndex].dataset.jumlah
-                const denda = e.target.options[e.target.selectedIndex].dataset.denda
-            //     document.getElementById('nama').value = nama;
-            //     document.getElementById('kelas').value = kelas;
-            //     document.getElementById('kodebuku').value = kodebuku;
-            //     document.getElementById('judul').value = judul;
-            //     document.getElementById('jumlah').value = jumlah;
-                document.getElementById('denda').value = denda;
-            // }
+            // const selection = document.getElementById('transaksi');
+            // selection.onchange = function(e) {
+                    //     const nama = e.target.options[e.target.selectedIndex].dataset.nama
+                    //     const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
+                    //     const kodebuku = e.target.options[e.target.selectedIndex].dataset.kodebuku
+                    //     const judul = e.target.options[e.target.selectedIndex].dataset.judul
+                    //     const jumlah = e.target.options[e.target.selectedIndex].dataset.jumlah
+                    // const denda = e.target.options[e.target.selectedIndex].dataset.denda
+                    //     document.getElementById('nama').value = nama;
+                    //     document.getElementById('kelas').value = kelas;
+                    //     document.getElementById('kodebuku').value = kodebuku;
+                    //     document.getElementById('judul').value = judul;
+                    //     document.getElementById('jumlah').value = jumlah;
+                    // document.getElementById('denda').value = denda;
+                    // }
 
-            $(document).ready(function() {
-                //Default data table
-                $('#mytable').DataTable();
-                var table = $('#example2').DataTable({
-                    lengthChange: false,
-                    buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
-                });
-                table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
-            });
+                    $(document).ready(function() {
+                        //Default data table
+                        $('#mytable').DataTable();
+                        var table = $('#example2').DataTable({
+                            lengthChange: false,
+                            buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
+                        });
+                        table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+                    });
 
-            $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                var recipient = button.data('whatever') // Extract info from data-* attributes
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('New message to ' + recipient)
-                modal.find('.modal-body input').val(recipient)
-            });
+                    $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
+                        var button = $(event.relatedTarget) // Button that triggered the modal
+                        var recipient = button.data('whatever') // Extract info from data-* attributes
+                        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                        var modal = $(this)
+                        modal.find('.modal-title').text('New message to ' + recipient)
+                        modal.find('.modal-body input').val(recipient)
+                    });
 
-            $(document).ready(function() {
-                $(".add_item_btn").click(function(e) {
-                    e.preventDefault();
-                    $("#showitem").prepend("");
-                    alert("showitem");
-                });
-            });
+                    $(document).ready(function() {
+                        $(".add_item_btn").click(function(e) {
+                            e.preventDefault();
+                            $("#showitem").prepend("");
+                            alert("showitem");
+                        });
+                    });
         </script>
         <script src="assets/plugins/select2/js/select2.min.js"></script>
         <script>

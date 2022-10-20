@@ -26,6 +26,10 @@ class PeminjamanController extends Controller
    public function getBooks(Request $request)
 {
     $data = Daftarbuku::all();
+    // $data = Daftarbuku::where('id', $id)
+    //         ->select('Daftarbuku.namabuku', 'Daftarbuku.kodebuku',)
+    //         ->first();
+
     return json_encode($data);
 }
 
@@ -39,6 +43,8 @@ class PeminjamanController extends Controller
         // $data = Peminjaman::all();
         $anggota = DaftarAnggota::all();
         $bukuid= Daftarbuku::all();
+        $cartItems = \Cart::getContent();
+        // dd($cartItems);
         $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
         $kd="";
         if($q->count()>0) 
@@ -53,7 +59,7 @@ class PeminjamanController extends Controller
         {
             $kd = "00001";
         }
-        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd'));
+        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd','cartItems'));
     }
 
     public function insert(Request $request){
@@ -139,4 +145,73 @@ class PeminjamanController extends Controller
     public function validasi(request $request){
         dd($request->all);
     }
+     public function tambahpinjam2() 
+    {
+        // $data = Peminjaman::all();
+        $anggota = DaftarAnggota::all();
+        $bukuid= Daftarbuku::all();
+        $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
+        $kd="";
+        if($q->count()>0) 
+        {
+            foreach ($q->get() as $k) 
+            {
+                $tmp = ((int)$k->kode)+1;
+                $kd = sprintf("%05s",$tmp);
+            }
+        }
+        else
+        {
+            $kd = "00001";
+        }
+        return view('peminjaman.tambahpinjam2', compact('anggota','bukuid','kd'));
+    }
+
+    public function result()
+    {   
+        
+        $user = DaftarAnggota::all();
+        error_reporting(0);
+        if($user->nama != null)
+        {
+            echo '<table class="table table-striped">
+                        <tr>
+                            <td>Nama Anggota</td>
+                            <td>:</td>
+                            <td>{{$user->nama}}</td>
+                        </tr>
+                        <tr>
+                            <td>Telepon</td>
+                            <td>:</td>
+                            <td>{{$user->kelas}}</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td>:</td>
+                            <td>{{$user->alamat}}</td>
+                        </tr>
+                    </table>';
+        }else{
+            echo 'Anggota Tidak Ditemukan !';
+        }
+        
+    }
+
+    public function cart(){
+        $Product = Daftarbuku::find($productId); // assuming you have a Product model with id, name, description & price
+$rowId = 456; // generate a unique() row ID
+$userID = 2; // the user ID to bind the cart contents
+
+// add the product to cart
+\Cart::session($userID)->add(array(
+    'id' => $rowId,
+    'name' => $Product->name,
+    'price' => $Product->price,
+    'quantity' => 4,
+    'attributes' => array(),
+    'associatedModel' => $Product
+));
+    }
+
+
 }
