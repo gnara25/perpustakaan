@@ -14,61 +14,32 @@ class CartController extends Controller
             'price' => 1000,
             'quantity' => 1,
             'attributes' => array(
-                'kodebuku' => $request->kodebuku,
-             )
+            'kodebuku' => $request->kodebuku,
+          )
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');
 
-        return redirect()->route('tambahpeminjaman') ;
+        // return redirect()->back() ;
+        return response()->json('berhasil');
     }
     public function cartList()
     {
+        $array = array();
         $cartItems = \Cart::getContent();
         // dd($cartItems);
-        return view('peminjaman.cart', compact('cartItems'));
+        foreach($cartItems as $cart){
+            array_push($array, $cart);
+        }
+        // dd(json_encode($array));
+        return response()->json(['data' => $array]);
     }
 
-    public function removeCart(Request $request)
+    public function remove(Request $request)
     {
         \Cart::remove($request->id);
         session()->flash('success', 'Item Cart Remove Successfully !');
 
-        return redirect()->route('tambahpeminjaman');
+        return redirect()->back();
     }
 
-    public function buku_list()
-    {
-    $output = '';
-    $output .= ' <table  class="table table-striped table-bordered"
-                                                style="width:100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No.</th>
-                                                        <th>Judul Buku</th>
-                                                        <th>Kode Buku</th>
-                                                        <th>Jumlah</th>
-                                                        <th>Aksi</th>
-                                                    </tr>
-                                                </thead>
-                                                @php
-                                                    $no = 1;
-                                                @endphp
-                                                <tbody>
-                                                    @foreach ($cartItems as $row)
-                                                        <tr>
-                                                            <td scope="row">{{ $no++ }}</td>
-                                                            <td>{{ $row->name }}</td>
-                                                            <td>{{ $row->attributes->kodebuku }}</td>
-                                                            <td>{{ $row->quantity }}</td>
-                                                            <td class="hidden text-right md:table-cell">
-                                                            
-                                
-                              </td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>';
-             return $output;                               
-
-    }
 }

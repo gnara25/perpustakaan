@@ -19,10 +19,8 @@ return new class extends Migration
             $table->string('nama');
             $table->string('kelas');
             $table->string('kodebuku');
-            $table->string('namabuku');
             $table->string('status')->default(0);
             $table->date('tanggalpengembalian');
-            $table->string('jumlah');
             $table->timestamps();
         });
     }
