@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\Models\Daftarbuku;
 use App\Models\Denda;
+use App\Models\Daftarbuku;
+use App\Models\Detailbuku;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Models\DaftarAnggota;
@@ -15,9 +16,9 @@ class PeminjamanController extends Controller
     public function peminjaman(){
         $data = Peminjaman::all();
         $namasiswa = DaftarAnggota::all();
-         $bukuid= Peminjaman::with('idbuku')->where('id','=', 1)->get();
+         $bukuid= Peminjaman::with('idbuku')->where('transaksi','==','PJM-00003')->get();
 
-
+        // dd($bukuid);
         $namabuku = Daftarbuku::all();
         return view('peminjaman.peminjaman', compact('data','namasiswa','namabuku','bukuid'));
     }
@@ -77,28 +78,45 @@ class PeminjamanController extends Controller
             'transaksi' => ['required','unique:peminjamen,transaksi,'],
             'nama' => 'required',
             'kelas' => 'required',
-            'kodebuku' => 'required',
-            
-
         ]);
 
-        
-        $databuku =  Daftarbuku::findOrFail($request->kodebuku);
+        // $databuku =  Daftarbuku::findOrFail($request->kodebuku);
         // if ($databuku->jumlah >= $request->jumlah) {
             $data = Peminjaman::create([
             'transaksi' => $request->transaksi,
             'nama' => $request->nama,
             'kelas' => $request->kelas,
-            'kodebuku' => $request->kodebuku,
-            // 'namabuku' => $request->namabuku,
             'tanggalpengembalian' => $request->tanggalpengembalian,
-            // 'jumlah' => $request->jumlah,
         ])->id;
+
+        // $cart = \cart::all();
+
+        $cart1 = \Cart::getContent();
+        $array = array();
+        // $id = Peminjaman::find('id');
+        foreach($cart1 as $cart){
+            array_push($array,
+            Detailbuku::create([
+                'id_transaksi' => $request->transaksi,
+                'namabuku' => $cart->name,
+                'kodebuku' => $cart->attributes->kodebuku,
+                'jumlah' => $cart->quantity,
+            ])
+
+            );
+        }
+
         $denda = Denda::create([
             'nama' => $request->nama,
             'kelas' => $request->kelas,
-        'peminjaman_id'=>  $data,
+            'peminjaman_id'=>  $data,
         ]);
+
+        // $detailbuku = Detailbuku::create([
+        //     'namabuku' => $request->namabuku,
+        //     'kodebuku' => $request->kodebuku,
+        //     'jumlah' => $request->jumlah,
+        // ])->id;
 
         // $pinjam = laporanpinjam::create([
         //     'nama' => $request->nama,
@@ -116,6 +134,7 @@ class PeminjamanController extends Controller
         
         return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
     }
+
 
     public function editpeminjaman($id){
 

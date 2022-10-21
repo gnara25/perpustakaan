@@ -53,7 +53,6 @@
                                                         <th>Transaksi</th>
                                                         <th>Nama Siswa</th>
                                                         <th>kelas</th>
-                                                        <th>Kode Buku</th>
                                                         <th>Tanggal Peminjaman</th>
                                                         <th>Tanggal Pengembalian</th>
                                                         <th>Denda</th>
@@ -95,7 +94,7 @@
                                                             <td>{{ $row->transaksi }}</td>
                                                             <td>{{ $row->anggota->nama }}</td>
                                                             <td>{{ $row->kelas }}</td>
-                                                            <td>{{ $row->idbuku->kodebuku }}</td>
+                                                            {{-- <td>{{ $row->idbuku->kodebuku }}</td> --}}
                                                             <td>{{ Carbon\Carbon::parse($row->created_at)->format('d-m-Y') }}
                                                             </td>
                                                             <td>{{ Carbon\Carbon::parse($row->tanggalpengembalian)->format('d-m-Y') }}
@@ -123,7 +122,7 @@
                                                                     <i class="fadeIn animated bx bx-download"></i>
                                                                 </a>
                                                                 <a data-bs-toggle="modal"
-                                                                data-bs-target="#Bukuid"
+                                                                data-bs-target="#Bukuid{{$row->id}}"
                                                                 class="btn btn-primary">
                                                                 <i class="fadeIn animated bx bx-exit"></i>
                                                             </a>
@@ -132,8 +131,9 @@
                                                                     data-id="{{ $row->id }}"
                                                                     data-nama="{{ $row->nama }}">
                                                                 </a> --}}
+                                                                @include('peminjaman.detailbuku')
                                                             </td>
-                                                                <i class="fa-solid fa-trash"></i>
+                                                                {{-- <i class="fa-solid fa-trash"></i> --}}
 
                                                         </tr>
                                                         @endif
@@ -148,8 +148,6 @@
                     </div>
                     <!--end page-content-wrapper-->
                 </div>
-                @include('peminjaman.detailbuku')
-
                 <!-- end wrapper -->
                 @include('template.script')
 
