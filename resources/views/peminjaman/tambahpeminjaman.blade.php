@@ -96,23 +96,17 @@
 
                                      <div class="form-group row mb-3">  
                                       <label for="kelas" class="col-sm-4 col-form-label">Kode Buku </label> 
-                                             <div class="col-sm-8">
+                                            <div class="col-sm-8">
                                                 <div class="input-group has-validation">
                                                      <select class="form-control single-select @error('kodebuku') is-invalid @enderror"
-                                                name="kodebuku" aria-label="Default select example" id="kodebuku">
-                                                <option value="" disabled selected> Pilih kodebuku Siswa </option>
-                                                @foreach ($bukuid as $buku)
+                                                    name="kodebuku" aria-label="Default select example" id="kodebuku">
+                                                    <option value="" disabled selected> Pilih kodebuku Siswa </option>
+                                                    @foreach ($bukuid as $buku)
                                                     <option value="{{ $buku->id }}" data-namabuku='{{$buku->namabuku}}'>
                                                         {{ $buku->kodebuku }}</option>
-                                                @endforeach 
-                                                </select>
-                                                @error('kodebuku')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                                    <div class="invalid-feedback">
-                                                        Please choose a username.
-                                                    </div>
-                                                    <div class="col-md-4">
+                                                    @endforeach 
+                                                    </select>
+                                                    
                                                         <span class="input-group-btn">
                                                             <a data-bs-toggle="modal"
                                                                 data-bs-target="#Bukuid"
@@ -120,29 +114,16 @@
                                                                 <i class="fa-solid fa fa-search"></i>
                                                             </a>
                                                         </span>
-                                                    </div>
+                                                     @error('kodebuku')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
+                                               
                                             </div>
                                     </div>
-                                            <table  class="table table-striped table-bordered"
-                                                    style="width:100%">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>No.</th>
-                                                            <th>Judul Buku</th>
-                                                            <th>Kode Buku</th>
-                                                            <th>Jumlah</th>
-                                                            <th>Aksi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    @php
-                                                        $no = 1;
-                                                    @endphp
-                                                    <tbody id="tbody-cart">
-                                                    </tbody>
-                                            </table>                                  
-                                    <div id="result_tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div>
-                                            <div id="result_buku"></div>
+                                                                      
+                                    <!-- <div id="tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div> -->
+                                            <div id="tbody-cart"></div>
                                         
                                     </div> 
                                   <!--   <div id="table_field">
@@ -406,23 +387,61 @@
                         let html = ''
                         let no = 1;
                         e.data.map(val => {
-                            html += `<tr>
+                            html += `<table  class="table table-striped table-bordered"
+                                                style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>Judul Buku</th>
+                                                        <th>Kode Buku</th>
+                                                        <th>Jumlah</th>
+                                                        <th>Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                @php
+                                                    $no = 1;
+                                                @endphp
+                                                <tbody id="tbody-cart">
+                                                
+                            <tr>
                                         <td scope="row">${no++}</td>
                                         <td>${val.name}</td>
                                         <td>${val.attributes.kodebuku}</td>
                                         <td>${val.quantity}</td>
                                         <td class="hidden text-right md:table-cell">
-                                        <a href="/remove/${val.id} "onclick="return confirm('apakah anda yakin ingin menghapus data ini');"
-                                    class="btn btn-danger"> X</a>
+                                        <button class="btn btn-danger" id="remove" value="${val.id}"> X</button>
             
                                         </td>
-                                    </tr>`
+                                    </tr>
+                                     </tbody>
+                                        </table>   `
                         })
-
-                        $('#tbody-cart').html(html)
+                                $('#tbody-cart').html(html)
                     }
+
+
+
+                        
                 })
+
+               
             }
+
+            $(document).ready(function(){
+                         $('#remove').submit(function(e) {
+                            e.preventDefault()
+                            $.ajax({
+                                type: 'POST',
+                                url: '/remove',
+                                dataType: 'JSON',
+                                success: function(e){
+                                    $("#tbody-cart").html(html);
+                                }
+                            });
+                        });
+
+                    });
+
 
             $('#form-tambah').submit(function(e) {
                 e.preventDefault()
@@ -440,7 +459,7 @@
                     success: function(e){
                         console.log(e)
                         getCartList()
-                        $('#Bukuid').hide()
+                        // $('#Bukuid').hide()
                     }
                 })
             })

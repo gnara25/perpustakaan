@@ -15,7 +15,7 @@ class PeminjamanController extends Controller
     public function peminjaman(){
         $data = Peminjaman::all();
         $namasiswa = DaftarAnggota::all();
-         $bukuid= Peminjaman::with('idbuku')->get();
+         $bukuid= Peminjaman::with('idbuku')->where('id','=', 1)->get();
 
 
         $namabuku = Daftarbuku::all();

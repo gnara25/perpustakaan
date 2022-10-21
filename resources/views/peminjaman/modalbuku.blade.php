@@ -48,10 +48,10 @@
                                         </td>
 
                                         <td style="width:17%">
-                                            <button class="btn btn-primary" id="Select_File2"
+                                            {{-- <button class="btn btn-primary" id="Select_File2"
                                                 data_id="{{ $row->kodebuku }}">
                                                 <i class="fa fa-check"> </i> Pilih
-                                            </button>
+                                            </button> --}}
                                             <form action="/cartpost" method="POST" id="form-tambah"
                                                 enctype="multipart/form-data">
                                                 @csrf
