@@ -124,23 +124,23 @@
                                                 </div>
                                             </div>
                                     </div>
-                                          <table  class="table table-striped table-bordered"
-                                                style="width:100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No.</th>
-                                                        <th>Judul Buku</th>
-                                                        <th>Kode Buku</th>
-                                                        <th>Jumlah</th>
-                                                        <th>Aksi</th>
-                                                    </tr>
-                                                </thead>
-                                                @php
-                                                    $no = 1;
-                                                @endphp
-                                                <tbody id="tbody-cart">
-                                                </tbody>
-                                        </table>                                  
+                                            <table  class="table table-striped table-bordered"
+                                                    style="width:100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No.</th>
+                                                            <th>Judul Buku</th>
+                                                            <th>Kode Buku</th>
+                                                            <th>Jumlah</th>
+                                                            <th>Aksi</th>
+                                                        </tr>
+                                                    </thead>
+                                                    @php
+                                                        $no = 1;
+                                                    @endphp
+                                                    <tbody id="tbody-cart">
+                                                    </tbody>
+                                            </table>                                  
                                     <div id="result_tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div>
                                             <div id="result_buku"></div>
                                         
@@ -373,9 +373,6 @@
              
             </script>
  -->
-
-
-
  <script>
     // $(".fileSelection1 #Select_File2").click(function (e) {
     //     document.getElementsByName('kodebuku')[0].value = $(this).attr("data_id");
@@ -394,7 +391,7 @@
     //         }
     //     });
     // });
-    </script>
+</script>
 
     <script>
         $(document).ready(function() {

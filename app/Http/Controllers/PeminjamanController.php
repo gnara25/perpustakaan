@@ -15,8 +15,11 @@ class PeminjamanController extends Controller
     public function peminjaman(){
         $data = Peminjaman::all();
         $namasiswa = DaftarAnggota::all();
+         $bukuid= Peminjaman::with('idbuku')->get();
+
+
         $namabuku = Daftarbuku::all();
-        return view('peminjaman.peminjaman', compact('data','namasiswa','namabuku'));
+        return view('peminjaman.peminjaman', compact('data','namasiswa','namabuku','bukuid'));
     }
 
     public function table(){
@@ -32,6 +35,10 @@ class PeminjamanController extends Controller
 
     return json_encode($data);
 }
+// public function detailbuku(){
+//     $bukuid= Daftarbuku::all();
+//     return view('peminjaman.detailbuku',compact('bukuid'));
+// }
 
     // public function getBooks(){
     //     $data = Daftarbuku::all();

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 @include('template.head')
-
 <body>
     <!-- wrapper -->
     <div class="wrapper">
@@ -124,17 +122,22 @@
                                                                 <a href="/tambahpengembalian/{{$row->id}}" class="btn btn-primary">
                                                                     <i class="fadeIn animated bx bx-download"></i>
                                                                 </a>
+                                                                <a data-bs-toggle="modal"
+                                                                data-bs-target="#Bukuid"
+                                                                class="btn btn-primary">
+                                                                <i class="fadeIn animated bx bx-exit"></i>
+                                                            </a>
+                                                                
                                                                 {{-- <a href="#" class="btn btn-danger delete"
                                                                     data-id="{{ $row->id }}"
                                                                     data-nama="{{ $row->nama }}">
-                                                                    <i class="fa-solid fa-trash"></i>
                                                                 </a> --}}
                                                             </td>
+                                                                <i class="fa-solid fa-trash"></i>
 
                                                         </tr>
                                                         @endif
                                                     @endforeach
-
                                                 </tbody>
                                             </table>
                                         </form>
@@ -145,6 +148,8 @@
                     </div>
                     <!--end page-content-wrapper-->
                 </div>
+                @include('peminjaman.detailbuku')
+
                 <!-- end wrapper -->
                 @include('template.script')
 
