@@ -32,6 +32,9 @@
                                 @endphp
                                 @foreach ($bukuid as $row)
                                     <tr>
+                                        <form action="/cartpost" method="POST" id="form-tambah"
+                                                enctype="multipart/form-data">
+                                                @csrf
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $row->namabuku }}</td>
                                         <td>{{ $row->idkategori->kategori }}</td>
@@ -48,29 +51,16 @@
                                         </td>
 
                                         <td style="width:17%">
-                                            {{-- <button class="btn btn-primary" id="Select_File2"
-                                                data_id="{{ $row->kodebuku }}">
-                                                <i class="fa fa-check"> </i> Pilih
-                                            </button> --}}
-                                            <form action="/cartpost" method="POST" id="form-tambah"
-                                                enctype="multipart/form-data">
-                                                @csrf
                                                 <input type="hidden" value="{{ $row->id }}" name="id">
                                                 <input type="hidden" value="{{ $row->namabuku }}" name="namabuku">
                                                 <input type="hidden" value="{{ $row->kodebuku }}" name="kodebuku">
                                                 <input type="hidden" value="1" name="quantity">
-
-
-                                                <button class="btn btn-primary" id="Select_File2"
-                                                    data_id="{{ $row->kodebuku }}" data-bs-dismiss="modal">
+                                                <button class="btn btn-primary" data-bs-dismiss="modal">
                                                     <i class="fa fa-check"> </i> Pilih
                                                 </button>
-                                                <a href="" target="_blank">
-                                                    <button class="btn btn-success"><i class="fa fa-sign-in"></i>
-                                                        Detail</button></a>
-                                            </form>
+                                            
                                         </td>
-
+                                     </form>   
                                     </tr>
                                 @endforeach
 
