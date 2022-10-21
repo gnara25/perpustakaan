@@ -98,14 +98,14 @@
                                       <label for="kelas" class="col-sm-4 col-form-label">Kode Buku </label> 
                                             <div class="col-sm-8">
                                                 <div class="input-group has-validation">
-                                                     <select class="form-control single-select @error('kodebuku') is-invalid @enderror"
+                                                     {{-- <select class="form-control single-select @error('kodebuku') is-invalid @enderror"
                                                     name="kodebuku" aria-label="Default select example" id="kodebuku">
                                                     <option value="" disabled selected> Pilih kodebuku Siswa </option>
                                                     @foreach ($bukuid as $buku)
                                                     <option value="{{ $buku->id }}" data-namabuku='{{$buku->namabuku}}'>
                                                         {{ $buku->kodebuku }}</option>
                                                     @endforeach 
-                                                    </select>
+                                                    </select> --}}
                                                     
                                                         <span class="input-group-btn">
                                                             <a data-bs-toggle="modal"
@@ -114,9 +114,9 @@
                                                                 <i class="fa-solid fa fa-search"></i>
                                                             </a>
                                                         </span>
-                                                     @error('kodebuku')
+                                                     {{-- @error('kodebuku')
                                                     <div class="invalid-feedback">{{ $message }}</div>
-                                                    @enderror
+                                                    @enderror --}}
                                                 </div>
                                                
                                             </div>
