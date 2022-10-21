@@ -40,6 +40,7 @@ class PeminjamanController extends Controller
 
     public function tambahpeminjaman() 
     {
+        \Cart::clear();
         // $data = Peminjaman::all();
         $anggota = DaftarAnggota::all();
         $bukuid= Daftarbuku::all();

@@ -99,7 +99,7 @@ Route::get('/result',[PeminjamanController::class,'result'])->name('result');
 // Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
 Route::post('/cartpost', [CartController::class, 'cartpost'])->name('cartpost');
 Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
-Route::get('remove/{id}', [CartController::class, 'remove'])->name('remove');
+Route::get('remove', [CartController::class, 'remove'])->name('remove');
 Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
 Route::get('buku_list', [CartController::class, 'buku_list'])->name('buku_list');
 Route::get('cartlist', [CartController::class, 'cartlist'])->name('cartlist');

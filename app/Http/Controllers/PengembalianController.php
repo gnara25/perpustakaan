@@ -31,7 +31,6 @@ class PengembalianController extends Controller
 
     public function tambahpengembalianpost(request $request,$id){
         $this->validate($request, [
-
             'transaksi' => ['required','unique:pengembalians,transaksi'],
             'nama' => 'required',
             'kelas' => 'required',
@@ -59,9 +58,9 @@ class PengembalianController extends Controller
             'jumlah' => $request->jumlah,
         ]);
         $ss=Peminjaman::findOrFail($id);
-            $ss->update([
-                'status'=>'1',
-            ]);
+        $ss->update([
+            'status'=>'1',
+        ]);
         $databuku =  Daftarbuku::findOrFail($request->kodebuku);
         $databuku->jumlah += $request->jumlah;
         $databuku->save();

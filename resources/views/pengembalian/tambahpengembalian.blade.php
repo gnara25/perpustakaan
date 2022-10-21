@@ -24,7 +24,7 @@
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item"><a href="beranda"><i class='bx bx-home-alt'></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Peminjamn/Tambah Peminjaman
+                                    <li class="breadcrumb-item active" aria-current="page">Peminjaman/Tambah Peminjaman
                                     </li>
                                 </ol>
                             </nav>
@@ -33,16 +33,18 @@
                     <div class="card radius-15">
                         <div class="card-body">
                             <div class="row">
-                                <form action="/tambahpengembalianpost/{{$pengembalin->id}}" method="POST" enctype="multipart/form-data">
+                                <form action="/tambahpengembalianpost/{{ $pengembalin->id }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
-                                
+
                                     <div class="form-group row mb-3">
                                         <label for="transaksi" class="col-sm-4 col-form-label">No.Transaksi :</label>
-                                        
+
                                         <div class="col-sm-8">
                                             <input type="text"
-                                                class="form-control @error('transaksi') is-invalid @enderror" id="nama"
-                                                name="transaksi" value="{{$pengembalin->transaksi}}" readonly>
+                                                class="form-control @error('transaksi') is-invalid @enderror"
+                                                id="nama" name="transaksi" value="{{ $pengembalin->transaksi }}"
+                                                readonly>
                                             @error('transaksi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -53,7 +55,7 @@
                                         <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('nama') is-invalid @enderror" id="nama"
-                                                name="nama" value="{{$pengembalin->anggota->nama}}" readonly>
+                                                name="nama" value="{{ $pengembalin->anggota->nama }}" readonly>
                                             @error('nama')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -78,39 +80,40 @@ is-invalid
                                         <label for="kelas" class="col-sm-4 col-form-label">Kelas :</label>
                                         <div class="col-sm-8">
                                             <input type="text"
-                                                class="form-control @error('kelas') is-invalid @enderror" id="kelas" value="{{$pengembalin->kelas}}"
-                                                name="kelas">
+                                                class="form-control @error('kelas') is-invalid @enderror" id="kelas"
+                                                value="{{ $pengembalin->kelas }}" name="kelas" readonly>
                                             @error('kelas')
                                                 <div class="invalid-feedback">{{ $message }} </div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
-                                        <label for="kelas" class="col-sm-4 col-form-label">Denda </label>
+                                        <label for="kelas" class="col-sm-4 col-form-label">Denda/buku </label>
                                         <div class="col-sm-8">
                                             @if ($pengembalin->denda[0]->denda > 0)
-                                            <input type="text"
-                                            class="form-control @error('denda') is-invalid @enderror" id="denda" value="{{$pengembalin->denda[0]->denda}}"
-                                            name="denda">
-                                        @error('denda')
-                                            <div class="invalid-feedback">{{ $message }} </div>
-                                        @enderror
-                                        @else
-                                        <input type="text"
-                                                class="form-control @error('denda') is-invalid @enderror" id="denda" value="Masa Peminjaman"
-                                                name="denda">
-                                            @error('denda')
-                                                <div class="invalid-feedback">{{ $message }} </div>
-                                            @enderror
+                                                <input type="text"
+                                                    class="form-control @error('denda') is-invalid @enderror"
+                                                    id="denda" value="{{ $pengembalin->denda[0]->denda }}"
+                                                    name="denda" readonly>
+                                                {{-- @error('denda')
+                                                    <div class="invalid-feedback">{{ $message }} </div>
+                                                @enderror --}}
+                                            @else
+                                                <input type="text"
+                                                    class="form-control @error('denda') is-invalid @enderror"
+                                                    id="denda" value="0" name="denda" readonly>
+                                                {{-- @error('denda')
+                                                    <div class="invalid-feedback">{{ $message }} </div>
+                                                @enderror --}}
                                             @endif
-                                            
                                         </div>
                                     </div>
                                     <div class="row mb-3 mr-4 ml-4" id="add_item_btn">
                                         <div class="col-md-4">
                                             <label for="validationCustom01" class="form-label"> Kode Buku </label>
-                                            <input type="text" class="form-control" value="{{$pengembalin->idbuku->kodebuku}}"
-                                                name="kodebuku" id="kodebuku"  readonly>
+                                            <input type="text" class="form-control"
+                                                value="{{ $pengembalin->idbuku->kodebuku }}" name="kodebuku"
+                                                id="kodebuku" readonly>
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
@@ -118,7 +121,7 @@ is-invalid
                                         <div class="col-md-4">
                                             <label for="validationCustom02" class="form-label"> Judul Buku</label>
                                             <input type="text" class="form-control" id="judul"
-                                                value="{{$pengembalin->namabuku}}" name="namabuku" readonly>
+                                                value="{{ $pengembalin->namabuku }}" name="namabuku" readonly>
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
@@ -127,11 +130,11 @@ is-invalid
                                             <label for="validationCustomUsername" class="form-label">Jumlah Buku</label>
                                             <div class="input-group has-validation">
                                                 <input type="text" class="form-control" id="jumlah"
-                                                    name="jumlah" value="{{$pengembalin->jumlah}}" readonly>
+                                                    name="jumlah" value="{{ $pengembalin->jumlah }}" readonly>
                                                 <div class="invalid-feedback">
                                                     Please choose a username.
                                                 </div>
-                                                <div class="col-md-4">
+                                                {{-- <div class="col-md-4">
                                                     <span class="input-group-btn">
                                                         <a data-bs-toggle="modal"
                                                             data-bs-target="#exampleExtraLargeModal"
@@ -143,8 +146,8 @@ is-invalid
                                                         <a id="showitem" class="btn btn-primary">
                                                             <i class="fa-solid fa-plus-circle"></i>
                                                         </a>
-                                                    </span> --}}
-                                                </div>
+                                                    </span> 
+                                                </div> --}}
                                             </div>
                                         </div>
                                         <br>
@@ -158,7 +161,7 @@ is-invalid
                                                     <span class="text">Proses Pengembalian</span>
                                                 </button>
                                                 <div class=" mb-3">
-                                                    <a href="/pengembalian"
+                                                    <a href="/peminjaman"
                                                         class="btn btn-dark btn-icon-split mb-3 col-sm-3">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-arrow-circle-left"></i>
@@ -177,9 +180,9 @@ is-invalid
 
                 </div>
                 <!--end page-content-wrapper-->
-                @include('peminjaman.modalbuku')
+                {{-- @include('peminjaman.modalbuku') --}}
 
-                @include('peminjaman.modalanggota')
+                {{-- @include('peminjaman.modalanggota') --}}
             </div>
             <!--end page-wrapper-->
             <!--start overlay-->
@@ -200,49 +203,49 @@ is-invalid
                 toastr.error("{{ Session::get('error') }}")
             @endif
 
-            const selection = document.getElementById('transaksi');
-            selection.onchange = function(e) {
-                const nama = e.target.options[e.target.selectedIndex].dataset.nama
-                const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
-                const kodebuku = e.target.options[e.target.selectedIndex].dataset.kodebuku
-                const judul = e.target.options[e.target.selectedIndex].dataset.judul
-                const jumlah = e.target.options[e.target.selectedIndex].dataset.jumlah
-                const denda = e.target.options[e.target.selectedIndex].dataset.denda
-                document.getElementById('nama').value = nama;
-                document.getElementById('kelas').value = kelas;
-                document.getElementById('kodebuku').value = kodebuku;
-                document.getElementById('judul').value = judul;
-                document.getElementById('jumlah').value = jumlah;
-                document.getElementById('denda').value = denda;
-            }
+            // const selection = document.getElementById('transaksi');
+            // selection.onchange = function(e) {
+                    //     const nama = e.target.options[e.target.selectedIndex].dataset.nama
+                    //     const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
+                    //     const kodebuku = e.target.options[e.target.selectedIndex].dataset.kodebuku
+                    //     const judul = e.target.options[e.target.selectedIndex].dataset.judul
+                    //     const jumlah = e.target.options[e.target.selectedIndex].dataset.jumlah
+                    // const denda = e.target.options[e.target.selectedIndex].dataset.denda
+                    //     document.getElementById('nama').value = nama;
+                    //     document.getElementById('kelas').value = kelas;
+                    //     document.getElementById('kodebuku').value = kodebuku;
+                    //     document.getElementById('judul').value = judul;
+                    //     document.getElementById('jumlah').value = jumlah;
+                    // document.getElementById('denda').value = denda;
+                    // }
 
-            $(document).ready(function() {
-                //Default data table
-                $('#mytable').DataTable();
-                var table = $('#example2').DataTable({
-                    lengthChange: false,
-                    buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
-                });
-                table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
-            });
+                    $(document).ready(function() {
+                        //Default data table
+                        $('#mytable').DataTable();
+                        var table = $('#example2').DataTable({
+                            lengthChange: false,
+                            buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
+                        });
+                        table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+                    });
 
-            $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                var recipient = button.data('whatever') // Extract info from data-* attributes
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('New message to ' + recipient)
-                modal.find('.modal-body input').val(recipient)
-            });
+                    $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
+                        var button = $(event.relatedTarget) // Button that triggered the modal
+                        var recipient = button.data('whatever') // Extract info from data-* attributes
+                        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                        var modal = $(this)
+                        modal.find('.modal-title').text('New message to ' + recipient)
+                        modal.find('.modal-body input').val(recipient)
+                    });
 
-            $(document).ready(function() {
-                $(".add_item_btn").click(function(e) {
-                    e.preventDefault();
-                    $("#showitem").prepend("");
-                    alert("showitem");
-                });
-            });
+                    $(document).ready(function() {
+                        $(".add_item_btn").click(function(e) {
+                            e.preventDefault();
+                            $("#showitem").prepend("");
+                            alert("showitem");
+                        });
+                    });
         </script>
         <script src="assets/plugins/select2/js/select2.min.js"></script>
         <script>

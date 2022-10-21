@@ -19,13 +19,13 @@
                 <div class="page-content">
                     <!--breadcrumb-->
                     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">Anggota</div>
+                        <div class="breadcrumb-title pe-3">Daftar Anggota</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item"><a href="beranda"><i class="bx bx-home-alt"></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Daftar Anggota</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Siswa</li>
                                 </ol>
                             </nav>
                         </div>
@@ -37,7 +37,7 @@
                             <div>
                                 {{-- @if (auth()->user()->role == 'admin')        --}}
                                 <a id="table2-new-row-button" href="tambahanggota"
-                                    class="btn btn-outline-info btn-sm mb-2">Tambah Anggota</a>
+                                    class="btn btn-outline-info btn-sm mb-2">Tambah Siswa</a>
                             
                                 {{-- <button onclick="cetakidcard('{{ route('cetakidcard') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak ID Card</button> --}}
                                 <div class="row">

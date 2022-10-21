@@ -18,7 +18,7 @@
                     <!--breadcrumb-->
                     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 
-                        <div class="breadcrumb-title pe-3">Transaksi</div>
+                        <div class="breadcrumb-title pe-3">Laporan</div>
 
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
@@ -83,7 +83,7 @@
                 <!-- end wrapper -->
                 @include('template.script')
 
-                <script>
+                <script>pengem
                     @if (Session::has('success'))
                         toastr.success("{{ Session::get('success') }}")
                     @endif

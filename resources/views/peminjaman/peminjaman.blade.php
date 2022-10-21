@@ -56,8 +56,6 @@
                                                         <th>Nama Siswa</th>
                                                         <th>kelas</th>
                                                         <th>Kode Buku</th>
-                                                        <th>Judul Buku </th>
-                                                        <th>Jumlah</th>
                                                         <th>Tanggal Peminjaman</th>
                                                         <th>Tanggal Pengembalian</th>
                                                         <th>Denda</th>
@@ -100,8 +98,6 @@
                                                             <td>{{ $row->anggota->nama }}</td>
                                                             <td>{{ $row->kelas }}</td>
                                                             <td>{{ $row->idbuku->kodebuku }}</td>
-                                                            <td>{{ $row->namabuku }}</td>
-                                                            <td>{{ $row->jumlah }}</td>
                                                             <td>{{ Carbon\Carbon::parse($row->created_at)->format('d-m-Y') }}
                                                             </td>
                                                             <td>{{ Carbon\Carbon::parse($row->tanggalpengembalian)->format('d-m-Y') }}
@@ -128,11 +124,11 @@
                                                                 <a href="/tambahpengembalian/{{$row->id}}" class="btn btn-primary">
                                                                     <i class="fadeIn animated bx bx-download"></i>
                                                                 </a>
-                                                                <a href="#" class="btn btn-danger delete"
+                                                                {{-- <a href="#" class="btn btn-danger delete"
                                                                     data-id="{{ $row->id }}"
                                                                     data-nama="{{ $row->nama }}">
                                                                     <i class="fa-solid fa-trash"></i>
-                                                                </a>
+                                                                </a> --}}
                                                             </td>
 
                                                         </tr>
