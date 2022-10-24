@@ -16,11 +16,11 @@ class PeminjamanController extends Controller
     public function peminjaman(){
         $data = Peminjaman::all();
         $namasiswa = DaftarAnggota::all();
-         $bukuid= Peminjaman::with('idbuku')->where('transaksi','==','PJM-00003')->get();
+         // $bukuid= Peminjaman::with('idbuku')->where('transaksi','==','PJM-00003')->get();
 
         // dd($bukuid);
         $namabuku = Daftarbuku::all();
-        return view('peminjaman.peminjaman', compact('data','namasiswa','namabuku','bukuid'));
+        return view('peminjaman.peminjaman', compact('data','namasiswa','namabuku'));
     }
 
     public function table(){
@@ -52,7 +52,6 @@ class PeminjamanController extends Controller
         // $data = Peminjaman::all();
         $anggota = DaftarAnggota::all();
         $bukuid= Daftarbuku::all();
-        $cartItems = \Cart::getContent();
         // dd($cartItems);
         $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
         $kd="";
@@ -68,7 +67,7 @@ class PeminjamanController extends Controller
         {
             $kd = "00001";
         }
-        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd','cartItems'));
+        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd'));
     }
 
     public function insert(Request $request){

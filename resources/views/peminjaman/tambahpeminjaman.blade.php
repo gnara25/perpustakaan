@@ -33,8 +33,8 @@
                     <div class="card radius-15">
                         <div class="card-body">
                             <div class="row">
-                                <form action="/insert" method="POST" enctype="multipart/form-data">
-                                    @csrf
+                              <!--   <form action="/insert" method="POST" enctype="multipart/form-data">
+                                    @csrf -->
                                     <div class="form-group row mb-3">
                                         <label for="nisn" class="col-sm-4 col-form-label">No Transaksi :</label>
                                         <div class="col-sm-8">
@@ -96,17 +96,9 @@
 
                                      <div class="form-group row mb-3">  
                                       <label for="kelas" class="col-sm-4 col-form-label">Kode Buku </label> 
-                                            <div class="col-sm-8">
-                                                <div class="input-group has-validation">
-                                                     {{-- <select class="form-control single-select @error('kodebuku') is-invalid @enderror"
-                                                    name="kodebuku" aria-label="Default select example" id="kodebuku">
-                                                    <option value="" disabled selected> Pilih kodebuku Siswa </option>
-                                                    @foreach ($bukuid as $buku)
-                                                    <option value="{{ $buku->id }}" data-namabuku='{{$buku->namabuku}}'>
-                                                        {{ $buku->kodebuku }}</option>
-                                                    @endforeach 
-                                                    </select> --}}
-                                                    
+                                             <div class="col-sm-8">
+                                                <div class="input-group has-validation"> 
+                                                    <div class="col-md-4">
                                                         <span class="input-group-btn">
                                                             <a data-bs-toggle="modal"
                                                                 data-bs-target="#Bukuid"
@@ -114,16 +106,12 @@
                                                                 <i class="fa-solid fa fa-search"></i>
                                                             </a>
                                                         </span>
-                                                     {{-- @error('kodebuku')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                    @enderror --}}
+                                                    </div>
                                                 </div>
-                                               
                                             </div>
                                     </div>
-                                                                      
-                                    <!-- <div id="tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div> -->
-                                            <div id="tbody-cart"></div>
+                                                                           
+                                    <div id="tbody-cart"></div>
                                         
                                     </div> 
                                   <!--   <div id="table_field">
@@ -201,10 +189,8 @@
                                                 </div>
                                             </div>
                                         </center>
-                                       {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
-                                <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
-                                </form>
-
+                                     <!--   </form>
+ -->
                             </div>
                         </div>
                     </div>
@@ -241,11 +227,11 @@
                 const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
                 document.getElementById('kelas').value = kelas;
             }
-            const selection1 = document.getElementById('kodebuku');
-                selection1.onchange = function(e) {
-                const namabuku = e.target.options[e.target.selectedIndex].dataset.namabuku
-                document.getElementById('namabuku').value = namabuku;
-            }
+            // const selection1 = document.getElementById('kodebuku');
+            //     selection1.onchange = function(e) {
+            //     const namabuku = e.target.options[e.target.selectedIndex].dataset.namabuku
+            //     document.getElementById('namabuku').value = namabuku;
+            // }
 
             $(document).ready(function() {
                 //Default data table
@@ -354,6 +340,7 @@
              
             </script>
  -->
+
     <script>
         $(document).ready(function() {
 
@@ -378,29 +365,25 @@
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
-                                                @php
-                                                    $no = 1;
-                                                @endphp
-                                                <tbody>
-                                                
-                                    <tr>
-                                        <td scope="row">${no++}</td>
-                                        <td>${val.name}</td>
-                                        <td>${val.attributes.kodebuku}</td>
-                                        <td>${val.quantity}</td>
-                                        <td class="hidden text-right md:table-cell">
-                                        <button class="btn btn-danger" id="remove" value="${val.id}"> X</button>
+                                            <tbody>
+                                            <tr>
+                                            <td scope="row">${no++}</td>
+                                            <td>${val.name}</td>
+                                            <td>${val.attributes.kodebuku}</td>
+                                            <td>${val.quantity}</td>
+                                            <td class="hidden text-right md:table-cell">
+                                            <a href="/remove/${val.id} "onclick="return confirm('apakah anda yakin ingin menghapus data ini');"
+                                            class="btn btn-danger"> X</a>
             
                                         </td>
                                     </tr>
-                                </tbody>
-                            </table>`
+                                    </tbody>
+                                </table>`
                         })
-                                $('#tbody-cart').html(html)
+
+                        $('#tbody-cart').html(html)
                     }
                 })
-
-               
             }
 
             $('#form-tambah').submit(function(e) {

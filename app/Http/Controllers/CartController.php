@@ -26,7 +26,6 @@ class CartController extends Controller
     {
         $array = array();
         $cartItems = \Cart::getContent();
-        // dd($cartItems);
         foreach($cartItems as $cart){
             array_push($array, $cart);
         }
@@ -39,7 +38,7 @@ class CartController extends Controller
         \Cart::remove($request->id);
         session()->flash('success', 'Item Cart Remove Successfully !');
 
-        return response()->json('berhasil');
+        return redirect()->back();
     }
 
 }
