@@ -39,7 +39,6 @@
 
                                     <div class="form-group row mb-3">
                                         <label for="transaksi" class="col-sm-4 col-form-label">No.Transaksi :</label>
-
                                         <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('transaksi') is-invalid @enderror"
@@ -87,7 +86,7 @@ is-invalid
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-3">
+                                    {{-- <div class="form-group row mb-3">
                                         <label for="kelas" class="col-sm-4 col-form-label">Denda/buku </label>
                                         <div class="col-sm-8">
                                             @if ($pengembalin->denda[0]->denda > 0)
@@ -98,17 +97,17 @@ is-invalid
                                                 {{-- @error('denda')
                                                     <div class="invalid-feedback">{{ $message }} </div>
                                                 @enderror --}}
-                                            @else
+                                            {{-- @else
                                                 <input type="text"
                                                     class="form-control @error('denda') is-invalid @enderror"
-                                                    id="denda" value="0" name="denda" readonly>
+                                                    id="denda" value="0" name="denda" readonly> --}}
                                                 {{-- @error('denda')
                                                     <div class="invalid-feedback">{{ $message }} </div>
                                                 @enderror --}}
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mr-4 ml-4" id="add_item_btn">
+                                            {{-- @endif --}}
+                                        {{-- </div> --}}
+                                    {{-- </div> --}} 
+                                    {{-- <div class="row mb-3 mr-4 ml-4" id="add_item_btn">
                                         <div class="col-md-4">
                                             <label for="validationCustom01" class="form-label"> Kode Buku </label>
                                             <input type="text" class="form-control"
@@ -117,7 +116,7 @@ is-invalid
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-4">
                                             <label for="validationCustom02" class="form-label"> Judul Buku</label>
                                             <input type="text" class="form-control" id="judul"

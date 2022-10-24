@@ -25,23 +25,19 @@
                                 $no = 1;
                             @endphp
                             <tbody id="tbody-cart">
-                                @foreach ($bukuid as $buku)
+                                @foreach ($detail as $buku)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $buku->idbuku->namabuku }}</td>
-                                        <td>{{ $buku->idbuku->kodebuku }}</td>
+                                        <td>{{ $buku->namabuku }}</td>
+                                        <td>{{ $buku->kodebuku }}</td>
                                         <td>{{ $buku->jumlah }}</td>
                                     </tr>
                                 @endforeach
-
-
                             </tbody>
                         </table>
-
                     </div>
-
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
                     </div>
                 </div>
             </div>

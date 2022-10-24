@@ -16,11 +16,11 @@ class PeminjamanController extends Controller
     public function peminjaman(){
         $data = Peminjaman::all();
         $namasiswa = DaftarAnggota::all();
-         $bukuid= Peminjaman::with('idbuku')->where('transaksi','==','PJM-00003')->get();
-
+        $detail= Detailbuku::with('detail')->get();
+        // dd($detail);
         // dd($bukuid);
         $namabuku = Daftarbuku::all();
-        return view('peminjaman.peminjaman', compact('data','namasiswa','namabuku','bukuid'));
+        return view('peminjaman.peminjaman', compact('data','namasiswa','namabuku','detail'));
     }
 
     public function table(){
@@ -97,7 +97,7 @@ class PeminjamanController extends Controller
         foreach($cart1 as $cart){
             array_push($array,
             Detailbuku::create([
-                'id_transaksi' => $request->transaksi,
+                'id_transaksi' => $data,
                 'namabuku' => $cart->name,
                 'kodebuku' => $cart->attributes->kodebuku,
                 'jumlah' => $cart->quantity,
