@@ -30,7 +30,7 @@ class Peminjaman extends Model
     }
     public function detailid()
     {
-        return $this->belongsTo(Detailbuku::class, 'id');
+        return $this->hasMany(Detailbuku::class, 'id');
     }
     
 }

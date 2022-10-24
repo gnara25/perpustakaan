@@ -13,7 +13,7 @@ class Detailbuku extends Model
 
     public function detail()
     {
-        return $this->hasMany(Peminjaman::class, 'id');
+        return $this->belongsTo(Peminjaman::class , 'id_transaksi');
     }
 
 
