@@ -52,9 +52,9 @@
                                                 data_id="{{ $row->kodebuku }}">
                                                 <i class="fa fa-check"> </i> Pilih
                                             </button> --}}
-                                            <form action="/cartpost" method="POST" id="form-tambah"
+                                            {{-- <form action="/cartpost" method="POST" id="form-tambah"
                                                 enctype="multipart/form-data">
-                                                @csrf
+                                                @csrf --}}
                                                 <input type="hidden" value="{{ $row->id }}" name="id">
                                                 <input type="hidden" value="{{ $row->namabuku }}" name="namabuku">
                                                 <input type="hidden" value="{{ $row->kodebuku }}" name="kodebuku">
@@ -62,13 +62,14 @@
 
 
                                                 <button class="btn btn-primary" id="Select_File2"
-                                                    data_id="{{ $row->kodebuku }}" data-bs-dismiss="modal">
+                                                    onclick="tambah(this)"
+                                                    data-id="{{ $row->id }}" data-nama="{{ $row->namabuku }}" data-kode="{{ $row->kodebuku }}" data-bs-dismiss="modal">
                                                     <i class="fa fa-check"> </i> Pilih
                                                 </button>
                                                 <a href="" target="_blank">
                                                     <button class="btn btn-success"><i class="fa fa-sign-in"></i>
                                                         Detail</button></a>
-                                            </form>
+                                            {{-- </form> --}}
                                         </td>
 
                                     </tr>

@@ -123,7 +123,23 @@
                                     </div>
                                                                       
                                     <!-- <div id="tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div> -->
-                                            <div id="tbody-cart"></div>
+                                            <div >
+                                                <table  class="table table-striped table-bordered"
+                                                style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>Judul Buku</th>
+                                                        <th>Kode Buku</th>
+                                                        <th>Jumlah</th>
+                                                        <th>Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody-cart">
+
+                                                </tbody>
+                                                </table>
+                                            </div>
                                         
                                     </div> 
                                   <!--   <div id="table_field">
@@ -241,10 +257,76 @@
                 const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
                 document.getElementById('kelas').value = kelas;
             }
-            const selection1 = document.getElementById('kodebuku');
-                selection1.onchange = function(e) {
-                const namabuku = e.target.options[e.target.selectedIndex].dataset.namabuku
-                document.getElementById('namabuku').value = namabuku;
+            // const selection1 = document.getElementById('kodebuku');
+            //     selection1.onchange = function(e) {
+            //     const namabuku = e.target.options[e.target.selectedIndex].dataset.namabuku
+            //     document.getElementById('namabuku').value = namabuku;
+            // }
+
+            function tambah(e){
+                console.log(e.getAttribute('data-id'))
+                const fd = new FormData();
+                fd.append('id', e.getAttribute('data-id'))
+                fd.append('namabuku', e.getAttribute('data-nama'))
+                fd.append('kodebuku', e.getAttribute('data-kode'))
+                fd.append('quantity', e.getAttribute('1'))
+                addPeminjaman(fd)
+            }
+
+            function addPeminjaman(fd){
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method: 'POST',
+                    url: '/cartpost',
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    data: fd,
+                    dataType: 'JSON',
+                    success: function(e){
+                        console.log(e)
+                        getCartList()
+                        // $('#Bukuid').hide()
+                    }
+                })
+            }
+
+            function getCartList() {
+                $.ajax({
+                    method: 'GET',
+                    url: '/cartlist',
+                    dataType: 'JSON',
+                    success: function(e){
+                        let html = ''
+                        let no = 1;
+                        e.data.map(val => {
+                            html += `<table>
+                                <tbody>
+                                                
+                                    <tr>
+                                        <td scope="row">${no++}</td>
+                                        <td>${val.name}</td>
+                                        <td>${val.attributes.kodebuku}</td>
+                                        <td>${val.quantity}</td>
+                                        <td class="hidden text-right md:table-cell">
+                                        <button class="btn btn-danger" id="remove" value="${val.id}"> X</button>
+            
+                                        </td>
+                                    </tr>
+                                     </tbody>
+                                </table>   `
+                        })
+                                $('#tbody-cart').html(html)
+                    }
+
+
+
+                        
+                })
+
+               
             }
 
             $(document).ready(function() {
@@ -378,54 +460,7 @@
         $(document).ready(function() {
 
             getCartList()
-            function getCartList() {
-                $.ajax({
-                    method: 'GET',
-                    url: '/cartlist',
-                    dataType: 'JSON',
-                    success: function(e){
-                        let html = ''
-                        let no = 1;
-                        e.data.map(val => {
-                            html += `<table  class="table table-striped table-bordered"
-                                                style="width:100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No.</th>
-                                                        <th>Judul Buku</th>
-                                                        <th>Kode Buku</th>
-                                                        <th>Jumlah</th>
-                                                        <th>Aksi</th>
-                                                    </tr>
-                                                </thead>
-                                                @php
-                                                    $no = 1;
-                                                @endphp
-                                                <tbody id="tbody-cart">
-                                                
-                            <tr>
-                                        <td scope="row">${no++}</td>
-                                        <td>${val.name}</td>
-                                        <td>${val.attributes.kodebuku}</td>
-                                        <td>${val.quantity}</td>
-                                        <td class="hidden text-right md:table-cell">
-                                        <button class="btn btn-danger" id="remove" value="${val.id}"> X</button>
             
-                                        </td>
-                                    </tr>
-                                     </tbody>
-                                        </table>   `
-                        })
-                                $('#tbody-cart').html(html)
-                    }
-
-
-
-                        
-                })
-
-               
-            }
 
             $(document).ready(function(){
                          $('#remove').submit(function(e) {
@@ -442,6 +477,8 @@
 
                     });
 
+                    
+            
 
             $('#form-tambah').submit(function(e) {
                 e.preventDefault()

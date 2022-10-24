@@ -121,7 +121,7 @@
                                                                 <a href="/tambahpengembalian/{{$row->id}}" class="btn btn-primary">
                                                                     <i class="fadeIn animated bx bx-download"></i>
                                                                 </a>
-                                                                <a href="/peminjamanmod/{{$row->transaksi}}" data-bs-toggle="modal"
+                                                                <a data-bs-toggle="modal"
                                                                 data-bs-target="#Bukuid{{$row->id}}"
                                                                 class="btn btn-primary">
                                                                 <i class="fadeIn animated bx bx-exit"></i>
