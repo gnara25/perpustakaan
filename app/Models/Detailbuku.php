@@ -11,5 +11,11 @@ class Detailbuku extends Model
     protected $guarded = [];
     protected $dates = ['created_at'];
 
+    public function detail()
+    {
+        return $this->hasMany(Peminjaman::class, 'id');
+    }
+
+
     use HasFactory;
 }

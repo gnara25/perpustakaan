@@ -28,4 +28,9 @@ class Peminjaman extends Model
     {
         return $this->hasMany(Denda::class);
     }
+    public function detailid()
+    {
+        return $this->belongsTo(Detailbuku::class, 'id');
+    }
+    
 }

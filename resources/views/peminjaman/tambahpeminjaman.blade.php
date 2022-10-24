@@ -33,8 +33,8 @@
                     <div class="card radius-15">
                         <div class="card-body">
                             <div class="row">
-                              <!--   <form action="/insert" method="POST" enctype="multipart/form-data">
-                                    @csrf -->
+                                <form action="/insert" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="form-group row mb-3">
                                         <label for="nisn" class="col-sm-4 col-form-label">No Transaksi :</label>
                                         <div class="col-sm-8">
@@ -189,8 +189,8 @@
                                                 </div>
                                             </div>
                                         </center>
-                                     <!--   </form>
- -->
+                                       </form>
+
                             </div>
                         </div>
                     </div>
