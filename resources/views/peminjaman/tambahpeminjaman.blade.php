@@ -456,7 +456,7 @@
     // });
 </script>
 
-    <script>
+    <!-- <script>
         $(document).ready(function() {
 
             getCartList()
@@ -503,7 +503,7 @@
 
         })
     </script>
-
+ -->
  <script>
     // AJAX call for autocomplete 
     // $(document).ready(function(){

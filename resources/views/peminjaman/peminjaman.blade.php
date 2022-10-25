@@ -112,6 +112,9 @@
                                                                 Hari
                                                             </td>
                                                             <?php } ?>
+                                                         <!--    <td>
+                                                               <p id="GFG_DOWN"></p> 
+                                                            </td>     -->
 
                                                             <td>
                                                                 <a href="/editpeminjaman/{{ $row->id }}"
@@ -122,7 +125,7 @@
                                                                     <i class="fadeIn animated bx bx-download"></i>
                                                                 </a>
                                                                 <a data-bs-toggle="modal"
-                                                                data-bs-target="#Bukuid{{$row->id}}"
+                                                                data-bs-target="#BukuModal{{$row->id}}"
                                                                 class="btn btn-primary">
                                                                 <i class="fadeIn animated bx bx-exit"></i>
                                                             </a>
@@ -191,6 +194,15 @@
                         modal.find('.modal-title').text('New message to ' + recipient)
                         modal.find('.modal-body input').val(recipient)
                     });
+
+            //     var el_up  = document.getElementById("Bukuid");
+            //     var el_down = document.getElementById("BukuModal");
+            //     el_up.innerHTML = "Click on button to get ID";
+
+            //       function Bukuid(clicked) {
+            //     el_down.innerHTML = clicked;
+            // }    
+
                 </script>
 
 

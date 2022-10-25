@@ -14,17 +14,19 @@ use App\Models\laporanpinjam;
 class PeminjamanController extends Controller
 {
     public function peminjaman(){
+
         $data = Peminjaman::all();
+        // $detail = Peminjaman::with('detailid')->get();
         $namasiswa = DaftarAnggota::all();
         $detail= Detailbuku::with('detail')->get();
         // dd($detail);
         // dd($bukuid);
         $namabuku = Daftarbuku::all();
-        return view('peminjaman.peminjaman', compact('data','namasiswa','namabuku','detail'));
+        return view('peminjaman.peminjaman', compact('data','namasiswa','detail'));
     }
 
     public function table(){
-        $data = Peminjaman::with('buku',);
+        $data = Peminjaman::with('buku');
         return view('peminjaman.peminjaman', compact('data'));
     }
    public function getBooks(Request $request)
@@ -52,7 +54,6 @@ class PeminjamanController extends Controller
         // $data = Peminjaman::all();
         $anggota = DaftarAnggota::all();
         $bukuid= Daftarbuku::all();
-        $cartItems = \Cart::getContent();
         // dd($cartItems);
         $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
         $kd="";
@@ -68,7 +69,7 @@ class PeminjamanController extends Controller
         {
             $kd = "00001";
         }
-        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd','cartItems'));
+        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd'));
     }
 
     public function insert(Request $request){
@@ -95,15 +96,26 @@ class PeminjamanController extends Controller
         $array = array();
         // $id = Peminjaman::find('id');
         foreach($cart1 as $cart){
-            array_push($array,
+            // array_push($array,http://localhost/phpmyadmin/index.php
             Detailbuku::create([
                 'id_transaksi' => $data,
                 'namabuku' => $cart->name,
                 'kodebuku' => $cart->attributes->kodebuku,
                 'jumlah' => $cart->quantity,
-            ])
+            ]);
 
-            );
+            // );
+
+        // foreach($cart1 as $cart){
+        //     array_push($array,http://localhost/phpmyadmin/index.php
+        //     Detailbuku::create([
+        //         'id_transaksi' => $data,
+        //         'namabuku' => $cart->name,
+        //         'kodebuku' => $cart->attributes->kodebuku,
+        //         'jumlah' => $cart->quantity,
+        //     ])
+
+        //     );
         }
 
         $denda = Denda::create([

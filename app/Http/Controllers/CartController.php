@@ -26,7 +26,6 @@ class CartController extends Controller
     {
         $array = array();
         $cartItems = \Cart::getContent();
-        // dd($cartItems);
         foreach($cartItems as $cart){
             array_push($array, $cart);
         }
