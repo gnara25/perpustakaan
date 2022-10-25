@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Denda;
 use App\Models\Daftarbuku;
+use App\Models\Detailbuku;
 use App\Models\Peminjaman;
 use App\Models\Pengembalian;
 use Illuminate\Http\Request;
 use App\Models\DaftarAnggota;
-use App\Models\Denda;
 
 class PengembalianController extends Controller
 {
@@ -24,9 +25,10 @@ class PengembalianController extends Controller
     public function tambahpengembalian($id){
         $data = DaftarAnggota::all();
         $buku = Daftarbuku::all();
+        $cartbuku = Detailbuku::get();
         $pengembalin = Peminjaman::with('anggota','idbuku','denda')->findOrFail($id);
         
-        return view('pengembalian.tambahpengembalian', compact('data','buku','pengembalin'));
+        return view('pengembalian.tambahpengembalian', compact('data','buku','pengembalin', 'cartbuku'));
     }
 
     public function tambahpengembalianpost(request $request,$id){
