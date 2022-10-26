@@ -8,7 +8,8 @@
                     <h5 class="text-center">Detail Buku</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body fileSelection1">
+                
+               <div class="modal-body fileSelection1" id="detail_buku">
                     <div class="table-responsive">
 
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -24,7 +25,7 @@
                             @php
                                 $no = 1;
                             @endphp
-                            <tbody id="tbody-cart">
+                            <tbody id="detail_buku">
                                 @foreach ($detail as $buku)
                                     <tr>
                                         <td>{{ $no++ }}</td>
@@ -43,3 +44,19 @@
             </div>
         </div>
     </div>
+{{-- <script>
+    $(document).ready(function(){
+        $('.BukuModal').click(function(){
+            var data_id = $(this).data("id_transaksi")
+            $.ajax({
+                url: "",
+                method: "POST",
+                data: {data_id: data_id},
+                success: function(data){
+                    $("#detail_buku").html(data)
+                    $("#BukuModal").modal('show')
+                }
+            })
+        })
+    })
+</script> --}}

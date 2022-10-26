@@ -19,8 +19,6 @@ class PeminjamanController extends Controller
         // $detail = Peminjaman::with('detailid')->get();
         $namasiswa = DaftarAnggota::all();
         $detail= Detailbuku::with('detail')->get();
-        // dd($detail);
-        // dd($bukuid);
         $namabuku = Daftarbuku::all();
         return view('peminjaman.peminjaman', compact('data','namasiswa','detail'));
     }
