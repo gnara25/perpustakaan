@@ -17,7 +17,7 @@ class CartController extends Controller
             'kodebuku' => $request->kodebuku,
           )
         ]);
-        session()->flash('success', 'Product is Added to Cart Successfully !');
+        // session()->flash('success', 'Product is Added to Cart Successfully !');
 
         // return redirect()->back() ;
         return response()->json('berhasil');
@@ -33,12 +33,12 @@ class CartController extends Controller
         return response()->json(['data' => $array]);
     }
 
-    public function remove(Request $request)
+    public function remove($id)
     {
-        \Cart::remove($request->id);
+        \Cart::remove($id);
         session()->flash('success', 'Item Cart Remove Successfully !');
 
-        return redirect()->back();
+        return response()->json('berhasil');
     }
 
 }

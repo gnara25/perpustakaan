@@ -81,11 +81,13 @@
 													<div class="d-grid">
 														<button type="submit" class="btn btn-primary"><i class="bx bx-user me-1"></i>Register</button>
 													</div>
-													<br>
+												</div>
+
+												<div class="col-12">
 													<div class="d-grid">
 														<a href="/login" class="btn btn-primary"><i class="fa-solid fa-backward"></i>Kembali</a>
 													</div>
-												</div>
+												</div>		
 											</form>
 										</div>
 									</div>

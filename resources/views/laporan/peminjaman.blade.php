@@ -45,8 +45,6 @@
                                                     <th>No.</th>
                                                     <th>Nama Siswa</th>
                                                     <th>Kelas</th>
-                                                    <th>Judul Buku</th>
-                                                    <th>Jumlah</th>
                                                     <th>Tanggal Peminjaman</th>
                                                 </tr>
                                             </thead>
@@ -59,8 +57,6 @@
                                                         <td >{{ $no++ }}</td>
                                                         <td>{{$row->idnama->nama}}</td>
                                                         <td>{{ $row->kelas }}</td>
-                                                        <td>{{ $row->namabuku }}</td>
-                                                        <td>{{ $row->jumlah }}</td>
                                                         <td>{{ Carbon\Carbon::parse($row->tanggalpinjam)->format('d-m-Y') }}
                                                         </td>
                                                     

@@ -24,9 +24,11 @@
                             </thead>
                             @php
                                 $no = 1;
+                                $row = $row->id;
                             @endphp
-                            <tbody id="detail_buku">
-                                @foreach ($detail as $buku)
+                            <tbody id="tbody-cart">
+
+                                @foreach ( $detail as $buku)
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $buku->namabuku }}</td>
