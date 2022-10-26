@@ -123,6 +123,7 @@
                                     </div>
                                                                       
                                     <!-- <div id="tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div> -->
+                                    
                                             <div >
                                                 <table  class="table table-striped table-bordered"
                                                 style="width:100%">
@@ -140,6 +141,7 @@
                                                 </tbody>
                                                 </table>
                                             </div>
+                                            
                                         
                                     </div> 
                                   <!--   <div id="table_field">
@@ -311,7 +313,8 @@
                                         <td>${val.attributes.kodebuku}</td>
                                         <td>${val.quantity}</td>
                                         <td class="hidden text-right md:table-cell">
-                                        <button class="btn btn-danger" id="remove" value="${val.id}"> X</button>
+                                        <button class="btn btn-danger" id="remove"  
+                                        onclick="remove(this)" data-id="${val.id}" > X</button>
             
                                         </td>
                                     </tr>
@@ -328,6 +331,25 @@
 
                
             }
+            function remove(e){
+                console.log(e.getAttribute('data-id'))
+                const dk = new FormData();
+                dk.append('id', e.getAttribute('data-id'))
+                Removecart(dk)
+            }
+            function Removecart(dk) {
+                $.ajax({
+                    method: 'GET',
+                    url: '/remove',
+                    data: dk,
+                    dataType: 'JSON',
+                    success: function(e){
+                        console.log(e)
+                    }   
+                })     
+            }
+
+
 
             $(document).ready(function() {
                 //Default data table

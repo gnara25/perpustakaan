@@ -195,14 +195,6 @@
                         modal.find('.modal-body input').val(recipient)
                     });
 
-            //     var el_up  = document.getElementById("Bukuid");
-            //     var el_down = document.getElementById("BukuModal");
-            //     el_up.innerHTML = "Click on button to get ID";
-
-            //       function Bukuid(clicked) {
-            //     el_down.innerHTML = clicked;
-            // }    
-
                 </script>
 
 

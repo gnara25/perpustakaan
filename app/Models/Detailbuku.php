@@ -16,6 +16,8 @@ class Detailbuku extends Model
         return $this->belongsTo(Peminjaman::class , 'id_transaksi');
     }
 
+   
+
 
     use HasFactory;
 }
