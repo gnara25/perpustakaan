@@ -6,7 +6,6 @@
     <!-- wrapper -->
     <div class="wrapper">
 
-
         @include('template.navbar')
 
         @include('template.sidebar')
@@ -34,7 +33,6 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-
                                 <a id="table2-new-row-button" href="/tambahpeminjaman"
                                     class="btn btn-outline-info btn-sm mb-2">Tambah Peminjaman</a>
 
@@ -131,6 +129,7 @@
                                                                         class="btn btn-primary">
                                                                         <i class="fadeIn animated bx bx-exit"></i>
                                                                     </a>
+                                                                    {{-- <a href="/detailbuku" class="btn btn-primary btn-sm">Detail</a> --}}
 
                                                                     {{-- <a href="#" class="btn btn-danger delete"
                                                                     data-id="{{ $row->id }}"

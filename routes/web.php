@@ -57,10 +57,7 @@ Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('re
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 //Menu Admin
-
 Route::get('/beranda',[LoginController::class,'beranda'])->name('beranda');
-
-
 Route::group(['middleware' => ['auth', 'Cekrole:admin,petugas']], function(){
 
 // buku
@@ -85,7 +82,6 @@ Route::get('/peminjaman',[PeminjamanController::class,'peminjaman'])->name('pemi
 // Route::get('/peminjaman/{id}',[PeminjamanController::class,'peminjamanmod'])->name('peminjaman');
 Route::get('/tambahpeminjaman',[PeminjamanController::class,'tambahpeminjaman'])->name('tambahpeminjaman');
 Route::post('/insert', [PeminjamanController::class, 'insert'])->name('insert');
-
 Route::get('/editpeminjaman/{id}', [PeminjamanController::class, 'editpeminjaman'])->name('editpeminjaman');
 Route::post('/editpeminjamanpost/{id}', [PeminjamanController::class, 'editpeminjamanpost'])->name('editpeminjamanpost');
 Route::get('/deletepeminjaman/{id}', [PeminjamanController::class, 'deletepeminjaman'])->name('deletepeminjaman');
@@ -94,8 +90,7 @@ Route::post('/validasi',[PeminjamanController::class,'validasi'])->name('validas
 Route::get('/getBooks', [PeminjamanController::class, 'getBooks'])->name('getBooks');
 Route::get('/tambahpinjam2',[PeminjamanController::class,'tambahpinjam2'])->name('tambahpinjam2');
 Route::get('/result',[PeminjamanController::class,'result'])->name('result');
-// Route::get('/detailbuku/{id}',[PeminjamanController::class,'detailbuku'])->name('detailbuku');
-
+Route::post('/detailbuku/{id}',[PeminjamanController::class,'detailbuku'])->name('detailbuku');
 // Route::get('/buku_list',[PeminjamanController::class,'buku_list'])->name('buku_list');
 
 //Cart

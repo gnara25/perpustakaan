@@ -19,8 +19,10 @@ class PeminjamanController extends Controller
         // $detail = Peminjaman::with('detailid')->get();
         $namasiswa = DaftarAnggota::all();
         $detail= Detailbuku::with('detail')->get();
+        // dd($detail);
+        // dd($bukuid);
         $namabuku = Daftarbuku::all();
-        return view('peminjaman.peminjaman', compact('data','namasiswa','detail'));
+        return view('peminjaman.peminjaman', compact('data','namasiswa', 'detail'));
     }
 
     public function table(){
@@ -52,8 +54,6 @@ class PeminjamanController extends Controller
         // $data = Peminjaman::all();
         $anggota = DaftarAnggota::all();
         $bukuid= Daftarbuku::all();
-        $cartItems = \Cart::getContent();
-
         // dd($cartItems);
         $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
         $kd="";
@@ -69,7 +69,7 @@ class PeminjamanController extends Controller
         {
             $kd = "00001";
         }
-        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd','cartItems'));
+        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd'));
     }
 
     public function insert(Request $request){
@@ -80,20 +80,22 @@ class PeminjamanController extends Controller
             'nama' => 'required',
             'kelas' => 'required',
         ]);
+
+        // $databuku =  Daftarbuku::findOrFail($request->kodebuku);
+        // if ($databuku->jumlah >= $request->jumlah) {
+            $data = Peminjaman::create([
+            'transaksi' => $request->transaksi,
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+            'tanggalpengembalian' => $request->tanggalpengembalian,
+        ])->id;
+
         // $cart = \cart::all();
 
         $cart1 = \Cart::getContent();
         $array = array();
         // $id = Peminjaman::find('id');
         foreach($cart1 as $cart){
-            $databuku =  Daftarbuku::find($cart->id);
-            if ($databuku->jumlah >= $cart->quantity) {
-                   $data = Peminjaman::create([
-            'transaksi' => $request->transaksi,
-            'nama' => $request->nama,
-            'kelas' => $request->kelas,
-            'tanggalpengembalian' => $request->tanggalpengembalian,
-        ])->id;
             // array_push($array,http://localhost/phpmyadmin/index.php
             Detailbuku::create([
                 'id_transaksi' => $data,
@@ -102,17 +104,18 @@ class PeminjamanController extends Controller
                 'jumlah' => $cart->quantity,
             ]);
 
-            $databuku->jumlah -= $cart->quantity;
-            $databuku->save();
-
-            $pinjam = laporanpinjam::create([
-                'nama' => $request->nama,
-                'kelas' => $request->kelas,
-            ]);
-            }else {
-                     return redirect()->back()->with('error','Jumlah Buku yang dipilih melebihi jumlah buku yang tersedia');
-             }
             // );
+
+        // foreach($cart1 as $cart){
+        //     array_push($array,http://localhost/phpmyadmin/index.php
+        //     Detailbuku::create([
+        //         'id_transaksi' => $data,
+        //         'namabuku' => $cart->name,
+        //         'kodebuku' => $cart->attributes->kodebuku,
+        //         'jumlah' => $cart->quantity,
+        //     ])
+
+        //     );
         }
 
         $denda = Denda::create([
@@ -127,7 +130,13 @@ class PeminjamanController extends Controller
         //     'jumlah' => $request->jumlah,
         // ])->id;
 
-       
+        // $pinjam = laporanpinjam::create([
+        //     'nama' => $request->nama,
+        //     'kelas' => $request->kelas,
+        //     'namabuku' => $request->namabuku,
+        //     'jumlah' => 1,
+        // ]);
+
         //     $databuku->jumlah -= $request->jumlah;
         //     $databuku->save();
         // }else  {
@@ -138,6 +147,27 @@ class PeminjamanController extends Controller
         return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
     }
 
+    public function data_peminjaman() {
+		return $this->db->get('peminjamen')->result_array();
+	}
+
+    public function detailjoin($id) {
+		$this->db->select('*');
+		$this->db->from('detailbukus');
+		$this->db->join('peminjamen', 'peminjamen.id = detailbukus.id_transaksi', 'left');
+		$this->db->where('peminjamen.id');
+		return $this->db->get()->result();
+	}
+
+    public function detpeminjaman(){
+        $data['peminjamen'] = $this->Peminjaman->data_peminjaman();
+        $this->load->view('tes/join', $data);
+    }
+
+    public function detailbuku($id) {
+        $data['detailbuku'] = $this->Detailbuku->detailjoin($id);
+        return view('peminjaman.detailbuku', $data);
+    } 
 
     public function editpeminjaman($id){
 
