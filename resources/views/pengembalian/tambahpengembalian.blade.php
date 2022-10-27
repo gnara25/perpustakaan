@@ -188,6 +188,32 @@ is-invalid
                                     </center>
                                     {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
                                 <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
+                                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Judul Buku</th>
+                                    <th>Kode Buku</th>
+                                    <th>Jumlah</th>
+                                    {{-- <th>Aksi</th> --}}
+                                </tr>
+                            </thead>
+                            @php
+                                $no = 1;
+                            @endphp
+                            <tbody id="tbody-cart">
+
+                                @foreach ( $detail as $buku)
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $buku->namabuku }}</td>
+                                        <td>{{ $buku->kodebuku }}</td>
+                                        <td>{{ $buku->jumlah }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
                                 </form>
                             </div>
                         </div>
@@ -195,7 +221,7 @@ is-invalid
 
                 </div>
                 <!--end page-content-wrapper-->
-                @include('pengembalian.modalpilihbuku')
+                
             </div>
             <!--end page-wrapper-->
             <!--start overlay-->

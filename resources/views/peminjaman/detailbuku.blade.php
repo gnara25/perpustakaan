@@ -24,7 +24,6 @@
                             </thead>
                             @php
                                 $no = 1;
-                                $row = $row->id;
                             @endphp
                             <tbody id="tbody-cart">
 

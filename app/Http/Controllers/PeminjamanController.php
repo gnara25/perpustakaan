@@ -18,9 +18,18 @@ class PeminjamanController extends Controller
         $data = Peminjaman::all();
         // $detail = Peminjaman::with('detailid')->get();
         $namasiswa = DaftarAnggota::all();
-        $detail= Detailbuku::with('detail')->get();
+        // $detail= Detailbuku::with('detail')->get();
+        $id = 27;
+        $detail = DB::table('detailbukus')
+                  // ->form()  
+                  ->join('Peminjamen','Peminjamen.id','=','detailbukus.id_transaksi','left') 
+                  ->where('peminjamen.id', $id) 
+                  ->get();
+
+
         $namabuku = Daftarbuku::all();
-        return view('peminjaman.peminjaman', compact('data','namasiswa','detail'));
+        return view('peminjaman.peminjaman', compact('data','namasiswa'))
+        ->with('detail',$detail);
     }
 
     public function table(){
@@ -80,20 +89,25 @@ class PeminjamanController extends Controller
             'nama' => 'required',
             'kelas' => 'required',
         ]);
-        // $cart = \cart::all();
 
-        $cart1 = \Cart::getContent();
-        $array = array();
-        // $id = Peminjaman::find('id');
-        foreach($cart1 as $cart){
-            $databuku =  Daftarbuku::find($cart->id);
-            if ($databuku->jumlah >= $cart->quantity) {
-                   $data = Peminjaman::create([
+        $data = Peminjaman::create([
             'transaksi' => $request->transaksi,
             'nama' => $request->nama,
             'kelas' => $request->kelas,
             'tanggalpengembalian' => $request->tanggalpengembalian,
         ])->id;
+
+
+        $lapor = laporanpinjam::create([
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+        ]);
+
+        $cart1 = \Cart::getContent();
+        $array = array();
+        foreach($cart1 as $cart){
+            // $databuku =  Daftarbuku::find($cart->id);
+            // if ($databuku->jumlah >= $cart->quantity) {
             // array_push($array,http://localhost/phpmyadmin/index.php
             Detailbuku::create([
                 'id_transaksi' => $data,
@@ -102,16 +116,13 @@ class PeminjamanController extends Controller
                 'jumlah' => $cart->quantity,
             ]);
 
-            $databuku->jumlah -= $cart->quantity;
-            $databuku->save();
+            // $databuku->jumlah -= $cart->quantity;
+            // $databuku->save();
 
-            $pinjam = laporanpinjam::create([
-                'nama' => $request->nama,
-                'kelas' => $request->kelas,
-            ]);
-            }else {
-                     return redirect()->back()->with('error','Jumlah Buku yang dipilih melebihi jumlah buku yang tersedia');
-             }
+            
+            // }else {
+            //          return redirect()->back()->with('error','Jumlah Buku yang dipilih melebihi jumlah buku yang tersedia');
+            //  }
             // );
         }
 
@@ -173,57 +184,6 @@ class PeminjamanController extends Controller
 
     public function validasi(request $request){
         dd($request->all);
-    }
-     public function tambahpinjam2() 
-    {
-        // $data = Peminjaman::all();
-        $anggota = DaftarAnggota::all();
-        $bukuid= Daftarbuku::all();
-        $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
-        $kd="";
-        if($q->count()>0) 
-        {
-            foreach ($q->get() as $k) 
-            {
-                $tmp = ((int)$k->kode)+1;
-                $kd = sprintf("%05s",$tmp);
-            }
-        }
-        else
-        {
-            $kd = "00001";
-        }
-        return view('peminjaman.tambahpinjam2', compact('anggota','bukuid','kd'));
-    }
-
-    public function result()
-    {   
-        
-        $user = DaftarAnggota::all();
-        error_reporting(0);
-        if($user->nama != null)
-        {
-            echo '<table class="table table-striped">
-                        <tr>
-                            <td>Nama Anggota</td>
-                            <td>:</td>
-                            <td>{{$user->nama}}</td>
-                        </tr>
-                        <tr>
-                            <td>Telepon</td>
-                            <td>:</td>
-                            <td>{{$user->kelas}}</td>
-                        </tr>
-                        <tr>
-                            <td>Alamat</td>
-                            <td>:</td>
-                            <td>{{$user->alamat}}</td>
-                        </tr>
-                    </table>';
-        }else{
-            echo 'Anggota Tidak Ditemukan !';
-        }
-        
     }
 
     public function cart(){
