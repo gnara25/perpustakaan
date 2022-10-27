@@ -322,35 +322,11 @@
                                 </table>   `
                         })
                                 $('#tbody-cart').html(html)
-                    }
-
-
-
-                        
+                    }                        
                 })
 
                
             }
-            function remove(e){
-                console.log(e.getAttribute('data-id'))
-                const dk = new FormData();
-                dk.append('id', e.getAttribute('data-id'))
-                Removecart(dk)
-            }
-            function Removecart(dk) {
-                $.ajax({
-                    method: 'GET',
-                    url: '/remove',
-                    data: dk,
-                    dataType: 'JSON',
-                    success: function(e){
-                        console.log(e)
-                    }   
-                })     
-            }
-
-
-
             $(document).ready(function() {
                 //Default data table
                 $('#mytable').DataTable();
@@ -458,26 +434,6 @@
              
             </script>
  -->
- <script>
-    // $(".fileSelection1 #Select_File2").click(function (e) {
-    //     document.getElementsByName('kodebuku')[0].value = $(this).attr("data_id");
-    //     $('#Bukuid').modal('hide');
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "/cartpost",
-    //         data:'kodebuku='+$(this).attr("data_id"),
-    //         beforeSend: function(){
-    //             $("#result_buku").html("");
-    //             $("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
-    //         },
-    //         success: function(html){
-    //             $("#result_buku").load("/buku_list");
-    //             $("#result_tunggu_buku").html('');
-    //         }
-    //     });
-    // });
-</script>
-
     <!-- <script>
         $(document).ready(function() {
 
@@ -526,26 +482,6 @@
         })
     </script>
  -->
- <script>
-    // AJAX call for autocomplete 
-    // $(document).ready(function(){
-    //     $("#kodebuku").keyup(function(){
-    //         $.ajax({
-    //             type: "POST",
-    //             url: "/cartpost",
-    //             data:'kodebuku='+$(this).val(),
-    //             beforeSend: function(){
-    //                 $("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
-    //             },
-    //             success: function(html){
-    //                 $("#result_buku").load("/buku_list");
-    //                 $("#result_tunggu_buku").html('');
-    //             }
-    //         });
-    //     });
-    // });
-    </script>
-
 
 
 </body>

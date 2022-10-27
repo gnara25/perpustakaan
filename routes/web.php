@@ -90,7 +90,8 @@ Route::post('/validasi',[PeminjamanController::class,'validasi'])->name('validas
 Route::get('/getBooks', [PeminjamanController::class, 'getBooks'])->name('getBooks');
 Route::get('/tambahpinjam2',[PeminjamanController::class,'tambahpinjam2'])->name('tambahpinjam2');
 Route::get('/result',[PeminjamanController::class,'result'])->name('result');
-Route::post('/detailbuku/{id}',[PeminjamanController::class,'detailbuku'])->name('detailbuku');
+Route::get('/detailbuku/{id}',[PeminjamanController::class,'detailbuku'])->name('detailbuku');
+
 // Route::get('/buku_list',[PeminjamanController::class,'buku_list'])->name('buku_list');
 
 //Cart

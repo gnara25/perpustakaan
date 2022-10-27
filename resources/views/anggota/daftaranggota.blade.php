@@ -84,13 +84,13 @@
                                                             </td>
                                                 
                                                             <td class="b">
-                                                                @if (auth()->user()->role == 'admin')        
+                                                                      
                                                                 <a data-bs-toggle="modal"
                                                                     data-bs-target="#exampleExtraLargeModal{{ $row->id }}"
                                                                     class="btn btn-success">
                                                                     <i class="fa-solid fa-square-pen"></i>
                                                                 </a>
-                                                                @endif
+                                                               
                                                                 <a href="#" class="btn btn-danger delete"
                                                                     data-id="{{ $row->id }}"
                                                                     data-nama="{{ $row->nama }}">

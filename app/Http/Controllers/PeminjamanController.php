@@ -18,11 +18,17 @@ class PeminjamanController extends Controller
         $data = Peminjaman::all();
         // $detail = Peminjaman::with('detailid')->get();
         $namasiswa = DaftarAnggota::all();
-        $detail= Detailbuku::with('detail')->get();
-        // dd($detail);
-        // dd($bukuid);
+        // $detail= Detailbuku::with('detail')->get();
+        $id = 1;
+        $detail = DB::table('detailbukus')
+                  // ->form()  
+                  ->join('Peminjamen','Peminjamen.id','=','detailbukus.id_transaksi','left') 
+                  ->where('peminjamen.id', $id) 
+                  ->get();
+
         $namabuku = Daftarbuku::all();
-        return view('peminjaman.peminjaman', compact('data','namasiswa', 'detail'));
+        return view('peminjaman.peminjaman', compact('data','namasiswa'))
+        ->with('detail',$detail);
     }
 
     public function table(){
@@ -38,15 +44,12 @@ class PeminjamanController extends Controller
 
     return json_encode($data);
 }
-// public function detailbuku(){
-//     $bukuid= Daftarbuku::all();
-//     return view('peminjaman.detailbuku',compact('bukuid'));
-// }
-
-    // public function getBooks(){
-    //     $data = Daftarbuku::all();
-    //     return json_encode($data);
-    // }
+public function detailbuku($id){
+    $detail= detailbuku::where('id_transaksi', $id)->get();
+    return response()->json([
+        'data' => $detail
+    ]);
+}
 
     public function tambahpeminjaman() 
     {
@@ -81,21 +84,24 @@ class PeminjamanController extends Controller
             'kelas' => 'required',
         ]);
 
-        // $databuku =  Daftarbuku::findOrFail($request->kodebuku);
-        // if ($databuku->jumlah >= $request->jumlah) {
-            $data = Peminjaman::create([
+        $data = Peminjaman::create([
             'transaksi' => $request->transaksi,
             'nama' => $request->nama,
             'kelas' => $request->kelas,
             'tanggalpengembalian' => $request->tanggalpengembalian,
         ])->id;
 
-        // $cart = \cart::all();
+
+        $lapor = laporanpinjam::create([
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+        ]);
 
         $cart1 = \Cart::getContent();
         $array = array();
-        // $id = Peminjaman::find('id');
         foreach($cart1 as $cart){
+            // $databuku =  Daftarbuku::find($cart->id);
+            // if ($databuku->jumlah >= $cart->quantity) {
             // array_push($array,http://localhost/phpmyadmin/index.php
             Detailbuku::create([
                 'id_transaksi' => $data,
@@ -104,6 +110,13 @@ class PeminjamanController extends Controller
                 'jumlah' => $cart->quantity,
             ]);
 
+            // $databuku->jumlah -= $cart->quantity;
+            // $databuku->save();
+
+            
+            // }else {
+            //          return redirect()->back()->with('error','Jumlah Buku yang dipilih melebihi jumlah buku yang tersedia');
+            //  }
             // );
 
         // foreach($cart1 as $cart){
@@ -147,27 +160,27 @@ class PeminjamanController extends Controller
         return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
     }
 
-    public function data_peminjaman() {
-		return $this->db->get('peminjamen')->result_array();
-	}
+    // public function data_peminjaman() {
+	// 	return $this->db->get('peminjamen')->result_array();
+	// }
 
-    public function detailjoin($id) {
-		$this->db->select('*');
-		$this->db->from('detailbukus');
-		$this->db->join('peminjamen', 'peminjamen.id = detailbukus.id_transaksi', 'left');
-		$this->db->where('peminjamen.id');
-		return $this->db->get()->result();
-	}
+    // public function detailjoin($id) {
+	// 	$this->db->select('*');
+	// 	$this->db->from('detailbukus');
+	// 	$this->db->join('peminjamen', 'peminjamen.id = detailbukus.id_transaksi', 'left');
+	// 	$this->db->where('peminjamen.id');
+	// 	return $this->db->get()->result();
+	// }
 
-    public function detpeminjaman(){
-        $data['peminjamen'] = $this->Peminjaman->data_peminjaman();
-        $this->load->view('tes/join', $data);
-    }
+    // public function detpeminjaman(){
+    //     $data['peminjamen'] = $this->Peminjaman->data_peminjaman();
+    //     $this->load->view('tes/join', $data);
+    // }
 
-    public function detailbuku($id) {
-        $data['detailbuku'] = $this->Detailbuku->detailjoin($id);
-        return view('peminjaman.detailbuku', $data);
-    } 
+    // public function detailbuku($id) {
+    //     $data['detailbuku'] = $this->Detailbuku->detailjoin($id);
+    //     return view('peminjaman.detailbuku', $data);
+    // } 
 
     public function editpeminjaman($id){
 
@@ -203,57 +216,6 @@ class PeminjamanController extends Controller
 
     public function validasi(request $request){
         dd($request->all);
-    }
-     public function tambahpinjam2() 
-    {
-        // $data = Peminjaman::all();
-        $anggota = DaftarAnggota::all();
-        $bukuid= Daftarbuku::all();
-        $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
-        $kd="";
-        if($q->count()>0) 
-        {
-            foreach ($q->get() as $k) 
-            {
-                $tmp = ((int)$k->kode)+1;
-                $kd = sprintf("%05s",$tmp);
-            }
-        }
-        else
-        {
-            $kd = "00001";
-        }
-        return view('peminjaman.tambahpinjam2', compact('anggota','bukuid','kd'));
-    }
-
-    public function result()
-    {   
-        
-        $user = DaftarAnggota::all();
-        error_reporting(0);
-        if($user->nama != null)
-        {
-            echo '<table class="table table-striped">
-                        <tr>
-                            <td>Nama Anggota</td>
-                            <td>:</td>
-                            <td>{{$user->nama}}</td>
-                        </tr>
-                        <tr>
-                            <td>Telepon</td>
-                            <td>:</td>
-                            <td>{{$user->kelas}}</td>
-                        </tr>
-                        <tr>
-                            <td>Alamat</td>
-                            <td>:</td>
-                            <td>{{$user->alamat}}</td>
-                        </tr>
-                    </table>';
-        }else{
-            echo 'Anggota Tidak Ditemukan !';
-        }
-        
     }
 
     public function cart(){

@@ -111,10 +111,6 @@
                                                                     Hari
                                                                 </td>
                                                                 <?php } ?>
-                                                                <!--    <td>
-                                                               <p id="GFG_DOWN"></p>
-                                                            </td>     -->
-
                                                                 <td>
                                                                     <a href="/editpeminjaman/{{ $row->id }}"
                                                                         class="btn btn-success">
@@ -124,18 +120,19 @@
                                                                         class="btn btn-primary">
                                                                         <i class="fadeIn animated bx bx-download"></i>
                                                                     </a>
-                                                                    <a data-bs-toggle="modal"
-                                                                        data-bs-target="#BukuModal{{ $row->id }}"
-                                                                        class="btn btn-primary">
+                                                                    <a class="btn btn-primary"
+                                                                        data-id="{{ $row->id }}" id=""
+                                                                        onclick="btnDetail(this)">
                                                                         <i class="fadeIn animated bx bx-exit"></i>
                                                                     </a>
                                                                     {{-- <a href="/detailbuku" class="btn btn-primary btn-sm">Detail</a> --}}
+
 
                                                                     {{-- <a href="#" class="btn btn-danger delete"
                                                                     data-id="{{ $row->id }}"
                                                                     data-nama="{{ $row->nama }}">
                                                                 </a> --}}
-                                                                    @include('peminjaman.detailbuku')
+
                                                                 </td>
                                                                 {{-- <i class="fa-solid fa-trash"></i> --}}
 
@@ -150,11 +147,43 @@
                             </div>
                         </div>
                     </div>
+                    @foreach ($data as $row)
+                        @include('peminjaman.detailbuku')
+                    @endforeach
                     <!--end page-content-wrapper-->
                 </div>
 
                 <!-- end wrapper -->
                 @include('template.script')
+
+                <script>
+                    const btnDetail = (e) => {
+                        const data_id = e.getAttribute('data-id')
+                        $.ajax({
+                            url: "/detailbuku/" + data_id,
+                            method: "GET",
+                            success: function(data) {
+                                // console.log()
+                                console.log("datanya adalah ", data.data)
+                                let td = ''
+
+                                data.data.forEach(val => {
+                                    td += `
+                        <tr>
+                            <td>${val.namabuku}</td>
+                            <td>${val.kodebuku}</td>
+                            <td>${val.jumlah}</td>
+                        </tr>
+                        `
+                                })
+
+                                $('#tbody-cart').html(td)
+                                $("#detail_buku").html(data)
+                                $("#BukuModal").modal('show')
+                            }
+                        })
+                    }
+                </script>
 
                 <script>
                     @if (Session::has('success'))
@@ -205,22 +234,7 @@
                     //     el_down.innerHTML = clicked;
                     // }    
                 </script>
-{{-- <script>
-    $(document).ready(function(){
-        $('.BukuModal').click(function(){
-            var data_id = $(this).data("id")
-            $.ajax({
-                url: "/Detailbuku",
-                method: "POST",
-                data: {data_id: data_id},
-                success: function(data){
-                    $("#detail_buku").html(data)
-                    $("#BukuModal").modal('show')
-                }
-            })
-        })
-    })
-</script> --}}
+
 </body>
 
 </html>

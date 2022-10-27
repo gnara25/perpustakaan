@@ -27,7 +27,7 @@
                                 $no = 1;
                             @endphp
                             <tbody id="tbody-cart">
-                                @foreach ($cartbuku as $buku )
+                                @foreach ($detail as $buku )
                                 <tr>
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $buku->namabuku }}</td>

@@ -1,11 +1,11 @@
 <div class="col">
     <!-- Button trigger modal -->
     <!-- Modal -->
-    <div class="modal fade" id="BukuModal{{ $row->id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="BukuModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="text-center">Daftar Buku</h5>
+                    <h5 class="text-center">Detail Buku</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body fileSelection1">
@@ -20,12 +20,10 @@
                                     {{-- <th>Aksi</th> --}}
                                 </tr>
                             </thead>
-                                {{-- @php
-                                    $no = 1;
-                                    $row = $row->id;
-                                @endphp --}}
+                            @php
+                                $no = 1;
+                            @endphp
                             <tbody id="tbody-cart">
-
                                 @foreach ( $detail as $buku)
                                     <tr>
                                         {{-- <td>{{ $no++ }}</td> --}}

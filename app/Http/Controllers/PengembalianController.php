@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Models\Denda;
 use App\Models\Daftarbuku;
 use App\Models\Detailbuku;
@@ -25,10 +26,15 @@ class PengembalianController extends Controller
     public function tambahpengembalian($id){
         $data = DaftarAnggota::all();
         $buku = Daftarbuku::all();
-        $cartbuku = Detailbuku::get();
+      $detail = DB::table('detailbukus')
+                  // ->form()  
+                  ->join('Peminjamen','Peminjamen.id','=','detailbukus.id_transaksi','left') 
+                  ->where('peminjamen.id', $id) 
+                  ->get();
+
         $pengembalin = Peminjaman::with('anggota','idbuku','denda')->findOrFail($id);
         
-        return view('pengembalian.tambahpengembalian', compact('data','buku','pengembalin', 'cartbuku'));
+        return view('pengembalian.tambahpengembalian', compact('data','buku','pengembalin'))->with('detail',$detail);;
     }
 
     public function tambahpengembalianpost(request $request,$id){
@@ -81,9 +87,9 @@ class PengembalianController extends Controller
             'tanggalpengembalian' => $request->tanggalpengembalian,
             'jumlah' => $request->jumlah,
         ]);
-        $databuku =  Daftarbuku::findOrFail($request->kodebuku);
-        $databuku->jumlah += $request->jumlah;
-        $databuku->save();
+        // $databuku =  Daftarbuku::findOrFail($request->kodebuku);
+        // $databuku->jumlah += $request->jumlah;
+        // $databuku->save();
         }
                
         return redirect()->route('pengembalian')->with('success', 'data berhasil ditambah');
