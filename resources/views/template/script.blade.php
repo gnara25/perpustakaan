@@ -29,7 +29,11 @@
 <script>
     $(document).ready(function() {
         //Default data table
-        $('#example').DataTable();
+        $('#example').DataTable({
+            language: {
+            url: 'indo.json'
+        }
+        });
         var table = $('#example2').DataTable({
             lengthChange: false,
             buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']

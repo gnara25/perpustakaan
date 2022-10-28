@@ -84,6 +84,7 @@ public function detailbuku($id){
             'kelas' => 'required',
         ]);
 
+        // if ($detailbuku > 0) {
         $data = Peminjaman::create([
             'transaksi' => $request->transaksi,
             'nama' => $request->nama,
@@ -103,32 +104,15 @@ public function detailbuku($id){
             // $databuku =  Daftarbuku::find($cart->id);
             // if ($databuku->jumlah >= $cart->quantity) {
             // array_push($array,http://localhost/phpmyadmin/index.php
-            Detailbuku::create([
+          $detailbuku = Detailbuku::create([
                 'id_transaksi' => $data,
                 'namabuku' => $cart->name,
                 'kodebuku' => $cart->attributes->kodebuku,
                 'jumlah' => $cart->quantity,
             ]);
-
-            // $databuku->jumlah -= $cart->quantity;
-            // $databuku->save();
-
-            
-            // }else {
-            //          return redirect()->back()->with('error','Jumlah Buku yang dipilih melebihi jumlah buku yang tersedia');
-            //  }
-            // );
-
-        // foreach($cart1 as $cart){
-        //     array_push($array,http://localhost/phpmyadmin/index.php
-        //     Detailbuku::create([
-        //         'id_transaksi' => $data,
-        //         'namabuku' => $cart->name,
-        //         'kodebuku' => $cart->attributes->kodebuku,
-        //         'jumlah' => $cart->quantity,
-        //     ])
-
-        //     );
+          
+            $databuku->jumlah -= $cart->quantity;
+            $databuku->save();
         }
 
         $denda = Denda::create([
@@ -137,25 +121,11 @@ public function detailbuku($id){
             'peminjaman_id'=>  $data,
         ]);
 
-        // $detailbuku = Detailbuku::create([
-        //     'namabuku' => $request->namabuku,
-        //     'kodebuku' => $request->kodebuku,
-        //     'jumlah' => $request->jumlah,
-        // ])->id;
 
-        // $pinjam = laporanpinjam::create([
-        //     'nama' => $request->nama,
-        //     'kelas' => $request->kelas,
-        //     'namabuku' => $request->namabuku,
-        //     'jumlah' => 1,
-        // ]);
-
-        //     $databuku->jumlah -= $request->jumlah;
-        //     $databuku->save();
-        // }else  {
-        //     return redirect()->back()->with('error','Jumlah Buku Kurang');
-        // }
         
+     // } else {
+     //   return redirect()->back()->with('error','Jumlah Buku Kurang');
+     // }   
         
         return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
     }
