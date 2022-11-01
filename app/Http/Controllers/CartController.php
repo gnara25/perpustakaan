@@ -41,4 +41,40 @@ class CartController extends Controller
         return response()->json('berhasil');
     }
 
+    public function postcart(Request $request)
+    {
+        \Cart::add([
+            'id' => $request->id,
+            'name' => $request->namabuku,
+            'price' => 1000,
+            'quantity' => 1,
+            'attributes' => array(
+            'kodebuku' => $request->kodebuku,
+          )
+        ]);
+        // session()->flash('success', 'Product is Added to Cart Successfully !');
+
+        // return redirect()->back() ;
+        return response()->json('berhasil');
+    }
+
+    public function Listcart()
+    {
+        $array = array();
+        $cartbuku = \Cart::getContent();
+        foreach($cartbuku as $cartbuku){
+            array_push($array, $cartbuku);
+        }
+        // dd(json_encode($array));
+        return response()->json(['data' => $array]);
+    }
+
+    public function remov($id)
+    {
+        \Cart::remove($id);
+        // session()->flash('success', 'Item Cart Remove Successfully !');
+
+        return response()->json('berhasil');
+    }
+
 }

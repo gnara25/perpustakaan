@@ -22,6 +22,10 @@ class Pengembalian extends Model
         return $this->belongsTo(Peminjaman::class,'transaksi','id');
 
     }
+    public function kembaliid()
+    {
+        return $this->hasMany(Bukukembali::class, 'id');
+    }
 }
 
 

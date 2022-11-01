@@ -114,6 +114,7 @@
                                                                 <i class="fa-solid fa fa-search"></i>
                                                             </a>
                                                         </span>
+                                                        
                                                      {{-- @error('kodebuku')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror --}}
@@ -144,61 +145,6 @@
                                             
                                         
                                     </div> 
-                                  <!--   <div id="table_field">
-                                        <div class="row mb-3 mr-4 ml-4">
-
-                                            <div class="col-md-4">
-                                                <label for="validationCustom01" class="form-label"> Kode Buku :</label>
-                                                <select class="form-control single-select @error('kodebuku') is-invalid @enderror"
-                                                name="kodebuku" aria-label="Default select example" id="kodebuku">
-                                                <option value="" disabled selected> Pilih kodebuku Siswa </option>
-                                                @foreach ($bukuid as $buku)
-                                                    <option value="{{ $buku->id }}" data-namabuku='{{$buku->namabuku}}'>
-                                                        {{ $buku->kodebuku }}</option>
-                                                @endforeach 
-                                                </select>
-                                                @error('kodebuku')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="validationCustom02" class="form-label"> Judul Buku :</label>
-                                                <input type="text" class="form-control " id="namabuku"
-                                                    value="" name="namabuku">
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="validationCustomUsername" class="form-label">Jumlah Buku :</label>
-                                                <div class="input-group has-validation">
-                                                    <input type="text" class="form-control" id="validationCustomUsername"
-                                                        name="jumlah">
-                                                    <div class="invalid-feedback">
-                                                        Please choose a username.
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <span class="input-group-btn">
-                                                            <a data-bs-toggle="modal"
-                                                                data-bs-target="#Bukuid"
-                                                                class="btn btn-primary">
-                                                                <i class="fa-solid fa fa-search"></i>
-                                                            </a>
-                                                        </span>
-                                                        <span class="input-group-btn">
-                                                               <a id="idf" class="btn btn-primary" onclick="AddMasterDetail()">
-                                                                <i class="fa-solid fa-plus-circle"></i>
-                                                            </a>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                    </div> -->
                                         <center>
                                             <div class="mb-4 mt-4">
                                                 <button type="submit"
@@ -259,11 +205,6 @@
                 const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
                 document.getElementById('kelas').value = kelas;
             }
-            // const selection1 = document.getElementById('kodebuku');
-            //     selection1.onchange = function(e) {
-            //     const namabuku = e.target.options[e.target.selectedIndex].dataset.namabuku
-            //     document.getElementById('namabuku').value = namabuku;
-            // }
 
             function tambah(e){
                 console.log(e.getAttribute('data-id'))
@@ -322,11 +263,35 @@
                                 </table>   `
                         })
                                 $('#tbody-cart').html(html)
-                    }                        
+                    }
+
+
+
+                        
                 })
 
                
             }
+            function remove(e){
+                console.log(e.getAttribute('data-id'))
+                const dk = new FormData();
+                dk.append('id', e.getAttribute('data-id'))
+                Removecart(dk)
+            }
+            function Removecart(dk) {
+                $.ajax({
+                    method: 'GET',
+                    url: '/remove',
+                    data: dk,
+                    dataType: 'JSON',
+                    success: function(e){
+                        console.log(e)
+                    }   
+                })     
+            }
+
+
+
             $(document).ready(function() {
                 //Default data table
                 $('#mytable').DataTable();
@@ -434,6 +399,26 @@
              
             </script>
  -->
+ <script>
+    // $(".fileSelection1 #Select_File2").click(function (e) {
+    //     document.getElementsByName('kodebuku')[0].value = $(this).attr("data_id");
+    //     $('#Bukuid').modal('hide');
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "/cartpost",
+    //         data:'kodebuku='+$(this).attr("data_id"),
+    //         beforeSend: function(){
+    //             $("#result_buku").html("");
+    //             $("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
+    //         },
+    //         success: function(html){
+    //             $("#result_buku").load("/buku_list");
+    //             $("#result_tunggu_buku").html('');
+    //         }
+    //     });
+    // });
+</script>
+
     <!-- <script>
         $(document).ready(function() {
 
@@ -482,6 +467,26 @@
         })
     </script>
  -->
+ <script>
+    // AJAX call for autocomplete 
+    // $(document).ready(function(){
+    //     $("#kodebuku").keyup(function(){
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "/cartpost",
+    //             data:'kodebuku='+$(this).val(),
+    //             beforeSend: function(){
+    //                 $("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
+    //             },
+    //             success: function(html){
+    //                 $("#result_buku").load("/buku_list");
+    //                 $("#result_tunggu_buku").html('');
+    //             }
+    //         });
+    //     });
+    // });
+    </script>
+
 
 
 </body>

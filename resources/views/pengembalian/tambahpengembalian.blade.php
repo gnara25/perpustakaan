@@ -90,21 +90,20 @@ is-invalid
                                         <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label> 
                                             <div class="col-sm-8">
                                                 <div class="input-group has-validation">
+                                                    <span class="input-group-btn">
+                                                        <a data-bs-toggle="modal"
+                                                              data-bs-target="#Bukuid"
+                                                              class="btn btn-primary">
+                                                              <i class="fa-solid fa fa-search"></i>
+                                                        </a>
+                                                    </span>
                                                        <div class="form-control single-select @error('kodebuku') is-invalid @enderror"
                                                       name="kodebuku" aria-label="Default select example" id="kodebuku">
                                                       <option value="" disabled selected> Pilih Buku Yang Ingin DiKembalikan </option>
                                                         </div>
-                                                        <span class="input-group-btn">
-                                                            <a data-bs-toggle="modal"
-                                                                  data-bs-target="#Bukuid"
-                                                                  class="btn btn-primary">
-                                                                  <i class="fa-solid fa fa-search"></i>
-                                                            </a>
-                                                        </span>
                                                 </div>
                                             </div>
                                       </div>
-                                      @include('pengembalian.modalpilihbuku')
                                     {{-- <div class="form-group row mb-3">
                                         <label for="kelas" class="col-sm-4 col-form-label">Denda/buku </label>
                                         <div class="col-sm-8">
@@ -169,6 +168,27 @@ is-invalid
                                         </div>
                                     </div> --}}
                                     <br>
+
+                                    <div >
+                                        <table  class="table"
+                                        style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Judul Buku</th>
+                                                <th>Kode Buku</th>
+                                                <th>Jumlah</th>
+                                                <th>Status</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="tbody-cartbuku">
+
+                                        </tbody>
+                                        </table>
+                                    </div>
+
                                     <center>
                                         <div class="mb-4 mt-4">
                                             <button type="submit" class="btn btn-info btn-icon-split col-sm-3 mb-3">
@@ -187,33 +207,6 @@ is-invalid
                                             </div>
                                         </div>
                                     </center>
-                                    {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
-                                <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
-                                {{-- <table id="example" class="table table-striped table-bordered" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Judul Buku</th>
-                                    <th>Kode Buku</th>
-                                    <th>Jumlah</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            @php
-                                $no = 1;
-                            @endphp
-                            <tbody id="tbody-cart">
-
-                                @foreach ( $detail as $buku)
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $buku->namabuku }}</td>
-                                        <td>{{ $buku->kodebuku }}</td>
-                                        <td>{{ $buku->jumlah }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table> --}}
 
                                 </form>
                             </div>
@@ -223,6 +216,8 @@ is-invalid
                 </div>
                 <!--end page-content-wrapper-->
                 
+                @include('pengembalian.modalpilihbuku')
+
             </div>
             <!--end page-wrapper-->
             <!--start overlay-->
@@ -243,16 +238,95 @@ is-invalid
                 toastr.error("{{ Session::get('error') }}")
             @endif  
 
-            $(document).ready(function() {
-                //Default data table
-                $('#mytable').DataTable();
-                var table = $('#example2').DataTable({
-                    lengthChange: false,
-                    buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
-                });
-                table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
-            });
+            function tambahbuku(e){
+                console.log(e.getAttribute('data-id1'))
+                const fd = new FormData();
+                fd.append('id', e.getAttribute('data-id1'))
+                fd.append('namabuku', e.getAttribute('data-namabu'))
+                fd.append('kodebuku', e.getAttribute('data-kodebu'))
+                // fd.append('price', e.getAttribute('1000'))
+                fd.append('quantity', e.getAttribute('data-jumlah'))
+                addPeminjamanbuku(fd)
+            }
 
+            function addPeminjamanbuku(fd){
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method: 'POST',
+                    url: '/postcart',
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    data: fd,
+                    dataType: 'JSON',
+                    success: function(e){
+                        console.log(e)
+                        listcartget()
+                        // $('#Bukuid').hide()
+                    }
+                })
+            }
+
+            function listcartget() {
+                $.ajax({
+                    method: 'GET',
+                    url: '/listcart',
+                    dataType: 'JSON',
+                    success: function(e){
+                        let html = ''
+                        let no = 1;
+                        e.data.map(val => {
+                            html += `
+                                                
+                                    <tr>
+                                        <td scope="row">${no++}</td>
+                                        <td>${val.name}</td>
+                                        <td>${val.attributes.kodebuku}</td>
+                                        <td>${val.quantity}</td>
+                                        <td>${val.denda}</td>
+                                        <td class="hidden text-right md:table-cell">
+                                        <a class="btn btn-danger remov"
+                                         data-id="${val.id}"
+                                         onclick="Removcart(this)" > X</a   >
+                                        </td>
+                                    </tr> `
+                        })
+                                $('#tbody-cartbuku').html(html)
+                    }   
+                })  
+            }
+
+            // $(document).on('click','.remov',function(){
+            //     var id = $(this).data('id');
+            //     $.ajax({
+            //         type: 'DELETE',
+            //         url: 'remov/' + id,
+            //         data: {'_token':$('input[name=_token]').val()},
+            //         success: function(data){
+            //             $('#tr-cart').html(data);
+            //         }
+            //     })
+            // })
+            // function remov(e){
+            //     console.log(e.getAttribute('data-id'))
+            //     const dp = new FormData();
+            //     dp.append('id', e.getAttribute('data-id'))
+            //     Removcart(dp)
+            // }
+            function Removcart(e) {
+                const id = e.getAttribute('data-id')
+                $.ajax({
+                    method: 'GET',
+                    url: '/remov/' + id,
+                    dataType: 'JSON',
+                    success: function(e){
+                        console.log(e)
+                    }   
+                })     
+            }
+            
             $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
                 var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -271,7 +345,7 @@ is-invalid
                 });
             });
         </script>
-        <script src="assets/plugins/select2/js/select2.min.js"></script>
+        {{-- <script src="assets/plugins/select2/js/select2.min.js"></script>
         <script>
             $('.single-select').select2({
                 theme: 'bootstrap4',
@@ -285,7 +359,7 @@ is-invalid
                 placeholder: $(this).data('placeholder'),
                 allowClear: Boolean($(this).data('allow-clear')),
             });
-        </script>
+        </script> --}}
 </body>
 
 </html>
