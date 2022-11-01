@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('namabuku');
             $table->string('kodebuku');
             $table->string('jumlah');
-            $table->string('denda');
+            // $table->string('denda');
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@
                                     <th>Judul Buku</th>
                                     <th>Kode Buku</th>
                                     <th>Jumlah</th>    
-                                    <th> pilih buku <input type="checkbox" name="select_all" id="select_all"></th>
+                                    <th> pilih buku</th>
                                 </tr>
                             </thead>
                             @php

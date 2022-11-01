@@ -21,7 +21,8 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="beranda"><i class="fadeIn animated bx bx-upload"></i></a>
+                                    <li class="breadcrumb-item"><a href="beranda"><i
+                                                class="fadeIn animated bx bx-upload"></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Peminjaman Buku</li>
                                 </ol>
@@ -111,21 +112,20 @@
                                                                     Hari
                                                                 </td>
                                                                 <?php } ?>
-                                                                  <td>
-                                                                    <a href="/editpeminjaman/{{ $row->id }}"
+                                                                <td>
+                                                                    {{-- <a href="/editpeminjaman/{{ $row->id }}"
                                                                         class="btn btn-success">
                                                                         <i class="fa-solid fa-square-pen"></i>
+                                                                    </a> --}}
+                                                                    <a class="btn btn-success"
+                                                                        data-id="{{ $row->id }}" id=""
+                                                                        onclick="btnDetail(this)">
+                                                                        <i class="fadeIn animated bx bx-show-alt"></i>
                                                                     </a>
                                                                     <a href="/tambahpengembalian/{{ $row->id }}"
                                                                         class="btn btn-primary">
                                                                         <i class="fadeIn animated bx bx-download"></i>
                                                                     </a>
-                                                                    <a class="btn btn-primary"
-                                                                        data-id="{{ $row->id }}" id=""
-                                                                        onclick="btnDetail(this)">
-                                                                        <i class="fadeIn animated bx bx-exit"></i>
-                                                                    </a>
-
                                                                 </td>
 
                                                             </tr>
@@ -177,7 +177,7 @@
                             }
                         })
                     }
-            
+
                     @if (Session::has('success'))
                         toastr.success("{{ Session::get('success') }}")
                     @endif

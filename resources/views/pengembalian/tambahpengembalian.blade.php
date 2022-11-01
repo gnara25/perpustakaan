@@ -287,9 +287,9 @@ is-invalid
                                         <td>${val.quantity}</td>
                                         <td>${val.denda}</td>
                                         <td class="hidden text-right md:table-cell">
-                                        <a class="btn btn-danger remov"
+                                        <a class="btn btn-danger remove"
                                          data-id="${val.id}"
-                                         onclick="Removcart(this)" > X</a   >
+                                         onclick="Removcart(this)"> x</a>
                                         </td>
                                     </tr> `
                         })
