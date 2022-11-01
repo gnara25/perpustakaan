@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Daftarbuku;
-use App\Models\Peminjaman;
+use App\Models\laporanpinjam;
 use App\Models\DaftarAnggota;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function beranda(){
         $buku = Daftarbuku::all()->count();
         $anggota = DaftarAnggota::all()->count();
-        $pinjam = Peminjaman::all()->count();
+        $pinjam = laporanpinjam::all()->count();
         $petugas = User::all()->count();
         return view('beranda', compact('buku','anggota','pinjam','petugas') );
     }

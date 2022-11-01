@@ -35,10 +35,10 @@ class CartController extends Controller
 
     public function remove($id)
     {
-        \Cart::remove($id);
-        session()->flash('success', 'Item Cart Remove Successfully !');
-
-        return response()->json('berhasil');
+        $arraypo = array();
+       $remove = \Cart::remove($id);
+       
+        return response()->json();
     }
 
     public function postcart(Request $request)

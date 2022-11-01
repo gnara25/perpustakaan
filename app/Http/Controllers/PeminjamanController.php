@@ -84,6 +84,7 @@ public function detailbuku($id){
             'kelas' => 'required',
         ]);
 
+        // if ($detailbuku > 0) {
         $data = Peminjaman::create([
             'transaksi' => $request->transaksi,
             'nama' => $request->nama,

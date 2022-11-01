@@ -22,7 +22,7 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="beranda"><i class='bx bx-home-alt'></i></a>
+                                    <li class="breadcrumb-item"><a href="/peminjaman"><i class='fadeIn animated bx bx-upload'></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Peminjaman/Tambah Peminjaman
                                     </li>
@@ -33,7 +33,7 @@
                     <div class="card radius-15">
                         <div class="card-body">
                             <div class="row">
-                                <form action="/insert" method="POST" enctype="multipart/form-data">
+                                <form action="/insert" method="POST" enctype="multipart/form-data" class="form-pinjam">
                                     @csrf
                                     <div class="form-group row mb-3">
                                         <label for="nisn" class="col-sm-4 col-form-label">No Transaksi :</label>
@@ -122,10 +122,7 @@
                                                
                                             </div>
                                     </div>
-                                                                      
-                                    <!-- <div id="tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div> -->
-                                    
-                                            <div >
+                                            <div>
                                                 <table  class="table table-striped table-bordered"
                                                 style="width:100%">
                                                 <thead>
@@ -248,14 +245,14 @@
                             html += `<table>
                                 <tbody>
                                                 
-                                    <tr>
+                                    <tr id="tr-cart">
                                         <td scope="row">${no++}</td>
                                         <td>${val.name}</td>
                                         <td>${val.attributes.kodebuku}</td>
                                         <td>${val.quantity}</td>
                                         <td class="hidden text-right md:table-cell">
-                                        <button class="btn btn-danger" id="remove"  
-                                        onclick="remove(this)" data-id="${val.id}" > X</button>
+                                        <a class="btn btn-danger remove"
+                                         data-id="${val.id}" > X</a>
             
                                         </td>
                                     </tr>
@@ -272,26 +269,32 @@
 
                
             }
-            function remove(e){
-                console.log(e.getAttribute('data-id'))
-                const dk = new FormData();
-                dk.append('id', e.getAttribute('data-id'))
-                Removecart(dk)
-            }
-            function Removecart(dk) {
-                $.ajax({
-                    method: 'GET',
-                    url: '/remove',
-                    data: dk,
-                    dataType: 'JSON',
-                    success: function(e){
-                        console.log(e)
-                    }   
-                })     
-            }
 
+             $(document).on('click','.remove', function () { 
+                  var id = $(this).data('id'); 
+                  $.ajax({
+                         type: 'DELETE',
+                         url: "remove/"+ id,  
+                         data: {'_token': $('input[name=_token]').val()},
+                         success: function (data) {
+                           $('#tr-cart').html(data);        
+                         }               
+                    });
+                   });
 
-
+            // function insert(url) {
+            //             if ( getCartList().length < 1) {
+            //                 swal({
+            //                     icon: "warning",
+            //                     text: "Harap Pilih Buku"
+            //                 });
+            //                 return;
+            //             } else {
+            //                 $('.from-pinjam')
+            //                     .attr('action', url)
+            //                     .submit();
+            //             }
+            //         }
             $(document).ready(function() {
                 //Default data table
                 $('#mytable').DataTable();
@@ -312,37 +315,6 @@
                 modal.find('.modal-body input').val(recipient)
             });
             </script>
-           <!--  <script type="text/javascript">
-                 function AddMasterDetail() {
-                var idf = document.getElementById("idf").value;
-                stre=" <div class='row mb-3 mr-4 ml-4' id='srow" + idf + "'>";
-                stre=stre+"<div class='col-md-4 mb-4'> <label for='validationCustom01' class='form-label'> Kode Buku </label> <select class='form-control kodebuku' id='kodebukus" + idf + "' data-idf='" + idf + "' name='kodebuku[]'  aria-label='Default select example'> <option value='' disabled selected> Pilih kodebuku Siswa </option> @foreach ($bukuid as $k) <option value='{{ $k->id }}' data-judulbuku='{{$k->namabuku}}'> {{ $k->kodebuku }}</option> @endforeach  </select> @error('kodebuku') <div class='invalid-feedback'>{{ $message }}</div> @enderror <div class='valid-feedback'> Looks good! </div></div>";
-                stre=stre+"<div class='col-md-4 mb-4'> <label for='validationCustom02' class='form-label'> Judul Buku</label> <input type='text' class='form-control c-namabuku' id='namabuku" + idf + "' value='' name='namabuku[]'> <div class='valid-feedback'> Looks good! </div> </div>";
-
-                stre=stre+"<div class='col-md-4 mb-4'> <label for='validationCustomUsername' class='form-label'>Jumlah Buku</label> <div class='input-group has-validation'> <input type='text' class='form-control' id='validationCustomUsername' name='Jumlah'> <div class='invalid-feedback'> Please choose a username. </div> <div class='col-md-4'> <span class='input-group-btn'> <a data-bs-toggle='modal' data-bs-target='#exampleExtraLargeModal' class='btn btn-primary'> <i class='fa-solid fa fa-search'></i> </a> </span><span class='input-group-btn'><a  onclick='removeFormField(\"#srow" + idf + "\"); return false;' class='btn btn-danger'><i class='fa-solid fa-trash'></i></a></span></div></div></div>";
-                stre=stre+"</div>";         
-
-            $("#table_field").append(stre);    
-            idf++;
-            document.getElementById("idf").value = idf;
-        }
-         function removeFormField(idf) {
-            $(idf).remove();
-        }
-        $(document).on("change", ".kodebuku", function(e) {
-            var select = $(this);
-            var id = select.val();
-            var idf = select.data("idf");
-
-         $.ajax({
-            url:'/getBooks',
-            method: 'GET',
-            dataType: 'JSON',
-                }).done(function(data) {
-            $("#namabuku" + idf).val(data[0].namabuku);
-        });
-    });
-            </script> -->
             <script src="assets/plugins/select2/js/select2.min.js"></script>
     <script>
         $('.single-select').select2({

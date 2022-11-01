@@ -58,7 +58,7 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <h2 class="mb-0 text-white">98 <i
+                                            <h2 class="mb-0 text-white">{{$pinjam}} <i
                                                     class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
                                         </div>
                                         <div class="ms-auto font-35 text-white"><i class="bx bx-tachometer"></i>
@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <p class="mb-0 text-white">Cancelled Orders</p>
+                                            <p class="mb-0 text-white">Peminjaman</p>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <h2 class="mb-0 text-white">208 <i
+                                            <h2 class="mb-0 text-white">{{$petugas}} <i
                                                     class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
                                         </div>
                                         <div class="ms-auto font-35 text-white"><i class="bx bx-user"></i>
@@ -85,7 +85,7 @@
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <p class="mb-0 text-white">New Users</p>
+                                            <p class="mb-0 text-white">Petugas</p>
                                         </div>
                                     </div>
                                 </div>
