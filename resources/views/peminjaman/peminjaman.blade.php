@@ -54,7 +54,7 @@
                                                         <th>kelas</th>
                                                         <th>Tanggal Peminjaman</th>
                                                         <th>Tanggal Pengembalian</th>
-                                                        <th>Denda</th>
+                                                        <th>Status</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -111,7 +111,7 @@
                                                                     Hari
                                                                 </td>
                                                                 <?php } ?>
-                                                                <td>
+                                                                  <td>
                                                                     <a href="/editpeminjaman/{{ $row->id }}"
                                                                         class="btn btn-success">
                                                                         <i class="fa-solid fa-square-pen"></i>
@@ -125,16 +125,8 @@
                                                                         onclick="btnDetail(this)">
                                                                         <i class="fadeIn animated bx bx-exit"></i>
                                                                     </a>
-                                                                    {{-- <a href="/detailbuku" class="btn btn-primary btn-sm">Detail</a> --}}
-
-
-                                                                    {{-- <a href="#" class="btn btn-danger delete"
-                                                                    data-id="{{ $row->id }}"
-                                                                    data-nama="{{ $row->nama }}">
-                                                                </a> --}}
 
                                                                 </td>
-                                                                {{-- <i class="fa-solid fa-trash"></i> --}}
 
                                                             </tr>
                                                         @endif
@@ -173,6 +165,8 @@
                             <td>${val.namabuku}</td>
                             <td>${val.kodebuku}</td>
                             <td>${val.jumlah}</td>
+                            <td>${val.denda}</td>
+                            
                         </tr>
                         `
                                 })
@@ -182,9 +176,7 @@
                             }
                         })
                     }
-                </script>
-
-                <script>
+            
                     @if (Session::has('success'))
                         toastr.success("{{ Session::get('success') }}")
                     @endif

@@ -91,7 +91,7 @@ public function detailbuku($id){
             'kelas' => $request->kelas,
             'tanggalpengembalian' => $request->tanggalpengembalian,
         ])->id;
-
+        
 
         $lapor = laporanpinjam::create([
             'nama' => $request->nama,
@@ -101,19 +101,20 @@ public function detailbuku($id){
         $cart1 = \Cart::getContent();
         $array = array();
         foreach($cart1 as $cart){
-            // $databuku =  Daftarbuku::find($cart->id);
-            // if ($databuku->jumlah >= $cart->quantity) {
-            // array_push($array,http://localhost/phpmyadmin/index.php
-          $detailbuku = Detailbuku::create([
+            Detailbuku::create([
                 'id_transaksi' => $data,
                 'id_laporan' => $lapor,
                 'namabuku' => $cart->name,
                 'kodebuku' => $cart->attributes->kodebuku,
                 'jumlah' => $cart->quantity,
+                'denda' => $cart->price,
             ]);
+<<<<<<< HEAD
           
             // $databuku->jumlah -= $cart->quantity;
             // $databuku->save();
+=======
+>>>>>>> ccfee506bf12d6958a3cfa73e0f564b098a8ac16
         }
 
         $denda = Denda::create([
@@ -121,37 +122,9 @@ public function detailbuku($id){
             'kelas' => $request->kelas,
             'peminjaman_id'=>  $data,
         ]);
-
-
-        
-     // } else {
-     //   return redirect()->back()->with('error','Jumlah Buku Kurang');
-     // }   
         
         return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
     }
-
-    // public function data_peminjaman() {
-	// 	return $this->db->get('peminjamen')->result_array();
-	// }
-
-    // public function detailjoin($id) {
-	// 	$this->db->select('*');
-	// 	$this->db->from('detailbukus');
-	// 	$this->db->join('peminjamen', 'peminjamen.id = detailbukus.id_transaksi', 'left');
-	// 	$this->db->where('peminjamen.id');
-	// 	return $this->db->get()->result();
-	// }
-
-    // public function detpeminjaman(){
-    //     $data['peminjamen'] = $this->Peminjaman->data_peminjaman();
-    //     $this->load->view('tes/join', $data);
-    // }
-
-    // public function detailbuku($id) {
-    //     $data['detailbuku'] = $this->Detailbuku->detailjoin($id);
-    //     return view('peminjaman.detailbuku', $data);
-    // } 
 
     public function editpeminjaman($id){
 

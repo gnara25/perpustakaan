@@ -1,7 +1,7 @@
 <div class="col">
     <!-- Button trigger modal -->
     <!-- Modal -->
-    <div class="modal fade" id="BukuModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="ModalBk" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
@@ -21,15 +21,17 @@
                                     {{-- <th>Aksi</th> --}}
                                 </tr>
                             </thead>
-                            
-                            <tbody id="tbody-cart">
-                                @foreach ( $detail as $buku)
+                            @php
+                                $no = 1;
+                            @endphp
+                            <tbody id="tbody-cartbuku">
+                                @foreach ( $data as $buku)
                                     <tr>
-                                        <td scope="row">{{ $loop->iteration }}</td>
+                                        {{-- <td>{{ $no++ }}</td> --}}
                                         <td>{{ $buku->namabuku }}</td>
                                         <td>{{ $buku->kodebuku }}</td>
                                         <td>{{ $buku->jumlah }}</td>
-                                    </tr>   
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

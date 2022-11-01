@@ -101,13 +101,20 @@ Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.up
 Route::delete('remove/{id}', [CartController::class, 'remove'])->name('remove');
 Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
 Route::get('cartlist', [CartController::class, 'cartlist'])->name('cartlist');
+Route::post('/postcart', [CartController::class, 'postcart'])->name('postcart');
+Route::get('listcart', [CartController::class, 'listcart'])->name('listcart');
+Route::get('remov/{id}', [CartController::class, 'remov'])->name('remov');
 
 
 // pengembalian
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');
 Route::get('/tambahpengembalian/{id}',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
+Route::post('/tambahpengembalian',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
 Route::post('/tambahpengembalianpost/{id}',[PengembalianController::class,'tambahpengembalianpost'])->name('tambahpengembalianpost');
 Route::get('/deletepengembalian/{id}',[PengembalianController::class,'deletepengembalian'])->name('deletepengembalian');
+Route::post('/pilihbuku',[PengembalianController::class,'pilihbuku'])->name('pilihbuku');
+Route::get('/modalBK/{id}',[PengembalianController::class,'modalBK'])->name('modalBK');
+
 
 // anggota
 Route::get('/daftaranggota',[DaftarAnggotaController::class,'daftaranggota'])->name('daftaranggota');
