@@ -13,7 +13,7 @@ type="text/javascript"></script>
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../masuk/assets/images/fav.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-32x32.png">
     <title>Perpustakaan SMKN 1 Sukorejo - Daftar</title>
     <!-- Bootstrap Core CSS -->
     <link href="../masuk/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -77,16 +77,25 @@ type="text/javascript"></script>
                       <div class="col-md-12 col-12">
                           <label>Nama Lengkap</label>
                           <input class="form-control" type="text" required="" placeholder="Nama Lengkap"  name="name">
+                          	@error('name')
+								<div class="alert alert-danger">{{ $message }}</div>
+							@enderror
                       </div>
                   </div>                
                   <div class="form-group row">
                       <div class="col-md-6">
                           <label>Username</label>
                           <input class="form-control" type="text" required="" placeholder="Username" name="username">
+                          	@error('username')
+								<div class="alert alert-danger">{{ $message }}</div>
+							@enderror
                       </div>
                       <div class="col-md-6">
                           <label>No. Telepon</label>
                           <input class="form-control" type="number" required="" placeholder="No HP"  name="notelepon">
+                          	@error('notelepon')
+								<div class="alert alert-danger">{{ $message }}</div>
+							@enderror
                       </div>
                   </div>  
 
@@ -94,14 +103,20 @@ type="text/javascript"></script>
                   <div class="form-group row">
                       <div class="col-md-12 col-12">
                           <label>Email</label>
-                          <input class="form-control" type="text" required="" placeholder="Min 3 Karakter"  name="Email">
+                          <input class="form-control" type="text" required="" placeholder="Min 3 Karakter"  name="email">
                       </div>
+                      	@error('email')
+							<div class="alert alert-danger">{{ $message }}</div>
+						@enderror
                   </div>   
                   <div class="form-group row">
-                      <div class="col-md-12 col-12">
+                      <div class="col-md-12 col-12 mb-4">
                           <label>Password</label>
                           <input class="form-control" type="password" required="" placeholder="Password Minimal 8 karakter"  name="password">
                       </div>
+                      	@error('password')
+							<div class="alert alert-danger">{{ $message }}</div>
+						@enderror
                   </div>
                  <!--  <div class="form-group row">
                       <div class="col-md-12 col-12">
@@ -153,57 +168,57 @@ type="text/javascript"></script>
 </body>
 
   <script type="text/javascript">
-    $(document).ready(function() {
-    //first form
-    var inp1 = $("#inp1"),
-    show = $(".fa-eye"),
-    hide = $(".fa-eye-slash");
-    show.show();
-    hide.hide();
-    show.click(function () {
-     inp1.attr("type","text");
-     show.hide();
-     hide.show(); 
-   });
-    hide.click(function () {
-     inp1.attr("type","password");
-     show.show();
-     hide.hide();
-   });
+   //  $(document).ready(function() {
+   //  //first form
+   //  var inp1 = $("#inp1"),
+   //  show = $(".fa-eye"),
+   //  hide = $(".fa-eye-slash");
+   //  show.show();
+   //  hide.hide();
+   //  show.click(function () {
+   //   inp1.attr("type","text");
+   //   show.hide();
+   //   hide.show(); 
+   // });
+   //  hide.click(function () {
+   //   inp1.attr("type","password");
+   //   show.show();
+   //   hide.hide();
+   // });
 
     //end first form
     //second form
-    var pass = $("#inp2"),
-    check = $("#inp3"),
-    lab = $("#label");
-    check.checked = false;
-    check.click(function() {
-      if (check.checked === false) {
-        check.checked = true;  
-        pass.attr("type","text");
-        lab.text("Hide Password");  
-      } else {
-        check.checked = false;  
-        pass.attr("type","password");
-        lab.text("Show Password");
-      }
-    });
+    // var pass = $("#inp2"),
+    // check = $("#inp3"),
+    // lab = $("#label");
+    // check.checked = false;
+    // check.click(function() {
+    //   if (check.checked === false) {
+    //     check.checked = true;  
+    //     pass.attr("type","text");
+    //     lab.text("Hide Password");  
+    //   } else {
+    //     check.checked = false;  
+    //     pass.attr("type","password");
+    //     lab.text("Show Password");
+    //   }
+    // });
     // end second form
     // third form
-    var inp4 = $("#inp4"),
-    btn = $("#btn");
-    btn.click(function (e) {
-      btn.toggleClass("show-hide");
-      if(btn.hasClass("show-hide") === true){
-        inp4.attr("type","text");
-        btn.text("Hide Password");
+    // var inp4 = $("#inp4"),
+    // btn = $("#btn");
+    // btn.click(function (e) {
+    //   btn.toggleClass("show-hide");
+    //   if(btn.hasClass("show-hide") === true){
+    //     inp4.attr("type","text");
+    //     btn.text("Hide Password");
         
-      } else {
-        inp4.attr("type","password");
-        btn.text("Show Password");
-      }
-      e.preventDefault();
-    });
+    //   } else {
+    //     inp4.attr("type","password");
+    //     btn.text("Show Password");
+    //   }
+    //   e.preventDefault();
+    // });
     //end third form
 
   });

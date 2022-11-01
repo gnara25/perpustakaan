@@ -76,7 +76,7 @@ class LoginController extends Controller
             'remember_token' => Str::random(60),
         ]);
         // dd ($data);
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Berhasil Membuat Akun');
     }
 
     public function logout(){
