@@ -22,7 +22,7 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="beranda"><i class="fadeIn animated bx bx-group"></i></a>
+                                    <li class="breadcrumb-item"><a href="petugas"><i class="fadeIn animated bx bx-group"></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page"> Petugas</li>
                                 </ol>

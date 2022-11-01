@@ -23,7 +23,7 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="beranda"><i class="fadeIn animated bx bx-upload"></i></a>
+                                    <li class="breadcrumb-item"><a href="laporanpinjam"><i class="fadeIn animated bx bx-upload"></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page"> Peminjaman</li>
                                 </ol>
@@ -46,6 +46,7 @@
                                                     <th>Nama Siswa</th>
                                                     <th>Kelas</th>
                                                     <th>Tanggal Peminjaman</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             @php
@@ -54,25 +55,88 @@
                                             <tbody>
                                                 @foreach ($data as $row)
                                                     <tr>
-                                                        <td >{{ $no++ }}</td>
+                                                        <td scope="row">{{ $no++ }}</td>
                                                         <td>{{$row->idnama->nama}}</td>
                                                         <td>{{ $row->kelas }}</td>
-                                                        <td>{{ Carbon\Carbon::parse($row->tanggalpinjam)->format('d-m-Y') }}
+                                                        <td>{{ Carbon\Carbon::parse($row->tanggalpinjam)->format('d-m-Y') }}</td>
+                                                        
+                                                        <td>
+                                                         <a class="btn btn-primary"
+                                                            data-id="{{ $row->id }}"
+                                                            onclick="btnDetail(this)">
+                                                            <i class="fadeIn animated bx bx-exit"></i>
+                                                                    </a>
                                                         </td>
                                                     
                                                     </tr>
                                                 @endforeach
                                             </tbody>
-                                        </table>
+                                            <!-- <tbody>
+                                                
+                                                    <tr>
+                                                    @foreach ($data as $row)    
+                                                        <td >{{ $no++ }}</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                        </td>
+                                                    @endforeach 
+                                                   
+                                                    </tr>
+                                                
+                                            </tbody>
+ -->                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                     
+                        @include('laporan.modaldetail')
+                    
                     <!--end page-content-wrapper-->
                 </div>
                 <!-- end wrapper -->
                 @include('template.script')
+
+                   <script>
+                    const btnDetail = (e) => {
+                        const data_id = e.getAttribute('data-id')
+                        $.ajax({
+                            url: "/detailpinjam/" + data_id,
+                            method: "GET",
+                            success: function(datas) {
+                                // console.log()
+                                console.log("datanya adalah ", datas.datas)
+                                let td = ''
+
+                                datas.datas.forEach(val => {
+                                    td += `
+                        <tr>
+                            <td>${val.namabuku}</td>
+                            <td>${val.kodebuku}</td>
+                            <td>${val.jumlah}</td>
+                        </tr>
+                        `
+                                })
+
+                                $('#tbody-cart').html(td)
+                                $("#Buku").modal('show')
+                            }
+                        })
+                    }
+
+                       $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
+                        var button = $(event.relatedTarget) // Button that triggered the modal
+                        var recipient = button.data('whatever') // Extract info from data-* attributes
+                        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                        var modal = $(this)
+                        modal.find('.modal-title').text('New message to ' + recipient)
+                        modal.find('.modal-body input').val(recipient)
+                    });
+                </script>
 
                 <script>
                     @if (Session::has('success'))
@@ -82,30 +146,7 @@
                         toastr.error("{{ Session::get('error') }}")
                     @endif
                 </script>
-
-                <script>
-                    $('.delete').click(function() {
-                        var mahasiswaid = $(this).attr('data-id');
-                        var kategori = $(this).attr('data-kategori');
-                        swal({
-                                title: "YAKIN?",
-                                text: "Akan Menghapus Data Dengan Kategori " + kategori + " ",
-                                icon: "warning",
-                                buttons: true,
-                                dangerMode: true,
-                            })
-                            .then((willDelete) => {
-                                if (willDelete) {
-                                    window.location = "/deletekategori/" + mahasiswaid + ""
-                                    swal("Data Ini Berhasil Dihapus!", {
-                                        icon: "success",
-                                    });
-                                } else {
-                                    swal("Data Ini Tidak Jadi Dihapus!");
-                                }
-                            });
-                    });
-                </script>
+                 
 
 
 </body>

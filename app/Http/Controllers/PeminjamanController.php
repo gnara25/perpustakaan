@@ -96,7 +96,7 @@ public function detailbuku($id){
         $lapor = laporanpinjam::create([
             'nama' => $request->nama,
             'kelas' => $request->kelas,
-        ]);
+        ])->id;
 
         $cart1 = \Cart::getContent();
         $array = array();
@@ -106,13 +106,14 @@ public function detailbuku($id){
             // array_push($array,http://localhost/phpmyadmin/index.php
           $detailbuku = Detailbuku::create([
                 'id_transaksi' => $data,
+                'id_laporan' => $lapor,
                 'namabuku' => $cart->name,
                 'kodebuku' => $cart->attributes->kodebuku,
                 'jumlah' => $cart->quantity,
             ]);
           
-            $databuku->jumlah -= $cart->quantity;
-            $databuku->save();
+            // $databuku->jumlah -= $cart->quantity;
+            // $databuku->save();
         }
 
         $denda = Denda::create([

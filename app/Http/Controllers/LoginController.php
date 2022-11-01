@@ -15,11 +15,13 @@ class LoginController extends Controller
 {
 
     public function beranda(){
-        $buku = Daftarbuku::all()->count();
-        $anggota = DaftarAnggota::all()->count();
+        $buku = Daftarbuku::paginate(5);
+        $bukucount = Daftarbuku::all()->count();
+        $anggota = DaftarAnggota::paginate(5);
+        $anggotacount = DaftarAnggota::all()->count();
         $pinjam = laporanpinjam::all()->count();
         $petugas = User::all()->count();
-        return view('beranda', compact('buku','anggota','pinjam','petugas') );
+        return view('beranda', compact('buku','anggota','pinjam','petugas','bukucount','anggotacount'));
     }
     public function Login(){
         return view('masuk.login');

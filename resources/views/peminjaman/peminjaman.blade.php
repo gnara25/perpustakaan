@@ -21,7 +21,7 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="beranda"><i class="fadeIn animated bx bx-upload"></i></a>
+                                    <li class="breadcrumb-item"><a href="peminjaman"><i class="fadeIn animated bx bx-upload"></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Peminjaman Buku</li>
                                 </ol>
@@ -178,8 +178,7 @@
                                 })
 
                                 $('#tbody-cart').html(td)
-                                $("#detail_buku").html(data)
-                                $("#BukuModal").modal('show')
+                                 $("#BukuModal").modal('show')
                             }
                         })
                     }

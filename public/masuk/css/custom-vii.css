@@ -1,0 +1,624 @@
+
+@font-face {
+	font-family: 'Open Sans Regular';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Open Sans Regular'), url('../fonts/open-sans-cufonfonts-webfont/OpenSans-Regular.html') format('woff');
+	}
+@font-face {
+	font-family: 'Open Sans SemiBold';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Open Sans SemiBold'), url('../fonts/open-sans-cufonfonts-webfont/OpenSans-SemiBold.html') format('woff');
+	}
+@font-face {
+	font-family: 'Open Sans Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Open Sans Bold'), url('../fonts/open-sans-cufonfonts-webfont/OpenSans-Bold.html') format('woff');
+}
+@font-face {
+	font-family: 'Esphimere Bold';
+	font-style: normal;
+	font-weight: normal;
+    src: url("../fonts/Esphimere%20Bold.otf") format("opentype");
+}
+@font-face {
+	font-family: 'Exo Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Exo Bold'), url('../fonts/Exo-Bold.woff') format('woff');
+}
+@font-face {
+font-family: 'Kelson Regular';
+font-style: normal;
+font-weight: normal;
+src: local('Kelson Regular'), url('../fonts/Armasen%20-%20Kelson.woff') format('woff');
+}
+
+
+.m-btm-10 {
+	margin-bottom: 10% !important;
+}
+.m-btm-12 {
+	margin-bottom: 12% !important;
+}
+.mt-2em {
+	margin-top: 2em;
+}
+
+
+@media (max-width:768px){
+	.m-btm-12{
+		padding-bottom: 60%;
+	}
+}
+
+thead{
+    background-color: #818181;
+    color: #fff;
+}
+
+@media (min-width: 1200px){
+	.modal-xl {
+	    max-width: 1140px;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px){
+	.modal-xl {
+	    max-width: 800px;
+	}
+}
+
+/*Button*/
+.btn{
+	font-size: 14px;
+}
+.form-group .btn {
+    min-height: 38px;
+}
+.btn-hijau{
+    background: #04786d;
+    border: 1px solid #04786d;
+    box-shadow: 0 2px 2px 0 rgb(4, 120, 109), 0 3px 1px -2px rgba(40, 190, 189, 0.2), 0 1px 5px 0 rgba(40, 190, 189, 0.12);
+    transition: 0.2s ease-in;
+    color: #fff;
+}
+
+.page .pagination>li>a, 
+.page .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
+.page-item.active .page-link {
+    background-color: #045a4d !important;
+    border-color: #04786d !important;
+}
+
+.dataTables_scrollBody {
+	min-height: 300px;
+}
+
+@media (min-width:1360px){
+	.container-fluid {
+		max-width: 1500px;
+	}
+	.topbar .top-navbar {
+		max-width: 1500px;
+	}
+	.page-titles {
+	    max-width: 1500px;
+	}
+}
+
+
+@media (min-width:1600px){
+	.container-fluid {
+		max-width: 1700px;
+	}
+	.topbar .top-navbar {
+		max-width: 1700px;
+	}
+}
+
+@media (min-width:1920px){
+	.container-fluid {
+		max-width: 1700px;
+	}
+	.topbar .top-navbar {
+		max-width: 1700px;
+	}
+}
+
+.card.utama .card-body {
+    padding: 2em 1.5em;
+}
+.card.utama .card-body.card-b-judul {
+	padding: 1.5em 1.5em 0em;
+}
+.form-control:disabled, 
+.form-control[readonly] {
+    background-color: #EEF6FF;
+    color: #9CAFC4;
+}
+
+/*CSS Header*/
+	.topbar {
+		background-image: url('../assets/images/bg-header.png');
+		background-size: 100% 100% !important;
+		/*height: 300px;*/
+		height: 230px;
+	}
+	.topbar .navbar-header {
+	    padding-top: 1%;
+	    padding-bottom: 1%;
+	}
+	.page-wrapper {
+	    /*padding-top: 50px;*/
+	    padding-top: 40px;
+	}
+	.bg-page-titles{
+	    background:#f6f6f6;    
+	    margin-bottom: 3%;
+	}
+	.left-sidebar {
+	    /*padding: 0 15px 0px;*/
+	    padding: 0 13% 0px;
+	    padding: 0px 4% 0px;
+	    /*top: 100px;
+	    z-index: 51;*/
+    	/*margin-top: -14%;*/
+	    z-index: 5;
+    	margin-top: -8%;
+	}
+	.page-titles h3{
+		font-family: 'Open Sans Bold';
+		color: #4d5453;
+		text-transform: capitalize;
+	}
+	.sidebar-nav ul li:first-child a{
+		/*padding-left: 0;*/
+	}
+	.sidebar-nav ul li a {
+	    font-size: 14px;
+	}
+	.sidebar-nav ul li ul li a.active,
+	.sidebar-nav ul li ul li a:hover{
+		background-color: transparent;
+		color: #00B9FF !important;
+	}
+	@media (max-width:768px){
+		.topbar {
+		    height: auto;
+		    z-index: 50;
+		}
+		.left-sidebar {
+	    	margin-top: 10px;
+    		background-color: #0a52bf;
+		}
+		.logo-center .top-navbar .navbar-header{
+		    /*position:absolute;*/
+		    left:0;
+		    right:0;
+		    margin:0 auto
+		}
+		.topbar .top-navbar .navbar-header{
+		    text-align:center;
+		}
+		.page-wrapper.mt-5{
+			margin-top: 0 !important;
+		}
+		.topbar .navbar-header {
+		    padding: 0;
+		}
+	}
+/*CSS Header Selesai*/
+
+/*CSS Footer*/
+	footer.footer {
+		z-index: 3;
+	}
+	footer.footer .foot-atas {
+		background-image: url('../assets/images/bg-footer.png');
+		text-align: left;
+		background-size: 100% 100%;
+		padding: 2% 0 0;
+    	margin-bottom: 10px;
+    	color: #fff;
+    	font-size: 13.5px;
+	}
+	footer.footer .foot-atas h3{
+		font-family: 'Open Sans Bold';
+    	color: #fff;
+	}
+	footer.footer .foot-bawah {
+		font-size: 12px;
+	}
+
+	@media (max-width: 768px) {
+		footer.footer .foot-atas img {
+			width: 100%;
+			margin-bottom: 5%;
+		}
+		footer.footer .foot-atas h3 {
+		    font-size: 18px;
+		    margin-bottom: 0;
+		}
+	}
+/*CSS Footer*/
+
+/* Start CSS Left Sidebar*/
+	.leftbar .list-group .list-group-item {
+	    border-right: 0px;
+	    border-left: 0px;
+	    border-radius: 0px;
+	    border-color: #ededed !important;
+	}
+	.leftbar .list-group .list-group-item:last-child {
+		border-bottom: 0;
+	}
+	.leftbar .list-group a .list-group-item{
+		font-family: 'Open Sans SemiBold';
+	    color: #6c6c6c;
+	    font-size: 14px;
+	}
+	.leftbar .list-group .list-group-item a .mdi img{
+		margin-top: -2%;
+	}
+	.leftbar .list-group .list-group-item.active, 
+	.leftbar .list-group .list-group-item:hover {
+	    background: #fff !important;
+	    /*background-color: #04786d !important;*/
+	    border-left: 0.4em solid #bd9b23 !important;
+	    padding-left: 14px;
+	}
+
+	.leftbar .d-flex {
+		padding:10px 20px 20px 20px;
+	}
+	.leftbar .d-flex .foto-user img {
+	    width: 60px;
+	    height: 60px;
+	    object-fit: cover;
+	    border: 1px solid rgba(0, 0, 0, 0.1);
+	}
+	.leftbar .d-flex h4 {
+		margin-top: 5px;
+		margin-bottom: 0.1em;
+		text-transform: capitalize;
+	}
+	.leftbar .d-flex img {
+		width: 20px;
+	}
+/* Finish CSS Left Sidebar*/
+
+
+/*css daftar*/
+	.login-box-bas form label {
+	    font-family: 'Open Sans SemiBold';
+	    color: #000;
+	    font-size: 14px;
+	}
+	.login-box-bas .form-group {
+	    margin-bottom: 1em;
+	}
+    .bag-logo{
+        background-image: url('../assets/images/bg_login.png');
+        background-size: cover;
+        background-position: top;        
+        padding: 2em 0 7em;
+        text-align: center;
+    }
+    .bag-logo img.logo {
+        height: 10em;
+        width: auto;
+        margin-bottom: 2em;
+    }
+    .login-box-bas.bag-daftar{
+        margin-top: -7em;
+    }
+    .login-box {
+        /* width: 400px; */
+        /*width: 70%;*/
+        margin: 0 auto;
+        padding: 1.5em 1em 1em;
+    }
+/*css daftar selesai*/
+
+/*CSS Dashboard*/
+	ul#sidebarnav li:hover > ul{
+    	visibility:visible;
+    }
+
+	.dash-pengunjung{
+		margin-bottom: 30px;
+		padding: 2em 1.7em;
+		border-radius: 10px;
+		background-size: cover;
+		background-position: top;
+	}
+	.dash-pengunjung table{
+		margin-bottom: 0;
+	}
+	.dash-pengunjung td{
+		padding: 0;
+    	vertical-align: bottom;
+	}
+	.dash-pengunjung img{
+		height: 65px;
+		width: auto;
+	}
+	.dash-pengunjung h3{
+		font-size: 18px;
+	    letter-spacing: 0.46px;
+	    color: #FFFFFF;
+	    text-shadow: 0px 3px 6px #00000029;
+	}
+	.dash-pengunjung a{
+		display: inline-block;
+	    color: #fff;
+	    border: 1px solid #fff;
+	    border-radius: 8px;
+	    padding: .2em 1em;
+	    font-size: 12px;
+	}
+	.dash-pengunjung.card-body-pengunjung{
+		background-image: url(../assets/images/bag_pengunjung.png);
+	}
+	.dash-pengunjung.card-body-peminjaman{
+		background-image: url(../assets/images/Bag_peminjaman.png);
+	}
+	.dash-pengunjung.card-body-pengembalian{
+		background-image: url(../assets/images/bag_pengembalian.png);
+	}
+
+	.dash-modal-pengunjung img{
+		width: 150px;
+	    height: 150px;
+	    object-fit: cover;
+	    object-position: top;
+	    border-radius: 50%;
+	}
+	.dash-modal-pengunjung label {
+		font-family: 'Open Sans SemiBold';
+		color: #010101;
+	}
+
+	.grafik-pengunjung h4 {
+		font-size: 15px;
+	}
+	.grafik-pengunjung .form-control.custom-select {
+	    min-height: auto;
+	    font-size: 12px;
+	    padding: .5em 1em;
+	    line-height: normal;
+	    height: initial !important;
+	    margin-bottom: 1em;
+	}
+
+	.rank-perpus .rank-perpus-judul {
+		margin-bottom: 1em;
+	}
+	.rank-perpus .rank-perpus-judul h4{
+		color: #42505C; 
+		font-family: 'Open Sans Bold';
+		margin-bottom: 0;
+	}
+	.rank-perpus .rank-perpus-judul a{
+		color: #79828B;
+		font-family: 'Open Sans Regular';
+	}
+	.rank-perpus .info-ranking h4{
+		font-size: 15px;
+		margin-bottom: 0;
+		font-family: 'Open Sans Regular'; 
+		color: #79828b;
+	}
+	.rank-perpus .info-ranking .ml-auto{
+		font-size: 12px;
+		color: #79828b;
+	}
+	.info-ranking .table-responsive{
+    	    margin-top: 1em;
+    }
+	.info-ranking .earning-box td h6{
+		color: #42505C;
+		font-family: 'Open Sans Bold';
+	}	
+	.info-ranking .earning-box td:first-child{
+		color: #42505C;
+	    font-family: 'Open Sans Bold';
+	    width: 1px;
+	}
+	.info-ranking .buku{
+		margin-bottom: 0
+	}
+	.info-ranking .buku td:nth-child(2) {
+		width: 50px;
+	}
+	.info-ranking .buku img.kover {
+		height: 70px;
+	    width: 50px;
+	    object-fit: cover;
+	    object-position: top;
+	    border-radius: 6px;
+	}
+	.info-ranking .buku p{
+		margin: .4em 0;
+	}
+	.info-ranking .buku span.kategori{
+		background: #C5EDFF;
+	    border-radius: 20px;
+	    padding:.1em 1em .2em;
+	    color: #7FBBF6;
+	    font-size: 12px;
+	}
+	.info-ranking .buku td:last-child{
+		padding: 0;
+		text-align: right;
+		color: #42505C;
+	    font-family: 'Open Sans Bold';
+	    font-size: 15px;
+	}
+
+
+	@media (max-width: 768px) {
+		.jumlah_pendaftar h3 {
+		    font-size: 24px;
+		}
+		.jumlah_pendaftar p {
+			font-size: 70px;
+		}
+	}
+/*CSS Dashboard Selesai*/
+
+/*CSS Daftar Buku*/
+	.daftar-buku .buku {
+	    margin-bottom: 3em;
+	}
+    .buku figure {
+        position: relative;
+        margin: 0;
+        text-align: center;
+    }
+    .buku figure > a {
+        background-color: #fafafa;
+        display: block;
+    }
+    .buku figure ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+        transition: .6s;
+        -webkit-transition: .6s;
+    }
+    .buku figure ul li a {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        font-size: 15px;
+        background-color: rgba(24,109,236,0.9);
+        margin-bottom: 5px;
+        border-radius: 50%;
+        line-height: 35px;
+        color: #fff;
+    }
+    .buku figure ul li a:hover {
+        color: #fff;
+        background: #e50663;
+    }
+	.daftar-buku img.kover {
+		width: 100%;
+		height: 190px;
+		object-fit: cover;
+		object-position: top;
+		border-radius: 10px;
+	}
+	.daftar-buku h3.judul{
+		font-family: 'Open Sans Bold';
+	    text-transform: capitalize;
+	    color: #42505C;
+	    font-size: 16px;
+	    margin: .7em 0 .3em;
+	    line-height: 1.5;
+	}
+	.daftar-buku p{
+		color: #79828B;
+	    font-size: 14px;
+	    margin-bottom: .9em;
+	}
+	.daftar-buku span.kategori{
+		background: #C5EDFF;
+	    border-radius: 20px;
+	    padding: .3em 1em .4em;
+	    color: #7FBBF6;
+	    font-size: 12px;
+	}
+	.dash-modal-pengunjung img.kover {
+	    width: 100%;
+	    height: 300px;
+	    object-fit: contain;
+	    object-position: top;
+	    border-radius: 0;
+	}
+	@media (min-width: 768px){
+		.daftar-buku .buku {
+		    padding: 0 1.7em;
+		}
+	}
+	@media (min-width: 1400px){
+		.daftar-buku img.kover {
+			height: 210px;
+		}
+	}
+/*CSS Daftar Buku Selesai*/
+
+/*CSS Daftar Peminjam*/
+	span.status{
+		display: inline-block;
+	    text-align: center;
+	    min-width: 124px;
+		padding: .3em 1em .4em;
+	    border-radius: 20px;
+	    color: #fff;
+	}
+	span.status.terlambat{
+	    background: #FF0000;
+	}
+	span.status.berlangsung{
+	    background: #14CF7E;
+	}
+	span.status.kembali{
+	    background: #858585;
+	}
+
+	@media (max-width:768px){
+		span.status {
+		    font-size: 12px;
+		}
+	}
+/*CSS Daftar Peminjam*/
+
+
+/*All Berita dan informasi*/
+	#all_berita_info .list_berita_info{
+		border-bottom: 1px solid #e8e9ec;
+	    padding-bottom: 2%;
+    	margin-bottom: 2%;
+	}
+	#all_berita_info .list_berita_info:last-child {
+		border-bottom: 0;
+	}
+	#all_berita_info .list_berita_info h3 {
+	    font-size: 18px;
+	    margin-top: 1%;
+	}
+/*Selesai All Berita dan informasi*/
+
+/*Post Detail*/
+	#mypost h1.judul{
+		font-family: 'Open Sans Bold';
+		margin-top: 25px;
+	    margin-bottom: 5px;
+	    text-transform: capitalize;
+	    font-size: 30px;
+	}
+	#mypost .tanggal {
+		font-family: 'Open Sans Regular';
+		color: #15b69d;
+		font-size: 12px;
+		margin-bottom: 0.6%;
+		line-height: 3;
+	}
+	#mypost .deskripsi{
+		text-align: justify;
+    	line-height: 1.7;
+    	margin-top: 1.5%;
+	}
+
+@media (max-width: 768px){
+	.topbar .top-navbar .navbar-header .navbar-brand .light-logo {
+	    max-width: 40px;
+	}
+}

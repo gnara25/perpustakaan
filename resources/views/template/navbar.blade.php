@@ -6,10 +6,7 @@
         </div>
         <div class="right-topbar ms-auto">
             <ul class="navbar-nav">
-                <li class="nav-item search-btn-mobile">
-                    <a class="nav-link position-relative" href="javascript:;">	<i class="bx bx-search vertical-align-middle"></i>
-                    </a>
-                </li>
+                
                 <li class="nav-item dropdown dropdown-lg">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="javascript:;" data-bs-toggle="dropdown">	<i class="bx bx-bell vertical-align-middle"></i>
 

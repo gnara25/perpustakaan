@@ -64,6 +64,7 @@ a {
 a:hover {
 
 	text-decoration: none;
+	background-color: rgba(18, 102, 241, 0.5);
 
 }
 
