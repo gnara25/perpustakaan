@@ -271,13 +271,19 @@
             }
 
              $(document).on('click','.remove', function () { 
-                  var id = $(this).data('id'); 
+                  var id = $(this).attr('data-id');
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
                   $.ajax({
                          type: 'DELETE',
-                         url: "remove/"+ id,  
+                         url: "remove/"+ id,
+                        dataType: 'json',  
                          data: {'_token': $('input[name=_token]').val()},
-                         success: function (data) {
-                           $('#tr-cart').html(data);        
+                         success: function (response) {
+                           $('#tr-cart').html(response);        
                          }               
                     });
                    });

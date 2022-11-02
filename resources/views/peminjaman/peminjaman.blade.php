@@ -55,7 +55,6 @@
                                                         <th>kelas</th>
                                                         <th>Tanggal Peminjaman</th>
                                                         <th>Tanggal Pengembalian</th>
-                                                        <th>Status</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -65,61 +64,23 @@
                                                     @endphp
                                                     @foreach ($data as $row)
                                                         @if ($row->status == 0)
-                                                            <?php
-                                                            
-                                                            $u_denda = 1000;
-                                                            
-                                                            $tgl1 = date('Y-m-d');
-                                                            $tgl2 = $row->tanggalpengembalian;
-                                                            
-                                                            $pecah1 = explode('-', $tgl1);
-                                                            $date1 = $pecah1[2];
-                                                            $month1 = $pecah1[1];
-                                                            $year1 = $pecah1[0];
-                                                            
-                                                            $pecah2 = explode('-', $tgl2);
-                                                            $date2 = $pecah2[2];
-                                                            $month2 = $pecah2[1];
-                                                            $year2 = $pecah2[0];
-                                                            
-                                                            $jd1 = GregorianToJD($month1, $date1, $year1);
-                                                            $jd2 = GregorianToJD($month2, $date2, $year2);
-                                                            
-                                                            $selisih = $jd1 - $jd2;
-                                                            $denda = $selisih * $u_denda;
-                                                            ?>
                                                             <tr>
                                                                 <td>{{ $no++ }}</td>
                                                                 <td>{{ $row->transaksi }}</td>
                                                                 <td>{{ $row->anggota->nama }}</td>
                                                                 <td>{{ $row->kelas }}</td>
-                                                                {{-- <td>{{ $row->idbuku->kodebuku }}</td> --}}
                                                                 <td>{{ Carbon\Carbon::parse($row->created_at)->format('d-m-Y') }}
                                                                 </td>
                                                                 <td>{{ Carbon\Carbon::parse($row->tanggalpengembalian)->format('d-m-Y') }}
                                                                 </td>
                                                                 <td>
-                                                                    <?php if ($selisih <= 0) { ?>
-                                                                    <span class="label label-primary">Masa
-                                                                        Peminjaman</span>
-                                                                    <?php } elseif ($selisih > 0) { ?>
-                                                                    <span class="label label-danger">
-                                                                        Rp.
-                                                                        <?= $denda ?>
-                                                                    </span>
-                                                                    <br> Terlambat :
-                                                                    <?= $selisih ?>
-                                                                    Hari
-                                                                </td>
-                                                                <?php } ?>
-                                                                <td>
-                                                                    {{-- <a href="/editpeminjaman/{{ $row->id }}"
-                                                                        class="btn btn-success">
-                                                                        <i class="fa-solid fa-square-pen"></i>
-                                                                    </a> --}}
-                                                                    <a class="btn btn-success"
+                                                                    {{-- <a class="btn btn-success"
                                                                         data-id="{{ $row->id }}" id=""
                                                                         onclick="btnDetail(this)">
+                                                                        <i class="fadeIn animated bx bx-show-alt"></i>
+                                                                    </a> --}}
+                                                                    <a href="/detailbuku/{{ $row->id }}"
+                                                                        class="btn btn-success">
                                                                         <i class="fadeIn animated bx bx-show-alt"></i>
                                                                     </a>
                                                                     <a href="/tambahpengembalian/{{ $row->id }}"
@@ -127,7 +88,6 @@
                                                                         <i class="fadeIn animated bx bx-download"></i>
                                                                     </a>
                                                                 </td>
-
                                                             </tr>
                                                         @endif
                                                     @endforeach
@@ -139,9 +99,9 @@
                             </div>
                         </div>
                     </div>
-                    @foreach ($data as $row)
+                    {{-- @foreach ($data as $row)
                         @include('peminjaman.detailbuku')
-                    @endforeach
+                    @endforeach --}}
                     <!--end page-content-wrapper-->
                 </div>
 
@@ -172,8 +132,7 @@
                                 })
 
                                 $('#tbody-cart').html(td)
-                                $("#detail_buku").html(data)
-                                $("#BukuModal").modal('show')
+                                 $("#BukuModal").modal('show')
                             }
                         })
                     }

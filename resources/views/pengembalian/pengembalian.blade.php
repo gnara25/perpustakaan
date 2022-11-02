@@ -17,13 +17,11 @@
                 <div class="page-content">
                     <!--breadcrumb-->
                     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-
                         <div class="breadcrumb-title pe-3">Laporan</div>
-
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="beranda"><i class="fadeIn animated bx bx-download"></i></a>
+                                    <li class="breadcrumb-item"><a href="pengembalian"><i class="fadeIn animated bx bx-download"></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page"> Pengembalian </li>
                                 </ol>
@@ -35,7 +33,6 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                {{-- <a id="table2-new-row-button" href="#" class="btn btn-outline-info btn-sm mb-2">Tambah Pengembalian</a> --}}
                                 <div class="row">
                                     <hr>
                                     <div class="table-responsive">
@@ -50,9 +47,6 @@
                                                         <th>Nama Siswa </th>
                                                         <th>kelas</th>
                                                         <th>Tanggal Pengembalian</th>
-                                                        {{-- <th>Kode Buku</th>
-                                                    <th>Nama Buku</th>
-                                                    <th>Jumlah</th> --}}
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -68,18 +62,14 @@
                                                             <td>{{ $row->kelas }}</td>
                                                             <td>{{ Carbon\Carbon::parse($row->tanggalpengembalian)->format('d-m-Y') }}
                                                             </td>
-                                                            {{-- <td>{{ $row->idpengembalian->kodebuku }}</td> --}}
-                                                            {{-- <td>{{ $row->namabuku }}</td> --}}
                                                             <td>
-                                                                <a class="btn btn-primary"
+                                                                <a class="btn btn-outline-info"
                                                                         data-id="{{ $row->id }}" id=""
                                                                         onclick="btnmodalBK(this)">
-                                                                        <i class="fadeIn animated bx bx-exit"></i>
+                                                                        <i class="fadeIn animated bx bx-show-alt"></i>
                                                                         buku yang dikembalikan
                                                                     </a>
                                                             </td>
-
-                                                            {{-- <td>{{ $row->jumlah }}</td> --}}
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -114,9 +104,7 @@
                         <tr>
                             <td>${val.namabuku}</td>
                             <td>${val.kodebuku}</td>
-                            <td>${val.jumlah}</td>
-                            <td>${val.denda}</td>
-                            
+                            <td>${val.jumlah}</td>         
                         </tr>
                         `
                                 })
@@ -128,12 +116,9 @@
                         })
                     }
 
-
                     @if (Session::has('success'))
                         toastr.success("{{ Session::get('success') }}")
                     @endif
-
-
 
                     $('.delete').click(function() {
                         var mahasiswaid = $(this).attr('data-id');

@@ -37,8 +37,10 @@ class CartController extends Controller
     {
         $arraypo = array();
        $remove = \Cart::remove($id);
-       
-        return response()->json();
+        // array_push($arraypo, $remove);
+        return response()->json([
+            'remove' => $remove,
+        ]);
     }
 
     public function postcart(Request $request)
@@ -46,11 +48,11 @@ class CartController extends Controller
         \Cart::add([
             'id' => $request->id,
             'name' => $request->namabuku,
-            'price' => 1000,
+            'price' => $request->denda,
             'quantity' => 1,
             'attributes' => array(
             'kodebuku' => $request->kodebuku,
-          )
+             )
         ]);
         // session()->flash('success', 'Product is Added to Cart Successfully !');
 
@@ -65,7 +67,6 @@ class CartController extends Controller
         foreach($cartbuku as $cartbuku){
             array_push($array, $cartbuku);
         }
-        // dd(json_encode($array));
         return response()->json(['data' => $array]);
     }
 

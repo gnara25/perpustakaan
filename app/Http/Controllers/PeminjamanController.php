@@ -16,9 +16,7 @@ class PeminjamanController extends Controller
     public function peminjaman(){
 
         $data = Peminjaman::all();
-        // $detail = Peminjaman::with('detailid')->get();
         $namasiswa = DaftarAnggota::all();
-        // $detail= Detailbuku::with('detail')->get();
         $id = 1;
         $detail = DB::table('detailbukus')
                   // ->form()  
@@ -44,20 +42,29 @@ class PeminjamanController extends Controller
 
     return json_encode($data);
 }
-public function detailbuku($id){
-    $detail= detailbuku::where('id_transaksi', $id)->get();
-    return response()->json([
-        'data' => $detail
-    ]);
-}
+// public function detailbuku($id){
+//     $detail= detailbuku::where('id_transaksi', $id)->get();
+//     return response()->json([
+//         'data' => $detail
+//     ]);
+// }
+
+    public function detailbuku($id){
+        $detail = Detailbuku::where('id_transaksi', $id)->get();
+        $data = DB::table('peminjamen')
+        ->join('detailbukus', 'detailbukus.id_transaksi', '=', 'peminjamen.id')
+        ->where('peminjamen.id', $id)
+        ->get();
+
+        return view('peminjaman.detailbuku')->with('data', $data);
+        // return view('peminjaman.detailbuku', compact('detail'));
+    }
 
     public function tambahpeminjaman() 
     {
         \Cart::clear();
-        // $data = Peminjaman::all();
         $anggota = DaftarAnggota::all();
         $bukuid= Daftarbuku::all();
-        // dd($cartItems);
         $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
         $kd="";
         if($q->count()>0) 
@@ -77,7 +84,6 @@ public function detailbuku($id){
 
     public function insert(Request $request){
      
-        // dd($databuku);
         $this->validate($request,[
             'transaksi' => ['required','unique:peminjamen,transaksi,'],
             'nama' => 'required',
@@ -96,17 +102,18 @@ public function detailbuku($id){
         $lapor = laporanpinjam::create([
             'nama' => $request->nama,
             'kelas' => $request->kelas,
-        ]);
+        ])->id;
 
         $cart1 = \Cart::getContent();
         $array = array();
         foreach($cart1 as $cart){
             Detailbuku::create([
                 'id_transaksi' => $data,
+                'id_laporan' => $lapor,
                 'namabuku' => $cart->name,
                 'kodebuku' => $cart->attributes->kodebuku,
                 'jumlah' => $cart->quantity,
-                'denda' => $cart->price,
+                'denda' => '0',
             ]);
         }
 
@@ -122,7 +129,6 @@ public function detailbuku($id){
     public function editpeminjaman($id){
 
         $data = Peminjaman::findOrFail($id);
-        // dd($data);
         $namasiswa = DaftarAnggota::all();
         $namabuku = Daftarbuku::all();
         return view('peminjaman.editpeminjaman',compact('data','namasiswa','namabuku'));
@@ -157,18 +163,18 @@ public function detailbuku($id){
 
     public function cart(){
         $Product = Daftarbuku::find($productId); // assuming you have a Product model with id, name, description & price
-$rowId = 456; // generate a unique() row ID
-$userID = 2; // the user ID to bind the cart contents
+        $rowId = 456; // generate a unique() row ID
+        $userID = 2; // the user ID to bind the cart contents
 
-// add the product to cart
-\Cart::session($userID)->add(array(
-    'id' => $rowId,
-    'name' => $Product->name,
-    'price' => $Product->price,
-    'quantity' => 4,
-    'attributes' => array(),
-    'associatedModel' => $Product
-));
+    // add the product to cart
+        \Cart::session($userID)->add(array(
+            'id' => $rowId,
+            'name' => $Product->name,
+            'price' => $Product->price,
+            'quantity' => 4,
+            'attributes' => array(),
+            'associatedModel' => $Product
+        ));
     }
 
 
