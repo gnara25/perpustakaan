@@ -109,12 +109,10 @@ public function detailbuku($id){
                 'jumlah' => $cart->quantity,
                 'denda' => $cart->price,
             ]);
-<<<<<<< HEAD
+
           
             // $databuku->jumlah -= $cart->quantity;
             // $databuku->save();
-=======
->>>>>>> ccfee506bf12d6958a3cfa73e0f564b098a8ac16
         }
 
         $denda = Denda::create([

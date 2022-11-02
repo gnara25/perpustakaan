@@ -35,12 +35,9 @@ class CartController extends Controller
 
     public function remove($id)
     {
-        $arraypo = array();
-       $remove = \Cart::remove($id);
+       \Cart::remove($id);
         // array_push($arraypo, $remove);
-        return response()->json([
-            'remove' => $remove,
-        ]);
+        return response()->json('berhasil');
     }
 
     public function postcart(Request $request)

@@ -58,7 +58,7 @@
                     <div class="container">
 
                         <!-- Start Header Navigation -->
-                        <div class="navbar-header">
+                        <div class="navbar-brandr">
                             <button type="button" class="navbar-toggle" data-toggle="collapse"
                                 data-target="#navbar-menu">
                                 <i class="fa fa-bars"></i>
@@ -629,20 +629,20 @@
                             </ul>
                         </div>
                     </div>
-                    {{-- <div class="col-md-2 col-sm-6 equal-height item">
+                    <div class="col-md-2 col-sm-6 equal-height item">
                         <div class="f-item link">
                             <h4>Layanan</h4>
                             <ul>
                                 <li>
                                     <p>Perpustakaan SMKN 1 Sukorejo melayani pemustaka setiap hari mulai pukul 07.30 – 13.00 WIB. Layanan yang pemustaka dapatkan di perpustakaan antara lain:</p>
-                                    <p> * Layanan sirkulasi atau peminjaman dan pengembalian buku </p>
+                                   <!--  <p> * Layanan sirkulasi atau peminjaman dan pengembalian buku </p>
                                       <p> * Layanan peminjaman buku paket untuk pembelajaran</p>  
                                       <p>* Layanan referensi untuk buku-buku rujukan</p>  
-                                      <p>* Layanan internet dengan menyediakan wifi area</p>  
+                                      <p>* Layanan internet dengan menyediakan wifi area</p> -->  
                                 </li>
                             </ul>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="col-md-4 col-sm-6 equal-height item">
                         <div class="f-item twitter-widget">
                             <h4>Info Kontak</h4>

@@ -251,7 +251,7 @@
                                         <td>${val.attributes.kodebuku}</td>
                                         <td>${val.quantity}</td>
                                         <td class="hidden text-right md:table-cell">
-                                        <a class="btn btn-danger remove"
+                                        <a class="btn btn-danger remove" onclick="remove(this)"
                                          data-id="${val.id}" > X</a>
             
                                         </td>
@@ -270,23 +270,18 @@
                
             }
 
-             $(document).on('click','.remove', function () { 
-                  var id = $(this).attr('data-id');
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
+             function remove(e){ 
+                  var id = e.getAttribute('data-id');
                   $.ajax({
-                         type: 'DELETE',
+                         type: 'GET',
                          url: "remove/"+ id,
-                        dataType: 'json',  
-                         data: {'_token': $('input[name=_token]').val()},
-                         success: function (response) {
-                           $('#tr-cart').html(response);        
+                        dataType: 'JSON',  
+                         success: function (e) {
+                           console.log(e)
+                           getCartList()        
                          }               
                     });
-                   });
+                   }
 
             // function insert(url) {
             //             if ( getCartList().length < 1) {
