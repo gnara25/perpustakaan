@@ -48,7 +48,7 @@ class CartController extends Controller
         \Cart::add([
             'id' => $request->id,
             'name' => $request->namabuku,
-            'price' => $request->denda,
+            'price' => 1000,
             'quantity' => 1,
             'attributes' => array(
             'kodebuku' => $request->kodebuku,
@@ -68,6 +68,14 @@ class CartController extends Controller
             array_push($array, $cartbuku);
         }
         return response()->json(['data' => $array]);
+    }
+
+    public function pilihbuku($id){
+        $databuku = array();
+        foreach($request->id as $id){
+            $data = pengembalian::find($id);
+            $databuku[] = $data;
+        }
     }
 
     public function remov($id)

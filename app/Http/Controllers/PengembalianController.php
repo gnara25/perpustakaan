@@ -45,6 +45,14 @@ class PengembalianController extends Controller
         return view('pengembalian.tambahpengembalian', compact('data','buku','pengembalin'))->with('detail',$detail);;
     }
 
+    // public function pilihbuku($id){
+    //     $databuku = array();
+    //     foreach($request->id as $id){
+    //         $data = pengembalian::find($id);
+    //         $databuku[] = $data;
+    //     }
+    // }
+
     public function tambahpengembalianpost(request $request,$id){
         $this->validate($request, [
             'transaksi' => ['required','unique:pengembalians,transaksi'],
@@ -95,14 +103,6 @@ class PengembalianController extends Controller
             }
         }           
         return redirect()->route('pengembalian')->with('success', 'data berhasil ditambah');
-    }
-
-    public function pilihbuku(Request $request){
-        $databuku = array();
-        foreach($request->id as $id){
-            $data = pengembalian::find($id);
-            $databuku[] = $data;
-        }
     }
 
     public function deletepengembalian($id){

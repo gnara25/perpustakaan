@@ -163,8 +163,8 @@
                                                     <th>Penulis Buku</th>
                                                     <th>Penerbit</th>
                                                     <th>Tahun Terbit</th>
-                                                    <!-- <th>Halaman Buku</th>
                                                     <th>Jumlah</th>
+                                                    <!-- <th>Halaman Buku</th>
                                                     <th>Lokasi Buku</th>
                                                     <th>Deskripsi</th>
                                                     <th>Foto</th> -->
@@ -189,8 +189,8 @@
                                                             <td>{{ $row->penulis }}</td>
                                                             <td>{{ $row->penerbit }}</td>
                                                             <td>{{ $row->tahunterbit }}</td>
-                                                          <!--   <td>{{ $row->halbuku }}</td>
                                                             <td>{{ $row->jumlah }}</td>
+                                                          <!--   <td>{{ $row->halbuku }}</td>
                                                             <td>{{ $row->lokasibuku }}</td>
                                                             <td>{{ $row->deskripsi }}</td>
                                                             <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"

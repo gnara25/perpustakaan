@@ -191,16 +191,13 @@ is-invalid
 
                                     <center>
                                         <div class="mb-4 mt-4">
-                                            <button onclick="pilihbuku('{{ route('pilihbuku') }}')"
+                                            <button id="pilihBuku"
                                                 class="btn btn-info btn-icon-split col-sm-3 mb-3">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-plus-circle"></i>
                                                 </span>
                                                 <span class="text">Proses Pengembalian</span>
                                             </button>
-                                            {{-- <button onclick="pilihbuku('{{ route('pilihbuku') }}')"
-                                    class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak
-                                    Barcode</button> --}}
                                             <div class=" mb-3">
                                                 <a href="/peminjaman" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
                                                     <span class="icon text-white-50">
@@ -242,6 +239,8 @@ is-invalid
                 toastr.error("{{ Session::get('error') }}")
             @endif
 
+            listcartget()
+
             function tambahbuku(e) {
                 console.log(e.getAttribute('data-id1'))
                 const fd = new FormData();
@@ -282,10 +281,18 @@ is-invalid
                     success: function(e) {
                         let html = ''
                         let no = 1;
+
+                        if(e.data.length < 1){
+                            $('#pilihBuku').attr('disabled', true)
+                        }else {
+                            $('#pilihBuku').attr('disabled', false)
+                        }
+                        console.log(e.data.length)
                         e.data.map(val => {
                             html += `
                                                 
                                     <tr>
+                                        
                                         <td scope="row">${no++}</td>
                                         <td>${val.name}</td>
                                         <td>${val.attributes.kodebuku}</td>
@@ -315,21 +322,6 @@ is-invalid
                         listcartget()
                     }
                 })
-            }
-
-            function pilihbuku(url) {
-                if ($('input:checked').length < 1) {
-                    swal({
-                        icon: "warning",
-                        text: "Harap Pilih Buku Yang Ingin Dikembalikan"
-                    });
-                    return;
-                } else {
-                    $('.from-buku')
-                        .attr('action', url)
-                        .attr('target', '_blank')
-                        .submit();
-                }
             }
 
             $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
