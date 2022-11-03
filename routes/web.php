@@ -114,6 +114,7 @@ Route::post('/tambahpengembalianpost/{id}',[PengembalianController::class,'tamba
 Route::get('/deletepengembalian/{id}',[PengembalianController::class,'deletepengembalian'])->name('deletepengembalian');
 Route::post('/pilihbuku',[PengembalianController::class,'pilihbuku'])->name('pilihbuku');
 Route::get('/modalBK/{id}',[PengembalianController::class,'modalBK'])->name('modalBK');
+Route::post('/pilihan',[PengembalianController::class,'pilihan'])->name('pilihan');
 
 
 // anggota

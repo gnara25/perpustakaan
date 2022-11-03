@@ -13,21 +13,14 @@
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    {{-- <th>No.</th> --}}
                                     <th>Judul Buku</th>
                                     <th>Kode Buku</th>
                                     <th>Jumlah</th>
-                                    {{-- <th>Denda perHAri</th> --}}
-                                    {{-- <th>Aksi</th> --}}
                                 </tr>
                             </thead>
-                            @php
-                                $no = 1;
-                            @endphp
                             <tbody id="tbody-cartbuku">
                                 @foreach ( $data as $buku)
                                     <tr>
-                                        {{-- <td>{{ $no++ }}</td> --}}
                                         <td>{{ $buku->namabuku }}</td>
                                         <td>{{ $buku->kodebuku }}</td>
                                         <td>{{ $buku->jumlah }}</td>

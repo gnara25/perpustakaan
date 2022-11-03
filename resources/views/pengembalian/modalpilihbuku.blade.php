@@ -20,8 +20,8 @@
                                         <th>Judul Buku</th>
                                         <th>Kode Buku</th>
                                         <th>Jumlah</th>
-                                        <th>Denda</th>
-                                        <th> pilih buku</th>
+                                        <th>Status</th>
+                                        <th>pilih buku</th>
                                     </tr>
                                 </thead>
                                 @php
@@ -72,18 +72,22 @@
                                             </td>
                                             <?php } ?>
                                             <td>
-                                                <input type="hidden" value="{{ $buku->id }}" name="id">
-                                                <input type="hidden" value="{{ $buku->namabuku }}" name="namabuku">
-                                                <input type="hidden" value="{{ $buku->kodebuku }}" name="kodebuku">
-                                                <input type="hidden" value="{{ $buku->jumlah }}" name="quantity">
-                                                <input type="hidden" value="{{ $denda }}" name="price">
+                                                <input type="hidden" value="{{ $buku->id }}" name="id"
+                                                    id="non">
+                                                <input type="hidden" value="{{ $buku->namabuku }}" name="namabuku"
+                                                    id="non">
+                                                <input type="hidden" value="{{ $buku->kodebuku }}" name="kodebuku"
+                                                    id="non">
+                                                <input type="hidden" value="{{ $buku->jumlah }}" name="quantity"
+                                                    id="non">
+                                                <input type="hidden" value="{{ $denda }}" name="price"
+                                                    id="non">
                                                 <button type="button" onclick="tambahbuku(this)"
                                                     data-id1="{{ $buku->id }}" data-namabu="{{ $buku->namabuku }}"
-                                                    data-kodebu="{{ $buku->kodebuku }}"
+                                                    data-kodebu="{{ $buku->kodebuku }}" id="postpilihan"
                                                     data-jumlah="{{ $buku->jumlah }}" data-denda="{{ $denda }}"
-                                                    data-bs-dismiss="modal" class="btn btn-secondary"></i>
+                                                    data-bs-dismiss="modal" class="btn btn-info"></i>
                                                     pilih</button>
-                                                {{-- <input type="checkbox" id="pilibuku" name="id[]" value="{{$buku->id}}"> --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -100,22 +104,48 @@
     </div>
 
     <script>
-        $('[name=select_all]').on('click', function() {
-            $(':pilibuku').prop('checked', this.checked);
-        });
+        // $(function() {
+        //     $('input[type="button"]').prop('disabled', true);
+        //     $('#non').on('input', function(e) {
+        //         if (this.value.length === 1) {
+        //             $('input[type="button"]').prop('disabled', false);
+        //         } else {
+        //             $('input[type="button"]').prop('disabled', true);
+        //         }
+        //     });
+        // });
 
-        function pilihbuku(url) {
-            if ($('input:checked').length < 1) {
-                swal({
-                    icon: "warning",
-                    text: "Harap Pilih Buku Yang Ingin Dikembalikan"
-                });
-                return;
+        $('.postpilihan').change(function() {
+            var $this = $(this);
+            var id = $this.val();
+            var id_transaksi = this.checked;
+
+            if (id_transaksi) {
+                id_transaksi = 1;
             } else {
-                $('.from-buku')
-                    .attr('action', url)
-                    .attr('target', '_blank')
-                    .submit();
+                id_transaksi = 0;
             }
-        }
+            axios
+                .post('{{ route('pilihan') }}', {
+                    _token: '{{ csrf_token() }}',
+                    _method: 'patch',
+                    id: id,
+                    id_transaksi: id_transaksi,
+
+                })
+            swal({
+                    text: "Product is already featured",
+                    type: 'error',
+                    confirmButtonColor: '#4fa7f3',
+
+                })
+                .then(function(responsive) {
+                    console.log(responsive);
+
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        });
     </script>
+</div>

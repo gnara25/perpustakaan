@@ -45,13 +45,29 @@ class PengembalianController extends Controller
         return view('pengembalian.tambahpengembalian', compact('data','buku','pengembalin'))->with('detail',$detail);;
     }
 
-    // public function pilihbuku($id){
-    //     $databuku = array();
-    //     foreach($request->id as $id){
-    //         $data = pengembalian::find($id);
-    //         $databuku[] = $data;
-    //     }
-    // }
+    public function pilihan(Request $request)
+         {
+
+        if ($request->id_transaksi) {
+        $assignFeature = Detailbuku::where('id_transaksi', 1)->exists();
+        if ($assignFeature) {
+            $response['error'] = 'Product is already featured';
+            return response()->json($response, 422);
+        }
+    }
+    $id = $request->input('id');
+    $pilihan = $request->input('id_transaksi');
+    $featurediItem = Detailbuku::find($id);
+    if ($featurediItem->update(['id_transaksi' => $pilihan])) {
+
+        // form helpers.php
+        logAction($request);
+
+        $response['id_transaksi'] = true;
+        $response['message'] = 'product featured updated successfully.';
+        return response()->json($response, 200);
+    }
+}
 
     public function tambahpengembalianpost(request $request,$id){
         $this->validate($request, [
