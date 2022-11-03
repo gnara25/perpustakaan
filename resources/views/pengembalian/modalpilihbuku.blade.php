@@ -69,22 +69,39 @@
                                                 <br> Terlambat :
                                                 <?= $selisih ?>
                                                 Hari
+                                                <?php } ?>
                                             </td>
-                                            <?php } ?>
+                                            
                                             <td>
                                                 <input type="hidden" value="{{ $buku->id }}" name="id">
                                                 <input type="hidden" value="{{ $buku->namabuku }}" name="namabuku">
                                                 <input type="hidden" value="{{ $buku->kodebuku }}" name="kodebuku">
                                                 <input type="hidden" value="{{ $buku->jumlah }}" name="quantity">
-                                                <input type="hidden" value="{{ $denda }}" name="price">
+                                                <?php if ($selisih <= 0) { ?>
+                                                <input type="text" value="0" name="price">
+                                                 <?php } elseif ($selisih > 0) { ?>
+                                                <input type="text" value="{{ $denda }}" name="price">    
+                                                <?php } ?>    
+
+                                                <?php if ($selisih <= 0) { ?>
+
                                                 <button type="button" onclick="tambahbuku(this)"
                                                     data-id1="{{ $buku->id }}" data-namabu="{{ $buku->namabuku }}"
                                                     data-kodebu="{{ $buku->kodebuku }}"
-                                                    data-jumlah="{{ $buku->jumlah }}" data-denda="{{ $denda }}"
+                                                    data-jumlah="{{ $buku->jumlah }}" data-price="0"
                                                     data-bs-dismiss="modal" class="btn btn-secondary"></i>
                                                     pilih</button>
-                                                {{-- <input type="checkbox" id="pilibuku" name="id[]" value="{{$buku->id}}"> --}}
+                                                 <?php } elseif ($selisih > 0) { ?>    
+                                                    <button type="button" onclick="tambahbuku(this)"
+                                                    data-id1="{{ $buku->id }}" data-namabu="{{ $buku->namabuku }}"
+                                                    data-kodebu="{{ $buku->kodebuku }}"
+                                                    data-jumlah="{{ $buku->jumlah }}" data-price="{{ $denda}}"
+                                                    data-bs-dismiss="modal" class="btn btn-secondary"></i>
+                                                    pilih</button>
+
+                                                 <?php } ?>     
                                             </td>
+                                        
                                         </tr>
                                     @endforeach
                                 </tbody>

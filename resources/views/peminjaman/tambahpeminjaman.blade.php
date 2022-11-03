@@ -144,7 +144,7 @@
                                     </div> 
                                         <center>
                                             <div class="mb-4 mt-4">
-                                                <button type="submit"
+                                                <button id="bukupilih" 
                                                     class="btn btn-info btn-icon-split col-sm-3 mb-3">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-plus-circle"></i>
@@ -241,6 +241,13 @@
                     success: function(e){
                         let html = ''
                         let no = 1;
+
+                        if(e.data.length < 1){
+                            $('#bukupilih').attr('disabled', true)
+                        } else {
+                            $('#bukupilih').attr('disabled', false)
+                        }
+                        console.log(e.data.length)
                         e.data.map(val => {
                             html += `<table>
                                 <tbody>
@@ -260,11 +267,7 @@
                                 </table>   `
                         })
                                 $('#tbody-cart').html(html)
-                    }
-
-
-
-                        
+                    }        
                 })
 
                

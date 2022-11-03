@@ -244,7 +244,7 @@
                 fd.append('id', e.getAttribute('data-id1'))
                 fd.append('namabuku', e.getAttribute('data-namabu'))
                 fd.append('kodebuku', e.getAttribute('data-kodebu'))
-                // fd.append('price', e.getAttribute('1000'))
+                fd.append('price', e.getAttribute('data-price'))
                 fd.append('quantity', e.getAttribute('data-jumlah'))
                 addPeminjamanbuku(fd)
             }
@@ -285,7 +285,7 @@
                                         <td>${val.name}</td>
                                         <td>${val.attributes.kodebuku}</td>
                                         <td>${val.quantity}</td>
-                                        <td>${val.denda}</td>
+                                        <td>${val.price}</td>
                                         <td class="hidden text-right md:table-cell">
                                         <a class="btn btn-danger remov"
                                          data-id="${val.id}"
