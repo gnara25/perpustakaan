@@ -54,7 +54,6 @@
                                                         <th>Judul Buku</th>
                                                         <th>Kode Buku</th>
                                                         <th>Jumlah</th>
-                                                        <th></th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -73,8 +72,7 @@
                                                             <button class="btn btn-danger">x</button>
                                                             </form> --}}
                                                             
-                                                            
-                                                        
+                        
                                                             </td>
                                                         </tr>
                                                     @endforeach

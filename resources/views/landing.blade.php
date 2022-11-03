@@ -12,7 +12,7 @@
     <title>Perpustakaan || Kita</title>
 
     <!-- ========== Favicon Icon ========== -->
-    <link rel="shortcut icon" href="asset/img/logo-icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="asset/img/logosmk.png" type="image/x-icon">
 
     <!-- ========== Start Stylesheet ========== -->
     <link href="asset/css/bootstrap.min.css" rel="stylesheet" />

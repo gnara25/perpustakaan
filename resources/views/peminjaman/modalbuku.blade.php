@@ -58,10 +58,6 @@
                                                     data-id="{{ $row->id }}" data-nama="{{ $row->namabuku }}" data-kode="{{ $row->kodebuku }}" data-bs-dismiss="modal">
                                                     <i class="fa fa-check"> </i> Pilih
                                                 </button>
-                                                <a href="" target="_blank">
-                                                    <button class="btn btn-success"><i class="fa fa-sign-in"></i>
-                                                        Detail</button></a>
-                                            {{-- </form> --}}
                                         </td>
 
                                     </tr>

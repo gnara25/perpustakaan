@@ -85,7 +85,7 @@
                                     </li>
                                     <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab"
                                             href="#Edit-Profile"><span class="p-tab-name">Ganti Password</span><i
-                                                class='bx bx-message-edit font-24 d-sm-none'></i></a>
+                                                class='bx bx-lock font-24 d-sm-none'></i></a>
                                     </li>
                                 </ul>
                                 <div class="tab-content mt-3">

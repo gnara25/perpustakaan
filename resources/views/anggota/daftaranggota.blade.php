@@ -80,11 +80,10 @@
                                                             </td>
                                                             <td>{{ $row->kelas }}</td>
                                                             <td>{{ $row->alamat }}</td>
-                                                            <td> {!! QrCode::size(100)->generate($row->nisn) !!}
+                                                            <td> {!! QrCode::size(65)->generate($row->nisn) !!}
                                                             </td>
                                                 
-                                                            <td class="b">
-                                                                      
+                                                            <td class="b">          
                                                                 <a data-bs-toggle="modal"
                                                                     data-bs-target="#exampleExtraLargeModal{{ $row->id }}"
                                                                     class="btn btn-success">

@@ -35,8 +35,12 @@ class PengembalianController extends Controller
         \Cart::clear();
         $data = DaftarAnggota::all();
         $buku = Daftarbuku::all();
-        $detail= detailbuku::where('id_transaksi', $id)->get();
+        // $detail= detailbuku::where('id_transaksi', $id)->get();
         $pengembalin = Peminjaman::with('anggota','idbuku','denda')->findOrFail($id);
+        $detail = DB::table('peminjamen')
+        ->join('detailbukus', 'detailbukus.id_transaksi', '=', 'peminjamen.id')
+        ->where('peminjamen.id', $id)
+        ->get();
         
         return view('pengembalian.tambahpengembalian', compact('data','buku','pengembalin'))->with('detail',$detail);;
     }
@@ -53,14 +57,13 @@ class PengembalianController extends Controller
             'kelas.required' => 'Kelas Harus Di Isi',
             'tanggalpengembalian.required' => 'Isi Tangal Pengembalian',
         ]);
-
         if ($request->denda > 0) {
              $data = Pengembalian::create([
             'transaksi' => $request->transaksi,
             'nama' => $request->nama,
             'kelas' => $request->kelas,
             'tanggalpengembalian' => $request->tanggalpengembalian,
-        ])->id;
+        ]);
         $ss=Peminjaman::findOrFail($id);
         $ss->update([
             'status'=>'1',
@@ -88,20 +91,17 @@ class PengembalianController extends Controller
                     'namabuku' => $carth->name,
                     'kodebuku' => $carth->attributes->kodebuku,
                     'jumlah' => $carth->quantity,
-                    'denda' => $carth->price,
                 ]);
             }
-            // dd($cart2);
-        }
-               
+        }           
         return redirect()->route('pengembalian')->with('success', 'data berhasil ditambah');
     }
 
     public function pilihbuku(Request $request){
         $databuku = array();
         foreach($request->id as $id){
-            $buku = pengembalian::find($id);
-            $databuku[] = $buku;
+            $data = pengembalian::find($id);
+            $databuku[] = $data;
         }
     }
 
@@ -111,4 +111,4 @@ class PengembalianController extends Controller
         return redirect()->route('pengembalian');
     }
 
-}
+}   

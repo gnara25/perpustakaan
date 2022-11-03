@@ -17,7 +17,7 @@
                                     <th>Judul Buku</th>
                                     <th>Kode Buku</th>
                                     <th>Jumlah</th>
-                                    <th>Denda perHAri</th>
+                                    {{-- <th>Denda perHAri</th> --}}
                                     {{-- <th>Aksi</th> --}}
                                 </tr>
                             </thead>

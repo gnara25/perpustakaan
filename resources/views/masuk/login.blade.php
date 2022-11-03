@@ -13,7 +13,7 @@ type="text/javascript"></script>
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="asset/img/logosmk.png">
     <title>Perpustakan</title>
     <!-- Bootstrap Core CSS -->
     <link href="../masuk/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -170,6 +170,13 @@ type="text/javascript"></script>
 </body>
 
   <script type="text/javascript">
+    $('#checkbox-signup').click(function(){
+    if('password' == $('#inp1').attr('type')){
+         $('#inp1').prop('type', 'text');
+    }else{
+         $('#inp1').prop('type', 'password');
+    }
+});
     $(document).ready(function() {
     //first form
     var inp1 = $("#inp1"),

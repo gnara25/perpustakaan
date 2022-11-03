@@ -67,8 +67,8 @@
                                         <div class="col-sm-8">
                                             <input type="date" value="<?= date('Y-m-d') ?>"
                                                 class="form-control @error('tanggalpengembalian')
-is-invalid
-@enderror"
+                                                is-invalid
+                                                @enderror"
                                                 id="tanggalpengembalian" name="tanggalpengembalian" readonly>
                                             @error('tanggalpengembalian')
                                                 <div class="invalid-feedback">{{ $message }} </div>

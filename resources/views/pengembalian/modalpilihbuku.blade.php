@@ -14,46 +14,85 @@
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <form action="" method="POST" class="from-buku">
                                 @csrf
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Judul Buku</th>
-                                    <th>Kode Buku</th>
-                                    <th>Jumlah</th>    
-                                    <th> pilih buku <input type="checkbox" name="select_all" id="select_all"></th>
-                                </tr>
-                            </thead>
-                            @php
-                                $no = 1;
-                            @endphp
-                            <tbody id="tbody-cart">
-                                @foreach ($detail as $buku)
+                                <thead>
                                     <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $buku->namabuku }}</td>
-                                        <td>{{ $buku->kodebuku }}</td>
-                                        <td>{{ $buku->jumlah }}</td>
-                                        <td>
-                                            <input type="hidden" value="{{ $buku->id }}" name="id">
-                                            <input type="hidden" value="{{ $buku->namabuku }}" name="namabuku">
-                                            <input type="hidden" value="{{ $buku->kodebuku }}" name="kodebuku">
-                                            <input type="hidden" value="{{$buku->jumlah}}" name="quantity">
-                                            <button type="button"  onclick="tambahbuku(this)"
-                                                data-id1="{{ $buku->id }}" data-namabu="{{ $buku->namabuku }}" data-kodebu="{{ $buku->kodebuku }}" data-jumlah="{{ $buku->jumlah }}" data-bs-dismiss="modal"
-                                                    class="btn btn-secondary"></i> pilih</button>
-                                            {{-- <input type="checkbox" id="pilibuku" name="id[]" value="{{$buku->id}}"> --}}
-                                        </td>
+                                        <th>No.</th>
+                                        <th>Judul Buku</th>
+                                        <th>Kode Buku</th>
+                                        <th>Jumlah</th>
+                                        <th>Denda</th>
+                                        <th> pilih buku</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
+                                </thead>
+                                @php
+                                    $no = 1;
+                                @endphp
+                                <tbody id="tbody-cart">
+                                    @foreach ($detail as $buku)
+                                        <?php
+                                        
+                                        $u_denda = 1000;
+                                        
+                                        $tgl1 = date('Y-m-d');
+                                        $tgl2 = $buku->tanggalpengembalian;
+                                        
+                                        $pecah1 = explode('-', $tgl1);
+                                        $date1 = $pecah1[2];
+                                        $month1 = $pecah1[1];
+                                        $year1 = $pecah1[0];
+                                        
+                                        $pecah2 = explode('-', $tgl2);
+                                        $date2 = $pecah2[2];
+                                        $month2 = $pecah2[1];
+                                        $year2 = $pecah2[0];
+                                        
+                                        $jd1 = GregorianToJD($month1, $date1, $year1);
+                                        $jd2 = GregorianToJD($month2, $date2, $year2);
+                                        
+                                        $selisih = $jd1 - $jd2;
+                                        $denda = $selisih * $u_denda;
+                                        ?>
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $buku->namabuku }}</td>
+                                            <td>{{ $buku->kodebuku }}</td>
+                                            <td>{{ $buku->jumlah }}</td>
+                                            <td>
+                                                <?php if ($selisih <= 0) { ?>
+                                                <span class="label label-primary">Masa
+                                                    Peminjaman</span>
+                                                <?php } elseif ($selisih > 0) { ?>
+                                                <span class="label label-danger">
+                                                    Rp.
+                                                    <?= $denda ?>
+                                                </span>
+                                                <br> Terlambat :
+                                                <?= $selisih ?>
+                                                Hari
+                                            </td>
+                                            <?php } ?>
+                                            <td>
+                                                <input type="hidden" value="{{ $buku->id }}" name="id">
+                                                <input type="hidden" value="{{ $buku->namabuku }}" name="namabuku">
+                                                <input type="hidden" value="{{ $buku->kodebuku }}" name="kodebuku">
+                                                <input type="hidden" value="{{ $buku->jumlah }}" name="quantity">
+                                                <input type="hidden" value="{{ $denda }}" name="price">
+                                                <button type="button" onclick="tambahbuku(this)"
+                                                    data-id1="{{ $buku->id }}" data-namabu="{{ $buku->namabuku }}"
+                                                    data-kodebu="{{ $buku->kodebuku }}"
+                                                    data-jumlah="{{ $buku->jumlah }}" data-denda="{{ $denda }}"
+                                                    data-bs-dismiss="modal" class="btn btn-secondary"></i>
+                                                    pilih</button>
+                                                {{-- <input type="checkbox" id="pilibuku" name="id[]" value="{{$buku->id}}"> --}}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </form>
                         </table>
                     </div>
-                    <div class="modal-footer"> 
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        {{-- <button type="button"  onclick="tambahbuku(this)"
-                        data-id1="{{ $buku->id }}" data-namabu="{{ $buku->namabuku }}" data-kodebu="{{ $buku->kodebuku }}" data-jumlah="{{ $buku->jumlah }}" data-bs-dismiss="modal"
-                            class="btn btn-secondary"></i> pilih</button> --}}
                     </div>
                 </div>
             </div>
