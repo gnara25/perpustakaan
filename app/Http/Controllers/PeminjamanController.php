@@ -115,6 +115,8 @@ class PeminjamanController extends Controller
                 'jumlah' => $cart->quantity,
                 'denda' => '0',
             ]);
+            // $databuku->jumlah -= $cart->quantity;
+            // $databuku->save();
         }
 
         $denda = Denda::create([

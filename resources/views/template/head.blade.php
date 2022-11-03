@@ -5,7 +5,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<title>Perpustakaan || Kita</title>
 	<!--favicon-->
-	<link rel="icon" href="../assets/images/favicon-32x32.png" type="image/png" />
+	<link rel="icon" href="asset/img/logosmk.png" type="image/png" />
 	<!-- Vector CSS -->
 	<link href="../assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
 	<!--Data Tables -->

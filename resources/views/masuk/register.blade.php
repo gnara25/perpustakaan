@@ -13,7 +13,7 @@ type="text/javascript"></script>
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="asset/img/logosmk.png">
     <title>Perpustakaan SMKN 1 Sukorejo - Daftar</title>
     <!-- Bootstrap Core CSS -->
     <link href="../masuk/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">

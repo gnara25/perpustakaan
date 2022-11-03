@@ -35,25 +35,22 @@ class CartController extends Controller
 
     public function remove($id)
     {
-        $arraypo = array();
-       $remove = \Cart::remove($id);
+       \Cart::remove($id);
         // array_push($arraypo, $remove);
-        return response()->json([
-            'remove' => $remove,
-        ]);
+        return response()->json('berhasil');
     }
 
     public function postcart(Request $request)
     {
-        \Cart::add([
-            'id' => $request->id,
-            'name' => $request->namabuku,
-            'price' => 1000,
-            'quantity' => 1,
-            'attributes' => array(
-            'kodebuku' => $request->kodebuku,
-             )
-        ]);
+        $cart = \Cart::add([
+                'id' => $request->id,
+                'name' => $request->namabuku,
+                'price' => $request->price,
+                'quantity' => 1,
+                'attributes' => array(
+                'kodebuku' => $request->kodebuku,
+                 )
+            ]);
         // session()->flash('success', 'Product is Added to Cart Successfully !');
 
         // return redirect()->back() ;

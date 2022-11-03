@@ -2383,6 +2383,7 @@ nav.navbar.bootsnav.no-background.active-border ul.nav > li.active > a::before {
 .navbar-brand>img {
   display: initial;
   height: auto;
+  /*width: 10%;*/
 }
 
 .attr-nav > ul > li {
