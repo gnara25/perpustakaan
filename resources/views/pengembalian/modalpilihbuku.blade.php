@@ -78,9 +78,9 @@
                                                 <input type="hidden" value="{{ $buku->kodebuku }}" name="kodebuku">
                                                 <input type="hidden" value="{{ $buku->jumlah }}" name="quantity">
                                                 <?php if ($selisih <= 0) { ?>
-                                                <input type="text" value="0" name="price">
+                                                <input type="hidden" value="0" name="price">
                                                  <?php } elseif ($selisih > 0) { ?>
-                                                <input type="text" value="{{ $denda }}" name="price">    
+                                                <input type="hidden" value="{{ $denda }}" name="price">    
                                                 <?php } ?>    
 
                                                 <?php if ($selisih <= 0) { ?>

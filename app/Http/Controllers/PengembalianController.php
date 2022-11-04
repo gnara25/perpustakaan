@@ -87,7 +87,7 @@ class PengembalianController extends Controller
             'nama' => $request->nama,
             'kelas' => $request->kelas,
             'tanggalpengembalian' => $request->tanggalpengembalian,
-        ]);
+        ])->id;
         $ss=Peminjaman::findOrFail($id);
         $ss->update([
             'status'=>'1',
@@ -110,12 +110,34 @@ class PengembalianController extends Controller
             $cart2 = \Cart::getContent();
             $array = array();
             foreach($cart2 as $carth){
+                if (count($carth) < 2 ){
                 Bukukembali::create([
                     'id_transaksi' => $data,
                     'namabuku' => $carth->name,
                     'kodebuku' => $carth->attributes->kodebuku,
                     'jumlah' => $carth->quantity,
                 ]);
+                Denda::create([
+                    'nama' => $request->nama,
+                    'kelas' => $request->kelas,
+                    'denda' => $carth->price,
+                    'peminjaman_id'  => $data,
+                ]);
+            } else  {
+                $total = $carth->price + $carth->price;
+                Bukukembali::create([
+                    'id_transaksi' => $data,
+                    'namabuku' => $carth->name,
+                    'kodebuku' => $carth->attributes->kodebuku,
+                    'jumlah' => $carth->quantity,
+                ]);
+                Denda::create([
+                    'nama' => $request->nama,
+                    'kelas' => $request->kelas,
+                    'denda' => $total,
+                    'peminjaman_id'  => $data,
+                ]);
+            }   
             }
         }           
         return redirect()->route('pengembalian')->with('success', 'data berhasil ditambah');

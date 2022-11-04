@@ -104,71 +104,7 @@
                                                 </div>
                                             </div>
                                       </div>
-                                    {{-- <div class="form-group row mb-3">
-                                        <label for="kelas" class="col-sm-4 col-form-label">Denda/buku </label>
-                                        <div class="col-sm-8">
-                                            @if ($pengembalin->denda[0]->denda > 0)
-                                                <input type="text"
-                                                    class="form-control @error('denda') is-invalid @enderror"
-                                                    id="denda" value="{{ $pengembalin->denda[0]->denda }}"
-                                                    name="denda" readonly>
-                                                {{-- @error('denda')
-                                                    <div class="invalid-feedback">{{ $message }} </div>
-                                                @enderror --}}
-                                    {{-- @else
-                                                <input type="text"
-                                                    class="form-control @error('denda') is-invalid @enderror"
-                                                    id="denda" value="0" name="denda" readonly> --}}
-                                    {{-- @error('denda')
-                                                    <div class="invalid-feedback">{{ $message }} </div>
-                                                @enderror --}}
-                                    {{-- @endif --}}
-                                    {{-- </div> --}}
-                                    {{-- </div> --}}
-                                    {{-- <div class="row mb-3 mr-4 ml-4" id="add_item_btn">
-                                        <div class="col-md-4">
-                                            <label for="validationCustom01" class="form-label"> Kode Buku </label>
-                                            <input type="text" class="form-control"
-                                                value="{{ $pengembalin->idbuku->kodebuku }}" name="kodebuku"
-                                                id="kodebuku" readonly>
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div> --}}
-                                    {{-- <div class="col-md-4">
-                                        <label for="validationCustom02" class="form-label"> Judul Buku</label>
-                                        <input type="text" class="form-control" id="judul"
-                                            value="{{ $pengembalin->namabuku }}" name="namabuku" readonly>
-                                        <div class="valid-feedback">
-                                            Looks good!
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="validationCustomUsername" class="form-label">Jumlah Buku</label>
-                                        <div class="input-group has-validation">
-                                            <input type="text" class="form-control" id="jumlah" name="jumlah"
-                                                value="{{ $pengembalin->jumlah }}" readonly>
-                                            <div class="invalid-feedback">
-                                                Please choose a username.
-                                            </div>
-                                            {{-- <div class="col-md-4">
-                                                    <span class="input-group-btn">
-                                                        <a data-bs-toggle="modal"
-                                                            data-bs-target="#exampleExtraLargeModal"
-                                                            class="btn btn-primary">
-                                                            <i class="fa-solid fa fa-search"></i>
-                                                        </a>
-                                                    </span>
-                                                    {{-- <span class="input-group-btn">
-                                                        <a id="showitem" class="btn btn-primary">
-                                                            <i class="fa-solid fa-plus-circle"></i>
-                                                        </a>
-                                                    </span> 
-                                                </div> 
-                                        </div>
-                                    </div> --}}
                                     <br>
-
                                     <div >
                                         <table  class="table"
                                         style="width:100%">
@@ -178,7 +114,7 @@
                                                 <th>Judul Buku</th>
                                                 <th>Kode Buku</th>
                                                 <th>Jumlah</th>
-                                                <th>Status</th>
+                                                <th>Denda</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -188,6 +124,15 @@
                                         </tbody>
                                         </table>
                                     </div>
+
+                                    {{-- <div class="form-group row mb-3">
+                                        <label for="kelas" class="col-sm-4 col-form-label">Total Denda :</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('kelas') is-invalid @enderror" id="denda"
+                                                value="" name="kelas" >
+                                        </div>
+                                    </div> --}}
 
                                     <center>
                                         <div class="mb-4 mt-4">
@@ -296,7 +241,9 @@
                                         <td>${val.name}</td>
                                         <td>${val.attributes.kodebuku}</td>
                                         <td>${val.quantity}</td>
-                                        <td>${val.price}</td>
+                                        <td>${val.price}
+                                            <input type="hidden" value="${val.price}">
+                                            </td>
                                         <td class="hidden text-right md:table-cell">
                                         <a class="btn btn-danger remov"
                                          data-id="${val.id}"
@@ -326,6 +273,7 @@
             //     dp.append('id', e.getAttribute('data-id'))
             //     Removcart(dp)
             // }
+
             function Removcart(e) {
                 const id = e.getAttribute('data-id')
                 $.ajax({
@@ -333,7 +281,7 @@
                     url: '/remov/' + id,
                     dataType: 'JSON',
                     success: function(e){
-                        console.log(e)
+                        listcartget()
                     }   
                 })     
             }

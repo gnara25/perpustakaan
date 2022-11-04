@@ -98,6 +98,26 @@ class PeminjamanController extends Controller
             'tanggalpengembalian' => $request->tanggalpengembalian,
         ])->id;
         
+        // $u_denda = 1000;
+                                        
+        // $tgl1 = date('Y-m-d');
+        // $tgl2 = $buku->tanggalpengembalian;
+        
+        // $pecah1 = explode('-', $tgl1);
+        // $date1 = $pecah1[2];
+        // $month1 = $pecah1[1];
+        // $year1 = $pecah1[0];
+        
+        // $pecah2 = explode('-', $tgl2);
+        // $date2 = $pecah2[2];
+        // $month2 = $pecah2[1];
+        // $year2 = $pecah2[0];
+        
+        // $jd1 = GregorianToJD($month1, $date1, $year1);
+        // $jd2 = GregorianToJD($month2, $date2, $year2);
+        
+        // $selisih = $jd1 - $jd2;
+        // $denda = $selisih * $u_denda;
 
         $lapor = laporanpinjam::create([
             'nama' => $request->nama,
@@ -113,17 +133,17 @@ class PeminjamanController extends Controller
                 'namabuku' => $cart->name,
                 'kodebuku' => $cart->attributes->kodebuku,
                 'jumlah' => $cart->quantity,
-                'denda' => '0',
+                'denda' => $cart->price
             ]);
             // $databuku->jumlah -= $cart->quantity;
             // $databuku->save();
         }
 
-        $denda = Denda::create([
-            'nama' => $request->nama,
-            'kelas' => $request->kelas,
-            'peminjaman_id'=>  $data,
-        ]);
+        // $denda = Denda::create([
+        //     'nama' => $request->nama,
+        //     'kelas' => $request->kelas,
+        //     'peminjaman_id'=>  $data,
+        // ]);
         
         return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
     }
