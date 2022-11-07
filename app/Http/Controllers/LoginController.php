@@ -150,7 +150,45 @@ class LoginController extends Controller
    }
 
    public function petugas(){
-    $data = User::all();
+    $data = User::where('role','petugas')->get();
     return view('daftar petugas.petugas', compact('data'));
+   }
+
+   public function tambahpetugas(){
+    return view('daftar petugas.tambahpetugas');
+   }
+
+   public function tambahpetugaspost(Request $request){
+    $this->validate($request,[
+        'username' => 'required',
+        'name' => 'required',
+        'notelepon' => 'required',
+        'email' => 'required|unique:users',
+        'password' => 'required|min:8',
+        'foto' => 'required',
+    ],[
+        'username.required' => 'Username Harus Di isi',
+        'name.required' => 'Nama Harus Di isi',
+        'notelepon.required' => 'No Telepon Harus Di Isi',
+        'email.required' => 'Email Harus Diisi',
+        'email' => 'Email Yang Anda Masukan Tidak Benar',
+        'unique' => 'Email Ini Sudah Digunakan',
+        'password.required' => 'Password Harus Diisi',
+        'password.min' => 'Password harus minimal 8 karakter',
+        'foto' => 'Foto Harus Diisi',
+    ]);
+    User::create([
+        'username' => $request->username,
+        'name' => $request->name,
+        'notelepon' => $request->notelepon,
+        'email' => $request->email,
+        'password' => bcrypt($request->password),
+        'role' => 'petugas',
+        'foto' => $request->foto,
+        'remember_token' => Str::random(60),
+    ]);
+
+    return redirect()->route('petugas')->with('success', 'Data Berhasil ditambahkan');
+
    }
 }

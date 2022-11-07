@@ -32,7 +32,7 @@
                     </div>
                     <!--end breadcrumb-->
 
-                    <div class="card">
+                    <div class="card radius-15">
                         <div class="card-body">
                             <div>
                                 <div class="table-responsive">

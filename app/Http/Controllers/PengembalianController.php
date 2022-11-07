@@ -35,6 +35,12 @@ class PengembalianController extends Controller
         \Cart::clear();
         $data = DaftarAnggota::all();
         $buku = Daftarbuku::all();
+        // $cartbuku = \Cart::getContent();
+        $total = \Cart::getSubTotal();
+        // foreach ($cartbuku as $cartk){
+            // $total = $cartbuku->getPriceSum();
+        // }
+        
         // $detail= detailbuku::where('id_transaksi', $id)->get();
         $pengembalin = Peminjaman::with('anggota','idbuku','denda')->findOrFail($id);
         $detail = DB::table('peminjamen')
@@ -107,15 +113,18 @@ class PengembalianController extends Controller
             'kelas' => $request->kelas,
             'tanggalpengembalian' => $request->tanggalpengembalian,
         ])->id;
+            
             $cart2 = \Cart::getContent();
             $array = array();
             foreach($cart2 as $carth){
                 if (count($carth) < 2 ){
                 Bukukembali::create([
+                    // 'id_siswa' => $request->nama,
                     'id_transaksi' => $data,
                     'namabuku' => $carth->name,
                     'kodebuku' => $carth->attributes->kodebuku,
                     'jumlah' => $carth->quantity,
+                    'denda' => $carth->price,
                 ]);
                 Denda::create([
                     'nama' => $request->nama,
@@ -126,10 +135,12 @@ class PengembalianController extends Controller
             } else  {
                 $total = $carth->price + $carth->price;
                 Bukukembali::create([
+                    // 'id_siswa' => $request->nama,
                     'id_transaksi' => $data,
                     'namabuku' => $carth->name,
                     'kodebuku' => $carth->attributes->kodebuku,
                     'jumlah' => $carth->quantity,
+                    'denda' => $carth->price,
                 ]);
                 Denda::create([
                     'nama' => $request->nama,

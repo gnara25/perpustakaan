@@ -103,16 +103,10 @@
 									<br>
                                     <center> <button type="submit"
                                             class="btn btn-info btn-icon-split col-sm-3 mb-3">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-plus-circle"></i>
-                                            </span>
                                             <span class="text">Tambah Anggota</span>
                                         </button>
                                         <div class=" mb-3">
                                             <a href="daftaranggota" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-arrow-circle-left"></i>
-                                                </span>
                                                 <span class="text">Kembali</span>
                                             </a>
                                     </center>

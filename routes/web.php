@@ -117,7 +117,7 @@ Route::get('/modalBK/{id}',[PengembalianController::class,'modalBK'])->name('mod
 Route::post('/pilihan',[PengembalianController::class,'pilihan'])->name('pilihan');
 
 
-// anggota
+// siswa
 Route::get('/daftaranggota',[DaftarAnggotaController::class,'daftaranggota'])->name('daftaranggota');
 Route::get('/tambahanggota',[DaftarAnggotaController::class,'tambahanggota'])->name('tambahanggota');
 Route::post('/tambahanggotapost',[DaftarAnggotaController::class,'tambahanggotapost'])->name('tambahanggotapost');
@@ -127,14 +127,18 @@ Route::get('/deleteanggota/{id}',[DaftarAnggotaController::class,'deleteanggota'
 // Route::get('/qr_code/{id}',[DaftarAnggotaController::class,'qr_code'])->name('qr_code');
 Route::post('/cetakidcard',[DaftarAnggotaController::class,'cetakidcard'])->name('cetakidcard');
 Route::get('/idcard/{id}',[DaftarAnggotaController::class,'idcard'])->name('idcard');
+Route::get('/detail/{id}',[DaftarAnggotaController::class,'detail'])->name('detail');
 
 // petugas
 Route::get('/petugas',[LoginController::class,'petugas'])->name('petugas');
+Route::get('/tambahpetugas',[LoginController::class,'tambahpetugas'])->name('tambahpetugas');
+Route::post('/tambahpetugaspost',[LoginController::class,'tambahpetugaspost'])->name('tambahpetugaspost');
 
 // laporan
 Route::get('/denda',[DendaController::class,'denda'])->name('denda');
 Route::get('/laporanpinjam',[LaporanpinjamController::class,'laporanpinjam'])->name('laporanpinjam');
 Route::get('/detailpinjam/{id}',[LaporanpinjamController::class,'detailpinjam'])->name('detailpinjam');
+Route::get('/detailbuku/{id}',[LaporanpinjamController::class,'detailbuku'])->name('detailbuku');
 
 
 });

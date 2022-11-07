@@ -22,9 +22,29 @@ class LaporanpinjamController extends Controller
         return view('laporan.peminjaman', compact('data','pinjam'))->with('details',$details);
     }
     public function detailpinjam($id){
-    $detail= detailbuku::where('id_transaksi', $id)->get();
+    $detail= Detailbuku::where('id_transaksi', $id)->get();
     return response()->json([
         'datas' => $detail
     ]);
 }
+
+public function modalBuk($id){
+    $detail= Detailbuku::where('id_transaksi', $id)->get();
+    return response()->json([
+        'data' => $detail
+    ]);
+}
+
+public function detailbuku($id){
+    $detail = Detailbuku::where('id_transaksi', $id)->get();
+    $data = DB::table('peminjamen')
+    ->join('detailbukus', 'detailbukus.id_transaksi', '=', 'peminjamen.id')
+    ->where('peminjamen.id', $id)
+    ->get();
+
+    // return view('peminjaman.detailbuku')->with('data', $data);
+    return view('peminjaman.detailbuku', compact('detail'))->with('data', $data);
+}
+
+
 }

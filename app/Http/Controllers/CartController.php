@@ -63,6 +63,7 @@ class CartController extends Controller
         $cartbuku = \Cart::getContent();
         foreach($cartbuku as $cartbuku){
             array_push($array, $cartbuku);
+            // $total = $cartbuku->getPriceSum();
         }
         return response()->json(['data' => $array]);
     }

@@ -23,7 +23,8 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="daftaranggota"><i class="fadeIn animated bx bx-user-circle"></i></a>
+                                    <li class="breadcrumb-item"><a href="daftaranggota"><i
+                                                class="fadeIn animated bx bx-user-circle"></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Siswa</li>
                                 </ol>
@@ -32,13 +33,13 @@
                     </div>
                     <!--end breadcrumb-->
 
-                    <div class="card">
+                    <div class="card radius-15">
                         <div class="card-body">
                             <div>
                                 {{-- @if (auth()->user()->role == 'admin')        --}}
                                 <a id="table2-new-row-button" href="tambahanggota"
                                     class="btn btn-outline-info btn-sm mb-2">Tambah Siswa</a>
-                            
+
                                 {{-- <button onclick="cetakidcard('{{ route('cetakidcard') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak ID Card</button> --}}
                                 <div class="row">
                                     <hr>
@@ -73,7 +74,8 @@
                                                             </td> --}}
                                                             <td scope="row">{{ $no++ }}</td>
                                                             <td><img src="{{ asset('fotobuku/' . $row->foto) }}"
-                                                                    alt="" style="width: 70px; height: 70px"></td>
+                                                                    alt="" style="width: 70px; height: 70px">
+                                                            </td>
                                                             <td>{{ $row->nisn }}</td>
                                                             <td>{{ $row->nama }}</td>
                                                             <td>{{ Carbon\Carbon::parse($row->tgl_lahir)->format('d-m-Y') }}
@@ -82,19 +84,23 @@
                                                             <td>{{ $row->alamat }}</td>
                                                             <td> {!! QrCode::size(65)->generate($row->nisn) !!}
                                                             </td>
-                                                
-                                                            <td class="b">          
+
+                                                            <td class="b">
+                                                                <a href="/detail/{{ $row->id }}"
+                                                                    class="btn btn-info">
+                                                                    <i class="fadeIn animated bx bx-show-alt"></i>
+                                                                </a>
                                                                 <a data-bs-toggle="modal"
                                                                     data-bs-target="#exampleExtraLargeModal{{ $row->id }}"
                                                                     class="btn btn-success">
                                                                     <i class="fa-solid fa-square-pen"></i>
                                                                 </a>
-                                                               
                                                                 <a href="#" class="btn btn-danger delete"
                                                                     data-id="{{ $row->id }}"
                                                                     data-nama="{{ $row->nama }}">
                                                                     <i class="fa-solid fa-trash"></i>
                                                                 </a>
+
                                                                 {{-- <a href="/idcard/{{$row->id}}" target="_blank"
                                                                     class="btn btn-primary">
                                                                     <i class="fa-solid fa-eye"></i></a> --}}
@@ -157,25 +163,6 @@
                         modal.find('.modal-title').text('New message to ' + recipient)
                         modal.find('.modal-body input').val(recipient)
                     });
-
-                    // $('[name=select_all]').on('click', function () {
-                    //         $(':example').prop('checked', this.checked);
-                    //     });
-
-                    // function cetakidcard(url) {
-                    //     if ($('input:checked').length < 1) {
-                    //         swal ({
-                    //             icon: "warning",
-                    //            text : "Harap Pilih Buku"
-                    //         });
-                    //         return;
-                    //     } else {
-                    //         $('.from-anggota')
-                    //             .attr('action', url)
-                    //             .attr('target', '_blank')
-                    //             .submit();
-                    //     }
-                    // }
                 </script>
 
 

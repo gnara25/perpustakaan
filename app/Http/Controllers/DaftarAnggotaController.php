@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use \PDF;
+use App\Models\Detailbuku;
+use App\Models\Bukukembali;
 use Illuminate\Support\Str;
+use App\Models\Pengembalian;
 use Illuminate\Http\Request;
 use App\Models\DaftarAnggota;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\DaftarAnggotaController;
 
 class DaftarAnggotaController extends Controller
 {
     public function daftaranggota(){
         $data = DaftarAnggota::all();
-        return view('anggota.daftaranggota', compact('data'));
+        $detail = Pengembalian::all();
+        return view('anggota.daftaranggota', compact('data','detail'));
     }
 
     public function tambahanggota(){
@@ -22,6 +27,17 @@ class DaftarAnggotaController extends Controller
         $data = DaftarAnggota::findOrFail($id);
         return view('anggota.idcard', compact('data'));
     }
+
+    public function detail($id){
+        // $detail = Bukukembali::all();
+        $detail = Detailbuku::where('id_siswa', $id)->get();
+        $data = DB::table('detailbukus')
+        ->join('daftar_anggotas', 'daftar_anggotas.id', '=', 'detailbukus.id_siswa')
+        ->where('detailbukus.id_siswa', $id)
+        ->get();
+        return view('anggota.detail',\compact('detail'))->with('data', $data);
+    }
+   
 
     public function tambahanggotapost(Request $request){
         $this->validate($request,[
@@ -75,7 +91,7 @@ class DaftarAnggotaController extends Controller
             'tgl_lahir.required' => 'Tanggal Lahir Wajib Diisi',
             'kelas.required' => 'Kelas Wajib Diisi',
             'alamat.required' => 'Alamat Wajib Diisi',
-            'foto.mimes' => 'Format yang diperbolehkan hanya png,jpeg,gif,jfif'
+                'foto.mimes' => 'Format yang diperbolehkan hanya png,jpeg,gif,jfif'
         ]);
         $data->update([
             'nisn' => $request->nisn,

@@ -23,7 +23,8 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="denda"><i class="fadeIn animated bx bx-coin-stack"></i></a>
+                                    <li class="breadcrumb-item"><a href="denda"><i
+                                                class="fadeIn animated bx bx-coin-stack"></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page"> Denda</li>
                                 </ol>
@@ -32,7 +33,7 @@
                     </div>
                     <!--end breadcrumb-->
 
-                    <div class="card">
+                    <div class="card radius-15">
                         <div class="card-body">
                             <div>
                                 <div class="table-responsive">
@@ -53,15 +54,22 @@
                                             @endphp
                                             <tbody>
                                                 @foreach ($data as $row)
-                                                @if ($row->denda > 0)              
-                                                <tr>
-                                                <td>{{$no++}}</td>
-                                                <td>{{$row->peminjaman->anggota->nama}}</td>
-                                                <td>{{$row->kelas}}</td>
-                                                <td>Rp {{ number_format($row['denda'],2,'.','.') }}</td>
-                                                </tr>
-                                                @endif
-
+                                                    @if ($row->denda > 0)
+                                                        <tr>
+                                                            <td>{{ $no++ }}</td>
+                                                            <td>{{ $row->peminjaman->anggota->nama }}</td>
+                                                            <td>{{ $row->kelas }}</td>
+                                                            <td>Rp {{ number_format($row['denda'], 2, '.', '.') }}</td>
+                                                            <td>
+                                                                <a class="btn btn-outline-info"
+                                                                    data-id="{{ $row->id }}" id=""
+                                                                    onclick="btnmodalBuk(this)">
+                                                                    <i class="fadeIn animated bx bx-show-alt"></i>
+                                                                    buku yang dikembalikan
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    @endif
                                                 @endforeach
                                             </tbody>
 
@@ -72,20 +80,50 @@
                         </div>
                     </div>
                     <!--end page-content-wrapper-->
+                    @foreach ($data as $buku )
+                        
+                    @include('laporan.modaldenda')
+                    @endforeach
                 </div>
                 <!-- end wrapper -->
                 @include('template.script')
 
                 <script>
+                    const btnmodalBuk = (e) => {
+                        const data_id = e.getAttribute('data-id')
+                        $.ajax({
+                            url: "/modaldenda/" + data_id,
+                            method: "GET",
+                            success: function(data) {
+                                // console.log()
+                                console.log("datanya adalah ", data.data)
+                                let td = ''
+
+                                data.data.forEach(val => {
+                                    td += `
+                        <tr>
+                            <td>${val.namabuku}</td>
+                            <td>${val.kodebuku}</td>
+                            <td>${val.jumlah}</td>         
+                        </tr>
+                        `
+                                })
+
+                                $('#tbody-cartbu').html(td)
+                                $("#detail_buku").html(data)
+                                $("#ModalBuk").modal('show')
+                            }
+                        })
+                    }
                     @if (Session::has('success'))
                         toastr.success("{{ Session::get('success') }}")
                     @endif
                     @if (Session::has('error'))
                         toastr.error("{{ Session::get('error') }}")
                     @endif
-                </script>
 
-                <script>
+
+
                     $('.delete').click(function() {
                         var mahasiswaid = $(this).attr('data-id');
                         var kategori = $(this).attr('data-kategori');

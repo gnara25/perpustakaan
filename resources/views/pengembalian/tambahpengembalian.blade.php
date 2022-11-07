@@ -37,18 +37,30 @@
                                     enctype="multipart/form-data">
                                     @csrf
 
-                                    <div class="form-group row mb-3">
-                                        <label for="transaksi" class="col-sm-4 col-form-label">No.Transaksi :</label>
-                                        <div class="col-sm-8">
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="transaksi">No.Transaksi :</label>
                                             <input type="text"
-                                                      class="form-control @error('transaksi') is-invalid @enderror"
+                                                class="form-control @error('transaksi') is-invalid @enderror"
                                                 id="nama" name="transaksi" value="{{ $pengembalin->transaksi }}"
                                                 readonly>
                                             @error('transaksi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
+                                        <div class="col-md-6">
+                                            <label for="tanggalpengembalian">Tanggal Pengembalian :</label>
+                                            <input type="date" value="<?= date('Y-m-d') ?>"
+                                                class="form-control @error('tanggalpengembalian')
+is-invalid
+@enderror"
+                                                id="tanggalpengembalian" name="tanggalpengembalian" readonly>
+                                            @error('tanggalpengembalian')
+                                                <div class="invalid-feedback">{{ $message }} </div>
+                                            @enderror
+                                        </div>
                                     </div>
+                                    <br>
                                     <div class="form-group row mb-3">
                                         <label for="nama" class="col-sm-4 col-form-label">Nama Siswa :</label>
                                         <div class="col-sm-8">
@@ -57,21 +69,6 @@
                                                 name="nama" value="{{ $pengembalin->anggota->nama }}" readonly>
                                             @error('nama')
                                                 <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="tanggalpengembalian" class="col-sm-4 col-form-label">Tanggal
-                                            Pengembalian
-                                            :</label>
-                                        <div class="col-sm-8">
-                                            <input type="date" value="<?= date('Y-m-d') ?>"
-                                                class="form-control @error('tanggalpengembalian')
-                                                is-invalid
-                                                @enderror"
-                                                id="tanggalpengembalian" name="tanggalpengembalian" readonly>
-                                            @error('tanggalpengembalian')
-                                                <div class="invalid-feedback">{{ $message }} </div>
                                             @enderror
                                         </div>
                                     </div>
@@ -86,68 +83,51 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-3">  
-                                        <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label> 
-                                            <div class="col-sm-8">
-                                                <div class="input-group has-validation">
-                                                    <span class="input-group-btn">
-                                                        <a data-bs-toggle="modal"
-                                                              data-bs-target="#Bukuid"
-                                                              class="btn btn-primary">
-                                                              <i class="fa-solid fa fa-search"></i>
-                                                        </a>
-                                                    </span>
-                                                       <div class="form-control single-select @error('kodebuku') is-invalid @enderror"
-                                                      name="kodebuku" aria-label="Default select example" id="kodebuku">
-                                                      <option value="" disabled selected> Pilih Buku Yang Ingin DiKembalikan </option>
-                                                        </div>
+                                    <div class="form-group row mb-3">
+                                        <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-btn">
+                                                    <a data-bs-toggle="modal" data-bs-target="#Bukuid"
+                                                        class="btn btn-primary">
+                                                        <i class="fa-solid fa fa-search"></i>
+                                                    </a>
+                                                </span>
+                                                <div class="form-control single-select @error('kodebuku') is-invalid @enderror"
+                                                    name="kodebuku" aria-label="Default select example" id="kodebuku">
+                                                    <option value="" disabled selected> Pilih Buku Yang Ingin
+                                                        DiKembalikan </option>
                                                 </div>
                                             </div>
-                                      </div>
+                                        </div>
+                                    </div>
                                     <br>
-                                    <div >
-                                        <table  class="table"
-                                        style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Judul Buku</th>
-                                                <th>Kode Buku</th>
-                                                <th>Jumlah</th>
-                                                <th>Denda</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
+                                    <div>
+                                        <table class="table" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Judul Buku</th>
+                                                    <th>Kode Buku</th>
+                                                    <th>Jumlah</th>
+                                                    <th>Denda</th>
+                                                    <th>Aksi</th>
+                                                </tr>
+                                            </thead>
 
-                                        <tbody id="tbody-cartbuku">
+                                            <tbody id="tbody-cartbuku">
 
-                                        </tbody>
+                                            </tbody>
                                         </table>
                                     </div>
 
-                                    {{-- <div class="form-group row mb-3">
-                                        <label for="kelas" class="col-sm-4 col-form-label">Total Denda :</label>
-                                        <div class="col-sm-8">
-                                            <input type="text"
-                                                class="form-control @error('kelas') is-invalid @enderror" id="denda"
-                                                value="" name="kelas" >
-                                        </div>
-                                    </div> --}}
-
                                     <center>
                                         <div class="mb-4 mt-4">
-                                            <button id="pilihBuku"
-                                                class="btn btn-info btn-icon-split col-sm-3 mb-3">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-plus-circle"></i>
-                                                </span>
+                                            <button id="pilihBuku" class="btn btn-info btn-icon-split col-sm-3 mb-3">
                                                 <span class="text">Proses Pengembalian</span>
                                             </button>
                                             <div class=" mb-3">
                                                 <a href="/peminjaman" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-arrow-circle-left"></i>
-                                                    </span>
                                                     <span class="text">Kembali</span>
                                                 </a>
                                             </div>
@@ -161,7 +141,7 @@
 
                 </div>
                 <!--end page-content-wrapper-->
-                
+
                 @include('pengembalian.modalpilihbuku')
 
             </div>
@@ -182,7 +162,7 @@
         <script type="text/javascript">
             @if (Session::has('error'))
                 toastr.error("{{ Session::get('error') }}")
-            @endif  
+            @endif
 
             listcartget()
 
@@ -197,7 +177,7 @@
                 addPeminjamanbuku(fd)
             }
 
-            function addPeminjamanbuku(fd){
+            function addPeminjamanbuku(fd) {
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -209,7 +189,7 @@
                     cache: false,
                     data: fd,
                     dataType: 'JSON',
-                    success: function(e){
+                    success: function(e) {
                         console.log(e)
                         listcartget()
                         // $('#Bukuid').hide()
@@ -222,13 +202,13 @@
                     method: 'GET',
                     url: '/listcart',
                     dataType: 'JSON',
-                    success: function(e){
+                    success: function(e) {
                         let html = ''
                         let no = 1;
 
-                        if(e.data.length < 1){
+                        if (e.data.length < 1) {
                             $('#pilihBuku').attr('disabled', true)
-                        }else {
+                        } else {
                             $('#pilihBuku').attr('disabled', false)
                         }
                         console.log(e.data.length)
@@ -236,7 +216,6 @@
                             html += `
                                                 
                                     <tr>
-                                        
                                         <td scope="row">${no++}</td>
                                         <td>${val.name}</td>
                                         <td>${val.attributes.kodebuku}</td>
@@ -251,28 +230,10 @@
                                         </td>
                                     </tr> `
                         })
-                                $('#tbody-cartbuku').html(html)
-                    }   
-                })  
+                        $('#tbody-cartbuku').html(html)
+                    }
+                })
             }
-
-            // $(document).on('click','.remov',function(){
-            //     var id = $(this).data('id');
-            //     $.ajax({
-            //         type: 'DELETE',
-            //         url: 'remov/' + id,
-            //         data: {'_token':$('input[name=_token]').val()},
-            //         success: function(data){
-            //             $('#tr-cart').html(data);
-            //         }
-            //     })
-            // })
-            // function remov(e){
-            //     console.log(e.getAttribute('data-id'))
-            //     const dp = new FormData();
-            //     dp.append('id', e.getAttribute('data-id'))
-            //     Removcart(dp)
-            // }
 
             function Removcart(e) {
                 const id = e.getAttribute('data-id')
@@ -280,10 +241,10 @@
                     method: 'GET',
                     url: '/remov/' + id,
                     dataType: 'JSON',
-                    success: function(e){
+                    success: function(e) {
                         listcartget()
-                    }   
-                })     
+                    }
+                })
             }
             $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal

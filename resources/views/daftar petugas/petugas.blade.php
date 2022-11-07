@@ -31,9 +31,13 @@
                     </div>
                     <!--end breadcrumb-->
 
-                    <div class="card">
+                    <div class="card radius-15" >
                         <div class="card-body">
                             <div>
+                                @if (auth()->user()->role == 'admin')
+                                <a id="table2-new-row-button" href="tambahpetugas"
+                                class="btn btn-outline-info btn-sm mb-2">Tambah Petugas</a>
+                                @endif
                                 <div class="table-responsive">
                                     <hr>
                                     <div class="table-responsive">

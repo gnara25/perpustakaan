@@ -47,7 +47,7 @@ class PeminjamanController extends Controller
 //     return response()->json([
 //         'data' => $detail
 //     ]);
-// }
+// }    
 
     public function detailbuku($id){
         $detail = Detailbuku::where('id_transaksi', $id)->get();
@@ -56,8 +56,8 @@ class PeminjamanController extends Controller
         ->where('peminjamen.id', $id)
         ->get();
 
-        return view('peminjaman.detailbuku')->with('data', $data);
-        // return view('peminjaman.detailbuku', compact('detail'));
+        // return view('peminjaman.detailbuku')->with('data', $data);
+        return view('peminjaman.detailbuku', compact('detail'))->with('data', $data);
     }
 
     public function tambahpeminjaman() 
@@ -128,12 +128,14 @@ class PeminjamanController extends Controller
         $array = array();
         foreach($cart1 as $cart){
             Detailbuku::create([
+                'id_siswa' => $request->nama,
                 'id_transaksi' => $data,
                 'id_laporan' => $lapor,
                 'namabuku' => $cart->name,
                 'kodebuku' => $cart->attributes->kodebuku,
                 'jumlah' => $cart->quantity,
-                'denda' => $cart->price
+                'denda' => $cart->price,
+                'tglpengembalian' => $request->tanggalpengembalian,
             ]);
             // $databuku->jumlah -= $cart->quantity;
             // $databuku->save();
