@@ -136,9 +136,12 @@ Route::post('/tambahpetugaspost',[LoginController::class,'tambahpetugaspost'])->
 
 // laporan
 Route::get('/denda',[DendaController::class,'denda'])->name('denda');
+Route::get('/detaildenda/{id}',[DendaController::class,'detaildenda'])->name('detaildenda');
+
 Route::get('/laporanpinjam',[LaporanpinjamController::class,'laporanpinjam'])->name('laporanpinjam');
 Route::get('/detailpinjam/{id}',[LaporanpinjamController::class,'detailpinjam'])->name('detailpinjam');
-Route::get('/detailbuku/{id}',[LaporanpinjamController::class,'detailbuku'])->name('detailbuku');
+Route::get('/pendapatan',[DendaController::class,'pendapatan'])->name('pendapatan');
+
 
 
 });

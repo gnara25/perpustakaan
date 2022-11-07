@@ -23,10 +23,9 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="denda"><i
-                                                class="fadeIn animated bx bx-coin-stack"></i></a>
+                                    <li class="breadcrumb-item"><a href="laporanpinjam"><i class="fadeIn animated bx bx-upload"></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Denda</li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Peminjaman</li>
                                 </ol>
                             </nav>
                         </div>
@@ -45,8 +44,9 @@
                                                 <tr>
                                                     <th>No.</th>
                                                     <th>Nama Siswa</th>
-                                                    <th>kelas</th>
-                                                    <th>Denda</th>
+                                                    <th>Kelas</th>
+                                                    <th>Tanggal Peminjaman</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             @php
@@ -54,31 +54,50 @@
                                             @endphp
                                             <tbody>
                                                 @foreach ($data as $row)
-                                                    @if ($row->denda > 0)
-                                                        <tr>
-                                                            <td>{{ $no++ }}</td>
-                                                            <td>{{ $row->peminjaman->anggota->nama }}</td>
-                                                            <td>{{ $row->kelas }}</td>
-                                                            <td>Rp {{ number_format($row['denda'], 2, '.', '.') }}</td>
-                                                            <td>
-                                                                <a class="btn btn-outline-info"
-                                                                    data-id="{{ $row->id }}" id=""
-                                                                    onclick="btnmodalBuk(this)">
-                                                                    <i class="fadeIn animated bx bx-show-alt"></i>
-                                                                    buku yang dikembalikan
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    @endif
+                                                @if ($row->denda > 0)              
+                                                <tr>
+                                                <td>{{$no++}}</td>
+                                                <td>{{$row->nama}}</td>
+                                                <td>{{$row->kelas}}</td>
+                                                <td>Rp {{ number_format($row['denda'],2,'.','.') }}</td>
+                                                <td>
+                                                    <a class="btn btn-primary"
+                                                            data-id="{{ $row->id }}"
+                                                            onclick="btnDetail(this)">
+                                                            <i class="fadeIn animated bx bx-exit"></i>
+                                                    </a>
+                                                </td>
+                                                </tr>
+
+                                                @endif
+
                                                 @endforeach
                                             </tbody>
-
-                                        </table>
+                                            </tbody>
+                                            <!-- <tbody>
+                                                
+                                                    <tr>
+                                                    @foreach ($data as $row)    
+                                                        <td >{{ $no++ }}</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                        </td>
+                                                    @endforeach 
+                                                   
+                                                    </tr>
+                                                
+                                            </tbody>
+ -->                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                     
+                        @include('laporan.detaildenda')
+                    
                     <!--end page-content-wrapper-->
                     @foreach ($data as $buku )
                         
@@ -87,6 +106,45 @@
                 </div>
                 <!-- end wrapper -->
                 @include('template.script')
+
+                   <script>
+                    const btnDetail = (e) => {
+                        const data_id = e.getAttribute('data-id')
+                        $.ajax({
+                            url: "/detaildenda/" + data_id,
+                            method: "GET",
+                            success: function(datas) {
+                                // console.log()
+                                console.log("datanya adalah ", datas.datas)
+                                let td = ''
+
+                                datas.datas.forEach(val => {
+                                    td += `
+                        <tr>
+                            <td>${val.namabuku}</td>
+                            <td>${val.kodebuku}</td>
+                            <td>${val.jumlah}</td>
+                            <td>${val.denda}</td>
+                        </tr>
+                        `
+                                })
+
+                                $('#tbody-cart').html(td)
+                                $("#Denda").modal('show')
+                            }
+                        })
+                    }
+
+                       $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
+                        var button = $(event.relatedTarget) // Button that triggered the modal
+                        var recipient = button.data('whatever') // Extract info from data-* attributes
+                        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                        var modal = $(this)
+                        modal.find('.modal-title').text('New message to ' + recipient)
+                        modal.find('.modal-body input').val(recipient)
+                    });
+                </script>
 
                 <script>
                     const btnmodalBuk = (e) => {
@@ -121,6 +179,7 @@
                     @if (Session::has('error'))
                         toastr.error("{{ Session::get('error') }}")
                     @endif
+<<<<<<< HEAD
 
 
 
@@ -146,6 +205,10 @@
                             });
                     });
                 </script>
+=======
+                </script>
+                 
+>>>>>>> 658f7c2bbdfca375548b745dca68a681cd4df513
 
 
 </body>

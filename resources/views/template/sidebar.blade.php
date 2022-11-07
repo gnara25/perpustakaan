@@ -81,6 +81,13 @@
 				<div class="menu-title">Denda </div>
 			</a>
 		</li>
+		<li>
+			<a  href="/pendapatan">
+				<div class="parent-icon icon-color-9"><i class="fadeIn animated bx bx-coin-stack"></i>
+				</div>
+				<div class="menu-title">Pendapatan </div>
+			</a>
+		</li>
 	</ul>
 	<!--end navigation-->
 </div>

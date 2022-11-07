@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             // $table->string('id_siswa');
             $table->string('id_transaksi');
+            $table->string('id_denda');
             $table->string('namabuku');
             $table->string('kodebuku');
             $table->string('jumlah');

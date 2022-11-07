@@ -68,6 +68,7 @@ class DaftarbukuController extends Controller
             'jumlah' => $request->jumlah,
             'lokasibuku' => $request->lokasibuku,
             'deskripsi' => $request->deskripsi,
+            'dipinjam' => '0',
             'foto' => $request->foto,
 
         ]);
@@ -112,6 +113,7 @@ class DaftarbukuController extends Controller
             'jumlah' => $request->jumlah,
             'lokasibuku' => $request->lokasibuku,
             'deskripsi' => $request->deskripsi,
+            'dipinjam' => $request->dipinjam,
         ]);
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('fotobuku/',$request->file('foto')->getClientOriginalName());

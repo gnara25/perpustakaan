@@ -144,6 +144,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
+                                        <label for="deskripsi" class="col-sm-4 col-form-label">Dipinjam  :</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('dipinjam') is-invalid @enderror"
+                                                id="dipinjam" name="dipinjam" value="{{ $data->dipinjam }}" readonly>
+                                            @error('dipinjam')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">
                                         <label for="foto" class="col-sm-4 col-form-label">Foto Buku   :</label>
                                         <div class="col-sm-8">
                                             <img class="img mb-3" src="{{ asset('fotobuku/' . $data->foto) }}" alt=""
