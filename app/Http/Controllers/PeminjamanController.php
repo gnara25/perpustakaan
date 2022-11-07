@@ -127,6 +127,7 @@ class PeminjamanController extends Controller
         $cart1 = \Cart::getContent();
         $array = array();
         foreach($cart1 as $cart){
+            $databuku = Daftarbuku::find($cart->id);
             Detailbuku::create([
                 'id_transaksi' => $data,
                 'id_laporan' => $lapor,
@@ -135,8 +136,9 @@ class PeminjamanController extends Controller
                 'jumlah' => $cart->quantity,
                 'denda' => $cart->price
             ]);
-            // $databuku->jumlah -= $cart->quantity;
-            // $databuku->save();
+            $databuku->dipinjam += 1;
+            $databuku->jumlah -= $cart->quantity;
+            $databuku->save();
         }
 
         // $denda = Denda::create([

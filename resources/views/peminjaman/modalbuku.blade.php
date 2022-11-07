@@ -23,6 +23,7 @@
                                 <th>Jumlah</th>
                                 <th>Lokasi Buku</th>
                                 <th>Deskripsi</th>
+                                <th>Dipinjam</th>
                                 <th>Foto</th>
                                 <th>Aksi</th>
                             </thead>
@@ -43,6 +44,7 @@
                                         <td>{{ $row->jumlah }}</td>
                                         <td>{{ $row->lokasibuku }}</td>
                                         <td>{{ $row->deskripsi }}</td>
+                                        <td>{{ $row->dipinjam }} Kali</td>
                                         <td> <img src="{{ asset('fotobuku/' . $row->foto) }}" alt=""
                                                 style="width: 70px; height: 70px">
                                         </td>

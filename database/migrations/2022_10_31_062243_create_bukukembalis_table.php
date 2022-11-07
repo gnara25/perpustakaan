@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('bukukembalis', function (Blueprint $table) {
             $table->id();
             $table->string('id_transaksi');
+            $table->string('id_denda');
             $table->string('namabuku');
             $table->string('kodebuku');
             $table->string('jumlah');
-            // $table->string('denda');
+            $table->string('denda');
             $table->timestamps();
         });
     }

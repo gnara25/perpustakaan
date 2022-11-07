@@ -133,8 +133,12 @@ Route::get('/petugas',[LoginController::class,'petugas'])->name('petugas');
 
 // laporan
 Route::get('/denda',[DendaController::class,'denda'])->name('denda');
+Route::get('/detaildenda/{id}',[DendaController::class,'detaildenda'])->name('detaildenda');
+
 Route::get('/laporanpinjam',[LaporanpinjamController::class,'laporanpinjam'])->name('laporanpinjam');
 Route::get('/detailpinjam/{id}',[LaporanpinjamController::class,'detailpinjam'])->name('detailpinjam');
+Route::get('/pendapatan',[DendaController::class,'pendapatan'])->name('pendapatan');
+
 
 
 });
