@@ -16,6 +16,7 @@
 <script src="../assets/plugins/vectormap/jquery-jvectormap-uk-mill-en.js"></script>
 <script src="../assets/plugins/vectormap/jquery-jvectormap-au-mill.js"></script>
 <script src="../assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+
 {{-- <script src="../assets/js/index.js"></script> --}}
 <!-- App JS -->
 <script src="../assets/js/app.js"></script>

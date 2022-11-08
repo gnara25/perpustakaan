@@ -129,7 +129,7 @@ class PengembalianController extends Controller
                 ])->id;
 
             foreach($cart2 as $carth){
-                // if (count($carth) < 2 ){
+                $databuku = Daftarbuku::find($carth->id);
                 Bukukembali::create([
                     'id_transaksi' => $data,
                     'namabuku' => $carth->name,
@@ -138,6 +138,9 @@ class PengembalianController extends Controller
                     'denda' => $carts->price,
                     'id_denda' => $denda,
                 ]);
+
+                $databuku->jumlah += $cart->quantity;
+                $databuku->save();
                  
             }
                     

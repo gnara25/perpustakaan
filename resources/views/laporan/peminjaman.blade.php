@@ -64,7 +64,7 @@
                                                          <a class="btn btn-primary"
                                                             data-id="{{ $row->id }}"
                                                             onclick="btnDetail(this)">
-                                                            <i class="fadeIn animated bx bx-exit"></i>
+                                                            <i class="fadeIn animated bx bx-show-alt"></i>
                                                                     </a>
                                                         </td>
                                                     

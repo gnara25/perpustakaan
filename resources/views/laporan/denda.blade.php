@@ -34,6 +34,7 @@
 
                     <div class="card radius-15">
                         <div class="card-body">
+                            <div id="grafik"></div>
                             <div>
                                 <div class="table-responsive">
                                     <hr>
@@ -64,7 +65,7 @@
                                                     <a class="btn btn-primary"
                                                             data-id="{{ $row->id }}"
                                                             onclick="btnDetail(this)">
-                                                            <i class="fadeIn animated bx bx-exit"></i>
+                                                            <i class="fadeIn animated bx bx-show-alt"></i>
                                                     </a>
                                                 </td>
                                                 </tr>
@@ -107,7 +108,10 @@
                 <!-- end wrapper -->
                 @include('template.script')
 
-                   <script>
+                   <script type="text/javascript">
+
+                    
+
                     const btnDetail = (e) => {
                         const data_id = e.getAttribute('data-id')
                         $.ajax({
@@ -179,9 +183,6 @@
                     @if (Session::has('error'))
                         toastr.error("{{ Session::get('error') }}")
                     @endif
-<<<<<<< HEAD
-
-
 
                     $('.delete').click(function() {
                         var mahasiswaid = $(this).attr('data-id');
@@ -205,11 +206,6 @@
                             });
                     });
                 </script>
-=======
-                </script>
-                 
->>>>>>> 658f7c2bbdfca375548b745dca68a681cd4df513
-
 
 </body>
 

@@ -30,6 +30,9 @@ class DendaController extends Controller
                             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%M')"))
                             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y')"))
                             ->get();
+
+            
+
         return view('laporan.pendapatan',compact('harga'));                    
     }
 
