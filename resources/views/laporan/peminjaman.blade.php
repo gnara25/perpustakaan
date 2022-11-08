@@ -36,7 +36,6 @@
                         <div class="card-body">
                             <div>
                                 <div class="table-responsive">
-                                    <hr>
                                     <div class="table-responsive">
                                         <table id="example" class="table table-striped table-bordered"
                                             style="width:100%">

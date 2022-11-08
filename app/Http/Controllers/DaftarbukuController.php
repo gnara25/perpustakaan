@@ -143,4 +143,11 @@ class DaftarbukuController extends Controller
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('buku.pdf');
     }
+
+    public function bukupop(){
+        
+        $data = Daftarbuku::with('idkategori')->get();
+        $idkategori = Kategori::all();
+        return view('buku.bukupop',compact('data','idkategori'));
+    }
 }

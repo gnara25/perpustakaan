@@ -39,26 +39,33 @@
                                         <div class="col-sm-8">
                                             <input type="number"
                                                 class="form-control @error('nisn') is-invalid @enderror"
-                                                id="nisn" name="nisn" value="{{ old('nisn') }}">
+                                                id="nisn" name="nisn" value="{{ old('nisn') }}" placeholder="Masukan NISN">
                                             @error('nisn')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="nama" class="col-sm-4 col-form-label">Nama Siswa   :</label>
-                                        <div class="col-sm-8">
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label for="nama">Nama Siswa :</label>
                                             <input type="text"
                                                 class="form-control @error('nama') is-invalid @enderror"
-                                                id="nama" name="nama" value="{{ old('nama') }}">
+                                                id="nama" name="nama" value="{{ old('nama') }}" placeholder="Nama Siswa">
                                             @error('nama')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Lahir   :</label>
-                                        <div class="col-sm-8">
+                                        <div class="col-md-4">
+                                            <label for="kelas">Kelas :</label>
+                                            <input type="text   "
+                                                class="form-control @error('kelas') is-invalid @enderror"
+                                                id="kelas" name="kelas" value="{{ old('kelas') }}" placeholder="Masukan Kelas">
+                                            @error('kelas')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="tgl_lahir">Tanggal Lahir :</label>
                                             <input type="date"
                                                 class="form-control @error('tgl_lahir') is-invalid @enderror"
                                                 id="tgl_lahir" name="tgl_lahir" value="{{ old('tgl_lahir') }}">
@@ -67,23 +74,13 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="kelas" class="col-sm-4 col-form-label">Kelas   :</label>
-                                        <div class="col-sm-8">
-                                            <input type="text   "
-                                                class="form-control @error('kelas') is-invalid @enderror"
-                                                id="kelas" name="kelas" value="{{ old('kelas') }}">
-                                            @error('kelas')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                    <br>
                                     <div class="form-group row mb-3">
                                         <label for="alamat" class="col-sm-4 col-form-label">Alamat   :</label>
                                         <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('alamat') is-invalid @enderror"
-                                                id="alamat" name="alamat" value="{{ old('alamat') }}">
+                                                id="alamat" name="alamat" value="{{ old('alamat') }}" placeholder="Masukan Alamat Siswa">
                                             @error('alamat')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror

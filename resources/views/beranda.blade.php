@@ -20,10 +20,11 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <h2 class="mb-0 text-white">{{$bukucount}} <i
-                                                    class='font-14 text-white'>Buku</i>  </h2>
+                                            <h2 class="mb-0 text-white">{{ $bukucount }} <i
+                                                    class='font-14 text-white'>Buku</i> </h2>
                                         </div>
-                                        <div class="ms-auto font-35 text-white"><i class="fadeIn animated bx bx-book-alt"></i>
+                                        <div class="ms-auto font-35 text-white"><i
+                                                class="fadeIn animated bx bx-book-alt"></i>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center">
@@ -39,10 +40,11 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <h2 class="mb-0 text-white">{{$anggotacount}}<i
-                                                    class='font-14 text-white'> Orang</i>  </h2>
+                                            <h2 class="mb-0 text-white">{{ $anggotacount }}<i
+                                                    class='font-14 text-white'> Orang</i> </h2>
                                         </div>
-                                        <div class="ms-auto font-35 text-white"><i class="fadeIn animated bx bx-user-circle"></i>
+                                        <div class="ms-auto font-35 text-white"><i
+                                                class="fadeIn animated bx bx-user-circle"></i>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center">
@@ -58,10 +60,11 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <h2 class="mb-0 text-white">{{$pinjam}} <i
+                                            <h2 class="mb-0 text-white">{{ $pinjam }} <i
                                                     class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
                                         </div>
-                                        <div class="ms-auto font-35 text-white"><i class="fadeIn animated bx bx-upload"></i>
+                                        <div class="ms-auto font-35 text-white"><i
+                                                class="fadeIn animated bx bx-upload"></i>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center">
@@ -77,10 +80,11 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <h2 class="mb-0 text-white">{{$petugas}} <i
+                                            <h2 class="mb-0 text-white">{{ $petugas }} <i
                                                     class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
                                         </div>
-                                        <div class="ms-auto font-35 text-white"><i class="fadeIn animated bx bx-group"></i>
+                                        <div class="ms-auto font-35 text-white"><i
+                                                class="fadeIn animated bx bx-group"></i>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center">
@@ -98,145 +102,229 @@
                         <div class="col-12 col-lg-12 col-xl-6 d-flex">
                             <div class="card radius-15 w-100">
                                 <div class="card-body">
-                                        <div class="card-title mb-4">
-                                            <h5 class="mb-0">Daftar Anggota <a href="daftaranggota" class="btn btn-white btn-sm px-4 radius-15" style="float: right; ">lihat lebih banyak </a> </h5>
+                                    <div class="card-title mb-4">
+                                        <h5 class="mb-0">Daftar Anggota <a href="daftaranggota"
+                                                class="btn btn-white btn-sm px-4 radius-15" style="float: right; ">lihat
+                                                lebih banyak </a> </h5>
 
-                                        </div>
-                                        <hr/>
+                                    </div>
+                                    <hr />
                                     <div class="table-responsive">
                                         <table class="table table-striped mb-0">
-                                                <thead>
+                                            <thead>
+                                                <tr>
+                                                    <!-- <th>No.</th> -->
+                                                    <!-- <th>Foto</th> -->
+                                                    <th>Nisn</th>
+                                                    <th>Nama Siswa</th>
+                                                    <th>Tgl.Lahir</th>
+                                                    <th>Kelas</th>
+                                                    <th>Alamat</th>
+                                                    <!--  <th>Qr Code</th> -->
+                                                </tr>
+                                            </thead>
+                                            <!--    @php
+                                                $no = 1;
+                                            @endphp -->
+                                            <tbody>
+                                                @foreach ($anggota as $row)
                                                     <tr>
-                                                        <!-- <th>No.</th> -->
-                                                        <!-- <th>Foto</th> -->
-                                                        <th>Nisn</th>
-                                                        <th>Nama Siswa</th>
-                                                        <th>Tgl.Lahir</th>
-                                                        <th>Kelas</th>
-                                                        <th>Alamat</th>
-                                                       <!--  <th>Qr Code</th> -->
-                                                    </tr>
-                                                </thead>
-                                             <!--    @php
-                                                    $no = 1;
-                                                @endphp -->
-                                                <tbody>
-                                                    @foreach ($anggota as $row)
-                                                        <tr>
-                                                           <!--  <td scope="row">{{ $no++ }}</td> -->
-                                                            <!-- <td><img src="{{ asset('fotobuku/' . $row->foto) }}"
+                                                        <!--  <td scope="row">{{ $no++ }}</td> -->
+                                                        <!-- <td><img src="{{ asset('fotobuku/' . $row->foto) }}"
                                                                     alt="" style="width: 70px; height: 70px"></td> -->
-                                                            <td>{{ $row->nisn }}</td>
-                                                            <td>{{ $row->nama }}</td>
-                                                            <td>{{ Carbon\Carbon::parse($row->tgl_lahir)->format('d-m-Y') }}
-                                                            </td>
-                                                            <td>{{ $row->kelas }}</td>
-                                                            <td>{{ $row->alamat }}</td>
-                                                           <!--  <td> {!! QrCode::size(100)->generate($row->nisn) !!}
+                                                        <td>{{ $row->nisn }}</td>
+                                                        <td>{{ $row->nama }}</td>
+                                                        <td>{{ Carbon\Carbon::parse($row->tgl_lahir)->format('d-m-Y') }}
+                                                        </td>
+                                                        <td>{{ $row->kelas }}</td>
+                                                        <td>{{ $row->alamat }}</td>
+                                                        <!--  <td> {!! QrCode::size(100)->generate($row->nisn) !!}
                                                             </td> -->
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>    
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-lg-12 col-xl-6 d-flex">
                             <div class="card radius-15 w-100">
                                 <div class="card-body">
-                                        <div class="card-title mb-4">
-                                            <h5 class="mb-0">Daftar Buku <a href="buku" class="btn btn-white btn-sm px-4 radius-15" style="float: right; ">lihat lebih banyak </a> </h5>
-                                        </div>
-                                        <hr/>
+                                    <div class="card-title mb-4">
+                                        <h5 class="mb-0">Daftar Buku <a href="buku"
+                                                class="btn btn-white btn-sm px-4 radius-15" style="float: right; ">lihat
+                                                lebih banyak </a> </h5>
+                                    </div>
+                                    <hr />
                                     <div class="table-responsive">
                                         <table class="table table-striped mb-0">
-                                                <thead>
+                                            <thead>
+                                                <th>Judul Buku </th>
+                                                <th>Kategori </th>
+                                                <th>Penulis</th>
+                                                <th>Penerbit</th>
+                                                <th>Tahun Terbit</th>
+                                                <th>Jumlah</th>
 
-                                                    <!-- <th>
-                                                        <input type="checkbox" name="select_all" id="select_all">
-                                                    </th> -->
-                                                    <!-- <th>No</th> -->
-                                                    <th>Judul Buku </th>
-                                                    <!-- <th>Kategori Buku</th> -->
-                                                    <!-- <th>Kode Buku</th> -->
-                                                    <th>Penulis Buku</th>
-                                                    <th>Penerbit</th>
-                                                    <th>Tahun Terbit</th>
-                                                    <th>Jumlah</th>
-                                                    <!-- <th>Halaman Buku</th>
-                                                    <th>Lokasi Buku</th>
-                                                    <th>Deskripsi</th>
-                                                    <th>Foto</th> -->
-                                                 <!--    @if (auth()->user()->role == 'admin')
-                                                        <th>Aksi</th>
-                                                    @endif -->
+                                            </thead>
+                                            <tbody>
+                                                @php
+                                                    $no = 1;
+                                                @endphp
+                                                @foreach ($buku as $row)
+                                                    <tr>
+                                                        <td>{{ $row->namabuku }}</td>
+                                                        <td>{{ $row->idkategori->kategori }}</td>
+                                                        <td>{{ $row->penulis }}</td>
+                                                        <td>{{ $row->penerbit }}</td>
+                                                        <td>{{ $row->tahunterbit }}</td>
+                                                        <td>{{ $row->jumlah }}</td>
+                                                    </tr>
+                                                @endforeach
 
-                                                </thead>
-                                                <tbody>
-                                                    @php
-                                                        $no = 1;
-                                                    @endphp
-                                                    @foreach ($buku as $row)
-                                                        <tr>
-                                                            <!-- <td><input type="checkbox" id="example" name="id[]"
-                                                                    value="{{ $row->id }}">
-                                                            </td> -->
-                                                            <!-- <td>{{ $no++ }}</td> -->
-                                                            <td>{{ $row->namabuku }}</td>
-                                                            <!-- <td>{{ $row->idkategori->kategori }}</td> -->
-                                                        <!--     <td>{{ $row->kodebuku }}</td> -->
-                                                            <td>{{ $row->penulis }}</td>
-                                                            <td>{{ $row->penerbit }}</td>
-                                                            <td>{{ $row->tahunterbit }}</td>
-                                                            <td>{{ $row->jumlah }}</td>
-                                                          <!--   <td>{{ $row->halbuku }}</td>
-                                                            <td>{{ $row->lokasibuku }}</td>
-                                                            <td>{{ $row->deskripsi }}</td>
-                                                            <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
-                                                                    alt="" style="width: 70px; height: 70px">
-                                                            </td> 
-                                                          @if (auth()->user()->role == 'admin')
-                                                                <td class="b">
-                                                                    <a href="/editbuku/{{ $row->id }}"
-                                                                        class="btn btn-success">
-                                                                        <i class="fa-solid fa-square-pen"></i>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-danger delete"
-                                                                        data-id="{{ $row->id }}"
-                                                                        data-nama="{{ $row->nama }}">
-                                                                        <i class="fa-solid fa-trash"></i>
-                                                                    </a>
-                                                                </td> 
-                                                            @endif -->
-                                                        </tr> 
-                                                    @endforeach
+                                            </tbody>
+                                        </table>
 
-                                                </tbody>
-                                            </table>
-   
                                     </div>
                                 </div>
+                            </div>
                         </div>
+                        <div class="col-24 col-lg-24 col-xl-12 d-flex">
+                            <div class="card radius-15 w-100">
+                                <div class="card-body">
+                                    <div class="card-title mb-4">
+                                        <center>
+                                            <h5 class="mb-0">Buku TerPopuler</h5>
+                                        </center>
+                                    </div>
+                                    <hr>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped mb-0">
+                                            <thead>
+                                                <th>No</th>
+                                                <th>Judul Buku </th>
+                                                <th>Kategori Buku</th>
+                                                <th>Tahun Terbit</th>
+                                                <th>Dipinjam</th>
+                                                <th>Foto</th>
+
+                                            </thead>
+                                            <tbody>
+                                                @php
+                                                    $no = 1;
+                                                @endphp
+                                                @foreach ($data as $row)
+                                                    <tr>
+                                                        <td>{{ $no++ }}</td>
+                                                        <td>{{ $row->namabuku }}</td>
+                                                        <td>{{ $row->idkategori->kategori }}</td>
+                                                        <td>{{ $row->tahunterbit }}</td>
+                                                        <td>{{ $row->dipinjam }} Kali</td>
+                                                        <td> <img
+                                                                src="{{ asset('fotobuku/' . $row->foto) }}"alt=""
+                                                                style="width: 70px; height: 70px">
+                                                    </tr>
+                                                @endforeach
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart radius-15">
+                            <div id="chartnilai"></div>
+                        </div>
+
+                        <!--end row-->
                     </div>
-                    <!--end row-->
                 </div>
+                <!--end page-content-wrapper-->
             </div>
-            <!--end page-content-wrapper-->
+            <!--end page-wrapper-->
+            <!--start overlay-->
+            <div class="overlay toggle-btn-mobile"></div>
+            <!--end overlay-->
+            <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
+                    class='bx bxs-up-arrow-alt'></i></a>
+            <!--End Back To Top Button-->
+            @include('template.footer')
         </div>
-        <!--end page-wrapper-->
-        <!--start overlay-->
-        <div class="overlay toggle-btn-mobile"></div>
-        <!--end overlay-->
-        <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
-                class='bx bxs-up-arrow-alt'></i></a>
-        <!--End Back To Top Button-->
-        @include('template.footer')
-    </div>
-    <!-- end wrapper -->
-    @include('template.script')
+        <!-- end wrapper -->
+        @include('template.script')
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+
+        <script>
+            var pendapatan = <?php echo json_encode($total_denda) ?>;
+                    var bulan = <?php echo json_encode($bulan) ?>;
+
+                    const chart = Highcharts.chart('chartnilai', {
+                        title: {
+                            text: 'Laporan Denda Bulanan'
+                        },
+                        xAxis: {
+                            categories: bulan,
+                        },
+                        series: [{
+                            type: 'column',
+                            name: 'Unemployed',
+                            colorByPoint: true,
+                            data: pendapatan,
+                            showInLegend: false
+                        }]
+                    });
+
+                    document.getElementById('plain').addEventListener('click', () => {
+                        chart.update({
+                            chart: {
+                                inverted: false,
+                                polar: false
+                            },
+                            subtitle: {
+                                text: 'Chart option: Plain | Source: ' +
+                                    '<a href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/helt-ledige"' +
+                                    'target="_blank">NAV</a>'
+                            }
+                        });
+                    });
+
+                    document.getElementById('inverted').addEventListener('click', () => {
+                        chart.update({
+                            chart: {
+                                inverted: true,
+                                polar: false
+                            },
+                            subtitle: {
+                                text: 'Chart option: Inverted | Source: ' +
+                                    '<a href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/helt-ledige"' +
+                                    'target="_blank">NAV</a>'
+                            }
+                        });
+                    });
+
+                    document.getElementById('polar').addEventListener('click', () => {
+                        chart.update({
+                            chart: {
+                                inverted: false,
+                                polar: true
+                            },
+                            subtitle: {
+                                text: 'Chart option: Polar | Source: ' +
+                                    '<a href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/helt-ledige"' +
+                                    'target="_blank">NAV</a>'
+                            }
+                        });
+                    });
+        </script>
 
 </body>
 
+
+
 </html>
+
 

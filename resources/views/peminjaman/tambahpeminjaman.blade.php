@@ -94,34 +94,40 @@
                                             </div>
                                         </div>
 
-                                     <div class="form-group row mb-3">  
+                                        <div class="form-group row mb-3">
+                                            <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label>
+                                            <div class="col-sm-8">
+                                                <div class="input-group has-validation">
+                                                    <span class="input-group-btn">
+                                                        <a data-bs-toggle="modal"
+                                                            data-bs-target="#Bukuid"
+                                                            class="btn btn-primary">
+                                                            <i class="fa-solid fa fa-search"></i>
+                                                        </a>
+                                                    </span>
+                                                    <div class="form-control @error('kodebuku') is-invalid @enderror"
+                                                        name="kodebuku"  id="kodebuku">
+                                                       <option value="" disabled selected>Pilih Buku Yang Ingin Dipinjam</option>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                     {{-- <div class="form-group row mb-3">  
                                       <label for="kelas" class="col-sm-4 col-form-label">Kode Buku </label> 
                                             <div class="col-sm-8">
                                                 <div class="input-group has-validation">
-                                                     {{-- <select class="form-control single-select @error('kodebuku') is-invalid @enderror"
-                                                    name="kodebuku" aria-label="Default select example" id="kodebuku">
-                                                    <option value="" disabled selected> Pilih kodebuku Siswa </option>
-                                                    @foreach ($bukuid as $buku)
-                                                    <option value="{{ $buku->id }}" data-namabuku='{{$buku->namabuku}}'>
-                                                        {{ $buku->kodebuku }}</option>
-                                                    @endforeach 
-                                                    </select> --}}
-                                                    
-                                                        <span class="input-group-btn">
+                                                    <span class="input-group-btn">
                                                             <a data-bs-toggle="modal"
                                                                 data-bs-target="#Bukuid"
                                                                 class="btn btn-primary">
                                                                 <i class="fa-solid fa fa-search"></i>
                                                             </a>
                                                         </span>
-                                                        
-                                                     {{-- @error('kodebuku')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                    @enderror --}}
                                                 </div>
                                                
                                             </div>
-                                    </div>
+                                    </div> --}}
                                             <div>
                                                 <table  class="table table-striped table-bordered"
                                                 style="width:100%">
@@ -146,17 +152,11 @@
                                             <div class="mb-4 mt-4">
                                                 <button id="bukupilih" 
                                                     class="btn btn-info btn-icon-split col-sm-3 mb-3">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-plus-circle"></i>
-                                                    </span>
                                                     <span class="text">Tambah Peminjaman</span>
                                                 </button>
                                                 <div class="mb-3">
                                                     <a href="/peminjaman"
                                                         class="btn btn-dark btn-icon-split mb-3 col-sm-3">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-arrow-circle-left"></i>
-                                                        </span>
                                                         <span class="text">Kembali</span>
                                                     </a>
                                                 </div>

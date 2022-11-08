@@ -23,9 +23,10 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="buku"><i class="fadeIn animated bx bx-list-ul"></i></a>
+                                    <li class="breadcrumb-item"><a href="buku"><i
+                                                class="fadeIn animated bx bx-list-ul"></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Daftar Buku</li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Buku Populer</li>
                                 </ol>
                             </nav>
                         </div>
@@ -35,81 +36,32 @@
                     <div class="card radius-15">
                         <div class="card-body">
                             <div>
-
-                                <a id="table2-new-row-button" href="tambahbuku"
-                                    class="btn btn-outline-info btn-sm mb-2"></i>Tambah
-                                    Buku</a>
-
-                                <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"
-                                    class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak
-                                    Barcode</button>
-                                <div class="table-responsive">
-                                    <hr>
+                                <div class="row">
                                     <div class="table-responsive">
                                         <form action="" method="POST" class="from-buku">
                                             @csrf
                                             <table id="example" class="table table-striped table-bordered"
                                                 style="width:100%">
                                                 <thead>
-
-                                                    <th>
-                                                        <input type="checkbox" name="select_all" id="select_all">
-                                                    </th>
                                                     <th>No</th>
-                                                    <th>Kode Buku</th>
                                                     <th>Judul Buku </th>
                                                     <th>Kategori Buku</th>
-                                                    <th>Penulis Buku</th>
-                                                    <th>Penerbit</th>
                                                     <th>Tahun Terbit</th>
-                                                    <th>Halaman Buku</th>
-                                                    <th>Jumlah</th>
-                                                    <th>Lokasi</th>
-                                                    <th>Deskripsi</th>
                                                     <th>Dipinjam</th>
-                                                    <th>Foto</th>
-                                                    @if (auth()->user()->role == 'admin')
-                                                        <th>Aksi</th>
-                                                    @endif
-
-                                                </thead>
+                                                    <th>Foto</th></thead>
                                                 <tbody>
                                                     @php
                                                         $no = 1;
                                                     @endphp
                                                     @foreach ($data as $row)
                                                         <tr>
-                                                            <td><input type="checkbox" id="example" name="id[]"
-                                                                    value="{{ $row->id }}">
-                                                            </td>
                                                             <td>{{ $no++ }}</td>
-                                                            <td>{{ $row->kodebuku }}</td>
                                                             <td>{{ $row->namabuku }}</td>
                                                             <td>{{ $row->idkategori->kategori }}</td>
-                                                            <td>{{ $row->penulis }}</td>
-                                                            <td>{{ $row->penerbit }}</td>
                                                             <td>{{ $row->tahunterbit }}</td>
-                                                            <td>{{ $row->halbuku }}</td>
-                                                            <td>{{ $row->jumlah }}</td>
-                                                            <td>{{ $row->lokasibuku }}</td>
-                                                            <td>{{ $row->deskripsi }}</td>
                                                             <td>{{ $row->dipinjam }} Kali</td>
                                                             <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
                                                                     alt="" style="width: 70px; height: 70px">
-                                                            </td>
-                                                            @if (auth()->user()->role == 'admin')
-                                                                <td class="b">
-                                                                    <a href="/editbuku/{{ $row->id }}"
-                                                                        class="btn btn-success">
-                                                                        <i class="fa-solid fa-square-pen"></i>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-danger delete"
-                                                                        data-id="{{ $row->id }}"
-                                                                        data-nama="{{ $row->nama }}">
-                                                                        <i class="fa-solid fa-trash"></i>
-                                                                    </a>
-                                                                </td>
-                                                            @endif
                                                         </tr>
                                                     @endforeach
 

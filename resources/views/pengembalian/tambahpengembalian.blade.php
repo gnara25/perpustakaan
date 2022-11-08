@@ -93,8 +93,8 @@ is-invalid
                                                         <i class="fa-solid fa fa-search"></i>
                                                     </a>
                                                 </span>
-                                                <div class="form-control single-select @error('kodebuku') is-invalid @enderror"
-                                                    name="kodebuku" aria-label="Default select example" id="kodebuku">
+                                                <div class="form-control  @error('kodebuku') is-invalid @enderror"
+                                                    name="kodebuku" id="kodebuku">
                                                     <option value="" disabled selected> Pilih Buku Yang Ingin
                                                         DiKembalikan </option>
                                                 </div>

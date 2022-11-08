@@ -35,20 +35,29 @@
                                 <form action="/tambahbukupost" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row mb-3">
-                                        <label for="nama" class="col-sm-4 col-form-label">Judul Buku   :</label>
+                                        <label for="kodebuku" class="col-sm-4 col-form-label">Kode Buku   :</label>
                                         <div class="col-sm-8">
                                             <input type="text"
-                                                class="form-control @error('namabuku') is-invalid @enderror"
-                                                id="nama" name="namabuku" value="{{ old('namabuku') }}">
-                                            @error('namabuku')
+                                                class="form-control @error('kodebuku') is-invalid @enderror"
+                                                id="kodebuku" name="kodebuku" value="{{ $kd.'BK' }}" readonly>
+                                            @error('kodebuku')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="kategori" class="col-sm-4 col-form-label">Kategori Buku   :</label>
-                                        <div class="col-sm-8">
-                                                <select class="form-control @error('kategori') is-invalid @enderror"
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="namabuku">Nama Buku  :</label>
+                                            <input type="text"
+                                                class="form-control @error('namabuku') is-invalid @enderror"
+                                                id="nama" name="namabuku" value="{{ old('namabuku') }}" placeholder="Nama Buku">
+                                            @error('namabuku')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="kategori">Kategori Buku :</label>
+                                            <select class="form-control @error('kategori') is-invalid @enderror"
                                                 name="kategori" aria-label="Default select example" >
                                                 <option value="" disabled selected>Pilih Kategori Buku</option>
                                                 @foreach ($idkategori as $kategori)
@@ -61,71 +70,64 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="kodebuku" class="col-sm-4 col-form-label">Kode Buku   :</label>
-                                        <div class="col-sm-8">
-                                            <input type="text"
-                                                class="form-control @error('kodebuku') is-invalid @enderror"
-                                                id="kodebuku" name="kodebuku" value="{{ $kd.'BK' }}" readonly>
-                                            @error('kodebuku')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="penulis" class="col-sm-4 col-form-label">Penulis   :</label>
-                                        <div class="col-sm-8">
+                                    <br>
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label for="penulis">Penulis :</label>
                                             <input type="text"
                                                 class="form-control @error('penulis') is-invalid @enderror"
-                                                id="penulis" name="penulis" value="{{ old('penulis') }}">
+                                                id="penulis" name="penulis" value="{{ old('penulis') }}" placeholder="Penulis Buku">
                                             @error('penulis')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="penerbit" class="col-sm-4 col-form-label">Penerbit   :</label>
-                                        <div class="col-sm-8">
+                                        <div class="col-md-4">
+                                            <label for="penerbit">Penerbit :</label>
                                             <input type="text"
                                                 class="form-control @error('penerbit') is-invalid @enderror"
-                                                id="penerbit" name="penerbit" value="{{ old('penerbit') }}">
+                                                id="penerbit" name="penerbit" value="{{ old('penerbit') }}" placeholder="Penerbit Buku">
+                                            @error('penerbit')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                    </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="tahunterbit" class="col-sm-4 col-form-label">Tahun Terbit   :</label>
-                                        <div class="col-sm-8">
-                                            <input type="text"
+                                        <div class="col-md-4">
+                                            <label for="tahunterbit">Tahun Terbit :</label>
+                                            <input type="number"
                                                 class="form-control @error('tahunterbit') is-invalid @enderror"
-                                                id="tahunterbit" name="tahunterbit" value="{{ old('tahunterbit') }}">
-                                           
+                                                id="tahunterbit" name="tahunterbit" value="{{ old('tahunterbit') }}" placeholder="Tahun Terbit">
+                                            @error('tahunterbit')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="halbuku" class="col-sm-4 col-form-label">Halaman Buku   :</label>
-                                        <div class="col-sm-8">
-                                            <input type="text"
+                                    <br>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="halbuku">Halaman Buku  :</label>
+                                            <input type="number"
                                                 class="form-control @error('halbuku') is-invalid @enderror"
-                                                id="halbuku" name="halbuku" value="{{ old('halbuku') }}">
-                                           
+                                                id="halbuku" name="halbuku" value="{{ old('halbuku') }}" placeholder="Halaman Buku">
+                                                @error('halbuku')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                    </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="jumlah" class="col-sm-4 col-form-label">Jumlah Buku   :</label>
-                                        <div class="col-sm-8">
+                                        <div class="col-md-6">
+                                            <label for="jumlah">Jumlah Buku :</label>
                                             <input type="number" min="1"
                                                 class="form-control @error('jumlah') is-invalid @enderror"
-                                                id="jumlah" name="jumlah" value="{{ old('jumlah') }}">
+                                                id="jumlah" name="jumlah" value="{{ old('jumlah') }}" placeholder="Jumlah Buku">
                                             @error('jumlah')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
+                                    <br>
                                     <div class="form-group row mb-3">
                                         <label for="lokasibuku" class="col-sm-4 col-form-label">Lokasi Buku   :</label>
                                         <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('lokasibuku') is-invalid @enderror"
-                                                id="lokasibuku" name="lokasibuku" value="{{ old('lokasibuku') }}">
+                                                id="lokasibuku" name="lokasibuku" value="{{ old('lokasibuku') }}" placeholder="Lokasi Buku">
                                             @error('lokasibuku')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -156,16 +158,10 @@
 									<br>
                                     <center> <button type="submit"
                                             class="btn btn-info btn-icon-split col-sm-3 mb-3">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-plus-circle"></i>
-                                            </span>
                                             <span class="text">Tambah Buku</span>
                                         </button>
                                         <div class=" mb-3">
                                             <a href="/buku" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-arrow-circle-left"></i>
-                                                </span>
                                                 <span class="text">Kembali</span>
                                             </a>
                                     </center>

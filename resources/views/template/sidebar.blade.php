@@ -5,7 +5,7 @@
 			<img src="assets/images/logo-icon.png" class="logo-icon-2" alt="" />
 		</div>
 		<div>
-			<h4 class="logo-text">Perpus</h4>
+			<h4 class="logo-text">PerpusKita</h4>
 		</div>
 		<a href="javascript:;" class="toggle-btn ms-auto"> <i class="bx bx-menu"></i>
 		</a>
@@ -22,7 +22,7 @@
 		<li class="menu-label">Menu Buku</li>
 		<li>
 			<a href="/kategori">
-				<div class="parent-icon icon-color-2"><i class="fadeIn animated bx bx-book-alt"></i>
+				<div class="parent-icon icon-color-2"><i class="fadeIn animated bx bx-book-add"></i>
 				</div>
 				<div class="menu-title">Kategori Buku</div>
 			</a>
@@ -34,6 +34,13 @@
 				<div class="menu-title">Daftar Buku</div>
 			</a>
 		</li>
+		<li>
+			<a href="/bukupop">
+				<div class="parent-icon icon-color-17"><i class="fadeIn animated bx bx-book-alt"></i>
+				</div>
+				<div class="menu-title">Buku Populer</div>
+			</a>
+		</li>	
 		<li class="menu-label">Transaksi</li>
 		<li>
 			<a href="/peminjaman">
@@ -60,7 +67,7 @@
 		<li class="menu-label">laporan</li>
 		<li>
 			<a  href="/laporanpinjam">
-				<div class="parent-icon icon-color-20"><i class="fadeIn animated bx bx-upload"></i>
+				<div class="parent-icon icon-color-5"><i class="fadeIn animated bx bx-upload"></i>
 				</div>
 				<div class="menu-title">Peminjaman</div>
 			</a>
@@ -83,7 +90,7 @@
 		</li>
 		<li>
 			<a  href="/pendapatan">
-				<div class="parent-icon icon-color-9"><i class="fadeIn animated bx bx-coin-stack"></i>
+				<div class="parent-icon icon-color-13"><i class="bx bx-line-chart"></i>
 				</div>
 				<div class="menu-title">Pendapatan </div>
 			</a>

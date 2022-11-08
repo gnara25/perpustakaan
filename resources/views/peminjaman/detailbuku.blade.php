@@ -31,10 +31,10 @@
                     </div>
                     <!--end breadcrumb-->
 
-                    <div class="card">
+                    <div class="card radius-15">
                         <div class="card-body">
                             <div>    
-                                <a id="table2-new-row-button" href="/peminjaman" class="btn btn-outline-info btn-sm mb-2">Kembali Kepeminjaman</a>  
+                                <a id="table2-new-row-button" href="/peminjaman" class="btn btn-outline-info btn-sm mb-2 radius-15">Kembali Kepeminjaman</a>  
                                 <div class="table-responsive">
                                     <hr>
                                     <div class="table-responsive">

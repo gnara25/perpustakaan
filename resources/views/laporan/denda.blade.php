@@ -23,7 +23,8 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="laporanpinjam"><i class="fadeIn animated bx bx-upload"></i></a>
+                                    <li class="breadcrumb-item"><a href="laporanpinjam"><i
+                                                class="fadeIn animated bx bx-upload"></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page"> Peminjaman</li>
                                 </ol>
@@ -54,60 +55,42 @@
                                             @endphp
                                             <tbody>
                                                 @foreach ($data as $row)
-                                                @if ($row->denda > 0)              
-                                                <tr>
-                                                <td>{{$no++}}</td>
-                                                <td>{{$row->nama}}</td>
-                                                <td>{{$row->kelas}}</td>
-                                                <td>Rp {{ number_format($row['denda'],2,'.','.') }}</td>
-                                                <td>
-                                                    <a class="btn btn-primary"
-                                                            data-id="{{ $row->id }}"
-                                                            onclick="btnDetail(this)">
-                                                            <i class="fadeIn animated bx bx-exit"></i>
-                                                    </a>
-                                                </td>
-                                                </tr>
-
-                                                @endif
-
+                                                    @if ($row->denda > 0)
+                                                        <tr>
+                                                            <td>{{ $no++ }}</td>
+                                                            <td>{{ $row->nama }}</td>
+                                                            <td>{{ $row->kelas }}</td>
+                                                            <td>Rp {{ number_format($row['denda'], 2, '.', '.') }}</td>
+                                                            <td>
+                                                                <a class="btn btn-primary" data-id="{{ $row->id }}"
+                                                                    onclick="btnDetail(this)">
+                                                                    <i class="fadeIn animated bx bx-exit"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    @endif
                                                 @endforeach
                                             </tbody>
                                             </tbody>
-                                            <!-- <tbody>
-                                                
-                                                    <tr>
-                                                    @foreach ($data as $row)    
-                                                        <td >{{ $no++ }}</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>
-                                                        </td>
-                                                    @endforeach 
-                                                   
-                                                    </tr>
-                                                
-                                            </tbody>
- -->                                        </table>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                     
-                        @include('laporan.detaildenda')
-                    
+
+                    @include('laporan.detaildenda')
+
                     <!--end page-content-wrapper-->
-                    @foreach ($data as $buku )
-                        
-                    @include('laporan.modaldenda')
+                    @foreach ($data as $buku)
+                        @include('laporan.modaldenda')
                     @endforeach
                 </div>
                 <!-- end wrapper -->
                 @include('template.script')
 
-                   <script>
+                <script>
                     const btnDetail = (e) => {
                         const data_id = e.getAttribute('data-id')
                         $.ajax({
@@ -135,7 +118,7 @@
                         })
                     }
 
-                       $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
+                    $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
                         var button = $(event.relatedTarget) // Button that triggered the modal
                         var recipient = button.data('whatever') // Extract info from data-* attributes
                         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -179,36 +162,8 @@
                     @if (Session::has('error'))
                         toastr.error("{{ Session::get('error') }}")
                     @endif
-<<<<<<< HEAD
-
-
-
-                    $('.delete').click(function() {
-                        var mahasiswaid = $(this).attr('data-id');
-                        var kategori = $(this).attr('data-kategori');
-                        swal({
-                                title: "YAKIN?",
-                                text: "Akan Menghapus Data Dengan Kategori " + kategori + " ",
-                                icon: "warning",
-                                buttons: true,
-                                dangerMode: true,
-                            })
-                            .then((willDelete) => {
-                                if (willDelete) {
-                                    window.location = "/deletekategori/" + mahasiswaid + ""
-                                    swal("Data Ini Berhasil Dihapus!", {
-                                        icon: "success",
-                                    });
-                                } else {
-                                    swal("Data Ini Tidak Jadi Dihapus!");
-                                }
-                            });
-                    });
                 </script>
-=======
-                </script>
-                 
->>>>>>> 658f7c2bbdfca375548b745dca68a681cd4df513
+
 
 
 </body>

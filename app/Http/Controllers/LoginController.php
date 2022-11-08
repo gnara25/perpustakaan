@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 use App\Models\User;
+use App\Models\Denda;
 use App\Models\Daftarbuku;
-use App\Models\laporanpinjam;
-use App\Models\DaftarAnggota;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\DaftarAnggota;
+use App\Models\laporanpinjam;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,13 +17,21 @@ class LoginController extends Controller
 {
 
     public function beranda(){
+        $total_denda = Denda::select(DB::raw("(sum(denda)) as denda"))
+                    ->whereYear('created_at', date('Y'))
+                    ->groupBy(DB::raw("Month(created_at)"))
+                    ->pluck('denda');
+        $bulan = Denda::select(DB::raw("MONTHNAME(created_at) as bulan"))
+                    ->groupBy(\DB::raw("MONTHNAME(created_at)"))
+                    ->pluck('bulan');
         $buku = Daftarbuku::paginate(5);
         $bukucount = Daftarbuku::all()->count();
         $anggota = DaftarAnggota::paginate(5);
+        $data = Daftarbuku::paginate(5);
         $anggotacount = DaftarAnggota::all()->count();
         $pinjam = laporanpinjam::all()->count();
-        $petugas = User::all()->count();
-        return view('beranda', compact('buku','anggota','pinjam','petugas','bukucount','anggotacount'));
+        $petugas = User::where('role','petugas')->count();
+        return view('beranda', compact('buku','anggota','pinjam','petugas','bukucount','anggotacount', 'data', 'total_denda', 'bulan'));
     }
     public function Login(){
         return view('masuk.login');
