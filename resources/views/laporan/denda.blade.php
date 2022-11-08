@@ -35,6 +35,7 @@
 
                     <div class="card radius-15">
                         <div class="card-body">
+                            <div id="grafik"></div>
                             <div>
                                 <div class="table-responsive">
                                     <hr>
@@ -46,7 +47,7 @@
                                                     <th>No.</th>
                                                     <th>Nama Siswa</th>
                                                     <th>Kelas</th>
-                                                    <th>Tanggal Peminjaman</th>
+                                                    <th>Denda</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -55,20 +56,23 @@
                                             @endphp
                                             <tbody>
                                                 @foreach ($data as $row)
-                                                    @if ($row->denda > 0)
-                                                        <tr>
-                                                            <td>{{ $no++ }}</td>
-                                                            <td>{{ $row->nama }}</td>
-                                                            <td>{{ $row->kelas }}</td>
-                                                            <td>Rp {{ number_format($row['denda'], 2, '.', '.') }}</td>
-                                                            <td>
-                                                                <a class="btn btn-primary" data-id="{{ $row->id }}"
-                                                                    onclick="btnDetail(this)">
-                                                                    <i class="fadeIn animated bx bx-exit"></i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    @endif
+                                                @if ($row->denda > 0)              
+                                                <tr>
+                                                <td>{{$no++}}</td>
+                                                <td>{{$row->nama}}</td>
+                                                <td>{{$row->kelas}}</td>
+                                                <td>Rp {{ number_format($row['denda'],2,'.','.') }}</td>
+                                                <td>
+                                                    <a class="btn btn-primary"
+                                                            data-id="{{ $row->id }}"
+                                                            onclick="btnDetail(this)">
+                                                            <i class="fadeIn animated bx bx-show-alt"></i>
+                                                    </a>
+                                                </td>
+                                                </tr>
+
+                                                @endif
+
                                                 @endforeach
                                             </tbody>
                                             </tbody>
@@ -90,7 +94,10 @@
                 <!-- end wrapper -->
                 @include('template.script')
 
-                <script>
+                   <script type="text/javascript">
+
+                    
+
                     const btnDetail = (e) => {
                         const data_id = e.getAttribute('data-id')
                         $.ajax({
@@ -162,9 +169,29 @@
                     @if (Session::has('error'))
                         toastr.error("{{ Session::get('error') }}")
                     @endif
+
+                    $('.delete').click(function() {
+                        var mahasiswaid = $(this).attr('data-id');
+                        var kategori = $(this).attr('data-kategori');
+                        swal({
+                                title: "YAKIN?",
+                                text: "Akan Menghapus Data Dengan Kategori " + kategori + " ",
+                                icon: "warning",
+                                buttons: true,
+                                dangerMode: true,
+                            })
+                            .then((willDelete) => {
+                                if (willDelete) {
+                                    window.location = "/deletekategori/" + mahasiswaid + ""
+                                    swal("Data Ini Berhasil Dihapus!", {
+                                        icon: "success",
+                                    });
+                                } else {
+                                    swal("Data Ini Tidak Jadi Dihapus!");
+                                }
+                            });
+                    });
                 </script>
-
-
 
 </body>
 
