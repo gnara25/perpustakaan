@@ -140,6 +140,8 @@ Route::get('/denda',[DendaController::class,'denda'])->name('denda');
 Route::get('/detaildenda/{id}',[DendaController::class,'detaildenda'])->name('detaildenda');
 
 Route::get('/laporanpinjam',[LaporanpinjamController::class,'laporanpinjam'])->name('laporanpinjam');
+Route::get('/cetaklaporan',[LaporanpinjamController::class,'cetaklaporan'])->name('cetaklaporan');
+Route::get('/export_excel',[LaporanpinjamController::class,'export_excel'])->name('export_excel');
 Route::get('/detailpinjam/{id}',[LaporanpinjamController::class,'detailpinjam'])->name('detailpinjam');
 Route::get('/pendapatan',[DendaController::class,'pendapatan'])->name('pendapatan');
 

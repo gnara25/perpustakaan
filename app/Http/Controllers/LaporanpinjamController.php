@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use DB;
+use \PDF;
+use App\Exports\LaporanpinjamExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use App\Models\laporanpinjam;
 use App\Models\Peminjaman;
@@ -45,6 +48,20 @@ public function detailbuku($id){
     // return view('peminjaman.detailbuku')->with('data', $data);
     return view('peminjaman.detailbuku', compact('detail'))->with('data', $data);
 }
+
+public function cetaklaporan()
+    {
+        $data = laporanpinjam::all();
+ 
+        $pdf = PDF::loadview('laporan.laporanpinjampdf', ['data' => $data]);
+        return $pdf->download('laporan-peminjaman.pdf');
+    }
+
+ public function export_excel()
+    {
+        return Excel::download(new LaporanpinjamExport, 'laporan_peminjaman.xlsx');
+    }   
+
 
 
 }

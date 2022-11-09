@@ -139,8 +139,8 @@ class PengembalianController extends Controller
                     'id_denda' => $denda,
                 ]);
 
-                // $databuku->jumlah += $carth->quantity;
-                // $databuku->save();
+                $databuku->jumlah += $carth->quantity;
+                $databuku->save();
                  
             }
                     
