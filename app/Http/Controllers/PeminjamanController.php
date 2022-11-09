@@ -129,14 +129,12 @@ class PeminjamanController extends Controller
         foreach($cart1 as $cart){
             $databuku = Daftarbuku::find($cart->id);
             Detailbuku::create([
-                'id_siswa' => $request->nama,
                 'id_transaksi' => $data,
                 'id_laporan' => $lapor,
                 'namabuku' => $cart->name,
                 'kodebuku' => $cart->attributes->kodebuku,
                 'jumlah' => $cart->quantity,
                 'denda' => $cart->price,
-                'tglpengembalian' => $request->tanggalpengembalian,
             ]);
             $databuku->dipinjam += 1;
             $databuku->jumlah -= $cart->quantity;

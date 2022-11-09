@@ -23,8 +23,8 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="kategori"><i
-                                                class="fadeIn animated bx bx-book-alt"></i></a>
+                                    <li class="breadcrumb-item"><a href="pendapatan"><i
+                                                class="bx bx-line-chart"></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page"> Pendapatan</li>
                                 </ol>
@@ -35,13 +35,24 @@
 
                     <div class="card radius-15">
                         <div class="card-body">
+                                <div class="chart radius-15 mb-5">
+                                    <figure class="highcharts-figure">
+                                        <div id="chartnilai"></div>
+                                        {{-- <button id="plain">Plain</button>
+                                        <button id="inverted">Inverted</button>
+                                        <button id="polar">Polar</button> --}}
+                                    </figure>
+                                </div>
+                        </div>        
+                    </div>            
+                    <div class="card radius-15">
+                        <div class="card-body">
                             <div>
-
                                 {{-- <a id="table2-new-row-button" href="tambahkategori" class="btn btn-outline-info btn-sm mb-2">Tambah Kategori</a> --}}
 
-                                <div class="table-responsive">
-                                    <div class="table-responsive">
-                                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                
+                                    <div class="table-responsive mb-4">
+                                        <table id="example2" class="table table-bordered mb-4" style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th class="text-center">Bulan</th>
@@ -63,25 +74,19 @@
                                                     </tr>
                                                 @endforeach
                                             </tbody>
-
                                         </table>
                                     </div>
-                            </div>
+                                </div>    
+                           
                         </div>
                     </div>
-                    <div class="chart radius-15">
-                        <figure class="highcharts-figure">
-                        <div id="chartnilai"></div>
-                        {{-- <button id="plain">Plain</button>
-                        <button id="inverted">Inverted</button>
-                        <button id="polar">Polar</button> --}}
-                      </figure>
-                    </div>
+                  
                 </div>
                 <!-- end wrapper -->
                 @include('template.script')
 
                 <script src="https://code.highcharts.com/highcharts.js"></script>
+                
 
                 <script>
                     var pendapatan = <?php echo json_encode($total_denda) ?>;
