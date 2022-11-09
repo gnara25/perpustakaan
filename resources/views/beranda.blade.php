@@ -193,10 +193,27 @@
                         <div class="col-24 col-lg-24 col-xl-12 d-flex">
                             <div class="card radius-15 w-100">
                                 <div class="card-body">
+
                                     <div class="card-title mb-4">
                                         <center>
-                                            <h5 class="mb-0">Buku TerPopuler</h5>
+                                            <h5 class="mb-1" style="font-size: 160%;">Buku TerPopuler</h5>
                                         </center>
+                                        <div class="row">
+                                            <div class="col-md-4" style="float: right;">
+                                                <label class="mb-1" style="font-size: 100%;">FILTER BUKU :</label>
+                                                <select id="kategories" class="form-control" name="buku">
+                                                    <option value="" disabled selected>Pilih Kategori Buku
+                                                    </option>
+                                                    @if (count($idkategori) > 0)
+                                                        @foreach ($idkategori as $kategoris)
+                                                            <option value="{{ $kategoris->id }}">
+                                                                {{ $kategoris->kategori }}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <hr>
                                     <div class="table-responsive">
@@ -210,22 +227,25 @@
                                                 <th>Foto</th>
 
                                             </thead>
-                                            <tbody>
+                                            <tbody id="tbodys">
                                                 @php
                                                     $no = 1;
                                                 @endphp
-                                                @foreach ($data as $row)
-                                                    <tr>
-                                                        <td>{{ $no++ }}</td>
-                                                        <td>{{ $row->namabuku }}</td>
-                                                        <td>{{ $row->idkategori->kategori }}</td>
-                                                        <td>{{ $row->tahunterbit }}</td>
-                                                        <td>{{ $row->dipinjam }} Kali</td>
-                                                        <td> <img
-                                                                src="{{ asset('fotobuku/' . $row->foto) }}"alt=""
-                                                                style="width: 70px; height: 70px">
-                                                    </tr>
-                                                @endforeach
+                                                @if (count($data) > 0)
+                                                    @foreach ($data as $row)
+                                                        <tr>
+                                                            <td>{{ $no++ }}</td>
+                                                            <td>{{ $row->namabuku }}</td>
+                                                            <td>{{ $row->idkategori->kategori }}</td>
+                                                            <td>{{ $row->tahunterbit }}</td>
+                                                            <td>{{ $row->dipinjam }} Kali</td>
+                                                            <td> <img
+                                                                    src="{{ asset('fotobuku/' . $row->foto) }}"alt=""
+                                                                    style="width: 70px; height: 70px">
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+
 
                                             </tbody>
                                         </table>
@@ -257,74 +277,70 @@
         @include('template.script')
 
         <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
         <script>
-            var pendapatan = <?php echo json_encode($total_denda) ?>;
-                    var bulan = <?php echo json_encode($bulan) ?>;
+            var pendapatan = {{ json_encode($total_denda) }};
+            var bulan = <?php echo json_encode($bulan);?>;
 
-                    const chart = Highcharts.chart('chartnilai', {
-                        title: {
-                            text: 'Laporan Denda Bulanan'
-                        },
-                        xAxis: {
-                            categories: bulan,
-                        },
-                        series: [{
-                            type: 'column',
-                            name: 'Unemployed',
-                            colorByPoint: true,
-                            data: pendapatan,
-                            showInLegend: false
-                        }]
-                    });
-
-                    document.getElementById('plain').addEventListener('click', () => {
-                        chart.update({
-                            chart: {
-                                inverted: false,
-                                polar: false
-                            },
-                            subtitle: {
-                                text: 'Chart option: Plain | Source: ' +
-                                    '<a href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/helt-ledige"' +
-                                    'target="_blank">NAV</a>'
-                            }
-                        });
-                    });
-
-                    document.getElementById('inverted').addEventListener('click', () => {
-                        chart.update({
-                            chart: {
-                                inverted: true,
-                                polar: false
-                            },
-                            subtitle: {
-                                text: 'Chart option: Inverted | Source: ' +
-                                    '<a href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/helt-ledige"' +
-                                    'target="_blank">NAV</a>'
-                            }
-                        });
-                    });
-
-                    document.getElementById('polar').addEventListener('click', () => {
-                        chart.update({
-                            chart: {
-                                inverted: false,
-                                polar: true
-                            },
-                            subtitle: {
-                                text: 'Chart option: Polar | Source: ' +
-                                    '<a href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/helt-ledige"' +
-                                    'target="_blank">NAV</a>'
-                            }
-                        });
-                    });
+            const chart = Highcharts.chart('chartnilai', {
+                title: {
+                    text: 'Laporan Denda Bulanan'
+                },
+                xAxis: {
+                    categories: bulan,
+                },
+                series: [{
+                    type: 'column',
+                    name: 'Total Denda',
+                    colorByPoint: true,
+                    data: pendapatan,
+                    showInLegend: false
+                }]
+            });
         </script>
+
+        {{-- <script>
+            $(document).ready(function() {
+                $("#kategories").on('change', function({
+                    var kategories = $(this).val();
+                    // console.log(kategories);
+                    $.ajax({
+                        url: "{{ route('beranda') }}",
+                        type: "GET",
+                        data: {
+                            'kategories': kategories
+                        },
+                        success: function(data) {
+                            var data = data.data;
+                            var html = '';
+
+                            if (data.length > 0) {
+                                for (let i = 0; i < data.length; i++) {
+                                    html += '<tr>\
+                                                <td>' + i + '</td>\
+                                                <td>' + data[i]['namabuku'] + '</td>\
+                                                <td>' + data[i]['idkategori->kategori'] + '</td>\
+                                                <td>' + data[i]['tahunterbit'] + '</td>\
+                                                <td>' + data[i]['dipinjam'] + '</td>\
+                                                </tr>';
+                                }
+                            } else {
+                                html += '<tr>\
+                                                <td>kosong</td>\
+                                                </tr>';
+                            }
+
+                        }
+
+                        $('#tbodys').html(html);
+
+                        alert(kategories);
+                    });
+                }));
+            });
+        </script> --}}
 
 </body>
 
-
-
 </html>
-
-

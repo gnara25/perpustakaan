@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Models\User;
 use App\Models\Denda;
+use App\Models\Kategori;
 use App\Models\Daftarbuku;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
 
-    public function beranda(){
+    public function beranda(Request $request){
         $total_denda = Denda::select(DB::raw("(sum(denda)) as denda"))
                     ->whereYear('created_at', date('Y'))
                     ->groupBy(DB::raw("Month(created_at)"))
@@ -27,11 +28,20 @@ class LoginController extends Controller
         $buku = Daftarbuku::paginate(5);
         $bukucount = Daftarbuku::all()->count();
         $anggota = DaftarAnggota::paginate(5);
-        $data = Daftarbuku::paginate(5);
         $anggotacount = DaftarAnggota::all()->count();
         $pinjam = laporanpinjam::all()->count();
         $petugas = User::where('role','petugas')->count();
-        return view('beranda', compact('buku','anggota','pinjam','petugas','bukucount','anggotacount', 'data', 'total_denda', 'bulan'));
+        $query = Daftarbuku::query();
+        $idkategori = Kategori::all(); 
+        
+        
+        if($request->ajax()){
+            $data = $query->where(['kategories'=>$request->kategories])->get();
+            return response()->json(['data' => $data]);
+        }
+        $data = $query->get();
+
+        return view('beranda', compact('buku','anggota','pinjam','petugas','bukucount','anggotacount', 'data', 'total_denda', 'bulan', 'idkategori'));
     }
     public function Login(){
         return view('masuk.login');

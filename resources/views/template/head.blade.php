@@ -14,14 +14,14 @@
 	<!--plugins-->
 	<link href="../assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 	<link href="../assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="../assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+	{{-- <link href="../assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />	 --}}
 	<link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" />
 	<link href="assets/plugins/select2/css/select2-bootstrap4.css" rel="stylesheet" />
 	<!-- loader-->
 	<link href="../assets/css/pace.min.css" rel="stylesheet" />
 	<script src="../assets/js/pace.min.js"></script>
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&amp;family=Roboto&amp;display=swap" />
 	<!-- Icons CSS -->
 	<link rel="stylesheet" href="../assets/css/icons.css" />
@@ -30,5 +30,7 @@
 	<link rel="stylesheet" href="../assets/css/app.css" />
 	<link rel="stylesheet" href="../assets/css/dark-sidebar.css" />
 	<link rel="stylesheet" href="../assets/css/dark-theme.css" />
-	<!-- toast -->
+	<!-- ajax -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
