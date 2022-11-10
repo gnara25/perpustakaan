@@ -73,7 +73,7 @@
                                             </td>
                                             
                                             <td>
-                                                <input type="hidden" value="{{ $buku->id }}" name="id">
+                                                <input type="hidden" value="{{ $buku->id_buku }}" name="id">
                                                 <input type="hidden" value="{{ $buku->namabuku }}" name="namabuku">
                                                 <input type="hidden" value="{{ $buku->kodebuku }}" name="kodebuku">
                                                 <input type="hidden" value="{{ $buku->jumlah }}" name="quantity">
@@ -86,7 +86,7 @@
                                                 <?php if ($selisih <= 0) { ?>
 
                                                 <button type="button" onclick="tambahbuku(this)"
-                                                    data-id1="{{ $buku->id }}" data-namabu="{{ $buku->namabuku }}"
+                                                    data-id1="{{ $buku->id_buku }}" data-namabu="{{ $buku->namabuku }}"
                                                     data-kodebu="{{ $buku->kodebuku }}"
                                                     data-jumlah="{{ $buku->jumlah }}" data-price="0"
                                                     data-bs-dismiss="modal" class="btn btn-secondary"></i>

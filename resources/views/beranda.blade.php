@@ -280,21 +280,19 @@
         <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
         <script>
-            var pendapatan = {{ json_encode($total_denda) }};
-            var bulan = <?php echo json_encode($bulan);?>;
 
             const chart = Highcharts.chart('chartnilai', {
                 title: {
                     text: 'Laporan Denda Bulanan'
                 },
                 xAxis: {
-                    categories: bulan,
+                    categories: {!! json_encode($previousMonths) !!},
                 },
                 series: [{
                     type: 'column',
                     name: 'Total Denda',
                     colorByPoint: true,
-                    data: pendapatan,
+                    data: {!! json_encode($array_pengeluaran) !!},
                     showInLegend: false
                 }]
             });

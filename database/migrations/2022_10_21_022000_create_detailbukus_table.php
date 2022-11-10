@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('detailbukus', function (Blueprint $table) {
             $table->id();
             $table->string('id_transaksi');
+            $table->string('id_buku');
             $table->string('id_siswa');
             $table->string('id_laporan');
             $table->string('namabuku');
