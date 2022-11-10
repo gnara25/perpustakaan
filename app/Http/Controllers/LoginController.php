@@ -31,18 +31,31 @@ class LoginController extends Controller
         $anggotacount = DaftarAnggota::all()->count();
         $pinjam = laporanpinjam::all()->count();
         $petugas = User::where('role','petugas')->count();
-        $query = Daftarbuku::query();
+        $data = Daftarbuku::all()->sortByDesc('dipinjam');
         $idkategori = Kategori::all(); 
+        // $data = DB::table('daftarbukus')
+        //             ->join('kategoris', 'daftarbukus.kategori','kategoris.id')
+        //             ->select('daftarbukus.*', 'kategoris.kategori')
+        //             // ->sortByDesc('dipinjam')
+        //             ->get();
         
-        
-        if($request->ajax()){
-            $data = $query->where(['kategories'=>$request->kategories])->get();
-            return response()->json(['data' => $data]);
-        }
-        $data = $query->get();
 
-        return view('beranda', compact('buku','anggota','pinjam','petugas','bukucount','anggotacount', 'data', 'total_denda', 'bulan', 'idkategori'));
+        return view('beranda', compact('buku','anggota','pinjam','petugas','bukucount','anggotacount', 'total_denda', 'bulan',  'idkategori', 'data'));    
     }
+
+    public function berandah(Request $request){
+        $data = DB::table('daftarbukus')
+                    ->join('kategoris', 'daftarbukus.kategori','kategoris.id')
+                    ->select('daftarbukus.*', 'kategoris.kategori')
+                    ->get();
+        $query = Daftarbuku::query();
+        // $idkategori = Kategori::all();
+        $data = $query->where(['kategori'=>$request->kategories])->get();
+        $data = $query->get();
+        
+        return response()->json(['data' => $data]);
+    }
+
     public function Login(){
         return view('masuk.login');
     }

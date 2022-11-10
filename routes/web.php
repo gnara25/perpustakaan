@@ -58,6 +58,7 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 //Menu Admin
 Route::get('/beranda',[LoginController::class,'beranda'])->name('beranda');
+Route::get('/berandah',[LoginController::class,'berandah'])->name('berandah');
 Route::group(['middleware' => ['auth', 'Cekrole:admin,petugas']], function(){
 
 // buku

@@ -16,12 +16,12 @@
                                 <th>Judul Buku </th>
                                 <th>Kategori Buku</th>
                                 <th>Kode Buku</th>
-                                <th>Penulis Buku</th>
+                                <th>Penulis</th>
                                 <th>Penerbit</th>
                                 <th>Tahun Terbit</th>
-                                <th>Halaman Buku</th>
+                                <th>Halaman</th>
                                 <th>Jumlah</th>
-                                <th>Lokasi Buku</th>
+                                <th>Lokasi</th>
                                 <th>Deskripsi</th>
                                 {{-- <th>Dipinjam</th> --}}
                                 <th>Foto</th>

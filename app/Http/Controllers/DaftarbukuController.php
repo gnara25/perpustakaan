@@ -18,7 +18,12 @@ class DaftarbukuController extends Controller
     public function buku(){
         $data = Daftarbuku::with('idkategori')->get();
         $idkategori = Kategori::all();
-        return view('buku.daftarbuku',compact('data','idkategori'));
+        $datah = DB::table('daftarbukus')
+                    ->join('kategoris', 'daftarbukus.kategori','kategoris.id')
+                    ->select('daftarbukus.*', 'kategoris.kategori')
+                    // ->sortByDesc('dipinjam')
+                    ->get();
+        return view('buku.daftarbuku',compact('data','idkategori', 'datah'));
     }
     public function tambahbuku(){
         $idkategori = Kategori::all();

@@ -66,7 +66,7 @@
                                                     <th>Jumlah</th>
                                                     <th>Lokasi</th>
                                                     <th>Deskripsi</th>
-                                                    <th>Dipinjam</th>
+                                                    {{-- <th>Dipinjam</th> --}}
                                                     <th>Foto</th>
                                                     @if (auth()->user()->role == 'admin')
                                                         <th>Aksi</th>
@@ -77,7 +77,7 @@
                                                     @php
                                                         $no = 1;
                                                     @endphp
-                                                    @foreach ($data as $row)
+                                                    @foreach ($datah as $row)
                                                         <tr>
                                                             <td><input type="checkbox" id="example" name="id[]"
                                                                     value="{{ $row->id }}">
@@ -85,15 +85,15 @@
                                                             <td>{{ $no++ }}</td>
                                                             <td>{{ $row->kodebuku }}</td>
                                                             <td>{{ $row->namabuku }}</td>
-                                                            <td>{{ $row->idkategori->kategori }}</td>
+                                                            <td>{{ $row->kategori }}</td>
                                                             <td>{{ $row->penulis }}</td>
                                                             <td>{{ $row->penerbit }}</td>
                                                             <td>{{ $row->tahunterbit }}</td>
                                                             <td>{{ $row->halbuku }}</td>
-                                                            <td>{{ $row->jumlah }}</td>
+                                                            <td>{{ $row->jumlah }} buku</td>
                                                             <td>{{ $row->lokasibuku }}</td>
                                                             <td>{{ $row->deskripsi }}</td>
-                                                            <td>{{ $row->dipinjam }} Kali</td>
+                                                            {{-- <td>{{ $row->dipinjam }} Kali</td> --}}
                                                             <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
                                                                     alt="" style="width: 70px; height: 70px">
                                                             </td>
@@ -105,7 +105,7 @@
                                                                     </a>
                                                                     <a href="#" class="btn btn-danger delete"
                                                                         data-id="{{ $row->id }}"
-                                                                        data-nama="{{ $row->nama }}">
+                                                                        data-nama="{{ $row->namabuku }}">
                                                                         <i class="fa-solid fa-trash"></i>
                                                                     </a>
                                                                 </td>

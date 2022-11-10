@@ -46,7 +46,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>No.</th>
-                                                    <th>Nama</th>
+                                                    <th>Nama Lengkap</th>
+                                                    <th>Username</th>
                                                     <th>No.Telepon</th>
                                                     <th>Email</th>
 
@@ -60,6 +61,7 @@
                                                     <tr>
                                                         <td scope="row">{{ $no++ }}</td>
                                                         <td>{{ $row->name }}</td>
+                                                        <td>{{ $row->username }}</td>
                                                         <td>{{ $row->notelepon }}</td>
                                                         <td>{{ $row->email }}</td>
                                                     </tr>

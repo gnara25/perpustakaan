@@ -179,7 +179,7 @@
                                                         <td>{{ $row->penulis }}</td>
                                                         <td>{{ $row->penerbit }}</td>
                                                         <td>{{ $row->tahunterbit }}</td>
-                                                        <td>{{ $row->jumlah }}</td>
+                                                        <td>{{ $row->jumlah }} buku</td>
                                                     </tr>
                                                 @endforeach
 
@@ -199,10 +199,10 @@
                                             <h5 class="mb-1" style="font-size: 160%;">Buku TerPopuler</h5>
                                         </center>
                                         <div class="row">
-                                            <div class="col-md-4" style="float: right;">
+                                            <div class="col-md-3" style="float: right;">
                                                 <label class="mb-1" style="font-size: 100%;">FILTER BUKU :</label>
-                                                <select id="kategories" class="form-control" name="buku">
-                                                    <option value="" disabled selected>Pilih Kategori Buku
+                                                <select id="kategories" class="form-control">
+                                                    <option value="">Pilih Kategori Buku
                                                     </option>
                                                     @if (count($idkategori) > 0)
                                                         @foreach ($idkategori as $kategoris)
@@ -213,7 +213,6 @@
                                                 </select>
                                             </div>
                                         </div>
-
                                     </div>
                                     <hr>
                                     <div class="table-responsive">
@@ -245,8 +244,6 @@
                                                         </tr>
                                                     @endforeach
                                                 @endif
-
-
                                             </tbody>
                                         </table>
 
@@ -279,9 +276,9 @@
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-        <script>
+        {{-- <script>
             var pendapatan = {{ json_encode($total_denda) }};
-            var bulan = <?php echo json_encode($bulan);?>;
+            var bulan = 
 
             const chart = Highcharts.chart('chartnilai', {
                 title: {
@@ -298,15 +295,15 @@
                     showInLegend: false
                 }]
             });
-        </script>
+        </script> --}}
 
-        {{-- <script>
+        <script>
             $(document).ready(function() {
-                $("#kategories").on('change', function({
+                $("#kategories").on('change', function() {
                     var kategories = $(this).val();
-                    // console.log(kategories);
+                    console.log(kategories);
                     $.ajax({
-                        url: "{{ route('beranda') }}",
+                        url: "{{ route('berandah') }}",
                         type: "GET",
                         data: {
                             'kategories': kategories
@@ -314,32 +311,31 @@
                         success: function(data) {
                             var data = data.data;
                             var html = '';
-
+                            console.log(data)
                             if (data.length > 0) {
                                 for (let i = 0; i < data.length; i++) {
                                     html += '<tr>\
-                                                <td>' + i + '</td>\
-                                                <td>' + data[i]['namabuku'] + '</td>\
-                                                <td>' + data[i]['idkategori->kategori'] + '</td>\
-                                                <td>' + data[i]['tahunterbit'] + '</td>\
-                                                <td>' + data[i]['dipinjam'] + '</td>\
-                                                </tr>';
+                                                                                <td>' + (i + 1) + '</td>\
+                                                                                <td>' + data[i]['namabuku'] + '</td>\
+                                                                                <td>' + data[i]['kategori'] + '</td>\
+                                                                                <td>' + data[i]['tahunterbit'] + '</td>\
+                                                                                <td>' + data[i]['dipinjam'] + '</td>\
+                                                                                <td>' + data[i]['foto'] + '</td>\
+                                                                                </tr>';
                                 }
                             } else {
                                 html += '<tr>\
-                                                <td>kosong</td>\
-                                                </tr>';
+                                                                       <center><td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td></center>\
+                                                                                </tr>';
                             }
 
+                            $('#tbodys').html(html);
                         }
 
-                        $('#tbodys').html(html);
-
-                        alert(kategories);
                     });
-                }));
+                });
             });
-        </script> --}}
+        </script>
 
 </body>
 

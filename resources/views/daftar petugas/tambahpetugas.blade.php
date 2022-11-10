@@ -30,7 +30,7 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="card radius-15" style="width: 69%; float: left;">
+                    <div class="card radius-15">
                         <div class="card-body">
                             <div class="row">
                                 <form action="/tambahpetugaspost" method="POST" enctype="multipart/form-data">
@@ -92,7 +92,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    {{-- <div class="form-group row mb-3">
+                                    <div class="form-group row mb-3">
                                         <label for="foto" class="col-sm-4 col-form-label">Foto :</label>
                                         <div class="col-sm-8">
                                             <input type="file"
@@ -102,12 +102,22 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </div> --}}
+                                    </div>
+                                    <div class="card-body">
+                                            <center> <button type="submit" class="btn btn-info btn-icon-split col-sm-3 mb-3">
+                                                    <span class="text">Tambah Petugas</span>
+                                                </button>
+                                                <div class=" mb-3">
+                                                    <a href="petugas" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
+                                                        <span class="text">Kembali</span>
+                                                    </a>
+                                            </center>
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div class="card radius-15" style="width: 30%; float: right; height: 1000%;">
+                    {{-- <div class="card radius-15" style="width: 30%; float: right; height: 1000%;">
                         <div class="card-body">
                             <div class="form-group row mb-3" style="height: 100%; ">
                                 <label for="foto" class="col-sm-4 col-form-label">Foto :</label>
@@ -122,28 +132,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card radius-15" style="position: relative;">
-                            <div class="card-body">
-
-                                <form action="/tambahpetugaspost" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <center> <button type="submit" class="btn btn-info btn-icon-split col-sm-3 mb-3">
-                                            <span class="text">Tambah Petugas</span>
-                                        </button>
-                                        <div class=" mb-3">
-                                            <a href="petugas" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
-                                                <span class="text">Kembali</span>
-                                            </a>
-                                    </center>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
