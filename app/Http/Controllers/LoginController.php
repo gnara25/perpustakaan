@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Denda;
 use App\Models\Kategori;
@@ -18,13 +19,32 @@ class LoginController extends Controller
 {
 
     public function beranda(Request $request){
-        $total_denda = Denda::select(DB::raw("(sum(denda)) as denda"))
-                    ->whereYear('created_at', date('Y'))
-                    ->groupBy(DB::raw("Month(created_at)"))
-                    ->pluck('denda');
-        $bulan = Denda::select(DB::raw("MONTHNAME(created_at) as bulan"))
-                    ->groupBy(\DB::raw("MONTHNAME(created_at)"))
-                    ->pluck('bulan');
+       $denda = Denda::select(DB::raw("sum(denda) as denda"))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy(DB::raw("MONTH(created_at)"))
+            ->get();
+
+        $previousMonths = [];
+
+        $currentDate = now()->startOfMonth();
+        while ($currentDate->year == Carbon::now()->year) {
+            $previousMonths[] = $currentDate->format('F');
+            $currentDate->subMonth();
+        }
+
+        $previousMonths = array_reverse($previousMonths);
+        
+        $array_pengeluaran = array();
+        foreach($previousMonths as $key => $val){
+            $array_pengeluaran[$key] = 0;
+            foreach ($denda as $mp) {
+                $waktu = Carbon::parse($mp->created_at)->format('F');
+            
+                if($val == $waktu){
+                    $array_pengeluaran[$key] = $mp->denda;
+                }
+            }
+        }  
         $buku = Daftarbuku::paginate(5);
         $bukucount = Daftarbuku::all()->count();
         $anggota = DaftarAnggota::paginate(5);
@@ -40,7 +60,7 @@ class LoginController extends Controller
         //             ->get();
         
 
-        return view('beranda', compact('buku','anggota','pinjam','petugas','bukucount','anggotacount', 'total_denda', 'bulan',  'idkategori', 'data'));    
+        return view('beranda', compact('buku','anggota','pinjam','petugas','bukucount','anggotacount', 'data', 'array_pengeluaran', 'previousMonths', 'idkategori'));
     }
 
     public function berandah(Request $request){

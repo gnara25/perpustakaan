@@ -89,66 +89,23 @@
                 
 
                 <script>
-                    var pendapatan = <?php echo json_encode($total_denda) ?>;
-                    var bulan = <?php echo json_encode($bulan) ?>;
-
+                    
                     const chart = Highcharts.chart('chartnilai', {
                         title: {
                             text: 'Laporan Denda Bulanan'
                         },
                         xAxis: {
-                            categories: bulan,
+                            categories: {!! json_encode($previousMonths) !!},
                         },
                         series: [{
                             type: 'column',
                             name: 'Unemployed',
                             colorByPoint: true,
-                            data: pendapatan,
+                            data: {!! json_encode($array_pengeluaran) !!},
                             showInLegend: false
                         }]
                     });
 
-                    document.getElementById('plain').addEventListener('click', () => {
-                        chart.update({
-                            chart: {
-                                inverted: false,
-                                polar: false
-                            },
-                            subtitle: {
-                                text: 'Chart option: Plain | Source: ' +
-                                    '<a href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/helt-ledige"' +
-                                    'target="_blank">NAV</a>'
-                            }
-                        });
-                    });
-
-                    document.getElementById('inverted').addEventListener('click', () => {
-                        chart.update({
-                            chart: {
-                                inverted: true,
-                                polar: false
-                            },
-                            subtitle: {
-                                text: 'Chart option: Inverted | Source: ' +
-                                    '<a href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/helt-ledige"' +
-                                    'target="_blank">NAV</a>'
-                            }
-                        });
-                    });
-
-                    document.getElementById('polar').addEventListener('click', () => {
-                        chart.update({
-                            chart: {
-                                inverted: false,
-                                polar: true
-                            },
-                            subtitle: {
-                                text: 'Chart option: Polar | Source: ' +
-                                    '<a href="https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/helt-ledige"' +
-                                    'target="_blank">NAV</a>'
-                            }
-                        });
-                    });
 
                     @if (Session::has('success'))
                         toastr.success("{{ Session::get('success') }}")
