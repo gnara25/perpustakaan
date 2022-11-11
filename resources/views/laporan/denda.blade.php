@@ -23,10 +23,9 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="laporanpinjam"><i
-                                                class="fadeIn animated bx bx-upload"></i></a>
+                                    <li class="breadcrumb-item"><a href="denda"><i class="fadeIn animated bx bx-coin-stack"></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Peminjaman</li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Denda</li>
                                 </ol>
                             </nav>
                         </div>
@@ -114,7 +113,7 @@
                             <td>${val.namabuku}</td>
                             <td>${val.kodebuku}</td>
                             <td>${val.jumlah}</td>
-                            <td>${val.denda}</td>
+                            <td>Rp.${val.denda}</td>
                         </tr>
                         `
                                 })

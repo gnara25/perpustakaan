@@ -70,6 +70,14 @@ class DendaController extends Controller
         return view('laporan.pendapatan',compact('harga','array_pengeluaran','previousMonths'));                    
     }
 
+    // public function pendapatant(Request $request){
+    //     $query = Denda::query();
+    //     $datas = $query->where(['create_at'=>$request->tahun])->get();
+    //     $datas = $query->get();
+
+    //     return response()->json(['datas' => $datas]);
+    // }
+
      public function detaildenda($id){
         $details = Bukukembali::where('id_denda', $id)->get();
         return response()->json([

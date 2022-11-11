@@ -153,7 +153,7 @@
                                                 <th>Kategori </th>
                                                 <th>Penulis</th>
                                                 <th>Penerbit</th>
-                                                <th>Tahun Terbit</th>
+                                                <th>Thn.Terbit</th>
                                                 <th>Jumlah</th>
 
                                             </thead>
@@ -191,7 +191,7 @@
                                             <div class="col-md-3" style="float: right;">
                                                 <label class="mb-1" style="font-size: 100%;">FILTER BUKU :</label>
                                                 <select id="kategories" class="form-control">
-                                                    <option value="" disabled selected>Pilih Kategori Buku
+                                                    <option value=""  disabled selected>Pilih Kategori Buku
                                                     </option>
                                                     @if (count($idkategori) > 0)
                                                         @foreach ($idkategori as $kategoris)
@@ -221,6 +221,8 @@
                                                 @endphp
                                                 @if (count($data) > 0)
                                                     @foreach ($data as $row)
+                                                        @if ($row->dipinjam > 0)
+                                                            
                                                         <tr>
                                                             <td>{{ $no++ }}</td>
                                                             <td>{{ $row->namabuku }}</td>
@@ -231,6 +233,7 @@
                                                                     src="{{ asset('fotobuku/' . $row->foto) }}"alt=""
                                                                     style="width: 70px; height: 70px">
                                                         </tr>
+                                                        @endif
                                                     @endforeach
                                                 @endif
                                             </tbody>
@@ -242,7 +245,7 @@
                         </div>
 
                         <div class="chart radius-15">
-                            <div id="chartnilai"></div>
+                            <div id="chartnilai"></div> 
                         </div>
 
                         <!--end row-->
@@ -307,12 +310,12 @@
                                                                                                 <td>' + data[i][
                                         'tahunterbit'] + '</td>\
                                                                                                 <td>' + data[i]['dipinjam'] + '</td>\
-                                                                                                <td>' + data[i]['foto'] + '</td>\
+                                                                                                <td><img style="width: 70px; height: 70px" src="http://127.0.0.1:8000/fotobuku/' + data[i]['foto']  +'"/ ></td>\
                                                                                                 </tr>';
                                 }
                             } else {
                                 html += '<tr>\
-                                                                                       <center><td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td></center>\
+                                                                                       <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
                                                                                                 </tr>';
                             }
 

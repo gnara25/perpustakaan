@@ -5,7 +5,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="text-center">Detail Buku</h5>
+                    <h5 class="text-center">Detail Denda</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body fileSelection1">
@@ -25,7 +25,6 @@
                             <tbody id="tbody-cart">
                                 @foreach ( $details as $buku)
                                     <tr>
-                                        {{-- <td>{{ $no++ }}</td> --}}
                                         <td>{{ $buku->namabuku }}</td>
                                         <td>{{ $buku->kodebuku }}</td>
                                         <td>{{ $buku->jumlah }}</td>

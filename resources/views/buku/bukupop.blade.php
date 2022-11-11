@@ -54,15 +54,18 @@
                                                         $no = 1;
                                                     @endphp
                                                     @foreach ($data as $row)
-                                                        <tr>
-                                                            <td>{{ $no++ }}</td>
-                                                            <td>{{ $row->namabuku }}</td>
-                                                            <td>{{ $row->idkategori->kategori }}</td>
-                                                            <td>{{ $row->tahunterbit }}</td>
-                                                            <td>{{ $row->dipinjam }} Kali</td>
-                                                            <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
-                                                                    alt="" style="width: 70px; height: 70px">
-                                                        </tr>
+                                                    @if ($row->dipinjam > 0)
+                                                        
+                                                    <tr>
+                                                        <td>{{ $no++ }}</td>
+                                                        <td>{{ $row->namabuku }}</td>
+                                                        <td>{{ $row->idkategori->kategori }}</td>
+                                                        <td>{{ $row->tahunterbit }}</td>
+                                                        <td>{{ $row->dipinjam }} Kali</td>
+                                                        <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
+                                                                alt="" style="width: 70px; height: 70px">
+                                                    </tr>
+                                                    @endif
                                                     @endforeach
 
                                                 </tbody>

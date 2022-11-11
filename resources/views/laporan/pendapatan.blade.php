@@ -35,61 +35,78 @@
 
                     <div class="card radius-15">
                         <div class="card-body">
-                                <div class="chart radius-15 mb-5">
-                                    <figure class="highcharts-figure">
-                                        <div id="chartnilai"></div>
-                                        {{-- <button id="plain">Plain</button>
+                            {{-- <div class="row">
+                                <div class="col-md-2" style="float: right;">
+                                    <label class="mb-1" style="font-size: 100%;"> TAHUN :</label>
+                                    <select id="tahun" class="form-control">
+                                        <option value="" disabled selected>Pilih Tahun</option>
+                                        <option value="">2022</option>
+                                        <option value="">2023</option>
+                                        <option value="">2024</option>
+                                        <option value="">2025</option>
+                                        <option value="">2026</option>
+                                        <option value="">2027</option>
+                                        <option value="">2028</option>
+                                        <option value="">2029</option>
+                                        <option value="">2030</option>
+                                    </select>
+                                </div>
+                            </div> --}}
+                            <div class="chart radius-15 mb-5">
+                                <figure class="highcharts-figure">
+                                    <div id="chartnilai"></div>
+                                    {{-- <button id="plain">Plain</button>
                                         <button id="inverted">Inverted</button>
                                         <button id="polar">Polar</button> --}}
-                                    </figure>
-                                </div>
-                        </div>        
-                    </div>            
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card radius-15">
                         <div class="card-body">
                             <div>
                                 {{-- <a id="table2-new-row-button" href="tambahkategori" class="btn btn-outline-info btn-sm mb-2">Tambah Kategori</a> --}}
 
-                                
-                                    <div class="table-responsive mb-4">
-                                        <table id="example2" class="table table-bordered mb-4" style="width:100%">
-                                            <thead>
+
+                                <div class="table-responsive mb-4">
+                                    <table id="example2" class="table table-bordered mb-4" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">Bulan</th>
+                                                <th class="text-center">Tahun</th>
+                                                <th class="text-center">Pendapatan</th>
+                                            </tr>
+                                        </thead>
+                                        @php
+                                            $no = 1;
+                                        @endphp
+                                        <tbody id="tahun">
+                                            @if (count($harga))    
+                                            @foreach ($harga as $wor)
                                                 <tr>
-                                                    <th class="text-center">Bulan</th>
-                                                    <th class="text-center">Tahun</th>
-                                                    <th class="text-center">Pendapatan</th>
+                                                    <td class="text-center">{{ $wor->month }}</td>
+                                                    <td class="text-center">{{ $wor->year }}</td>
+                                                    <td class="text-center">Rp.
+                                                        {{ number_format($wor['denda'], 2, '.', '.') }}</td>
                                                 </tr>
-                                            </thead>
-                                            @php
-                                                $no = 1;
-                                            @endphp
-                                            <tbody>
-                                                @foreach ($harga as $wor)
-                                                    <tr>
-                                                        <!-- <td scope="row">{{ $no++ }}</td> -->
-                                                        <td class="text-center">{{ $wor->month }}</td>
-                                                        <td class="text-center">{{ $wor->year }}</td>
-                                                        <td class="text-center">Rp.
-                                                            {{ number_format($wor['denda'], 2, '.', '.') }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>    
-                           
+                                            @endforeach
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                  
+
                 </div>
                 <!-- end wrapper -->
                 @include('template.script')
 
                 <script src="https://code.highcharts.com/highcharts.js"></script>
-                
+
 
                 <script>
-                    
                     const chart = Highcharts.chart('chartnilai', {
                         title: {
                             text: 'Laporan Denda Bulanan'
@@ -99,7 +116,7 @@
                         },
                         series: [{
                             type: 'column',
-                            name: 'Unemployed',
+                            name: 'Total Denda',
                             colorByPoint: true,
                             data: {!! json_encode($array_pengeluaran) !!},
                             showInLegend: false
@@ -136,6 +153,41 @@
                             });
                     });
                 </script>
+
+                {{-- <script>
+                    $(document).ready(function() {
+                        $("#tahun").on('change', function() {
+                            var tahun = $(this).val();
+                            // console.log(tahun);
+                            $.ajax({
+                                url: "{{ route('pendapatant') }}",
+                                type: "GET",
+                                data: {
+                                    'tahun': tahun
+                                },
+                                success: function(data) {
+                                    var harga = data.harga;
+                                    var html = '';
+                                    if (harga.length > 0) {
+                                        console.log(harga)
+                                        for (let i = 0; i < harga.length; i++) {
+                                            html += '<tr>\
+                                                                                                        <td>' + harga[i]['chartnilai'] + '</td>\
+                                                                                                        </tr>';
+                                        }
+                                    } else {
+                                        html += '<tr>\
+                                                                                               <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
+                                                                                                        </tr>';
+                                    }
+
+                                    $('#tahun').html(html);
+                                }
+
+                            });
+                        });
+                    });
+                </script> --}}
 
 
 </body>

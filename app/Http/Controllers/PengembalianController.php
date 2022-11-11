@@ -141,6 +141,7 @@ class PengembalianController extends Controller
 
                 $databuku->jumlah += $carth->quantity;
                 $databuku->save();
+                
                  
             }
                     

@@ -93,7 +93,7 @@
                                                     pilih</button>
                                                  <?php } elseif ($selisih > 0) { ?>    
                                                     <button type="button" onclick="tambahbuku(this)"
-                                                    data-id1="{{ $buku->id }}" data-namabu="{{ $buku->namabuku }}"
+                                                    data-id1="{{ $buku->id_buku }}" data-namabu="{{ $buku->namabuku }}"
                                                     data-kodebu="{{ $buku->kodebuku }}"
                                                     data-jumlah="{{ $buku->jumlah }}" data-price="{{ $denda}}"
                                                     data-bs-dismiss="modal" class="btn btn-secondary"></i>
