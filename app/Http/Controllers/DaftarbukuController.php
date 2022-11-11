@@ -151,7 +151,7 @@ class DaftarbukuController extends Controller
 
     public function bukupop(){
         
-        $data = Daftarbuku::with('idkategori')->get();
+        $data = Daftarbuku::all()->sortByDesc('dipinjam');
         $idkategori = Kategori::all();
         return view('buku.bukupop',compact('data','idkategori'));
     }

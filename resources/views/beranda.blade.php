@@ -61,7 +61,7 @@
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <h2 class="mb-0 text-white">{{ $pinjam }} <i
-                                                    class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
+                                                    class='font-14 text-white'>Peminjaman</i> </h2>
                                         </div>
                                         <div class="ms-auto font-35 text-white"><i
                                                 class="fadeIn animated bx bx-upload"></i>
@@ -81,7 +81,7 @@
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <h2 class="mb-0 text-white">{{ $petugas }} <i
-                                                    class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
+                                                    class='font-14 text-white'>Petugas</i> </h2>
                                         </div>
                                         <div class="ms-auto font-35 text-white"><i
                                                 class="fadeIn animated bx bx-group"></i>
@@ -105,41 +105,30 @@
                                     <div class="card-title mb-4">
                                         <h5 class="mb-0">Daftar Anggota <a href="daftaranggota"
                                                 class="btn btn-white btn-sm px-4 radius-15" style="float: right; ">lihat
-                                                lebih banyak </a> </h5>
-
+                                                lebih banyak </a>
+                                        </h5>
                                     </div>
                                     <hr />
                                     <div class="table-responsive">
                                         <table class="table table-striped mb-0">
                                             <thead>
                                                 <tr>
-                                                    <!-- <th>No.</th> -->
-                                                    <!-- <th>Foto</th> -->
                                                     <th>Nisn</th>
                                                     <th>Nama Siswa</th>
                                                     <th>Tgl.Lahir</th>
                                                     <th>Kelas</th>
                                                     <th>Alamat</th>
-                                                    <!--  <th>Qr Code</th> -->
                                                 </tr>
                                             </thead>
-                                            <!--    @php
-                                                $no = 1;
-                                            @endphp -->
                                             <tbody>
                                                 @foreach ($anggota as $row)
                                                     <tr>
-                                                        <!--  <td scope="row">{{ $no++ }}</td> -->
-                                                        <!-- <td><img src="{{ asset('fotobuku/' . $row->foto) }}"
-                                                                    alt="" style="width: 70px; height: 70px"></td> -->
-                                                        <td>{{ $row->nisn }}</td>
+                                                        <td>{{ $row->nisn }}</td>   
                                                         <td>{{ $row->nama }}</td>
                                                         <td>{{ Carbon\Carbon::parse($row->tgl_lahir)->format('d-m-Y') }}
                                                         </td>
                                                         <td>{{ $row->kelas }}</td>
                                                         <td>{{ $row->alamat }}</td>
-                                                        <!--  <td> {!! QrCode::size(100)->generate($row->nisn) !!}
-                                                            </td> -->
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -202,7 +191,7 @@
                                             <div class="col-md-3" style="float: right;">
                                                 <label class="mb-1" style="font-size: 100%;">FILTER BUKU :</label>
                                                 <select id="kategories" class="form-control">
-                                                    <option value="">Pilih Kategori Buku
+                                                    <option value="" disabled selected>Pilih Kategori Buku
                                                     </option>
                                                     @if (count($idkategori) > 0)
                                                         @foreach ($idkategori as $kategoris)
@@ -277,7 +266,6 @@
         <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
         <script>
-
             const chart = Highcharts.chart('chartnilai', {
                 title: {
                     text: 'Laporan Denda Bulanan'
@@ -313,18 +301,19 @@
                             if (data.length > 0) {
                                 for (let i = 0; i < data.length; i++) {
                                     html += '<tr>\
-                                                                                <td>' + (i + 1) + '</td>\
-                                                                                <td>' + data[i]['namabuku'] + '</td>\
-                                                                                <td>' + data[i]['kategori'] + '</td>\
-                                                                                <td>' + data[i]['tahunterbit'] + '</td>\
-                                                                                <td>' + data[i]['dipinjam'] + '</td>\
-                                                                                <td>' + data[i]['foto'] + '</td>\
-                                                                                </tr>';
+                                                                                                <td>' + (i + 1) + '</td>\
+                                                                                                <td>' + data[i]['namabuku'] + '</td>\
+                                                                                                <td>' + data[i]['kategori'] + '</td>\
+                                                                                                <td>' + data[i][
+                                        'tahunterbit'] + '</td>\
+                                                                                                <td>' + data[i]['dipinjam'] + '</td>\
+                                                                                                <td>' + data[i]['foto'] + '</td>\
+                                                                                                </tr>';
                                 }
                             } else {
                                 html += '<tr>\
-                                                                       <center><td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td></center>\
-                                                                                </tr>';
+                                                                                       <center><td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td></center>\
+                                                                                                </tr>';
                             }
 
                             $('#tbodys').html(html);

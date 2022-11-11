@@ -220,7 +220,7 @@ is-invalid
                                         <td>${val.name}</td>
                                         <td>${val.attributes.kodebuku}</td>
                                         <td>${val.quantity}</td>
-                                        <td>${val.price}
+                                        <td> Rp. ${val.price}
                                             <input type="hidden" value="${val.price}">
                                             </td>
                                         <td class="hidden text-right md:table-cell">
