@@ -130,6 +130,7 @@ Route::get('/deleteanggota/{id}',[DaftarAnggotaController::class,'deleteanggota'
 Route::post('/cetakidcard',[DaftarAnggotaController::class,'cetakidcard'])->name('cetakidcard');
 Route::get('/idcard/{id}',[DaftarAnggotaController::class,'idcard'])->name('idcard');
 Route::get('/detail/{id}',[DaftarAnggotaController::class,'detail'])->name('detail');
+Route::post('/importexcel',[DaftarAnggotaController::class,'importexcel'])->name('importexcel');
 
 // petugas
 Route::get('/petugas',[LoginController::class,'petugas'])->name('petugas');

@@ -45,6 +45,7 @@ class DaftarAnggotaController extends Controller
             'nama' => 'required',
             'tgl_lahir' => 'required',
             'kelas' => 'required',
+            'jenis_kelamin' => 'required',
             'alamat' => 'required',
             'foto' => ['required','mimes:png,jpg,jpeg,gif,jfif'],
         ],[
@@ -53,6 +54,7 @@ class DaftarAnggotaController extends Controller
             'nama.required' => 'Nama Wajib Diisi',
             'tgl_lahir.required' => 'Tanggal Lahir Wajib Diisi',
             'kelas.required' => 'Kelas Wajib Diisi',
+            'jenis_kelamin.required' => 'Pilih Jenis Kelamin',
             'alamat.required' => 'Alamat Wajib Diisi',
         ]);
 
@@ -63,6 +65,7 @@ class DaftarAnggotaController extends Controller
             'nama' => $request->nama,
             'tgl_lahir' => $request->tgl_lahir,
             'kelas' => $request->kelas,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'qr_code' => $request->nisn,
             'foto' => $request->foto,
@@ -135,6 +138,31 @@ class DaftarAnggotaController extends Controller
         $pdf = PDF::loadView('anggota.idcard', compact('anggota'));
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('idcard.pdf');
+    }
+    public function importexcel(Request $request) 
+    {
+        // validasi
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+ 
+        // menangkap file excel
+        $file = $request->file('file');
+ 
+        // membuat nama file unik
+        $nama_file = rand().$file->getClientOriginalName();
+ 
+        // upload ke folder file_siswa di dalam folder public
+        $file->move('file_siswa',$nama_file);
+ 
+        // import data
+        Excel::import(new DaftarAnggotaImport, public_path('/file_siswa/'.$nama_file));
+ 
+        // notifikasi dengan session
+        Session::flash('sukses','Data Siswa Berhasil Diimport!');
+ 
+        // alihkan halaman kembali
+        return redirect()->back();
     }
     
 }
