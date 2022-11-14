@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use \PDF;
+
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Detailbuku;
 use App\Models\Bukukembali;
 use Illuminate\Support\Str;
