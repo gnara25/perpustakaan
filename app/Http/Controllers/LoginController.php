@@ -19,7 +19,7 @@ class LoginController extends Controller
 {
 
     public function beranda(Request $request){
-       $denda = Denda::select(DB::raw("sum(denda) as denda"))
+       $denda = Denda::select(DB::raw("created_at, sum(denda) as denda"))
             ->whereYear('created_at', date('Y'))
             ->groupBy(DB::raw("MONTH(created_at)"))
             ->get();

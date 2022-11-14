@@ -35,13 +35,13 @@
 
                     <div class="card radius-15">
                         <div class="card-body">
-                            {{-- <div class="row">
+                            <div class="row">
                                 <div class="col-md-2" style="float: right;">
                                     <label class="mb-1" style="font-size: 100%;"> TAHUN :</label>
-                                    <select id="tahun" class="form-control">
+                                    <select id="tahun" class="form-control" name="filter_tahun">
                                         <option value="" disabled selected>Pilih Tahun</option>
-                                        <option value="">2022</option>
-                                        <option value="">2023</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
                                         <option value="">2024</option>
                                         <option value="">2025</option>
                                         <option value="">2026</option>
@@ -51,7 +51,7 @@
                                         <option value="">2030</option>
                                     </select>
                                 </div>
-                            </div> --}}
+                            </div>
                             <div class="chart radius-15 mb-5">
                                 <figure class="highcharts-figure">
                                     <div id="chartnilai"></div>
@@ -81,15 +81,15 @@
                                             $no = 1;
                                         @endphp
                                         <tbody id="tahun">
-                                            @if (count($harga))    
-                                            @foreach ($harga as $wor)
-                                                <tr>
-                                                    <td class="text-center">{{ $wor->month }}</td>
-                                                    <td class="text-center">{{ $wor->year }}</td>
-                                                    <td class="text-center">Rp.
-                                                        {{ number_format($wor['denda'], 2, '.', '.') }}</td>
-                                                </tr>
-                                            @endforeach
+                                            @if (count($harga))
+                                                @foreach ($harga as $wor)
+                                                    <tr>
+                                                        <td class="text-center">{{ $wor->month }}</td>
+                                                        <td class="text-center">{{ $wor->year }}</td>
+                                                        <td class="text-center">Rp.
+                                                            {{ number_format($wor['denda'], 2, '.', '.') }}</td>
+                                                    </tr>
+                                                @endforeach
                                             @endif
                                         </tbody>
                                     </table>
@@ -104,7 +104,47 @@
                 @include('template.script')
 
                 <script src="https://code.highcharts.com/highcharts.js"></script>
+                <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+                {{-- <script>
+                    var filtertahun = {}
+                    $(document).ready(function() {
+                         $('.filter_tahun').select2({
+                              placeholder: "Pilih Nama",
+                              allowClear: true,
+                              theme: "classic"
+                            });
+                        filter();
+                        init();
+
+                        $('.filter_tahun').select2({ 
+                            placeholder: "Pilih Nama", 
+                            allowClear: true, 
+                            theme: "classic" 
+                        });
+
+                        filter();
+
+                        function filter() {
+                            $('.filter_tahun').change(function() {
+                                filtertahun['filter_tahun'] = $(this).val();
+                                init()
+                            })
+                        }
+                    })
+
+                    function grafik(){
+                        $.ajax({
+                            type: "post",
+                            url: "{{ route('pendapatan') }}",
+                            data: filtertahun,
+                            dataType: "json",
+                            success: function(data) {
+                                barChart(data, "grafik");
+                            }
+                        })
+                    }
+                </script> --}}
 
                 <script>
                     const chart = Highcharts.chart('chartnilai', {
@@ -154,11 +194,24 @@
                     });
                 </script>
 
-                {{-- <script>
+                <script>
+                    var select = document.getElementById('tahun');
+
+                    select.addEventListener('change', (e) => {
+                        // alert("ok");
+
+                        // Highcharts.setData(json_encode($previousMonths));
+                        // Highcharts.setData(json_encode($array_pengeluaran));
+                        // Highcharts.redraw();
+                        // console.log(Highcharts.redraw());
+                    });
+                </script>
+
+                <script>
                     $(document).ready(function() {
                         $("#tahun").on('change', function() {
                             var tahun = $(this).val();
-                            // console.log(tahun);
+                            console.log(tahun);
                             $.ajax({
                                 url: "{{ route('pendapatant') }}",
                                 type: "GET",
@@ -167,27 +220,28 @@
                                 },
                                 success: function(data) {
                                     var harga = data.harga;
-                                    var html = '';
-                                    if (harga.length > 0) {
-                                        console.log(harga)
-                                        for (let i = 0; i < harga.length; i++) {
-                                            html += '<tr>\
-                                                                                                        <td>' + harga[i]['chartnilai'] + '</td>\
-                                                                                                        </tr>';
-                                        }
-                                    } else {
-                                        html += '<tr>\
-                                                                                               <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
-                                                                                                        </tr>';
-                                    }
+                                    console.log(data);
+                                    //     var html = '';
+                                    //     if (harga.length > 0) {
+                                    //         console.log(harga)
+                                    //         for (let i = 0; i < harga.length; i++) {
+                                    //             html += '<tr>\
+                                    //                                                                         <td>' + harga[i]['chartnilai'] + '</td>\
+                                    //                                                                         </tr>';
+                                    //         }
+                                    //     } else {
+                                    //         html += '<tr>\
+                                    //                                                                <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
+                                    //                                                                         </tr>';
+                                    //     }
 
-                                    $('#tahun').html(html);
+                                    //     $('#tahun').html(html);
                                 }
 
                             });
                         });
                     });
-                </script> --}}
+                </script>
 
 
 </body>
