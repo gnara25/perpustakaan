@@ -39,11 +39,13 @@
                                 {{-- @if (auth()->user()->role == 'admin')        --}}
                                 <a id="table2-new-row-button" href="tambahanggota"
                                     class="btn btn-outline-info btn-sm mb-2">Tambah Siswa</a>
+                                <a data-bs-toggle="modal" data-bs-target="#importexcel" class="btn btn-outline-info btn-sm mb-2">Import Excel 
+                                                                </a>    
 
                                 {{-- <button onclick="cetakidcard('{{ route('cetakidcard') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak ID Card</button> --}}
                                 <div class="row">
                                     <hr>
-                                    <div class="row">
+                                    <div class="table-responsive">
                                         <form action="" method="POST" class="from-buku">
                                             @csrf
                                             <table id="example" class="table table-striped table-bordered"
@@ -57,6 +59,7 @@
                                                         <th>Foto</th>
                                                         <th>Nisn</th>
                                                         <th>Nama Siswa</th>
+                                                        <th>Jenis Kelamin</th>
                                                         <th>Tgl.Lahir</th>
                                                         <th>Kelas</th>
                                                         <th>Alamat</th>
@@ -78,6 +81,7 @@
                                                             </td>
                                                             <td>{{ $row->nisn }}</td>
                                                             <td>{{ $row->nama }}</td>
+                                                             <td>{{ $row->jenis_kelamin }}</td>
                                                             <td>{{ Carbon\Carbon::parse($row->tgl_lahir)->format('d-m-Y') }}
                                                             </td>
                                                             <td>{{ $row->kelas }}</td>
@@ -119,6 +123,7 @@
                     @foreach ($data as $row)
                         @include('anggota.editanggota')
                     @endforeach
+                    @include('anggota.importexcel')
                 </div>
                 <!-- end wrapper -->
                 @include('template.script')

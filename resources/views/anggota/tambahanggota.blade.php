@@ -76,6 +76,19 @@
                                     </div>
                                     <br>
                                     <div class="form-group row mb-3">
+                                        <label for="alamat" class="col-sm-4 col-form-label">Jenis Kelamin   :</label>
+                                        <div class="col-sm-8">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="inlineCheckbox1" value="Laki-Laki" name="jenis_kelamin">
+                                              <label class="form-check-label" for="inlineCheckbox1">Laki-Laki</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                              <input class="form-check-input" type="radio" id="inlineCheckbox2" value="Perempuan" name="jenis_kelamin">
+                                              <label class="form-check-label" for="inlineCheckbox2">Perempuan</label>
+                                            </div>
+                                        </div>
+                                    </div>        
+                                    <div class="form-group row mb-3">
                                         <label for="alamat" class="col-sm-4 col-form-label">Alamat   :</label>
                                         <div class="col-sm-8">
                                             <input type="text"

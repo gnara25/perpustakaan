@@ -34,6 +34,19 @@
                                 @enderror
                             </div>
                         </div>
+                          <div class="form-group row mb-3">
+                                        <label for="alamat" class="col-sm-4 col-form-label">Jenis Kelamin   :</label>
+                                        <div class="col-sm-8">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="inlineCheckbox1" value="Laki-Laki" name="jenis_kelamin" <?php echo $row->jenis_kelamin == 'Laki-Laki' ? 'checked' : ''; ?>>
+                                              <label class="form-check-label" for="inlineCheckbox1">Laki-Laki</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                              <input class="form-check-input" type="radio" id="inlineCheckbox2" value="Perempuan" name="jenis_kelamin" <?php echo $row->jenis_kelamin == 'Perempuan' ? 'checked' : ''; ?>>
+                                              <label class="form-check-label" for="inlineCheckbox2">Perempuan</label>
+                                            </div>
+                                        </div>
+                                    </div>        
                         <div class="form-group row mb-3">
                             <label for="kodebuku" class="col-sm-4 col-form-label">Tanggal Lahir  :</label>
                             <div class="col-sm-8">
@@ -69,7 +82,7 @@
                             </div>
                         </div>                    
                         <div class="form-group row mb-3">
-                            <label for="foto" class="col-sm-4 col-form-label">Foto Buku   :</label>
+                            <label for="foto" class="col-sm-4 col-form-label">Foto Siswa   :</label>
                             <div class="col-sm-8">
                                 <img class="img mb-3" src="{{ asset('fotobuku/' . $row->foto) }}" alt=""
                                 style="width: 100px; height: 100px;">
