@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use \PDF;
 use App\Models\Denda;
 use App\Models\Daftarbuku;
 use App\Models\Detailbuku;
@@ -153,6 +154,13 @@ class PengembalianController extends Controller
         $data = Pengembalian::find($id);
         $data->delete();
         return redirect()->route('pengembalian');
+    }
+    public function cetakpengembalian()
+    {
+        $data = Pengembalian::all();
+ 
+        $pdf = PDF::loadview('pengembalian.pengembalianpdf', ['data' => $data]);
+        return $pdf->download('laporan-pengembalian.pdf');
     }
 
 }   
