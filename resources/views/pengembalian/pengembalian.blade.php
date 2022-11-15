@@ -33,6 +33,8 @@
                     <div class="card radius-15">
                         <div class="card-body">
                             <div>
+                                  <a id="table2-new-row-button" href="/cetakpengembalian"
+                                    class="btn btn-outline-info btn-sm mb-4"></i>PDF</a>
                                 <div class="row">
                                     <hr>
                                     <div class="table-responsive">

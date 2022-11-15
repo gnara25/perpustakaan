@@ -117,7 +117,7 @@ Route::get('/deletepengembalian/{id}',[PengembalianController::class,'deletepeng
 Route::post('/pilihbuku',[PengembalianController::class,'pilihbuku'])->name('pilihbuku');
 Route::get('/modalBK/{id}',[PengembalianController::class,'modalBK'])->name('modalBK');
 Route::post('/pilihan',[PengembalianController::class,'pilihan'])->name('pilihan');
-
+Route::get('/cetakpengembalian',[PengembalianController::class,'cetakpengembalian'])->name('cetakpengembalian');
 
 // siswa
 Route::get('/daftaranggota',[DaftarAnggotaController::class,'daftaranggota'])->name('daftaranggota');
