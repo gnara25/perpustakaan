@@ -21,61 +21,9 @@ class DendaController extends Controller
                   ->get();
         return view('laporan.denda', compact('data'))->with('details',$details);
     }
+
     public function pendapatan(){
-        
-        $denda = Denda::select(DB::raw(" created_at, SUM(denda) as denda"))
-            ->whereYear('created_at', date('Y'))
-            ->groupBy(DB::raw("MONTH(created_at)"))
-            ->get();
-            // $denda = Denda::query()
-            //     ->selectRaw("SUM(denda) denda")
-            //     ->groupBy(DB::raw('MONTH(created_at)'))
-            //     ->get();
-        // dd($denda);
-
-        $previousMonths = [];
-
-        $currentDate = now()->startOfMonth();
-        while ($currentDate->year == Carbon::now()->year) {
-            $previousMonths[] = $currentDate->format('M,Y');
-            $currentDate->subMonth();
-        }
-
-        $previousMonths = array_reverse($previousMonths);
-        
-        $array_pengeluaran = array();
-        foreach($previousMonths as $key => $val){
-            $array_pengeluaran[$key] = 0;
-            foreach ($denda as $mp) {
-                $waktu = Carbon::parse($mp->created_at)->format('M,Y');
-            
-                if($val == $waktu){
-                    $array_pengeluaran[$key] = $mp->denda;
-                }
-            }
-        }  
-        // dd($array_pengeluaran);
-
-        // $total_denda = Denda::select(DB::raw("(sum(denda)) as denda"))
-        //                     ->whereYear('created_at', date('Y'))
-        //                     ->groupBy(\DB::raw("Month(created_at)"))
-        //                     ->pluck('denda');                
-        // $bulan = Denda::select(DB::raw("MONTHNAME(created_at) as bulan"))
-        //                     ->groupBy(\DB::raw("MONTHNAME(created_at)"))
-        //                     ->pluck('bulan');
-        $harga = Denda::select(
-                            DB::raw("(sum(denda)) as denda"),
-                            DB::raw("(DATE_FORMAT(created_at, '%M')) as month"),
-                            DB::raw("(DATE_FORMAT(created_at, '%Y')) as year")
-                            )
-                            ->orderBy('created_at')
-                            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%M')"))
-                            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y')"))
-                            ->get();
-        return view('laporan.pendapatan',compact('harga','array_pengeluaran','previousMonths'));                    
-    }
-
-    public function pendapatant(Request $request){
+        $data = Denda::all();
         $harga = Denda::select(
             DB::raw("(sum(denda)) as denda"),
             DB::raw("(DATE_FORMAT(created_at, '%M')) as month"),
@@ -85,21 +33,63 @@ class DendaController extends Controller
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%M')"))
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y')"))
             ->get();
-        $query = Denda::query();
-        $datas = $query->where(['created_at'=>$request->tahun])->get();
-        $datas = $query->get();
 
-        return response()->json(['datas' => $harga]);
+        $datadenda = Denda::select(DB::raw("count(*) as datadenda"), DB::raw("Month(created_at) as month"))
+        ->whereYear('created_at', date('Y'))
+        ->orderBy('month', 'asc')
+        ->groupBy(DB::raw("Month(created_at)"))
+        ->pluck('datadenda');
+
+        
+        $bulandenda = Denda::select(DB::raw("MONTHNAME(created_at) as bulandenda"))
+        ->groupBy(DB::raw("MONTHNAME(created_at)"))
+        ->pluck('bulandenda');
+        
+        $datadenda = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        
+        foreach($data as $d){
+            $denda = $datadenda[Carbon::parse($d->created_at)->month - 1];
+            
+            $datadenda[Carbon::parse($d->created_at)->month-1]=$denda+$d->denda;
+        }
+        // dd($datadenda);
+        
+        // dd($datadenda);
+        return view('laporan.pendapatan', compact('data', 'datadenda', 'bulandenda', 'harga'));
+        
     }
 
-     public function detaildenda($id){
+    public function filter(Request $request){
+        $year = $request->get('year');
+
+        $daftardenda = Denda::whereYear('created_at', '=', $year)->get();
+
+        return view('laporan.denda', ['daftardenda' => $daftardenda]);
+    }
+
+    public function grafik(Request $request){
+        $daftardenda = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        $denda = Denda::whereYear('created_at', $request->tahun)->get();
+
+        foreach ($denda as $b){
+            $jumlah = $daftardenda[Carbon::parse($b->created_at)->month-1];
+            $daftardenda[Carbon::parse($b->created_at)->month-1]= $jumlah + $b -> denda;
+        }
+
+        $data = [
+            "denda" => $daftardenda,
+        ];
+        // dd($data)
+
+        return $data;
+    }
+
+    public function detaildenda($id){
         $details = Bukukembali::where('id_denda', $id)->get();
         return response()->json([
             'datas' => $details
         ]);
     }
 
-    
-
-   
 }

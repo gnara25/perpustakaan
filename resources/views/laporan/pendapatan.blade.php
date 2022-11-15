@@ -6,8 +6,6 @@
 <body>
     <!-- wrapper -->
     <div class="wrapper">
-
-
         @include('template.navbar')
 
         @include('template.sidebar')
@@ -32,33 +30,31 @@
                         </div>
                     </div>
                     <!--end breadcrumb-->
-
-                    <div class="card radius-15">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2" style="float: right;">
-                                    <label class="mb-1" style="font-size: 100%;"> TAHUN :</label>
-                                    <select id="tahun" class="form-control" name="filter_tahun">
-                                        <option value="" disabled selected>Pilih Tahun</option>
-                                        <option value="2022">2022</option>
-                                        <option value="2023">2023</option>
-                                        <option value="">2024</option>
-                                        <option value="">2025</option>
-                                        <option value="">2026</option>
-                                        <option value="">2027</option>
-                                        <option value="">2028</option>
-                                        <option value="">2029</option>
-                                        <option value="">2030</option>
-                                    </select>
+                    
+                    <div class="col-24 col-lg-24 col-xl-12 d-flex">
+                        <div class="card radius-15 w-100">
+                            <div class="card-body">
+                                <div class="row ">
+                                    <div class="col-md-3">
+                                        <label class="mb-1" style="font-size: 100%;">Pilih Tahun :</label>
+                                        <form action="{{ url('filter') }}" method="get">
+                                            @csrf
+                                            <select class="form-control" name="year" id="tahun">
+                                                <?php
+                                                $year = date('Y');
+                                                $min = $year - 2;
+                                                $max = $year;
+                                                for ($i = $max; $i >= $min; $i--) {
+                                                    echo '<option value=' . $i . '>' . $i . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="grapik"></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="chart radius-15 mb-5">
-                                <figure class="highcharts-figure">
-                                    <div id="chartnilai"></div>
-                                    {{-- <button id="plain">Plain</button>
-                                        <button id="inverted">Inverted</button>
-                                        <button id="polar">Polar</button> --}}
-                                </figure>
                             </div>
                         </div>
                     </div>
@@ -81,16 +77,14 @@
                                             $no = 1;
                                         @endphp
                                         <tbody id="tahun">
-                                            @if (count($harga))
-                                                @foreach ($harga as $wor)
-                                                    <tr>
-                                                        <td class="text-center">{{ $wor->month }}</td>
-                                                        <td class="text-center">{{ $wor->year }}</td>
-                                                        <td class="text-center">Rp.
-                                                            {{ number_format($wor['denda'], 2, '.', '.') }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
+                                            @foreach ($harga as $wor)
+                                                <tr>
+                                                    <td class="text-center">{{ $wor->month }}</td>
+                                                    <td class="text-center">{{ $wor->year }}</td>
+                                                    <td class="text-center">Rp.
+                                                        {{ number_format($wor['denda'], 2, '.', '.') }}</td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -103,67 +97,116 @@
                 <!-- end wrapper -->
                 @include('template.script')
 
-                <script src="https://code.highcharts.com/highcharts.js"></script>
-                <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-                {{-- <script>
-                    var filtertahun = {}
-                    $(document).ready(function() {
-                         $('.filter_tahun').select2({
-                              placeholder: "Pilih Nama",
-                              allowClear: true,
-                              theme: "classic"
-                            });
-                        filter();
-                        init();
-
-                        $('.filter_tahun').select2({ 
-                            placeholder: "Pilih Nama", 
-                            allowClear: true, 
-                            theme: "classic" 
-                        });
-
-                        filter();
-
-                        function filter() {
-                            $('.filter_tahun').change(function() {
-                                filtertahun['filter_tahun'] = $(this).val();
-                                init()
-                            })
-                        }
-                    })
-
-                    function grafik(){
-                        $.ajax({
-                            type: "post",
-                            url: "{{ route('pendapatan') }}",
-                            data: filtertahun,
-                            dataType: "json",
-                            success: function(data) {
-                                barChart(data, "grafik");
-                            }
-                        })
-                    }
-                </script> --}}
+                <script>
+                    var bulandenda = ['jan', 'feb', 'mar', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'des']
+                </script>
 
                 <script>
-                    const chart = Highcharts.chart('chartnilai', {
-                        title: {
-                            text: 'Laporan Denda Bulanan'
-                        },
-                        xAxis: {
-                            categories: {!! json_encode($previousMonths) !!},
-                        },
-                        series: [{
-                            type: 'column',
-                            name: 'Total Denda',
-                            colorByPoint: true,
-                            data: {!! json_encode($array_pengeluaran) !!},
-                            showInLegend: false
-                        }]
+                    const urlStr = "{{ url('/grafik') }}";
+
+                    $(document).ready(function() {
+                        var datadenda = JSON.parse("<?php echo json_encode($datadenda); ?>");
+                        var chart;
+
+                        $("#tahun").change(function(e) {
+                            e.preventDefault();
+                            $.ajax({
+                                url: urlStr,
+                                type: "GET",
+                                data: {
+                                    tahun: $("#tahun").val()
+                                },
+                                success: function(datas) {
+                                    console.log(datas);
+                                    chart.data.w.config.series[0].data = datas.denda
+                                    chart.update()
+                                },
+                                error: function(error) {
+                                    console.log(`error ${error}`);
+                                }
+                            });
+                        });
+
+
+
+                        var element = document.getElementById("grapik");
+
+                        var options = {
+                            series: [{
+                                name: 'Denda',
+                                data: datadenda,
+                            }],
+                            chart: {
+                                foreColor: '#9ba7b2',
+                                height: 400,
+                                type: 'line',
+                                zoom: {
+                                    enabled: false
+                                },
+                                toolbar: {
+                                    show: true
+                                },
+                                dropShadow: {
+                                    enabled: true,
+                                    top: 3,
+                                    left: 14,
+                                    blur: 4,
+                                    opacity: 0.10,
+                                }
+                            },
+                            stroke: {
+                                width: 5,
+                                curve: 'smooth'
+                            },
+                            xaxis: {
+                                type: 'date',
+                                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov',
+                                    'Des'
+                                ],
+                            },
+                            title: {
+                                text: 'Laporan Denda PerBulan',
+                                align: 'center',
+                                style: {
+                                    fontSize: "16px",
+                                    color: '#666'
+                                }
+                            },
+                            fill: {
+                                type: 'gradient',
+                                gradient: {
+                                    shade: 'light',
+                                    gradientToColors: ['#673ab7'],
+                                    shadeIntensity: 1,
+                                    type: 'horizontal',
+                                    opacityFrom: 1,
+                                    opacityTo: 1,
+                                    stops: [0, 100, 100, 100]
+                                },
+                            },
+                            markers: {
+                                size: 4,
+                                colors: ["#673ab7"],
+                                strokeColors: "#fff",
+                                strokeWidth: 2,
+                                hover: {
+                                    size: 7,
+                                }
+                            },
+                            colors: ["#673ab7"],
+                            yaxis: {
+                                title: {
+                                    text: 'Engagement',
+                                },
+                            }
+                        };
+
+                        var chart = new ApexCharts(document.querySelector("#grapik"), options);
+                        chart.render();
                     });
+                </script>
 
-
+                <script>
                     @if (Session::has('success'))
                         toastr.success("{{ Session::get('success') }}")
                     @endif
@@ -194,56 +237,11 @@
                     });
                 </script>
 
-                <script>
-                    var select = document.getElementById('tahun');
+                <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-                    select.addEventListener('change', (e) => {
-                        // alert("ok");
-
-                        // Highcharts.setData(json_encode($previousMonths));
-                        // Highcharts.setData(json_encode($array_pengeluaran));
-                        // Highcharts.redraw();
-                        // console.log(Highcharts.redraw());
-                    });
-                </script>
-
-                <script>
-                    $(document).ready(function() {
-                        $("#tahun").on('change', function() {
-                            var tahun = $(this).val();
-                            console.log(tahun);
-                            $.ajax({
-                                url: "{{ route('pendapatant') }}",
-                                type: "GET",
-                                data: {
-                                    'tahun': tahun
-                                },
-                                success: function(data) {
-                                    var harga = data.harga;
-                                    console.log(data);
-                                    //     var html = '';
-                                    //     if (harga.length > 0) {
-                                    //         console.log(harga)
-                                    //         for (let i = 0; i < harga.length; i++) {
-                                    //             html += '<tr>\
-                                    //                                                                         <td>' + harga[i]['chartnilai'] + '</td>\
-                                    //                                                                         </tr>';
-                                    //         }
-                                    //     } else {
-                                    //         html += '<tr>\
-                                    //                                                                <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
-                                    //                                                                         </tr>';
-                                    //     }
-
-                                    //     $('#tahun').html(html);
-                                }
-
-                            });
-                        });
-                    });
-                </script>
-
-
+                {{-- 
+                <script src="assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+                <script src="assets/plugins/apexcharts-bundle/js/apex-custom.js"></script> --}}
 </body>
 
 </html>

@@ -146,7 +146,7 @@ Route::get('/cetaklaporan',[LaporanpinjamController::class,'cetaklaporan'])->nam
 Route::get('/export_excel',[LaporanpinjamController::class,'export_excel'])->name('export_excel');
 Route::get('/detailpinjam/{id}',[LaporanpinjamController::class,'detailpinjam'])->name('detailpinjam');
 Route::get('/pendapatan',[DendaController::class,'pendapatan'])->name('pendapatan');
-Route::get('/pendapatant',[DendaController::class,'pendapatant'])->name('pendapatant');
+Route::get('/grafik',[DendaController::class,'grafik'])->name('grafik');
 
 
 

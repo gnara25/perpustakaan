@@ -84,4 +84,16 @@ class CartController extends Controller
         return response()->json('berhasil');
     }
 
+    public function disbale(){
+
+        $userEmployee = Auth::peminjaman()->peminjaman_id;
+
+        $data = Peminjaman::where('peminjaman_id', $userEmployee)->where('', $identities->id)->get();
+
+    $incompleteCount = $data->filter(function($item) {
+         return $item->is_status != 1;
+    })->count();
+
+    return view('appraisal.appraisal_goals.index')->with(['data' => $data, 'incompleteCount' => $incompleteCount]);
+    }
 }
