@@ -64,6 +64,8 @@ class PeminjamanController extends Controller
     {
         \Cart::clear();
         $anggota = DaftarAnggota::all();
+        $cartcount = \Cart::getContent()->count();
+        // dd($cartcount);
         $bukuid= Daftarbuku::all();
         $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
         $kd="";
@@ -79,7 +81,7 @@ class PeminjamanController extends Controller
         {
             $kd = "00001";
         }
-        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd'));
+        return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd','cartcount'));
     }
 
     public function insert(Request $request){

@@ -150,10 +150,9 @@
                                     </div> 
                                         <center>
                                             <div class="mb-4 mt-4">
-                                                <button id="bukupilih" 
-                                                    class="btn btn-info btn-icon-split col-sm-3 mb-3">
-                                                    <span class="text">Tambah Peminjaman</span>
-                                                </button>
+                                                <button id="pilihBuku" class="btn btn-info btn-icon-split col-sm-3 mb-3 pilihBuku" onclick="validasi()">
+                                                <span class="text">Tambah Peminjaman</span>
+                                            </button>
                                                 <div class="mb-3">
                                                     <a href="/peminjaman"
                                                         class="btn btn-dark btn-icon-split mb-3 col-sm-3">
@@ -190,18 +189,22 @@
         <!-- end wrapper -->
         @include('template.script')
 
-
-
         <script type="text/javascript">
             @if (Session::has('error'))
                 toastr.error("{{ Session::get('error') }}")
             @endif
+
+            getCartList()
+
 
             const selection = document.getElementById('nama');
             selection.onchange = function(e) {
                 const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
                 document.getElementById('kelas').value = kelas;
             }
+
+
+            getCartList()
 
             function tambah(e){
                 console.log(e.getAttribute('data-id'))
@@ -241,13 +244,13 @@
                     success: function(e){
                         let html = ''
                         let no = 1;
-
-                        if(e.data.length < 1){
-                            $('#bukupilih').attr('disabled', true)
+                        
+                           if (e.data.length < 1) {
+                            $('#pilihBuku').attr('disabled', true)
                         } else {
-                            $('#bukupilih').attr('disabled', false)
+                            $('#pilihBuku').attr('disabled', false)
                         }
-                        console.log(e.data.length)
+                
                         e.data.map(val => {
                             html += `<table>
                                 <tbody>
@@ -271,7 +274,7 @@
                 })
 
                
-            }
+            }        
 
              function remove(e){ 
                   var id = e.getAttribute('data-id');

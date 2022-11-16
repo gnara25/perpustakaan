@@ -128,37 +128,37 @@
         //     });
         // });
 
-        $('.postpilihan').change(function() {
-            var $this = $(this);
-            var id = $this.val();
-            var id_transaksi = this.checked;
+        // $('.postpilihan').change(function() {
+        //     var $this = $(this);
+        //     var id = $this.val();
+        //     var id_transaksi = this.checked;
 
-            if (id_transaksi) {
-                id_transaksi = 1;
-            } else {
-                id_transaksi = 0;
-            }
-            axios
-                .post('{{ route('pilihan') }}', {
-                    _token: '{{ csrf_token() }}',
-                    _method: 'patch',
-                    id: id,
-                    id_transaksi: id_transaksi,
+        //     if (id_transaksi) {
+        //         id_transaksi = 1;
+        //     } else {
+        //         id_transaksi = 0;
+        //     }
+        //     axios
+        //         .post('{{ route('pilihan') }}', {
+        //             _token: '{{ csrf_token() }}',
+        //             _method: 'patch',
+        //             id: id,
+        //             id_transaksi: id_transaksi,
 
-                })
-            swal({
-                    text: "Product is already featured",
-                    type: 'error',
-                    confirmButtonColor: '#4fa7f3',
+        //         })
+        //     swal({
+        //             text: "Product is already featured",
+        //             type: 'error',
+        //             confirmButtonColor: '#4fa7f3',
 
-                })
-                .then(function(responsive) {
-                    console.log(responsive);
+        //         })
+        //         .then(function(responsive) {
+        //             console.log(responsive);
 
-                })
-                .catch(function(error) {
-                    console.log(error);
-                });
-        });
+        //         })
+        //         .catch(function(error) {
+        //             console.log(error);
+        //         });
+        // });
     </script>
 </div>
