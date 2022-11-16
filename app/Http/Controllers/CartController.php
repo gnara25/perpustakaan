@@ -48,6 +48,7 @@ class CartController extends Controller
                 'price' => $request->price,
                 'quantity' => 1,
                 'attributes' => array(
+                'id_detail' => $request->id_detail,    
                 'kodebuku' => $request->kodebuku,
                  )
             ]);

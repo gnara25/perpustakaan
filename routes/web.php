@@ -118,6 +118,7 @@ Route::post('/pilihbuku',[PengembalianController::class,'pilihbuku'])->name('pil
 Route::get('/modalBK/{id}',[PengembalianController::class,'modalBK'])->name('modalBK');
 Route::post('/pilihan',[PengembalianController::class,'pilihan'])->name('pilihan');
 Route::get('/cetakpengembalian',[PengembalianController::class,'cetakpengembalian'])->name('cetakpengembalian');
+Route::get('/disabled',[PengembalianController::class,'disabled'])->name('disabled');
 
 // siswa
 Route::get('/daftaranggota',[DaftarAnggotaController::class,'daftaranggota'])->name('daftaranggota');

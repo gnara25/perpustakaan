@@ -71,37 +71,48 @@
                                                 Hari
                                                 <?php } ?>
                                             </td>
-                                            
+
                                             <td>
+                                                <input type="hidden" name="id_detail" value="{{ $buku->id }}">
                                                 <input type="hidden" value="{{ $buku->id_buku }}" name="id">
                                                 <input type="hidden" value="{{ $buku->namabuku }}" name="namabuku">
                                                 <input type="hidden" value="{{ $buku->kodebuku }}" name="kodebuku">
                                                 <input type="hidden" value="{{ $buku->jumlah }}" name="quantity">
                                                 <?php if ($selisih <= 0) { ?>
                                                 <input type="hidden" value="0" name="price">
-                                                 <?php } elseif ($selisih > 0) { ?>
-                                                <input type="hidden" value="{{ $denda }}" name="price">    
-                                                <?php } ?>    
+                                                <?php } elseif ($selisih > 0) { ?>
+                                                <input type="hidden" value="{{ $denda }}" name="price">
+                                                <?php } ?>
 
                                                 <?php if ($selisih <= 0) { ?>
 
-                                                <button type="button" onclick="tambahbuku(this)"
-                                                    data-id1="{{ $buku->id_buku }}" data-namabu="{{ $buku->namabuku }}"
+                                                {{-- <input type="hidden" name="id_pilih" value="{{ $buku->id_buku }}">
+                                                <input type="hidden" name="is_confirmed"
+                                                    value="{{ $buku->is_confirmed }}"> --}}
+
+                                                <button type="button" id="disabled"
+                                                    onclick="tambahbuku(this)"
+                                                    data-detail="{{$buku->id}}"
+                                                     data-id1="{{ $buku->id_buku }}"
+                                                    data-namabu="{{ $buku->namabuku }}"
                                                     data-kodebu="{{ $buku->kodebuku }}"
                                                     data-jumlah="{{ $buku->jumlah }}" data-price="0"
                                                     data-bs-dismiss="modal" class="btn btn-secondary"></i>
                                                     pilih</button>
-                                                 <?php } elseif ($selisih > 0) { ?>    
-                                                    <button type="button" onclick="tambahbuku(this)"
-                                                    data-id1="{{ $buku->id_buku }}" data-namabu="{{ $buku->namabuku }}"
+                                                <?php } elseif ($selisih > 0) { ?>
+                                                <button type="button" id="disabled"
+                                                    onclick="tambahbuku(this)"
+                                                    data-detail="{{$buku->id}}"
+                                                     data-id1="{{ $buku->id_buku }}"
+                                                    data-namabu="{{ $buku->namabuku }}"
                                                     data-kodebu="{{ $buku->kodebuku }}"
-                                                    data-jumlah="{{ $buku->jumlah }}" data-price="{{ $denda}}"
+                                                    data-jumlah="{{ $buku->jumlah }}" data-price="{{ $denda }}"
                                                     data-bs-dismiss="modal" class="btn btn-secondary"></i>
                                                     pilih</button>
 
-                                                 <?php } ?>     
+                                                <?php } ?>
                                             </td>
-                                        
+
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -109,56 +120,41 @@
                         </table>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="confirm">Close</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        // $(function() {
-        //     $('input[type="button"]').prop('disabled', true);
-        //     $('#non').on('input', function(e) {
-        //         if (this.value.length === 1) {
-        //             $('input[type="button"]').prop('disabled', false);
-        //         } else {
-        //             $('input[type="button"]').prop('disabled', true);
-        //         }
-        //     });
-        // });
-
-        $('.postpilihan').change(function() {
-            var $this = $(this);
-            var id = $this.val();
-            var id_transaksi = this.checked;
-
-            if (id_transaksi) {
-                id_transaksi = 1;
-            } else {
-                id_transaksi = 0;
-            }
-            axios
-                .post('{{ route('pilihan') }}', {
-                    _token: '{{ csrf_token() }}',
-                    _method: 'patch',
-                    id: id,
-                    id_transaksi: id_transaksi,
-
-                })
-            swal({
-                    text: "Product is already featured",
-                    type: 'error',
-                    confirmButtonColor: '#4fa7f3',
-
-                })
-                .then(function(responsive) {
-                    console.log(responsive);
-
-                })
-                .catch(function(error) {
-                    console.log(error);
-                });
-        });
-    </script>
 </div>
+<script>
+    //     $("#disabled").on('click', function(){ //enables click event
+    //     //do your thing here
+    // });
+
+    // $("#disabled").off('click'); //disables click event
+
+    // // If you want to disable a div, use the following code:
+    // $("#disabled").attr('disabled','disabled');
+    // document.getElementById("disabled").disabled = false;
+    // document.getElementById("disabled").disabled = true;
+</script>
+<script>
+
+    $("#disabled").on('submit'function(event) {
+        event.preventDefault();
+        document.getElementById("disabled").disabled = true;
+        $.ajax({
+            type: "get",
+            url: "/listcart",
+            dataType: "json",
+            data: buku,
+            success: function(data){
+                  alert("Data Save: " + data);
+            },
+            error: function(data){
+                 alert("Error")
+            }
+        });
+    });
+</script>

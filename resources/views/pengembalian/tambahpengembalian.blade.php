@@ -169,6 +169,7 @@ is-invalid
             function tambahbuku(e) {
                 console.log(e.getAttribute('data-id1'))
                 const fd = new FormData();
+                fd.append('id_detail', e.getAttribute('data-detail'))
                 fd.append('id', e.getAttribute('data-id1'))
                 fd.append('namabuku', e.getAttribute('data-namabu'))
                 fd.append('kodebuku', e.getAttribute('data-kodebu'))
@@ -211,6 +212,7 @@ is-invalid
                         } else {
                             $('#pilihBuku').attr('disabled', false)
                         }
+                        
                         console.log(e.data.length)
                         e.data.map(val => {
                             html += `
@@ -235,6 +237,8 @@ is-invalid
                 })
             }
 
+            
+
             function Removcart(e) {
                 const id = e.getAttribute('data-id')
                 $.ajax({
@@ -246,6 +250,27 @@ is-invalid
                     }
                 })
             }
+
+            // $(document).ready(function(){
+            //     $.ajax({
+            //         method: 'GET',
+            //         url: '/listcart'
+            //         dataType: 'JSON',
+            //         success: function(e){
+            //                 if (e.attributes.id_detail == e.attributes.id_detail)  {
+                                
+            //                     $('#disabled').attr('disabled', true)
+                                
+            //                 } else  {
+                                
+            //                     $('#disabled').attr('disabled', false)
+
+            //                 }
+
+            //              }
+            //     })
+            // })
+
             $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
                 var recipient = button.data('whatever') // Extract info from data-* attributes

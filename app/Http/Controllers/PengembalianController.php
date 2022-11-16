@@ -20,10 +20,19 @@ class PengembalianController extends Controller
         return view('pengembalian.pengembalian', compact('data'));
     }
 
-    public function table(){
-        $data = Pengembalian::all();
-        return view('pengembalian.pengembalian', compact('data'));
-    }
+    // public function disabled(Request $request){
+    //     $user = auth()->user();
+    //     $buku = Detailbuku::all();
+
+    //     $buku->id_pilih = $user->id;
+    //     $buku->is_confirmed = 1;
+    //     if (!$buku->save()) {
+    //         return response()->json([ 'success' => false ], 500); //Error response
+    //     }
+    
+    
+    //     return response()->json([ 'success' => true ]);
+    // }
 
     public function modalBK($id){
         $detail= Bukukembali::where('id_transaksi', $id)->get();
@@ -36,13 +45,7 @@ class PengembalianController extends Controller
         \Cart::clear();
         $data = DaftarAnggota::all();
         $buku = Daftarbuku::all();
-        // $cartbuku = \Cart::getContent();
         $total = \Cart::getSubTotal();
-        // foreach ($cartbuku as $cartk){
-            // $total = $cartbuku->getPriceSum();
-        // }
-        
-        // $detail= detailbuku::where('id_transaksi', $id)->get();
         $pengembalin = Peminjaman::with('anggota','idbuku')->findOrFail($id);
         $detail = DB::table('peminjamen')
         ->join('detailbukus', 'detailbukus.id_transaksi', '=', 'peminjamen.id')

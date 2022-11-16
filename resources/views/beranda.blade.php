@@ -247,7 +247,7 @@
                             <div class="card radius-15 w-100">
                                 <div class="card-body">
                                     <div class="row ">
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <label class="mb-1" style="font-size: 100%;">Pilih Tahun :</label>
                                             <form action="{{ url('filter') }}" method="get">
                                                 @csrf
@@ -413,28 +413,33 @@
                             if (data.length > 0) {
                                 for (let i = 0; i < data.length; i++) {
                                     html += '<tr>\
-                                                                                                        <td>' + (i + 1) + '</td>\
-                                                                                                        <td>' + data[i][
+                                                                                                                <td>' + (i +
+                                        1) + '</td>\
+                                                                                                                <td>' + data[
+                                            i][
                                             'namabuku'
                                         ] + '</td>\
-                                                                                                        <td>' + data[i][
+                                                                                                                <td>' + data[i]
+                                        [
                                             'kategori'
                                         ] + '</td>\
-                                                                                                        <td>' + data[i][
+                                                                                                                <td>' + data[i]
+                                        [
                                             'tahunterbit'
                                         ] + '</td>\
-                                                                                                        <td>' + data[i][
+                                                                                                                <td>' + data[i]
+                                        [
                                             'dipinjam'
                                         ] +
                                         '</td>\
-                                                                                                        <td><img style="width: 70px; height: 70px" src="http://127.0.0.1:8000/fotobuku/' +
+                                                                                                                <td><img style="width: 70px; height: 70px" src="http://127.0.0.1:8000/fotobuku/' +
                                         data[i]['foto'] + '"/ ></td>\
-                                                                                                        </tr>';
+                                                                                                                </tr>';
                                 }
                             } else {
                                 html += '<tr>\
-                                                                                               <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
-                                                                                                        </tr>';
+                                                                                                       <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
+                                                                                                                </tr>';
                             }
 
                             $('#tbodys').html(html);
