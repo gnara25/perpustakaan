@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use \PDF;
 
+use App\Imports\DaftarAnggotaImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Detailbuku;
 use App\Models\Bukukembali;
@@ -160,11 +161,8 @@ class DaftarAnggotaController extends Controller
         // import data
         Excel::import(new DaftarAnggotaImport, public_path('/file_siswa/'.$nama_file));
  
-        // notifikasi dengan session
-        Session::flash('sukses','Data Siswa Berhasil Diimport!');
- 
         // alihkan halaman kembali
-        return redirect()->back();
+        return redirect()->back()->with('success','Data Siswa Berhasil Diimport!');
     }
     
 }
