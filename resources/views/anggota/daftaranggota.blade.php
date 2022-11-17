@@ -38,13 +38,12 @@
                             <div>
                                 {{-- @if (auth()->user()->role == 'admin')        --}}
                                 <a id="table2-new-row-button" href="tambahanggota"
-                                    class="btn btn-outline-info btn-sm mb-2">Tambah Siswa</a>
+                                    class="btn btn-outline-info btn-sm mb-2 pr-3">Tambah Siswa</a>
                                 <a data-bs-toggle="modal" data-bs-target="#importexcel" class="btn btn-outline-info btn-sm mb-2">Import Excel 
                                                                 </a>    
 
                                 {{-- <button onclick="cetakidcard('{{ route('cetakidcard') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak ID Card</button> --}}
                                 <div class="row">
-                                    <hr>
                                     <div class="table-responsive">
                                         <form action="" method="POST" class="from-buku">
                                             @csrf

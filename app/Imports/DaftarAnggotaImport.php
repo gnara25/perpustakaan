@@ -18,7 +18,7 @@ class DaftarAnggotaImport implements ToModel
              'nisn' => $row[1],
             'nama' => $row[2], 
             'jenis_kelamin' => $row[3],
-            'tgl_lahir' => $row[4],
+            'tgl_lahir' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[4])->format('Y-m-d'),
             'kelas' => $row[5],
             'alamat' => $row[6],
             'qr_code' => $row[7],
