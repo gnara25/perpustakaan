@@ -259,7 +259,7 @@ is-invalid
             //         success: function(e){
             //                 if (e.attributes.id_detail == e.attributes.id_detail)  {
                                 
-            //                     $('#disabled').attr('disabled', true)
+            //                     $('#id_detail').attr('disabled', true)
                                 
             //                 } else  {
                                 

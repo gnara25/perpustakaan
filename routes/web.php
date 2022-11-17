@@ -55,6 +55,7 @@ Route::post('/editpassword', [LoginController::class, 'editpassword'])->name('ed
 Route::get('/register', [LoginController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+Route::get('/grafik',[LoginController::class,'grafik'])->name('grafik');
 
 //Menu Admin
 Route::get('/beranda',[LoginController::class,'beranda'])->name('beranda');
@@ -141,7 +142,6 @@ Route::post('/tambahpetugaspost',[LoginController::class,'tambahpetugaspost'])->
 // laporan
 Route::get('/denda',[DendaController::class,'denda'])->name('denda');
 Route::get('/detaildenda/{id}',[DendaController::class,'detaildenda'])->name('detaildenda');
-
 Route::get('/laporanpinjam',[LaporanpinjamController::class,'laporanpinjam'])->name('laporanpinjam');
 Route::get('/cetaklaporan',[LaporanpinjamController::class,'cetaklaporan'])->name('cetaklaporan');
 Route::get('/export_excel',[LaporanpinjamController::class,'export_excel'])->name('export_excel');

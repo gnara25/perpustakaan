@@ -19,10 +19,6 @@ class LoginController extends Controller
 {
 
     public function beranda(Request $request){
-    //    $denda = Denda::select(DB::raw("created_at, sum(denda) as denda"))
-    //         ->whereYear('created_at', date('Y'))
-    //         ->groupBy(DB::raw("MONTH(created_at)"))
-    //         ->get();
         $buku = Daftarbuku::paginate(5);
         $bukucount = Daftarbuku::all()->count();
         $anggota = DaftarAnggota::paginate(5);
@@ -45,7 +41,7 @@ class LoginController extends Controller
         
         $datadenda = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         
-        foreach($data as $d){
+        foreach($datas as $d){
             $denda = $datadenda[Carbon::parse($d->created_at)->month - 1];
             
             $datadenda[Carbon::parse($d->created_at)->month-1]=$denda+$d->denda;
@@ -58,7 +54,7 @@ class LoginController extends Controller
 
         $daftardenda = Denda::whereYear('created_at', '=', $year)->get();
 
-        return view('laporan.denda', ['daftardenda' => $daftardenda]);
+        return view('beranda', ['daftardenda' => $daftardenda]);
     }
 
     public function grafik(Request $request){
@@ -80,10 +76,12 @@ class LoginController extends Controller
     }
 
     public function berandah(Request $request){
-        $data = DB::table('daftarbukus') 
+        $data = DB::table('daftarbukus')
                     ->join('kategoris', 'daftarbukus.kategori','kategoris.id')
                     ->select('daftarbukus.*', 'kategoris.kategori')
-                    ->where(['daftarbukus.kategori'=> $request->kategories])->get();
+                    ->where(['daftarbukus.kategori'=> $request->kategories])
+                    ->orderBy('dipinjam', 'DESC')
+                    ->get();
                     // ->get();
         // $query = Daftarbuku::query();
         // $datas = $query->where(['kategori'=>$request->kategories])->get();

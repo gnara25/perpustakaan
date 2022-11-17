@@ -127,8 +127,6 @@
                             });
                         });
 
-
-
                         var element = document.getElementById("grapik");
 
                         var options = {
@@ -239,9 +237,6 @@
 
                 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-                {{-- 
-                <script src="assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
-                <script src="assets/plugins/apexcharts-bundle/js/apex-custom.js"></script> --}}
 </body>
 
 </html>

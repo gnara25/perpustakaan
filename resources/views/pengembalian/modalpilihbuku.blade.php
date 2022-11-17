@@ -90,7 +90,7 @@
                                                 <input type="hidden" name="is_confirmed"
                                                     value="{{ $buku->is_confirmed }}"> --}}
 
-                                                <button type="button" id="disabled"
+                                                <button type="button" id="nonaktif"
                                                     onclick="tambahbuku(this)"
                                                     data-detail="{{$buku->id}}"
                                                      data-id1="{{ $buku->id_buku }}"
@@ -98,9 +98,9 @@
                                                     data-kodebu="{{ $buku->kodebuku }}"
                                                     data-jumlah="{{ $buku->jumlah }}" data-price="0"
                                                     data-bs-dismiss="modal" class="btn btn-secondary"></i>
-                                                    pilih</button>
+                                                    Pilih</button>
                                                 <?php } elseif ($selisih > 0) { ?>
-                                                <button type="button" id="disabled"
+                                                <button type="button" id="nonaktif"
                                                     onclick="tambahbuku(this)"
                                                     data-detail="{{$buku->id}}"
                                                      data-id1="{{ $buku->id_buku }}"
@@ -108,7 +108,7 @@
                                                     data-kodebu="{{ $buku->kodebuku }}"
                                                     data-jumlah="{{ $buku->jumlah }}" data-price="{{ $denda }}"
                                                     data-bs-dismiss="modal" class="btn btn-secondary"></i>
-                                                    pilih</button>
+                                                    Pilih</button>
 
                                                 <?php } ?>
                                             </td>
@@ -140,21 +140,7 @@
     // document.getElementById("disabled").disabled = true;
 </script>
 <script>
-
-    $("#disabled").on('submit'function(event) {
-        event.preventDefault();
-        document.getElementById("disabled").disabled = true;
-        $.ajax({
-            type: "get",
-            url: "/listcart",
-            dataType: "json",
-            data: buku,
-            success: function(data){
-                  alert("Data Save: " + data);
-            },
-            error: function(data){
-                 alert("Error")
-            }
-        });
-    });
+    function tambahbuku(){
+        var x = document.getElementById("nonaktif").disabled = true;
+    }
 </script>
