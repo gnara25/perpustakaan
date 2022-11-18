@@ -64,6 +64,9 @@
                                                         <td>{{ $row->username }}</td>
                                                         <td>{{ $row->notelepon }}</td>
                                                         <td>{{ $row->email }}</td>
+                                                        {{-- <td><img src="{{ asset('fotobuku/' . $row->foto) }}"
+                                                            alt="" style="width: 70px; height: 70px">
+                                                    </td> --}}
                                                     </tr>
                                                 @endforeach
                                             </tbody>

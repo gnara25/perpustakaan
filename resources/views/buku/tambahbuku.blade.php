@@ -3,6 +3,32 @@
 
 @include('template.head')
 
+<style type="text/css">
+    .foto {
+        text-align: center;
+    }
+    input{
+        display: none;
+    }
+    img{
+        max-width: 100px;
+        margin-bottom: 2%;
+		display: none;
+    }
+    /* label.image-button{
+        display: block;
+    } */
+    .ngengkel{
+        display: block !important;
+    }
+    span.change-image{
+        display: none;
+		text-align: left;
+		cursor: pointer;
+    }
+
+</style>
+
 <body>
 	<!-- wrapper -->
 	<div class="wrapper">
@@ -145,11 +171,14 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
-                                        <label for="foto" class="col-sm-4 col-form-label">Foto Buku   :</label>
+                                        <label for="foto" class="image-button col-sm-4 col-form-label ngengkel">Foto Buku   :</label>
                                         <div class="col-sm-8">
-                                            <input type="file"
+
+                                            <img src="" class="image-preview" >
+                                            <input type="file" accept="image/*" id="foto"
                                                 class="form-control @error('foto') is-invalid @enderror"
-                                                id="foto" name="foto" value="{{ old('foto') }}">
+                                                 name="foto" value="{{ old('foto') }}">
+
                                             @error('foto')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -185,6 +214,33 @@
 	</div>
 	<!-- end wrapper -->
 	@include('template.script')
+
+    <script>
+        $('#foto').on('change', function() {
+            $input = $(this);
+            if ($input.val().length > 0) {
+                fileReader = new FileReader();
+                fileReader.onload = function(data) {
+                    $('.image-preview').attr('src', data.target.result);
+                }
+                fileReader.readAsDataURL($input.prop('files')[0]);
+                $('.image-button').css('display', 'none');
+                $('.image-preview').css('display', 'block');
+                $('.change-image').css('display', 'block');
+            }
+        });
+
+        $('.change-image').on('click', function() {
+            $control = $(this);
+            $('#foto').val('');
+            $preview = $('.image-preview');
+            $preview.attr('src', '');
+            $preview.css('display', 'none');
+            $control.css('display', 'none');
+            $('.image-button').css('display', 'block');
+        });
+    </script>
+
 </body>
 
 </html>
