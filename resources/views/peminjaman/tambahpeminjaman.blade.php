@@ -47,6 +47,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
+                                        <label for="nisn" class="col-sm-4 col-form-label">NISN</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" id="nisn"
+                                                class="form-control @error('transaksi') is-invalid @enderror" value="" 
+                                                name="transaksi" readonly>
+                                            @error('transaksi')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">
                                         <label for="nama" class="col-sm-4 col-form-label">Nama Siswa </label>
                                         <div class="col-sm-8">
                                             
@@ -112,22 +123,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                     {{-- <div class="form-group row mb-3">  
-                                      <label for="kelas" class="col-sm-4 col-form-label">Kode Buku </label> 
-                                            <div class="col-sm-8">
-                                                <div class="input-group has-validation">
-                                                    <span class="input-group-btn">
-                                                            <a data-bs-toggle="modal"
-                                                                data-bs-target="#Bukuid"
-                                                                class="btn btn-primary">
-                                                                <i class="fa-solid fa fa-search"></i>
-                                                            </a>
-                                                        </span>
-                                                </div>
-                                               
-                                            </div>
-                                    </div> --}}
                                             <div>
                                                 <table  class="table table-striped table-bordered"
                                                 style="width:100%">
@@ -188,6 +183,39 @@
         </div>
         <!-- end wrapper -->
         @include('template.script')
+
+        <script>
+            $(document).ready(function(){
+               $('#nisn').val("").focus();
+               $('#nisn').keyup(function(e){
+                 var tex = $(this).val();
+                 if(tex !=="" && e.keyCode===13){
+                    $('#nisn').val(tex).focus();
+                 }
+                 e.preventDefault();
+               });
+               $('#btn_simpan').click(function(){
+                 let nisn = $('#nisn').val();
+                 let nama = $('#nama').val();
+                 let kelas = $('#kelas').val();
+                 if(nisn !=="" & nama !=="" & kelas!==""){
+                 $.ajax({
+                    type: 'POST',
+                    url: '/scaner',
+                    data: {"nisn":nisn,"nama":nama,"kelas":kelas},
+                    success:function(response) {
+                      alert(response);
+                      $('#nisn,#nama,#kelas').val("");
+                      $('#nisn').focus();
+                    }
+                    });
+                 }else{
+                    alert("input tidak boleh kosong..");
+                    $('#nisn').focus();
+                 }
+               });
+            });
+            </script>
 
         <script type="text/javascript">
             @if (Session::has('error'))
@@ -336,137 +364,7 @@
             placeholder: $(this).data('placeholder'),
             allowClear: Boolean($(this).data('allow-clear')),
         });
-    </script>
-            <!-- <script type="text/javascript">
-                $(document).ready(function() {
-                    getBooks();
-                    function getBooks(){
-                        $.ajax({
-                            method: 'GET',
-                            url : '/getBooks',
-                            dataType: 'JSON',
-                            success: function(e){
-                                var html = ""
-                                e.map(val => {
-                                    html += `<option value="${val.id}"> ${val.kodebuku} </option>`
-                                })
-                                $('.c-kodebuku').html(html)
-                                $('.c-namabuku').val(e[0].namabuku)
-                                console.log($('.c-namabuku'))
-                            }
-                        })
-                    }
-                    // //add field
-                    // var aidi = 1;
-                    $('#add').on('click',function(){
-                       var html = '' ;
-                       html+= '<div class="row mb-3 mr-4 ml-4" id="konten">';
-                       html+= '<div class="col-md-4"> <label for="validationCustom01" class="form-label"> Kode Buku </label> <select class="form-control c-kodebuku" id="kodeid" name="kodebuku" aria-label="Default select example"> <option value="" disabled selected> Pilih kodebuku Siswa </option> @foreach ($bukuid as $k) <option value="{{ $k->id }}" data-judulbuku="{{$k->namabuku}}"> {{ $k->kodebuku }}</option> @endforeach  </select> @error('kodebuku') <div class="invalid-feedback">{{ $message }}</div> @enderror <div class="valid-feedback"> Looks good! </div></div>' ;
-                       html+= `<div class="col-md-4"> <label for="validationCustom02" class="form-label"> Judul Buku</label> <input type="text" class="form-control c-namabuku" id="namabukuid" value="" name="namabuku"> <div class="valid-feedback"> Looks good! </div> </div>`;
-                       html+= '<div class="col-md-4"> <label for="validationCustomUsername" class="form-label">Jumlah Buku</label> <div class="input-group has-validation"> <input type="text" class="form-control" id="validationCustomUsername" name="Jumlah"> <div class="invalid-feedback"> Please choose a username. </div> <div class="col-md-4"> <span class="input-group-btn"> <a data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal" class="btn btn-primary"> <i class="fa-solid fa fa-search"></i> </a> </span><span class="input-group-btn"><a id="remove" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></span></div></div></div>';
-                       html+= '</div>';
-                       
-                       $('#table_field').append(html);
-                        getBooks();
-                    });
-                });
-
-                $(document).on('click','#remove',function(){
-                    $(this).closest('#konten').remove();
-                });
-
-             
-            </script>
- -->
- <script>
-    // $(".fileSelection1 #Select_File2").click(function (e) {
-    //     document.getElementsByName('kodebuku')[0].value = $(this).attr("data_id");
-    //     $('#Bukuid').modal('hide');
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "/cartpost",
-    //         data:'kodebuku='+$(this).attr("data_id"),
-    //         beforeSend: function(){
-    //             $("#result_buku").html("");
-    //             $("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
-    //         },
-    //         success: function(html){
-    //             $("#result_buku").load("/buku_list");
-    //             $("#result_tunggu_buku").html('');
-    //         }
-    //     });
-    // });
-</script>
-
-    <!-- <script>
-        $(document).ready(function() {
-
-            getCartList()
-            
-
-            $(document).ready(function(){
-                         $('#remove').submit(function(e) {
-                            e.preventDefault()
-                            $.ajax({
-                                type: 'POST',
-                                url: '/remove',
-                                dataType: 'JSON',
-                                success: function(e){
-                                    $("#tbody-cart").html(html);
-                                }
-                            });
-                        });
-
-                    });
-
-                    
-            
-
-            $('#form-tambah').submit(function(e) {
-                e.preventDefault()
-
-                const fd = new FormData(document.getElementById('form-tambah'))
-
-                $.ajax({
-                    method: 'POST',
-                    url: '/cartpost',
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    data: fd,
-                    dataType: 'JSON',
-                    success: function(e){
-                        console.log(e)
-                        getCartList()
-                        // $('#Bukuid').hide()
-                    }
-                })
-            })
-
-        })
-    </script>
- -->
- <script>
-    // AJAX call for autocomplete 
-    // $(document).ready(function(){
-    //     $("#kodebuku").keyup(function(){
-    //         $.ajax({
-    //             type: "POST",
-    //             url: "/cartpost",
-    //             data:'kodebuku='+$(this).val(),
-    //             beforeSend: function(){
-    //                 $("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
-    //             },
-    //             success: function(html){
-    //                 $("#result_buku").load("/buku_list");
-    //                 $("#result_tunggu_buku").html('');
-    //             }
-    //         });
-    //     });
-    // });
-    </script>
-
-
+ </script>
 
 </body>
 

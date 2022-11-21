@@ -20,6 +20,7 @@
 			</a>
 		</li>
 		<li class="menu-label">Menu Buku</li>
+		@if (auth()->user()->role == 'admin')
 		<li>
 			<a href="/kategori">
 				<div class="parent-icon icon-color-2"><i class="fadeIn animated bx bx-book-add"></i>
@@ -27,6 +28,7 @@
 				<div class="menu-title">Kategori Buku</div>
 			</a>
 		</li>
+		@endif
 		<li>
 			<a href="/buku">
 				<div class="parent-icon icon-color-3"> <i class="fadeIn animated bx bx-list-ul"></i>
@@ -57,6 +59,7 @@
 				<div class="menu-title"> Siswa</div>
 			</a>
 		</li>
+		@if (auth()->user()->role == 'admin')
 		<li>
 			<a  href="/petugas">
 				<div class="parent-icon icon-color-1"> <i class="fadeIn animated bx bx-group"></i>
@@ -64,6 +67,7 @@
 				<div class="menu-title"> Petugas Perpus</div>
 			</a>
 		</li>
+		@endif
 		<li class="menu-label">laporan</li>
 		<li>
 			<a  href="/laporanpinjam">
@@ -88,6 +92,7 @@
 				<div class="menu-title">Denda </div>
 			</a>
 		</li>
+		@if (auth()->user()->role == 'admin')
 		<li>
 			<a  href="/pendapatan">
 				<div class="parent-icon icon-color-13"><i class="bx bx-line-chart"></i>
@@ -95,6 +100,7 @@
 				<div class="menu-title">Pendapatan </div>
 			</a>
 		</li>
+		@endif
 	</ul>
 	<!--end navigation-->
 </div>

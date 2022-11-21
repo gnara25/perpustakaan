@@ -35,14 +35,15 @@
                     <div class="card radius-15">
                         <div class="card-body">
                             <div>
-
+                                @if (auth()->user()->role == 'admin')
                                 <a id="table2-new-row-button" href="tambahbuku"
                                     class="btn btn-outline-info btn-sm mb-2"></i>Tambah
                                     Buku</a>
+                                    <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"
+                                        class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak
+                                        Barcode</button>
+                                @endif
 
-                                <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"
-                                    class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak
-                                    Barcode</button>
                                 <div class="table-responsive">
                                     <hr>
                                     <div class="table-responsive">

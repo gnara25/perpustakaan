@@ -2,7 +2,8 @@
     <!-- Button trigger modal -->
     <!-- Modal -->
     <div class="modal fade" id="exampleExtraLargeModal{{$row->id}}" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-xl" style="width: 50pc;
+        margin-top: 4pc;">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="text-center">Edit Anggota</h5>
@@ -23,17 +24,36 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row mb-3">
-                            <label for="kategori" class="col-sm-4 col-form-label">Nama Siswa   :</label>
-                             <div class="col-sm-8">
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <label for="nama">Nama Siswa :</label>
                                 <input type="text"
-                                    class="form-control @error('nama') is-invalid @enderror"
-                                    id="nama" name="nama" value="{{$row->nama}}">
-                                @error('nama')
+                                class="form-control @error('nama') is-invalid @enderror"
+                                id="nama" name="nama" value="{{$row->nama}}">
+                            @error('nama')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <label for="kelas">Kelas :</label>
+                                <input type="text"
+                                    class="form-control @error('kelas') is-invalid @enderror"
+                                    id="kelas" name="kelas" value="{{$row->kelas}}">
+                                    @error('kelas')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <label for="tgl_lahir">Tanggal Lahir :</label>
+                                <input type="date"
+                                    class="form-control @error('tgl_lahir') is-invalid @enderror"
+                                    id="tgl_lahir" name="tgl_lahir" value="{{$row->tgl_lahir}}">
+                                @error('tgl_lahir')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
+                        <br>
                           <div class="form-group row mb-3">
                                         <label for="alamat" class="col-sm-4 col-form-label">Jenis Kelamin   :</label>
                                         <div class="col-sm-8">
@@ -46,29 +66,7 @@
                                               <label class="form-check-label" for="inlineCheckbox2">Perempuan</label>
                                             </div>
                                         </div>
-                                    </div>        
-                        <div class="form-group row mb-3">
-                            <label for="kodebuku" class="col-sm-4 col-form-label">Tanggal Lahir  :</label>
-                            <div class="col-sm-8">
-                                <input type="date"
-                                    class="form-control @error('tgl_lahir') is-invalid @enderror"
-                                    id="tgl_lahir" name="tgl_lahir" value="{{$row->tgl_lahir}}">
-                                @error('tgl_lahir')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row mb-3">
-                            <label for="penerbit" class="col-sm-4 col-form-label">Kelas   :</label>
-                            <div class="col-sm-8">
-                                <input type="text"
-                                    class="form-control @error('kelas') is-invalid @enderror"
-                                    id="kelas" name="kelas" value="{{$row->kelas}}">
-                                    @error('kelas')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
+                                    </div>
                         <div class="form-group row mb-3">
                             <label for="tahunterbit" class="col-sm-4 col-form-label">Alamat   :</label>
                             <div class="col-sm-8">
@@ -97,9 +95,6 @@
                         <br>
                         <center> <button type="submit"
                                 class="btn btn-info btn-icon-split col-sm-3 mb-3">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-plus-circle"></i>
-                                </span>
                                 <span class="text">Edit Anggota</span>
                             </button>
 

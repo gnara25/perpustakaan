@@ -64,6 +64,7 @@ class PeminjamanController extends Controller
     {
         \Cart::clear();
         $anggota = DaftarAnggota::all();
+
         $cartcount = \Cart::getContent()->count();
         // dd($cartcount);
         $bukuid= Daftarbuku::all();
@@ -81,7 +82,15 @@ class PeminjamanController extends Controller
         {
             $kd = "00001";
         }
+
         return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd','cartcount'));
+    }
+
+    public function scaner(){
+        $anggota = DaftarAnggota::all();
+        
+
+        return response()->json();
     }
 
     public function insert(Request $request){

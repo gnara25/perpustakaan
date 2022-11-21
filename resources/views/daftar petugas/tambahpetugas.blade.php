@@ -3,6 +3,32 @@
 
 @include('template.head')
 
+<style type="text/css">
+    .foto {
+        text-align: center;
+    }
+    input{
+        display: none;
+    }
+    img{
+        max-width: 100px;
+        margin-bottom: 2%;
+		display: none;
+    }
+    /* label.image-button{
+        display: block;
+    } */
+    .ngengkel{
+        display: block !important;
+    }
+    span.change-image{
+        display: none;
+		text-align: left;
+		cursor: pointer;
+    }
+
+</style>
+
 <body>
     <!-- wrapper -->
     <div class="wrapper">
@@ -93,46 +119,35 @@
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
-                                        <label for="foto" class="col-sm-4 col-form-label">Foto :</label>
+                                        <label for="foto" class="image-button col-sm-4 col-form-label ngengkel" >Foto :</label>
                                         <div class="col-sm-8">
-                                            <input type="file"
-                                                class="form-control @error('foto') is-invalid @enderror" id="foto"
-                                                name="foto" value="{{ old('foto') }}" placeholder="Passwoard ">
+                                            
+                                            <img src="" class="image-preview">
+                                            {{-- <span class="change-image">Choose </span> --}}
+                                            <input type="file" accept="image/*" id="foto"
+                                                class="form-control @error('foto') is-invalid @enderror" name="foto"
+                                                value="{{ old('foto') }}">
+
                                             @error('foto')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                            <center> <button type="submit" class="btn btn-info btn-icon-split col-sm-3 mb-3">
-                                                    <span class="text">Tambah Petugas</span>
-                                                </button>
-                                                <div class=" mb-3">
-                                                    <a href="petugas" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
-                                                        <span class="text">Kembali</span>
-                                                    </a>
-                                            </center>
+                                        <center> <button type="submit"
+                                                class="btn btn-info btn-icon-split col-sm-3 mb-3">
+                                                <span class="text">Tambah Petugas</span>
+                                            </button>
+                                            <div class=" mb-3">
+                                                <a href="petugas" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
+                                                    <span class="text">Kembali</span>
+                                                </a>
+                                        </center>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="card radius-15" style="width: 30%; float: right; height: 1000%;">
-                        <div class="card-body">
-                            <div class="form-group row mb-3" style="height: 100%; ">
-                                <label for="foto" class="col-sm-4 col-form-label">Foto :</label>
-                                <div class="col-sm-8">
-                                    <img style="height: 10000%" src="" alt="">
-                                    <input type="file" class="form-control @error('foto') is-invalid @enderror"
-                                        id="foto" name="foto" value="{{ old('foto') }}"
-                                        placeholder="Passwoard ">
-                                    @error('foto')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -144,13 +159,38 @@
     <!--start overlay-->
     <div class="overlay toggle-btn-mobile"></div>
     <!--end overlay-->
-    <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
-            class='bx bxs-up-arrow-alt'></i></a>
+    <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
     <!--End Back To Top Button-->
     @include('template.footer')
     </div>
     <!-- end wrapper -->
     @include('template.script')
+
+    <script>
+        $('#foto').on('change', function() {
+            $input = $(this);
+            if ($input.val().length > 0) {
+                fileReader = new FileReader();
+                fileReader.onload = function(data) {
+                    $('.image-preview').attr('src', data.target.result);
+                }
+                fileReader.readAsDataURL($input.prop('files')[0]);
+                $('.image-button').css('display', 'none');
+                $('.image-preview').css('display', 'block');
+                $('.change-image').css('display', 'block');
+            }
+        });
+
+        $('.change-image').on('click', function() {
+            $control = $(this);
+            $('#foto').val('');
+            $preview = $('.image-preview');
+            $preview.attr('src', '');
+            $preview.css('display', 'none');
+            $control.css('display', 'none');
+            $('.image-button').css('display', 'block');
+        });
+    </script>
 </body>
 
 </html>
