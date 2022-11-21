@@ -78,12 +78,14 @@
                                         @endphp
                                         <tbody id="tahun">
                                             @foreach ($harga as $wor)
+                                            @if ($wor->denda > 0)
                                                 <tr>
                                                     <td class="text-center">{{ $wor->month }}</td>
                                                     <td class="text-center">{{ $wor->year }}</td>
                                                     <td class="text-center">Rp.
                                                         {{ number_format($wor['denda'], 2, '.', '.') }}</td>
                                                 </tr>
+                                            @endif    
                                             @endforeach
                                         </tbody>
                                     </table>
