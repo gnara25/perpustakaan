@@ -3,7 +3,35 @@
 
 <head>
     @include('template.head')
+
+    
 </head>
+
+<style type="text/css">
+    .foto {
+        text-align: center;
+    }
+    input{
+        display: none;
+    }
+    img.loi{
+        max-width: 100px;
+        margin-bottom: 2%;
+		display: none;
+    }
+    /* label.image-button{
+        display: block;
+    } */
+    .ngengkel{
+        display: block !important;
+    }
+    span.change-image{
+        display: none;
+		text-align: left;
+		cursor: pointer;
+    }
+
+</style>
 
 <body>
     <!-- wrapper -->
@@ -25,8 +53,7 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="javascript:;"><i
-                                                class='bx bx-user'></i></a>
+                                    <li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-user'></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">User Profile</li>
                                 </ol>
@@ -41,7 +68,7 @@
                                     <div class="col-12 col-lg-7 border-right mb-4">
                                         <div class="d-md-flex align-items-center">
                                             <div class="mb-md-0 mb-3">
-                                                <img src="fotosiswa/{{ Auth::User()->foto }}"
+                                                <img  src="fotosiswa/{{ Auth::User()->foto }}"
                                                     class="rounded-circle shadow" width="130" height="130"
                                                     alt="" />
                                             </div>
@@ -60,7 +87,12 @@
                                             <tbody>
                                                 <tr>
                                                     <th>Nama Panjang :</th>
-                                                    <td>{{ Auth::user()->name }}
+                                                    <td>{{ Auth::user()->username }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th> Sebagai   :</th>
+                                                    <td>{{ Auth::user()->role }}
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -71,10 +103,10 @@
                                                     <th>Email :</th>
                                                     <td>{{ Auth::user()->email }}</td>
                                                 </tr>
-                                               
+
                                             </tbody>
                                         </table>
-                                        
+
                                     </div>
                                 </div>
                                 <!--end row-->
@@ -90,81 +122,94 @@
                                 </ul>
                                 <div class="tab-content mt-3">
                                     <div class="tab-pane fade" id="Biography">
-                                       
+
                                         <div class="card shadow-none border mb-0 radius-15">
                                             <div class="card-body">
                                                 <div class="form-body">
-    
-    
-                                                    <form class="mb-4" action="{{route('editprofile')}}" method="post" enctype="multipart/form-data">
+
+
+                                                    <form class="mb-4" action="{{ route('editprofile') }}"
+                                                        method="post" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="mb-4">
-                                                            <label class="form-label">Username</label>
+                                                            <label class="form-label">Username :</label>
                                                             <input type="text" value="{{ Auth::user()->username }}"
                                                                 class="form-control" name="username">
                                                         </div>
-                                                        <div class="mb-4">
-                                                            <label class="form-label">Nama</label>
+                                                        <div class="form-group row">
+                                                            <div class="col-md-4">
+                                                                <label class="form-label">Nama :</label>
                                                             <input type="text" value="{{ Auth::user()->name }}"
                                                                 class="form-control" name="name">
-                                                        </div>
-                                                        <div class="mb-4">
-                                                            <label class="form-label">No Telepon</label>
-                                                            <input type="text" value="{{ Auth::user()->notelepon }}"
-                                                                class="form-control" name="notelepon">
-                                                        </div>
-                                                        <div class="mb-4">
-                                                            <label class="form-label">Email</label>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="form-label">No Telepon :</label>
+                                                                <input type="text" value="{{ Auth::user()->notelepon }}"
+                                                                    class="form-control" name="notelepon">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="form-label">Email :</label>
                                                             <input type="text" value="{{ Auth::user()->email }}"
                                                                 class="form-control" name="email">
+                                                            </div>
                                                         </div>
-                                                        <div class="mb-4">
+                                                        <br>
+                                                        {{-- <div class="mb-4">
                                                             <label class="form-label">Foto</label>
-                                                            <input type="file" 
-                                                                class="form-control" name="foto">
+                                                            <img src="" class="image-preview" >
+                                                            <input type="file" class="form-control" name="foto" id="foto">
+                                                        </div> --}}
+                                                        <div class="form-group row mb-4">
+                                                            <label for="foto" class="image-button col-sm-2 col-form-label ngengkel">Foto :</label>
+                                                            <div class="col-sm-8">
+                                                                <img src="" class="image-preview loi" >
+                                                                <input type="file" accept="image/*" id="foto"
+                                                                    class="form-control" 
+                                                                     name="foto">
+                                                            </div>
                                                         </div>
                                                         <div class="mb-4 text-center">
-                                                            <button type="submit" class="btn btn-info btn-round">{{ __('Simpan') }}</button>
+                                                            <button type="submit"
+                                                                class="btn btn-info btn-round">{{ __('Simpan') }}</button>
                                                         </div>
                                                     </form>
-    
-    
-    
-    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+
                                     <div class="tab-pane fade" id="Edit-Profile">
                                         <div class="card shadow-none border mb-0 radius-15">
                                             <div class="card-body">
                                                 <div class="form-body">
-    
-    
-                                                    <form class="mb-4" action="{{route('editpassword')}}" method="post">
+                                                    <form class="mb-4" action="{{ route('editpassword') }}"
+                                                        method="post">
                                                         @csrf
                                                         <div class="mb-4" id="show_hide_password">
-                                                                <label class="form-label">Password Lama</label>
-                                                                <input type="password" name="old_password" class="form-control" placeholder="Kata Sandi Lama" id="inputChoosePassword">
-                                                            </div>
-                
+                                                            <label class="form-label">Password Lama</label>
+                                                            <input type="password" name="old_password"
+                                                                class="form-control" placeholder="Kata Sandi Lama"
+                                                                id="inputChoosePassword">
+                                                        </div>
                                                         <div class="mb-4" id="show_hide_password">
                                                             <label class="form-label">Password Baru</label>
-                                                            <input type="password" name="password" class="form-control" placeholder="Kata Sandi" required>
+                                                            <input type="password" name="password"
+                                                                class="form-control" placeholder="Kata Sandi"
+                                                                required>
                                                         </div>
                                                         <div class="mb-4" id="show_hide_password">
                                                             <label class="form-label">Konfirmasi Password</label>
-                                                            <input type="password" name="password_confirmation" class="form-control" placeholder="Konfirmasi Kata Sandi" required>
+                                                            <input type="password" name="password_confirmation"
+                                                                class="form-control"
+                                                                placeholder="Konfirmasi Kata Sandi" required>
 
-                                                        </div>           
-                                                                <div class="mb-4 text-center">
-                                                                    <button type="submit" class="btn btn-info btn-round">{{ __('Simpan') }}</button>
-                                                                </div>                                                        
+                                                        </div>
+                                                        <div class="mb-4 text-center">
+                                                            <button type="submit"
+                                                                class="btn btn-info btn-round">{{ __('Simpan') }}</button>
+                                                        </div>
                                                     </form>
-    
-    
-    
-    
                                                 </div>
                                             </div>
                                         </div>
@@ -238,6 +283,32 @@
     <!-- JavaScript -->
     <!-- Bootstrap JS -->
     @include('template.script')
+
+    <script>
+        $('#foto').on('change', function() {
+            $input = $(this);
+            if ($input.val().length > 0) {
+                fileReader = new FileReader();
+                fileReader.onload = function(data) {
+                    $('.image-preview').attr('src', data.target.result);
+                }
+                fileReader.readAsDataURL($input.prop('files')[0]);
+                $('.image-button').css('display', 'none');
+                $('.image-preview').css('display', 'block');
+                $('.change-image').css('display', 'block');
+            }
+        });
+
+        $('.change-image').on('click', function() {
+            $control = $(this);
+            $('#foto').val('');
+            $preview = $('.image-preview');
+            $preview.attr('src', '');
+            $preview.css('display', 'none');
+            $control.css('display', 'none');
+            $('.image-button').css('display', 'block');
+        });
+    </script>
 
     <script>
         @if (Session::has('success'))

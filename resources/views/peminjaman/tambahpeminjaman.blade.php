@@ -22,7 +22,8 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="/peminjaman"><i class='fadeIn animated bx bx-upload'></i></a>
+                                    <li class="breadcrumb-item"><a href="/peminjaman"><i
+                                                class='fadeIn animated bx bx-upload'></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Peminjaman/Tambah Peminjaman
                                     </li>
@@ -39,8 +40,8 @@
                                         <label for="nisn" class="col-sm-4 col-form-label">No Transaksi :</label>
                                         <div class="col-sm-8">
                                             <input type="text"
-                                                class="form-control @error('transaksi') is-invalid @enderror" id="transaksi" value="{{ 'PJM-'.$kd }}" 
-                                                name="transaksi" readonly>
+                                                class="form-control @error('transaksi') is-invalid @enderror"
+                                                id="transaksi" value="{{ 'PJM-' . $kd }}" name="transaksi" readonly>
                                             @error('transaksi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -50,8 +51,8 @@
                                         <label for="nisn" class="col-sm-4 col-form-label">NISN</label>
                                         <div class="col-sm-8">
                                             <input type="text" id="nisn"
-                                                class="form-control @error('transaksi') is-invalid @enderror" value="" 
-                                                name="transaksi" readonly>
+                                                class="form-control @error('transaksi') is-invalid @enderror"
+                                                value="" name="transaksi" readonly>
                                             @error('transaksi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -60,23 +61,25 @@
                                     <div class="form-group row mb-3">
                                         <label for="nama" class="col-sm-4 col-form-label">Nama Siswa </label>
                                         <div class="col-sm-8">
-                                            
-                                            <select class="form-control single-select @error('nama') is-invalid @enderror"
-                                            name="nama" aria-label="Default select example" id="nama">
-                                            <option value="" disabled selected> Pilih Nama Siswa </option>
-                                            @foreach ($anggota as $anggota)
-                                                <option value="{{ $anggota->id }}" data-kelas='{{$anggota->kelas}}'>
-                                                    {{ $anggota->nama }}</option>
-                                            @endforeach
+
+                                            <select
+                                                class="form-control single-select @error('nama') is-invalid @enderror"
+                                                name="nama" aria-label="Default select example" id="nama">
+                                                <option value="" disabled selected> Pilih Nama Siswa </option>
+                                                @foreach ($anggota as $anggota)
+                                                    <option value="{{ $anggota->id }}"
+                                                        data-kelas='{{ $anggota->kelas }}'>
+                                                        {{ $anggota->nama }}</option>
+                                                @endforeach
                                             </select>
                                             @error('nama')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-                                            
+
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-3">  
-                                      <label for="kelas" class="col-sm-4 col-form-label">Kelas </label> 
+                                    <div class="form-group row mb-3">
+                                        <label for="kelas" class="col-sm-4 col-form-label">Kelas </label>
                                         <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('kelas') is-invalid @enderror" id="kelas"
@@ -84,28 +87,49 @@
                                             @error('kelas')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-                                            
+
                                         </div>
                                     </div>
-                                    
-                                   
-                                        <div class="form-group row mb-3">
-                                                 <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
-                                            </label>
-                                            <div class="col-sm-8">
-                                             <input type="date" value="{{date('Y-m-d', strtotime('+3 days'))}}"
+
+
+                                    <div class="form-group row mb-3">
+                                        <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input type="date" value="{{ date('Y-m-d', strtotime('+3 days')) }}"
                                                 class="form-control text-center @error('tanggalpengembalian')
                                                 is-invalid
                                                 @enderror"
-                                                id="tanggalpengembalian" name="tanggalpengembalian" >
-                                             @error('tanggalpengembalian')
+                                                id="tanggalpengembalian" name="tanggalpengembalian">
+                                            @error('tanggalpengembalian')
                                                 <div class="invalid-feedback">{{ $message }}
                                                 </div>
-                                             @enderror
-                                            </div>
+                                            @enderror
                                         </div>
+                                    </div>
 
-                                        <div class="form-group row mb-3">
+                                    <div class="form-group row mb-3">
+                                        <label for="inputkode" class="col-sm-4 col-form-label">Masukan Kode Buku
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('inputkode') is-invalid @enderror"
+                                                id="inputkode" name="inputkode" value="{{ old('inputkode') }}"
+                                                readonly>
+                                            @error('inputkode')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+
+                                            <p>
+                                                <br><button type="button" id="btn_clear" class="btn btn-primary "
+                                                    style="margin-bottom: 2px;"><span
+                                                        class="glyphicon glyphicon-remove"></span> Clear Field</button>
+                                            </p>
+                                            <p id="message_info"></p>
+                                        </div>
+                                    </div>
+
+                                    {{-- <div class="form-group row mb-3">
                                             <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label>
                                             <div class="col-sm-8">
                                                 <div class="input-group has-validation">
@@ -139,148 +163,143 @@
 
                                                 </tbody>
                                                 </table>
-                                            </div>
-                                            
-                                        
-                                    </div> 
-                                        <center>
-                                            <div class="mb-4 mt-4">
-                                                <button id="pilihBuku" class="btn btn-info btn-icon-split col-sm-3 mb-3 pilihBuku" onclick="validasi()">
-                                                <span class="text">Tambah Peminjaman</span>
-                                            </button>
-                                                <div class="mb-3">
-                                                    <a href="/peminjaman"
-                                                        class="btn btn-dark btn-icon-split mb-3 col-sm-3">
-                                                        <span class="text">Kembali</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </center>
-                                       {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
-                                <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
-                                </form>
+                                            </div> --}}
+
 
                             </div>
+                            <center>
+                                <div class="mb-4 mt-4">
+                                    <button id="pilihBuku" class="btn btn-info btn-icon-split col-sm-3 mb-3 pilihBuku"
+                                        onclick="validasi()">
+                                        <span class="text">Tambah Peminjaman</span>
+                                    </button>
+                                    <div class="mb-3">
+                                        <a href="/peminjaman" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
+                                            <span class="text">Kembali</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </center>
+                            {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
+                                <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
+                            </form>
+
                         </div>
                     </div>
-
                 </div>
-                <!--end page-content-wrapper-->
-            
-                @include('peminjaman.modalbuku')
-                
-                
-                {{-- @include('peminjaman.modalanggota') --}}
+
             </div>
-            <!--end page-wrapper-->
-            <!--start overlay-->
-            <div class="overlay toggle-btn-mobile"></div>
-            <!--end overlay-->
-            <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
-                    class='bx bxs-up-arrow-alt'></i></a>
-            <!--End Back To Top Button-->
-            @include('template.footer')
+            <!--end page-content-wrapper-->
+
+            @include('peminjaman.modalbuku')
+
+
+            {{-- @include('peminjaman.modalanggota') --}}
         </div>
-        <!-- end wrapper -->
-        @include('template.script')
+        <!--end page-wrapper-->
+        <!--start overlay-->
+        <div class="overlay toggle-btn-mobile"></div>
+        <!--end overlay-->
+        <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
+                class='bx bxs-up-arrow-alt'></i></a>
+        <!--End Back To Top Button-->
+        @include('template.footer')
+    </div>
+    <!-- end wrapper -->
+    @include('template.script')
 
-        <script>
-            $(document).ready(function(){
-               $('#nisn').val("").focus();
-               $('#nisn').keyup(function(e){
-                 var tex = $(this).val();
-                 if(tex !=="" && e.keyCode===13){
-                    $('#nisn').val(tex).focus();
-                 }
-                 e.preventDefault();
-               });
-               $('#btn_simpan').click(function(){
-                 let nisn = $('#nisn').val();
-                 let nama = $('#nama').val();
-                 let kelas = $('#kelas').val();
-                 if(nisn !=="" & nama !=="" & kelas!==""){
-                 $.ajax({
-                    type: 'POST',
-                    url: '/scaner',
-                    data: {"nisn":nisn,"nama":nama,"kelas":kelas},
-                    success:function(response) {
-                      alert(response);
-                      $('#nisn,#nama,#kelas').val("");
-                      $('#nisn').focus();
-                    }
-                    });
-                 }else{
-                    alert("input tidak boleh kosong..");
-                    $('#nisn').focus();
-                 }
-               });
-            });
-            </script>
-
-        <script type="text/javascript">
-            @if (Session::has('error'))
-                toastr.error("{{ Session::get('error') }}")
-            @endif
-
-            getCartList()
-
-
-            const selection = document.getElementById('nama');
-            selection.onchange = function(e) {
-                const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
-                document.getElementById('kelas').value = kelas;
-            }
-
-
-            getCartList()
-
-            function tambah(e){
-                console.log(e.getAttribute('data-id'))
-                const fd = new FormData();
-                fd.append('id', e.getAttribute('data-id'))
-                fd.append('namabuku', e.getAttribute('data-nama'))
-                fd.append('kodebuku', e.getAttribute('data-kode'))
-                fd.append('quantity', e.getAttribute('1'))
-                addPeminjaman(fd)
-            }
-
-            function addPeminjaman(fd){
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    method: 'POST',
-                    url: '/cartpost',
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    data: fd,
-                    dataType: 'JSON',
-                    success: function(e){
-                        console.log(e)
-                        getCartList()
-                        // $('#Bukuid').hide()
-                    }
-                })
-            }
-
-            function getCartList() {
-                $.ajax({
-                    method: 'GET',
-                    url: '/cartlist',
-                    dataType: 'JSON',
-                    success: function(e){
-                        let html = ''
-                        let no = 1;
-                        
-                           if (e.data.length < 1) {
-                            $('#pilihBuku').attr('disabled', true)
-                        } else {
-                            $('#pilihBuku').attr('disabled', false)
+    <script>
+        $(document).ready(function() {
+            $('#inputkode').val("").focus();
+            $('#inputkode').keyup(function(e) {
+                var tex = $(this).val();
+                if (tex !== "" && e.keyCode === 13) {
+                    $('#inputkode').val(tex).focus();
+                    $.ajax({
+                        type: 'POST',
+                        url: '/scanebuku',
+                        data: data,
+                        beforeSend: function(response) {
+                            $('#message_info').html(
+                                "Sedang memproses data, silahkan tunggu...");
+                        },
+                        success: function(response) {
+                            $('#message_info').html(response);
                         }
-                
-                        e.data.map(val => {
-                            html += `<table>
+                    });
+                }
+                e.preventDefault();
+            });
+            $('#btn_clear').click(function() {
+                $('#inputkode').val("").focus();
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        @if (Session::has('error'))
+            toastr.error("{{ Session::get('error') }}")
+        @endif
+
+        getCartList()
+
+
+        const selection = document.getElementById('nama');
+        selection.onchange = function(e) {
+            const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
+            document.getElementById('kelas').value = kelas;
+        }
+
+
+        getCartList()
+
+        function tambah(e) {
+            console.log(e.getAttribute('data-id'))
+            const fd = new FormData();
+            fd.append('id', e.getAttribute('data-id'))
+            fd.append('namabuku', e.getAttribute('data-nama'))
+            fd.append('kodebuku', e.getAttribute('data-kode'))
+            fd.append('quantity', e.getAttribute('1'))
+            addPeminjaman(fd)
+        }
+
+        function addPeminjaman(fd) {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method: 'POST',
+                url: '/cartpost',
+                processData: false,
+                contentType: false,
+                cache: false,
+                data: fd,
+                dataType: 'JSON',
+                success: function(e) {
+                    console.log(e)
+                    getCartList()
+                    // $('#Bukuid').hide()
+                }
+            })
+        }
+
+        function getCartList() {
+            $.ajax({
+                method: 'GET',
+                url: '/cartlist',
+                dataType: 'JSON',
+                success: function(e) {
+                    let html = ''
+                    let no = 1;
+
+                    if (e.data.length < 1) {
+                        $('#pilihBuku').attr('disabled', true)
+                    } else {
+                        $('#pilihBuku').attr('disabled', false)
+                    }
+
+                    e.data.map(val => {
+                        html += `<table>
                                 <tbody>
                                                 
                                     <tr id="tr-cart">
@@ -296,61 +315,61 @@
                                     </tr>
                                      </tbody>
                                 </table>   `
-                        })
-                                $('#tbody-cart').html(html)
-                    }        
-                })
+                    })
+                    $('#tbody-cart').html(html)
+                }
+            })
 
-               
-            }        
 
-             function remove(e){ 
-                  var id = e.getAttribute('data-id');
-                  $.ajax({
-                         type: 'GET',
-                         url: "remove/"+ id,
-                        dataType: 'JSON',  
-                         success: function (e) {
-                           console.log(e)
-                           getCartList()        
-                         }               
-                    });
-                   }
+        }
 
-            // function insert(url) {
-            //             if ( getCartList().length < 1) {
-            //                 swal({
-            //                     icon: "warning",
-            //                     text: "Harap Pilih Buku"
-            //                 });
-            //                 return;
-            //             } else {
-            //                 $('.from-pinjam')
-            //                     .attr('action', url)
-            //                     .submit();
-            //             }
-            //         }
-            $(document).ready(function() {
-                //Default data table
-                $('#mytable').DataTable();
-                var table = $('#example2').DataTable({
-                    lengthChange: false,
-                    buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
-                });
-                table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+        function remove(e) {
+            var id = e.getAttribute('data-id');
+            $.ajax({
+                type: 'GET',
+                url: "remove/" + id,
+                dataType: 'JSON',
+                success: function(e) {
+                    console.log(e)
+                    getCartList()
+                }
             });
+        }
 
-            $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                var recipient = button.data('whatever') // Extract info from data-* attributes
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('New message to ' + recipient)
-                modal.find('.modal-body input').val(recipient)
+        // function insert(url) {
+        //             if ( getCartList().length < 1) {
+        //                 swal({
+        //                     icon: "warning",
+        //                     text: "Harap Pilih Buku"
+        //                 });
+        //                 return;
+        //             } else {
+        //                 $('.from-pinjam')
+        //                     .attr('action', url)
+        //                     .submit();
+        //             }
+        //         }
+        $(document).ready(function() {
+            //Default data table
+            $('#mytable').DataTable();
+            var table = $('#example2').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
             });
-            </script>
-            <script src="assets/plugins/select2/js/select2.min.js"></script>
+            table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+        });
+
+        $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('New message to ' + recipient)
+            modal.find('.modal-body input').val(recipient)
+        });
+    </script>
+    <script src="assets/plugins/select2/js/select2.min.js"></script>
     <script>
         $('.single-select').select2({
             theme: 'bootstrap4',
@@ -364,7 +383,7 @@
             placeholder: $(this).data('placeholder'),
             allowClear: Boolean($(this).data('allow-clear')),
         });
- </script>
+    </script>
 
 </body>
 

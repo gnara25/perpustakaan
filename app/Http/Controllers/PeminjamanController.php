@@ -86,11 +86,27 @@ class PeminjamanController extends Controller
         return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd','cartcount'));
     }
 
-    public function scaner(){
-        $anggota = DaftarAnggota::all();
-        
+    public function scanebuku(){
+        $data = Daftarbuku::all();
+        $scane = $data;
+        if($scane > 0){
+            Detailbuku::create([
+                'id_buku' => $cart->id,
+                'id_siswa' => $request->nama,
+                'id_transaksi' => $data,
+                'id_laporan' => $lapor,
+                'namabuku' => $cart->name,
+                'kodebuku' => $cart->attributes->kodebuku,
+                'jumlah' => $cart->quantity,
+                'denda' => $cart->price,
+                'tglpengembalian' => $request->tanggalpengembalian,
+            ]);
+        } else {
+            return redirect()->route('tambahpeminjaman')->with('error', 'Data Tidak Ditemukan');
+        }
 
-        return response()->json();
+        return response()->json(['data' => $scane]);
+
     }
 
     public function insert(Request $request){
@@ -108,27 +124,6 @@ class PeminjamanController extends Controller
             'kelas' => $request->kelas,
             'tanggalpengembalian' => $request->tanggalpengembalian,
         ])->id;
-        
-        // $u_denda = 1000;
-                                        
-        // $tgl1 = date('Y-m-d');
-        // $tgl2 = $buku->tanggalpengembalian;
-        
-        // $pecah1 = explode('-', $tgl1);
-        // $date1 = $pecah1[2];
-        // $month1 = $pecah1[1];
-        // $year1 = $pecah1[0];
-        
-        // $pecah2 = explode('-', $tgl2);
-        // $date2 = $pecah2[2];
-        // $month2 = $pecah2[1];
-        // $year2 = $pecah2[0];
-        
-        // $jd1 = GregorianToJD($month1, $date1, $year1);
-        // $jd2 = GregorianToJD($month2, $date2, $year2);
-        
-        // $selisih = $jd1 - $jd2;
-        // $denda = $selisih * $u_denda;
 
         $lapor = laporanpinjam::create([
             'nama' => $request->nama,
