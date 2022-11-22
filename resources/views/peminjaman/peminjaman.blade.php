@@ -67,7 +67,7 @@
                                                             <tr>
                                                                 <td>{{ $no++ }}</td>
                                                                 <td>{{ $row->transaksi }}</td>
-                                                                <td>{{ $row->anggota->nama }}</td>
+                                                                <td>{{ $row->nama }}</td>
                                                                 <td>{{ $row->kelas }}</td>
                                                                 <td>{{ Carbon\Carbon::parse($row->created_at)->format('d-m-Y') }}
                                                                 </td>
