@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use \PDF;
-// use Barryvdh\DomPDF\PDF;
+// use \PDF;
+use  Barryvdh\DomPDF\PDF;
 use App\Models\Detailbuku;
 use App\Models\Bukukembali;
 use Illuminate\Support\Str;
