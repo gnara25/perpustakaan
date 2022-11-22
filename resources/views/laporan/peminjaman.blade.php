@@ -59,7 +59,7 @@
                                                 @foreach ($data as $row)
                                                     <tr>
                                                         <td scope="row">{{ $no++ }}</td>
-                                                        <td>{{$row->idnama->nama}}</td>
+                                                        <td>{{$row->nama}}</td>
                                                         <td>{{ $row->kelas }}</td>
                                                         <td>{{ Carbon\Carbon::parse($row->tanggalpinjam)->format('d-m-Y') }}</td>
                                                         
