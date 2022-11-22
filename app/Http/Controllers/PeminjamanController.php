@@ -136,7 +136,7 @@ class PeminjamanController extends Controller
             $databuku = Daftarbuku::find($cart->id);
             Detailbuku::create([
                 'id_buku' => $cart->id,
-                'id_siswa' => $request->nama,
+                'id_siswa' => $request->id,
                 'id_transaksi' => $data,
                 'id_laporan' => $lapor,
                 'namabuku' => $cart->name,
@@ -223,9 +223,8 @@ class PeminjamanController extends Controller
     public function autofill(Request $request)
     {
             $array = array();
-            $getFields = DaftarAnggota::where('nisn',$request->nisn)->get();
-        
-            return json_encode($getFields);
+            $data = DaftarAnggota::where('nisn',$request->nisn)->first();
+            return json_encode($data);
        
     }
 

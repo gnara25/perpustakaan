@@ -51,8 +51,11 @@
                                         <div class="col-sm-8">
                                             <input type="text" id="nisn" 
                                             onkeyup="complate()"
-                                                class="form-control @error('nisn') is-invalid @enderror" value="" 
-                                                name="nisn" >
+                                                class="form-control" value="" 
+                                                name="nisn" required>
+                                            <input type="hidden" id="idsiswa" 
+                                                class="form-control" value="" 
+                                                name="id" required>    
                                             @error('nisn')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -142,7 +145,7 @@
                                     </div> 
                                         <center>
                                             <div class="mb-4 mt-4">
-                                                <button id="pilihBuku" class="btn btn-info btn-icon-split col-sm-3 mb-3 pilihBuku" onclick="validasi()">
+                                                <button id="pilihBuku" class="btn btn-info btn-icon-split col-sm-3 mb-3 pilihBuku">
                                                 <span class="text">Tambah Peminjaman</span>
                                             </button>
                                                 <div class="mb-3">
@@ -211,9 +214,12 @@
                     dataType: 'JSON',
                     success: function(data) {
                         datas = JSON.stringify(data);
-                        $('#nama').val(datas.nama); 
-                        $('#kelas').val(datas.kelas); 
-                    console.log(datas);  
+                        $('#idsiswa').val(data.id); 
+                        $('#nama').val(data.nama); 
+                        $('#kelas').val(data.kelas); 
+                    console.log(data.id);  
+                    },error: function(data){
+                        alert('nisn yang anda masukan salah');
                     } 
                 });    
                     
