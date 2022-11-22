@@ -95,6 +95,7 @@ Route::get('/tambahpinjam2',[PeminjamanController::class,'tambahpinjam2'])->name
 Route::get('/autofill',[PeminjamanController::class,'autofill'])->name('autofill');
 Route::get('/result',[PeminjamanController::class,'result'])->name('result');
 Route::get('/detailbuku/{id}',[PeminjamanController::class,'detailbuku'])->name('detailbuku');
+Route::post('/scanebuku',[PeminjamanController::class,'scanebuku'])->name('scanebuku');
 
 // Route::get('/buku_list',[PeminjamanController::class,'buku_list'])->name('buku_list');
 

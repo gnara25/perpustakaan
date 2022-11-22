@@ -139,7 +139,7 @@ class LoginController extends Controller
             'notelepon' => $request->notelepon,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'role' => 'petugas',
+            'role' => 'Petugas',
             'remember_token' => Str::random(60),
         ]);
         // dd ($data);
