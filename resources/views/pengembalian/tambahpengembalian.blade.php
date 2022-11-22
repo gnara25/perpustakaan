@@ -66,7 +66,7 @@ is-invalid
                                         <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('nama') is-invalid @enderror" id="nama"
-                                                name="nama" value="{{ $pengembalin->anggota->nama }}" readonly>
+                                                name="nama" value="{{ $pengembalin->nama }}" readonly>
                                             @error('nama')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
