@@ -28,15 +28,15 @@ class LoginController extends Controller
         $data = Daftarbuku::all()->sortByDesc('dipinjam');
         $idkategori = Kategori::all(); 
         $datas = Denda::all();
-        $datadenda = Denda::select(DB::raw("count(*) as datadenda"), DB::raw("Month(created_at) as month"))
+        $datadenda = Denda::select(\Illuminate\Support\Facades\DB::raw("count(*) as datadenda"), \Illuminate\Support\Facades\DB::raw("Month(created_at) as month"))
         ->whereYear('created_at', date('Y'))
         ->orderBy('month', 'asc')
-        ->groupBy(DB::raw("Month(created_at)"))
+        ->groupBy(\Illuminate\Support\Facades\DB::raw("Month(created_at)"))
         ->pluck('datadenda');
 
         
-        $bulandenda = Denda::select(DB::raw("MONTHNAME(created_at) as bulandenda"))
-        ->groupBy(DB::raw("MONTHNAME(created_at)"))
+        $bulandenda = Denda::select(\Illuminate\Support\Facades\DB::raw("MONTHNAME(created_at) as bulandenda"))
+        ->groupBy(\Illuminate\Support\Facades\DB::raw("MONTHNAME(created_at)"))
         ->pluck('bulandenda');
         
         $datadenda = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -76,7 +76,7 @@ class LoginController extends Controller
     }
 
     public function berandah(Request $request){
-        $data = DB::table('daftarbukus')
+        $data = \Illuminate\Support\Facades\DB::table('daftarbukus')
                     ->join('kategoris', 'daftarbukus.kategori','kategoris.id')
                     ->select('daftarbukus.*', 'kategoris.kategori')
                     ->where(['daftarbukus.kategori'=> $request->kategories])

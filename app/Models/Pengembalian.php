@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Pengembalian;
+// use App\Models\Pengembalian;
+// use App\Models\Daftarbuku;
+use App\Models\Peminjaman;
+use App\Models\Bukukembali;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

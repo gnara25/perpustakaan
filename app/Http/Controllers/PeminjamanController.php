@@ -19,7 +19,7 @@ class PeminjamanController extends Controller
         $data = Peminjaman::all();
         $namasiswa = DaftarAnggota::all();
         $id = 1;
-        $detail = DB::table('detailbukus')
+        $detail = \Illuminate\Support\Facades\DB::table('detailbukus')
                   // ->form()  
                   ->join('Peminjamen','Peminjamen.id','=','detailbukus.id_transaksi','left') 
                   ->where('peminjamen.id', $id) 
@@ -52,7 +52,7 @@ class PeminjamanController extends Controller
 
     public function detailbuku($id){
         $detail = Detailbuku::where('id_transaksi', $id)->get();
-        $data = DB::table('peminjamen')
+        $data = \Illuminate\Support\Facades\DB::table('peminjamen')
         ->join('detailbukus', 'detailbukus.id_transaksi', '=', 'peminjamen.id')
         ->where('peminjamen.id', $id)
         ->get();
@@ -69,7 +69,7 @@ class PeminjamanController extends Controller
         $cartcount = \cart::getContent()->count();
         // dd($cartcount);
         $bukuid= Daftarbuku::all();
-        $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
+        $q = \Illuminate\Support\Facades\DB::table('peminjamen')->select(\Illuminate\Support\Facades\DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
         $kd="";
         if($q->count()>0) 
         {
@@ -87,28 +87,6 @@ class PeminjamanController extends Controller
         return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd','cartcount'));
     }
 
-    public function scanebuku(Request $request){
-        $data = Daftarbuku::all();
-        $scane = $data;
-        if($scane > 0){
-            Detailbuku::create([
-                'id_buku' => $data->id,
-                'id_siswa' => $request->nama,
-                'id_transaksi' => $data,
-                // 'id_laporan' => $lapor,
-                'namabuku' => $data->name,
-                'kodebuku' => $data->attributes->kodebuku,
-                'jumlah' => $data->quantity,
-                'denda' => $data->price,
-                'tglpengembalian' => $request->tanggalpengembalian,
-            ]);
-        } else {
-            return redirect()->route('tambahpeminjaman')->with('error', 'Data Tidak Ditemukan');
-        }
-
-        return response()->json(['data' => $scane]);
-
-    }
 
     public function insert(Request $request){
      
@@ -160,6 +138,30 @@ class PeminjamanController extends Controller
         return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
     }
 
+    
+    public function scanebuku(Request $request){
+        $data = Daftarbuku::all();
+        $scane = $data;
+        if($scane > 0){
+            Detailbuku::create([
+                'id_buku' => $data->id,
+                'id_siswa' => $request->nama,
+                'id_transaksi' => $data,
+                'id_laporan' => $request->lapor,
+                'namabuku' => $data->name,
+                'kodebuku' => $data->attributes->kodebuku,
+                'jumlah' => $data->quantity,
+                'denda' => $data->price,
+                'tglpengembalian' => $request->tanggalpengembalian,
+            ]);
+        } else {
+            return redirect()->route('tambahpeminjaman')->with('error', 'Data Tidak Ditemukan');
+        }
+
+        return response()->json(['data' => $scane]);
+
+    }
+
     public function editpeminjaman($id){
 
         $data = Peminjaman::findOrFail($id);
@@ -193,6 +195,41 @@ class PeminjamanController extends Controller
 
     public function validasi(request $request){
         dd($request->all);
+    }
+
+     public function tambahpinjam2() 
+    {
+        \Cart::clear();
+        $anggota = DaftarAnggota::all();
+
+        $cartcount = \Cart::getContent()->count();
+        // dd($cartcount);
+        $bukuid= Daftarbuku::all();
+               $q = \Illuminate\Support\Facades\DB::table('peminjamen')->select(\Illuminate\Support\Facades\DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
+        $kd="";
+        if($q->count()>0) 
+        {
+            foreach ($q->get() as $k) 
+            {
+                $tmp = ((int)$k->kode)+1;
+                $kd = sprintf("%05s",$tmp);
+            }
+        }
+        else
+        {
+            $kd = "00001";
+        }
+
+        return view('peminjaman.tambahpinjam2', compact('anggota','bukuid','kd','cartcount'));
+    }
+
+    public function autofill(Request $request)
+    {
+            $array = array();
+            $getFields = DaftarAnggota::where('nisn',$request->nisn)->get();
+        
+            return json_encode($getFields);
+       
     }
 
 }

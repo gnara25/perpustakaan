@@ -3,6 +3,7 @@
 namespace App\Models;
 
 
+// use App\Models\Daftarbuku;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -22,7 +23,7 @@ class Daftarbuku extends Model
     }
 
     public function detail_buku($id){
-        $data = Daftarbuku::where('id',id)->first();
+        $data = Daftarbuku::where('id',$id)->first();
         return $data;
     }
 }

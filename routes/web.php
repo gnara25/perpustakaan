@@ -92,6 +92,7 @@ Route::get('/scane',[PeminjamanController::class,'scane'])->name('scane');
 Route::post('/validasi',[PeminjamanController::class,'validasi'])->name('validasi');
 Route::get('/getBooks', [PeminjamanController::class, 'getBooks'])->name('getBooks');
 Route::get('/tambahpinjam2',[PeminjamanController::class,'tambahpinjam2'])->name('tambahpinjam2');
+Route::get('/autofill',[PeminjamanController::class,'autofill'])->name('autofill');
 Route::get('/result',[PeminjamanController::class,'result'])->name('result');
 Route::get('/detailbuku/{id}',[PeminjamanController::class,'detailbuku'])->name('detailbuku');
 Route::post('/scanebuku',[PeminjamanController::class,'scanebuku'])->name('scanebuku');
