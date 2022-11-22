@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Cart;
 use App\Models\Denda;
 use App\Models\Daftarbuku;
 use App\Models\Detailbuku;
@@ -65,7 +66,7 @@ class PeminjamanController extends Controller
         \Cart::clear();
         $anggota = DaftarAnggota::all();
 
-        $cartcount = \Cart::getContent()->count();
+        $cartcount = \cart::getContent()->count();
         // dd($cartcount);
         $bukuid= Daftarbuku::all();
         $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
@@ -86,19 +87,19 @@ class PeminjamanController extends Controller
         return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd','cartcount'));
     }
 
-    public function scanebuku(){
+    public function scanebuku(Request $request){
         $data = Daftarbuku::all();
         $scane = $data;
         if($scane > 0){
             Detailbuku::create([
-                'id_buku' => $cart->id,
+                'id_buku' => $data->id,
                 'id_siswa' => $request->nama,
                 'id_transaksi' => $data,
-                'id_laporan' => $lapor,
-                'namabuku' => $cart->name,
-                'kodebuku' => $cart->attributes->kodebuku,
-                'jumlah' => $cart->quantity,
-                'denda' => $cart->price,
+                // 'id_laporan' => $lapor,
+                'namabuku' => $data->name,
+                'kodebuku' => $data->attributes->kodebuku,
+                'jumlah' => $data->quantity,
+                'denda' => $data->price,
                 'tglpengembalian' => $request->tanggalpengembalian,
             ]);
         } else {
@@ -130,7 +131,7 @@ class PeminjamanController extends Controller
             'kelas' => $request->kelas,
         ])->id;
 
-        $cart1 = \Cart::getContent();
+        $cart1 = Cart::getContent();
         $array = array();
         foreach($cart1 as $cart){
             $databuku = Daftarbuku::find($cart->id);
@@ -193,22 +194,5 @@ class PeminjamanController extends Controller
     public function validasi(request $request){
         dd($request->all);
     }
-
-    public function cart(){
-        $Product = Daftarbuku::find($productId); // assuming you have a Product model with id, name, description & price
-        $rowId = 456; // generate a unique() row ID
-        $userID = 2; // the user ID to bind the cart contents
-
-    // add the product to cart
-        \Cart::session($userID)->add(array(
-            'id' => $rowId,
-            'name' => $Product->name,
-            'price' => $Product->price,
-            'quantity' => 4,
-            'attributes' => array(),
-            'associatedModel' => $Product
-        ));
-    }
-
 
 }
