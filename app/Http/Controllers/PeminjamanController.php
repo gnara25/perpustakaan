@@ -199,21 +199,39 @@ class PeminjamanController extends Controller
         dd($request->all);
     }
 
-    public function cart(){
-        $Product = Daftarbuku::find($productId); // assuming you have a Product model with id, name, description & price
-        $rowId = 456; // generate a unique() row ID
-        $userID = 2; // the user ID to bind the cart contents
+     public function tambahpinjam2() 
+    {
+        \Cart::clear();
+        $anggota = DaftarAnggota::all();
 
-    // add the product to cart
-        \Cart::session($userID)->add(array(
-            'id' => $rowId,
-            'name' => $Product->name,
-            'price' => $Product->price,
-            'quantity' => 4,
-            'attributes' => array(),
-            'associatedModel' => $Product
-        ));
+        $cartcount = \Cart::getContent()->count();
+        // dd($cartcount);
+        $bukuid= Daftarbuku::all();
+               $q = DB::table('peminjamen')->select(DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
+        $kd="";
+        if($q->count()>0) 
+        {
+            foreach ($q->get() as $k) 
+            {
+                $tmp = ((int)$k->kode)+1;
+                $kd = sprintf("%05s",$tmp);
+            }
+        }
+        else
+        {
+            $kd = "00001";
+        }
+
+        return view('peminjaman.tambahpinjam2', compact('anggota','bukuid','kd','cartcount'));
     }
 
+    public function autofill(Request $request)
+    {
+            $array = array();
+            $getFields = DaftarAnggota::where('nisn',$request->nisn)->get();
+        
+            return json_encode($getFields);
+       
+    }
 
 }

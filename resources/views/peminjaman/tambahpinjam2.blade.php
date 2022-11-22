@@ -22,9 +22,9 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="beranda"><i class='bx bx-home-alt'></i></a>
+                                    <li class="breadcrumb-item"><a href="/peminjaman"><i class='fadeIn animated bx bx-upload'></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Peminjamn/Tambah Peminjaman
+                                    <li class="breadcrumb-item active" aria-current="page">Peminjaman/Tambah Peminjaman
                                     </li>
                                 </ol>
                             </nav>
@@ -33,98 +33,130 @@
                     <div class="card radius-15">
                         <div class="card-body">
                             <div class="row">
-                               <form action="" method="POST" enctype="multipart/form-data">             
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <table class="table table-striped">
-                                    <tr style="background:yellowgreen">
-                                        <td colspan="3">Data Transaksi</td>
-                                    </tr>
-                                    <tr>
-                                        <td>No Peminjaman</td>
-                                        <td>:</td>
-                                        <td>
-                                            <input type="text" name="nopinjam" value="<?= $kd;?>" readonly class="form-control">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tgl Peminjaman</td>
-                                        <td>:</td>
-                                        <td>
-                                            <input type="date" value="<?= date('Y-m-d');?>" name="tgl" class="form-control">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>ID Anggota</td>
-                                        <td>:</td>
-                                        <td>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" required autocomplete="off" name="nisn" id="search-box" placeholder="Contoh ID Anggota : AG001" type="text" value="">
-                                                <span class="input-group-btn">
-                                                    <a data-bs-toggle="modal"
-                                                                data-bs-target="#exampleExtraLargeModal"
-                                                                class="btn btn-primary">
-                                                                <i class="fa-solid fa fa-search"></i>
-                                                            </a>
-                                                </span>
+                                <form action="/insert" method="POST" enctype="multipart/form-data" class="form-pinjam">
+                                    @csrf
+                                    <div class="form-group row mb-3">
+                                        <label for="nisn" class="col-sm-4 col-form-label">No Transaksi :</label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('transaksi') is-invalid @enderror" id="transaksi" value="{{ 'PJM-'.$kd }}" 
+                                                name="transaksi" readonly>
+                                            @error('transaksi')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">
+                                        <label for="nisn" class="col-sm-4 col-form-label">NISN</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" id="nisn" 
+                                            onkeyup="complate()"
+                                                class="form-control @error('nisn') is-invalid @enderror" value="" 
+                                                name="nisn" >
+                                            @error('nisn')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">
+                                        <label for="nama" class="col-sm-4 col-form-label">Nama Siswa </label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('nama') is-invalid @enderror" id="nama"
+                                                name="nama" readonly>
+                                            
+                                            @error('nama')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-3">  
+                                      <label for="kelas" class="col-sm-4 col-form-label">Kelas </label> 
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control @error('kelas') is-invalid @enderror" id="kelas"
+                                                name="kelas"  readonly>
+                                            @error('kelas')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                   
+                                        <div class="form-group row mb-3">
+                                                 <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
+                                            </label>
+                                            <div class="col-sm-8">
+                                             <input type="date" value="{{date('Y-m-d', strtotime('+3 days'))}}"
+                                                class="form-control text-center @error('tanggalpengembalian')
+                                                is-invalid
+                                                @enderror"
+                                                id="tanggalpengembalian" name="tanggalpengembalian" >
+                                             @error('tanggalpengembalian')
+                                                <div class="invalid-feedback">{{ $message }}
+                                                </div>
+                                             @enderror
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Biodata</td>
-                                        <td>:</td>
-                                        <td>
-                                            <div id="result_tunggu"> <p style="color:red">* Belum Ada Hasil</p></div>
-                                            <div id="result"></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lama Peminjaman</td>
-                                        <td>:</td>
-                                        <td>
-                                            <input type="number" required placeholder="Lama Pinjam Contoh : 2 Hari (2)" name="lama" class="form-control">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="col-sm-7">
-                                <table class="table table-striped">
-                                    <tr style="background:yellowgreen">
-                                        <td colspan="3">Pinjam Buku</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kode Buku</td>
-                                        <td>:</td>
-                                        <td>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" autocomplete="off" name="kodebuku" id="buku-search" placeholder="Contoh ID Buku : BK001" type="text" value="">
-                                                <span class="input-group-btn">
-                                                    <a data-bs-toggle="modal"
-                                                                data-bs-target="#Bukuid"
-                                                                class="btn btn-primary">
-                                                                <i class="fa-solid fa fa-search"></i>
-                                                            </a>
-                                                </span>
+                                        </div>
+
+                                        <div class="form-group row mb-3">
+                                            <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label>
+                                            <div class="col-sm-5">
+                                                <div class="input-group has-validation">
+                                                     <input type="text" id="kdbuku"
+                                                        class="form-control @error('transaksi') is-invalid @enderror" value="" 
+                                                        name="">
+                                                    <span class="input-group-btn">
+                                                        <a data-bs-toggle="modal"
+                                                            data-bs-target="#Bukuid"
+                                                            class="btn btn-primary">
+                                                            <i class="fa-solid fa fa-search"></i>
+                                                        </a>
+                                                    </span>
+                                                      
+                                                    
+                                                </div>
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Data Buku</td>
-                                        <td>:</td>
-                                        <td>
-                                            <div id="result_tunggu_buku"> <p style="color:red">* Belum Ada Hasil</p></div>
-                                            <div id="result_buku"></div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="pull-right">
-                            <input type="hidden" name="tambah" value="tambah">
-                            <button type="submit" class="btn btn-primary btn-md">Submit</button> 
-          </form>
-                            <a href="" class="btn btn-danger btn-md">Kembali</a>
-                        </div>
+                                        </div>
+                                            <div>
+                                                <table  class="table table-striped table-bordered"
+                                                style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>Judul Buku</th>
+                                                        <th>Kode Buku</th>
+                                                        <th>Jumlah</th>
+                                                        <th>Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody-cart">
+
+                                                </tbody>
+                                                </table>
+                                            </div>
+                                            
+                                        
+                                    </div> 
+                                        <center>
+                                            <div class="mb-4 mt-4">
+                                                <button id="pilihBuku" class="btn btn-info btn-icon-split col-sm-3 mb-3 pilihBuku" onclick="validasi()">
+                                                <span class="text">Tambah Peminjaman</span>
+                                            </button>
+                                                <div class="mb-3">
+                                                    <a href="/peminjaman"
+                                                        class="btn btn-dark btn-icon-split mb-3 col-sm-3">
+                                                        <span class="text">Kembali</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </center>
+                                       {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
+                                <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -132,10 +164,10 @@
                 </div>
                 <!--end page-content-wrapper-->
             
-                @include('peminjaman.modalbuku') 
+                @include('peminjaman.modalbuku')
                 
                 
-                @include('peminjaman.modalanggota')
+                {{-- @include('peminjaman.modalanggota') --}}
             </div>
             <!--end page-wrapper-->
             <!--start overlay-->
@@ -149,55 +181,170 @@
         <!-- end wrapper -->
         @include('template.script')
 
-    <!-- /.modal --> 
-    
-
-
-</body>
-
         <script>
-    $(".fileSelection1 #Select_File1").click(function (e) {
-        document.getElementsByName('nisn')[0].value = $(this).attr("data_id");
-        $('#exampleExtraLargeModal').modal('hide');
-        $.ajax({
-            type: "POST",
-            url: "/result",
-            data:'nisn='+$(this).attr("data_id"),
-            beforeSend: function(){
-                $("#result").html("");
-                $("#result_tunggu").html('<p style="color:green"><blink>cu sebentar</blink></p>');
-            },
-            success: function(html){
-                $("#result").html(html);
-                $("#result_tunggu").html('');
-            }
-        });
-    });
-    </script>
-      
-    <script>
-    // AJAX call for autocomplete 
-    $(document).ready(function(){
-        $("#search-box").keyup(function(){
-            $.ajax({
-                type: "POST",
-                url: "/result",
-                data:'nisn='+$(this).val(),
-                beforeSend: function(){
-                    $("#result").html("");
-                    $("#result_tunggu").html('<p style="color:green"><blink>tu sebentar</blink></p>');
-                },
-                success: function(html){
-                    $("#result").html(html);
-                    $("#result_tunggu").html('');
-                }
-            });
-        });
-    });
-    </script>
+           // $(document).ready(function(){
+           //     $('#nisn').val("").focus();
+           //     $('#nisn').keyup(function(e){
+           //       var tex = $(this).val();
+           //       console.log(tex);
+           //       if(tex !=="" && e.keyCode===13){
+           //       var result = confirm("Your Barcode is : " + tex);
+           //       if(result)$('#nisn').focus();
+           //       }
+           //       e.preventDefault();
+           //     });
+           //     $('#pilihBuku').click(function(){
+           //       $('#nisn').val("").focus();
+           //     });
+           //  });
 
-<script type="text/javascript">
-    $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
+
+       function complate(){
+                var nisn = $("#nisn").val();
+                $.ajax({
+                    method: 'GET',
+                    url: '/autofill',
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    data: 'nisn='+nisn,
+                    dataType: 'JSON',
+                    success: function(data) {
+                        datas = JSON.stringify(data);
+                        $('#nama').val(datas.nama); 
+                        $('#kelas').val(datas.kelas); 
+                    console.log(datas);  
+                    } 
+                });    
+                    
+                
+            }
+        </script>
+
+        <script type="text/javascript">
+            @if (Session::has('error'))
+                toastr.error("{{ Session::get('error') }}")
+            @endif
+
+            getCartList()
+
+
+            const selection = document.getElementById('nama');
+            selection.onchange = function(e) {
+                const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
+                document.getElementById('kelas').value = kelas;
+            }
+
+
+            getCartList()
+
+            function tambah(e){
+                console.log(e.getAttribute('data-id'))
+                const fd = new FormData();
+                fd.append('id', e.getAttribute('data-id'))
+                fd.append('namabuku', e.getAttribute('data-nama'))
+                fd.append('kodebuku', e.getAttribute('data-kode'))
+                fd.append('quantity', e.getAttribute('1'))
+                addPeminjaman(fd)
+            }
+
+            function addPeminjaman(fd){
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method: 'POST',
+                    url: '/cartpost',
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    data: fd,
+                    dataType: 'JSON',
+                    success: function(e){
+                        console.log(e)
+                        getCartList()
+                        // $('#Bukuid').hide()
+                    }
+                })
+            }
+
+            function getCartList() {
+                $.ajax({
+                    method: 'GET',
+                    url: '/cartlist',
+                    dataType: 'JSON',
+                    success: function(e){
+                        let html = ''
+                        let no = 1;
+                        
+                           if (e.data.length < 1) {
+                            $('#pilihBuku').attr('disabled', true)
+                        } else {
+                            $('#pilihBuku').attr('disabled', false)
+                        }
+                
+                        e.data.map(val => {
+                            html += `<table>
+                                <tbody>
+                                                
+                                    <tr id="tr-cart">
+                                        <td scope="row">${no++}</td>
+                                        <td>${val.name}</td>
+                                        <td>${val.attributes.kodebuku}</td>
+                                        <td>${val.quantity}</td>
+                                        <td class="hidden text-right md:table-cell">
+                                        <a class="btn btn-danger remove" onclick="remove(this)"
+                                         data-id="${val.id}" > X</a>
+            
+                                        </td>
+                                    </tr>
+                                     </tbody>
+                                </table>   `
+                        })
+                                $('#tbody-cart').html(html)
+                    }        
+                })
+
+               
+            }        
+
+             function remove(e){ 
+                  var id = e.getAttribute('data-id');
+                  $.ajax({
+                         type: 'GET',
+                         url: "remove/"+ id,
+                        dataType: 'JSON',  
+                         success: function (e) {
+                           console.log(e)
+                           getCartList()        
+                         }               
+                    });
+                   }
+
+            // function insert(url) {
+            //             if ( getCartList().length < 1) {
+            //                 swal({
+            //                     icon: "warning",
+            //                     text: "Harap Pilih Buku"
+            //                 });
+            //                 return;
+            //             } else {
+            //                 $('.from-pinjam')
+            //                     .attr('action', url)
+            //                     .submit();
+            //             }
+            //         }
+            $(document).ready(function() {
+                //Default data table
+                $('#mytable').DataTable();
+                var table = $('#example2').DataTable({
+                    lengthChange: false,
+                    buttons: ['copy', 'excel', 'pdf', 'print', 'colvis']
+                });
+                table.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+            });
+
+            $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
                 var recipient = button.data('whatever') // Extract info from data-* attributes
                 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -206,45 +353,23 @@
                 modal.find('.modal-title').text('New message to ' + recipient)
                 modal.find('.modal-body input').val(recipient)
             });
-    </script>
+            </script>
+            <script src="assets/plugins/select2/js/select2.min.js"></script>
+    <script>
+        $('.single-select').select2({
+            theme: 'bootstrap4',
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            allowClear: Boolean($(this).data('allow-clear')),
+        });
+        $('.multiple-select').select2({
+            theme: 'bootstrap4',
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            allowClear: Boolean($(this).data('allow-clear')),
+        });
+ </script>
 
-    <script>
-    $(".fileSelection1 #Select_File2").click(function (e) {
-        document.getElementsByName('kodebuku')[0].value = $(this).attr("data_id");
-        $('#Bukuid').modal('hide');
-        $.ajax({
-            type: "POST",
-            url: "/cart",
-            data:'kodebuku='+$(this).attr("data_id"),
-            beforeSend: function(){
-                $("#result_buku").html("");
-                $("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
-            },
-            success: function(html){
-                $("#result_buku").load("/buku_list");
-                $("#result_tunggu_buku").html('');
-            }
-        });
-    });
-    </script>
-      
-    <script>
-    // AJAX call for autocomplete 
-    $(document).ready(function(){
-        $("#buku-search").keyup(function(){
-            $.ajax({
-                type: "POST",
-                url: "/cart",
-                data:'kodebuku='+$(this).val(),
-                beforeSend: function(){
-                    $("#result_tunggu_buku").html('<p style="color:green"><blink>tunggu sebentar</blink></p>');
-                },
-                success: function(html){
-                    $("#result_buku").load("/buku_list");
-                    $("#result_tunggu_buku").html('');
-                }
-            });
-        });
-    });
-    </script>
+</body>
+
 </html>
