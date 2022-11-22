@@ -87,6 +87,14 @@ class PeminjamanController extends Controller
         return view('peminjaman.tambahpeminjaman', compact('anggota','bukuid','kd','cartcount'));
     }
 
+    public function autoscane(Request $request)
+    {
+            $array = array();
+            $data = DaftarAnggota::where('nisn',$request->nisn)->first();
+            return json_encode($data);
+       
+    }
+
 
     public function insert(Request $request){
      
@@ -139,28 +147,28 @@ class PeminjamanController extends Controller
     }
 
     
-    public function scanebuku(Request $request){
-        $data = Daftarbuku::all();
-        $scane = $data;
-        if($scane > 0){
-            Detailbuku::create([
-                'id_buku' => $data->id,
-                'id_siswa' => $request->nama,
-                'id_transaksi' => $data,
-                'id_laporan' => $request->lapor,
-                'namabuku' => $data->name,
-                'kodebuku' => $data->attributes->kodebuku,
-                'jumlah' => $data->quantity,
-                'denda' => $data->price,
-                'tglpengembalian' => $request->tanggalpengembalian,
-            ]);
-        } else {
-            return redirect()->route('tambahpeminjaman')->with('error', 'Data Tidak Ditemukan');
-        }
+    // public function scanebuku(Request $request){
+    //     $data = Daftarbuku::all();
+    //     $scane = $data;
+    //     if($scane > 0){
+    //         Detailbuku::create([
+    //             'id_buku' => $data->id,
+    //             'id_siswa' => $request->nama,
+    //             'id_transaksi' => $data,
+    //             'id_laporan' => $request->lapor,
+    //             'namabuku' => $data->name,
+    //             'kodebuku' => $data->attributes->kodebuku,
+    //             'jumlah' => $data->quantity,
+    //             'denda' => $data->price,
+    //             'tglpengembalian' => $request->tanggalpengembalian,
+    //         ]);
+    //     } else {
+    //         return redirect()->route('tambahpeminjaman')->with('error', 'Data Tidak Ditemukan');
+    //     }
 
-        return response()->json(['data' => $scane]);
+    //     return response()->json(['data' => $scane]);
 
-    }
+    // }
 
     public function editpeminjaman($id){
 
@@ -229,6 +237,14 @@ class PeminjamanController extends Controller
             $data = DaftarAnggota::where('nisn',$request->nisn)->first();
             return json_encode($data);
        
+    }
+
+    public function scanebuku(Request $request){
+         
+        $array = array();
+            $data = Daftarbuku::where('kodebuku',$request->kodebuku)->first();
+            return json_encode($data);
+
     }
 
 }

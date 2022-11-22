@@ -220,6 +220,7 @@ return [
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         // 'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'Cart' => 'Darryldecode\Cart\Cart',
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 

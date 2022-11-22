@@ -9,8 +9,8 @@ class CartController extends Controller
     public function cartpost(Request $request)
     {
         \Cart::add([
-            'id' => $request->id,
-            'name' => $request->namabuku,
+            'id' => $request->idbuku,
+            'name' => $request->name,
             'price' => 1000,
             'quantity' => 1,
             'attributes' => array(
