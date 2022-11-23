@@ -185,21 +185,21 @@
         @include('template.script')
 
         <script>
-           // $(document).ready(function(){
-           //     $('#nisn').val("").focus();
-           //     $('#nisn').keyup(function(e){
-           //       var tex = $(this).val();
-           //       console.log(tex);
-           //       if(tex !=="" && e.keyCode===13){
-           //       var result = confirm("Your Barcode is : " + tex);
-           //       if(result)$('#nisn').focus();
-           //       }
-           //       e.preventDefault();
-           //     });
-           //     $('#pilihBuku').click(function(){
-           //       $('#nisn').val("").focus();
-           //     });
-           //  });
+           $(document).ready(function(){
+               $('#nisn').val("").focus();
+               $('#nisn').keyup(function(e){
+                 var tex = $(this).val();
+                 console.log(tex);
+                 if(tex !=="" && e.keyCode===13){
+                 var result = confirm("Your Barcode is : " + tex);
+                 if(result)$('#nisn').focus();
+                 }
+                 e.preventDefault();
+               });
+               $('#pilihBuku').click(function(){
+                 $('#nisn').val("").focus();
+               });
+            });
 
 
        function complate(){
