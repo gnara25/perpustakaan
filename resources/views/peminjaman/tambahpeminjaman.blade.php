@@ -47,53 +47,43 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="nisn" class="col-sm-4 col-form-label">NISN</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" id="nisn"
-                                                class="form-control @error('transaksi') is-invalid @enderror"
-                                                value="" name="transaksi" readonly>
-                                            @error('transaksi')
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label for="nisn" class="col-sm-4 col-form-label">Nisn :</label>
+                                            <input type="number" id="nisn" 
+                                            onkeyup="complate()"
+                                                class="form-control" value="" 
+                                                name="nisn" required>
+                                            <input type="hidden" id="idsiswa" 
+                                                class="form-control" value="" 
+                                                name="id" required>     
+                                            @error('nisn')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="nama" class="col-sm-4 col-form-label">Nama Siswa </label>
-                                        <div class="col-sm-8">
-
-                                            <select
-                                                class="form-control single-select @error('nama') is-invalid @enderror"
-                                                name="nama" aria-label="Default select example" id="nama">
-                                                <option value="" disabled selected> Pilih Nama Siswa </option>
-                                                @foreach ($anggota as $anggota)
-                                                    <option value="{{ $anggota->id }}"
-                                                        data-kelas='{{ $anggota->kelas }}'>
-                                                        {{ $anggota->nama }}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="col-md-4">
+                                            <label for="nama" class="col-sm-4 col-form-label">Nama Siswa :</label>
+                                            <input type="text"
+                                                class="form-control @error('nama') is-invalid @enderror" id="nama"
+                                                name="nama" readonly>
+                                            
                                             @error('nama')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-
                                         </div>
-                                    </div>
-                                    <div class="form-group row mb-3">
-                                        <label for="kelas" class="col-sm-4 col-form-label">Kelas </label>
-                                        <div class="col-sm-8">
+                                        <div class="col-md-4">
+                                            <label for="kelas" class="col-sm-4 col-form-label">Kelas :</label>
                                             <input type="text"
                                                 class="form-control @error('kelas') is-invalid @enderror" id="kelas"
                                                 name="kelas" value="{{ old('kelas') }}" readonly>
                                             @error('kelas')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-
                                         </div>
                                     </div>
-
-
+                                    <br>
                                     <div class="form-group row mb-3">
-                                        <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian
+                                        <label for="tgl_lahir" class="col-sm-4 col-form-label">Tanggal Pengembalian :
                                         </label>
                                         <div class="col-sm-8">
                                             <input type="date" value="{{ date('Y-m-d', strtotime('+3 days')) }}"
@@ -108,7 +98,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row mb-3">
+                                    {{-- <div class="form-group row mb-3">
                                         <label for="inputkode" class="col-sm-4 col-form-label">Masukan Kode Buku
                                         </label>
                                         <div class="col-sm-8">
@@ -127,23 +117,26 @@
                                             </p>
                                             <p id="message_info"></p>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    {{-- <div class="form-group row mb-3">
+                                    <div class="form-group row mb-3">
                                             <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label>
                                             <div class="col-sm-8">
                                                 <div class="input-group has-validation">
+                                                    <input type="text" id="kdbuku"
+                                                        class="form-control @error('transaksi') is-invalid @enderror" value="" 
+                                                         placeholder="Pilih Buku">
                                                     <span class="input-group-btn">
                                                         <a data-bs-toggle="modal"
                                                             data-bs-target="#Bukuid"
                                                             class="btn btn-primary">
                                                             <i class="fa-solid fa fa-search"></i>
                                                         </a>
-                                                    </span>
-                                                    <div class="form-control @error('kodebuku') is-invalid @enderror"
+                                                    </span>\
+                                                    {{-- <div class="form-control @error('kodebuku') is-invalid @enderror"
                                                         name="kodebuku"  id="kodebuku">
-                                                       <option value="" disabled selected>Pilih Buku Yang Ingin Dipinjam</option>
-                                                    </div>
+                                                       <option value="">Pilih Buku Yang Ingin Dipinjam</option>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -163,7 +156,7 @@
 
                                                 </tbody>
                                                 </table>
-                                            </div> --}}
+                                            </div>
 
 
                             </div>
@@ -209,32 +202,47 @@
     @include('template.script')
 
     <script>
-        $(document).ready(function() {
-            $('#inputkode').val("").focus();
-            $('#inputkode').keyup(function(e) {
-                var tex = $(this).val();
-                if (tex !== "" && e.keyCode === 13) {
-                    $('#inputkode').val(tex).focus();
-                    $.ajax({
-                        type: 'POST',
-                        url: '/scanebuku',
-                        data: data,
-                        beforeSend: function(response) {
-                            $('#message_info').html(
-                                "Sedang memproses data, silahkan tunggu...");
-                        },
-                        success: function(response) {
-                            $('#message_info').html(response);
-                        }
-                    });
-                }
-                e.preventDefault();
+        $(document).ready(function(){
+            $('#nisn').val("").focus();
+            $('#nisn').keyup(function(e){
+              var tex = $(this).val();
+              console.log(tex);
+              if(tex !=="" && e.keyCode===13){
+              
+              $('#nisn').focus();
+              }
+              e.preventDefault();
             });
-            $('#btn_clear').click(function() {
-                $('#inputkode').val("").focus();
+            $('#pilihBuku').click(function(){
+              $('#nisn').val("").focus();
             });
-        });
-    </script>
+         });
+
+
+    function complate(){
+             var nisn = $("#nisn").val();
+             $.ajax({
+                 method: 'GET',
+                 url: '/autoscane',
+                 processData: false,
+                 contentType: false,
+                 cache: false,
+                 data: 'nisn='+nisn,
+                 dataType: 'JSON',
+                 success: function(data) {
+                     datas = JSON.stringify(data);
+                     $('#idsiswa').val(data.id); 
+                     $('#nama').val(data.nama); 
+                     $('#kelas').val(data.kelas); 
+                 console.log(data.id);  
+                 },error: function(data){
+                     alert('nisn yang anda masukan salah');
+                 } 
+             });    
+                 
+             
+         }
+     </script>
 
     <script type="text/javascript">
         @if (Session::has('error'))
@@ -336,19 +344,7 @@
             });
         }
 
-        // function insert(url) {
-        //             if ( getCartList().length < 1) {
-        //                 swal({
-        //                     icon: "warning",
-        //                     text: "Harap Pilih Buku"
-        //                 });
-        //                 return;
-        //             } else {
-        //                 $('.from-pinjam')
-        //                     .attr('action', url)
-        //                     .submit();
-        //             }
-        //         }
+
         $(document).ready(function() {
             //Default data table
             $('#mytable').DataTable();

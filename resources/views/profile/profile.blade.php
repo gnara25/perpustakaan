@@ -161,11 +161,11 @@
                                                         </div> --}}
                                                         <div class="form-group row mb-4">
                                                             <label for="foto" class="image-button col-sm-2 col-form-label ngengkel">Foto :</label>
-                                                            <div class="col-sm-8">
+                                                            <div class="col-sm-10">
                                                                 <img src="" class="image-preview loi" >
                                                                 <input type="file" accept="image/*" id="foto"
                                                                     class="form-control" 
-                                                                     name="foto">
+                                                                     name="foto" >
                                                             </div>
                                                         </div>
                                                         <div class="mb-4 text-center">

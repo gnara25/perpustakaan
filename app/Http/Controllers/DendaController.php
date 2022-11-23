@@ -14,7 +14,7 @@ class DendaController extends Controller
     public function denda (){
         $data = Denda::with('peminjaman.anggota')->get();
         $id = 1;
-        $details = DB::table('bukukembalis')
+        $details = \Illuminate\Support\Facades\DB::table('bukukembalis')
                   // ->form()  
                   ->join('dendas',  'dendas.id','=','bukukembalis.id_denda','left') 
                   ->where('dendas.id', $id) 
@@ -25,24 +25,24 @@ class DendaController extends Controller
     public function pendapatan(){
         $data = Denda::all();
         $harga = Denda::select(
-            DB::raw("(sum(denda)) as denda"),
-            DB::raw("(DATE_FORMAT(created_at, '%M')) as month"),
-            DB::raw("(DATE_FORMAT(created_at, '%Y')) as year")
+            \Illuminate\Support\Facades\DB::raw("(sum(denda)) as denda"),
+            \Illuminate\Support\Facades\DB::raw("(DATE_FORMAT(created_at, '%M')) as month"),
+            \Illuminate\Support\Facades\DB::raw("(DATE_FORMAT(created_at, '%Y')) as year")
             )
             ->orderBy('created_at')
-            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%M')"))
-            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y')"))
+            ->groupBy(\Illuminate\Support\Facades\DB::raw("DATE_FORMAT(created_at, '%M')"))
+            ->groupBy(\Illuminate\Support\Facades\DB::raw("DATE_FORMAT(created_at, '%Y')"))
             ->get();
 
-        $datadenda = Denda::select(DB::raw("count(*) as datadenda"), DB::raw("Month(created_at) as month"))
+        $datadenda = Denda::select(\Illuminate\Support\Facades\DB::raw("count(*) as datadenda"), \Illuminate\Support\Facades\DB::raw("Month(created_at) as month"))
         ->whereYear('created_at', date('Y'))
         ->orderBy('month', 'asc')
-        ->groupBy(DB::raw("Month(created_at)"))
+        ->groupBy(\Illuminate\Support\Facades\DB::raw("Month(created_at)"))
         ->pluck('datadenda');
 
         
-        $bulandenda = Denda::select(DB::raw("MONTHNAME(created_at) as bulandenda"))
-        ->groupBy(DB::raw("MONTHNAME(created_at)"))
+        $bulandenda = Denda::select(\Illuminate\Support\Facades\DB::raw("MONTHNAME(created_at) as bulandenda"))
+        ->groupBy(\Illuminate\Support\Facades\DB::raw("MONTHNAME(created_at)"))
         ->pluck('bulandenda');
         
         $datadenda = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];

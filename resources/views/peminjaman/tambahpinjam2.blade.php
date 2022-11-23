@@ -108,9 +108,9 @@
                                             <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label>
                                             <div class="col-sm-5">
                                                 <div class="input-group has-validation">
-                                                     <input type="text" id="kdbuku"
+                                                     <input type="text" id="kdbuku" name="kodebuku" onchange="scane()"
                                                         class="form-control @error('transaksi') is-invalid @enderror" value="" 
-                                                        name="">
+                                                        >
                                                     <span class="input-group-btn">
                                                         <a data-bs-toggle="modal"
                                                             data-bs-target="#Bukuid"
@@ -123,6 +123,13 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
+                                        <div>
+                                            <input type="text" value="" name="idbuku" id="idbuku">
+                                            <input type="text" value="" name="kodebuku" id="kodebuku">
+                                            <input type="text" value="" name="name" id="name">
+                                        </div>
+
                                             <div>
                                                 <table  class="table table-striped table-bordered"
                                                 style="width:100%">
@@ -191,8 +198,13 @@
                  var tex = $(this).val();
                  console.log(tex);
                  if(tex !=="" && e.keyCode===13){
+<<<<<<< HEAD
                  var result = confirm("Your Barcode is : " + tex);
                  if(result)$('#nisn').focus();
+=======
+                 
+                 $('#nisn').focus();
+>>>>>>> 4b3edb0eea4968559c6d90a2c437d3fe99d640bf
                  }
                  e.preventDefault();
                });
@@ -226,6 +238,70 @@
                 
             }
         </script>
+        <script>
+           $(document).ready(function(){
+               $('#kdbuku').val("").focus();
+               $('#kdbuku').keyup(function(e){
+                 var tex = $(this).val();
+                 console.log(tex);
+                 if(tex !=="" && e.keyCode===13){
+                 
+                 $('#kdbuku').focus();
+                 }
+                 e.preventDefault();
+               });
+               $('#pilihBuku').click(function(){
+                 $('#kdbuku').val("").focus();
+               });
+            });
+
+
+       function scane(){
+                var kodebuku = $("#kdbuku").val();
+                $.ajax({
+                    method: 'GET',
+                    url: '/scanebuku',
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    data: 'kodebuku='+kodebuku,
+                    dataType: 'JSON',
+                    success: function(data) {
+                        datas = JSON.stringify(data);
+                        $('#idbuku').val(data.id); 
+                        $('#kodebuku').val(data.kodebuku); 
+                        $('#name').val(data.namabuku); 
+                    addscane(data);    
+                    console.log(data.namabuku);  
+                    },error: function(data){
+                        alert('nisn yang anda masukan salah');
+                    } 
+                    
+                });    
+                    
+                
+            }
+
+            function addscane(data){
+            $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method: 'POST',
+                    url: '/cartpost',
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    data: data,
+                    dataType: 'JSON',
+                    success: function(e){
+                        console.log(e)
+                        getCartList()
+                        // $('#Bukuid').hide()
+                    }
+                })
+        }  
+        </script>
 
         <script type="text/javascript">
             @if (Session::has('error'))
@@ -254,25 +330,25 @@
                 addPeminjaman(fd)
             }
 
-            function addPeminjaman(fd){
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    method: 'POST',
-                    url: '/cartpost',
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    data: fd,
-                    dataType: 'JSON',
-                    success: function(e){
-                        console.log(e)
-                        getCartList()
-                        // $('#Bukuid').hide()
-                    }
-                })
-            }
+            // function addPeminjaman(fd){
+            //     $.ajax({
+            //         headers: {
+            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //         },
+            //         method: 'POST',
+            //         url: '/cartpost',
+            //         processData: false,
+            //         contentType: false,
+            //         cache: false,
+            //         data: fd,
+            //         dataType: 'JSON',
+            //         success: function(e){
+            //             console.log(e)
+            //             getCartList()
+            //             // $('#Bukuid').hide()
+            //         }
+            //     })
+            // }
 
             function getCartList() {
                 $.ajax({

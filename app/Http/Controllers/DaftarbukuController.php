@@ -18,7 +18,7 @@ class DaftarbukuController extends Controller
     public function buku(){
         $data = Daftarbuku::with('idkategori')->get();
         $idkategori = Kategori::all();
-        $datah = DB::table('daftarbukus')
+        $datah = \Illuminate\Support\Facades\DB::table('daftarbukus')
                     ->join('kategoris', 'daftarbukus.kategori','kategoris.id')
                     ->select('daftarbukus.*', 'kategoris.kategori')
                     // ->sortByDesc('dipinjam')
@@ -29,7 +29,7 @@ class DaftarbukuController extends Controller
         $idkategori = Kategori::all();
         $data = Daftarbuku::all();
 
-         $q = DB::table('Daftarbukus')->select(DB::raw('MAX(RIGHT(kodebuku,4)) as kode'));
+         $q = \Illuminate\Support\Facades\DB::table('Daftarbukus')->select(\Illuminate\Support\Facades\DB::raw('MAX(RIGHT(kodebuku,4)) as kode'));
         $kd="";
         if($q->count()>0) 
         {

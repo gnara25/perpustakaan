@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use \PDF;
-
-use App\Imports\DaftarAnggotaImport;
-use Maatwebsite\Excel\Facades\Excel;
+// use \PDF;
+use  Barryvdh\DomPDF\PDF;
 use App\Models\Detailbuku;
 use App\Models\Bukukembali;
 use Illuminate\Support\Str;
@@ -13,7 +11,9 @@ use App\Models\Pengembalian;
 use Illuminate\Http\Request;
 use App\Models\DaftarAnggota;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\DaftarAnggotaController;
+use App\Imports\DaftarAnggotaImport;
+use Maatwebsite\Excel\Facades\Excel;
+// use App\Http\Controllers\DaftarAnggotaController;
 
 class DaftarAnggotaController extends Controller
 {
