@@ -2,11 +2,12 @@
 <div class="sidebar-wrapper" data-simplebar="true">
 	<div class="sidebar-header">
 		<div class="">
-			<img src="assets/images/logo-icon.png" class="logo-icon-2" alt="" />
+			<img src="../masuk/assets/aa/44.png" class="logo-icon-2 "  style="width: 166px;
+			margin-left: 12px;" alt="" />
 		</div>
-		<div>
+		{{-- <div>
 			<h4 class="logo-text">PerpusKita</h4>
-		</div>
+		</div> --}}
 		<a href="javascript:;" class="toggle-btn ms-auto"> <i class="bx bx-menu"></i>
 		</a>
 	</div>

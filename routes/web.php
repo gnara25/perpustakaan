@@ -103,6 +103,7 @@ Route::get('/scanebuku',[PeminjamanController::class,'scanebuku'])->name('scaneb
 //Cart
 // Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
 Route::post('/cartpost', [CartController::class, 'cartpost'])->name('cartpost');
+Route::post('/cartpost2', [CartController::class, 'cartpost2'])->name('cartpost2');
 Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
 Route::get('remove/{id}', [CartController::class, 'remove'])->name('remove');
 Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');

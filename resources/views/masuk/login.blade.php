@@ -95,26 +95,26 @@ type="text/javascript"></script>
           <div class="login-box card kotaklgn">
             <div class="dua">
               <div class="xxx">
-                <img src="../masuk/assets/aa/2.png" width="100%"/>
+                <img src="../masuk/assets/aa/44.png" width="100%" style="width: 100%; margin-left: -19px;">
               </div>
             </div>
-            <center><img src="../masuk/assets/aa/2.png" width="65%" style="margin-top: 20px;"/></center>
+            <center><img src="../masuk/assets/aa/44.png" width="65%" style="margin-top: 9px;"/></center>
             <h3 class="text-center mb-0">
-              Masuk
+              Silahkan Login
             </h3>
             <form class="row g-3" action="/logined" class="user" method="POST">
               @csrf
-              <div class="card-body pb-0">
+              <div class="card-body ">
                 <div class="form-group row">
-                    <div class="col-md-12 col-12">
+                    <div class="col-md-12 col-12 radius-15">
                         <label>Email</label>
-                        <input  class="form-control" type="email" placeholder="Email" name="email" required="">
+                        <input  class="form-control "  type="email" placeholder="Masukan Email Anda" name="email" required="">
                     </div>
                 </div>                
                 <div class="form-group row">
                     <div class="col-md-12 col-12">
                         <label>Password</label>
-                        <input id="inp1" class="form-control" type="password"placeholder="Password" name="password" required="">
+                        <input id="inp1" class="form-control" type="Masukan Password Anda"placeholder="Password" name="password" required="">
                     </div>
                 </div>
                 <div class="form-group row">

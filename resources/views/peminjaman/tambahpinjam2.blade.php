@@ -125,10 +125,12 @@
                                         </div>
                                         
                                         <div>
-                                            <input type="text" value="" name="idbuku" id="idbuku">
+                                            <input type="text" value="" name="id" id="idbuku">
                                             <input type="text" value="" name="kodebuku" id="kodebuku">
-                                            <input type="text" value="" name="name" id="name">
+                                            <input type="text" value="" name="namabuku" id="name">
+                                            <input type="text" value="" name="quantity" id="quantity">
                                         </div>
+                                      
 
                                             <div>
                                                 <table  class="table table-striped table-bordered"
@@ -166,7 +168,11 @@
                                        {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
                                 <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
                                 </form>
-
+                                {{-- <form action="/cartpost2" method="POST" enctype="multipart/form-data" class="form-pinjam">
+                                    @csrf
+                                    
+                                    <button type="submit">submit</button>
+                                </form>     --}}
                             </div>
                         </div>
                     </div>
@@ -224,7 +230,7 @@
                         $('#idsiswa').val(data.id); 
                         $('#nama').val(data.nama); 
                         $('#kelas').val(data.kelas); 
-                    console.log(data.id);  
+                    console.log(data);  
                     },error: function(data){
                         alert('nisn yang anda masukan salah');
                     } 
@@ -250,12 +256,14 @@
                });
             });
 
+            
+
 
        function scane(){
                 var kodebuku = $("#kdbuku").val();
                 $.ajax({
                     method: 'GET',
-                    url: '/scanebuku',
+                    url: "{{url('/scanebuku')}}",
                     processData: false,
                     contentType: false,
                     cache: false,
@@ -265,16 +273,17 @@
                         datas = JSON.stringify(data);
                         $('#idbuku').val(data.id); 
                         $('#kodebuku').val(data.kodebuku); 
-                        $('#name').val(data.namabuku); 
-                    addscane(data);    
-                    console.log(data.namabuku);  
+                        $('#name').val(data.namabuku);
+                        $('#quantity').val(1);
+                         
+                    console.log(data) 
+                    addscane(data)
                     },error: function(data){
                         alert('nisn yang anda masukan salah');
                     } 
                     
                 });    
                     
-                
             }
 
             function addscane(data){
@@ -283,7 +292,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     method: 'POST',
-                    url: '/cartpost',
+                    url: "{{url('/cartpost2')}}",
                     processData: false,
                     contentType: false,
                     cache: false,
@@ -295,7 +304,37 @@
                         // $('#Bukuid').hide()
                     }
                 })
-        }  
+        }
+
+            function getCartList() {
+                $.ajax({
+                    method: 'GET',
+                    url: '/cartlist',
+                    dataType: 'JSON',
+                    success: function(e){
+                        let html = ''
+                        let no = 1
+                
+                        e.data.map(val => {
+                            html += `<table>
+                                <tbody>
+                                                
+                                    <tr id="tr-cart">
+                                        <td>${val.name}</td>
+                                        <td>${val.kodebuku}</td>
+                                        <td>${val.quantity}</td>
+                                    </tr>
+                                     </tbody>
+                                </table>   `
+                        })
+                                $('#tbody-cart').html(html)
+                    }        
+                })
+
+               
+            }        
+
+
         </script>
 
         <script type="text/javascript">
@@ -325,25 +364,25 @@
                 addPeminjaman(fd)
             }
 
-            // function addPeminjaman(fd){
-            //     $.ajax({
-            //         headers: {
-            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //         },
-            //         method: 'POST',
-            //         url: '/cartpost',
-            //         processData: false,
-            //         contentType: false,
-            //         cache: false,
-            //         data: fd,
-            //         dataType: 'JSON',
-            //         success: function(e){
-            //             console.log(e)
-            //             getCartList()
-            //             // $('#Bukuid').hide()
-            //         }
-            //     })
-            // }
+            function addPeminjaman(fd){
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method: 'POST',
+                    url: '/cartpost',
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    data: fd,
+                    dataType: 'JSON',
+                    success: function(e){
+                        console.log(e)
+                        getCartList()
+                        // $('#Bukuid').hide()
+                    }
+                })
+            }
 
             function getCartList() {
                 $.ajax({
