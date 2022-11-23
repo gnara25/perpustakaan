@@ -204,8 +204,13 @@
                  var tex = $(this).val();
                  console.log(tex);
                  if(tex !=="" && e.keyCode===13){
+<<<<<<< HEAD
+                 var result = confirm("Your Barcode is : " + tex);
+                 if(result)$('#nisn').focus();
+=======
                  
                  $('#nisn').focus();
+>>>>>>> 4b3edb0eea4968559c6d90a2c437d3fe99d640bf
                  }
                  e.preventDefault();
                });
