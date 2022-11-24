@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Daftarbuku;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -23,10 +24,10 @@ class CartController extends Controller
     }
     public function cartpost2()
     {
-        $id = Daftarbuku::where('detailbukus.id');
-        $Product = Daftarbuku::find($id); 
+        $data = DB::where('daftarbukus', 'id')->first();
+        $Product = Daftarbuku::findOrFail($data); 
         \Cart::add([
-            'id' => $Product,
+            'id' => $Product->id,
             'name' => $Product->namabuku,
             'price' => 1000,
             'quantity' => 1,

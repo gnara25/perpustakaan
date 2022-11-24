@@ -97,6 +97,7 @@ Route::get('/autoscane',[PeminjamanController::class,'autoscane'])->name('autosc
 Route::get('/result',[PeminjamanController::class,'result'])->name('result');
 Route::get('/detailbuku/{id}',[PeminjamanController::class,'detailbuku'])->name('detailbuku');
 Route::get('/scanebuku',[PeminjamanController::class,'scanebuku'])->name('scanebuku');
+Route::get('/cari',[PeminjamanController::class,'cari'])->name('cari');
 
 // Route::get('/buku_list',[PeminjamanController::class,'buku_list'])->name('buku_list');
 

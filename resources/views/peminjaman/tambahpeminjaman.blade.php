@@ -53,10 +53,10 @@
                                             <input type="number" id="nisn" 
                                             onkeyup="complate()"
                                                 class="form-control" value="" 
-                                                name="nisn" required>
+                                                name="nisn">
                                             <input type="hidden" id="idsiswa" 
                                                 class="form-control" value="" 
-                                                name="id" required>     
+                                                name="id" >     
                                             @error('nisn')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror

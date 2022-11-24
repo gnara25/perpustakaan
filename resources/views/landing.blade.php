@@ -63,7 +63,7 @@
                                 data-target="#navbar-menu">
                                 <i class="fa fa-bars"></i>
                             </button>
-                            <a class="navbar-brand" style="margin-top: 10px;" href="/"><img src="../masuk/assets/aa/44.png" style="width: 160px" class="logo"
+                            <a class="navbar-brand" style="margin-top: 14px;" href="/"><img src="../masuk/assets/aa/44.png" style="width: 160px" class="logo"
                                     alt="Logo"></a>
                         </div>
                         <!-- End Header Navigation -->

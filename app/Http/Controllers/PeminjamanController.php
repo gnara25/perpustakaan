@@ -241,10 +241,49 @@ class PeminjamanController extends Controller
 
     public function scanebuku(Request $request){
          
-        $array = array();
+            $array = array();
             $data = Daftarbuku::where('kodebuku',$request->kodebuku)->first();
             return json_encode($data);
 
+    }
+
+    public function cari(Request $request){
+        $output = "";
+
+        $bukuid = Daftarbuku::where('kodebuku','Like','%' .$request->cari. '%')->get();
+
+        foreach($bukuid as $row)
+        {
+            
+            
+            $output.=  '<tr>
+                        <td> '.$row->no.' </td>
+                        <td> '.$row->namabuku.' </td>
+                        <td> '.$row->idkategori->kategori.' </td>
+                        <td> '.$row->kodebuku.' </td>
+                        <td> '.$row->penerbit.' </td>
+                        <td> '.$row->tahunterbit.' </td>
+                        <td> '.$row->jumlah.' </td>
+                        <td> '.$row->deskripsi.' </td>
+                        <td> <img src="http://127.0.0.1:8000/fotobuku/'.$row->foto.' " alt=""
+                                                style="width: 50px; height: 50px">
+                                        </td>
+                        <td style="width:17%">
+                                                <input type="hidden" value=" '.$row->id.' " name="id">
+                                                <input type="hidden" value=" '.$row->namabuku.' " name="namabuku">
+                                                <input type="hidden" value=" '.$row->kodebuku.' " name="kodebuku">
+                                                <input type="hidden" value=".1." name="quantity">
+
+                                                <button class="btn btn-primary" id="Select_File2"
+                                                    onclick="tambah(this)"
+                                                    data-id=" '.$row->id.' " data-nama=" '.$row->namabuku.' " data-kode=" '.$row->kodebuku.'" data-bs-dismiss="modal">
+                                                    <i class="fa fa-check"> </i> Pilih
+                                                </button>
+                                        </td>
+                        
+                        </tr>';
+        }
+        return response($output);
     }
 
 }

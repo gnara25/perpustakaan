@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+    @include('template.head')
 
 <body>
     <!-- wrapper -->
     <div class="wrapper">
-        @include('template.head')
 
         @include('template.navbar')
 

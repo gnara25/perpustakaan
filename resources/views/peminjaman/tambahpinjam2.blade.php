@@ -124,12 +124,12 @@
                                             </div>
                                         </div>
                                         
-                                        <div>
+                                        {{-- <div>
                                             <input type="text" value="" name="id" id="idbuku">
                                             <input type="text" value="" name="kodebuku" id="kodebuku">
                                             <input type="text" value="" name="namabuku" id="name">
                                             <input type="text" value="" name="quantity" id="quantity">
-                                        </div>
+                                        </div> --}}
                                       
 
                                             <div>
@@ -204,13 +204,8 @@
                  var tex = $(this).val();
                  console.log(tex);
                  if(tex !=="" && e.keyCode===13){
-<<<<<<< HEAD
-                 var result = confirm("Your Barcode is : " + tex);
-                 if(result)$('#nisn').focus();
-=======
                  
                  $('#nisn').focus();
->>>>>>> 4b3edb0eea4968559c6d90a2c437d3fe99d640bf
                  }
                  e.preventDefault();
                });
@@ -264,52 +259,51 @@
             
 
 
-       function scane(){
-                var kodebuku = $("#kdbuku").val();
-                $.ajax({
-                    method: 'GET',
-                    url: "{{url('/scanebuku')}}",
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    data: 'kodebuku='+kodebuku,
-                    dataType: 'JSON',
-                    success: function(data) {
-                        datas = JSON.stringify(data);
-                        $('#idbuku').val(data.id); 
-                        $('#kodebuku').val(data.kodebuku); 
-                        $('#name').val(data.namabuku);
-                        $('#quantity').val(1);
+    //    function scane(){
+    //             var kodebuku = $("#kdbuku").val();
+    //             $.ajax({
+    //                 method: 'GET',
+    //                 url: "{{url('/scanebuku')}}",
+    //                 processData: false,
+    //                 contentType: false,
+    //                 cache: false,
+    //                 data: 'kodebuku='+kodebuku,
+    //                 dataType: 'JSON',
+    //                 success: function(data) {
+    //                     datas = JSON.stringify(data);
+    //                     $('#idbuku').val(data.id); 
+    //                     $('#kodebuku').val(data.kodebuku); 
+    //                     $('#name').val(data.namabuku);
+    //                     $('#quantity').val(1);
                          
-                    console.log(data) 
-                    addscane(data)
-                    },error: function(data){
-                        alert('nisn yang anda masukan salah');
-                    } 
+    //                 console.log(data) 
+    //                 addscane(data)
+    //                 },error: function(data){
+    //                     alert('nisn yang anda masukan salah');
+    //                 } 
                     
-                });    
+    //             });     
                     
-            }
+    //         }
 
-            function addscane(data){
-            $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    method: 'POST',
-                    url: "{{url('/cartpost2')}}",
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    data: data,
-                    dataType: 'JSON',
-                    success: function(e){
-                        console.log(e)
-                        getCartList()
-                        // $('#Bukuid').hide()
-                    }
-                })
-        }
+        //     function addscane(data){
+        //     $.ajax({
+        //             headers: {
+        //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //             },
+        //             method: 'POST',
+        //             url: "{{url('/cartpost2')}}",
+        //             processData: false,
+        //             contentType: false,
+        //             cache: false,
+        //             data: data,
+        //             dataType: 'JSON',
+        //             success: function(e){
+        //                 console.log(e)
+        //                 // $('#Bukuid').hide()
+        //             }
+        //         })
+        // }
 
             function getCartList() {
                 $.ajax({

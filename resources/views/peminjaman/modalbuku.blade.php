@@ -8,26 +8,33 @@
                     <h5 class="text-center">Daftar Buku</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <br>
+                <div class="container" style="display: flex;">
+                    <div class="from-control " style="margin-left: auto;">
+                        <i class="fa-solid fa fa-search btn btn-info"></i>
+                        <input type="search" name="cari" id="cari" placeholder="Scan Kode">
+                    </div>
+                </div>    
                 <div class="modal-body fileSelection1">
                     <div class="table-responsive">
-                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <table id="" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <th>No</th>
                                 <th>Judul Buku </th>
                                 <th>Kategori Buku</th>
                                 <th>Kode Buku</th>
-                                <th>Penulis</th>
+                                {{-- <th>Penulis</th> --}}
                                 <th>Penerbit</th>
                                 <th>Tahun Terbit</th>
-                                <th>Halaman</th>
+                                {{-- <th>Halaman</th> --}}
                                 <th>Jumlah</th>
-                                <th>Lokasi</th>
+                                {{-- <th>Lokasi</th> --}}
                                 <th>Deskripsi</th>
                                 {{-- <th>Dipinjam</th> --}}
                                 <th>Foto</th>
                                 <th>Aksi</th>
                             </thead>
-                            <tbody>
+                            <tbody class="data">
                                 @php
                                     $no = 1;
                                 @endphp
@@ -37,15 +44,15 @@
                                         <td>{{ $row->namabuku }}</td>
                                         <td>{{ $row->idkategori->kategori }}</td>
                                         <td>{{ $row->kodebuku }}</td>
-                                        <td>{{ $row->penulis }}</td>
+                                        {{-- <td>{{ $row->penulis }}</td> --}}
                                         <td>{{ $row->penerbit }}</td>
                                         <td>{{ $row->tahunterbit }}</td>
-                                        <td>{{ $row->halbuku }}</td>
+                                        {{-- <td>{{ $row->halbuku }}</td> --}}
                                         <td>{{ $row->jumlah }}</td>
-                                        <td>{{ $row->lokasibuku }}</td>
+                                        {{-- <td>{{ $row->lokasibuku }}</td> --}}
                                         <td>{{ $row->deskripsi }}</td>
                                         <td> <img src="{{ asset('fotobuku/' . $row->foto) }}" alt=""
-                                                style="width: 70px; height: 70px">
+                                                style="width: 50px; height: 50px">
                                         </td>
 
                                         <td style="width:17%">
@@ -65,6 +72,9 @@
                                     @endforeach
 
                             </tbody>
+
+                            <tbody id="conten" class="caridata"></tbody>
+
                         </table>
 
                     </div>
@@ -76,3 +86,48 @@
             </div>
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        $('#cari').on('keyup', function(){
+            $value = $(this).val();
+
+            if($value){
+                $('.data').hide();
+                $('.caridata').show();
+            } else{
+                $('.data').show();
+                $('.caridata').hide();
+            }
+             $.ajax({
+
+                type: 'GET',
+                url: '{{URL::to('cari')}}',
+                data: {'cari': $value},
+                success: function(data){
+                    console.log(data);
+                    $('#conten').html(data);
+                }
+             });
+        });
+
+    </script>
+    <script>
+        $(document).ready(function(){
+               $('#cari').val("").focus();
+               $('#cari').keyup(function(e){
+                 var tex = $(this).val();
+                 console.log(tex);
+                 if(tex !=="" && e.keyCode===13){
+                 
+                 $('#cari').focus();
+                 }
+                 e.preventDefault();
+               });
+               $('#pilihBuku').click(function(){
+                 $('#cari').val("").focus();
+               });
+            });
+    </script>
