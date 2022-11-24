@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Daftarbuku;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -9,17 +10,32 @@ class CartController extends Controller
     public function cartpost(Request $request)
     {
         \Cart::add([
-            'id' => $request->idbuku,
-            'name' => $request->name,
+            'id' => $request->id,
+            'name' => $request->namabuku,
             'price' => 1000,
             'quantity' => 1,
             'attributes' => array(
             'kodebuku' => $request->kodebuku,
           )
         ]);
-        // session()->flash('success', 'Product is Added to Cart Successfully !');
 
-        // return redirect()->back() ;
+        return response()->json('berhasil');
+    }
+    public function cartpost2()
+    {
+        $id = Daftarbuku::where('detailbukus.id');
+        $Product = Daftarbuku::find($id); 
+        \Cart::add([
+            'id' => $Product,
+            'name' => $Product->namabuku,
+            'price' => 1000,
+            'quantity' => 1,
+            'attributes' => array(
+            'kodebuku' => $Product->kodebuku,
+          )
+        ]);
+
+        dd($Product);
         return response()->json('berhasil');
     }
     public function cartList()

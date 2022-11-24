@@ -44,7 +44,6 @@
                                         <td>{{ $row->jumlah }}</td>
                                         <td>{{ $row->lokasibuku }}</td>
                                         <td>{{ $row->deskripsi }}</td>
-                                        {{-- <td>{{ $row->dipinjam }} Kali</td> --}}
                                         <td> <img src="{{ asset('fotobuku/' . $row->foto) }}" alt=""
                                                 style="width: 70px; height: 70px">
                                         </td>
