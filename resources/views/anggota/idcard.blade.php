@@ -8,7 +8,7 @@
     <title>ID Card</title>
 <!-- So lets start -->
 <style>
-    *{
+   *{
     margin: 00px;
     padding: 00px;
     box-sizing: content-box;
@@ -23,11 +23,12 @@
     background-color: #e6ebe0;
     flex-direction: row;
     flex-flow: wrap;
+    margin-bottom: 22px;
 
 }
 
 .font{
-    height: 375px;
+    height: 370px;
     width: 250px;
     position: relative;
     border-radius: 10px;
@@ -94,7 +95,7 @@
 
 .back
 {
-    height: 375px;
+    height: 370px;
     width: 250px;
     border-radius: 10px;
     background-color: #8338ec;
@@ -173,23 +174,23 @@
                 </div>
                 <div class="bottom">
                     <p>{{ $row->nama }}</p>
-                    <p class="desi">{{ $row->jenis_kelamin }}</p>
+                    <p class="desi">{{ $row->kelas }}</p>
+                    <p class="desi">NISN : {{ $row->nisn }}</p>
                     <div class="barcode">
-                    {!! QrCode::size(65)->generate($row->nisn) !!}
+                     <img src="data:image/svg;base64, {!! base64_encode(QrCode::format('svg')->size(100)->generate($row->nisn)) !!} ">
+                    <!-- {!! QrCode::size(65)->generate($row->nisn) !!} -->
                     </div>
                     <br>
-                    @if ($no++ % 3 == 0)
-                    </div><div>
-                   @endif
+
                 </div>
             </div>
         </div>
-        <div class="back">
+        <div class="back" style="margin-top: 360px;">
             <h1 class="Details">information</h1>
             <hr class="hr">
             <div class="details-info">
-                <p><b>Kelas : </b></p>
-                <p>{{ $row->kelas }}</p>
+                <p><b>Jenis Kelamin : </b></p>
+                <p>{{ $row->jenis_kelamin }}</p>
                 <p><b>Alamat: </b></p>
                 <p>{{ $row->alamat }}</p>
                 <p><b>Tanggal Lahir:</b></p>
@@ -198,12 +199,6 @@
                 <div class="logo">
                     <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($row->nisn, 'C39') }}" alt="{{ $row->nisn }}">
                 </div>
-
-                
-                <hr>
-                 @if ($no++ % 3 == 0)
-                 </div><div>
-                @endif
             </div>
         </div>
     </div>

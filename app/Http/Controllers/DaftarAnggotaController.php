@@ -12,6 +12,7 @@ use App\Models\DaftarAnggota;
 use Illuminate\Support\Facades\DB;
 use App\Imports\DaftarAnggotaImport;
 use Maatwebsite\Excel\Facades\Excel;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 // use App\Http\Controllers\DaftarAnggotaController;
 
 class DaftarAnggotaController extends Controller
@@ -126,13 +127,14 @@ class DaftarAnggotaController extends Controller
     }
     
     public function cetakidcard(Request $request){
+      
         $dataanggota = array();
         foreach ($request->id as $id) {
             $anggota = DaftarAnggota::find($id);
             $dataanggota[] = $anggota;
         }
         $no  = 1;
-        $pdf = PDF::loadView('anggota.idcard', compact('dataanggota','no'));
+        $pdf = PDF::loadView('anggota.idcard', compact('dataanggota','no',));
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('idcard.pdf');
 
