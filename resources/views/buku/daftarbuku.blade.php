@@ -40,7 +40,7 @@
                                     class="btn btn-outline-info btn-sm mb-2"></i>Tambah
                                     Buku</a>
                                     <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"
-                                        class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak
+                                        class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-qrbarcode"></i> Cetak
                                         Barcode</button>
                                 @endif
 
@@ -81,7 +81,7 @@
                                                     @foreach ($datah as $row)
                                                         <tr>
                                                             <td><input type="checkbox" id="example" name="id[]"
-                                                                    value="{{ $row->id }}">
+                                                             value="{{ $row->id }}">
                                                             </td>
                                                             <td>{{ $no++ }}</td>
                                                             <td>{{ $row->kodebuku }}</td>

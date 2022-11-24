@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-// use \PDF;
-use  Barryvdh\DomPDF\PDF;
+use \PDF;
 use App\Models\Detailbuku;
 use App\Models\Bukukembali;
 use Illuminate\Support\Str;
@@ -13,6 +12,7 @@ use App\Models\DaftarAnggota;
 use Illuminate\Support\Facades\DB;
 use App\Imports\DaftarAnggotaImport;
 use Maatwebsite\Excel\Facades\Excel;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 // use App\Http\Controllers\DaftarAnggotaController;
 
 class DaftarAnggotaController extends Controller
@@ -25,10 +25,6 @@ class DaftarAnggotaController extends Controller
 
     public function tambahanggota(){
         return view('anggota.tambahanggota');
-    }
-    public function idcard ($id){
-        $data = DaftarAnggota::findOrFail($id);
-        return view('anggota.idcard', compact('data'));
     }
 
     public function detail($id){
@@ -131,16 +127,17 @@ class DaftarAnggotaController extends Controller
     }
     
     public function cetakidcard(Request $request){
+      
         $dataanggota = array();
         foreach ($request->id as $id) {
             $anggota = DaftarAnggota::find($id);
             $dataanggota[] = $anggota;
         }
-        
-        // return $databuku;
-        $pdf = PDF::loadView('anggota.idcard', compact('anggota'));
+        $no  = 1;
+        $pdf = PDF::loadView('anggota.idcard', compact('dataanggota','no',));
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('idcard.pdf');
+
     }
     public function importexcel(Request $request) 
     {

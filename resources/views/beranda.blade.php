@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+@include('template.head')
+
 <body>
-    @include('template.head')
     <!-- wrapper -->
     <div class="wrapper">
         @include('template.sidebar')
@@ -359,7 +360,7 @@
                         text: 'Laporan Denda PerBulan',
                         align: 'center',
                         style: {
-                            fontSize: "20px",
+                            fontSize: "16px",
                             color: '#666'
                         }
                     },
@@ -386,9 +387,9 @@
                     },
                     colors: ["#673ab7"],
                     yaxis: {
-                        // title: {
-                        //     text: 'Engagement',
-                        // },
+                        title: {
+                            text: 'Engagement',
+                        },
                     }
                 };
 
@@ -416,22 +417,22 @@
                                 for (let i = 0; i < data.length; i++) {
                                     html +=
                                         '<tr>\<td>' + (i + 1) + '</td>\
-                                                              <td>' + data[i]['namabuku'] + '</td>\
-                                                              <td>' + data[i]['kategori'] + '</td>\
-                                                              <td>' + data[i]['tahunterbit'] + '</td>\
-                                                              <td>' + data[i]['dipinjam'] +
+                                                                      <td>' + data[i]['namabuku'] + '</td>\
+                                                                      <td>' + data[i]['kategori'] + '</td>\
+                                                                      <td>' + data[i]['tahunterbit'] + '</td>\
+                                                                      <td>' + data[i]['dipinjam'] +
                                         '</td>\
-                                                              <td><img style="width: 70px; height: 70px" src="http://127.0.0.1:8000/fotobuku/' +
+                                                                      <td><img style="width: 70px; height: 70px" src="http://127.0.0.1:8000/fotobuku/' +
                                         data[i]
                                         ['foto'] +
                                         '"/ ></td>\
-                                                         </tr>';
+                                                                 </tr>';
                                 }
                             } else {
                                 html +=
                                     '<tr>\
-                                                        <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
-                                                     </tr>';
+                                                                <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
+                                                             </tr>';
                             }
 
                             $('#tbodys').html(html);

@@ -43,7 +43,9 @@
                                 </a>    
                                 @endif
 
-                                {{-- <button onclick="cetakidcard('{{ route('cetakidcard') }}')"  class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak ID Card</button> --}}
+                                  <!--  <button onclick="cetakbarcode('{{ route('cetakidcard') }}')"
+                                        class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak
+                                        ID Card</button> -->
                                 <div class="row">
                                     <div class="table-responsive">
                                         <form action="" method="POST" class="from-buku">
@@ -52,9 +54,9 @@
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                        {{-- <th>
-                                                            <input type="checkbox" name="select_all" id="select_all">
-                                                        </th> --}}
+                                                   <!--  <th>
+                                                        <input type="checkbox" name="select_all" id="select_all">
+                                                    </th> -->
                                                         <th>No.</th>
                                                         <th>Foto</th>
                                                         <th>Nisn</th>
@@ -73,8 +75,8 @@
                                                 <tbody>
                                                     @foreach ($data as $row)
                                                         <tr>
-                                                            {{-- <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
-                                                            </td> --}}
+                                                           <!--  <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
+                                                            </td> -->
                                                             <td scope="row">{{ $no++ }}</td>
                                                             <td><img src="{{ asset('fotobuku/' . $row->foto) }}"
                                                                     alt="" style="width: 70px; height: 70px">
@@ -138,6 +140,21 @@
                     @if (Session::has('error'))
                         toastr.error("{{ Session::get('error') }}")
                     @endif
+
+                    function cetakbarcode(url) {
+                        if ($('input:checked').length < 1) {
+                            swal({
+                                icon: "warning",
+                                text: "Harap Pilih Buku"
+                            });
+                            return;
+                        } else {
+                            $('.from-buku')
+                                .attr('action', url)
+                                .attr('target', '_blank')
+                                .submit();
+                        }
+                    }
 
                     $('.delete').click(function() {
                         var mahasiswaid = $(this).attr('data-id');

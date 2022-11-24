@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laporan Peminjaman PDF</title>
+    <title>Laporan Peminjaman </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -12,7 +12,7 @@
         }
     </style>
     <center>
-        <h5> Laporan Pengembalias PDF </h4>
+        <h5> Laporan Pengembalian </h4>
     </center>
  
      <table id="example" class="table table-striped table-bordered"

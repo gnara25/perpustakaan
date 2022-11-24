@@ -8,7 +8,7 @@
     <title>ID Card</title>
 <!-- So lets start -->
 <style>
-    *{
+   *{
     margin: 00px;
     padding: 00px;
     box-sizing: content-box;
@@ -23,11 +23,12 @@
     background-color: #e6ebe0;
     flex-direction: row;
     flex-flow: wrap;
+    margin-bottom: 22px;
 
 }
 
 .font{
-    height: 375px;
+    height: 370px;
     width: 250px;
     position: relative;
     border-radius: 10px;
@@ -94,7 +95,7 @@
 
 .back
 {
-    height: 375px;
+    height: 370px;
     width: 250px;
     border-radius: 10px;
     background-color: #8338ec;
@@ -163,49 +164,46 @@
 </style>
 </head>
 <body>
-    @foreach ( $data as $data )
+    @foreach ( $dataanggota as $row )
         
     <div class="container">
         <div class="padding">
             <div class="font">
                 <div class="top">
-                    <img src="images/download.png">
+                    <img src="fotobuku/{{$row->foto}}">
                 </div>
                 <div class="bottom">
-                    <p>Zadafiya Brothers</p>
-                    <p class="desi">UX/UI Designer</p>
+                    <p>{{ $row->nama }}</p>
+                    <p class="desi">{{ $row->kelas }}</p>
+                    <p class="desi">NISN : {{ $row->nisn }}</p>
                     <div class="barcode">
-                        <img src="images/qr sample.png" 
-                        alt="" >
+                     <img src="data:image/svg;base64, {!! base64_encode(QrCode::format('svg')->size(100)->generate($row->nisn)) !!} ">
+                    <!-- {!! QrCode::size(65)->generate($row->nisn) !!} -->
                     </div>
                     <br>
-                    <p class="no">+91 8980849796</p>
-                    <p class="no">part-1,89 harinadad d...sdv..sdf..sfd..sd.</p>
+
                 </div>
             </div>
         </div>
-        <div class="back">
+        <div class="back" style="margin-top: 360px;">
             <h1 class="Details">information</h1>
             <hr class="hr">
             <div class="details-info">
-                <p><b>Email : </b></p>
-                <p>Planicsdevloper@gmail.com</p>
-                <p><b>Mobile No: </b></p>
-                <p>8460304196</p>
-                <p><b>Office Address:</b></p>
-                <p>part-1,89 harinadad d...sdv..sdf..sfd..sd.road,india</p>
+                <p><b>Jenis Kelamin : </b></p>
+                <p>{{ $row->jenis_kelamin }}</p>
+                <p><b>Alamat: </b></p>
+                <p>{{ $row->alamat }}</p>
+                <p><b>Tanggal Lahir:</b></p>
+                <p>{{ Carbon\Carbon::parse($row->tgl_lahir)->format('d-m-Y') }}</p>
                 </div>
                 <div class="logo">
-                    <img src="images/barcode.PNG">
+                    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($row->nisn, 'C39') }}" alt="{{ $row->nisn }}">
                 </div>
-
-                
-                <hr>
             </div>
         </div>
     </div>
 
-    
     @endforeach
+
 </body>
 </html>
