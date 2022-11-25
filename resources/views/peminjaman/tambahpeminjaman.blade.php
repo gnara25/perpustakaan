@@ -53,7 +53,7 @@
                                             <input type="number" id="nisn" 
                                             onkeyup="complate()"
                                                 class="form-control" value="" 
-                                                name="nisn">
+                                                name="nisn" min="1">
                                             <input type="hidden" id="idsiswa" 
                                                 class="form-control" value="" 
                                                 name="id" >     
@@ -123,8 +123,8 @@
                                             <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label>
                                             <div class="col-sm-8">
                                                 <div class="input-group has-validation">
-                                                    <input type="text" id="kdbuku"
-                                                        class="form-control @error('transaksi') is-invalid @enderror" value="" 
+                                                    <input  id="kdbuku"
+                                                        class="form-control "
                                                          placeholder="Pilih Buku">
                                                     <span class="input-group-btn">
                                                         <a data-bs-toggle="modal"
