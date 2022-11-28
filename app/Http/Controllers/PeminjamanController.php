@@ -67,7 +67,8 @@ class PeminjamanController extends Controller
         $anggota = DaftarAnggota::all();
 
         $cartcount = \cart::getContent()->count();
-        // dd($cartcount);
+        
+        // dd($cartprice);
         $bukuid= Daftarbuku::all();
         $q = \Illuminate\Support\Facades\DB::table('peminjamen')->select(\Illuminate\Support\Facades\DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
         $kd="";

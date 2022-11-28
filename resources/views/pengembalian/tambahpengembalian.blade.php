@@ -120,6 +120,19 @@ is-invalid
                                             </tbody>
                                         </table>
                                     </div>
+                                  <!--   <div class="form-group row mb-3">
+                                        <label for="tgl_lahir" class="col-sm-4 col-form-label">Total Denda;
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" value="{{$total}}"
+                                                class="form-control text-center"
+                                                id="price" name="price">
+                                            @error('price')
+                                                <div class="invalid-feedback">{{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>      -->
 
                                     <center>
                                         <div class="mb-4 mt-4">

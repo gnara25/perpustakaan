@@ -52,7 +52,7 @@ class PengembalianController extends Controller
         ->where('peminjamen.id', $id)
         ->get();
         
-        return view('pengembalian.tambahpengembalian', compact('data','buku','pengembalin'))->with('detail',$detail);;
+        return view('pengembalian.tambahpengembalian', compact('data','buku','pengembalin','total'))->with('detail',$detail);;
     }
 
     public function pilihan(Request $request)

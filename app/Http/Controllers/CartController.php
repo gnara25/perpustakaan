@@ -45,9 +45,13 @@ class CartController extends Controller
         $cartItems = \Cart::getContent();
         foreach($cartItems as $cart){
             array_push($array, $cart);
+            $price = $cart->getSubTotal();
         }
         // dd(json_encode($array));
-        return response()->json(['data' => $array]);
+        return response()->json([
+            'data' => $array,
+            'price' => $price,
+    ]);
     }
 
     public function remove($id)
