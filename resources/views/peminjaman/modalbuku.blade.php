@@ -14,7 +14,7 @@
                         <i class="fa-solid fa fa-search btn btn-info"></i>
                         <input type="search" name="cari" id="cari" placeholder="Scan Kode">
                     </div>
-                </div>    
+                </div>
                 <div class="modal-body fileSelection1">
                     <div class="table-responsive">
                         <table id="" class="table table-striped table-bordered" style="width:100%">
@@ -23,54 +23,42 @@
                                 <th>Judul Buku </th>
                                 <th>Kategori Buku</th>
                                 <th>Kode Buku</th>
-                                {{-- <th>Penulis</th> --}}
                                 <th>Penerbit</th>
                                 <th>Tahun Terbit</th>
-                                {{-- <th>Halaman</th> --}}
                                 <th>Jumlah</th>
-                                {{-- <th>Lokasi</th> --}}
                                 <th>Deskripsi</th>
-                                {{-- <th>Dipinjam</th> --}}
                                 <th>Foto</th>
                                 <th>Aksi</th>
                             </thead>
                             <tbody class="data">
-                                @php
-                                    $no = 1;
-                                @endphp
                                 @foreach ($bukuid as $row)
                                     <tr>
-                                        <td>{{ $no++ }}</td>
+                                        <td scope="row">{{ $loop->iteration }}</td>
                                         <td>{{ $row->namabuku }}</td>
                                         <td>{{ $row->idkategori->kategori }}</td>
                                         <td>{{ $row->kodebuku }}</td>
-                                        {{-- <td>{{ $row->penulis }}</td> --}}
                                         <td>{{ $row->penerbit }}</td>
                                         <td>{{ $row->tahunterbit }}</td>
-                                        {{-- <td>{{ $row->halbuku }}</td> --}}
                                         <td>{{ $row->jumlah }}</td>
-                                        {{-- <td>{{ $row->lokasibuku }}</td> --}}
                                         <td>{{ $row->deskripsi }}</td>
                                         <td> <img src="{{ asset('fotobuku/' . $row->foto) }}" alt=""
                                                 style="width: 50px; height: 50px">
                                         </td>
 
                                         <td style="width:17%">
-                                                <input type="hidden" value="{{ $row->id }}" name="id">
-                                                <input type="hidden" value="{{ $row->namabuku }}" name="namabuku">
-                                                <input type="hidden" value="{{ $row->kodebuku }}" name="kodebuku">
-                                                <input type="hidden" value="1" name="quantity">
+                                            {{-- <input type="hidden" value="{{ $row->id }}" name="id">
+                                            <input type="hidden" value="{{ $row->namabuku }}" name="namabuku">
+                                            <input type="hidden" value="{{ $row->kodebuku }}" name="kodebuku">
+                                            <input type="hidden" value="1" name="quantity"> --}}
 
-                                                <button class="btn btn-primary" id="Select_File2"
-                                                    onclick="tambah(this)"
-                                                    data-id="{{ $row->id }}" data-nama="{{ $row->namabuku }}" data-kode="{{ $row->kodebuku }}" data-bs-dismiss="modal">
-                                                    <i class="fa fa-check"> </i> Pilih
-                                                </button>
+                                            <button class="btn btn-primary" id="Select_File2" onclick="tambah(this)"
+                                                data-id="{{ $row->id }}" data-nama="{{ $row->namabuku }}"
+                                                data-kode="{{ $row->kodebuku }}" data-bs-dismiss="modal">
+                                                <i class="fa fa-check"> </i> Pilih
+                                            </button>
                                         </td>
-
                                     </tr>
-                                    @endforeach
-
+                                @endforeach
                             </tbody>
 
                             <tbody id="conten" class="caridata"></tbody>
@@ -87,47 +75,47 @@
         </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+z    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <script type="text/javascript">
-
-        $('#cari').on('keyup', function(){
+        $('#cari').on('keyup', function() {
             $value = $(this).val();
 
-            if($value){
+            if ($value) {
                 $('.data').hide();
                 $('.caridata').show();
-            } else{
+            } else {
                 $('.data').show();
                 $('.caridata').hide();
             }
-             $.ajax({
+            $.ajax({
 
                 type: 'GET',
-                url: '{{URL::to('cari')}}',
-                data: {'cari': $value},
-                success: function(data){
+                url: '{{ URL::to('cari') }}',
+                data: {
+                    'cari': $value
+                },
+                success: function(data) {
                     console.log(data);
                     $('#conten').html(data);
                 }
-             });
+            });
         });
-
     </script>
     <script>
-        $(document).ready(function(){
-               $('#cari').val("").focus();
-               $('#cari').keyup(function(e){
-                 var tex = $(this).val();
-                 console.log(tex);
-                 if(tex !=="" && e.keyCode===13){
-                 
-                 $('#cari').focus();
-                 }
-                 e.preventDefault();
-               });
-               $('#pilihBuku').click(function(){
-                 $('#cari').val("").focus();
-               });
+        $(document).ready(function() {
+            $('#cari').val("").focus();
+            $('#cari').keyup(function(e) {
+                var tex = $(this).val();
+                console.log(tex);
+                if (tex !== "" && e.keyCode === 13) {
+
+                    $('#cari').focus();
+                }
+                e.preventDefault();
             });
+            $('#pilihBuku').click(function() {
+                $('#cari').val("").focus();
+            });
+        });
     </script>

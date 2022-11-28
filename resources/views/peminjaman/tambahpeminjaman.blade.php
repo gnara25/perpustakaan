@@ -50,13 +50,10 @@
                                     <div class="form-group row">
                                         <div class="col-md-4">
                                             <label for="nisn" class="col-sm-4 col-form-label">Nisn :</label>
-                                            <input type="number" id="nisn" 
-                                            onkeyup="complate()"
-                                                class="form-control" value="" 
-                                                name="nisn" min="1">
-                                            <input type="hidden" id="idsiswa" 
-                                                class="form-control" value="" 
-                                                name="id" >     
+                                            <input type="number" id="nisn" onkeyup="complate()"
+                                                class="form-control" value="" name="nisn" min="1">
+                                                <input type="hidden" id="idsiswa" class="form-control" value=""
+                                                name="idsiswa" required>
                                             @error('nisn')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -66,7 +63,7 @@
                                             <input type="text"
                                                 class="form-control @error('nama') is-invalid @enderror" id="nama"
                                                 name="nama" readonly>
-                                            
+
                                             @error('nama')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -119,46 +116,50 @@
                                         </div>
                                     </div> --}}
 
+
                                     <div class="form-group row mb-3">
-                                            <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label>
-                                            <div class="col-sm-8">
-                                                <div class="input-group has-validation">
-                                                    <input  id="kdbuku"
-                                                        class="form-control "
-                                                         placeholder="Pilih Buku">
-                                                    <span class="input-group-btn">
-                                                        <a data-bs-toggle="modal"
-                                                            data-bs-target="#Bukuid"
-                                                            class="btn btn-primary">
-                                                            <i class="fa-solid fa fa-search"></i>
-                                                        </a>
-                                                    </span>\
-                                                    {{-- <div class="form-control @error('kodebuku') is-invalid @enderror"
-                                                        name="kodebuku"  id="kodebuku">
-                                                       <option value="">Pilih Buku Yang Ingin Dipinjam</option>
-                                                    </div> --}}
-                                                </div>
+                                        <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group has-validation">
+                                                <input type="text" onchange="scane()" id="kdbuku" name="kodebuku"
+                                                    class="form-control @error('transaksi') is-invalid @enderror"
+                                                    value="" placeholder="Scane Kode Buku">
+                                                <span class="input-group-btn">
+                                                    <input type="hidden" value="" name="id" id="idbuku">
+                                                    <input type="hidden" value="" name="kodebuku" id="kodebuku">
+                                                    <input type="hidden" value="" name="namabuku"
+                                                        id="name">
+
+                                                    <a onclick="tambah(this)" data-id="" data-nama=""
+                                                        data-kode="" id="button1" class="btn btn-primary">
+                                                        <i class="fa-solid fa fa-search"></i>
+                                                    </a>
+                                                </span>
+                                                {{-- <span class="input-group-btn">
+                                                    <a data-bs-toggle="modal" data-bs-target="#Bukuid"
+                                                        class="btn btn-primary">
+                                                        <i class="fa-solid fa fa-search"></i>
+                                                    </a>
+                                                </span> --}}
                                             </div>
                                         </div>
-                                            <div>
-                                                <table  class="table table-striped table-bordered"
-                                                style="width:100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No.</th>
-                                                        <th>Judul Buku</th>
-                                                        <th>Kode Buku</th>
-                                                        <th>Jumlah</th>
-                                                        <th>Aksi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="tbody-cart">
+                                    </div>
+                                    <div>
+                                        <table class="table table-striped table-bordered" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Judul Buku</th>
+                                                    <th>Kode Buku</th>
+                                                    <th>Jumlah</th>
+                                                    <th>Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tbody-cart">
 
-                                                </tbody>
-                                                </table>
-                                            </div>
-
-
+                                            </tbody>
+                                        </table>
+                                    </div>
                             </div>
                             <center>
                                 <div class="mb-4 mt-4">
@@ -202,74 +203,98 @@
     @include('template.script')
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
             $('#nisn').val("").focus();
-            $('#nisn').keyup(function(e){
-              var tex = $(this).val();
-              console.log(tex);
-              if(tex !=="" && e.keyCode===13){
-              
-              $('#nisn').focus();
-              }
-              e.preventDefault();
+            $('#nisn').keyup(function(e) {
+                var tex = $(this).val();
+                console.log(tex);
+                if (tex !== "" && e.keyCode === 13) {
+
+                    $('#nisn').focus();
+                }
+                e.preventDefault();
             });
-            $('#pilihBuku').click(function(){
-              $('#nisn').val("").focus();
+            $('#pilihBuku').click(function() {
+                $('#nisn').val("").focus();
             });
-         });
+        });
 
 
-    function complate(){
-             var nisn = $("#nisn").val();
-             $.ajax({
-                 method: 'GET',
-                 url: '/autoscane',
-                 processData: false,
-                 contentType: false,
-                 cache: false,
-                 data: 'nisn='+nisn,
-                 dataType: 'JSON',
-                 success: function(data) {
-                     datas = JSON.stringify(data);
-                     $('#idsiswa').val(data.id); 
-                     $('#nama').val(data.nama); 
-                     $('#kelas').val(data.kelas); 
-                 console.log(data.id);  
-                 },error: function(data){
-                     alert('nisn yang anda masukan salah');
-                 } 
-             });    
-                 
-             
-         }
-     </script>
+        function complate() {
+            var nisn = $("#nisn").val();
+            $.ajax({
+                method: 'GET',
+                url: '/autoscane',
+                processData: false,
+                contentType: false,
+                cache: false,
+                data: 'nisn=' + nisn,
+                dataType: 'JSON',
+                success: function(data) {
+                    datas = JSON.stringify(data);
+                    $('#idsiswa').val(data.id);
+                    $('#nama').val(data.nama);
+                    $('#kelas').val(data.kelas);
+                    console.log(data.id);
+                },
+                error: function(data) {
+                    alert('nisn yang anda masukan salah');
+                }
+            });
 
-    <script type="text/javascript">
-        @if (Session::has('error'))
-            toastr.error("{{ Session::get('error') }}")
-        @endif
+
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#kdbuku').val("").focus();
+            $('#kdbuku').keyup(function(e) {
+                var tex = $(this).val();
+                //  console.log(tex);
+                if (tex !== "" && e.keyCode === 13) {
+
+                    $('#kdbuku').focus();
+                }
+                e.preventDefault();
+            });
+            $('#pilihBuku').click(function() {
+                $('#kdbuku').val("").focus();
+            });
+        });
+
+        function scane() {
+            var kodebuku = $("#kdbuku").val();
+            $.ajax({
+                method: 'GET',
+                url: "{{ url('/scanebuku') }}",
+                processData: false,
+                contentType: false,
+                cache: false,
+                data: 'kodebuku=' + kodebuku,
+                dataType: 'JSON',
+                success: function(data) {
+                    datas = JSON.stringify(data);
+                    // console.log(data) 
+
+                },
+                error: function(data) {
+                    alert('nisn yang anda masukan salah');
+                }
+
+            });
+
+        }
 
         getCartList()
 
-
-        const selection = document.getElementById('nama');
-        selection.onchange = function(e) {
-            const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
-            document.getElementById('kelas').value = kelas;
-        }
-
-
-        getCartList()
-
-        function tambah(e) {
-            console.log(e.getAttribute('data-id'))
-            const fd = new FormData();
-            fd.append('id', e.getAttribute('data-id'))
-            fd.append('namabuku', e.getAttribute('data-nama'))
-            fd.append('kodebuku', e.getAttribute('data-kode'))
-            fd.append('quantity', e.getAttribute('1'))
-            addPeminjaman(fd)
-        }
+        function tambah(e){
+                var kodebuku = $("#kdbuku").val();
+                console.log(kodebuku);
+                const fd = new FormData();
+                 fd.append('id', kodebuku)
+                addPeminjaman(fd)
+            }
 
         function addPeminjaman(fd) {
             $.ajax({
@@ -308,21 +333,21 @@
 
                     e.data.map(val => {
                         html += `<table>
-                                <tbody>
-                                                
-                                    <tr id="tr-cart">
-                                        <td scope="row">${no++}</td>
-                                        <td>${val.name}</td>
-                                        <td>${val.attributes.kodebuku}</td>
-                                        <td>${val.quantity}</td>
-                                        <td class="hidden text-right md:table-cell">
-                                        <a class="btn btn-danger remove" onclick="remove(this)"
-                                         data-id="${val.id}" > X</a>
-            
-                                        </td>
-                                    </tr>
-                                     </tbody>
-                                </table>   `
+                        <tbody>
+                                        
+                            <tr id="tr-cart">
+                                <td scope="row">${no++}</td>
+                                <td>${val.name}</td>
+                                <td>${val.attributes.kodebuku}</td>
+                                <td>${val.quantity} buku</td>
+                                <td class="hidden text-right md:table-cell">
+                                <a class="btn btn-danger remove" onclick="remove(this)"
+                                 data-id="${val.id}" > X</a>
+    
+                                </td>
+                            </tr>
+                             </tbody>
+                        </table>   `
                     })
                     $('#tbody-cart').html(html)
                 }
@@ -343,7 +368,20 @@
                 }
             });
         }
+    </script>
 
+    <script type="text/javascript">
+        @if (Session::has('error'))
+            toastr.error("{{ Session::get('error') }}")
+        @endif
+
+        getCartList()
+
+        const selection = document.getElementById('nama');
+        selection.onchange = function(e) {
+            const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
+            document.getElementById('kelas').value = kelas;
+        }
 
         $(document).ready(function() {
             //Default data table

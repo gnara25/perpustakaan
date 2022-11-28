@@ -51,6 +51,8 @@
                                         
                                         $selisih = $jd1 - $jd2;
                                         $denda = $selisih * $u_denda;
+                                        $jumlah = $buku->jumlah;
+                                         $dendas = $jumlah * $denda;
                                         ?>
                                         <tr>
                                             <td>{{ $no++ }}</td>
@@ -64,7 +66,7 @@
                                                 <?php } elseif ($selisih > 0) { ?>
                                                 <span class="label label-danger">
                                                     Rp.
-                                                    <?= $denda ?>
+                                                    <?= $dendas  ?>
                                                 </span>
                                                 <br> Terlambat :
                                                 <?= $selisih ?>
@@ -81,7 +83,7 @@
                                                 <?php if ($selisih <= 0) { ?>
                                                 <input type="hidden" value="0" name="price">
                                                 <?php } elseif ($selisih > 0) { ?>
-                                                <input type="hidden" value="{{ $denda }}" name="price">
+                                                <input type="hidden" value="{{ $dendas }}" name="price">
                                                 <?php } ?>
 
                                                 <?php if ($selisih <= 0) { ?>
@@ -106,7 +108,7 @@
                                                      data-id1="{{ $buku->id_buku }}"
                                                     data-namabu="{{ $buku->namabuku }}"
                                                     data-kodebu="{{ $buku->kodebuku }}"
-                                                    data-jumlah="{{ $buku->jumlah }}" data-price="{{ $denda }}"
+                                                    data-jumlah="{{ $buku->jumlah }}" data-price="{{ $dendas }}"
                                                     data-bs-dismiss="modal" class="btn btn-secondary"></i>
                                                     Pilih</button>
 

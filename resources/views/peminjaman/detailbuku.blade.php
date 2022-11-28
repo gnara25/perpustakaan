@@ -74,12 +74,14 @@
                                                             
                                                             $selisih = $jd1 - $jd2;
                                                             $denda = $selisih * $u_denda;
+                                                            $jumlah = $row->jumlah;
+                                                            $dendas = $jumlah * $denda;
                                                             ?>
                                                     <tr>
                                                         <td scope="row">{{ $loop->iteration }}</td>
                                                         <td>{{$row->namabuku}}</td>
                                                         <td>{{$row->kodebuku}}</td>
-                                                        <td>{{$row->jumlah}}</td>
+                                                        <td>{{$row->jumlah}} Buku</td>
                                                         <td>
                                                             <?php if ($selisih <= 0) { ?>
                                                             <span class="label label-primary">Masa
@@ -87,7 +89,7 @@
                                                             <?php } elseif ($selisih > 0) { ?>
                                                             <span class="label label-danger">
                                                                 Rp.
-                                                                <?= $denda ?>
+                                                                <?= $dendas ?>
                                                             </span>
                                                             <br> Terlambat :
                                                             <?= $selisih ?>

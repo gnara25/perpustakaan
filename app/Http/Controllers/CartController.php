@@ -11,13 +11,14 @@ class CartController extends Controller
 {
     public function cartpost(Request $request)
     {
+        $Product = Daftarbuku::where('kodebuku',$request->id)->first();
         Cart::add([
-            'id' => $request->id,
-            'name' => $request->namabuku,
+            'id' => $Product->id,
+            'name' => $Product->namabuku,
             'price' => 1000,
             'quantity' => 1,
             'attributes' => array(
-            'kodebuku' => $request->kodebuku,
+            'kodebuku' => $Product->kodebuku,
           )
         ]);
 

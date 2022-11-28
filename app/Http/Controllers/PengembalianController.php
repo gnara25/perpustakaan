@@ -45,7 +45,7 @@ class PengembalianController extends Controller
         \Cart::clear();
         $data = DaftarAnggota::all();
         $buku = Daftarbuku::all();
-        $total = \Cart::getSubTotal();
+        // $total = \Cart::getSubTotal();
         $pengembalin = Peminjaman::with('anggota','idbuku')->findOrFail($id);
         $detail = DB::table('peminjamen')
         ->join('detailbukus', 'detailbukus.id_transaksi', '=', 'peminjamen.id')

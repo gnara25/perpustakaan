@@ -65,6 +65,7 @@ class PeminjamanController extends Controller
     {
         \Cart::clear();
         $anggota = DaftarAnggota::all();
+        $bukuid = Daftarbuku::all();
 
         $cartcount = \cart::getContent()->count();
         // dd($cartcount);
@@ -123,7 +124,7 @@ class PeminjamanController extends Controller
             $databuku = Daftarbuku::find($cart->id);
             Detailbuku::create([
                 'id_buku' => $cart->id,
-                'id_siswa' => $request->id,
+                'id_siswa' => $request->idsiswa,
                 'id_transaksi' => $data,
                 'id_laporan' => $lapor,
                 'namabuku' => $cart->name,
@@ -145,30 +146,6 @@ class PeminjamanController extends Controller
         
         return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
     }
-
-    
-    // public function scanebuku(Request $request){
-    //     $data = Daftarbuku::all();
-    //     $scane = $data;
-    //     if($scane > 0){
-    //         Detailbuku::create([
-    //             'id_buku' => $data->id,
-    //             'id_siswa' => $request->nama,
-    //             'id_transaksi' => $data,
-    //             'id_laporan' => $request->lapor,
-    //             'namabuku' => $data->name,
-    //             'kodebuku' => $data->attributes->kodebuku,
-    //             'jumlah' => $data->quantity,
-    //             'denda' => $data->price,
-    //             'tglpengembalian' => $request->tanggalpengembalian,
-    //         ]);
-    //     } else {
-    //         return redirect()->route('tambahpeminjaman')->with('error', 'Data Tidak Ditemukan');
-    //     }
-
-    //     return response()->json(['data' => $scane]);
-
-    // }
 
     public function editpeminjaman($id){
 
