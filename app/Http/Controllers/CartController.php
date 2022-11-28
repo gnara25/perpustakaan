@@ -49,7 +49,9 @@ class CartController extends Controller
             array_push($array, $cart);
         }
         // dd(json_encode($array));
-        return response()->json(['data' => $array]);
+        return response()->json([
+            'data' => $array,
+    ]);
     }
 
     public function remove($id)

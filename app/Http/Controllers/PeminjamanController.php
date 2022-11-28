@@ -68,7 +68,8 @@ class PeminjamanController extends Controller
         $bukuid = Daftarbuku::all();
 
         $cartcount = \cart::getContent()->count();
-        // dd($cartcount);
+        
+        // dd($cartprice);
         $bukuid= Daftarbuku::all();
         $q = \Illuminate\Support\Facades\DB::table('peminjamen')->select(\Illuminate\Support\Facades\DB::raw('MAX(RIGHT(transaksi,5)) as kode'));
         $kd="";
@@ -131,6 +132,7 @@ class PeminjamanController extends Controller
                 'kodebuku' => $cart->attributes->kodebuku,
                 'jumlah' => $cart->quantity,
                 'denda' => $cart->price,
+                'status' => 'dipinjam',
                 'tglpengembalian' => $request->tanggalpengembalian,
             ]);
             $databuku->dipinjam += 1;

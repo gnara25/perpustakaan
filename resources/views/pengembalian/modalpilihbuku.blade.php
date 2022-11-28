@@ -29,6 +29,7 @@
                                 @endphp
                                 <tbody id="tbody-cart">
                                     @foreach ($detail as $buku)
+                                        @if ($buku->status == 'dipinjam')
                                         <?php
                                         
                                         $u_denda = 1000;
@@ -54,6 +55,7 @@
                                         $jumlah = $buku->jumlah;
                                          $dendas = $jumlah * $denda;
                                         ?>
+                                        
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $buku->namabuku }}</td>
@@ -116,6 +118,7 @@
                                             </td>
 
                                         </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </form>
