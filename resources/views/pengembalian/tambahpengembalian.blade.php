@@ -238,6 +238,7 @@ is-invalid
                                         <td> Rp. ${val.price}
                                             <input type="hidden" value="${val.price}">
                                             </td>
+    
                                         <td class="hidden text-right md:table-cell">
                                         <a class="btn btn-danger remov"
                                          data-id="${val.id}"

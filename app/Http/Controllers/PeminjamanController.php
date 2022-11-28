@@ -131,6 +131,7 @@ class PeminjamanController extends Controller
                 'kodebuku' => $cart->attributes->kodebuku,
                 'jumlah' => $cart->quantity,
                 'denda' => $cart->price,
+                'status' => 'dipinjam',
                 'tglpengembalian' => $request->tanggalpengembalian,
             ]);
             $databuku->dipinjam += 1;

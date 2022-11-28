@@ -46,6 +46,7 @@ class PengembalianController extends Controller
         $data = DaftarAnggota::all();
         $buku = Daftarbuku::all();
         $total = \Cart::getSubTotal();
+
         $pengembalin = Peminjaman::with('anggota','idbuku')->findOrFail($id);
         $detail = DB::table('peminjamen')
         ->join('detailbukus', 'detailbukus.id_transaksi', '=', 'peminjamen.id')
@@ -81,7 +82,7 @@ class PengembalianController extends Controller
 
     public function tambahpengembalianpost(request $request,$id){
         $this->validate($request, [
-            'transaksi' => ['required','unique:pengembalians,transaksi'],
+            'transaksi' => ['required'],
             'nama' => 'required',
             'kelas' => 'required',
             'tanggalpengembalian' => 'required',
@@ -91,27 +92,13 @@ class PengembalianController extends Controller
             'kelas.required' => 'Kelas Harus Di Isi',
             'tanggalpengembalian.required' => 'Isi Tangal Pengembalian',
         ]);
-        if ($request->denda > 0) {
-             $data = Pengembalian::create([
-            'transaksi' => $request->transaksi,
-            'nama' => $request->nama,
-            'kelas' => $request->kelas,
-            'tanggalpengembalian' => $request->tanggalpengembalian,
-        ])->id;
-        $ss=Peminjaman::findOrFail($id);
-        $ss->update([
-            'status'=>'1',
-        ]);
-        // $databuku =  Daftarbuku::findOrFail($request->kodebuku);
-        // $databuku->jumlah += $request->jumlah;
-        // $databuku->save();
 
-        } else {
-            $ss=Peminjaman::findOrFail($id);
-            $ss->update([
-                'status'=>'1',
-            ]);
-        $data = Pengembalian::create([
+
+        $kili= Detailbuku::where('id_transaksi',$id)->first();
+        // dd($kili);
+        if ($kili->status == 'dipinjam'){
+
+         $data = Pengembalian::create([
             'transaksi' => $request->transaksi,
             'nama' => $request->nama,
             'kelas' => $request->kelas,
@@ -119,13 +106,16 @@ class PengembalianController extends Controller
         ])->id;
 
         $cartcount = \Cart::getContent()->count();
-            $cart1 = \Cart::getContent();
+          $cart1 = \Cart::getContent();
             $cart2 = \Cart::getContent();
             $array = array();
          
-            foreach($cart1 as $carts){
-                $total = $cartcount * $carts->price;
+             foreach($cart1 as $carts){
+             $total = $cartcount * $carts->price;
+            $kilo = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->first();
             }
+           // dd($kilo);
+            $kilo->update(['status' => 'dikembalikan']);
            $denda = Denda::create([
                     'nama' => $request->nama,
                     'kelas' => $request->kelas,
@@ -143,11 +133,58 @@ class PengembalianController extends Controller
                     'id_denda' => $denda,
                 ]);
 
+               
                 $databuku->jumlah += $carth->quantity;
                 $databuku->save();
                 
                  
             }
+
+        } else {
+
+             $data = Pengembalian::create([
+            'transaksi' => $request->transaksi,
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+            'tanggalpengembalian' => $request->tanggalpengembalian,
+        ])->id;
+;
+            $cartcount = \Cart::getContent()->count();
+             $cart1 = \Cart::getContent();
+            $cart2 = \Cart::getContent();
+
+             foreach($cart1 as $carts){
+             $total = $cartcount * $carts->price;
+            $kilo = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->first();
+            }
+            $denda = Denda::create([
+                    'nama' => $request->nama,
+                    'kelas' => $request->kelas,
+                    'denda' => $total,
+                ])->id;
+           // dd($kilo);
+            $kilo->update(['status' => 'dikembalikan']);
+            foreach($cart2 as $carth){
+                $databuku = Daftarbuku::find($carth->id);
+                Bukukembali::create([
+                    'id_transaksi' => $data,
+                    'namabuku' => $carth->name,
+                    'kodebuku' => $carth->attributes->kodebuku,
+                    'jumlah' => $carth->quantity,
+                    'denda' => $carts->price,
+                    'id_denda' => $denda,
+                ]);
+   
+                $databuku->jumlah += $carth->quantity;
+                $databuku->save();
+               
+            }
+
+            $ss=Peminjaman::findOrFail($id);
+            $ss->update([
+                'status'=>'1',
+            ]);
+      
                     
         }           
         return redirect()->route('pengembalian')->with('success', 'data berhasil ditambah');
