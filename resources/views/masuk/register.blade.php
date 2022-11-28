@@ -12,8 +12,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="asset/img/logosmk.png">
-    <title>Perpustakaan SMKN 1 Sukorejo - Daftar</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../masuk/assets/aa/eperpus.png">
+    <title>Perpustakaan || ePERPUS</title>
     <!-- Bootstrap Core CSS -->
     <link href="../masuk/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -48,8 +48,17 @@
             .login-box {
                 width: 90%;
             }
+            
 
             .login-box {
+                padding: 1.5em 2em 2em;
+            }
+            .logo {
+                width: 90%;
+            }
+
+
+            .logo {
                 padding: 1.5em 2em 2em;
             }
         }
@@ -71,7 +80,7 @@
     <!-- ============================================================== -->
     <section id="wrapper">
         <div class="bag-logo">
-            <img class="logo" src="../masuk/assets/images/logo_login.png">
+            <img class="logo" src="../masuk/assets/aa/per.png" style="margin-right: 13px; margin-bottom: 0px;">
         </div>
         <div class="login-box-bas bag-daftar">
             <div class="login-box card">
@@ -179,60 +188,5 @@
     <!-- ============================================================== -->
     <script src="../masuk/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
-
-<script type="text/javascript">
-    //  $(document).ready(function() {
-    //  //first form
-    //  var inp1 = $("#inp1"),
-    //  show = $(".fa-eye"),
-    //  hide = $(".fa-eye-slash");
-    //  show.show();
-    //  hide.hide();
-    //  show.click(function () {
-    //   inp1.attr("type","text");
-    //   show.hide();
-    //   hide.show(); 
-    // });
-    //  hide.click(function () {
-    //   inp1.attr("type","password");
-    //   show.show();
-    //   hide.hide();
-    // });
-
-    //end first form
-    //second form
-    // var pass = $("#inp2"),
-    // check = $("#inp3"),
-    // lab = $("#label");
-    // check.checked = false;
-    // check.click(function() {
-    //   if (check.checked === false) {
-    //     check.checked = true;  
-    //     pass.attr("type","text");
-    //     lab.text("Hide Password");  
-    //   } else {
-    //     check.checked = false;  
-    //     pass.attr("type","password");
-    //     lab.text("Show Password");
-    //   }
-    // });
-    // end second form
-    // third form
-    // var inp4 = $("#inp4"),
-    // btn = $("#btn");
-    // btn.click(function (e) {
-    //   btn.toggleClass("show-hide");
-    //   if(btn.hasClass("show-hide") === true){
-    //     inp4.attr("type","text");
-    //     btn.text("Hide Password");
-
-    //   } else {
-    //     inp4.attr("type","password");
-    //     btn.text("Show Password");
-    //   }
-    //   e.preventDefault();
-    // });
-    //end third form
-</script>
 
 </html>

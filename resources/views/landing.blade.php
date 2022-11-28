@@ -9,10 +9,10 @@
     <meta name="description" content="Boxass - Startup Landing Page Template">
 
     <!-- ========== Page Title ========== -->
-    <title>Perpustakaan || Kita</title>
+    <title>Perpustakaan || ePERPUS</title>
 
     <!-- ========== Favicon Icon ========== -->
-    <link rel="shortcut icon" href="asset/img/logosmk.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../masuk/assets/aa/eperpus.png" type="image/x-icon">
 
     <!-- ========== Start Stylesheet ========== -->
     <link href="asset/css/bootstrap.min.css" rel="stylesheet" />

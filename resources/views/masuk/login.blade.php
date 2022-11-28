@@ -13,8 +13,8 @@ type="text/javascript"></script>
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="asset/img/logosmk.png">
-    <title>Perpustakan</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../masuk/assets/aa/eperpus.png">
+    <title>Perpustakan || ePERPUS</title>
     <!-- Bootstrap Core CSS -->
     <link href="../masuk/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->

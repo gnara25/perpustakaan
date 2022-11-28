@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cart;
 use App\Models\Daftarbuku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +11,7 @@ class CartController extends Controller
 {
     public function cartpost(Request $request)
     {
-        \Cart::add([
+        Cart::add([
             'id' => $request->id,
             'name' => $request->namabuku,
             'price' => 1000,

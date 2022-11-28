@@ -65,7 +65,7 @@
                                         <div class="col-sm-8">
                                             <input type="text"
                                                 class="form-control @error('kodebuku') is-invalid @enderror"
-                                                id="kodebuku" name="kodebuku" value="" >
+                                                id="kodebuku" name="kodebuku" value="{{ 'KDB-' . $kd }}" readonly >
                                             @error('kodebuku')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
