@@ -93,10 +93,12 @@ class PengembalianController extends Controller
             'tanggalpengembalian.required' => 'Isi Tangal Pengembalian',
         ]);
 
+         $cart1 = \Cart::getContent();
+         $cartcount = \Cart::getContent()->count();
 
-        $kili= Detailbuku::where('id_transaksi',$id)->first();
-        // dd($kili);
-        if ($kili->status == 'dipinjam'){
+        $kilis = Detailbuku::where('id_transaksi',$id)->where('status','dipinjam')->count();
+       
+        if ($kilis > 1){
 
          $data = Pengembalian::create([
             'transaksi' => $request->transaksi,
@@ -105,24 +107,20 @@ class PengembalianController extends Controller
             'tanggalpengembalian' => $request->tanggalpengembalian,
         ])->id;
 
-        $cartcount = \Cart::getContent()->count();
-          $cart1 = \Cart::getContent();
-            $cart2 = \Cart::getContent();
-            $array = array();
          
              foreach($cart1 as $carts){
+                $kdbuku = $carts->attributes->kodebuku;
              $total = $cartcount * $carts->price;
-            $kilos = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->first();
+            $kilos = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->update(['status' => 'dikembalikan']);
             }
-           // dd($kilo);
-            $kilos->update(['status' => 'dikembalikan']);
+
            $denda = Denda::create([
                     'nama' => $request->nama,
                     'kelas' => $request->kelas,
                     'denda' => $total,
                 ])->id;
 
-            foreach($cart2 as $carth){
+            foreach($cart1 as $carth){
                 $databuku = Daftarbuku::find($carth->id);
                 Bukukembali::create([
                     'id_transaksi' => $data,
@@ -148,22 +146,17 @@ class PengembalianController extends Controller
             'tanggalpengembalian' => $request->tanggalpengembalian,
         ])->id;
 
-            $cartcount = \Cart::getContent()->count();
-             $cart1 = \Cart::getContent();
-            $cart2 = \Cart::getContent();
 
              foreach($cart1 as $carts){
              $total = $cartcount * $carts->price;
-            $kilo = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->first();
-            }
+            $kilo = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->update(['status' => 'dikembalikan']);            }
             $denda = Denda::create([
                     'nama' => $request->nama,
                     'kelas' => $request->kelas,
                     'denda' => $total,
                 ])->id;
-           // dd($kilo);
-            $kilo->update(['status' => 'dikembalikan']);
-            foreach($cart2 as $carth){
+          
+            foreach($cart1 as $carth){
                 $databuku = Daftarbuku::find($carth->id);
                 Bukukembali::create([
                     'id_transaksi' => $data,
@@ -186,7 +179,7 @@ class PengembalianController extends Controller
       
                     
         }           
-        return redirect()->route('pengembalian')->with('success', 'data berhasil ditambah');
+         return redirect()->route('pengembalian')->with('success', 'data berhasil ditambah');
     }
 
     public function deletepengembalian($id){
