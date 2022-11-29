@@ -10,7 +10,7 @@
     input{
         display: none;
     }
-    img{
+    img.image-preview{
         max-width: 100px;
         margin-bottom: 2%;
 		display: none;

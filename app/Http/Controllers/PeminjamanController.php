@@ -139,12 +139,6 @@ class PeminjamanController extends Controller
             $databuku->jumlah -= $cart->quantity;
             $databuku->save();
         }
-
-        // $denda = Denda::create([
-        //     'nama' => $request->nama,
-        //     'kelas' => $request->kelas,
-        //     'peminjaman_id'=>  $data,
-        // ]);
         
         return redirect()->route('peminjaman')->with('success', 'Data Berhasil ditambahkan');
     }

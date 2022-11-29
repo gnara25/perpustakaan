@@ -57,7 +57,24 @@ class CartController extends Controller
     public function remove($id)
     {
        \Cart::remove($id);
-        // array_push($arraypo, $remove);
+       
+        return response()->json('berhasil');
+    }
+
+    public function decrementQuantity($id){
+
+        \Cart::update($id, array(
+            'quantity' => +1,
+         ));
+        
+        return response()->json('berhasil');
+    }
+    public function incrementQuantity($id){
+
+        \Cart::update($id, array(
+            'quantity' => -1,
+         ));
+        
         return response()->json('berhasil');
     }
 

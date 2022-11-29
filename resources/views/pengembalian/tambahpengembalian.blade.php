@@ -120,19 +120,6 @@ is-invalid
                                             </tbody>
                                         </table>
                                     </div>
-                                  <!--   <div class="form-group row mb-3">
-                                        <label for="tgl_lahir" class="col-sm-4 col-form-label">Total Denda;
-                                        </label>
-                                        <div class="col-sm-8">
-                                            <input type="text" value="{{$total}}"
-                                                class="form-control text-center"
-                                                id="price" name="price">
-                                            @error('price')
-                                                <div class="invalid-feedback">{{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>      -->
 
                                     <center>
                                         <div class="mb-4 mt-4">
@@ -225,7 +212,7 @@ is-invalid
                         } else {
                             $('#pilihBuku').attr('disabled', false)
                         }
-                        
+
                         console.log(e.data.length)
                         e.data.map(val => {
                             html += `
@@ -251,7 +238,7 @@ is-invalid
                 })
             }
 
-            
+
 
             function Removcart(e) {
                 const id = e.getAttribute('data-id')
@@ -264,26 +251,6 @@ is-invalid
                     }
                 })
             }
-
-            // $(document).ready(function(){
-            //     $.ajax({
-            //         method: 'GET',
-            //         url: '/listcart'
-            //         dataType: 'JSON',
-            //         success: function(e){
-            //                 if (e.attributes.id_detail == e.attributes.id_detail)  {
-                                
-            //                     $('#id_detail').attr('disabled', true)
-                                
-            //                 } else  {
-                                
-            //                     $('#disabled').attr('disabled', false)
-
-            //                 }
-
-            //              }
-            //     })
-            // })
 
             $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
@@ -302,8 +269,6 @@ is-invalid
                     alert("showitem");
                 });
             });
-
-            
         </script>
 </body>
 

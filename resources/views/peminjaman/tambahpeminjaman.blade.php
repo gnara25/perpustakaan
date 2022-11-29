@@ -51,8 +51,8 @@
                                         <div class="col-md-4">
                                             <label for="nisn" class="col-sm-4 col-form-label">Nisn :</label>
                                             <input type="number" id="nisn" onkeyup="complate()"
-                                                class="form-control" value="" name="nisn" min="1">
-                                                <input type="hidden" id="idsiswa" class="form-control" value=""
+                                                class="form-control" value="" name="nisn" min="1" placeholder="Scane Nisn">
+                                            <input type="hidden" id="idsiswa" class="form-control" value=""
                                                 name="idsiswa" required>
                                             @error('nisn')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -118,7 +118,7 @@
 
 
                                     <div class="form-group row mb-3">
-                                        <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label>
+                                        <label for="kelas" class="col-sm-4 col-form-label">Scane Kode Buku </label>
                                         <div class="col-sm-8">
                                             <div class="input-group has-validation">
                                                 <input type="text" onchange="scane()" id="kdbuku" name="kodebuku"
@@ -130,8 +130,7 @@
                                                     <input type="hidden" value="" name="namabuku"
                                                         id="name">
 
-                                                    <a onclick="tambah(this)" data-id="" data-nama=""
-                                                        data-kode="" id="button1" class="btn btn-primary">
+                                                    <a onclick="tambah(this)" class="btn btn-primary">
                                                         <i class="fa-solid fa fa-search"></i>
                                                     </a>
                                                 </span>
@@ -142,10 +141,12 @@
                                                     </a>
                                                 </span> --}}
                                             </div>
-                                        </div>
+                                            <br>
+                                            <button type="button" id="clear" class="btn btn-danger" style="margin-left:2px;"><span class="glyphicon glyphicon-remove">Hapus</span> <i class="fa-solid fa-trash"></i>     </button> 
+                                        </div> 
                                     </div>
                                     <div>
-                                        <table class="table table-striped table-bordered" style="width:100%">
+                                        <table class="table" style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>No.</th>
@@ -174,8 +175,6 @@
                                     </div>
                                 </div>
                             </center>
-                            {{-- <button type="submit"  class="btn btn-primary">Tambah</button>
-                                <a href="pemasukan" class="btn btn-primary fas fa-arrow-circle-left">Kembali</a> --}}
                             </form>
 
                         </div>
@@ -263,6 +262,10 @@
             });
         });
 
+        $('#clear').click(function() {
+            $('#kdbuku').val("").focus();
+        });
+
         function scane() {
             var kodebuku = $("#kdbuku").val();
             $.ajax({
@@ -288,13 +291,13 @@
 
         getCartList()
 
-        function tambah(e){
-                var kodebuku = $("#kdbuku").val();
-                console.log(kodebuku);
-                const fd = new FormData();
-                 fd.append('id', kodebuku)
-                addPeminjaman(fd)
-            }
+        function tambah(e) {
+            var kodebuku = $("#kdbuku").val();
+            console.log(kodebuku);
+            const fd = new FormData();
+            fd.append('id', kodebuku)
+            addPeminjaman(fd)
+        }
 
         function addPeminjaman(fd) {
             $.ajax({
@@ -339,11 +342,21 @@
                                 <td scope="row">${no++}</td>
                                 <td>${val.name}</td>
                                 <td>${val.attributes.kodebuku}</td>
-                                <td>${val.quantity} buku</td>
+                                <td> 
+                                    <a class="btn btn1" onclick="decrementQuantity(this)"
+                                 data-id="${val.id}"><i class="fa fa-plus"></i>
+                                 </a> 
+
+                                     ${val.quantity} buku 
+
+                                    <a class="btn btn1" onclick="incrementQuantity(this)"
+                                 data-id="${val.id}"><i class="fa fa-minus"></i></a>
+                                 
+                                </td>
+
                                 <td class="hidden text-right md:table-cell">
                                 <a class="btn btn-danger remove" onclick="remove(this)"
-                                 data-id="${val.id}" > X</a>
-    
+                                 data-id="${val.id}"> Remove </a>
                                 </td>
                             </tr>
                              </tbody>
@@ -368,6 +381,32 @@
                 }
             });
         }
+
+        function decrementQuantity(e) {
+            var id = e.getAttribute('data-id');
+            $.ajax({
+                type: 'GET',
+                url: "decrementQuantity/" + id,
+                dataType: 'JSON',
+                success: function(e) {
+                    console.log(e)
+                    getCartList()
+                }
+            });
+        }
+
+        function incrementQuantity(e) {
+            var id = e.getAttribute('data-id');
+            $.ajax({
+                type: 'GET',
+                url: "incrementQuantity/" + id,
+                dataType: 'JSON',
+                success: function(e) {
+                    console.log(e)
+                    getCartList()
+                }
+            });
+        }
     </script>
 
     <script type="text/javascript">
@@ -376,12 +415,6 @@
         @endif
 
         getCartList()
-
-        const selection = document.getElementById('nama');
-        selection.onchange = function(e) {
-            const kelas = e.target.options[e.target.selectedIndex].dataset.kelas
-            document.getElementById('kelas').value = kelas;
-        }
 
         $(document).ready(function() {
             //Default data table

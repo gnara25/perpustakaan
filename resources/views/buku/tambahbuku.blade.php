@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include('template.head')
+    @include('template.head')
 
 <style type="text/css">
     .foto {
@@ -10,7 +10,7 @@
     input{
         display: none;
     }
-    img{
+    img.image-preview{
         max-width: 100px;
         margin-bottom: 2%;
 		display: none;
@@ -30,12 +30,13 @@
 </style>
 
 <body>
+    @include('template.sidebar')
+
+    @include('template.navbar')
 	<!-- wrapper -->
 	<div class="wrapper">
 
-        @include('template.navbar')
 
-		@include('template.sidebar')
 
 		<!--page-wrapper-->
 		<div class="page-wrapper">

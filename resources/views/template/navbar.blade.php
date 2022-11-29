@@ -31,7 +31,7 @@
                                 <p class="user-name mb-0">{{ Auth::user()->role }}</p>
 
                             </div>
-                            <img src="/fotosiswa/{{ Auth::User()->foto }}" class="user-img" alt="user avatar">
+                            <img src="../../fotosiswa/{{ Auth::User()->foto }}" class="user-img" alt="user avatar">
                         </div>
                     </a>
                     {{-- <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
