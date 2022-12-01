@@ -178,7 +178,7 @@
                     <p class="desi">NISN : {{ $row->nisn }}</p>
                     <div class="barcode">
                      <img src="data:image/svg;base64, {!! base64_encode(QrCode::format('svg')->size(100)->generate($row->nisn)) !!} ">
-                    <!-- {!! QrCode::size(65)->generate($row->nisn) !!} -->
+                    {!! QrCode::size(65)->generate($row->nisn) !!} 
                     </div>
                     <br>
 

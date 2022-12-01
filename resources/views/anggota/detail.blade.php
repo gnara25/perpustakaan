@@ -52,6 +52,7 @@
                                             
                                             <tbody>
                                                 @foreach ($detail as $row)
+                                                @if ($row->status == 'dipinjam')
                                                 <?php
                                                             
                                                 $u_denda = 1000;
@@ -79,7 +80,7 @@
                                                         <td scope="row">{{ $loop->iteration }}</td>
                                                         <td>{{$row->namabuku}}</td>
                                                         <td>{{$row->kodebuku}}</td>
-                                                        <td>{{$row->jumlah}}</td>
+                                                        <td>{{$row->jumlahlaporan}}</td>
                                                         <td>
                                                             <?php if ($selisih <= 0) { ?>
                                                             <span class="label label-primary">Masa
@@ -96,6 +97,7 @@
                                                         <?php } ?>
                                                            
                                                     </tr>
+                                                    @endif
                                                 @endforeach
                                             </tbody>
 

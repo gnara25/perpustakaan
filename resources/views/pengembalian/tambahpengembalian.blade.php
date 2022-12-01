@@ -83,12 +83,70 @@ is-invalid
                                             @enderror
                                         </div>
                                     </div>
+
+                                    {{-- @include('pengembalian.modalpilihbuku') --}}
+                                    @foreach ($detail as $buku)
+                                    <?php
+                                        
+                                        $u_denda = 1000;
+                                        
+                                        $tgl1 = date('Y-m-d');
+                                        $tgl2 = $buku->tanggalpengembalian;
+                                        
+                                        $pecah1 = explode('-', $tgl1);
+                                        $date1 = $pecah1[2];
+                                        $month1 = $pecah1[1];
+                                        $year1 = $pecah1[0];
+                                        
+                                        $pecah2 = explode('-', $tgl2);
+                                        $date2 = $pecah2[2];
+                                        $month2 = $pecah2[1];
+                                        $year2 = $pecah2[0];
+                                        
+                                        $jd1 = GregorianToJD($month1, $date1, $year1);
+                                        $jd2 = GregorianToJD($month2, $date2, $year2);
+                                        
+                                        $selisih = $jd1 - $jd2;
+                                        $denda = $selisih * $u_denda;
+                                        $jumlah = $buku->jumlah;
+                                         $dendas = $jumlah * $denda;
+                                        ?>
+                                    @endforeach
+
+
                                     <div class="form-group row mb-3">
+                                        <label for="kelas" class="col-sm-4 col-form-label">Scane Kode Buku </label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group has-validation">
+                                                <input type="text" id="kdbukuid" name="kodebuku"
+                                                    class="form-control @error('transaksi') is-invalid @enderror"
+                                                    value="" placeholder="Scane Kode Buku">
+                                                <span class="input-group-btn">
+                                                    <input type="hidden" value="{{ $pengembalin->id }}" name="id"
+                                                        id="pilihid">
+                                                        <?php if ($selisih <= 0) { ?>
+                                                            <input type="hidden" value="0" name="denda" id="denda">
+                                                        <?php } elseif ($selisih > 0) { ?>
+                                                            <input type="hidden" value="{{$dendas}}" name="denda" id="denda">  
+                                                        <?php } ?>       
+                                                    <a onclick="tambahbuku(this)" class="btn btn-primary">
+                                                        <i class="fa-solid fa fa-search"></i>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                            <br>
+                                            <button type="button" id="clear" class="btn btn-danger"
+                                                style="margin-left:2px;"><span
+                                                    class="glyphicon glyphicon-remove">Hapus</span> <i
+                                                    class="fa-solid fa-trash"></i> </button>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="form-group row mb-3">
                                         <label for="kelas" class="col-sm-4 col-form-label">Pilih Buku </label>
                                         <div class="col-sm-8">
                                             <div class="input-group has-validation">
                                                 <span class="input-group-btn">
-                                                    <a data-bs-toggle="modal" data-bs-target="#Bukuid"
+                                                    <a id="btnPilihBuku" data-bs-toggle="modal" data-bs-target="#Bukuid"
                                                         class="btn btn-primary">
                                                         <i class="fa-solid fa fa-search"></i>
                                                     </a>
@@ -100,7 +158,7 @@ is-invalid
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <br>
                                     <div>
                                         <table class="table" style="width:100%">
@@ -142,7 +200,6 @@ is-invalid
                 </div>
                 <!--end page-content-wrapper-->
 
-                @include('pengembalian.modalpilihbuku')
 
             </div>
             <!--end page-wrapper-->
@@ -160,6 +217,34 @@ is-invalid
 
 
         <script type="text/javascript">
+            $('#btnPilihBuku').click(() => {
+                console.log('jumlahnya ' + jumlah)
+                if (jumlah == 0) {
+                    document.getElementById("nonaktif").disabled = true;
+                }
+            })
+
+            $(document).ready(function() {
+                $('#kdbukuid').val("").focus();
+                $('#kdbukuid').keyup(function(e) {
+                    var tex = $(this).val();
+                    console.log(tex);
+                    if (tex !== "" && e.keyCode === 13) {
+
+                        $('#kdbukuid').focus();
+                    }
+                    e.preventDefault();
+                });
+                $('#pilihBuku').click(function() {
+                    $('#kdbukuid').val("").focus();
+                });
+            });
+
+            $('#clear').click(function() {
+            $('#kdbukuid').val("").focus();
+        });
+
+
             @if (Session::has('error'))
                 toastr.error("{{ Session::get('error') }}")
             @endif
@@ -167,14 +252,22 @@ is-invalid
             listcartget()
 
             function tambahbuku(e) {
-                console.log(e.getAttribute('data-id1'))
+                // console.log(e.getAttribute('data-id1'))
+                var kodebuku = $("#kdbukuid").val();
+                var id = $("#pilihid").val();
+                var denda = $("#denda").val();
+                console.log(kodebuku);
                 const fd = new FormData();
-                fd.append('id_detail', e.getAttribute('data-detail'))
-                fd.append('id', e.getAttribute('data-id1'))
-                fd.append('namabuku', e.getAttribute('data-namabu'))
-                fd.append('kodebuku', e.getAttribute('data-kodebu'))
-                fd.append('price', e.getAttribute('data-price'))
-                fd.append('quantity', e.getAttribute('data-jumlah'))
+                fd.append('kodebuku', kodebuku)
+                fd.append('id', id)
+                fd.append('denda', denda)
+                // const fd = new FormData();
+                // fd.append('id_detail', e.getAttribute('data-detail'))
+                // fd.append('id', e.getAttribute('data-id1'))
+                // fd.append('namabuku', e.getAttribute('data-namabu'))
+                // fd.append('kodebuku', e.getAttribute('data-kodebu'))
+                // fd.append('price', e.getAttribute('data-price'))
+                // fd.append('quantity', e.getAttribute('data-jumlah'))
                 addPeminjamanbuku(fd)
             }
 
@@ -237,8 +330,6 @@ is-invalid
                     }
                 })
             }
-
-
 
             function Removcart(e) {
                 const id = e.getAttribute('data-id')

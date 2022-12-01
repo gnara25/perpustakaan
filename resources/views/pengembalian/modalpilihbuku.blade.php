@@ -60,7 +60,7 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $buku->namabuku }}</td>
                                             <td>{{ $buku->kodebuku }}</td>
-                                            <td>{{ $buku->jumlah }}</td>
+                                            <td id="jumlahBuku">{{ $buku->jumlah }}</td>
                                             <td>
                                                 <?php if ($selisih <= 0) { ?>
                                                 <span class="label label-primary">Masa
@@ -88,7 +88,7 @@
                                                 <input type="hidden" value="{{ $dendas }}" name="price">
                                                 <?php } ?>
 
-                                                <?php if ($selisih <= 0) { ?>
+                                             <?php if ($selisih <= 0) { ?>
 
                                                 {{-- <input type="hidden" name="id_pilih" value="{{ $buku->id_buku }}">
                                                 <input type="hidden" name="is_confirmed"
@@ -133,16 +133,12 @@
     </div>
 </div>
 <script>
-    //     $("#disabled").on('click', function(){ //enables click event
-    //     //do your thing here
-    // });
-
-    // $("#disabled").off('click'); //disables click event
-
-    // // If you want to disable a div, use the following code:
-    // $("#disabled").attr('disabled','disabled');
-    // document.getElementById("disabled").disabled = false;
-    // document.getElementById("disabled").disabled = true;
+    let jumlah = `{{ $buku->jumlah }}`
+    $('#nonaktif').click((e) => {
+        let hasilKurang = jumlah - 1
+        jumlah = hasilKurang
+        $('#jumlahBuku').html(hasilKurang)
+    })
 </script>
 <script>
     function tambahbuku(){

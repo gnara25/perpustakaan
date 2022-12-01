@@ -43,9 +43,9 @@
                                 </a>    
                                 @endif
 
-                                  <!--  <button onclick="cetakbarcode('{{ route('cetakidcard') }}')"
+                                  <button onclick="cetakbarcode('{{ route('cetakidcard') }}')"
                                         class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak
-                                        ID Card</button> -->
+                                        ID Card</button>
                                 <div class="row">
                                     <div class="table-responsive">
                                         <form action="" method="POST" class="from-buku">
@@ -54,9 +54,9 @@
                                                 style="width:100%">
                                                 <thead>
                                                     <tr>
-                                                   <!--  <th>
+                                                   <th>
                                                         <input type="checkbox" name="select_all" id="select_all">
-                                                    </th> -->
+                                                    </th>
                                                         <th>No.</th>
                                                         <th>Foto</th>
                                                         <th>Nisn</th>
@@ -75,8 +75,8 @@
                                                 <tbody>
                                                     @foreach ($data as $row)
                                                         <tr>
-                                                           <!--  <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
-                                                            </td> -->
+                                                            <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
+                                                            </td> 
                                                             <td scope="row">{{ $no++ }}</td>
                                                             <td><img src="{{ asset('fotobuku/' . $row->foto) }}"
                                                                     alt="" style="width: 70px; height: 70px">

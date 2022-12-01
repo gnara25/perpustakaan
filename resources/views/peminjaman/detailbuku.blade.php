@@ -52,6 +52,7 @@
                                             
                                             <tbody>
                                                 @foreach ($data as $row)
+                                                @if ($row->status == 'dipinjam')
                                                 <?php
                                                             
                                                             $u_denda = 1000;
@@ -97,6 +98,7 @@
                                                         </td>
                                                         <?php } ?>
                                                     </tr>
+                                                    @endif
                                                 @endforeach
                                             </tbody>
 

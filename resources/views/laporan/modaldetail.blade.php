@@ -10,7 +10,7 @@
                 </div>
                 <div class="modal-body fileSelection1">
                     <div class="table-responsive">
-                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <table id="example" class="table table-striped " style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Judul Buku</th>

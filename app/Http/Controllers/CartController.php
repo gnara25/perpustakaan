@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Cart;
 use App\Models\Daftarbuku;
+use App\Models\Detailbuku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -80,22 +81,29 @@ class CartController extends Controller
 
     public function postcart(Request $request)
     {
+        // dd($request->denda);
+        $detailid = Detailbuku::where('id_transaksi', $request->id)->where('kodebuku',$request->kodebuku)->first();
         $cart = \Cart::add([
-                'id' => $request->id,
-                'name' => $request->namabuku,
-                'price' => $request->price,
+                'id' => $detailid->id_buku,
+                'name' => $detailid->namabuku,
+                'price' => $request->denda,
                 'quantity' => 1,
                 'attributes' => array(
-                'id_detail' => $request->id_detail,    
-                'kodebuku' => $request->kodebuku,
+                'id_detail' => $detailid->id,    
+                'kodebuku' => $detailid->kodebuku,
                  )
             ]);
-        // session()->flash('success', 'Product is Added to Cart Successfully !');
 
-        // return redirect()->back() ;
+        $mine = Detailbuku::where('id', $request->id_detail)->first();
+        $sek = $detailid->jumlah - 1;
+        $detailid->update([
+            'jumlah' => $sek,
+        ]);
+
+        // dd($sek);
+        
         return response()->json('berhasil');
     }
-
     public function Listcart()
     {
         $array = array();

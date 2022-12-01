@@ -105,7 +105,7 @@
                         <tr>
                             <td>${val.namabuku}</td>
                             <td>${val.kodebuku}</td>
-                            <td>${val.jumlah}</td>
+                            <td>${val.jumlahlaporan}</td>
                         </tr>
                         `
                                 })
