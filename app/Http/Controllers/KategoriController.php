@@ -62,4 +62,16 @@ class KategoriController extends Controller
         }
        
     }
+    // public function create()
+    // {
+    //     return view('kategori.kategori');
+    // }
+
+    // public function createmodal(Request $request)
+    // {
+    //     $data['kategori'] = $request->kategori;
+    //     Kategori::insert($data);
+
+    //     return json_encode($data);
+    // }
 }

@@ -35,9 +35,11 @@
                         <div class="card-body">
                             <div>
                                 
-                                <a id="table2-new-row-button" href="tambahkategori" class="btn btn-outline-info btn-sm mb-2">Tambah Kategori</a>
+                                {{-- <a id="table2-new-row-button" href="tambahkategori" class="btn btn-outline-info btn-sm mb-2">Tambah Kategori</a> --}}
+                                <a data-bs-toggle="modal" 
+                                data-bs-target="#modaltambah" class="btn btn-outline-info btn-sm mb-2">Tambah Kategori</a>
                                
-                                <div class="table-responsive">
+                                <div class="table-responsive" > 
                                     <hr>
                                     <div class="table-responsive">
                                         <table id="example" class="table table-striped table-bordered"
@@ -62,12 +64,12 @@
                                                         <td>{{ $row->kategori }}</td>
                                                         @if (auth()->user()->role == 'admin')
                                                         <td class="b">
-                                                            <a href="/editkategori/{{ $row->id }}"
+                                                            {{-- <a href="/editkategori/{{ $row->id }}"
                                                                 class="btn btn-success">
-                                                                <i class="fa-solid fa-square-pen"></i></a>
+                                                                <i class="fa-solid fa-square-pen"></i></a> --}}
                                                             <a href="#" class="btn btn-danger delete"
                                                                 data-id="{{ $row->id }}"
-                                                                data-kategori="{{ $row->kategori }}">
+                                                                data-kategori="{{ $row->kategori }}"> hapus
                                                                 <i class="fa-solid fa-trash"></i>
                                                             </a>
                                                         </td>
@@ -78,14 +80,16 @@
 
                                         </table>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
                     <!--end page-content-wrapper-->
                 </div>
+                @include('kategori.modaltambah')
                 <!-- end wrapper -->
                 @include('template.script')
+
 
                 <script>
                     @if (Session::has('success'))
@@ -118,10 +122,39 @@
                                     swal("Data Ini Tidak Jadi Dihapus!");
                                 }
                             });
+                  });
+
+                  $('#exampleVaryingModalContent').on('show.bs.modal', function(event) {
+                        var button = $(event.relatedTarget) // Button that triggered the modal
+                        var recipient = button.data('whatever') // Extract info from data-* attributes
+                        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                        var modal = $(this)
+                        modal.find('.modal-title').text('New message to ' + recipient)
+                        modal.find('.modal-body input').val(recipient)
                     });
                 </script>
+                {{-- <script>
+                    function create() {
+                        $.get("{{ url ('create')}}", {}, function(data, kategori) {
+                            $("#pages").html(data);
+                            $("#modaltambah").modal('show');
+                        });
+                     }
 
+                    function createmodal() {
+                        var kategori = $("#kategori").val();
+                        $.ajax({
+                            type: "get",
+                            url: "{{ url('createmodal') }}",
+                            data: "kategori=" + kategori,
+                            success: function(data) {
+                                console.log(data)
+                            }
+                        });
+                    }
 
+                </script> --}}
 </body>
 
 </html>

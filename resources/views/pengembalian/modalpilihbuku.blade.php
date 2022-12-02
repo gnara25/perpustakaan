@@ -11,7 +11,7 @@
                 <div class="modal-body fileSelection1">
                     <div class="table-responsive">
 
-                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <table id="example" class="table table-striped" style="width:100%">
                             <form action="" method="POST" class="from-buku">
                                 @csrf
                                 <thead>
@@ -21,7 +21,6 @@
                                         <th>Kode Buku</th>
                                         <th>Jumlah</th>
                                         <th>Status</th>
-                                        <th>pilih buku</th>
                                     </tr>
                                 </thead>
                                 @php
@@ -73,47 +72,6 @@
                                                 <br> Terlambat :
                                                 <?= $selisih ?>
                                                 Hari
-                                                <?php } ?>
-                                            </td>
-
-                                            <td>
-                                                <input type="hidden" name="id_detail" value="{{ $buku->id }}">
-                                                <input type="hidden" value="{{ $buku->id_buku }}" name="id">
-                                                <input type="hidden" value="{{ $buku->namabuku }}" name="namabuku">
-                                                <input type="hidden" value="{{ $buku->kodebuku }}" name="kodebuku">
-                                                <input type="hidden" value="{{ $buku->jumlah }}" name="quantity">
-                                                <?php if ($selisih <= 0) { ?>
-                                                <input type="hidden" value="0" name="price">
-                                                <?php } elseif ($selisih > 0) { ?>
-                                                <input type="hidden" value="{{ $dendas }}" name="price">
-                                                <?php } ?>
-
-                                             <?php if ($selisih <= 0) { ?>
-
-                                                {{-- <input type="hidden" name="id_pilih" value="{{ $buku->id_buku }}">
-                                                <input type="hidden" name="is_confirmed"
-                                                    value="{{ $buku->is_confirmed }}"> --}}
-
-                                                <button type="button" id="nonaktif"
-                                                    onclick="tambahbuku(this)"
-                                                    data-detail="{{$buku->id}}"
-                                                     data-id1="{{ $buku->id_buku }}"
-                                                    data-namabu="{{ $buku->namabuku }}"
-                                                    data-kodebu="{{ $buku->kodebuku }}"
-                                                    data-jumlah="{{ $buku->jumlah }}" data-price="0"
-                                                    data-bs-dismiss="modal" class="btn btn-secondary"></i>
-                                                    Pilih</button>
-                                                <?php } elseif ($selisih > 0) { ?>
-                                                <button type="button" id="nonaktif"
-                                                    onclick="tambahbuku(this)"
-                                                    data-detail="{{$buku->id}}"
-                                                     data-id1="{{ $buku->id_buku }}"
-                                                    data-namabu="{{ $buku->namabuku }}"
-                                                    data-kodebu="{{ $buku->kodebuku }}"
-                                                    data-jumlah="{{ $buku->jumlah }}" data-price="{{ $dendas }}"
-                                                    data-bs-dismiss="modal" class="btn btn-secondary"></i>
-                                                    Pilih</button>
-
                                                 <?php } ?>
                                             </td>
 

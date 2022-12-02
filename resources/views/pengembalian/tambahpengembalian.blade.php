@@ -84,7 +84,6 @@ is-invalid
                                         </div>
                                     </div>
 
-                                    {{-- @include('pengembalian.modalpilihbuku') --}}
                                     @foreach ($detail as $buku)
                                     <?php
                                         
@@ -135,10 +134,16 @@ is-invalid
                                                 </span>
                                             </div>
                                             <br>
+                                            <button type="button" id="clear" class="btn btn-info"
+                                             data-bs-toggle="modal" data-bs-target="#Bukuid"
+                                                style="margin-left:2px;"><span
+                                                    class="glyphicon glyphicon-remove">Detail Buku</span> <i class="fadeIn animated bx bx-show-alt"></i>
+                                             </button>
                                             <button type="button" id="clear" class="btn btn-danger"
                                                 style="margin-left:2px;"><span
                                                     class="glyphicon glyphicon-remove">Hapus</span> <i
-                                                    class="fa-solid fa-trash"></i> </button>
+                                                    class="fa-solid fa-trash"></i>
+                                             </button>
                                         </div>
                                     </div>
                                     {{-- <div class="form-group row mb-3">
@@ -199,6 +204,10 @@ is-invalid
 
                 </div>
                 <!--end page-content-wrapper-->
+
+                
+                @include('pengembalian.modalpilihbuku')
+
 
 
             </div>

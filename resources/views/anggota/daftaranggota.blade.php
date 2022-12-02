@@ -39,11 +39,11 @@
                                 @if (auth()->user()->role == 'admin')
                                 <a id="table2-new-row-button" href="tambahanggota"
                                     class="btn btn-outline-info btn-sm mb-2 pr-3">Tambah Siswa</a>
-                                <a data-bs-toggle="modal" data-bs-target="#importexcel" class="btn btn-outline-info btn-sm mb-2">Import Excel 
+                                <a data-bs-toggle="modal" data-bs-target="#importexcel" class="btn btn-outline-success btn-sm mb-2">Import Excel 
                                 </a>    
                                 @endif
 
-                                  <button onclick="cetakbarcode('{{ route('cetakidcard') }}')"
+                                  <button onclick="cetakid('{{ route('cetakidcard') }}')"
                                         class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak
                                         ID Card</button>
                                 <div class="row">
@@ -141,7 +141,11 @@
                         toastr.error("{{ Session::get('error') }}")
                     @endif
 
-                    function cetakbarcode(url) {
+                    $('[name=select_all]').on('click', function() {
+                        $(':example').prop('checked', this.checked);
+                    });
+
+                    function cetakid(url) {
                         if ($('input:checked').length < 1) {
                             swal({
                                 icon: "warning",

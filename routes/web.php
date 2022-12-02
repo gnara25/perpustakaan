@@ -79,6 +79,8 @@ Route::post('/tambahkategoripost',[KategoriController::class,'tambahkategoripost
 Route::get('/editkategori/{id}',[KategoriController::class,'editkategori'])->name('editkategori');
 Route::post('/editkategoripost/{id}',[KategoriController::class,'editkategoripost'])->name('editkategoripost');
 Route::get('/deletekategori/{id}',[KategoriController::class,'deletekategori'])->name('deletekategori');
+// Route::get('/create',[KategoriController::class,'create'])->name('create');
+// Route::get('/createmodal',[KategoriController::class,'createmodal'])->name('createmodal');
 
 // peminjaman
 Route::get('/peminjaman',[PeminjamanController::class,'peminjaman'])->name('peminjaman');
