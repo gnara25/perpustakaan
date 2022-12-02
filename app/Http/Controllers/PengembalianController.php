@@ -96,8 +96,13 @@ class PengembalianController extends Controller
          $cart1 = \Cart::getContent();
          $cartcount = \Cart::getContent()->count();
 
+        
+
         $kilis = Detailbuku::where('id_transaksi',$id)->where('status','dipinjam')->count();
-       
+
+        // foreach($cart1 as $carts){
+       //   $kilis = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->where('status','dipinjam')->first();
+       // }
         if ($kilis > 1){
 
          $data = Pengembalian::create([

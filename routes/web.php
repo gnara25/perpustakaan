@@ -91,8 +91,6 @@ Route::get('/editpeminjaman/{id}', [PeminjamanController::class, 'editpeminjaman
 Route::post('/editpeminjamanpost/{id}', [PeminjamanController::class, 'editpeminjamanpost'])->name('editpeminjamanpost');
 Route::get('/deletepeminjaman/{id}', [PeminjamanController::class, 'deletepeminjaman'])->name('deletepeminjaman');
 Route::get('/scane',[PeminjamanController::class,'scane'])->name('scane');
-Route::post('/validasi',[PeminjamanController::class,'validasi'])->name('validasi');
-Route::get('/getBooks', [PeminjamanController::class, 'getBooks'])->name('getBooks');
 Route::get('/tambahpinjam2',[PeminjamanController::class,'tambahpinjam2'])->name('tambahpinjam2');
 Route::get('/autofill',[PeminjamanController::class,'autofill'])->name('autofill');
 Route::get('/autoscane',[PeminjamanController::class,'autoscane'])->name('autoscane');
@@ -157,7 +155,5 @@ Route::get('/export_excel',[LaporanpinjamController::class,'export_excel'])->nam
 Route::get('/detailpinjam/{id}',[LaporanpinjamController::class,'detailpinjam'])->name('detailpinjam');
 Route::get('/pendapatan',[DendaController::class,'pendapatan'])->name('pendapatan');
 Route::get('/grafik',[DendaController::class,'grafik'])->name('grafik');
-
-
 
 });

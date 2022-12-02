@@ -94,11 +94,11 @@ class CartController extends Controller
                  )
             ]);
 
-        $mine = Detailbuku::where('id', $request->id_detail)->first();
-        $sek = $detailid->jumlah - 1;
-        $detailid->update([
-            'jumlah' => $sek,
-        ]);
+            $mine = Detailbuku::where('id', $request->id_detail)->first();
+            $sek = $detailid->jumlah - 1;
+            $detailid->update([
+                'jumlah' => $sek,
+            ]);
 
         // dd($sek);
         
@@ -107,11 +107,16 @@ class CartController extends Controller
     public function Listcart()
     {
         $array = array();
+        
         $cartbuku = \Cart::getContent();
         foreach($cartbuku as $cartbuku){
-            array_push($array, $cartbuku);
-            // $total = $cartbuku->getPriceSum();
+            $itemId = $cartbuku->id;
+            $total = Cart::get($itemId)->getPriceSum();
+            $cartbuku['total'] = $total;
+            // $subtotal = $cartbuku->getSubTotal();
+            array_push($array, $cartbuku);   
         }
+        // dd($subtotal);
         return response()->json(['data' => $array]);
     }
 
@@ -126,7 +131,6 @@ class CartController extends Controller
     public function remov($id)
     {
         \Cart::remove($id);
-        // session()->flash('success', 'Item Cart Remove Successfully !');
 
         return response()->json('berhasil');
     }

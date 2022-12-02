@@ -107,11 +107,10 @@ is-invalid
                                         
                                         $selisih = $jd1 - $jd2;
                                         $denda = $selisih * $u_denda;
-                                        $jumlah = $buku->jumlah;
-                                         $dendas = $jumlah * $denda;
+                                        // $jumlah = $buku->jumlah;
+                                        //  $dendas = $jumlah * $denda;
                                         ?>
                                     @endforeach
-
 
                                     <div class="form-group row mb-3">
                                         <label for="kelas" class="col-sm-4 col-form-label">Scane Kode Buku </label>
@@ -126,7 +125,7 @@ is-invalid
                                                         <?php if ($selisih <= 0) { ?>
                                                             <input type="hidden" value="0" name="denda" id="denda">
                                                         <?php } elseif ($selisih > 0) { ?>
-                                                            <input type="hidden" value="{{$dendas}}" name="denda" id="denda">  
+                                                            <input type="hidden" value="{{$denda}}" name="denda" id="denda">  
                                                         <?php } ?>       
                                                     <a onclick="tambahbuku(this)" class="btn btn-primary">
                                                         <i class="fa-solid fa fa-search"></i>
@@ -134,7 +133,7 @@ is-invalid
                                                 </span>
                                             </div>
                                             <br>
-                                            <button type="button" id="clear" class="btn btn-info"
+                                            <button type="button" class="btn btn-info"
                                              data-bs-toggle="modal" data-bs-target="#Bukuid"
                                                 style="margin-left:2px;"><span
                                                     class="glyphicon glyphicon-remove">Detail Buku</span> <i class="fadeIn animated bx bx-show-alt"></i>
@@ -250,8 +249,8 @@ is-invalid
             });
 
             $('#clear').click(function() {
-            $('#kdbukuid').val("").focus();
-        });
+             $('#kdbukuid').val("").focus();
+            });
 
 
             @if (Session::has('error'))
@@ -261,7 +260,6 @@ is-invalid
             listcartget()
 
             function tambahbuku(e) {
-                // console.log(e.getAttribute('data-id1'))
                 var kodebuku = $("#kdbukuid").val();
                 var id = $("#pilihid").val();
                 var denda = $("#denda").val();
@@ -270,13 +268,6 @@ is-invalid
                 fd.append('kodebuku', kodebuku)
                 fd.append('id', id)
                 fd.append('denda', denda)
-                // const fd = new FormData();
-                // fd.append('id_detail', e.getAttribute('data-detail'))
-                // fd.append('id', e.getAttribute('data-id1'))
-                // fd.append('namabuku', e.getAttribute('data-namabu'))
-                // fd.append('kodebuku', e.getAttribute('data-kodebu'))
-                // fd.append('price', e.getAttribute('data-price'))
-                // fd.append('quantity', e.getAttribute('data-jumlah'))
                 addPeminjamanbuku(fd)
             }
 
@@ -295,7 +286,6 @@ is-invalid
                     success: function(e) {
                         console.log(e)
                         listcartget()
-                        // $('#Bukuid').hide()
                     }
                 })
             }
@@ -315,7 +305,7 @@ is-invalid
                             $('#pilihBuku').attr('disabled', false)
                         }
 
-                        console.log(e.data.length)
+                        console.log(e)
                         e.data.map(val => {
                             html += `
                                                 
@@ -324,9 +314,7 @@ is-invalid
                                         <td>${val.name}</td>
                                         <td>${val.attributes.kodebuku}</td>
                                         <td>${val.quantity}</td>
-                                        <td> Rp. ${val.price}
-                                            <input type="hidden" value="${val.price}">
-                                            </td>
+                                        <td> Rp. ${val.total}</td>
     
                                         <td class="hidden text-right md:table-cell">
                                         <a class="btn btn-danger remov"
@@ -335,6 +323,7 @@ is-invalid
                                         </td>
                                     </tr> `
                         })
+                        $('#total').val(e.data.total)
                         $('#tbody-cartbuku').html(html)
                     }
                 })

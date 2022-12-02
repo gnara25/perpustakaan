@@ -33,22 +33,7 @@ class PeminjamanController extends Controller
     public function table(){
         $data = Peminjaman::with('buku');
         return view('peminjaman.peminjaman', compact('data'));
-    }
-   public function getBooks(Request $request)
-{
-    $data = Daftarbuku::all();
-    // $data = Daftarbuku::where('id', $id)
-    //         ->select('Daftarbuku.namabuku', 'Daftarbuku.kodebuku',)
-    //         ->first();
-
-    return json_encode($data);
-}
-// public function detailbuku($id){
-//     $detail= detailbuku::where('id_transaksi', $id)->get();
-//     return response()->json([
-//         'data' => $detail
-//     ]);
-// }    
+    }  
 
     public function detailbuku($id){
         $detail = Detailbuku::where('id_transaksi', $id)->get();
@@ -57,7 +42,6 @@ class PeminjamanController extends Controller
         ->where('peminjamen.id', $id)
         ->get();
 
-        // return view('peminjaman.detailbuku')->with('data', $data);
         return view('peminjaman.detailbuku', compact('detail'))->with('data', $data);
     }
 
@@ -94,9 +78,7 @@ class PeminjamanController extends Controller
             $array = array();
             $data = DaftarAnggota::where('nisn',$request->nisn)->first();
             return json_encode($data);
-       
     }
-
 
     public function insert(Request $request){
      
@@ -175,10 +157,6 @@ class PeminjamanController extends Controller
         return view('peminjaman.scane');
     }
 
-    public function validasi(request $request){
-        dd($request->all);
-    }
-
      public function tambahpinjam2() 
     {
         \Cart::clear();
@@ -228,8 +206,6 @@ class PeminjamanController extends Controller
 
         foreach($bukuid as $row)
         {
-            
-            
             $output.=  '<tr>
                         <td> '.$row->no.' </td>
                         <td> '.$row->namabuku.' </td>
