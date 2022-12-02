@@ -94,11 +94,11 @@ class CartController extends Controller
                  )
             ]);
 
-        $mine = Detailbuku::where('id', $request->id_detail)->first();
-        $sek = $detailid->jumlah - 1;
-        $detailid->update([
-            'jumlah' => $sek,
-        ]);
+        // $mine = Detailbuku::where('id', $request->id_detail)->first();
+        // $sek = $detailid->jumlah - 1;
+        // $detailid->update([
+        //     'jumlah' => $sek,
+        // ]);
 
         // dd($sek);
         
@@ -107,11 +107,18 @@ class CartController extends Controller
     public function Listcart()
     {
         $array = array();
+        
         $cartbuku = \Cart::getContent();
         foreach($cartbuku as $cartbuku){
+            // $itemId = $cartbuku->id;
             array_push($array, $cartbuku);
-            // $total = $cartbuku->getPriceSum();
+            
+            
+            
         }
+
+        // $totalsd = Cart::get($itemId)->getPriceSum();
+        // dd($total);
         return response()->json(['data' => $array]);
     }
 

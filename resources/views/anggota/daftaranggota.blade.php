@@ -75,7 +75,7 @@
                                                 <tbody>
                                                     @foreach ($data as $row)
                                                         <tr>
-                                                            <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}">
+                                                            <td><input type="checkbox" id="example" name="id[]" value="{{$row->id}}"  class="checkbox_check">
                                                             </td> 
                                                             <td scope="row">{{ $no++ }}</td>
                                                             <td><img src="{{ asset('fotobuku/' . $row->foto) }}"
@@ -142,17 +142,18 @@
                     @endif
 
                     function cetakbarcode(url) {
-                        if ($('input:checked').length < 1) {
-                            swal({
-                                icon: "warning",
-                                text: "Harap Pilih Buku"
-                            });
-                            return;
-                        } else {
+                        if ($('input.checkbox_check').is(':checked')) {
                             $('.from-buku')
                                 .attr('action', url)
                                 .attr('target', '_blank')
                                 .submit();
+                           
+                        } else {
+                            swal({
+                                icon: "warning",
+                                text: "Harap Pilih Buku"
+                            });
+                            return; 
                         }
                     }
 

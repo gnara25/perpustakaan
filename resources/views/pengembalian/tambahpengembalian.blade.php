@@ -108,8 +108,8 @@ is-invalid
                                         
                                         $selisih = $jd1 - $jd2;
                                         $denda = $selisih * $u_denda;
-                                        $jumlah = $buku->jumlah;
-                                         $dendas = $jumlah * $denda;
+                                        // $jumlah = $buku->jumlah;
+                                        //  $dendas = $jumlah * $denda;
                                         ?>
                                     @endforeach
 
@@ -127,7 +127,7 @@ is-invalid
                                                         <?php if ($selisih <= 0) { ?>
                                                             <input type="hidden" value="0" name="denda" id="denda">
                                                         <?php } elseif ($selisih > 0) { ?>
-                                                            <input type="hidden" value="{{$dendas}}" name="denda" id="denda">  
+                                                            <input type="hidden" value="{{$denda}}" name="denda" id="denda">  
                                                         <?php } ?>       
                                                     <a onclick="tambahbuku(this)" class="btn btn-primary">
                                                         <i class="fa-solid fa fa-search"></i>
@@ -306,7 +306,7 @@ is-invalid
                             $('#pilihBuku').attr('disabled', false)
                         }
 
-                        console.log(e.data.length)
+                        console.log(e.datas)
                         e.data.map(val => {
                             html += `
                                                 
@@ -316,7 +316,7 @@ is-invalid
                                         <td>${val.attributes.kodebuku}</td>
                                         <td>${val.quantity}</td>
                                         <td> Rp. ${val.price}
-                                            <input type="hidden" value="${val.price}">
+                                            <input type="text" value="" id="total">
                                             </td>
     
                                         <td class="hidden text-right md:table-cell">
@@ -326,6 +326,7 @@ is-invalid
                                         </td>
                                     </tr> `
                         })
+                        $('#total').val(e.data.total)
                         $('#tbody-cartbuku').html(html)
                     }
                 })
