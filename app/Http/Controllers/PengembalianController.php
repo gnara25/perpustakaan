@@ -125,7 +125,7 @@ class PengembalianController extends Controller
            $denda = Denda::create([
                     'nama' => $request->nama,
                     'kelas' => $request->kelas,
-                    'denda' => $total,
+                    'denda' => $request->subtotal,
                 ])->id;
 
             foreach($cart1 as $carth){
@@ -135,7 +135,7 @@ class PengembalianController extends Controller
                     'namabuku' => $carth->name,
                     'kodebuku' => $carth->attributes->kodebuku,
                     'jumlah' => $carth->quantity,
-                    'denda' => $carts->price,
+                    'denda' => $carts->total,
                     'id_denda' => $denda,
                 ]);
 
@@ -165,7 +165,7 @@ class PengembalianController extends Controller
             $denda = Denda::create([
                     'nama' => $request->nama,
                     'kelas' => $request->kelas,
-                    'denda' => $total,
+                    'denda' => $request->subtotal,
                 ])->id;
           
             foreach($cart1 as $carth){
@@ -175,7 +175,7 @@ class PengembalianController extends Controller
                     'namabuku' => $carth->name,
                     'kodebuku' => $carth->attributes->kodebuku,
                     'jumlah' => $carth->quantity,
-                    'denda' => $carts->price,
+                    'denda' => $carts->total,
                     'id_denda' => $denda,
                 ]);
    

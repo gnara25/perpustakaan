@@ -196,7 +196,7 @@
                             colors: ["#673ab7"],
                             yaxis: {
                                 title: {
-                                    text: 'Engagement',
+                                    text: 'Perpustakaan',
                                 },
                             }
                         };
