@@ -236,7 +236,7 @@ is-invalid
                 $('#kdbukuid').val("").focus();
                 $('#kdbukuid').keyup(function(e) {
                     var tex = $(this).val();
-                    console.log(tex);
+                    
                     if (tex !== "" && e.keyCode === 13) {
 
                         $('#kdbukuid').focus();
@@ -284,7 +284,7 @@ is-invalid
                     data: fd,
                     dataType: 'JSON',
                     success: function(e) {
-                        console.log(e)
+                        
                         listcartget()
                     }
                 })
@@ -305,7 +305,7 @@ is-invalid
                             $('#pilihBuku').attr('disabled', false)
                         }
 
-                        console.log(e)
+                        
                         e.data.map(val => {
                             html += `
                                                 
@@ -314,7 +314,9 @@ is-invalid
                                         <td>${val.name}</td>
                                         <td>${val.attributes.kodebuku}</td>
                                         <td>${val.quantity}</td>
-                                        <td> Rp. ${val.total}</td>
+                                        <td> Rp. ${val.total}
+                                        <input type="hidden" name="subtotal" value="${val.subtotal}"">  
+                                        </td>
     
                                         <td class="hidden text-right md:table-cell">
                                         <a class="btn btn-danger remov"

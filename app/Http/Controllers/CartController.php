@@ -109,9 +109,11 @@ class CartController extends Controller
         $array = array();
         
         $cartbuku = \Cart::getContent();
+        $subtotal = \Cart::getSubTotal();
         foreach($cartbuku as $cartbuku){
             $itemId = $cartbuku->id;
             $total = Cart::get($itemId)->getPriceSum();
+            $cartbuku['subtotal'] = $subtotal;
             $cartbuku['total'] = $total;
             // $subtotal = $cartbuku->getSubTotal();
             array_push($array, $cartbuku);   
