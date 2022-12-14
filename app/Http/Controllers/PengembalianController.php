@@ -188,8 +188,7 @@ class PengembalianController extends Controller
             $ss->update([
                 'status'=>'1',
             ]);
-      
-                    
+                        
         }           
          return redirect()->route('pengembalian')->with('success', 'data berhasil ditambah');
     }

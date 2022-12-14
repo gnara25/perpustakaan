@@ -241,7 +241,6 @@
                 }
             });
 
-
         }
     </script>
 
@@ -343,13 +342,13 @@
                                 <td>${val.name}</td>
                                 <td>${val.attributes.kodebuku}</td>
                                 <td> 
-                                    <a class="btn btn1" onclick="decrementQuantity(this)"
+                                    <a class="btn btn-success" onclick="decrementQuantity(this)"
                                  data-id="${val.id}"><i class="fa fa-plus"></i>
-                                 </a> 
-
+                                 </a>
+                                
                                      ${val.quantity} buku 
 
-                                    <a class="btn btn1" onclick="incrementQuantity(this)"
+                                    <a class="btn btn-success" onclick="incrementQuantity(this)"
                                  data-id="${val.id}"><i class="fa fa-minus"></i></a>
                                  
                                 </td>

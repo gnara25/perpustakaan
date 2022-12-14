@@ -89,7 +89,7 @@ class CartController extends Controller
                 'price' => $request->denda,
                 'quantity' => 1,
                 'attributes' => array(
-                'id_detail' => $detailid->id,    
+                'id_detail' => $detailid->id,   
                 'kodebuku' => $detailid->kodebuku,
                  )
             ]);

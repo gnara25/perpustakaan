@@ -2,12 +2,12 @@
 <div class="sidebar-wrapper" data-simplebar="true">
 	<div class="sidebar-header">
 		<div class="">
-			<img src="../masuk/assets/aa/44.png" class="logo-icon-2 "  style="width: 166px;
-			margin-left: 12px;" alt="" />
+			<img src="../masuk/assets/aa/eperpus.png" class="logo-icon "  style="width: 45px;" alt="" />
 		</div>
-		{{-- <div>
-			<h4 class="logo-text">PerpusKita</h4>
-		</div> --}}
+		<div>
+			<img  src="../masuk/assets/aa/perpus.png" class="logo-text"  style="width: 121px;
+			margin-left: 4px; margin-top: 14px; " alt="" />
+		</div>
 		<a href="javascript:;" class="toggle-btn ms-auto"> <i class="bx bx-menu"></i>
 		</a>
 	</div>
