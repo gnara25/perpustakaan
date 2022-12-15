@@ -99,11 +99,12 @@ class PengembalianController extends Controller
         
 
         $kilis = Detailbuku::where('id_transaksi',$id)->where('status','dipinjam')->count();
+        // dd($kilis);
 
         // foreach($cart1 as $carts){
        //   $kilis = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->where('status','dipinjam')->first();
        // }
-        if ($kilis > 1){
+        if ($kilis > 0){
 
          $data = Pengembalian::create([
             'transaksi' => $request->transaksi,
@@ -117,9 +118,7 @@ class PengembalianController extends Controller
                 $kdbuku = $carts->attributes->kodebuku;
              $total = $cartcount * $carts->price;
              $kilos = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->first();
-             if ($kilos->jumlah == '0'){
-            $kiloss = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->update(['status' => 'dikembalikan']);
-            }    
+              
         }
 
            $denda = Denda::create([
@@ -157,10 +156,7 @@ class PengembalianController extends Controller
 
              foreach($cart1 as $carts){
                 $total = $cartcount * $carts->price;    
-                $kilo = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->first();    
-                if ($kilo->jumlah == '0'){ 
-                $kilop = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->update(['status' => 'dikembalikan']);  
-                }          
+                $kilo = Detailbuku::where('id_transaksi',$id)->where('kodebuku',$carts->attributes->kodebuku)->first();          
             }
             $denda = Denda::create([
                     'nama' => $request->nama,

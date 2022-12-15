@@ -94,11 +94,14 @@ class CartController extends Controller
                  )
             ]);
 
-            // $mine = Detailbuku::where('id', $request->id_detail)->first();
-            // $sek = $detailid->jumlah - 1;
-            // $detailid->update([
-            //     'jumlah' => $sek,
-            // ]);
+            $sek = $detailid->jumlah - 1;
+            $detailid->update([
+                'jumlah' => $sek,
+            ]);
+
+            if($detailid->jumlah == 0) {
+                $detailids = Detailbuku::where('id_transaksi', $request->id)->where('kodebuku',$request->kodebuku)->update(['status' => 'dikembalikan']);
+            }
 
         // dd($sek);
         
