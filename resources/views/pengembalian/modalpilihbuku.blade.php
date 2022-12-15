@@ -99,7 +99,7 @@
     })
 </script>
 <script>
-    function tambahbuku(){
+    function tambah(){
         var x = document.getElementById("nonaktif").disabled = true;
     }
 </script>

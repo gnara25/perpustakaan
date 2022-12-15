@@ -94,11 +94,11 @@ class CartController extends Controller
                  )
             ]);
 
-            $mine = Detailbuku::where('id', $request->id_detail)->first();
-            $sek = $detailid->jumlah - 1;
-            $detailid->update([
-                'jumlah' => $sek,
-            ]);
+            // $mine = Detailbuku::where('id', $request->id_detail)->first();
+            // $sek = $detailid->jumlah - 1;
+            // $detailid->update([
+            //     'jumlah' => $sek,
+            // ]);
 
         // dd($sek);
         

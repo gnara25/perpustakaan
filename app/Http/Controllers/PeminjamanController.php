@@ -195,7 +195,6 @@ class PeminjamanController extends Controller
          
             $array = array();
             $data = Daftarbuku::where('kodebuku',$request->kodebuku)->first();
-            
             return json_encode($data);
 
     }

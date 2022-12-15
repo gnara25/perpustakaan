@@ -127,13 +127,13 @@ is-invalid
                                                         <?php } elseif ($selisih > 0) { ?>
                                                             <input type="hidden" value="{{$denda}}" name="denda" id="denda">  
                                                         <?php } ?>       
-                                                    <a onclick="tambahbuku(this)" class="btn btn-primary">
+                                                    <a id="nonaktif" onclick="tambahbuku(this)" class="btn btn-primary">
                                                         <i class="fa-solid fa fa-search"></i>
                                                     </a>
                                                 </span>
                                             </div>
                                             <br>
-                                            <button type="button" class="btn btn-info"
+                                            <button id="btnPilihBuku" type="button" class="btn btn-info"
                                              data-bs-toggle="modal" data-bs-target="#Bukuid"
                                                 style="margin-left:2px;"><span
                                                     class="glyphicon glyphicon-remove">Detail Buku</span> <i class="fadeIn animated bx bx-show-alt"></i>
@@ -260,6 +260,7 @@ is-invalid
             listcartget()
 
             function tambahbuku(e) {
+                var x = document.getElementById("nonaktif").disabled = true;
                 var kodebuku = $("#kdbukuid").val();
                 var id = $("#pilihid").val();
                 var denda = $("#denda").val();
@@ -321,7 +322,7 @@ is-invalid
                                         <td class="hidden text-right md:table-cell">
                                         <a class="btn btn-danger remov"
                                          data-id="${val.id}"
-                                         onclick="Removcart(this)" > X</a   >
+                                         onclick="Removcart(this)" > Remove </a   >
                                         </td>
                                     </tr> `
                         })
