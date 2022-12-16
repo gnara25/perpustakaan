@@ -90,16 +90,16 @@
         </div>
     </div>
 </div>
-<script>
+{{-- <script>
     let jumlah = `{{ $buku->jumlah }}`
     $('#nonaktif').click((e) => {
         let hasilKurang = jumlah - 1
         jumlah = hasilKurang
         $('#jumlahBuku').html(hasilKurang)
     })
-</script>
-<script>
+</script> --}}
+{{-- <script>
     function tambah(){
         var x = document.getElementById("nonaktif").disabled = true;
     }
-</script>
+</script> --}}

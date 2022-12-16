@@ -83,7 +83,18 @@ class CartController extends Controller
     {
         // dd($request->denda);
         $detailid = Detailbuku::where('id_transaksi', $request->id)->where('kodebuku',$request->kodebuku)->first();
-        $cart = \Cart::add([
+        if ($detailid->status == 'dipinjam') {
+            
+            $sek = $detailid->jumlah - 1;
+            $detailid->update([
+                'jumlah' => $sek,
+            ]);
+
+            if($detailid->jumlah == 0) {
+                $detailids = Detailbuku::where('id_transaksi', $request->id)->where('kodebuku',$request->kodebuku)->update(['status' => 'dikembalikan']);
+            }
+
+            $cart = \Cart::add([
                 'id' => $detailid->id_buku,
                 'name' => $detailid->namabuku,
                 'price' => $request->denda,
@@ -94,17 +105,11 @@ class CartController extends Controller
                  )
             ]);
 
-            $sek = $detailid->jumlah - 1;
-            $detailid->update([
-                'jumlah' => $sek,
-            ]);
 
-            if($detailid->jumlah == 0) {
-                $detailids = Detailbuku::where('id_transaksi', $request->id)->where('kodebuku',$request->kodebuku)->update(['status' => 'dikembalikan']);
-            }
-
+        } else {
+            return response()->json('gagal');
         // dd($sek);
-        
+    }
         return response()->json('berhasil');
     }
     public function Listcart()

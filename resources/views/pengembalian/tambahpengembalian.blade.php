@@ -225,12 +225,13 @@ is-invalid
 
 
         <script type="text/javascript">
-            $('#btnPilihBuku').click(() => {
-                console.log('jumlahnya ' + jumlah)
-                if (jumlah == 0) {
-                    document.getElementById("nonaktif").disabled = true;
-                }
-            })
+            // $('#btnPilihBuku').click(() => {
+            //     console.log('jumlahnya ' + jumlah)
+            //     if (jumlah == 0) {
+            //         document.getElementById("nonaktif").disabled = true;
+            //     }
+            // })
+
 
             $(document).ready(function() {
                 $('#kdbukuid').val("").focus();
@@ -285,6 +286,13 @@ is-invalid
                     data: fd,
                     dataType: 'JSON',
                     success: function(e) {
+                        if(e == "gagal"){
+                            swal({
+                                icon: "warning",
+                                text: "Jumlah Buku Ini Mencapai Batas Yang Dipinjam"
+                            });
+                            return;
+                        }
                         
                         listcartget()
                     }
@@ -306,6 +314,7 @@ is-invalid
                             $('#pilihBuku').attr('disabled', false)
                         }
 
+                        // console.log(e.data.status)
                         
                         e.data.map(val => {
                             html += `
@@ -315,7 +324,7 @@ is-invalid
                                         <td>${val.name}</td>
                                         <td>${val.attributes.kodebuku}</td>
                                         <td>${val.quantity}</td>
-                                        <td> Rp. ${val.total}
+                                        <td> Rp. ${val.total}   
                                         <input type="hidden" name="subtotal" value="${val.subtotal}"">  
                                         </td>
     
