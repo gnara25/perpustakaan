@@ -178,7 +178,7 @@
                         if ($('input:checked').length < 1) {
                             swal({
                                 icon: "warning",
-                                text: "Harap Pilih Buku"
+                                text: "Harap Pilih Buku Terlebih Dahulu"
                             });
                             return;
                         } else {

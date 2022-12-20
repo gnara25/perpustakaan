@@ -22,6 +22,7 @@ return new class extends Migration
             $table->bigInteger('tahunterbit');
             $table->bigInteger('jumlah');
             $table->bigInteger('dipinjam');
+            $table->string('status');
             $table->string('foto');
             $table->timestamps();
         });

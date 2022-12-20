@@ -312,9 +312,14 @@
                 data: fd,
                 dataType: 'JSON',
                 success: function(e) {
-                    console.log(e)
+                    if(e == "gagal"){
+                            swal({
+                                icon: "warning",
+                                text: "Maaf! Stock Buku Ini Sudah Habis"
+                            });
+                            return;
+                        }
                     getCartList()
-                    // $('#Bukuid').hide()
                 }
             })
         }

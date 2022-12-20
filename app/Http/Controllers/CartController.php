@@ -12,19 +12,38 @@ class CartController extends Controller
 {
     public function cartpost(Request $request)
     {
-        $Product = Daftarbuku::where('kodebuku',$request->id)->first();
-        Cart::add([
-            'id' => $Product->id,
-            'name' => $Product->namabuku,
-            'price' => 1000,
-            'quantity' => 1,
-            'attributes' => array(
-            'kodebuku' => $Product->kodebuku,
-          )
-        ]);
+        $Product = Daftarbuku::where('kodebuku', $request->id)->first();
+
+        if($Product->status == 'tersedia') {
+
+            $sek = $Product->jumlah - 1;
+                $Product->update([
+                    'jumlah' => $sek,
+                ]);
+                
+             if($Product->jumlah == 0) { 
+                $Product->update([
+                    'status' => 'tidak tersedia',
+                ]);
+            }   
+                Cart::add([
+                    'id' => $Product->id,
+                    'name' => $Product->namabuku,
+                    'price' => 1000,
+                    'quantity' => 1,
+                    'attributes' => array(
+                    'kodebuku' => $Product->kodebuku,
+                    )
+                ]);
+            
+        } else {
+            return response()->json('gagal'); 
+            
+        }
 
         return response()->json('berhasil');
     }
+
     public function cartpost2()
     {
         $data = DB::where('daftarbukus', 'id')->first();
@@ -42,6 +61,7 @@ class CartController extends Controller
         dd($Product);
         return response()->json('berhasil');
     }
+
     public function cartList()
     {
         $array = array();
@@ -107,9 +127,10 @@ class CartController extends Controller
 
 
         } else {
+
             return response()->json('gagal');
-        // dd($sek);
-    }
+        }
+
         return response()->json('berhasil');
     }
     public function Listcart()

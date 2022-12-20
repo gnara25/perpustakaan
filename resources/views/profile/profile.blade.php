@@ -4,33 +4,36 @@
 <head>
     @include('template.head')
 
-    
+
 </head>
 
 <style type="text/css">
     .foto {
         text-align: center;
     }
-    input{
+
+    input {
         display: none;
     }
-    img.loi{
+
+    img.loi {
         max-width: 100px;
         margin-bottom: 2%;
-		display: none;
+        display: none;
     }
+
     /* label.image-button{
         display: block;
     } */
-    .ngengkel{
+    .ngengkel {
         display: block !important;
     }
-    span.change-image{
-        display: none;
-		text-align: left;
-		cursor: pointer;
-    }
 
+    span.change-image {
+        display: none;
+        text-align: left;
+        cursor: pointer;
+    }
 </style>
 
 <body>
@@ -68,7 +71,7 @@
                                     <div class="col-12 col-lg-7 border-right mb-4">
                                         <div class="d-md-flex align-items-center">
                                             <div class="mb-md-0 mb-3">
-                                                <img  src="fotosiswa/{{ Auth::User()->foto }}"
+                                                <img src="fotosiswa/{{ Auth::User()->foto }}"
                                                     class="rounded-circle shadow" width="130" height="130"
                                                     alt="" />
                                             </div>
@@ -87,11 +90,11 @@
                                             <tbody>
                                                 <tr>
                                                     <th>Nama Panjang :</th>
-                                                    <td>{{ Auth::user()->username }}
+                                                    <td>{{ Auth::user()->name }}
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th> Sebagai   :</th>
+                                                    <th> Sebagai :</th>
                                                     <td>{{ Auth::user()->role }}
                                                     </td>
                                                 </tr>
@@ -132,25 +135,28 @@
                                                         method="post" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="mb-4">
-                                                            <label class="form-label">Username :</label>
-                                                            <input type="text" value="{{ Auth::user()->username }}"
-                                                                class="form-control" name="username">
+
+                                                            <label class="form-label">Nama :</label>
+                                                            <input type="text" value="{{ Auth::user()->name }}"
+                                                                class="form-control" name="name">
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-md-4">
-                                                                <label class="form-label">Nama :</label>
-                                                            <input type="text" value="{{ Auth::user()->name }}"
-                                                                class="form-control" name="name">
+                                                                <label class="form-label">Username :</label>
+                                                                <input type="text"
+                                                                    value="{{ Auth::user()->username }}"
+                                                                    class="form-control" name="username">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label class="form-label">No Telepon :</label>
-                                                                <input type="text" value="{{ Auth::user()->notelepon }}"
+                                                                <input type="text"
+                                                                    value="{{ Auth::user()->notelepon }}"
                                                                     class="form-control" name="notelepon">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label class="form-label">Email :</label>
-                                                            <input type="text" value="{{ Auth::user()->email }}"
-                                                                class="form-control" name="email">
+                                                                <input type="text" value="{{ Auth::user()->email }}"
+                                                                    class="form-control" name="email">
                                                             </div>
                                                         </div>
                                                         <br>
@@ -160,15 +166,16 @@
                                                             <input type="file" class="form-control" name="foto" id="foto">
                                                         </div> --}}
                                                         <div class="form-group row mb-4">
-                                                            <label for="foto" class="image-button col-sm-2 col-form-label ngengkel">Foto :</label>
+                                                            <label for="foto"
+                                                                class="image-button col-sm-2 col-form-label ngengkel">Foto
+                                                                :</label>
                                                             <div class="col-sm-10">
-                                                                <img src="" class="image-preview loi" >
+                                                                <img src="" class="image-preview loi">
                                                                 <input type="file" accept="image/*" id="foto"
-                                                                    class="form-control" 
-                                                                     name="foto" >
+                                                                    class="form-control" name="foto">
                                                             </div>
                                                         </div>
-                                                        <div class="mb-4 text-center">
+                                                        <div class="mb-5" style="margin-left: 65pc;">
                                                             <button type="submit"
                                                                 class="btn btn-info btn-round">{{ __('Simpan') }}</button>
                                                         </div>
@@ -205,7 +212,7 @@
                                                                 placeholder="Konfirmasi Kata Sandi" required>
 
                                                         </div>
-                                                        <div class="mb-4 text-center">
+                                                        <div class="mb-5" style="margin-left: 65pc">
                                                             <button type="submit"
                                                                 class="btn btn-info btn-round">{{ __('Simpan') }}</button>
                                                         </div>

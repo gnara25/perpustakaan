@@ -21,6 +21,10 @@ class LoginController extends Controller
     public function beranda(Request $request){
         $buku = Daftarbuku::paginate(5);
         $bukucount = Daftarbuku::all()->count();
+        $dendass = Denda::select(\Illuminate\Support\Facades\DB::raw("sum(denda) as datadenda"))
+                            ->get();
+                        // ->pluck('datadenda');
+                        // dd($dendass);
         $anggota = DaftarAnggota::paginate(5);
         $anggotacount = DaftarAnggota::all()->count();
         $pinjam = laporanpinjam::all()->count();
@@ -46,7 +50,7 @@ class LoginController extends Controller
             
             $datadenda[Carbon::parse($d->created_at)->month-1]=$denda+$d->denda;
         }
-        return view('beranda', compact('buku','anggota','pinjam','petugas','bukucount','anggotacount', 'data', 'idkategori', 'datas', 'datadenda', 'bulandenda'));
+        return view('beranda', compact('buku', 'dendass','anggota','pinjam','petugas','bukucount','anggotacount', 'data', 'idkategori', 'datas', 'datadenda', 'bulandenda'));
     }
 
     public function filter(Request $request){

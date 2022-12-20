@@ -74,6 +74,7 @@ class DaftarbukuController extends Controller
             'lokasibuku' => $request->lokasibuku,
             'deskripsi' => $request->deskripsi,
             'dipinjam' => '0',
+            'status' => 'dipinjamkan',
             'foto' => $request->foto,
 
         ]);

@@ -42,7 +42,7 @@
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <h2 class="mb-0 text-white">{{ $anggotacount }}<i
-                                                    class='font-14 text-white'> Orang</i> </h2>
+                                                    class='font-14 text-white'> Siswa</i> </h2>
                                         </div>
                                         <div class="ms-auto font-35 text-white"><i
                                                 class="fadeIn animated bx bx-user-circle"></i>
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <p class="mb-0 text-white">Daftar Anggota</p>
+                                            <p class="mb-0 text-white">Daftar Siswa</p>
                                         </div>
                                     </div>
                                 </div>
@@ -76,26 +76,53 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-3">
-                            <div class="card radius-15 bg-sunset">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <h2 class="mb-0 text-white">{{ $petugas }} <i
-                                                    class='font-14 text-white'>Petugas</i> </h2>
+                        @if (auth()->user()->role == 'admin')
+                            <div class="col-12 col-lg-3">
+                                <div class="card radius-15 bg-sunset">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <h2 class="mb-0 text-white">{{ $petugas }} <i
+                                                        class='font-14 text-white'>Petugas</i> </h2>
+                                            </div>
+                                            <div class="ms-auto font-35 text-white"><i
+                                                    class="fadeIn animated bx bx-group"></i>
+                                            </div>
                                         </div>
-                                        <div class="ms-auto font-35 text-white"><i
-                                                class="fadeIn animated bx bx-group"></i>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <p class="mb-0 text-white">Petugas</p>
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-white">Daftar Petugas</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
+                        @if (auth()->user()->role == 'petugas')
+                            <div class="col-12 col-lg-3">
+                                <div class="card radius-15 bg-sunset">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="ms-auto font-35 text-white"><i class="fa-solid fa-dollar-sign"></i>
+                                            </div>
+                                            <div>
+
+                                                @foreach ($dendass as $dendaa)
+                                                    <h2 class="mb-2 text-white">{{ $dendaa->datadenda }}<i
+                                                            class='font-14 text-white'></i> </h2>
+                                                @endforeach
+                                            </div>
+
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-white">Total Denda</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                     <!--end row-->
                     <!-- row -->
@@ -417,22 +444,22 @@
                                 for (let i = 0; i < data.length; i++) {
                                     html +=
                                         '<tr>\<td>' + (i + 1) + '</td>\
-                                                                      <td>' + data[i]['namabuku'] + '</td>\
-                                                                      <td>' + data[i]['kategori'] + '</td>\
-                                                                      <td>' + data[i]['tahunterbit'] + '</td>\
-                                                                      <td>' + data[i]['dipinjam'] +
+                                                                                      <td>' + data[i]['namabuku'] + '</td>\
+                                                                                      <td>' + data[i]['kategori'] + '</td>\
+                                                                                      <td>' + data[i]['tahunterbit'] + '</td>\
+                                                                                      <td>' + data[i]['dipinjam'] +
                                         '</td>\
-                                                                      <td><img style="width: 70px; height: 70px" src="http://127.0.0.1:8000/fotobuku/' +
+                                                                                      <td><img style="width: 70px; height: 70px" src="http://127.0.0.1:8000/fotobuku/' +
                                         data[i]
                                         ['foto'] +
                                         '"/ ></td>\
-                                                                 </tr>';
+                                                                                 </tr>';
                                 }
                             } else {
                                 html +=
                                     '<tr>\
-                                                                <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
-                                                             </tr>';
+                                                                                <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
+                                                                             </tr>';
                             }
 
                             $('#tbodys').html(html);
@@ -442,37 +469,6 @@
                 });
             });
         </script>
-
-        {{-- <script>
-            var filterActive;
-
-            function berandah(kategoris) {
-                if (filterActive != kategoris) {
-
-                    // reset results list
-                    $('.kategories .f-cat').removeClass('active');
-
-                    // elements to be filtered
-                    $('.kategories .f-cat')
-                        .filter('[data-cat="' + kategoris + '"]')
-                        .addClass('active');
-
-                    // reset active filter
-                    filterActive = kategoris;
-                }
-            }
-
-            $('.f-cat').addClass('active');
-
-            $('.filtering select').change(function() {
-                if ($(this).val() == 'all') {
-                    $('.kategories .f-cat').addClass('active');
-                    filterActive = 'all';
-                } else {
-                    berandah($(this).val());
-                }
-            });
-        </script> --}}
 
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 

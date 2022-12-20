@@ -44,7 +44,7 @@
                                 @endif
 
                                   <button onclick="cetakid('{{ route('cetakidcard') }}')"
-                                        class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-barcode"></i> Cetak
+                                        class="btn btn-outline-primary btn-sm mb-2"> Cetak
                                         ID Card</button>
                                 <div class="row">
                                     <div class="table-responsive">
@@ -65,7 +65,7 @@
                                                         <th>Tgl.Lahir</th>
                                                         <th>Kelas</th>
                                                         <th>Alamat</th>
-                                                        <th>Qr Code</th>
+                                                        {{-- <th>Qr Code</th> --}}
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -89,8 +89,8 @@
                                                             </td>
                                                             <td>{{ $row->kelas }}</td>
                                                             <td>{{ $row->alamat }}</td>
-                                                            <td> {!! QrCode::size(65)->generate($row->nisn) !!}
-                                                            </td>
+                                                            {{-- <td> {!! QrCode::size(65)->generate($row->nisn) !!}
+                                                            </td> --}}
 
                                                             <td class="b">
                                                                 <a href="/detail/{{ $row->id }}"
