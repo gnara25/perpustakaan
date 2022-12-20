@@ -100,6 +100,7 @@ class CartController extends Controller
                 'price' => $request->denda,
                 'quantity' => 1,
                 'attributes' => array(
+                'id_remove' => $request->id,
                 'id_detail' => $detailid->id,   
                 'kodebuku' => $detailid->kodebuku,
                  )
@@ -140,8 +141,25 @@ class CartController extends Controller
 
     public function remov($id)
     {
-        \Cart::remove($id);
 
+
+        $cartbuku = \Cart::getContent($id)->where('id',$id);
+     
+
+        foreach($cartbuku as $buku){
+         $detailid = Detailbuku::where('id_transaksi', $buku->attributes->id_remove)->where('kodebuku',$buku->attributes->kodebuku)->first();
+         
+        if($detailid->jumlah == 0) {
+            $detailid->update(['status' => 'dipinjam']);
+        }
+        $sek = $detailid->jumlah + $buku->quantity;
+            $detailid->update([
+                'jumlah' => $sek,
+            ]);  
+        }
+        
+         
+        \Cart::remove($id);
         return response()->json('berhasil');
     }
 }
