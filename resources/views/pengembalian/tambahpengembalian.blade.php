@@ -306,6 +306,7 @@ is-invalid
                     dataType: 'JSON',
                     success: function(e) {
                         let html = ''
+                        // let htmls = ''
                         let no = 1;
 
                         if (e.data.length < 1) {
@@ -317,8 +318,7 @@ is-invalid
                         // console.log(e.data.status)
                         
                         e.data.map(val => {
-                            html += `
-                                                
+                            html += `           
                                     <tr>
                                         <td scope="row">${no++}</td>
                                         <td>${val.name}</td>
@@ -333,10 +333,12 @@ is-invalid
                                          data-id="${val.id}"
                                          onclick="Removcart(this)" > Remove </a   >
                                         </td>
-                                    </tr> `
+                                    </tr>`
+                                  
                         })
                         $('#total').val(e.data.total)
                         $('#tbody-cartbuku').html(html)
+                       
                     }
                 })
             }
