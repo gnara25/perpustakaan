@@ -219,7 +219,7 @@
                                             <div class="col-md-3" style="float: right;">
                                                 <label class="mb-1" style="font-size: 100%;">FILTER BUKU :</label>
                                                 <select id="kategories" class="form-control">
-                                                    <option value="all" disabled selected>Pilih Kategori
+                                                    <option  value="" >Semua Kategori
                                                         Buku</option>
                                                     @if (count($idkategori) > 0)
                                                         @foreach ($idkategori as $kategoris)
@@ -442,6 +442,7 @@
                             console.log(data)
                             if (data.length > 0) {
                                 for (let i = 0; i < data.length; i++) {
+                                    if(data[i]['dipinjam'] > 0 ) {
                                     html +=
                                         '<tr>\<td>' + (i + 1) + '</td>\
                                                                                       <td>' + data[i]['namabuku'] + '</td>\
@@ -454,6 +455,8 @@
                                         ['foto'] +
                                         '"/ ></td>\
                                                                                  </tr>';
+                                                                                }
+                                                                                
                                 }
                             } else {
                                 html +=

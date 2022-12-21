@@ -323,7 +323,10 @@ is-invalid
                                         <td scope="row">${no++}</td>
                                         <td>${val.name}</td>
                                         <td>${val.attributes.kodebuku}</td>
-                                        <td>${val.quantity}</td>
+                                        
+                                        <td> 
+                                            ${val.quantity}
+                                        </td>
                                         <td> Rp. ${val.total}   
                                         <input type="hidden" name="subtotal" value="${val.subtotal}"">  
                                         </td>
