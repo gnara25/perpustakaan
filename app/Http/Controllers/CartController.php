@@ -92,9 +92,31 @@ class CartController extends Controller
     }
     public function incrementQuantity($id){
 
+         $cartbuku = \Cart::getContent($id)->where('id',$id);
+
+         foreach($cartbuku as $buku){
+         $detailid = Daftarbuku::where('kodebuku',$buku->attributes->kodebuku)->first();
+         
+        if($buku->quantity == 0) {
+           \Cart::remove($id);
+        }
+
+        $sek = $detailid->jumlah + 1;
+            $detailid->update([
+                'jumlah' => $sek,
+            ]);  
+        }
+
+        if($detailid->status = 'tidak tersedia'){
+            $detailid->update([
+                'status' => 'tersedia',
+            ]);
+        }
+
         \Cart::update($id, array(
             'quantity' => -1,
          ));
+
         
         return response()->json('berhasil');
     }
@@ -168,7 +190,7 @@ class CartController extends Controller
      
 
         foreach($cartbuku as $buku){
-         $detailid = Detailbuku::where('id_transaksi', $buku->attributes->id_remove)->where('kodebuku',$buku->attributes->kodebuku)->first();
+         $detailid = Daftarbuku::where('id_transaksi', $buku->attributes->id_remove)->where('kodebuku',$buku->attributes->kodebuku)->first();
          
         if($detailid->jumlah == 0) {
             $detailid->update(['status' => 'dipinjam']);
