@@ -22,7 +22,7 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="kategori"><i class="fadeIn animated bx bx-book-alt"></i></a>
+                                    <li class="breadcrumb-item"><a href="kategori"><i class="fadeIn animated bx bx-book-add"></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page"> Kategori Buku</li>
                                 </ol>
@@ -37,7 +37,7 @@
                                 
                                 {{-- <a id="table2-new-row-button" href="tambahkategori" class="btn btn-outline-info btn-sm mb-2">Tambah Kategori</a> --}}
                                 <a data-bs-toggle="modal" 
-                                data-bs-target="#modaltambah" class="btn btn-outline-info btn-sm mb-2">Tambah Kategori</a>
+                                data-bs-target="#modaltambah" class="btn btn-outline-info btn-sm mb-3">Tambah Kategori</a>
                                
                                 <div class="table-responsive" > 
                                     <hr>

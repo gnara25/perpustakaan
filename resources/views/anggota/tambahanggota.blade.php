@@ -18,13 +18,13 @@
 			<div class="page-content-wrapper">
 				<div class="page-content">
                     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-						<div class="breadcrumb-title pe-3">Anggota</div>
+						<div class="breadcrumb-title pe-3">Daftar Anggota</div>
 						<div class="ps-3">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb mb-0 p-0">
 									<li class="breadcrumb-item"><a href="daftaranggota"><i class='fadeIn animated bx bx-user-circle'></i></a>
 									</li>
-									<li class="breadcrumb-item active" aria-current="page">DaftarAnggota/TambahAnggota</li>
+									<li class="breadcrumb-item active" aria-current="page">Siswa/TambahSiswa</li>
 								</ol>
 							</nav>
 						</div>
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-4">
-                                            <label for="nama">Nama Siswa :</label>
+                                            <label class="mb-1" for="nama">Nama Siswa :</label>
                                             <input type="text"
                                                 class="form-control @error('nama') is-invalid @enderror"
                                                 id="nama" name="nama" value="{{ old('nama') }}" placeholder="Nama Siswa">
@@ -56,7 +56,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="kelas">Kelas :</label>
+                                            <label class="mb-1" for="kelas">Kelas :</label>
                                             <input type="text   "
                                                 class="form-control @error('kelas') is-invalid @enderror"
                                                 id="kelas" name="kelas" value="{{ old('kelas') }}" placeholder="Masukan Kelas">
@@ -65,7 +65,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="tgl_lahir">Tanggal Lahir :</label>
+                                            <label class="mb-1" for="tgl_lahir">Tanggal Lahir :</label>
                                             <input type="date"
                                                 class="form-control @error('tgl_lahir') is-invalid @enderror"
                                                 id="tgl_lahir" name="tgl_lahir" value="{{ old('tgl_lahir') }}">
@@ -113,7 +113,7 @@
 									<br>
                                     <center> <button type="submit"
                                             class="btn btn-info btn-icon-split col-sm-3 mb-3">
-                                            <span class="text">Tambah Anggota</span>
+                                            <span class="text">Tambah Siswa</span>
                                         </button>
                                         <div class=" mb-3">
                                             <a href="daftaranggota" class="btn btn-dark btn-icon-split mb-3 col-sm-3">

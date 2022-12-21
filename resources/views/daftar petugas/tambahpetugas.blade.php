@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <label for="name">Username :</label>
+                                            <label class="mb-1" for="name">Username :</label>
                                             <input type="text"
                                                 class="form-control @error('username') is-invalid @enderror"
                                                 id="username" name="username" value="{{ old('username') }}"
@@ -84,7 +84,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="notelepon">No. Telepon :</label>
+                                            <label class="mb-1" for="notelepon">No. Telepon :</label>
                                             <input type="number"
                                                 class="form-control @error('notelepon') is-invalid @enderror"
                                                 id="notelepon" name="notelepon" value="{{ old('notelepon') }}"

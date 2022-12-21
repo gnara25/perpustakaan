@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <br>
-                        <button onclick="createmodal()" class="btn btn-info  col-sm-3 mb-0" style="margin-left: 35pc;">
+                        <button onclick="createmodal()" class="btn btn-info  col-sm-3 mb-0" style="margin-left: 36pc;">
                             <span class="text">Tambah Kategori</span>
                         </button>
                     </form>

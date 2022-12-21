@@ -19,7 +19,7 @@
                 <div class="page-content">
                     <!--breadcrumb-->
                     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">Daftar Buku</div>
+                        <div class="breadcrumb-title pe-3">Menu Buku</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
@@ -37,10 +37,10 @@
                             <div>
                                 @if (auth()->user()->role == 'admin')
                                 <a id="table2-new-row-button" href="tambahbuku"
-                                    class="btn btn-outline-info btn-sm mb-2"></i>Tambah
+                                    class="btn btn-outline-info btn-sm mb-3"></i>Tambah
                                     Buku</a>
                                     <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"
-                                        class="btn btn-outline-primary btn-sm mb-2"><i class="fa fa-qrbarcode"></i> Cetak
+                                        class="btn btn-outline-primary btn-sm mb-3"><i class="fa fa-qrbarcode"></i> Cetak
                                         Barcode</button>
                                 @endif
 
