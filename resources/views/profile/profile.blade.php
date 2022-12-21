@@ -164,6 +164,7 @@
                                                             <label class="form-label">Foto</label>
                                                             <img src="" class="image-preview" >
                                                             <input type="file" class="form-control" name="foto" id="foto">
+                                                            
                                                         </div> --}}
                                                         <div class="form-group row mb-4">
                                                             <label for="foto"
@@ -172,12 +173,13 @@
                                                             <div class="col-sm-10">
                                                                 <img src="" class="image-preview loi">
                                                                 <input type="file" accept="image/*" id="foto"
-                                                                    class="form-control" name="foto">
+                                                                    class="form-control" name="foto" value="{{ Auth::user()->foto}}">
                                                             </div>
                                                         </div>
-                                                        <div class="mb-5" style="margin-left: 65pc;">
+                                                        <br>
+                                                        <div class="mb-5">
                                                             <button type="submit"
-                                                                class="btn btn-info btn-round">{{ __('Simpan') }}</button>
+                                                                class="btn btn-info btn-info">{{ __('Simpan') }}</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -212,7 +214,8 @@
                                                                 placeholder="Konfirmasi Kata Sandi" required>
 
                                                         </div>
-                                                        <div class="mb-5" style="margin-left: 65pc">
+                                                        <br>
+                                                        <div class="mb-5">
                                                             <button type="submit"
                                                                 class="btn btn-info btn-round">{{ __('Simpan') }}</button>
                                                         </div>

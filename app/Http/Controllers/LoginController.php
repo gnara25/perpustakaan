@@ -86,10 +86,6 @@ class LoginController extends Controller
                     ->where(['daftarbukus.kategori'=> $request->kategories])
                     ->orderBy('dipinjam', 'DESC')
                     ->get();
-                    // ->get();
-        // $query = Daftarbuku::query();
-        // $datas = $query->where(['kategori'=>$request->kategories])->get();
-        // $datas = $query->get();
         
         return response()->json(['data' => $data]);
     }

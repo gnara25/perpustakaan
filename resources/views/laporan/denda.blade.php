@@ -60,7 +60,7 @@
                                                 <td>{{$no++}}</td>
                                                 <td>{{$row->nama}}</td>
                                                 <td>{{$row->kelas}}</td>
-                                                <td>Rp {{ number_format($row['denda'],2,'.','.') }}</td>
+                                                <td>Rp. {{ number_format($row['denda'],2,'.','.') }}</td>
                                                 <td>
                                                     <a class="btn btn-primary"
                                                             data-id="{{ $row->id }}"

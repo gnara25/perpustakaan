@@ -119,7 +119,7 @@ class PeminjamanController extends Controller
                 'tglpengembalian' => $request->tanggalpengembalian,
             ]);
             $databuku->dipinjam += 1;
-            $databuku->jumlah -= $cart->quantity;
+            // $databuku->jumlah -= $cart->quantity;
             $databuku->save();
         }
         
