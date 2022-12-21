@@ -381,6 +381,7 @@
                 url: "remove/" + id,
                 dataType: 'JSON',
                 success: function(e) {
+
                     console.log(e)
                     getCartList()
                 }
@@ -394,6 +395,13 @@
                 url: "decrementQuantity/" + id,
                 dataType: 'JSON',
                 success: function(e) {
+                    if(e == "gagal"){
+                            swal({
+                                icon: "warning",
+                                text: "Maaf! Stock Buku Ini Sudah Habis"
+                            });
+                            return;
+                        }
                     console.log(e)
                     getCartList()
                 }
@@ -407,6 +415,13 @@
                 url: "incrementQuantity/" + id,
                 dataType: 'JSON',
                 success: function(e) {
+                      if(e == "gagal"){
+                            swal({
+                                icon: "warning",
+                                text: "Maaf! Tidak Bisa Mengurangi Buku Ini Lagi"
+                            });
+                            return;
+                        }
                     console.log(e)
                     getCartList()
                 }

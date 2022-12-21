@@ -101,19 +101,61 @@ class CartController extends Controller
 
     public function decrementQuantity($id){
 
-        \Cazrt::update($id, array(
-            'quantity' => +1,
-         ));
+        $cartbuku = \Cart::getContent($id)->where('id',$id);
+     
+
+        foreach($cartbuku as $pinjam){
+             $iddetail = Daftarbuku::where('kodebuku',$pinjam->attributes->kodebuku)->first();
+         
+            if($iddetail->jumlah > 0) {
+                $sek = $iddetail->jumlah - 1;
+                $iddetail->update([
+                    'jumlah' => $sek,
+                ]);  
+            
+                \Cart::update($id, array(
+                    'quantity' => +1,
+                 ));
+                if($iddetail->jumlah == 0){
+                      $iddetail->update(['status' => 'tidak tersedia']);
+                }
+            } else {
+
+            return response()->json('gagal');
+       
+            }
+        }   
         
         return response()->json('berhasil');
     }
     public function incrementQuantity($id){
 
-        \Cart::update($id, array(
-            'quantity' => -1,
-         ));
-        
+         $cartbuku = \Cart::getContent($id)->where('id',$id);
+     
+
+        foreach($cartbuku as $pinjam){
+             $iddetail = Daftarbuku::where('kodebuku',$pinjam->attributes->kodebuku)->first();
+         
+            if($pinjam->quantity > 1) {
+                $sek = $iddetail->jumlah + 1;
+                $iddetail->update([
+                    'jumlah' => $sek,
+                ]);  
+            
+                \Cart::update($id, array(
+                    'quantity' => -1,
+                 ));
+                if($iddetail->jumlah > 0){
+                      $iddetail->update(['status' => 'tersedia']);
+                }
+            } else {
+
+            return response()->json('gagal');
+       
+            }
+        }    
         return response()->json('berhasil');
+        
     }
 
     public function postcart(Request $request)
