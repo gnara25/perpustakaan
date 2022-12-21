@@ -35,7 +35,7 @@
                         <div class="card radius-15 w-100">
                             <div class="card-body">
                                 <div class="row ">
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label class="mb-1" style="font-size: 100%;">Pilih Tahun :</label>
                                         <form action="{{ url('filter') }}" method="get">
                                             @csrf

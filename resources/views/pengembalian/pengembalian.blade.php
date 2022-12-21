@@ -17,7 +17,7 @@
                 <div class="page-content">
                     <!--breadcrumb-->
                     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">Laporan</div>
+                        <div class="breadcrumb-title pe-3">Laporan</div>    
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
@@ -34,7 +34,7 @@
                         <div class="card-body">
                             <div>
                                   <a id="table2-new-row-button" href="/cetakpengembalian"
-                                    class="btn btn-outline-info btn-sm mb-4"></i>PDF</a>
+                                    class="btn btn-outline-info btn-sm mb-4"></i>Exspor PDF</a>
                                 <div class="row">
                                     <hr>
                                     <div class="table-responsive">

@@ -17,7 +17,7 @@
                 <div class="page-content">
                     <!--breadcrumb-->
                     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">Peminjaman</div>
+                        <div class="breadcrumb-title pe-3">Transaksi</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
@@ -35,8 +35,8 @@
                         <div class="card-body">
                             <div>
                                 <a id="table2-new-row-button" href="/tambahpeminjaman"
-                                    class="btn btn-outline-info btn-sm mb-2">Tambah Peminjaman</a>
-
+                                    class="btn btn-outline-info btn-sm mb-4">Tambah Peminjaman</a>
+                                    
                                 {{-- @if (auth()->user()->role == 'petugas')
                                     <a id="table2-new-row-button" href="/scane" class="btn btn-outline-info btn-sm mb-2">Scane QR Code</a>
                                     @endif  --}}

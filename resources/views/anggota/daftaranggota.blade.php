@@ -38,13 +38,13 @@
                             <div>
                                 @if (auth()->user()->role == 'admin')
                                 <a id="table2-new-row-button" href="tambahanggota"
-                                    class="btn btn-outline-info btn-sm mb-2 pr-3">Tambah Siswa</a>
-                                <a data-bs-toggle="modal" data-bs-target="#importexcel" class="btn btn-outline-success btn-sm mb-2">Import Excel 
+                                    class="btn btn-outline-info btn-sm mb-4 pr-3">Tambah Siswa</a>
+                                <a data-bs-toggle="modal" data-bs-target="#importexcel" class="btn btn-outline-success btn-sm mb-4">Import Excel 
                                 </a>    
                                 @endif
 
                                   <button onclick="cetakid('{{ route('cetakidcard') }}')"
-                                        class="btn btn-outline-primary btn-sm mb-2"> Cetak
+                                        class="btn btn-outline-primary btn-sm mb-4"> Cetak
                                         ID Card</button>
                                 <div class="row">
                                     <div class="table-responsive">

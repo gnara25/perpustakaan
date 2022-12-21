@@ -36,9 +36,8 @@
                         <div class="card-body">
                             <div>
                                 <a id="table2-new-row-button" href="/cetaklaporan"
-                                    class="btn btn-outline-info btn-sm mb-4"></i>PDF</a>
-                                    {{-- <a id="table2-new-row-button" href="/export_excel"
-                                    class="btn btn-outline-info btn-sm mb-4"></i>Excel</a> --}}
+                                    class="btn btn-outline-info btn-sm mb-4"></i>Exspor PDF</a>
+                                    <hr>
                                 <div class="table-responsive">
                                     <div class="table-responsive">
                                         <table id="example" class="table table-striped table-bordered"

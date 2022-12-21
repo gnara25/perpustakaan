@@ -213,7 +213,7 @@
 
                                     <div class="card-title mb-4">
                                         <center>
-                                            <h5 class="mb-1" style="font-size: 160%;">Buku TerPopuler</h5>
+                                            <h5 class="mb-1" style="font-size: 160%;">Buku Populer</h5>
                                         </center>
                                         <div class="row">
                                             <div class="col-md-3" style="float: right;">
@@ -415,7 +415,7 @@
                     colors: ["#673ab7"],
                     yaxis: {
                         title: {
-                            text: 'Engagement',
+                            text: 'Perpustakaan',
                         },
                     }
                 };

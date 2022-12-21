@@ -77,6 +77,23 @@ class CartController extends Controller
 
     public function remove($id)
     {
+
+        $cartbuku = \Cart::getContent($id)->where('id',$id);
+     
+
+        foreach($cartbuku as $pinjam){
+             $iddetail = Daftarbuku::where('kodebuku',$pinjam->attributes->kodebuku)->first();
+         
+            if($iddetail->jumlah == 0) {
+                $iddetail->update(['status' => 'tersedia']);
+            }
+        
+        $sek = $iddetail->jumlah + $pinjam->quantity;
+            $iddetail->update([
+                'jumlah' => $sek,
+            ]);  
+        }
+
        \Cart::remove($id);
        
         return response()->json('berhasil');
@@ -84,7 +101,7 @@ class CartController extends Controller
 
     public function decrementQuantity($id){
 
-        \Cart::update($id, array(
+        \Cazrt::update($id, array(
             'quantity' => +1,
          ));
         
