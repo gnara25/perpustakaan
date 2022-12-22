@@ -30,6 +30,11 @@ class LoginController extends Controller
         $pinjam = laporanpinjam::all()->count();
         $petugas = User::where('role','petugas')->count();
         $data = Daftarbuku::all()->sortByDesc('dipinjam');
+        // $data = Daftarbuku::query();
+        // if($request->filled('kategori')){
+        //     $data->where('kategori','LIKE','%' . $request->kategori . '%');
+        // }
+
         $idkategori = Kategori::all(); 
         $datas = Denda::all();
         $datadenda = Denda::select(\Illuminate\Support\Facades\DB::raw("count(*) as datadenda"), \Illuminate\Support\Facades\DB::raw("Month(created_at) as month"))

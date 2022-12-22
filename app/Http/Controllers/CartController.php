@@ -242,4 +242,5 @@ class CartController extends Controller
         \Cart::remove($id);
         return response()->json('berhasil');
     }
+    
 }
