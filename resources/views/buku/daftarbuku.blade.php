@@ -52,10 +52,11 @@
                                             <table id="example" class="table table-striped table-bordered"
                                                 style="width:100%">
                                                 <thead>
-
+                                                    @if (auth()->user()->role == 'admin')
                                                     <th>
-                                                        <input type="checkbox" name="select_all" id="select_all">
+                                                        <input type="checkbox" onchange="checkAll(this)" name="chk">
                                                     </th>
+                                                    @endif
                                                     <th>No</th>
                                                     <th>Kode Buku</th>
                                                     <th>Judul Buku </th>
@@ -80,10 +81,12 @@
                                                     @endphp
                                                     @foreach ($datah as $row)
                                                         <tr>
-                                                            <td><input type="checkbox" id="example" name="id[]"
+                                                            @if (auth()->user()->role == 'admin')
+                                                            <td><input type="checkbox"  name="id[]"
                                                              value="{{ $row->id }}">
                                                             </td>
-                                                            <td>{{ $no++ }}</td>
+                                                            @endif
+                                                            <td> {{ $no++ }}</td>
                                                             <td>{{ $row->kodebuku }}</td>
                                                             <td>{{ $row->namabuku }}</td>
                                                             <td>{{ $row->kategori }}</td>
@@ -170,9 +173,9 @@
                         modal.find('.modal-body input').val(recipient)
                     });
 
-                    $('[name=select_all]').on('click', function() {
-                        $(':example').prop('checked', this.checked);
-                    });
+                    // $('[name=select_all]').on('click', function() {
+                    //     $(':example').prop('checked', this.checked);
+                    // });
 
                     function cetakbarcode(url) {
                         if ($('input:checked').length < 1) {
@@ -189,6 +192,24 @@
                         }
                     }
                 </script>
+                <script type="text/javascript">
+                    function checkAll(ele) {
+                         var checkboxes = document.getElementsByTagName('input');
+                         if (ele.checked) {
+                             for (var i = 0; i < checkboxes.length; i++) {
+                                 if (checkboxes[i].type == 'checkbox' ) {
+                                     checkboxes[i].checked = true;
+                                 }
+                             }
+                         } else {
+                             for (var i = 0; i < checkboxes.length; i++) {
+                                 if (checkboxes[i].type == 'checkbox') {
+                                     checkboxes[i].checked = false;
+                                 }
+                             }
+                         }
+                     }
+                   </script>
 </body>
 
 </html>

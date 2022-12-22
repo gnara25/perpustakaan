@@ -138,6 +138,7 @@ class DaftarbukuController extends Controller
     }
 
     public function cetakbarcode(Request $request){
+        // dd($request->id);
         $databuku = array();
         foreach($request->id as $id){
             $buku = Daftarbuku::find($id);

@@ -55,7 +55,7 @@
                                          $dendas = $jumlah * $denda;
                                         ?>
                                         
-                                        <tr>
+                                        <tr class="{{ $buku->kodebuku }}">
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $buku->namabuku }}</td>
                                             <td>{{ $buku->kodebuku }}</td>

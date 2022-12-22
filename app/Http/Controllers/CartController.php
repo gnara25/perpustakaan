@@ -185,13 +185,16 @@ class CartController extends Controller
                  )
             ]);
 
-
         } else {
 
             return response()->json('gagal');
         }
 
-        return response()->json('berhasil');
+        return response()->json([
+            'msg' => 'berhasil',
+            'buku' => $request->kodebuku,
+            'sisa' => $sek
+        ]);
     }
     public function Listcart()
     {
@@ -237,10 +240,15 @@ class CartController extends Controller
                 'jumlah' => $sek,
             ]);  
         }
+
         
          
         \Cart::remove($id);
-        return response()->json('berhasil');
+        return response()->json([
+            'msg' => 'berhasil',
+            'buku' => $buku->attributes->kodebuku,
+            'sisa' => $sek
+        ]);
     }
 
 //     public function mengurangi($id){

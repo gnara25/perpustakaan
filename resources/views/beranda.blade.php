@@ -103,20 +103,18 @@
                                 <div class="card radius-15 bg-sunset">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
-                                            <div class="ms-auto font-35 text-white"><i class="fa-solid fa-dollar-sign"></i>
+                                            <div class=" font-35 text-white"><i class="fa-solid fa-dollar-sign"></i>
                                             </div>
                                             <div>
-
                                                 @foreach ($dendass as $dendaa)
                                                     <h2 class="mb-2 text-white">{{ $dendaa->datadenda }}<i
-                                                            class='font-14 text-white'></i> </h2>
+                                                            class='font-20 text-white'></i> </h2>
                                                 @endforeach
                                             </div>
-
                                         </div>
                                         <div class="d-flex align-items-center">
                                             <div>
-                                                <p class="mb-0 text-white">Total Denda</p>
+                                                <p class="mb-0 text-white">Total Pendapatan</p>
                                             </div>
                                         </div>
                                     </div>
@@ -219,7 +217,7 @@
                                             <div class="col-md-3" style="float: right;">
                                                 <label class="mb-1" style="font-size: 100%;">FILTER BUKU :</label>
                                                 <select id="kategories" class="form-control">
-                                                    <option  value="" >Semua Kategori
+                                                    <option value="">Semua Kategori
                                                         Buku</option>
                                                     @if (count($idkategori) > 0)
                                                         @foreach ($idkategori as $kategoris)
@@ -442,27 +440,27 @@
                             console.log(data)
                             if (data.length > 0) {
                                 for (let i = 0; i < data.length; i++) {
-                                    if(data[i]['dipinjam'] > 0 ) {
-                                    html +=
-                                        '<tr>\<td>' + (i + 1) + '</td>\
-                                                                                      <td>' + data[i]['namabuku'] + '</td>\
-                                                                                      <td>' + data[i]['kategori'] + '</td>\
-                                                                                      <td>' + data[i]['tahunterbit'] + '</td>\
-                                                                                      <td>' + data[i]['dipinjam'] +
-                                        '</td>\
-                                                                                      <td><img style="width: 70px; height: 70px" src="http://127.0.0.1:8000/fotobuku/' +
-                                        data[i]
-                                        ['foto'] +
-                                        '"/ ></td>\
-                                                                                 </tr>';
-                                                                                }
-                                                                                
+                                    if (data[i]['dipinjam'] > 0) {
+                                        html +=
+                                            '<tr>\<td>' + (i + 1) + '</td>\
+                                                                                              <td>' + data[i]['namabuku'] + '</td>\
+                                                                                              <td>' + data[i]['kategori'] + '</td>\
+                                                                                              <td>' + data[i]['tahunterbit'] + '</td>\
+                                                                                              <td>' + data[i]['dipinjam'] +
+                                            '</td>\
+                                                                                              <td><img style="width: 70px; height: 70px" src="http://127.0.0.1:8000/fotobuku/' +
+                                            data[i]
+                                            ['foto'] +
+                                            '"/ ></td>\
+                                                                                         </tr>';
+                                    }
+
                                 }
                             } else {
                                 html +=
                                     '<tr>\
-                                                                                <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
-                                                                             </tr>';
+                                                                                        <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
+                                                                                     </tr>';
                             }
 
                             $('#tbodys').html(html);
