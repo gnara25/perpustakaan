@@ -52,13 +52,18 @@
                 <div class="page-content">
                     <!--breadcrumb-->
                     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-                        <div class="breadcrumb-title pe-3">User Profile</div>
+                        <div class="breadcrumb-title pe-3">Profile</div>
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
                                     <li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-user'></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                                    @if (auth()->user()->role == 'admin')
+                                    <li class="breadcrumb-item active" aria-current="page">Admin Profile</li>
+                                    @endif
+                                    @if (auth()->user()->role == 'petugas')
+                                    <li class="breadcrumb-item active" aria-current="page">Petugas Profile</li>
+                                    @endif
                                 </ol>
                             </nav>
                         </div>
@@ -99,7 +104,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th>No Telepon :</th>
+                                                    <th>No.Telepon :</th>
                                                     <td>{{ Auth::user()->notelepon }} </td>
                                                 </tr>
                                                 <tr>
@@ -148,7 +153,7 @@
                                                                     class="form-control" name="username">
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <label class="form-label">No Telepon :</label>
+                                                                <label class="form-label">No.Telepon :</label>
                                                                 <input type="text"
                                                                     value="{{ Auth::user()->notelepon }}"
                                                                     class="form-control" name="notelepon">
@@ -195,24 +200,44 @@
                                                     <form class="mb-4" action="{{ route('editpassword') }}"
                                                         method="post">
                                                         @csrf
-                                                        <div class="mb-4" id="show_hide_password">
+                                                        {{-- <div class="mb-4" id="show_hide_password">
                                                             <label class="form-label">Password Lama</label>
                                                             <input type="password" name="old_password"
                                                                 class="form-control" placeholder="Kata Sandi Lama"
                                                                 id="inputChoosePassword">
-                                                        </div>
+                                                        </div> --}}
                                                         <div class="mb-4" id="show_hide_password">
+                                                            <label for="inputChoosePassword" class="form-label">Password Lama : </label>
+                                                            <div class="input-group">
+                                                                <input type="password" name="old_password"
+                                                                class="form-control border-end-0" placeholder="Kata Sandi Lama"
+                                                                id="inputChoosePassword" required> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        {{-- <div class="mb-4" id="show_hide_password">
                                                             <label class="form-label">Password Baru</label>
                                                             <input type="password" name="password"
                                                                 class="form-control" placeholder="Kata Sandi"
                                                                 required>
+                                                        </div> --}}
+                                                        <div class="mb-4" id="show_password">
+                                                            <label for="inputChoosePassword" class="form-label">Password Baru : </label>
+                                                            <div class="input-group" >
+                                                                <input type="password" name="password" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Kata Sandi Baru" required> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
+                                                            </div>
                                                         </div>
-                                                        <div class="mb-4" id="show_hide_password">
+                                                        {{-- <div class="mb-4" id="show_hide_password">
                                                             <label class="form-label">Konfirmasi Password</label>
                                                             <input type="password" name="password_confirmation"
                                                                 class="form-control"
                                                                 placeholder="Konfirmasi Kata Sandi" required>
-
+                                                        </div> --}}
+                                                        <div class="mb-4" id="show_hide">
+                                                            <label for="inputChoosePassword" class="form-label">Password Lama :</label>
+                                                            <div class="input-group">
+                                                                <input type="password" name="password_confirmation" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Konfirmasi Kata Sandi" required> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
+                                                            </div>
                                                         </div>
                                                         <br>
                                                         <div class="mb-5">
@@ -324,6 +349,53 @@
         @if (Session::has('success'))
             toastr.success("{{ Session::get('success') }}")
         @endif
+        @if (Session::has('error'))
+            toastr.error("{{ Session::get('error') }}")
+        @endif
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#show_hide_password a").on('click', function (event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass("bx-hide");
+                    $('#show_hide_password i').removeClass("bx-show");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass("bx-hide");
+                    $('#show_hide_password i').addClass("bx-show");
+                }
+            });
+        });
+        $(document).ready(function () {
+            $("#show_password a").on('click', function (event) {
+                event.preventDefault();
+                if ($('#show_password input').attr("type") == "text") {
+                    $('#show_password input').attr('type', 'password');
+                    $('#show_password i').addClass("bx-hide");
+                    $('#show_password i').removeClass("bx-show");
+                } else if ($('#show_password input').attr("type") == "password") {
+                    $('#show_password input').attr('type', 'text');
+                    $('#show_password i').removeClass("bx-hide");
+                    $('#show_password i').addClass("bx-show");
+                }
+            });
+        });
+        $(document).ready(function () {
+            $("#show_hide a").on('click', function (event) {
+                event.preventDefault();
+                if ($('#show_hide input').attr("type") == "text") {
+                    $('#show_hide input').attr('type', 'password');
+                    $('#show_hide i').addClass("bx-hide");
+                    $('#show_hide i').removeClass("bx-show");
+                } else if ($('#show_hide input').attr("type") == "password") {
+                    $('#show_hide input').attr('type', 'text');
+                    $('#show_hide i').removeClass("bx-hide");
+                    $('#show_hide i').addClass("bx-show");
+                }
+            });
+        });
     </script>
 </body>
 

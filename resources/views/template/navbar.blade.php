@@ -48,8 +48,7 @@
                                 class="bx bx-cog"></i><span>Pengaturan</span></a>
                         <a class="dropdown-item" href="beranda"><i
                                 class="bx bx-tachometer"></i><span>Beranda</span></a> -->
-                        <div class="dropdown-divider mb-0"></div>	<a class="dropdown-item" href="/logout"><i
-                                class="bx bx-power-off"></i><span>Keluar</span></a>
+                        <div class="dropdown-divider mb-0"></div>	<a class="dropdown-item" href="/logout"><i class="fadeIn animated bx bx-log-out"></i><span>Keluar</span></a>
                     </div>
                 </li>
 

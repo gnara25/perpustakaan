@@ -215,7 +215,7 @@ class LoginController extends Controller
     public function editpassword(Request $request){
         $request->validate([
            'old_password' => 'required',
-           'password' => 'required|confirmed|min:8',
+           'password' => 'required|confirmed|min:6',
        ]);
        $hashpassword = Auth::user()->password;
        if (Hash::check($request->old_password,$hashpassword)){
@@ -225,7 +225,7 @@ class LoginController extends Controller
            
 
            return redirect()->back()->with('success','password Berhasil Diubah');
-       }else{
+       } else {
            return redirect()->back()->with('error','password Lama Tidak Cocok');
        }  
    }
