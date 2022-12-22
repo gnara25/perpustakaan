@@ -55,7 +55,7 @@
                                                 <thead>
                                                     <tr>
                                                    <th>
-                                                        <input type="checkbox" name="select_all" id="select_all">
+                                                    <input type="checkbox" onchange="checkAll(this)" name="chk">
                                                     </th>
                                                         <th>No.</th>
                                                         <th>Foto</th>
@@ -142,7 +142,7 @@
                         toastr.error("{{ Session::get('error') }}")
                     @endif
 
-                    function cetakbarcode(url) {
+                    function cetakid(url) {
                         if ($('input.checkbox_check').is(':checked')) {
                             $('.from-buku')
                                 .attr('action', url)
@@ -157,6 +157,23 @@
                             return; 
                         }
                     }
+
+                    function checkAll(ele) {
+                         var checkboxes = document.getElementsByTagName('input');
+                         if (ele.checked) {
+                             for (var i = 0; i < checkboxes.length; i++) {
+                                 if (checkboxes[i].type == 'checkbox' ) {
+                                     checkboxes[i].checked = true;
+                                 }
+                             }
+                         } else {
+                             for (var i = 0; i < checkboxes.length; i++) {
+                                 if (checkboxes[i].type == 'checkbox') {
+                                     checkboxes[i].checked = false;
+                                 }
+                             }
+                         }
+                     }
 
                     $('.delete').click(function() {
                         var mahasiswaid = $(this).attr('data-id');

@@ -286,6 +286,7 @@ is-invalid
                     data: fd,
                     dataType: 'JSON',
                     success: function(e) {
+                        let html = ''
                         if(e == "gagal"){
                             swal({
                                 icon: "warning",
@@ -293,9 +294,14 @@ is-invalid
                             });
                             return;
                         }
-                        
+                    
+                        console.log()
+                        $(`.${e.buku} #jumlahBuku`).html(e.sisa)
+                        console.log("test" , e.sisa)
                         listcartget()
                     }
+
+                   
                 })
             }
 
@@ -334,7 +340,7 @@ is-invalid
                                         <td class="hidden text-right md:table-cell">
                                         <a class="btn btn-danger remov"
                                          data-id="${val.id}"
-                                         onclick="Removcart(this)" > Remove </a   >
+                                   P      onclick="Removcart(this)" > Remove </a   >
                                         </td>
                                     </tr>`
                                   
@@ -353,6 +359,7 @@ is-invalid
                     url: '/remov/' + id,
                     dataType: 'JSON',
                     success: function(e) {
+                        $(`.${e.buku} #jumlahBuku`).html(e.sisa)
                         listcartget()
                     }
                 })
