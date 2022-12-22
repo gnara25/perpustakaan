@@ -219,7 +219,7 @@
                                             <div class="col-md-3" style="float: right;">
                                                 <label class="mb-1" style="font-size: 100%;">FILTER BUKU :</label>
                                                 <select id="kategories" class="form-control">
-                                                    <option value="all">Pilih Kategori
+                                                    <option  value="" >Semua Kategori
                                                         Buku</option>
                                                     @if (count($idkategori) > 0)
                                                         @foreach ($idkategori as $kategoris)
@@ -282,7 +282,7 @@
                                                 <select class="form-control" name="year" id="tahun">
                                                     <?php
                                                     $year = date('Y');
-                                                    $min = $year - 2;
+                                                    $min = $year - 1;
                                                     $max = $year;
                                                     for ($i = $max; $i >= $min; $i--) {
                                                         echo '<option value=' . $i . '>' . $i . '</option>';
@@ -442,6 +442,7 @@
                             console.log(data)
                             if (data.length > 0) {
                                 for (let i = 0; i < data.length; i++) {
+                                    if(data[i]['dipinjam'] > 0 ) {
                                     html +=
                                         '<tr>\<td>' + (i + 1) + '</td>\
                                                                                       <td>' + data[i]['namabuku'] + '</td>\
@@ -454,6 +455,8 @@
                                         ['foto'] +
                                         '"/ ></td>\
                                                                                  </tr>';
+                                                                                }
+                                                                                
                                 }
                             } else {
                                 html +=

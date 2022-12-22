@@ -114,12 +114,13 @@ Route::get('listcart', [CartController::class, 'listcart'])->name('listcart');
 Route::get('remov/{id}', [CartController::class, 'remov'])->name('remov');
 Route::get('decrementQuantity/{id}', [CartController::class, 'decrementQuantity'])->name('decrementQuantity');
 Route::get('incrementQuantity/{id}', [CartController::class, 'incrementQuantity'])->name('incrementQuantity');
+// Route::get('hapus/{id}', [CartController::class, 'hapus'])->name('hapus');
 
 
 // pengembalian
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');
 Route::get('/tambahpengembalian/{id}',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
-Route::post('/tambahpengembalian',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
+// Route::post('/tambahpengembalian',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
 Route::post('/tambahpengembalianpost/{id}',[PengembalianController::class,'tambahpengembalianpost'])->name('tambahpengembalianpost');
 Route::get('/deletepengembalian/{id}',[PengembalianController::class,'deletepengembalian'])->name('deletepengembalian');
 Route::post('/pilihbuku',[PengembalianController::class,'pilihbuku'])->name('pilihbuku');

@@ -85,16 +85,21 @@ class LoginController extends Controller
     }
 
     public function berandah(Request $request){
-        $data = \Illuminate\Support\Facades\DB::table('daftarbukus')
-                    ->join('kategoris', 'daftarbukus.kategori','kategoris.id')
-                    ->select('daftarbukus.*', 'kategoris.kategori')
-                    ->where(['daftarbukus.kategori'=> $request->kategories])
-                    ->orderBy('dipinjam', 'DESC')
-                    ->get();
-                    // ->get();
-        // $query = Daftarbuku::query();
-        // $datas = $query->where(['kategori'=>$request->kategories])->get();
-        // $datas = $query->get();
+        // dd($request);
+        if($request->kategories){
+            $data = \Illuminate\Support\Facades\DB::table('daftarbukus')
+                        ->join('kategoris', 'daftarbukus.kategori','kategoris.id')
+                        ->select('daftarbukus.*', 'kategoris.kategori')
+                        ->where(['daftarbukus.kategori'=> $request->kategories])
+                        ->orderBy('dipinjam', 'DESC')
+                        ->get();
+        }else{
+            $data = \Illuminate\Support\Facades\DB::table('daftarbukus')
+                        ->join('kategoris', 'daftarbukus.kategori','kategoris.id')
+                        ->select('daftarbukus.*', 'kategoris.kategori')
+                        ->orderBy('dipinjam', 'DESC')
+                        ->get();
+        }
         
         return response()->json(['data' => $data]);
     }

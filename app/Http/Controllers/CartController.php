@@ -211,13 +211,13 @@ class CartController extends Controller
         return response()->json(['data' => $array]);
     }
 
-    public function pilihbuku($id){
-        $databuku = array();
-        foreach($request->id as $id){
-            $data = pengembalian::find($id);
-            $databuku[] = $data;
-        }
-    }
+    // public function pilihbuku($id){
+    //     $databuku = array();
+    //     foreach($request->id as $id){
+    //         $data = pengembalian::find($id);
+    //         $databuku[] = $data;
+    //     }
+    // }
 
     public function remov($id)
     {
@@ -242,5 +242,34 @@ class CartController extends Controller
         \Cart::remove($id);
         return response()->json('berhasil');
     }
+
+//     public function mengurangi($id){
+
+//         $cartbuku = \Cart::getContent($id)->where('id',$id);
     
+
+//        foreach($cartbuku as $pinjam){
+//             $iddetail = Detailbuku::where('id_transaksi', $pinjam->attributes->id_remove)->where('kodebuku',$pinjam->attributes->kodebuku)->first();
+        
+//            if($pinjam->quantity > 1) {
+//                $sek = $iddetail->jumlah + 1;
+//                $iddetail->update([
+//                    'jumlah' => $sek,
+//                ]);  
+           
+//                \Cart::update($id, array(
+//                    'quantity' => -1,
+//                 ));
+//                if($iddetail->jumlah > 0){
+//                      $iddetail->update(['status' => 'dipinjam']);
+//                }
+//            } else {
+
+//            return response()->json('gagal');
+      
+//            }
+//        }    
+//        return response()->json('berhasil');
+       
+//    }
 }
