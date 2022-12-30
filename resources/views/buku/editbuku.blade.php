@@ -97,18 +97,25 @@
                                     </div>
                                     <br>
                                     <div class="form-group row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <label for="halbuku">Halaman Buku :</label>
                                             <input type="text"
                                                 class="form-control @error('halbuku') is-invalid @enderror"
                                                 id="halbuku" name="halbuku" value="{{ $data->halbuku }}">
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <label for="jumlah">Jumlah Buku :</label>
                                             <input type="number"
                                                 class="form-control @error('jumlah') is-invalid @enderror"
                                                 id="jumlah" name="jumlah" value="{{ $data->jumlah }}">
                                         </div>
+                                          <div class="col-md-4">
+                                            <label for="jumlah">Jumlah Buku Rusak :</label>
+                                            <input type="number"
+                                                class="form-control @error('rusak') is-invalid @enderror"
+                                                id="rusak" name="rusak" value="{{ $data->rusak }}" readonly>
+                                        </div>
+
                                     </div>
                                     <br>
                                     <div class="form-group row mb-3">
