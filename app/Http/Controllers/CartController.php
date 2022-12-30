@@ -105,6 +105,7 @@ class CartController extends Controller
      
 
         foreach($cartbuku as $pinjam){
+            
              $iddetail = Daftarbuku::where('kodebuku',$pinjam->attributes->kodebuku)->first();
          
             if($iddetail->jumlah > 0) {

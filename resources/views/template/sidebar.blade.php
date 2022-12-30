@@ -8,8 +8,7 @@
 			<img  src="../masuk/assets/aa/perpus.png" class="logo-text"  style="width: 121px;
 			margin-left: 4px; margin-top: 14px; " alt="" />
 		</div>
-		<a href="javascript:;" class="toggle-btn ms-auto"> <i class="bx bx-menu"></i>
-		</a>
+			<a href="javascript:;" class="toggle-btn ms-auto"> <i class="bx bx-menu"></i></a>
 	</div>
 	<!--navigation-->
 	<ul class="metismenu" id="menu">
@@ -38,7 +37,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="/rusak">
+			<a href="/rusaks">
 				<div class="parent-icon icon-color-2"><i class="fadeIn animated bx bx-book-add"></i>
 				</div>
 				<div class="menu-title">Kategori Buku</div>

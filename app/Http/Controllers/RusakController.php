@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class RusakController extends Controller
 {
-    public function rusak(){
+    public function rusaks(){
         return view('bukurusak.rusak');
     }
 }

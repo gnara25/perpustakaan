@@ -29,9 +29,9 @@ use App\Http\Controllers\LaporanpinjamController;
 // Route::get('/idcard', function () {
 //     return view('anggota.idcard');
 // });
-Route::get('/rusak', function () {
-    return view('bukurusak.rusak');
-});
+// Route::get('/rusak', function () {
+//     return view('bukurusak.rusak');
+// });
 
 Route::get('/profile', function () {
     return view('profile.profile');
@@ -151,5 +151,5 @@ Route::get('/pendapatan',[DendaController::class,'pendapatan'])->name('pendapata
 Route::get('/grafik',[DendaController::class,'grafik'])->name('grafik');
 
 // bukurusak
-// Route::get('/rusak',[RusakController::class,'rusak'])->name('rusak');
+Route::get('/rusaks',[RusakController::class,'rusaks'])->name('rusaks');
 });
