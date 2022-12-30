@@ -57,8 +57,6 @@ class DaftarAnggotaController extends Controller
             'alamat.required' => 'Alamat Wajib Diisi',
         ]);
 
-        $qr_code = Str :: random(20);
-
         $data = DaftarAnggota::create([
             'nisn' => $request->nisn,
             'nama' => $request->nama,

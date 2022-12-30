@@ -192,7 +192,6 @@
                                         </div>
                                     </div>
 
-
                                     <div class="tab-pane fade" id="Edit-Profile">
                                         <div class="card shadow-none border mb-0 radius-15">
                                             <div class="card-body">
@@ -209,7 +208,7 @@
                                                         <div class="mb-4" id="show_hide_password">
                                                             <label for="inputChoosePassword" class="form-label">Password Lama : </label>
                                                             <div class="input-group">
-                                                                <input type="password" name="old_password"
+                                                                <input type="password" name="old_password" value=""
                                                                 class="form-control border-end-0" placeholder="Kata Sandi Lama"
                                                                 id="inputChoosePassword" required> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
                                                             </div>
@@ -234,7 +233,7 @@
                                                                 placeholder="Konfirmasi Kata Sandi" required>
                                                         </div> --}}
                                                         <div class="mb-4" id="show_hide">
-                                                            <label for="inputChoosePassword" class="form-label">Password Lama :</label>
+                                                            <label for="inputChoosePassword" class="form-label">Konfirmasi Password  :</label>
                                                             <div class="input-group">
                                                                 <input type="password" name="password_confirmation" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Konfirmasi Kata Sandi" required> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
                                                             </div>

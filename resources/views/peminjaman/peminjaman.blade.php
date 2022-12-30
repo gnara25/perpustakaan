@@ -34,9 +34,10 @@
                     <div class="card radius-15">
                         <div class="card-body">
                             <div>
-                                <a id="table2-new-row-button" href="/tambahpeminjaman"
-                                    class="btn btn-outline-info btn-sm mb-4">Tambah Peminjaman</a>
-                                    
+                                @if (auth()->user()->role == 'petugas')
+                                    <a id="table2-new-row-button" href="/tambahpeminjaman"
+                                        class="btn btn-outline-info btn-sm mb-4">Tambah Peminjaman</a>
+                                @endif
                                 {{-- @if (auth()->user()->role == 'petugas')
                                     <a id="table2-new-row-button" href="/scane" class="btn btn-outline-info btn-sm mb-2">Scane QR Code</a>
                                     @endif  --}}
@@ -83,10 +84,13 @@
                                                                         class="btn btn-success">
                                                                         <i class="fadeIn animated bx bx-show-alt"></i>
                                                                     </a>
-                                                                    <a href="/tambahpengembalian/{{ $row->id }}"
-                                                                        class="btn btn-primary">
-                                                                        <i class="fadeIn animated bx bx-download"></i>
-                                                                    </a>
+                                                                    @if (auth()->user()->role == 'petugas')
+                                                                        <a href="/tambahpengembalian/{{ $row->id }}"
+                                                                            class="btn btn-primary">
+                                                                            <i
+                                                                                class="fadeIn animated bx bx-download"></i>
+                                                                        </a>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         @endif
@@ -132,7 +136,7 @@
                                 })
 
                                 $('#tbody-cart').html(td)
-                                 $("#BukuModal").modal('show')
+                                $("#BukuModal").modal('show')
                             }
                         })
                     }
@@ -175,15 +179,7 @@
                         var modal = $(this)
                         modal.find('.modal-title').text('New message to ' + recipient)
                         modal.find('.modal-body input').val(recipient)
-                    });
-
-                    //     var el_up  = document.getElementById("Bukuid");
-                    //     var el_down = document.getElementById("BukuModal");
-                    //     el_up.innerHTML = "Click on button to get ID";
-
-                    //       function Bukuid(clicked) {
-                    //     el_down.innerHTML = clicked;
-                    // }    
+                    });   
                 </script>
 
 </body>

@@ -69,9 +69,6 @@
                                                         {{ $p->kategori }}</option>
                                                 @endforeach
                                             </select>
-                                            @error('kategori')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
                                         </div>
                                     </div>
                                     <br>

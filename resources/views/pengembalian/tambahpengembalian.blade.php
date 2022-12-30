@@ -22,9 +22,11 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="beranda"><i class="fadeIn animated bx bx-download"></i></a>
+                                    <li class="breadcrumb-item"><a href="beranda"><i
+                                                class="fadeIn animated bx bx-download"></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Pengembalian/Tambah Pengembalian
+                                    <li class="breadcrumb-item active" aria-current="page">Pengembalian/Tambah
+                                        Pengembalian
                                     </li>
                                 </ol>
                             </nav>
@@ -85,7 +87,7 @@ is-invalid
                                     </div>
 
                                     @foreach ($detail as $buku)
-                                    <?php
+                                        <?php
                                         
                                         $u_denda = 1000;
                                         
@@ -122,27 +124,29 @@ is-invalid
                                                 <span class="input-group-btn">
                                                     <input type="hidden" value="{{ $pengembalin->id }}" name="id"
                                                         id="pilihid">
-                                                        <?php if ($selisih <= 0) { ?>
-                                                            <input type="hidden" value="0" name="denda" id="denda">
-                                                        <?php } elseif ($selisih > 0) { ?>
-                                                            <input type="hidden" value="{{$denda}}" name="denda" id="denda">  
-                                                        <?php } ?>       
-                                                    <a id="nonaktif" onclick="tambahbuku(this)" class="btn btn-primary">
+                                                    <?php if ($selisih <= 0) { ?>
+                                                    <input type="hidden" value="0" name="denda" id="denda">
+                                                    <?php } elseif ($selisih > 0) { ?>
+                                                    <input type="hidden" value="{{ $denda }}" name="denda"
+                                                        id="denda">
+                                                    <?php } ?>
+                                                    <a id="nonaktif" onclick="tambahbuku(this)"
+                                                        class="btn btn-primary">
                                                         <i class="fa-solid fa fa-search"></i>
                                                     </a>
                                                 </span>
                                             </div>
                                             <br>
                                             <button id="btnPilihBuku" type="button" class="btn btn-info"
-                                             data-bs-toggle="modal" data-bs-target="#Bukuid"
-                                                style="margin-left:2px;"><span
-                                                    class="glyphicon glyphicon-remove">Detail Buku</span> <i class="fadeIn animated bx bx-show-alt"></i>
-                                             </button>
+                                                data-bs-toggle="modal" data-bs-target="#Bukuid"
+                                                style="margin-left:2px;"><span class="glyphicon glyphicon-remove">Detail
+                                                    Buku</span> <i class="fadeIn animated bx bx-show-alt"></i>
+                                            </button>
                                             <button type="button" id="clear" class="btn btn-danger"
                                                 style="margin-left:2px;"><span
                                                     class="glyphicon glyphicon-remove">Hapus</span> <i
                                                     class="fa-solid fa-trash"></i>
-                                             </button>
+                                            </button>
                                         </div>
                                     </div>
                                     {{-- <div class="form-group row mb-3">
@@ -189,7 +193,8 @@ is-invalid
                                                 <span class="text">Proses Pengembalian</span>
                                             </button>
                                             <div class=" mb-3">
-                                                <a href="/peminjaman" class="btn btn-dark btn-icon-split mb-3 col-sm-3">
+                                                <a href="/peminjaman"
+                                                    class="btn btn-dark btn-icon-split mb-3 col-sm-3">
                                                     <span class="text">Kembali</span>
                                                 </a>
                                             </div>
@@ -204,7 +209,7 @@ is-invalid
                 </div>
                 <!--end page-content-wrapper-->
 
-                
+
                 @include('pengembalian.modalpilihbuku')
 
 
@@ -237,7 +242,7 @@ is-invalid
                 $('#kdbukuid').val("").focus();
                 $('#kdbukuid').keyup(function(e) {
                     var tex = $(this).val();
-                    
+
                     if (tex !== "" && e.keyCode === 13) {
 
                         $('#kdbukuid').focus();
@@ -250,7 +255,7 @@ is-invalid
             });
 
             $('#clear').click(function() {
-             $('#kdbukuid').val("").focus();
+                $('#kdbukuid').val("").focus();
             });
 
 
@@ -287,21 +292,21 @@ is-invalid
                     dataType: 'JSON',
                     success: function(e) {
                         let html = ''
-                        if(e == "gagal"){
+                        if (e == "gagal") {
                             swal({
                                 icon: "warning",
                                 text: "Jumlah Buku Ini Mencapai Batas Yang Dipinjam"
                             });
                             return;
                         }
-                    
+
                         console.log()
                         $(`.${e.buku} #jumlahBuku`).html(e.sisa)
-                        console.log("test" , e.sisa)
+                        console.log("test", e.sisa)
                         listcartget()
                     }
 
-                   
+
                 })
             }
 
@@ -322,7 +327,7 @@ is-invalid
                         }
 
                         // console.log(e.data.status)
-                        
+
                         e.data.map(val => {
                             html += `           
                                     <tr>
@@ -340,14 +345,14 @@ is-invalid
                                         <td class="hidden text-right md:table-cell">
                                         <a class="btn btn-danger remov"
                                          data-id="${val.id}"
-                                   P      onclick="Removcart(this)" > Remove </a   >
+                                         onclick="Removcart(this)" > Remove </a   >
                                         </td>
                                     </tr>`
-                                  
+
                         })
                         $('#total').val(e.data.total)
                         $('#tbody-cartbuku').html(html)
-                       
+
                     }
                 })
             }

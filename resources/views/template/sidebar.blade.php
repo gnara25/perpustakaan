@@ -38,6 +38,13 @@
 			</a>
 		</li>
 		<li>
+			<a href="/rusak">
+				<div class="parent-icon icon-color-2"><i class="fadeIn animated bx bx-book-add"></i>
+				</div>
+				<div class="menu-title">Kategori Buku</div>
+			</a>
+		</li>
+		<li>
 			<a href="/bukupop">
 				<div class="parent-icon icon-color-17"><i class="fadeIn animated bx bx-book-alt"></i>
 				</div>

@@ -2,16 +2,18 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DendaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RusakController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\BukurusakController;
 use App\Http\Controllers\DaftarbukuController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\DaftarAnggotaController;
 use App\Http\Controllers\LaporanpinjamController;
-use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +29,8 @@ use App\Http\Controllers\CartController;
 // Route::get('/idcard', function () {
 //     return view('anggota.idcard');
 // });
-Route::get('/tes', function () {
-    return view('tes');
+Route::get('/rusak', function () {
+    return view('bukurusak.rusak');
 });
 
 Route::get('/profile', function () {
@@ -79,12 +81,9 @@ Route::post('/tambahkategoripost',[KategoriController::class,'tambahkategoripost
 Route::get('/editkategori/{id}',[KategoriController::class,'editkategori'])->name('editkategori');
 Route::post('/editkategoripost/{id}',[KategoriController::class,'editkategoripost'])->name('editkategoripost');
 Route::get('/deletekategori/{id}',[KategoriController::class,'deletekategori'])->name('deletekategori');
-// Route::get('/create',[KategoriController::class,'create'])->name('create');
-// Route::get('/createmodal',[KategoriController::class,'createmodal'])->name('createmodal');
 
 // peminjaman
 Route::get('/peminjaman',[PeminjamanController::class,'peminjaman'])->name('peminjaman');
-// Route::get('/peminjaman/{id}',[PeminjamanController::class,'peminjamanmod'])->name('peminjaman');
 Route::get('/tambahpeminjaman',[PeminjamanController::class,'tambahpeminjaman'])->name('tambahpeminjaman');
 Route::post('/insert', [PeminjamanController::class, 'insert'])->name('insert');
 Route::get('/editpeminjaman/{id}', [PeminjamanController::class, 'editpeminjaman'])->name('editpeminjaman');
@@ -99,10 +98,7 @@ Route::get('/detailbuku/{id}',[PeminjamanController::class,'detailbuku'])->name(
 Route::get('/scanebuku',[PeminjamanController::class,'scanebuku'])->name('scanebuku');
 Route::get('/cari',[PeminjamanController::class,'cari'])->name('cari');
 
-// Route::get('/buku_list',[PeminjamanController::class,'buku_list'])->name('buku_list');
-
 //Cart
-// Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
 Route::post('/cartpost', [CartController::class, 'cartpost'])->name('cartpost');
 Route::post('/cartpost2', [CartController::class, 'cartpost2'])->name('cartpost2');
 Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
@@ -113,14 +109,12 @@ Route::post('/postcart', [CartController::class, 'postcart'])->name('postcart');
 Route::get('listcart', [CartController::class, 'listcart'])->name('listcart');
 Route::get('remov/{id}', [CartController::class, 'remov'])->name('remov');
 Route::get('decrementQuantity/{id}', [CartController::class, 'decrementQuantity'])->name('decrementQuantity');
-Route::get('incrementQuantity/{id}', [CartController::class, 'incrementQuantity'])->name('incrementQuantity');
-// Route::get('hapus/{id}', [CartController::class, 'hapus'])->name('hapus');
+Route::get('kurang/{id}', [CartController::class, 'kurang'])->name('kurang');
 
 
 // pengembalian
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');
 Route::get('/tambahpengembalian/{id}',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
-// Route::post('/tambahpengembalian',[PengembalianController::class,'tambahpengembalian'])->name('tambahpengembalian');
 Route::post('/tambahpengembalianpost/{id}',[PengembalianController::class,'tambahpengembalianpost'])->name('tambahpengembalianpost');
 Route::get('/deletepengembalian/{id}',[PengembalianController::class,'deletepengembalian'])->name('deletepengembalian');
 Route::post('/pilihbuku',[PengembalianController::class,'pilihbuku'])->name('pilihbuku');
@@ -136,7 +130,6 @@ Route::post('/tambahanggotapost',[DaftarAnggotaController::class,'tambahanggotap
 Route::post('/editanggotapost/{id}',[DaftarAnggotaController::class,'editanggotapost'])->name('editanggotapost');
 Route::get('/detailanggota/{id}',[DaftarAnggotaController::class,'detailanggota'])->name('detailanggota');
 Route::get('/deleteanggota/{id}',[DaftarAnggotaController::class,'deleteanggota'])->name('deleteanggota');
-// Route::get('/qr_code/{id}',[DaftarAnggotaController::class,'qr_code'])->name('qr_code');
 Route::post('/cetakidcard',[DaftarAnggotaController::class,'cetakidcard'])->name('cetakidcard');
 Route::get('/idcard/{id}',[DaftarAnggotaController::class,'idcard'])->name('idcard');
 Route::get('/detail/{id}',[DaftarAnggotaController::class,'detail'])->name('detail');
@@ -157,4 +150,6 @@ Route::get('/detailpinjam/{id}',[LaporanpinjamController::class,'detailpinjam'])
 Route::get('/pendapatan',[DendaController::class,'pendapatan'])->name('pendapatan');
 Route::get('/grafik',[DendaController::class,'grafik'])->name('grafik');
 
+// bukurusak
+// Route::get('/rusak',[RusakController::class,'rusak'])->name('rusak');
 });

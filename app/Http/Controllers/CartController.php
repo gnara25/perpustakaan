@@ -128,7 +128,7 @@ class CartController extends Controller
         
         return response()->json('berhasil');
     }
-    public function incrementQuantity($id){
+    public function kurang($id){
 
          $cartbuku = \Cart::getContent($id)->where('id',$id);
      
@@ -207,20 +207,11 @@ class CartController extends Controller
             $total = Cart::get($itemId)->getPriceSum();
             $cartbuku['subtotal'] = $subtotal;
             $cartbuku['total'] = $total;
-            // $subtotal = $cartbuku->getSubTotal();
             array_push($array, $cartbuku);   
         }
         // dd($subtotal);
         return response()->json(['data' => $array]);
     }
-
-    // public function pilihbuku($id){
-    //     $databuku = array();
-    //     foreach($request->id as $id){
-    //         $data = pengembalian::find($id);
-    //         $databuku[] = $data;
-    //     }
-    // }
 
     public function remov($id)
     {

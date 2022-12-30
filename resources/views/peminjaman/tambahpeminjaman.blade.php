@@ -51,7 +51,8 @@
                                         <div class="col-md-4">
                                             <label for="nisn" class="col-sm-4 col-form-label">Nisn :</label>
                                             <input type="number" id="nisn" onkeyup="complate()"
-                                                class="form-control" value="" name="nisn" min="1" placeholder="Scane Nisn">
+                                                class="form-control" value="" name="nisn" min="1"
+                                                placeholder="Scane Nisn">
                                             <input type="hidden" id="idsiswa" class="form-control" value=""
                                                 name="idsiswa" required>
                                             @error('nisn')
@@ -142,8 +143,11 @@
                                                 </span> --}}
                                             </div>
                                             <br>
-                                            <button type="button" id="clear" class="btn btn-danger" style="margin-left:2px;"><span class="glyphicon glyphicon-remove">Hapus</span> <i class="fa-solid fa-trash"></i>     </button> 
-                                        </div> 
+                                            <button type="button" id="clear" class="btn btn-danger"
+                                                style="margin-left:2px;"><span
+                                                    class="glyphicon glyphicon-remove">Hapus</span> <i
+                                                    class="fa-solid fa-trash"></i> </button>
+                                        </div>
                                     </div>
                                     <div>
                                         <table class="table" style="width:100%">
@@ -312,13 +316,13 @@
                 data: fd,
                 dataType: 'JSON',
                 success: function(e) {
-                    if(e == "gagal"){
-                            swal({
-                                icon: "warning",
-                                text: "Maaf! Stock Buku Ini Sudah Habis"
-                            });
-                            return;
-                        }
+                    if (e == "gagal") {
+                        swal({
+                            icon: "warning",
+                            text: "Maaf! Stock Buku Ini Sudah Habis"
+                        });
+                        return;
+                    }
                     getCartList()
                 }
             })
@@ -395,13 +399,13 @@
                 url: "decrementQuantity/" + id,
                 dataType: 'JSON',
                 success: function(e) {
-                    if(e == "gagal"){
-                            swal({
-                                icon: "warning",
-                                text: "Maaf! Stock Buku Ini Sudah Habis"
-                            });
-                            return;
-                        }
+                    if (e == "gagal") {
+                        swal({
+                            icon: "warning",
+                            text: "Maaf! Stock Buku Ini Sudah Habis"
+                        });
+                        return;
+                    }
                     console.log(e)
                     getCartList()
                 }
@@ -412,16 +416,16 @@
             var id = e.getAttribute('data-id');
             $.ajax({
                 type: 'GET',
-                url: "incrementQuantity/" + id,
+                url: "kurang/" + id,
                 dataType: 'JSON',
                 success: function(e) {
-                      if(e == "gagal"){
-                            swal({
-                                icon: "warning",
-                                text: "Maaf! Tidak Bisa Mengurangi Buku Ini Lagi"
-                            });
-                            return;
-                        }
+                    if (e == "gagal") {
+                        swal({
+                            icon: "warning",
+                            text: "Maaf! Tidak Bisa Mengurangi Buku Ini Lagi"
+                        });
+                        return;
+                    }
                     console.log(e)
                     getCartList()
                 }

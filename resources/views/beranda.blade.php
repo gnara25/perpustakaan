@@ -103,7 +103,7 @@
                                 <div class="card radius-15 bg-sunset">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
-                                            <div class=" font-35 text-white"><i class="fa-solid fa-dollar-sign"></i>
+                                            <div class=" font-35 text-white"><i class="fa-solid fa-folder-open"></i>
                                             </div>
                                             <div>
                                                 @foreach ($dendass as $dendaa)
