@@ -73,6 +73,35 @@
 	<!-- end wrapper -->
 	@include('template.script')
     <script type="text/javascript">
+           @if (Session::has('gagal'))
+            swal({
+                // position: 'top-end',
+                icon: 'warning',
+                title: 'Anda Sudah Scan',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        @endif
+
+        @if (Session::has('errors'))
+            swal({
+                // position: 'top-end',
+                icon: 'warning',
+                title: 'Nisn Anda Salah',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        @endif
+        @if (Session::has('berhasil'))
+            swal({
+                icon: "success",
+                title: "Anda Berhasil Absensi",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        @endif
+    </script>
+    <script type="text/javascript">
      $(document).ready(function() {
             $('#nisn').val("").focus();
             $('#nisn').keyup(function(e) {
@@ -87,6 +116,8 @@
             });
            
         });
+
+     
      </script>
 </body>
 
