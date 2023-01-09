@@ -67,6 +67,13 @@
 				<div class="menu-title"> Siswa</div>
 			</a>
 		</li>
+		<li>
+			<a  href="/history">
+				<div class="parent-icon icon-color-1"> <i class="fadeIn animated bx bx-group"></i>
+				</div>
+				<div class="menu-title"> Rekap Perpus</div>
+			</a>
+		</li>
 		@if (auth()->user()->role == 'admin')
 		<li>
 			<a  href="/petugas">

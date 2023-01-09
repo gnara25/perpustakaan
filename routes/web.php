@@ -14,6 +14,8 @@ use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\DaftarAnggotaController;
 use App\Http\Controllers\LaporanpinjamController;
+use App\Http\Controllers\RekapperpusController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -156,3 +158,8 @@ Route::post('/tambahrusakpost',[RusakController::class,'tambahrusakpost'])->name
 Route::get('/editrusak/{id}',[RusakController::class,'editrusak'])->name('editrusak');
 Route::post('/editrusakpost/{id}',[RusakController::class,'editrusakpost'])->name('editrusakpost');
 });
+
+//rekapperpus
+Route::get('/history',[RekapperpusController::class,'history'])->name('history');
+Route::get('/scanner',[RekapperpusController::class,'scanner'])->name('scanner');
+Route::post('/scannerpost',[RekapperpusController::class,'scannerpost'])->name('scannerpost');
