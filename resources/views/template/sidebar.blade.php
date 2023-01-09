@@ -37,10 +37,10 @@
 			</a>
 		</li>
 		<li>
-			<a href="/rusaks">
+			<a href="/rusak">
 				<div class="parent-icon icon-color-2"><i class="fadeIn animated bx bx-book-add"></i>
 				</div>
-				<div class="menu-title">Kategori Buku</div>
+				<div class="menu-title">Daftar Buku Rusak</div>
 			</a>
 		</li>
 		<li>

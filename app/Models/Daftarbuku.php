@@ -22,6 +22,12 @@ class Daftarbuku extends Model
         return $this->hasMany(Peminjaman::class);
     }
 
+    public function idbukus()
+    {
+        return $this->hasMany(Rusak::class);
+    }
+
+
     public function detail_buku($id){
         $data = Daftarbuku::where('id',$id)->first();
         return $data;

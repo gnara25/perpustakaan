@@ -150,6 +150,9 @@ Route::get('/detailpinjam/{id}',[LaporanpinjamController::class,'detailpinjam'])
 Route::get('/pendapatan',[DendaController::class,'pendapatan'])->name('pendapatan');
 Route::get('/grafik',[DendaController::class,'grafik'])->name('grafik');
 
-// bukurusak
-Route::get('/rusaks',[RusakController::class,'rusaks'])->name('rusaks');
+//bukurusak
+Route::get('/rusak',[RusakController::class,'rusak'])->name('rusak');
+Route::post('/tambahrusakpost',[RusakController::class,'tambahrusakpost'])->name('tambahrusakpost');
+Route::get('/editrusak/{id}',[RusakController::class,'editrusak'])->name('editrusak');
+Route::post('/editrusakpost/{id}',[RusakController::class,'editrusakpost'])->name('editrusakpost');
 });

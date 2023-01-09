@@ -66,6 +66,7 @@
                                                     <th>Tahun Terbit</th>
                                                     <th>Halaman Buku</th>
                                                     <th>Jumlah</th>
+                                                    <th>Jumlah Buku Rusak</th>
                                                     <th>Lokasi</th>
                                                     <th>Deskripsi</th>
                                                     {{-- <th>Dipinjam</th> --}}
@@ -95,6 +96,7 @@
                                                             <td>{{ $row->tahunterbit }}</td>
                                                             <td>{{ $row->halbuku }}</td>
                                                             <td>{{ $row->jumlah }} buku</td>
+                                                            <td>{{ $row->rusak }} buku</td>
                                                             <td>{{ $row->lokasibuku }}</td>
                                                             <td>{{ $row->deskripsi }}</td>
                                                             {{-- <td>{{ $row->dipinjam }} Kali</td> --}}

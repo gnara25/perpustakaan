@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('rusaks', function (Blueprint $table) {
             $table->id();
+            $table->string('namabuku');
+            $table->string('kodebuku');
+            $table->string('jumlah');
             $table->timestamps();
         });
     }

@@ -71,6 +71,7 @@ class DaftarbukuController extends Controller
             'tahunterbit' => $request->tahunterbit,
             'halbuku' => $request->halbuku,
             'jumlah' => $request->jumlah,
+            'rusak' => '0',
             'lokasibuku' => $request->lokasibuku,
             'deskripsi' => $request->deskripsi,
             'dipinjam' => '0',
@@ -117,9 +118,9 @@ class DaftarbukuController extends Controller
             'tahunterbit' => $request->tahunterbit,
             'halbuku' => $request->halbuku,
             'jumlah' => $request->jumlah,
+            'rusak' => $request->rusak,
             'lokasibuku' => $request->lokasibuku,
             'deskripsi' => $request->deskripsi,
-            'dipinjam' => $request->dipinjam,
         ]);
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('fotobuku/',$request->file('foto')->getClientOriginalName());

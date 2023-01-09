@@ -323,6 +323,13 @@
                         });
                         return;
                     }
+                    if (e == "rusak") {
+                        swal({
+                            icon: "warning",
+                            text: "Maaf! jumlah buku ini melebihi batas yang dipinjam"
+                        });
+                        return;
+                    }
                     getCartList()
                 }
             })

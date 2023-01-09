@@ -22,9 +22,9 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="kategori"><i class="fadeIn animated bx bx-book-add"></i></a>
+                                    <li class="breadcrumb-item"><a href="rusak"><i class="fadeIn animated bx bx-book-add"></i></a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Kategori Buku</li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Daftar Buku Rusak</li>
                                 </ol>
                             </nav>
                         </div>
@@ -37,7 +37,7 @@
                                 
                                 {{-- <a id="table2-new-row-button" href="tambahkategori" class="btn btn-outline-info btn-sm mb-2">Tambah Kategori</a> --}}
                                 <a data-bs-toggle="modal" 
-                                data-bs-target="#modaltambah" class="btn btn-outline-info btn-sm mb-3">Tambah Kategori</a>
+                                data-bs-target="#modaltambah" class="btn btn-outline-info btn-sm mb-3">Tambah Buku Rusak</a>
                                
                                 <div class="table-responsive" > 
                                     <hr>
@@ -47,16 +47,26 @@
                                             <thead>
                                                 <tr>
                                                     <th>No.</th>
-                                                    <th>Kategori Buku</th>
+                                                    <th>Kode Buku</th>
+                                                    <th>Nama Buku</th>
+                                                    <th>Jumlah</th>
                                                     <th>Aksi</th>
-                                                    
-
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <td>dd</td>
-                                                <td>dd</td>
-                                                <td>dd</td>
+                                                 @php
+                                                        $no = 1;
+                                                @endphp
+                                                @foreach ($data as $row)
+                                                <tr>
+                                                <td>{{$no++}}</td>
+                                                <td>{{$row->idbukus->kodebuku}}</td>
+                                                <td>{{$row->namabuku}}</td>
+                                                <td>{{$row->jumlah}} Buku</td>
+                                                <td><a href="/editrusak/{{$row->id}}" class="btn btn-success"><i class="fa-solid fa-square-pen"></i></a>
+                                                </td>
+                                                </tr>
+                                                @endforeach
                                             </tbody>
 
                                         </table>
@@ -67,9 +77,19 @@
                     </div>
                     <!--end page-content-wrapper-->
                 </div>
-                @include('kategori.modaltambah')
+               
+                @include('bukurusak.modaltambahrusak')
+             
                 <!-- end wrapper -->
                 @include('template.script')
 </body>
+
+<script>
+    const selection = document.getElementById('kodebuku')
+    selection.onchange = function(e){
+        const namabuku = e.target.options[e.target.selectedIndex].dataset.namabuku
+        document.getElementById('namabuku').value = namabuku;
+    }
+</script>
 
 </html>
