@@ -8,11 +8,11 @@
 			<img  src="../masuk/assets/aa/perpus.png" class="logo-text"  style="width: 121px;
 			margin-left: 4px; margin-top: 14px; " alt="" />
 		</div>
-		<a href="javascript:;" class="toggle-btn ms-auto"> <i class="bx bx-menu"></i>
-		</a>
+			<a href="javascript:;" class="toggle-btn ms-auto"> <i class="bx bx-menu"></i></a>
 	</div>
 	<!--navigation-->
 	<ul class="metismenu" id="menu">
+		@if (auth()->user()->role == 'admin'&&'petugas')
 		<li>
 			<a href="/beranda">
 				<div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
@@ -20,6 +20,8 @@
 				<div class="menu-title">Beranda</div>
 			</a>
 		</li>
+		@endif
+		@if (auth()->user()->role == 'admin'&&'petugas')
 		<li class="menu-label">Menu Buku</li>
 		@if (auth()->user()->role == 'admin')
 		<li>
@@ -83,6 +85,8 @@
 			</a>
 		</li>
 		@endif
+		@endif
+		@if (auth()->user()->role == 'admin'&&'petugas')
 		<li class="menu-label">laporan</li>
 		<li>
 			<a  href="/laporanpinjam">
@@ -90,7 +94,6 @@
 				</div>
 				<div class="menu-title">Peminjaman</div>
 			</a>
-
 		</li>
 		<li>
 			<a  href="/pengembalian">
@@ -107,12 +110,22 @@
 				<div class="menu-title">Denda </div>
 			</a>
 		</li>
+		@endif
 		@if (auth()->user()->role == 'admin')
 		<li>
 			<a  href="/pendapatan">
 				<div class="parent-icon icon-color-13"><i class="bx bx-line-chart"></i>
 				</div>
 				<div class="menu-title">Pendapatan </div>
+			</a>
+		</li>
+		@endif
+		@if (auth()->user()->role == 'user')
+		<li>
+			<a  href="/scanner">
+				<div class="parent-icon icon-color-13"><i class="bx bx-line-chart"></i>
+				</div>
+				<div class="menu-title">Scanner </div>
 			</a>
 		</li>
 		@endif

@@ -31,9 +31,9 @@ use App\Http\Controllers\RekapperpusController;
 // Route::get('/idcard', function () {
 //     return view('anggota.idcard');
 // });
-Route::get('/rusak', function () {
-    return view('bukurusak.rusak');
-});
+// Route::get('/rusak', function () {
+//     return view('bukurusak.rusak');
+// });
 
 Route::get('/profile', function () {
     return view('profile.profile');

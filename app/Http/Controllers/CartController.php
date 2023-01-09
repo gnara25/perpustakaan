@@ -15,7 +15,9 @@ class CartController extends Controller
         $Product = Daftarbuku::where('kodebuku', $request->id)->first();
 
         if($Product->status == 'tersedia') {
-
+            if($Product->jumlah == $Product->rusak){
+                return response()->json('rusak'); 
+            } else {
             $sek = $Product->jumlah - 1;
                 $Product->update([
                     'jumlah' => $sek,
@@ -35,7 +37,7 @@ class CartController extends Controller
                     'kodebuku' => $Product->kodebuku,
                     )
                 ]);
-            
+            }
         } else {
             return response()->json('gagal'); 
             
@@ -105,9 +107,12 @@ class CartController extends Controller
      
 
         foreach($cartbuku as $pinjam){
+            
              $iddetail = Daftarbuku::where('kodebuku',$pinjam->attributes->kodebuku)->first();
          
             if($iddetail->jumlah > 0) {
+               
+                
                 $sek = $iddetail->jumlah - 1;
                 $iddetail->update([
                     'jumlah' => $sek,

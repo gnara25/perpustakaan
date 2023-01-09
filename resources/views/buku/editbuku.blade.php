@@ -132,7 +132,7 @@
                                     <div class="form-group row mb-3">
                                         <label for="deskripsi" class="col-sm-4 col-form-label">Deskripsi :</label>
                                         <div class="col-sm-8">
-                                            <textarea style="width: 48pc; height: 5pc" > {{ $data->deskripsi }}
+                                            <textarea style="width: 48pc; height: 5pc" name="deskripsi" > {{ $data->deskripsi }}
                                             </textarea>
                                         </div>
                                     </div>

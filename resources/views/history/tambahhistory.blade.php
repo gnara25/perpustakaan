@@ -18,16 +18,7 @@
 			<div class="page-content-wrapper">
 				<div class="page-content">
                     <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-						<div class="breadcrumb-title pe-3">Daftar Anggota</div>
-						<div class="ps-3">
-							<nav aria-label="breadcrumb">
-								<ol class="breadcrumb mb-0 p-0">
-									<li class="breadcrumb-item"><a href="daftaranggota"><i class='fadeIn animated bx bx-user-circle'></i></a>
-									</li>
-									<li class="breadcrumb-item active" aria-current="page">Siswa/TambahSiswa</li>
-								</ol>
-							</nav>
-						</div>
+						<div class="breadcrumb-title border-0">Scanner</div>
 					</div>
                     <div class="card radius-15">
 						<div class="card-body">
@@ -37,7 +28,7 @@
                                     <div class="form-group row mb-3">
                                         <label for="nisn" class="col-sm-4 col-form-label">Nisn   :</label>
                                         <div class="col-sm-8">
-                                            <input type="number"
+                                            <input type="number" min="0"
                                                 class="form-control @error('nisn') is-invalid @enderror"
                                                 id="nisn" name="nisn" id="nisn">
                                             @error('nisn')
