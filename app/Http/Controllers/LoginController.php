@@ -119,8 +119,12 @@ class LoginController extends Controller
             'password.required' => 'password Harus Diisi'
         ]);
         if(Auth::attempt($request->only('email','password'))){
-            return redirect('beranda');
-         }
+        if(auth()->user()->role == 'user'){
+               return redirect('scanner');
+            } else {
+                return redirect('beranda');
+            }
+        } 
         //  dd($request);
 
          return redirect('login')->with('error', 'Email atau Password Salah!');
