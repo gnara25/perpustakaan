@@ -278,4 +278,7 @@ class LoginController extends Controller
     return redirect()->route('petugas')->with('success', 'Data Berhasil ditambahkan');
 
    }
+     public function Loginuser(){
+        return view('masuk.loginuser');
+    }
 }
