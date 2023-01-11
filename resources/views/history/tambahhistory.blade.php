@@ -63,6 +63,8 @@
 	</div>
 	<!-- end wrapper -->
 	@include('template.script')
+
+    
     <script type="text/javascript">
            @if (Session::has('gagal'))
             swal({
@@ -80,7 +82,7 @@
                 icon: 'warning',
                 title: 'Nisn Anda Salah',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 3500
             });
         @endif
         @if (Session::has('berhasil'))
@@ -88,7 +90,7 @@
                 icon: "success",
                 title: "Anda Berhasil Absensi",
                 showConfirmButton: false,
-                timer: 1500
+                timer: 3500
             });
         @endif
     </script>
@@ -109,7 +111,7 @@
         });
 
      
-     </script>
+     </>
 </body>
 
 </html>

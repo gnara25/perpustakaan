@@ -158,6 +158,7 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'role' => 'Petugas',
+            'kelas' => 'Petugas',
             'remember_token' => Str::random(60),
         ]);
         // dd ($data);
@@ -269,6 +270,7 @@ class LoginController extends Controller
         'email' => $request->email,
         'password' => bcrypt($request->password),
         'role' => 'petugas',
+        'kelas' => 'petugas',
         'foto' => $request->foto,
         'remember_token' => Str::random(60),
     ]);

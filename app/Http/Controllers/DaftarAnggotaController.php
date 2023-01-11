@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use \PDF;
+use App\Models\User;
 use App\Models\Detailbuku;
+use App\Imports\UserImport;
 use App\Models\Bukukembali;
 use Illuminate\Support\Str;
 use App\Models\Pengembalian;
@@ -60,6 +62,7 @@ class DaftarAnggotaController extends Controller
         $data = DaftarAnggota::create([
             'nisn' => $request->nisn,
             'nama' => $request->nama,
+            'email' => $request->email,
             'tgl_lahir' => $request->tgl_lahir,
             'kelas' => $request->kelas,
             'jenis_kelamin' => $request->jenis_kelamin,
@@ -72,6 +75,19 @@ class DaftarAnggotaController extends Controller
             $data->foto = $request->file('foto')->getClientOriginalName();
             $data->save();
         }
+
+        User::create([
+            'username' => $request->nisn,
+            'name' => $request->nama,
+            'notelepon' => $request->notelepon,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => 'petugas',
+            'kelas' => 'petugas',
+            'remember_token' => Str::random(60),
+        ]);
+        
+
         return redirect()->route('daftaranggota')->with('success','Data Berhasil Ditambahkan');
     }
 
@@ -155,6 +171,7 @@ class DaftarAnggotaController extends Controller
  
         // import data
         Excel::import(new DaftarAnggotaImport, public_path('/file_siswa/'.$nama_file));
+        Excel::import(new UserImport, public_path('/file_siswa/'.$nama_file));
  
         // alihkan halaman kembali
         return redirect()->back()->with('success','Data Siswa Berhasil Diimport!');

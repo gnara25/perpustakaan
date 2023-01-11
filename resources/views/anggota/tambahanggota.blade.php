@@ -87,7 +87,29 @@
                                               <label class="form-check-label" for="inlineCheckbox2">Perempuan</label>
                                             </div>
                                         </div>
-                                    </div>        
+                                    </div> 
+                                    <div class="form-group row mb-3">
+                                        <label for="nisn" class="col-sm-4 col-form-label">Email   :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email"
+                                                class="form-control @error('email') is-invalid @enderror"
+                                                id="email" name="email" value="{{ old('email') }}" placeholder="Masukan Email Anda">
+                                            @error('email')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>       
+                                    <div class="form-group row mb-3">
+                                        <label for="nisn" class="col-sm-4 col-form-label">No.Telpon   :</label>
+                                        <div class="col-sm-8">
+                                            <input type="number"
+                                                class="form-control @error('notelepon') is-invalid @enderror"
+                                                id="notelepon" name="notelepon" value="{{ old('notelepon') }}" placeholder="Masukan Email Anda">
+                                            @error('notelepon')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>       
                                     <div class="form-group row mb-3">
                                         <label for="alamat" class="col-sm-4 col-form-label">Alamat   :</label>
                                         <div class="col-sm-8">

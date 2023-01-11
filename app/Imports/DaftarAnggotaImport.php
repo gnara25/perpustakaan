@@ -15,7 +15,7 @@ class DaftarAnggotaImport implements ToModel
     public function model(array $row)
     {
         return new DaftarAnggota([
-             'nisn' => $row[1],
+            'nisn' => $row[1],
             'nama' => $row[2], 
             'jenis_kelamin' => $row[3],
             'tgl_lahir' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[4])->format('Y-m-d'),
@@ -23,6 +23,8 @@ class DaftarAnggotaImport implements ToModel
             'alamat' => $row[6],
             'qr_code' => $row[7],
             'foto' => $row[8], 
+            'email' => $row[9], 
+            'notelepon' => $row[10],
         ]);
     }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('notelepon');
             $table->string('role');
+            $table->string('kelas');
             $table->string('foto')->default('default.jpg');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

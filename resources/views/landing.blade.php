@@ -84,7 +84,14 @@
                                 <div class="attr-nav button-light">
                                     <ul>
                                         <li>
-                                            <a href="/login">Masuk</a>
+                                            <a href="/login">Masuk Admin</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="attr-nav button-light">
+                                    <ul>
+                                        <li>
+                                            <a href="/login">Masuk User</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -127,97 +134,6 @@
         </div>
     </div>
     <!-- End Banner -->
-
-
-    <!-- Start Features Area
-    ============================================= -->
-    {{-- <div id="features" class="features-area carousel-shadow default-padding bg-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
-                    <div class="site-heading text-center">
-                        <h2>Daftar Buku Yang Tersedia</h2>
-                        <p>
-                            Learning day desirous informed expenses material returned six the. She enabled invited exposed him another. Reasonably conviction solicitude me mr at discretion reasonable. Age out full gate bed day lose.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="features-items features-carousel owl-carousel owl-theme">
-                        <!-- Single Item -->
-                        <div class="item">
-                            <div class="icon">
-                                <span>01</span>
-                                <i class="flaticon-drag-2"></i>
-                            </div>
-                            <div class="info">
-                                <h4>Drag And Drop</h4>
-                                <p>
-                                    Situation perpetual allowance offending as principle.
-                                </p>
-                                <div class="bottom">
-                                    <a href="#">View Details <i class="fas fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="item">
-                            <div class="img" style="height: 200px; width:200px;">
-                                <img src="asset/img/buku/df3.jpg" alt="Thumb">
-                            </div>
-                             <div class="info">
-                                <h4>Novel Angkasa</h4>
-                                <p>
-                                    Situation perpetual allowance offending as principle.
-                                </p>
-                                <div class="bottom">
-                                    <a href="#">Lihat Detail <i class="fas fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div> -
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="item">
-                            <div class="">
-                                <img src="asset/img/buku/df4.jpg" alt="Thumb">
-                            </div>
-                            <div class="info">
-                                <h4>Color Schemes</h4>
-                                <p>
-                                    Situation perpetual allowance offending as principle.
-                                </p>
-                                <div class="bottom">
-                                    <a href="#">View Details <i class="fas fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="item">
-                            <div class="icon">
-                                <span>04</span>
-                                <i class="flaticon-video"></i>
-                            </div>
-                            <div class="info">
-                                <h4>High Resolution</h4>
-                                <p>
-                                    Situation perpetual allowance offending as principle.
-                                </p>
-                                <div class="bottom">
-                                    <a href="#">View Details <i class="fas fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Item -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- End Features Area -->
 
     <!-- Start Work Process Area
     ============================================= -->
