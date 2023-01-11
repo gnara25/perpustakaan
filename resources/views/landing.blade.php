@@ -91,7 +91,7 @@
                                 <div class="attr-nav button-light">
                                     <ul>
                                         <li>
-                                            <a href="/login">Masuk User</a>
+                                            <a href="/loginuser">Masuk User</a>
                                         </li>
                                     </ul>
                                 </div>

@@ -281,4 +281,22 @@ class LoginController extends Controller
      public function Loginuser(){
         return view('masuk.loginuser');
     }
+    public function loginuserpost(Request $request){
+
+        $this->validate($request,[
+            'username' => 'required',
+            'password' => 'required',
+            'email' => 'required'
+        ], [
+            'username.required' => 'NISN Harus Diisi',
+            'password.required' => 'password Harus Diisi',
+            'email.required' => 'email Harus Diisi',
+        ]);
+        if(Auth::attempt($request->only('username','email','password'))){     
+                return redirect('beranda');
+        } 
+        //  dd($request);
+
+         return redirect('login')->with('error', 'Email atau Password Salah!');
+    }
 }

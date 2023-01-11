@@ -108,18 +108,43 @@
                 <h3 class="text-center mb-0">
                     Silahkan Login
                 </h3>
-                <form class="row g-3" action="/loginuser" class="user" method="POST">
+                <form class="row g-3" action="/loginuserpost" class="user" method="POST">
                     @csrf
                     <div class="card-body ">
                         <div class="form-group row">
                             <div class="col-md-12 col-12 radius-15">
                                 <label>NISN</label>
-                                <input class="form-control " type="number" placeholder="Masukan NISN Anda"
+                                <input class="form-control " type="NISN" placeholder="Masukan NISN Anda"
+                                    name="username" required="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12 col-12 radius-15">
+                                <label>Email</label>
+                                <input class="form-control " type="email" placeholder="Masukan email Anda"
                                     name="email" required="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12 col-12">
+                                <label>Password</label>
+                                <input id="inp1" class="form-control" type="password"placeholder="Password"
+                                    name="password" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12 col-12">
+                                <div class="checkbox checkbox-primary pull-left p-t-0">
+                                    <input id="checkbox-signup" type="checkbox">
+                                    <label for="checkbox-signup" style="margin:0;">
+                                        <small>Show Password</small>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-info btn-block btn-sm my-3 py-2"
                             style="border-radius: 7px;">Masuk</button>
+                       
                     </div>
                 </form>
             </div>
