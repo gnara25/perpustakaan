@@ -13,10 +13,10 @@ class Daftarbuku extends Model
     protected $guarded = [];
     protected $dates = ['created_at'];
 
-    public function idkategori()
-    {
-        return $this->belongsTo(Kategori::class,'kategori','id');
-    }
+    // public function idkategori()
+    // {
+    //     return $this->belongsTo(Kategori::class,'kategori','id');
+    // }
     public function idbuku()
     {
         return $this->hasMany(Peminjaman::class);

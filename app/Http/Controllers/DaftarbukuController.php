@@ -16,17 +16,17 @@ class DaftarbukuController extends Controller
         return view('index');
     }
     public function buku(){
-        $data = Daftarbuku::with('idkategori')->get();
-        $idkategori = Kategori::all();
-        $datah = \Illuminate\Support\Facades\DB::table('daftarbukus')
-                    ->join('kategoris', 'daftarbukus.kategori','kategoris.id')
-                    ->select('daftarbukus.*', 'kategoris.kategori')
-                    // ->sortByDesc('dipinjam')
-                    ->get();
-        return view('buku.daftarbuku',compact('data','idkategori', 'datah'));
+        $data = Daftarbuku::all();
+        // $idkategori = Kategori::all();
+        // $datah = \Illuminate\Support\Facades\DB::table('daftarbukus')
+        //             ->join('kategoris', 'daftarbukus.kategori','kategoris.id')
+        //             ->select('daftarbukus.*', 'kategoris.kategori')
+        //             // ->sortByDesc('dipinjam')
+        //             ->get();
+        return view('buku.daftarbuku',compact('data',));
     }
     public function tambahbuku(){
-        $idkategori = Kategori::all();
+        // $idkategori = Kategori::all();
         $data = Daftarbuku::all();
 
          $q = \Illuminate\Support\Facades\DB::table('Daftarbukus')->select(\Illuminate\Support\Facades\DB::raw('MAX(RIGHT(kodebuku,4)) as kode'));
@@ -43,37 +43,27 @@ class DaftarbukuController extends Controller
         {
             $kd = "0001";
         }
-        return view('buku.tambahbuku',compact('data','idkategori','kd'));
+        return view('buku.tambahbuku',compact('data','kd'));
     }
     public function tambahbukupost(Request $request){
 
         $this->validate($request,[
             'namabuku' => 'required',
-            'kategori' => 'required',
             'kodebuku' => 'required',
-            'penulis' => 'required',
-            'penerbit' => 'required',
-            'tahunterbit' => 'required',
-            'halbuku' => 'required',
+            'pengarang' => 'required',
+            'bukudatang' => 'required',
             'jumlah' => 'required',
             'lokasibuku' => 'required',
-            'deskripsi' => 'required',
             'foto' => ['required','mimes:png,jpg,jpeg,gif,jfif'],
-
         ]);
-        // dd($request);
         $data = Daftarbuku::create([
             'namabuku' => $request->namabuku,
-            'kategori' => $request->kategori,
             'kodebuku' => $request->kodebuku,
-            'penulis' => $request->penulis,
-            'penerbit' => $request->penerbit,
-            'tahunterbit' => $request->tahunterbit,
-            'halbuku' => $request->halbuku,
+            'pengarang' => $request->pengarang,
+            'bukudatang' => $request->bukudatang,
             'jumlah' => $request->jumlah,
             'rusak' => '0',
             'lokasibuku' => $request->lokasibuku,
-            'deskripsi' => $request->deskripsi,
             'dipinjam' => '0',
             'status' => 'tersedia',
             'foto' => $request->foto,
@@ -88,7 +78,7 @@ class DaftarbukuController extends Controller
     }
 
     public function editbuku ($id){
-        $idkategori = Kategori::all();
+        // $idkategori = Kategori::all();
         $data = Daftarbuku::findOrFail($id);
         return view('buku.editbuku', compact('data','idkategori'));
     }
@@ -97,21 +87,16 @@ class DaftarbukuController extends Controller
         $data = Daftarbuku::find($id);
        $this->validate($request,[
             'namabuku' => 'required',
-            'kategori' => 'required',
             'kodebuku' => 'required',
-            'penulis' => 'required',
-            'penerbit' => 'required',
-            'tahunterbit' => 'required',
-            'halbuku' => 'required',
+            'pengarang' => 'required',
+            'bukudatang' => 'required',
             'jumlah' => 'required',
             'lokasibuku' => 'required',
-            'deskripsi' => 'required',
             'foto' => ['mimes:png,jpg,jpeg,gif,jfif'],
 
         ]);
         $data->update([
             'namabuku' => $request->namabuku,
-            'kategori' => $request->kategori,
             'kodebuku' => $request->kodebuku,
             'penulis' => $request->penulis,
             'penerbit' => $request->penerbit,

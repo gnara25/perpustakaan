@@ -60,16 +60,11 @@
                                                     <th>No</th>
                                                     <th>Kode Buku</th>
                                                     <th>Judul Buku </th>
-                                                    <th>Kategori Buku</th>
-                                                    <th>Penulis Buku</th>
-                                                    <th>Penerbit</th>
-                                                    <th>Tahun Terbit</th>
-                                                    <th>Halaman Buku</th>
+                                                    <th>Pengarang</th>
+                                                    <th>Buku Datang</th>
                                                     <th>Jumlah</th>
                                                     <th>Jumlah Buku Rusak</th>
                                                     <th>Lokasi</th>
-                                                    <th>Deskripsi</th>
-                                                    {{-- <th>Dipinjam</th> --}}
                                                     <th>Foto</th>
                                                     @if (auth()->user()->role == 'admin')
                                                         <th>Aksi</th>
@@ -80,7 +75,7 @@
                                                     @php
                                                         $no = 1;
                                                     @endphp
-                                                    @foreach ($datah as $row)
+                                                    @foreach ($data as $row)
                                                         <tr>
                                                             @if (auth()->user()->role == 'admin')
                                                             <td><input type="checkbox"  name="id[]"
@@ -90,16 +85,11 @@
                                                             <td> {{ $no++ }}</td>
                                                             <td>{{ $row->kodebuku }}</td>
                                                             <td>{{ $row->namabuku }}</td>
-                                                            <td>{{ $row->kategori }}</td>
-                                                            <td>{{ $row->penulis }}</td>
-                                                            <td>{{ $row->penerbit }}</td>
-                                                            <td>{{ $row->tahunterbit }}</td>
-                                                            <td>{{ $row->halbuku }}</td>
+                                                            <td>{{ $row->pengarang }}</td>
+                                                            <td>{{ $row->bukudatang }}</td>
                                                             <td>{{ $row->jumlah }} buku</td>
                                                             <td>{{ $row->rusak }} buku</td>
                                                             <td>{{ $row->lokasibuku }}</td>
-                                                            <td>{{ $row->deskripsi }}</td>
-                                                            {{-- <td>{{ $row->dipinjam }} Kali</td> --}}
                                                             <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
                                                                     alt="" style="width: 70px; height: 70px">
                                                             </td>
@@ -108,6 +98,10 @@
                                                                     <a href="/editbuku/{{ $row->id }}"
                                                                         class="btn btn-success">
                                                                         <i class="fa-solid fa-square-pen"></i>
+                                                                    </a>
+                                                                    <a href="/editbuku/{{ $row->id }}"
+                                                                        class="btn btn-info">
+                                                                        <i class="fa-solid fa-cart-plus"></i>
                                                                     </a>
                                                                     <a href="#" class="btn btn-danger delete"
                                                                         data-id="{{ $row->id }}"
@@ -118,7 +112,6 @@
                                                             @endif
                                                         </tr>
                                                     @endforeach
-
                                                 </tbody>
                                             </table>
                                         </form>
