@@ -23,7 +23,8 @@
                         <div class="ps-3">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 p-0">
-                                    <li class="breadcrumb-item"><a href="buku"><i class="fadeIn animated bx bx-list-ul"></i></a>
+                                    <li class="breadcrumb-item"><a href="buku"><i
+                                                class="fadeIn animated bx bx-list-ul"></i></a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page"> Daftar Buku</li>
                                 </ol>
@@ -36,11 +37,12 @@
                         <div class="card-body">
                             <div>
                                 @if (auth()->user()->role == 'admin')
-                                <a id="table2-new-row-button" href="tambahbuku"
-                                    class="btn btn-outline-info btn-sm mb-3"></i>Tambah
-                                    Buku</a>
+                                    <a id="table2-new-row-button" href="tambahbuku"
+                                        class="btn btn-outline-info btn-sm mb-3"></i>Tambah
+                                        Buku</a>
                                     <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"
-                                        class="btn btn-outline-primary btn-sm mb-3"><i class="fa fa-qrbarcode"></i> Cetak
+                                        class="btn btn-outline-primary btn-sm mb-3"><i class="fa fa-qrbarcode"></i>
+                                        Cetak
                                         Barcode</button>
                                 @endif
 
@@ -53,9 +55,10 @@
                                                 style="width:100%">
                                                 <thead>
                                                     @if (auth()->user()->role == 'admin')
-                                                    <th>
-                                                        <input type="checkbox" onchange="checkAll(this)" name="chk">
-                                                    </th>
+                                                        <th>
+                                                            <input type="checkbox" onchange="checkAll(this)"
+                                                                name="chk">
+                                                        </th>
                                                     @endif
                                                     <th>No</th>
                                                     <th>Kode Buku</th>
@@ -66,9 +69,9 @@
                                                     <th>Jumlah Buku Rusak</th>
                                                     <th>Lokasi</th>
                                                     <th>Foto</th>
-                                                    @if (auth()->user()->role == 'admin')
-                                                        <th>Aksi</th>
-                                                    @endif
+
+                                                    <th>Aksi</th>
+
 
                                                 </thead>
                                                 <tbody>
@@ -78,9 +81,9 @@
                                                     @foreach ($data as $row)
                                                         <tr>
                                                             @if (auth()->user()->role == 'admin')
-                                                            <td><input type="checkbox"  name="id[]"
-                                                             value="{{ $row->id }}">
-                                                            </td>
+                                                                <td><input type="checkbox" name="id[]"
+                                                                        value="{{ $row->id }}">
+                                                                </td>
                                                             @endif
                                                             <td> {{ $no++ }}</td>
                                                             <td>{{ $row->kodebuku }}</td>
@@ -93,23 +96,29 @@
                                                             <td> <img src="{{ asset('fotobuku/' . $row->foto) }}"
                                                                     alt="" style="width: 70px; height: 70px">
                                                             </td>
-                                                            @if (auth()->user()->role == 'admin')
-                                                                <td class="b">
+
+                                                            <td class="b">
+                                                                @if (auth()->user()->role == 'user')
+                                                                    <button onclick="cart()" id="carts"
+                                                                        data-kodebuku="{{ $row->kodebuku }}"
+                                                                        class="btn btn-info">
+                                                                        <i class="fa-solid fa-cart-plus"></i>
+                                                                    </button>
+                                                                @endif
+                                                                @if (auth()->user()->role == 'admin' && 'petugas')
                                                                     <a href="/editbuku/{{ $row->id }}"
                                                                         class="btn btn-success">
                                                                         <i class="fa-solid fa-square-pen"></i>
                                                                     </a>
-                                                                    <a href="/editbuku/{{ $row->id }}"
-                                                                        class="btn btn-info">
-                                                                        <i class="fa-solid fa-cart-plus"></i>
-                                                                    </a>
+
                                                                     <a href="#" class="btn btn-danger delete"
                                                                         data-id="{{ $row->id }}"
                                                                         data-nama="{{ $row->namabuku }}">
                                                                         <i class="fa-solid fa-trash"></i>
                                                                     </a>
-                                                                </td>
-                                                            @endif
+                                                                @endif
+                                                            </td>
+
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -135,6 +144,48 @@
                     @if (Session::has('error'))
                         toastr.error("{{ Session::get('error') }}")
                     @endif
+
+                    function cart(e) {
+                        var kodebuku = $("#carts").attr('data-kodebuku');
+                        console.log(kodebuku);
+                        const fd = new FormData();
+                        fd.append('id', kodebuku)
+                        addPeminjaman(fd)
+                    }
+
+                    function addPeminjaman(fd) {
+                        $.ajax({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            method: 'POST',
+                            url: '/cartbuku',
+                            processData: false,
+                            contentType: false,
+                            cache: false,
+                            data: fd,
+                            dataType: 'JSON',
+                            success: function(e) {
+                                if (e == "gagal") {
+                                    swal({
+                                        icon: "warning",
+                                        text: "Maaf! Stock Buku Ini Sudah Habis"
+                                    });
+                                    return;
+                                }
+                                if (e == "rusak") {
+                                    swal({
+                                        icon: "warning",
+                                        text: "Maaf! jumlah buku ini melebihi batas yang dipinjam"
+                                    });
+                                    return;
+                                }
+
+                            }
+                        })
+                    }
+
+
 
                     $('.delete').click(function() {
                         var mahasiswaid = $(this).attr('data-id');
@@ -189,22 +240,22 @@
                 </script>
                 <script type="text/javascript">
                     function checkAll(ele) {
-                         var checkboxes = document.getElementsByTagName('input');
-                         if (ele.checked) {
-                             for (var i = 0; i < checkboxes.length; i++) {
-                                 if (checkboxes[i].type == 'checkbox' ) {
-                                     checkboxes[i].checked = true;
-                                 }
-                             }
-                         } else {
-                             for (var i = 0; i < checkboxes.length; i++) {
-                                 if (checkboxes[i].type == 'checkbox') {
-                                     checkboxes[i].checked = false;
-                                 }
-                             }
-                         }
-                     }
-                   </script>
+                        var checkboxes = document.getElementsByTagName('input');
+                        if (ele.checked) {
+                            for (var i = 0; i < checkboxes.length; i++) {
+                                if (checkboxes[i].type == 'checkbox') {
+                                    checkboxes[i].checked = true;
+                                }
+                            }
+                        } else {
+                            for (var i = 0; i < checkboxes.length; i++) {
+                                if (checkboxes[i].type == 'checkbox') {
+                                    checkboxes[i].checked = false;
+                                }
+                            }
+                        }
+                    }
+                </script>
 </body>
 
 </html>

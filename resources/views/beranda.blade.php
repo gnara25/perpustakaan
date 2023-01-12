@@ -190,7 +190,7 @@
                                                 @foreach ($buku as $row)
                                                     <tr>
                                                         <td>{{ $row->namabuku }}</td>
-                                                        <td>{{ $row->idkategori->kategori }}</td>
+                                                        <td>{{ $row->kategori }}</td>
                                                         <td>{{ $row->penulis }}</td>
                                                         <td>{{ $row->penerbit }}</td>
                                                         <td>{{ $row->tahunterbit }}</td>

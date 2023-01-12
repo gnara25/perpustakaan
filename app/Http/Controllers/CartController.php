@@ -16,18 +16,18 @@ class CartController extends Controller
 
         if($Product->status == 'tersedia') {
             if($Product->jumlah == $Product->rusak){
-                return response()->json('rusak'); 
+                return response()->json('rusak');
             } else {
             $sek = $Product->jumlah - 1;
                 $Product->update([
                     'jumlah' => $sek,
                 ]);
-                
-             if($Product->jumlah == 0) { 
+
+             if($Product->jumlah == 0) {
                 $Product->update([
                     'status' => 'tidak tersedia',
                 ]);
-            }   
+            }
                 Cart::add([
                     'id' => $Product->id,
                     'name' => $Product->namabuku,
@@ -39,8 +39,8 @@ class CartController extends Controller
                 ]);
             }
         } else {
-            return response()->json('gagal'); 
-            
+            return response()->json('gagal');
+
         }
 
         return response()->json('berhasil');
@@ -49,7 +49,7 @@ class CartController extends Controller
     public function cartpost2()
     {
         $data = DB::where('daftarbukus', 'id')->first();
-        $Product = Daftarbuku::findOrFail($data); 
+        $Product = Daftarbuku::findOrFail($data);
         \Cart::add([
             'id' => $Product->id,
             'name' => $Product->namabuku,
@@ -81,43 +81,43 @@ class CartController extends Controller
     {
 
         $cartbuku = \Cart::getContent($id)->where('id',$id);
-     
+
 
         foreach($cartbuku as $pinjam){
              $iddetail = Daftarbuku::where('kodebuku',$pinjam->attributes->kodebuku)->first();
-         
+
             if($iddetail->jumlah == 0) {
                 $iddetail->update(['status' => 'tersedia']);
             }
-        
+
         $sek = $iddetail->jumlah + $pinjam->quantity;
             $iddetail->update([
                 'jumlah' => $sek,
-            ]);  
+            ]);
         }
 
        \Cart::remove($id);
-       
+
         return response()->json('berhasil');
     }
 
     public function decrementQuantity($id){
 
         $cartbuku = \Cart::getContent($id)->where('id',$id);
-     
+
 
         foreach($cartbuku as $pinjam){
-            
+
              $iddetail = Daftarbuku::where('kodebuku',$pinjam->attributes->kodebuku)->first();
-         
+
             if($iddetail->jumlah > 0) {
-               
-                
+
+
                 $sek = $iddetail->jumlah - 1;
                 $iddetail->update([
                     'jumlah' => $sek,
-                ]);  
-            
+                ]);
+
                 \Cart::update($id, array(
                     'quantity' => +1,
                  ));
@@ -127,26 +127,26 @@ class CartController extends Controller
             } else {
 
             return response()->json('gagal');
-       
+
             }
-        }   
-        
+        }
+
         return response()->json('berhasil');
     }
     public function kurang($id){
 
          $cartbuku = \Cart::getContent($id)->where('id',$id);
-     
+
 
         foreach($cartbuku as $pinjam){
              $iddetail = Daftarbuku::where('kodebuku',$pinjam->attributes->kodebuku)->first();
-         
+
             if($pinjam->quantity > 1) {
                 $sek = $iddetail->jumlah + 1;
                 $iddetail->update([
                     'jumlah' => $sek,
-                ]);  
-            
+                ]);
+
                 \Cart::update($id, array(
                     'quantity' => -1,
                  ));
@@ -156,11 +156,11 @@ class CartController extends Controller
             } else {
 
             return response()->json('gagal');
-       
+
             }
-        }    
+        }
         return response()->json('berhasil');
-        
+
     }
 
     public function postcart(Request $request)
@@ -168,7 +168,7 @@ class CartController extends Controller
         // dd($request->denda);
         $detailid = Detailbuku::where('id_transaksi', $request->id)->where('kodebuku',$request->kodebuku)->first();
         if ($detailid->status == 'dipinjam') {
-            
+
             $sek = $detailid->jumlah - 1;
             $detailid->update([
                 'jumlah' => $sek,
@@ -185,7 +185,7 @@ class CartController extends Controller
                 'quantity' => 1,
                 'attributes' => array(
                 'id_remove' => $request->id,
-                'id_detail' => $detailid->id,   
+                'id_detail' => $detailid->id,
                 'kodebuku' => $detailid->kodebuku,
                  )
             ]);
@@ -204,7 +204,7 @@ class CartController extends Controller
     public function Listcart()
     {
         $array = array();
-        
+
         $cartbuku = \Cart::getContent();
         $subtotal = \Cart::getSubTotal();
         foreach($cartbuku as $cartbuku){
@@ -212,7 +212,7 @@ class CartController extends Controller
             $total = Cart::get($itemId)->getPriceSum();
             $cartbuku['subtotal'] = $subtotal;
             $cartbuku['total'] = $total;
-            array_push($array, $cartbuku);   
+            array_push($array, $cartbuku);
         }
         // dd($subtotal);
         return response()->json(['data' => $array]);
@@ -223,22 +223,22 @@ class CartController extends Controller
 
 
         $cartbuku = \Cart::getContent($id)->where('id',$id);
-     
+
 
         foreach($cartbuku as $buku){
          $detailid = Detailbuku::where('id_transaksi', $buku->attributes->id_remove)->where('kodebuku',$buku->attributes->kodebuku)->first();
-         
+
         if($detailid->jumlah == 0) {
             $detailid->update(['status' => 'dipinjam']);
         }
         $sek = $detailid->jumlah + $buku->quantity;
             $detailid->update([
                 'jumlah' => $sek,
-            ]);  
+            ]);
         }
 
-        
-         
+
+
         \Cart::remove($id);
         return response()->json([
             'msg' => 'berhasil',
@@ -246,21 +246,46 @@ class CartController extends Controller
             'sisa' => $sek
         ]);
     }
+    public function cartbuku(Request $request)
+    {
+        $Product = Daftarbuku::where('kodebuku', $request->id)->first();
+
+        if($Product->status == 'tersedia') {
+            if($Product->jumlah == $Product->rusak){
+                return response()->json('rusak');
+            } else {
+                Cart::session($userId)->add(array(
+                    'id' => $Product->id,
+                    'name' => $Product->namabuku,
+                    'price' => 1000,
+                    'quantity' => 1,
+                    'attributes' => array(
+                    'kodebuku' => $Product->kodebuku,
+                    )
+                ));
+            }
+
+            return response()->json('gagal');
+
+        }
+
+        return response()->json('berhasil');
+    }
 
 //     public function mengurangi($id){
 
 //         $cartbuku = \Cart::getContent($id)->where('id',$id);
-    
+
 
 //        foreach($cartbuku as $pinjam){
 //             $iddetail = Detailbuku::where('id_transaksi', $pinjam->attributes->id_remove)->where('kodebuku',$pinjam->attributes->kodebuku)->first();
-        
+
 //            if($pinjam->quantity > 1) {
 //                $sek = $iddetail->jumlah + 1;
 //                $iddetail->update([
 //                    'jumlah' => $sek,
-//                ]);  
-           
+//                ]);
+
 //                \Cart::update($id, array(
 //                    'quantity' => -1,
 //                 ));
@@ -270,10 +295,10 @@ class CartController extends Controller
 //            } else {
 
 //            return response()->json('gagal');
-      
+
 //            }
-//        }    
+//        }
 //        return response()->json('berhasil');
-       
+
 //    }
 }

@@ -52,7 +52,7 @@
 				</div>
 				<div class="menu-title">Buku Populer</div>
 			</a>
-		</li>	
+		</li>
 		<li class="menu-label">Transaksi</li>
 		<li>
 			<a href="/peminjaman">

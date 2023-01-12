@@ -67,7 +67,7 @@ Route::get('/grafik',[LoginController::class,'grafik'])->name('grafik');
 //Menu Admin
 Route::get('/beranda',[LoginController::class,'beranda'])->name('beranda');
 Route::get('/berandah',[LoginController::class,'berandah'])->name('berandah');
-Route::group(['middleware' => ['auth', 'Cekrole:admin,petugas']], function(){
+Route::group(['middleware' => ['auth', 'Cekrole:admin,petugas,user']], function(){
 
 // buku
 Route::get('/buku',[DaftarbukuController::class,'buku'])->name('buku');
