@@ -176,10 +176,8 @@
                                         <table class="table table-striped mb-0">
                                             <thead>
                                                 <th>Judul Buku </th>
-                                                <th>Kategori </th>
-                                                <th>Penulis</th>
-                                                <th>Penerbit</th>
-                                                <th>Thn.Terbit</th>
+                                                <th>Pengarang</th>
+                                                <th>Buku Datang</th>
                                                 <th>Jumlah</th>
 
                                             </thead>
@@ -190,10 +188,8 @@
                                                 @foreach ($buku as $row)
                                                     <tr>
                                                         <td>{{ $row->namabuku }}</td>
-                                                        <td>{{ $row->kategori }}</td>
-                                                        <td>{{ $row->penulis }}</td>
-                                                        <td>{{ $row->penerbit }}</td>
-                                                        <td>{{ $row->tahunterbit }}</td>
+                                                        <td>{{ $row->pengarang }}</td>
+                                                        <td>{{ $row->bukudatang }}</td>
                                                         <td>{{ $row->jumlah }} buku</td>
                                                     </tr>
                                                 @endforeach

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('kodebuku');
             $table->string('namabuku');
             $table->string('pengarang');
-            $table->bigInteger('bukudatang');
+            $table->string('bukudatang');
             $table->bigInteger('jumlah');
             $table->bigInteger('rusak');
             $table->bigInteger('dipinjam');

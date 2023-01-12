@@ -160,9 +160,12 @@ class DaftarbukuController extends Controller
         $nama_file = rand().$file->getClientOriginalName();
 
         // upload ke folder file_siswa di dalam folder public
-        $file->move('file_siswa',$nama_file);
+        $file->move('file_buku',$nama_file);
 
          // import data
          Excel::import(new DaftarbukuImport, public_path('/file_buku/'.$nama_file));
+
+         // alihkan halaman kembali
+        return redirect()->back()->with('success','Data Siswa Berhasil Diimport!');
     }
 }
