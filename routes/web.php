@@ -117,6 +117,10 @@ Route::get('remov/{id}', [CartController::class, 'remov'])->name('remov');
 Route::get('decrementQuantity/{id}', [CartController::class, 'decrementQuantity'])->name('decrementQuantity');
 Route::get('kurang/{id}', [CartController::class, 'kurang'])->name('kurang');
 
+Route::post('/cartuser', [CartController::class, 'cartuser'])->name('cartuser');
+Route::get('/keranjang', [CartController::class, 'keranjang'])->name('keranjang');
+Route::get('hapuscart/{id}', [CartController::class, 'hapuscart'])->name('hapuscart');
+
 
 // pengembalian
 Route::get('/pengembalian',[PengembalianController::class,'pengembalian'])->name('pengembalian');

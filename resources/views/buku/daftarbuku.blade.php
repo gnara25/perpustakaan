@@ -49,8 +49,7 @@
                                 <div class="table-responsive">
                                     <hr>
                                     <div class="table-responsive">
-                                        <form action="" method="POST" class="from-buku">
-                                            @csrf
+                                       
                                             <table id="example" class="table table-striped table-bordered"
                                                 style="width:100%">
                                                 <thead>
@@ -99,11 +98,14 @@
 
                                                             <td class="b">
                                                                 @if (auth()->user()->role == 'user')
-                                                                    <button onclick="cart()" id="carts"
-                                                                        data-kodebuku="{{ $row->kodebuku }}"
-                                                                        class="btn btn-info">
+                                                                <form action="cartuser" method="post">
+                                                                    @csrf
+                                                                    <input type="hidden" name="id" value="{{$row->kodebuku}}">
+                                                                    <button type="submit" class="btn btn-info">
                                                                         <i class="fa-solid fa-cart-plus"></i>
                                                                     </button>
+                                                                </form>    
+                                                                
                                                                 @endif
                                                                 @if (auth()->user()->role == 'admin' && 'petugas')
                                                                     <a href="/editbuku/{{ $row->id }}"
@@ -123,7 +125,7 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
-                                        </form>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -138,15 +140,45 @@
                 @include('vendor.sweetalert.alert')
 
                 <script>
-                    @if (Session::has('success'))
-                        toastr.success("{{ Session::get('success') }}")
+                    @if (Session::has('gagal'))
+                        swal({
+                            // position: 'top-end',
+                            icon: 'warning',
+                            title: 'Maaf! Stock Buku Ini Sudah Habis',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                     @endif
-                    @if (Session::has('error'))
-                        toastr.error("{{ Session::get('error') }}")
+                     @if (Session::has('stok'))
+                        swal({
+                            // position: 'top-end',
+                            icon: 'warning',
+                            title: 'Maaf! jumlah buku ini melebihi batas yang dipinjam',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    @endif
+
+                    @if (Session::has('errors'))
+                        swal({
+                            // position: 'top-end',
+                            icon: 'warning',
+                            title: 'Maaf! Stock Buku Ini Sudah Habis',
+                            showConfirmButton: false,
+                            timer: 3500
+                        });
+                    @endif
+                    @if (Session::has('berhasil'))
+                        swal({
+                            icon: "success",
+                            title: "Anda Berhasil Menambahkan Buku Ke Keranjang",
+                            showConfirmButton: false,
+                            timer: 3500
+                        });
                     @endif
 
                     function cart(e) {
-                        var kodebuku = $("#carts").attr('data-kodebuku');
+                        var kodebuku = $("#kdbuku").val();
                         console.log(kodebuku);
                         const fd = new FormData();
                         fd.append('id', kodebuku)
@@ -159,13 +191,14 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             method: 'POST',
-                            url: '/cartbuku',
+                            url: '/cartuser',
                             processData: false,
                             contentType: false,
                             cache: false,
                             data: fd,
                             dataType: 'JSON',
                             success: function(e) {
+                                console.log(e)
                                 if (e == "gagal") {
                                     swal({
                                         icon: "warning",
@@ -177,6 +210,13 @@
                                     swal({
                                         icon: "warning",
                                         text: "Maaf! jumlah buku ini melebihi batas yang dipinjam"
+                                    });
+                                    return;
+                                }
+                                if (e == "barhasil") {
+                                    swal({
+                                        icon: "warning",
+                                        text: "Buku Sudah Dimasukkan Ke Keranjang"
                                     });
                                     return;
                                 }

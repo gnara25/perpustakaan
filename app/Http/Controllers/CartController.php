@@ -246,30 +246,58 @@ class CartController extends Controller
             'sisa' => $sek
         ]);
     }
-    public function cartbuku(Request $request)
+    public function cartuser(Request $request)
     {
         $Product = Daftarbuku::where('kodebuku', $request->id)->first();
+        // dd($Product);
 
         if($Product->status == 'tersedia') {
             if($Product->jumlah == $Product->rusak){
-                return response()->json('rusak');
+                return redirect()->back()->with('gagal','');
             } else {
-                Cart::session($userId)->add(array(
-                    'id' => $Product->id,
-                    'name' => $Product->namabuku,
-                    'price' => 1000,
-                    'quantity' => 1,
-                    'attributes' => array(
-                    'kodebuku' => $Product->kodebuku,
-                    )
-                ));
-            }
+                if($Product->jumlah > 0) {
 
-            return response()->json('gagal');
+                   
+                              $iduser = auth()->user()->id;
+                            Cart::session($iduser)->add(array(
+                                'id' => $Product->id,
+                                'name' => $Product->namabuku,
+                                'price' => 1000,
+                                'quantity' => 1,
+                                'attributes' => array(
+                                'kodebuku' => $Product->kodebuku,
+                                )
+                            ));
+
+                            
+                        return redirect()->back()->with('berhasil','');
+
+                    
+                    
+
+
+                } else {
+                    return redirect()->back()->with('error','');
+
+                }
+            }
 
         }
 
-        return response()->json('berhasil');
+       
+    }
+
+    public function keranjang(){
+         $userId = auth()->user()->id;
+        $data =  Cart::session($userId)->getContent();
+        // dd($data);
+        return view('user.keranjang',compact('data'));
+    }
+
+    public function hapuscart($id){
+        $iduser = auth()->user()->id;
+        \Cart::session($iduser)->remove($id);
+        return redirect()->back()->with('success','berhasil menghapus');
     }
 
 //     public function mengurangi($id){
