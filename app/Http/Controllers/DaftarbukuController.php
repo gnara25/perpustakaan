@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use \PDF;
 // use \DNS1D;
 use App\Models\Kategori;
 // use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\Daftarbuku;
 use Illuminate\Http\Request;
-use DB;
+use App\Imports\DaftarbukuImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DaftarbukuController extends Controller
 {
@@ -31,9 +33,9 @@ class DaftarbukuController extends Controller
 
          $q = \Illuminate\Support\Facades\DB::table('Daftarbukus')->select(\Illuminate\Support\Facades\DB::raw('MAX(RIGHT(kodebuku,4)) as kode'));
         $kd="";
-        if($q->count()>0) 
+        if($q->count()>0)
         {
-            foreach ($q->get() as $k) 
+            foreach ($q->get() as $k)
             {
                 $tmp = ((int)$k->kode)+1;
                 $kd = sprintf("%05s",$tmp);
@@ -138,9 +140,29 @@ class DaftarbukuController extends Controller
     }
 
     public function bukupop(){
-        
+
         $data = Daftarbuku::all()->sortByDesc('dipinjam');
         $idkategori = Kategori::all();
         return view('buku.bukupop',compact('data','idkategori'));
+    }
+
+    public function importexcel(Request $request)
+    {
+        // validasi
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        // menangkap file excel
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = rand().$file->getClientOriginalName();
+
+        // upload ke folder file_siswa di dalam folder public
+        $file->move('file_siswa',$nama_file);
+
+         // import data
+         Excel::import(new DaftarbukuImport, public_path('/file_buku/'.$nama_file));
     }
 }
