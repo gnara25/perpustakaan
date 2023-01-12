@@ -78,6 +78,7 @@ Route::post('/editbukupost/{id}',[DaftarbukuController::class,'editbukupost'])->
 Route::post('/cetakbarcode',[DaftarbukuController::class,'cetakbarcode'])->name('cetakbarcode');
 Route::get('/deletebuku/{id}',[DaftarbukuController::class,'deletebuku'])->name('deletebuku');
 Route::get('/bukupop',[DaftarbukuController::class,'bukupop'])->name('bukupop');
+Route::post('/importexcel', [DaftarbukuController::class,'importexcel'])->name('importexcel');
 
 // kategori
 Route::get('/kategori',[KategoriController::class,'kategori'])->name('kategori');
