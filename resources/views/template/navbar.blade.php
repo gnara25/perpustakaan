@@ -27,7 +27,12 @@
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
                         <div class="d-flex user-box align-items-center">
                             <div class="user-info">
+                                @if (auth()->user()->role == 'user')
+                                <p class="user-name mb-2">{{ Auth::user()->name }}</p>
+                                @endif
+                                @if (auth()->user()->role == 'admin'&&'petugas')
                                 <p class="user-name mb-2">{{ Auth::user()->username }}</p>
+                                @endif
                                 <p class="user-name mb-0">{{ Auth::user()->role }}</p>
 
                             </div>

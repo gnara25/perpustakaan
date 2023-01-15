@@ -38,7 +38,6 @@
                               
                                
                                 <div class="table-responsive" > 
-                                    <hr>
                                     <div class="table-responsive">
                                         <table id="example" class="table table-striped table-bordered"
                                             style="width:100%">
@@ -64,8 +63,7 @@
                                                         <td>{{ $row->name }}</td>
                                                        <td>{{ $row->quantity }}</td>
                                                         <td class="b">
-                                                            <a href="/hapuscart/{{$row->id}}" class="btn btn-danger"> hapus
-                                                                <i class="fa-solid fa-trash"></i>
+                                                            <a href="/hapuscart/{{$row->id}}" class="btn btn-danger"> Batal
                                                             </a>
                                                         </td>
                                                         

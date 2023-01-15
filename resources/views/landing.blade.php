@@ -84,10 +84,11 @@
                                 <div class="attr-nav button-light">
                                     <ul>
                                         <li>
-                                            <a href="/login">Masuk Admin</a>
+                                            <a href="/login">Masuk Petugas</a>
                                         </li>
                                     </ul>
                                 </div>
+                                
                                 <div class="attr-nav button-light">
                                     <ul>
                                         <li>

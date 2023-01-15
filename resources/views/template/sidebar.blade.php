@@ -12,12 +12,26 @@
 	</div>
 	<!--navigation-->
 	<ul class="metismenu" id="menu">
-		@if (auth()->user()->role == 'admin'&&'petugas')
 		<li>
 			<a href="/beranda">
 				<div class="parent-icon icon-color-1"><i class="bx bx-home-alt"></i>
 				</div>
 				<div class="menu-title">Beranda</div>
+			</a>
+		</li>
+		@if (auth()->user()->role == 'user')
+		<li>
+			<a href="/buku">
+				<div class="parent-icon icon-color-3"> <i class="fadeIn animated bx bx-list-ul"></i>
+				</div>
+				<div class="menu-title">Daftar Buku</div>
+			</a>
+		</li>
+		<li>
+			<a href="/keranjang">
+				<div class="parent-icon icon-color-7"> <i class="fa-solid fa-cart-shopping"></i>
+				</div>
+				<div class="menu-title">Keranjang Saya</div>
 			</a>
 		</li>
 		@endif
@@ -120,7 +134,7 @@
 			</a>
 		</li>
 		@endif
-		@if (auth()->user()->role == 'user')
+		{{-- @if (auth()->user()->role == 'user')
 		<li>
 			<a  href="/scanner">
 				<div class="parent-icon icon-color-13"><i class="bx bx-line-chart"></i>
@@ -128,7 +142,7 @@
 				<div class="menu-title">Scanner </div>
 			</a>
 		</li>
-		@endif
+		@endif --}}
 	</ul>
 	<!--end navigation-->
 </div>

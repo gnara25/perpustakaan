@@ -64,6 +64,9 @@
                                     @if (auth()->user()->role == 'petugas')
                                     <li class="breadcrumb-item active" aria-current="page">Petugas Profile</li>
                                     @endif
+                                    @if (auth()->user()->role == 'user')
+                                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                                    @endif
                                 </ol>
                             </nav>
                         </div>
@@ -82,7 +85,12 @@
                                             </div>
                                             <div class="ms-md-4 flex-grow-1">
                                                 <div class="d-flex align-items-center mb-1">
+                                                    @if (auth()->user()->role == 'user')
+                                                    <h4 class="mb-0">{{ Auth::user()->name }}</h4>
+                                                    @endif
+                                                    @if (auth()->user()->role == 'admin'&&'petugas')
                                                     <h4 class="mb-0">{{ Auth::user()->username }}</h4>
+                                                    @endif
                                                     <p class="mb-0 ms-auto"></p>
                                                 </div>
                                                 <p class="mb-0 text-muted">{{ Auth::user()->role }}</p>
@@ -111,7 +119,6 @@
                                                     <th>Email :</th>
                                                     <td>{{ Auth::user()->email }}</td>
                                                 </tr>
-
                                             </tbody>
                                         </table>
 
@@ -146,12 +153,28 @@
                                                                 class="form-control" name="name">
                                                         </div>
                                                         <div class="form-group row">
+                                                            @if (auth()->user()->role == 'admin'&&'petugas')
                                                             <div class="col-md-4">
                                                                 <label class="form-label">Username :</label>
                                                                 <input type="text"
                                                                     value="{{ Auth::user()->username }}"
                                                                     class="form-control" name="username">
                                                             </div>
+                                                            @endif
+                                                            @if (auth()->user()->role == 'user')
+                                                            <div class="col-md-6">
+                                                                <label class="form-label">No.Telepon :</label>
+                                                                <input type="text"
+                                                                    value="{{ Auth::user()->notelepon }}"
+                                                                    class="form-control" name="notelepon">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label class="form-label">Email :</label>
+                                                                <input type="text" value="{{ Auth::user()->email }}"
+                                                                    class="form-control" name="email">
+                                                            </div>
+                                                            @endif
+                                                            @if (auth()->user()->role == 'admin'&&'petugas')
                                                             <div class="col-md-4">
                                                                 <label class="form-label">No.Telepon :</label>
                                                                 <input type="text"
@@ -163,6 +186,7 @@
                                                                 <input type="text" value="{{ Auth::user()->email }}"
                                                                     class="form-control" name="email">
                                                             </div>
+                                                            @endif
                                                         </div>
                                                         <br>
                                                         {{-- <div class="mb-4">

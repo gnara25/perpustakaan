@@ -42,14 +42,16 @@
                                         Buku</a>
                                         <a data-bs-toggle="modal" data-bs-target="#importexcel" class="btn btn-outline-success btn-sm mb-3">Import Excel 
                                         </a>
-                                    <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"
+                                    {{-- <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"
                                         class="btn btn-outline-primary btn-sm mb-3"><i class="fa fa-qrbarcode"></i>
                                         Cetak
-                                        Barcode</button>
+                                        Barcode</button> --}}
                                 @endif
 
                                 <div class="table-responsive">
+                                    @if (auth()->user()->role == 'admin')
                                     <hr>
+                                    @endif 
                                     <div class="table-responsive">
                                        
                                             <table id="example" class="table table-striped table-bordered"
@@ -109,7 +111,7 @@
                                                                 </form>    
                                                                 
                                                                 @endif
-                                                                @if (auth()->user()->role == 'admin' && 'petugas')
+                                                                @if (auth()->user()->role == 'admin'&&'petugas')
                                                                     <a href="/editbuku/{{ $row->id }}"
                                                                         class="btn btn-success">
                                                                         <i class="fa-solid fa-square-pen"></i>

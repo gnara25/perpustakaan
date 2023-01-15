@@ -16,66 +16,68 @@
             <div class="page-content-wrapper">
                 <div class="page-content">
                     <div class="row mb-3">
-                        <div class="col-12 col-lg-3">
-                            <div class="card radius-15 bg-voilet">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <h2 class="mb-0 text-white">{{ $bukucount }} <i
-                                                    class='font-14 text-white'>Buku</i> </h2>
+                        @if (auth()->user()->role == 'admin' && 'petugas')
+                            <div class="col-12 col-lg-3">
+                                <div class="card radius-15 bg-voilet">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <h2 class="mb-0 text-white">{{ $bukucount }} <i
+                                                        class='font-14 text-white'>Buku</i> </h2>
+                                            </div>
+                                            <div class="ms-auto font-35 text-white"><i
+                                                    class="fadeIn animated bx bx-book-alt"></i>
+                                            </div>
                                         </div>
-                                        <div class="ms-auto font-35 text-white"><i
-                                                class="fadeIn animated bx bx-book-alt"></i>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <p class="mb-0 text-white">Daftar Buku</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-3">
-                            <div class="card radius-15 bg-primary-blue">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <h2 class="mb-0 text-white">{{ $anggotacount }}<i
-                                                    class='font-14 text-white'> Siswa</i> </h2>
-                                        </div>
-                                        <div class="ms-auto font-35 text-white"><i
-                                                class="fadeIn animated bx bx-user-circle"></i>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <p class="mb-0 text-white">Daftar Siswa</p>
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-white">Daftar Buku</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-lg-3">
-                            <div class="card radius-15 bg-rose">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <h2 class="mb-0 text-white">{{ $pinjam }} <i
-                                                    class='font-14 text-white'>Peminjaman</i> </h2>
+                            <div class="col-12 col-lg-3">
+                                <div class="card radius-15 bg-primary-blue">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <h2 class="mb-0 text-white">{{ $anggotacount }}<i
+                                                        class='font-14 text-white'> Siswa</i> </h2>
+                                            </div>
+                                            <div class="ms-auto font-35 text-white"><i
+                                                    class="fadeIn animated bx bx-user-circle"></i>
+                                            </div>
                                         </div>
-                                        <div class="ms-auto font-35 text-white"><i
-                                                class="fadeIn animated bx bx-upload"></i>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <p class="mb-0 text-white">Peminjaman</p>
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-white">Daftar Siswa</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-12 col-lg-3">
+                                <div class="card radius-15 bg-rose">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <h2 class="mb-0 text-white">{{ $pinjam }} <i
+                                                        class='font-14 text-white'>Peminjaman</i> </h2>
+                                            </div>
+                                            <div class="ms-auto font-35 text-white"><i
+                                                    class="fadeIn animated bx bx-upload"></i>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-white">Peminjaman</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                         @if (auth()->user()->role == 'admin')
                             <div class="col-12 col-lg-3">
                                 <div class="card radius-15 bg-sunset">
@@ -121,177 +123,268 @@
                                 </div>
                             </div>
                         @endif
+                        @if (auth()->user()->role == 'user')
+                            <div class="col-12 col-lg-5">
+                                <div class="card radius-15 bg-voilet">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <h2 class="mb-0 text-white">{{ $bukucount }} <i
+                                                        class='font-14 text-white'>Buku</i> </h2>
+                                            </div>
+                                            <div class="ms-auto font-35 text-white"><i
+                                                    class="fadeIn animated bx bx-book-alt"></i>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-white">Daftar Buku</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        @if (auth()->user()->role == 'user')
+                            <div class="col-12 col-lg-5">
+                                <div class="card radius-15 bg-rose">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <h2 class="mb-0 text-white">{{ $pinjam }} <i
+                                                        class='font-14 text-white'>Peminjaman</i> </h2>
+                                            </div>
+                                            <div class="ms-auto font-35 text-white"><i
+                                                    class="fadeIn animated bx bx-upload"></i>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-white">Peminjaman</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                     <!--end row-->
                     <!-- row -->
                     <div class="row">
-                        <div class="col-12 col-lg-12 col-xl-6 d-flex">
-                            <div class="card radius-15 w-100">
-                                <div class="card-body">
-                                    <div class="card-title mb-4">
-                                        <h5 class="mb-0">Daftar Anggota <a href="daftaranggota"
-                                                class="btn btn-white btn-sm px-4 radius-15" style="float: right; ">lihat
-                                                lebih banyak </a>
-                                        </h5>
-                                    </div>
-                                    <hr />
-                                    <div class="table-responsive">
-                                        <table class="table table-striped mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Nisn</th>
-                                                    <th>Nama Siswa</th>
-                                                    <th>Tgl.Lahir</th>
-                                                    <th>Kelas</th>
-                                                    <th>Alamat</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($anggota as $row)
+                        @if (auth()->user()->role == 'admin' && 'petugas')
+                            <div class="col-12 col-lg-12 col-xl-6 d-flex">
+                                <div class="card radius-15 w-100">
+                                    <div class="card-body">
+                                        <div class="card-title mb-4">
+                                            <h5 class="mb-0">Daftar Anggota <a href="daftaranggota"
+                                                    class="btn btn-white btn-sm px-4 radius-15"
+                                                    style="float: right; ">lihat
+                                                    lebih banyak </a>
+                                            </h5>
+                                        </div>
+                                        <hr />
+                                        <div class="table-responsive">
+                                            <table class="table table-striped mb-0">
+                                                <thead>
                                                     <tr>
-                                                        <td>{{ $row->nisn }}</td>
-                                                        <td>{{ $row->nama }}</td>
-                                                        <td>{{ Carbon\Carbon::parse($row->tgl_lahir)->format('d-m-Y') }}
-                                                        </td>
-                                                        <td>{{ $row->kelas }}</td>
-                                                        <td>{{ $row->alamat }}</td>
+                                                        <th>Nisn</th>
+                                                        <th>Nama Siswa</th>
+                                                        <th>Tgl.Lahir</th>
+                                                        <th>Kelas</th>
+                                                        <th>Alamat</th>
                                                     </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($anggota as $row)
+                                                        <tr>
+                                                            <td>{{ $row->nisn }}</td>
+                                                            <td>{{ $row->nama }}</td>
+                                                            <td>{{ Carbon\Carbon::parse($row->tgl_lahir)->format('d-m-Y') }}
+                                                            </td>
+                                                            <td>{{ $row->kelas }}</td>
+                                                            <td>{{ $row->alamat }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-lg-12 col-xl-6 d-flex">
-                            <div class="card radius-15 w-100">
-                                <div class="card-body">
-                                    <div class="card-title mb-4">
-                                        <h5 class="mb-0">Daftar Buku <a href="buku"
-                                                class="btn btn-white btn-sm px-4 radius-15" style="float: right; ">lihat
-                                                lebih banyak </a> </h5>
-                                    </div>
-                                    <hr />
-                                    <div class="table-responsive">
-                                        <table class="table table-striped mb-0">
-                                            <thead>
-                                                <th>Judul Buku </th>
-                                                <th>Pengarang</th>
-                                                <th>Buku Datang</th>
-                                                <th>Jumlah</th>
+                        @endif
+                        @if (auth()->user()->role == 'admin' && 'petugas')
+                            <div class="col-12 col-lg-12 col-xl-6 d-flex">
+                                <div class="card radius-15 w-100">
+                                    <div class="card-body">
+                                        <div class="card-title mb-4">
+                                            <h5 class="mb-0">Daftar Buku <a href="buku"
+                                                    class="btn btn-white btn-sm px-4 radius-15"
+                                                    style="float: right; ">lihat
+                                                    lebih banyak </a> </h5>
+                                        </div>
+                                        <hr />
+                                        <div class="table-responsive">
+                                            <table class="table table-striped mb-0">
+                                                <thead>
+                                                    <th>Judul Buku </th>
+                                                    <th>Pengarang</th>
+                                                    <th>Buku Datang</th>
+                                                    <th>Jumlah</th>
 
-                                            </thead>
-                                            <tbody>
-                                                @php
-                                                    $no = 1;
-                                                @endphp
-                                                @foreach ($buku as $row)
-                                                    <tr>
-                                                        <td>{{ $row->namabuku }}</td>
-                                                        <td>{{ $row->pengarang }}</td>
-                                                        <td>{{ $row->bukudatang }}</td>
-                                                        <td>{{ $row->jumlah }} buku</td>
-                                                    </tr>
-                                                @endforeach
+                                                </thead>
+                                                <tbody>
+                                                    @php
+                                                        $no = 1;
+                                                    @endphp
+                                                    @foreach ($buku as $row)
+                                                        <tr>
+                                                            <td>{{ $row->namabuku }}</td>
+                                                            <td>{{ $row->pengarang }}</td>
+                                                            <td>{{ $row->bukudatang }}</td>
+                                                            <td>{{ $row->jumlah }} buku</td>
+                                                        </tr>
+                                                    @endforeach
 
-                                            </tbody>
-                                        </table>
-
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-24 col-lg-24 col-xl-12 d-flex">
-                            <div class="card radius-15 w-100">
-                                <div class="card-body">
+                        @endif
+                        @if (auth()->user()->role == 'user')
+                            <div class="col-24 col-lg-24 col-xl-12 d-flex">
+                                <div class="card radius-15 w-100">
+                                    <div class="card-body">
+                                        <div class="card-title mb-4">
+                                            <h5 class="mb-0">Daftar Buku <a href="buku"
+                                                    class="btn btn-white btn-sm px-4 radius-15"
+                                                    style="float: right; ">lihat
+                                                    lebih banyak </a> </h5>
+                                        </div>
+                                        <hr />
+                                        <div class="table-responsive">
+                                            <table class="table table-striped mb-0">
+                                                <thead>
+                                                    <th>Judul Buku </th>
+                                                    <th>Pengarang</th>
+                                                    <th>Buku Datang</th>
+                                                    <th>Jumlah</th>
 
-                                    <div class="card-title mb-4">
-                                        <center>
-                                            <h5 class="mb-1" style="font-size: 160%;">Buku Populer</h5>
-                                        </center>
-                                        <div class="row">
-                                            <div class="col-md-3" style="float: right;">
-                                                <label class="mb-1" style="font-size: 100%;">FILTER BUKU :</label>
-                                                <select id="kategories" class="form-control">
-                                                    <option value="">Semua Kategori
-                                                        Buku</option>
-                                                    @if (count($idkategori) > 0)
-                                                        @foreach ($idkategori as $kategoris)
-                                                            <option value="{{ $kategoris->id }}">
-                                                                {{ $kategoris->kategori }}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
+                                                </thead>
+                                                <tbody>
+                                                    @php
+                                                        $no = 1;
+                                                    @endphp
+                                                    @foreach ($buku as $row)
+                                                        <tr>
+                                                            <td>{{ $row->namabuku }}</td>
+                                                            <td>{{ $row->pengarang }}</td>
+                                                            <td>{{ $row->bukudatang }}</td>
+                                                            <td>{{ $row->jumlah }} buku</td>
+                                                        </tr>
+                                                    @endforeach
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        @if (auth()->user()->role == 'admin' && 'petugas')
+                            <div class="col-24 col-lg-24 col-xl-12 d-flex">
+                                <div class="card radius-15 w-100">
+                                    <div class="card-body">
+
+                                        <div class="card-title mb-4">
+                                            <center>
+                                                <h5 class="mb-1" style="font-size: 160%;">Buku Populer</h5>
+                                            </center>
+                                            <div class="row">
+                                                <div class="col-md-3" style="float: right;">
+                                                    <label class="mb-1" style="font-size: 100%;">FILTER BUKU
+                                                        :</label>
+                                                    <select id="kategories" class="form-control">
+                                                        <option value="">Semua Kategori
+                                                            Buku</option>
+                                                        @if (count($idkategori) > 0)
+                                                            @foreach ($idkategori as $kategoris)
+                                                                <option value="{{ $kategoris->id }}">
+                                                                    {{ $kategoris->kategori }}</option>
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <div class="table-responsive">
-                                        <table class="table table-striped mb-0">
-                                            <thead>
-                                                <th>No</th>
-                                                <th>Judul Buku </th>
-                                                <th>Kategori Buku</th>
-                                                <th>Tahun Terbit</th>
-                                                <th>Dipinjam</th>
-                                                <th>Foto</th>
+                                        <hr>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped mb-0">
+                                                <thead>
+                                                    <th>No</th>
+                                                    <th>Judul Buku </th>
+                                                    <th>Kategori Buku</th>
+                                                    <th>Tahun Terbit</th>
+                                                    <th>Dipinjam</th>
+                                                    <th>Foto</th>
 
-                                            </thead>
-                                            <tbody id="tbodys">
-                                                @php
-                                                    $no = 1;
-                                                @endphp
-                                                @if (count($data) > 0)
-                                                    @foreach ($data as $row)
-                                                        @if ($row->dipinjam > 0)
-                                                            <tr>
-                                                                <td>{{ $no++ }}</td>
-                                                                <td>{{ $row->namabuku }}</td>
-                                                                <td>{{ $row->idkategori->kategori }}</td>
-                                                                <td>{{ $row->tahunterbit }}</td>
-                                                                <td>{{ $row->dipinjam }} Kali</td>
-                                                                <td> <img
-                                                                        src="{{ asset('fotobuku/' . $row->foto) }}"alt=""
-                                                                        style="width: 70px; height: 70px">
-                                                            </tr>
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody id="tbodys">
+                                                    @php
+                                                        $no = 1;
+                                                    @endphp
+                                                    @if (count($data) > 0)
+                                                        @foreach ($data as $row)
+                                                            @if ($row->dipinjam > 0)
+                                                                <tr>
+                                                                    <td>{{ $no++ }}</td>
+                                                                    <td>{{ $row->namabuku }}</td>
+                                                                    <td>{{ $row->idkategori->kategori }}</td>
+                                                                    <td>{{ $row->tahunterbit }}</td>
+                                                                    <td>{{ $row->dipinjam }} Kali</td>
+                                                                    <td> <img
+                                                                            src="{{ asset('fotobuku/' . $row->foto) }}"alt=""
+                                                                            style="width: 70px; height: 70px">
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                </tbody>
+                                            </table>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-24 col-lg-24 col-xl-12 d-flex">
-                            <div class="card radius-15 w-100">
-                                <div class="card-body">
-                                    <div class="row ">
-                                        <div class="col-md-2">
-                                            <label class="mb-1" style="font-size: 100%;">Pilih Tahun :</label>
-                                            <form action="{{ url('filter') }}" method="get">
-                                                @csrf
-                                                <select class="form-control" name="year" id="tahun">
-                                                    <?php
-                                                    $year = date('Y');
-                                                    $min = $year - 1;
-                                                    $max = $year;
-                                                    for ($i = $max; $i >= $min; $i--) {
-                                                        echo '<option value=' . $i . '>' . $i . '</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </form>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-24 col-lg-24 col-xl-12 d-flex">
+                                <div class="card radius-15 w-100">
                                     <div class="card-body">
-                                        <div id="grapik"></div>
+                                        <div class="row ">
+                                            <div class="col-md-2">
+                                                <label class="mb-1" style="font-size: 100%;">Pilih Tahun :</label>
+                                                <form action="{{ url('filter') }}" method="get">
+                                                    @csrf
+                                                    <select class="form-control" name="year" id="tahun">
+                                                        <?php
+                                                        $year = date('Y');
+                                                        $min = $year - 1;
+                                                        $max = $year;
+                                                        for ($i = $max; $i >= $min; $i--) {
+                                                            echo '<option value=' . $i . '>' . $i . '</option>';
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="grapik"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
 
                         <!--end row-->
                     </div>
@@ -439,24 +532,32 @@
                                     if (data[i]['dipinjam'] > 0) {
                                         html +=
                                             '<tr>\<td>' + (i + 1) + '</td>\
-                                                                                              <td>' + data[i]['namabuku'] + '</td>\
-                                                                                              <td>' + data[i]['kategori'] + '</td>\
-                                                                                              <td>' + data[i]['tahunterbit'] + '</td>\
-                                                                                              <td>' + data[i]['dipinjam'] +
+                                                                                                      <td>' + data[i][
+                                                'namabuku'
+                                            ] + '</td>\
+                                                                                                      <td>' + data[i][
+                                                'kategori'
+                                            ] + '</td>\
+                                                                                                      <td>' + data[i][
+                                                'tahunterbit'
+                                            ] + '</td>\
+                                                                                                      <td>' + data[i][
+                                                'dipinjam'
+                                            ] +
                                             '</td>\
-                                                                                              <td><img style="width: 70px; height: 70px" src="http://127.0.0.1:8000/fotobuku/' +
+                                                                                                      <td><img style="width: 70px; height: 70px" src="http://127.0.0.1:8000/fotobuku/' +
                                             data[i]
                                             ['foto'] +
                                             '"/ ></td>\
-                                                                                         </tr>';
+                                                                                                 </tr>';
                                     }
 
                                 }
                             } else {
                                 html +=
                                     '<tr>\
-                                                                                        <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
-                                                                                     </tr>';
+                                                                                                <td colspan="6"> ** Buku Dengan Kategori Ini Tidak Ada **</td>\
+                                                                                             </tr>';
                             }
 
                             $('#tbodys').html(html);
