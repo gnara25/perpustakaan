@@ -30,7 +30,10 @@
                                 @if (auth()->user()->role == 'user')
                                 <p class="user-name mb-2">{{ Auth::user()->name }}</p>
                                 @endif
-                                @if (auth()->user()->role == 'admin'&&'petugas')
+                                @if (auth()->user()->role == 'petugas')
+                                <p class="user-name mb-2">{{ Auth::user()->username }}</p>
+                                @endif
+                                @if (auth()->user()->role == 'admin')
                                 <p class="user-name mb-2">{{ Auth::user()->username }}</p>
                                 @endif
                                 <p class="user-name mb-0">{{ Auth::user()->role }}</p>

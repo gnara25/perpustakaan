@@ -47,9 +47,23 @@
                                         Cetak
                                         Barcode</button> --}}
                                 @endif
+                                @if (auth()->user()->role == 'petugas')
+                                    <a id="table2-new-row-button" href="tambahbuku"
+                                        class="btn btn-outline-info btn-sm mb-3 pr-3"></i>Tambah
+                                        Buku</a>
+                                        <a data-bs-toggle="modal" data-bs-target="#importexcel" class="btn btn-outline-success btn-sm mb-3">Import Excel 
+                                        </a>
+                                    {{-- <button onclick="cetakbarcode('{{ route('cetakbarcode') }}')"
+                                        class="btn btn-outline-primary btn-sm mb-3"><i class="fa fa-qrbarcode"></i>
+                                        Cetak
+                                        Barcode</button> --}}
+                                @endif
 
                                 <div class="table-responsive">
                                     @if (auth()->user()->role == 'admin')
+                                    <hr>
+                                    @endif 
+                                    @if (auth()->user()->role == 'petugas')
                                     <hr>
                                     @endif 
                                     <div class="table-responsive">
@@ -58,6 +72,12 @@
                                                 style="width:100%">
                                                 <thead>
                                                     @if (auth()->user()->role == 'admin')
+                                                        <th>
+                                                            <input type="checkbox" onchange="checkAll(this)"
+                                                                name="chk">
+                                                        </th>
+                                                    @endif
+                                                    @if (auth()->user()->role == 'petugas')
                                                         <th>
                                                             <input type="checkbox" onchange="checkAll(this)"
                                                                 name="chk">
@@ -88,6 +108,11 @@
                                                                         value="{{ $row->id }}">
                                                                 </td>
                                                             @endif
+                                                            @if (auth()->user()->role == 'petugas')
+                                                                <td><input type="checkbox" name="id[]"
+                                                                        value="{{ $row->id }}">
+                                                                </td>
+                                                            @endif
                                                             <td> {{ $no++ }}</td>
                                                             <td>{{ $row->kodebuku }}</td>
                                                             <td>{{ $row->namabuku }}</td>
@@ -101,6 +126,7 @@
                                                             </td>
 
                                                             <td class="b">
+
                                                                 @if (auth()->user()->role == 'user')
                                                                 <form action="cartuser" method="post">
                                                                     @csrf
@@ -108,10 +134,10 @@
                                                                     <button type="submit" class="btn btn-info">
                                                                         <i class="fa-solid fa-cart-plus"></i>
                                                                     </button>
-                                                                </form>    
-                                                                
+                                                                </form>   
                                                                 @endif
-                                                                @if (auth()->user()->role == 'admin'&&'petugas')
+
+                                                                @if (auth()->user()->role == 'admin')
                                                                     <a href="/editbuku/{{ $row->id }}"
                                                                         class="btn btn-success">
                                                                         <i class="fa-solid fa-square-pen"></i>
@@ -123,6 +149,20 @@
                                                                         <i class="fa-solid fa-trash"></i>
                                                                     </a>
                                                                 @endif
+
+                                                                @if (auth()->user()->role == 'petugas')
+                                                                    <a href="/editbuku/{{ $row->id }}"
+                                                                        class="btn btn-success">
+                                                                        <i class="fa-solid fa-square-pen"></i>
+                                                                    </a>
+
+                                                                    <a href="#" class="btn btn-danger delete"
+                                                                        data-id="{{ $row->id }}"
+                                                                        data-nama="{{ $row->namabuku }}">
+                                                                        <i class="fa-solid fa-trash"></i>
+                                                                    </a>
+                                                                @endif
+                                                                
                                                             </td>
 
                                                         </tr>

@@ -19,6 +19,9 @@
 				<div class="menu-title">Beranda</div>
 			</a>
 		</li>
+
+		<!-- Role User -->
+
 		@if (auth()->user()->role == 'user')
 		<li>
 			<a href="/buku">
@@ -35,9 +38,13 @@
 			</a>
 		</li>
 		@endif
-		@if (auth()->user()->role == 'admin'&&'petugas')
-		<li class="menu-label">Menu Buku</li>
+
+		<!-- End Role User -->
+
+		<!-- Role Admin -->
+
 		@if (auth()->user()->role == 'admin')
+		<li class="menu-label">Menu Buku</li>
 		<li>
 			<a href="/kategori">
 				<div class="parent-icon icon-color-2"><i class="fadeIn animated bx bx-book-add"></i>
@@ -45,7 +52,6 @@
 				<div class="menu-title">Kategori Buku</div>
 			</a>
 		</li>
-		@endif
 		<li>
 			<a href="/buku">
 				<div class="parent-icon icon-color-3"> <i class="fadeIn animated bx bx-list-ul"></i>
@@ -90,7 +96,6 @@
 				<div class="menu-title"> Rekap Perpus</div>
 			</a>
 		</li>
-		@if (auth()->user()->role == 'admin')
 		<li>
 			<a  href="/petugas">
 				<div class="parent-icon icon-color-1"> <i class="fadeIn animated bx bx-group"></i>
@@ -98,9 +103,88 @@
 				<div class="menu-title"> Petugas Perpus</div>
 			</a>
 		</li>
+		<li class="menu-label">laporan</li>
+		<li>
+			<a  href="/laporanpinjam">
+				<div class="parent-icon icon-color-5"><i class="fadeIn animated bx bx-upload"></i>
+				</div>
+				<div class="menu-title">Peminjaman</div>
+			</a>
+		</li>
+		<li>
+			<a  href="/pengembalian">
+				<div class="parent-icon icon-color-10"><i class="fadeIn animated bx bx-download"></i>
+				</div>
+				<div class="menu-title">Pengembalian</div>
+			</a>
+
+		</li>
+		<li>
+			<a  href="/denda">
+				<div class="parent-icon icon-color-9"><i class="fadeIn animated bx bx-coin-stack"></i>
+				</div>
+				<div class="menu-title">Denda </div>
+			</a>
+		</li>
+		<li>
+			<a  href="/pendapatan">
+				<div class="parent-icon icon-color-13"><i class="bx bx-line-chart"></i>
+				</div>
+				<div class="menu-title">Pendapatan </div>
+			</a>
+		</li>
 		@endif
-		@endif
-		@if (auth()->user()->role == 'admin'&&'petugas')
+
+		<!-- End Role Admin -->
+
+		<!-- Role Petugas -->
+
+		@if (auth()->user()->role == 'petugas')
+		<li class="menu-label">Menu Buku</li>
+		<li>
+			<a href="/buku">
+				<div class="parent-icon icon-color-3"> <i class="fadeIn animated bx bx-list-ul"></i>
+				</div>
+				<div class="menu-title">Daftar Buku</div>
+			</a>
+		</li>
+		<li>
+			<a href="/rusak">
+				<div class="parent-icon icon-color-2"><i class="fadeIn animated bx bx-book-add"></i>
+				</div>
+				<div class="menu-title">Daftar Buku Rusak</div>
+			</a>
+		</li>
+		<li>
+			<a href="/bukupop">
+				<div class="parent-icon icon-color-17"><i class="fadeIn animated bx bx-book-alt"></i>
+				</div>
+				<div class="menu-title">Buku Populer</div>
+			</a>
+		</li>
+		<li class="menu-label">Transaksi</li>
+		<li>
+			<a href="/peminjaman">
+				<div class="parent-icon icon-color-9"><i class="fadeIn animated bx bx-upload"></i>
+				</div>
+				<div class="menu-title">Peminjaman</div>
+			</a>
+		</li>
+		<li class="menu-label">Daftar Anggota</li>
+		<li>
+			<a  href="/daftaranggota">
+				<div class="parent-icon icon-color-16"> <i class="fadeIn animated bx bx-user-circle"></i>
+				</div>
+				<div class="menu-title"> Siswa</div>
+			</a>
+		</li>
+		<li>
+			<a  href="/history">
+				<div class="parent-icon icon-color-1"> <i class="fadeIn animated bx bx-group"></i>
+				</div>
+				<div class="menu-title"> Rekap Perpus</div>
+			</a>
+		</li>
 		<li class="menu-label">laporan</li>
 		<li>
 			<a  href="/laporanpinjam">
@@ -125,15 +209,10 @@
 			</a>
 		</li>
 		@endif
-		@if (auth()->user()->role == 'admin')
-		<li>
-			<a  href="/pendapatan">
-				<div class="parent-icon icon-color-13"><i class="bx bx-line-chart"></i>
-				</div>
-				<div class="menu-title">Pendapatan </div>
-			</a>
-		</li>
-		@endif
+
+		<!-- End Role Petugas -->
+
+
 		{{-- @if (auth()->user()->role == 'user')
 		<li>
 			<a  href="/scanner">

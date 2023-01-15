@@ -59,13 +59,13 @@
                                     <li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-user'></i></a>
                                     </li>
                                     @if (auth()->user()->role == 'admin')
-                                    <li class="breadcrumb-item active" aria-current="page">Admin Profile</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Admin Profile</li>
                                     @endif
                                     @if (auth()->user()->role == 'petugas')
-                                    <li class="breadcrumb-item active" aria-current="page">Petugas Profile</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Petugas Profile</li>
                                     @endif
                                     @if (auth()->user()->role == 'user')
-                                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
                                     @endif
                                 </ol>
                             </nav>
@@ -86,10 +86,13 @@
                                             <div class="ms-md-4 flex-grow-1">
                                                 <div class="d-flex align-items-center mb-1">
                                                     @if (auth()->user()->role == 'user')
-                                                    <h4 class="mb-0">{{ Auth::user()->name }}</h4>
+                                                        <h4 class="mb-0">{{ Auth::user()->name }}</h4>
                                                     @endif
-                                                    @if (auth()->user()->role == 'admin'&&'petugas')
-                                                    <h4 class="mb-0">{{ Auth::user()->username }}</h4>
+                                                    @if (auth()->user()->role == 'admin')
+                                                        <h4 class="mb-0">{{ Auth::user()->username }}</h4>
+                                                    @endif
+                                                    @if (auth()->user()->role == 'petugas')
+                                                        <h4 class="mb-0">{{ Auth::user()->username }}</h4>
                                                     @endif
                                                     <p class="mb-0 ms-auto"></p>
                                                 </div>
@@ -141,70 +144,132 @@
                                         <div class="card shadow-none border mb-0 radius-15">
                                             <div class="card-body">
                                                 <div class="form-body">
-
-
                                                     <form class="mb-4" action="{{ route('editprofile') }}"
                                                         method="post" enctype="multipart/form-data">
                                                         @csrf
-                                                        <div class="mb-4">
+                                                        <!-- Role Admin -->
+                                                        @if (auth()->user()->role == 'admin')
+                                                            <div class="mb-4">
+                                                                <label class="form-label">Nama :</label>
+                                                                <input type="text" value="{{ Auth::user()->name }}"
+                                                                    class="form-control" name="name">
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label">Username :</label>
+                                                                    <input type="text"
+                                                                        value="{{ Auth::user()->username }}"
+                                                                        class="form-control" name="username">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label">No.Telepon :</label>
+                                                                    <input type="text"
+                                                                        value="{{ Auth::user()->notelepon }}"
+                                                                        class="form-control" name="notelepon">
+                                                                </div>
+                                                                <div class="col-md-4 mb-4">
+                                                                    <label class="form-label">Email :</label>
+                                                                    <input type="text"
+                                                                        value="{{ Auth::user()->email }}"
+                                                                        class="form-control" name="email">
+                                                                </div>
 
+                                                                <div class="form-group row mb-4">
+                                                                    <label for="foto"
+                                                                        class="image-button col-sm-2 col-form-label ngengkel">Foto
+                                                                        :</label>
+                                                                    <div class="col-sm-10">
+                                                                        <img src="" class="image-preview loi">
+                                                                        <input type="file" accept="image/*"
+                                                                            id="foto" class="form-control"
+                                                                            name="foto"
+                                                                            value="{{ Auth::user()->foto }}">
+                                                                    </div>
+                                                                </div>
+                                                        @endif
+                                                        <!-- End Role admin -->
+
+                                                        <!-- Role Petugas -->
+                                                        @if (auth()->user()->role == 'petugas')
+                                                            <div class="mb-4">
+                                                                <label class="form-label">Nama :</label>
+                                                                <input type="text"
+                                                                    value="{{ Auth::user()->name }}"
+                                                                    class="form-control" name="name">
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label">Username :</label>
+                                                                    <input type="text"
+                                                                        value="{{ Auth::user()->username }}"
+                                                                        class="form-control" name="username">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label class="form-label">No.Telepon :</label>
+                                                                    <input type="text"
+                                                                        value="{{ Auth::user()->notelepon }}"
+                                                                        class="form-control" name="notelepon">
+                                                                </div>
+                                                                <div class="col-md-4 mb-4">
+                                                                    <label class="form-label">Email :</label>
+                                                                    <input type="text"
+                                                                        value="{{ Auth::user()->email }}"
+                                                                        class="form-control" name="email">
+                                                                </div>
+                                                                <div class="form-group row mb-4">
+                                                                    <label for="foto"
+                                                                        class="image-button col-sm-2 col-form-label ngengkel">Foto
+                                                                        :</label>
+                                                                    <div class="col-sm-10">
+                                                                        <img src="" class="image-preview loi">
+                                                                        <input type="file" accept="image/*"
+                                                                            id="foto" class="form-control"
+                                                                            name="foto"
+                                                                            value="{{ Auth::user()->foto }}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                        <!-- End Role Petugas -->
+
+                                                        <!-- Role User -->
+
+                                                        @if (auth()->user()->role == 'user')
+                                                        <div class="mb-4">
                                                             <label class="form-label">Nama :</label>
-                                                            <input type="text" value="{{ Auth::user()->name }}"
+                                                            <input type="text"
+                                                                value="{{ Auth::user()->name }}"
                                                                 class="form-control" name="name">
                                                         </div>
                                                         <div class="form-group row">
-                                                            @if (auth()->user()->role == 'admin'&&'petugas')
-                                                            <div class="col-md-4">
-                                                                <label class="form-label">Username :</label>
-                                                                <input type="text"
-                                                                    value="{{ Auth::user()->username }}"
-                                                                    class="form-control" name="username">
-                                                            </div>
-                                                            @endif
-                                                            @if (auth()->user()->role == 'user')
                                                             <div class="col-md-6">
                                                                 <label class="form-label">No.Telepon :</label>
                                                                 <input type="text"
                                                                     value="{{ Auth::user()->notelepon }}"
                                                                     class="form-control" name="notelepon">
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-6 mb-4">
                                                                 <label class="form-label">Email :</label>
-                                                                <input type="text" value="{{ Auth::user()->email }}"
-                                                                    class="form-control" name="email">
-                                                            </div>
-                                                            @endif
-                                                            @if (auth()->user()->role == 'admin'&&'petugas')
-                                                            <div class="col-md-4">
-                                                                <label class="form-label">No.Telepon :</label>
                                                                 <input type="text"
-                                                                    value="{{ Auth::user()->notelepon }}"
-                                                                    class="form-control" name="notelepon">
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <label class="form-label">Email :</label>
-                                                                <input type="text" value="{{ Auth::user()->email }}"
+                                                                    value="{{ Auth::user()->email }}"
                                                                     class="form-control" name="email">
                                                             </div>
-                                                            @endif
                                                         </div>
-                                                        <br>
-                                                        {{-- <div class="mb-4">
-                                                            <label class="form-label">Foto</label>
-                                                            <img src="" class="image-preview" >
-                                                            <input type="file" class="form-control" name="foto" id="foto">
-                                                            
-                                                        </div> --}}
                                                         <div class="form-group row mb-4">
                                                             <label for="foto"
                                                                 class="image-button col-sm-2 col-form-label ngengkel">Foto
                                                                 :</label>
                                                             <div class="col-sm-10">
                                                                 <img src="" class="image-preview loi">
-                                                                <input type="file" accept="image/*" id="foto"
-                                                                    class="form-control" name="foto" value="{{ Auth::user()->foto}}">
+                                                                <input type="file" accept="image/*"
+                                                                    id="foto" class="form-control"
+                                                                    name="foto"
+                                                                    value="{{ Auth::user()->foto }}">
                                                             </div>
                                                         </div>
+                                                        @endif
+
+                                                        <!-- End Role User -->
                                                         <br>
                                                         <div class="mb-5">
                                                             <button type="submit"
@@ -215,60 +280,59 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="tab-pane fade" id="Edit-Profile">
-                                        <div class="card shadow-none border mb-0 radius-15">
-                                            <div class="card-body">
-                                                <div class="form-body">
-                                                    <form class="mb-4" action="{{ route('editpassword') }}"
-                                                        method="post">
-                                                        @csrf
-                                                        {{-- <div class="mb-4" id="show_hide_password">
-                                                            <label class="form-label">Password Lama</label>
-                                                            <input type="password" name="old_password"
-                                                                class="form-control" placeholder="Kata Sandi Lama"
-                                                                id="inputChoosePassword">
-                                                        </div> --}}
-                                                        <div class="mb-4" id="show_hide_password">
-                                                            <label for="inputChoosePassword" class="form-label">Password Lama : </label>
-                                                            <div class="input-group">
-                                                                <input type="password" name="old_password" value=""
-                                                                class="form-control border-end-0" placeholder="Kata Sandi Lama"
-                                                                id="inputChoosePassword" required> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
-                                                            </div>
-                                                            
+                                <div class="tab-pane fade" id="Edit-Profile">
+                                    <div class="card shadow-none border mb-0 radius-15">
+                                        <div class="card-body">
+                                            <div class="form-body">
+                                                <form class="mb-4" action="{{ route('editpassword') }}"
+                                                    method="post">
+                                                    @csrf
+                                                    <div class="mb-4" id="show_hide_password">
+                                                        <label for="inputChoosePassword" class="form-label">Password
+                                                            Lama : </label>
+                                                        <div class="input-group">
+                                                            <input type="password" name="old_password" value=""
+                                                                class="form-control border-end-0"
+                                                                placeholder="Kata Sandi Lama" id="inputChoosePassword"
+                                                                required> <a href="javascript:;"
+                                                                class="input-group-text bg-transparent"><i
+                                                                    class="bx bx-hide"></i></a>
                                                         </div>
-                                                        {{-- <div class="mb-4" id="show_hide_password">
-                                                            <label class="form-label">Password Baru</label>
+
+                                                    </div>
+                                                    <div class="mb-4" id="show_password">
+                                                        <label for="inputChoosePassword" class="form-label">Password
+                                                            Baru : </label>
+                                                        <div class="input-group">
                                                             <input type="password" name="password"
-                                                                class="form-control" placeholder="Kata Sandi"
-                                                                required>
-                                                        </div> --}}
-                                                        <div class="mb-4" id="show_password">
-                                                            <label for="inputChoosePassword" class="form-label">Password Baru : </label>
-                                                            <div class="input-group" >
-                                                                <input type="password" name="password" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Kata Sandi Baru" required> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
-                                                            </div>
+                                                                class="form-control border-end-0"
+                                                                id="inputChoosePassword" placeholder="Kata Sandi Baru"
+                                                                required> <a href="javascript:;"
+                                                                class="input-group-text bg-transparent"><i
+                                                                    class="bx bx-hide"></i></a>
                                                         </div>
-                                                        {{-- <div class="mb-4" id="show_hide_password">
-                                                            <label class="form-label">Konfirmasi Password</label>
+                                                    </div>
+                                                    <div class="mb-4" id="show_hide">
+                                                        <label for="inputChoosePassword" class="form-label">Konfirmasi
+                                                            Password :</label>
+                                                        <div class="input-group">
                                                             <input type="password" name="password_confirmation"
-                                                                class="form-control"
-                                                                placeholder="Konfirmasi Kata Sandi" required>
-                                                        </div> --}}
-                                                        <div class="mb-4" id="show_hide">
-                                                            <label for="inputChoosePassword" class="form-label">Konfirmasi Password  :</label>
-                                                            <div class="input-group">
-                                                                <input type="password" name="password_confirmation" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Konfirmasi Kata Sandi" required> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
-                                                            </div>
+                                                                class="form-control border-end-0"
+                                                                id="inputChoosePassword"
+                                                                placeholder="Konfirmasi Kata Sandi" required> <a
+                                                                href="javascript:;"
+                                                                class="input-group-text bg-transparent"><i
+                                                                    class="bx bx-hide"></i></a>
                                                         </div>
-                                                        <br>
-                                                        <div class="mb-5">
-                                                            <button type="submit"
-                                                                class="btn btn-info btn-round">{{ __('Simpan') }}</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="mb-5">
+                                                        <button type="submit"
+                                                            class="btn btn-info btn-round">{{ __('Simpan') }}</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -279,7 +343,8 @@
                 </div>
             </div>
         </div>
-        <!--end page-content-wrapper-->
+    </div>
+    <!--end page-content-wrapper-->
     </div>
     <!--end page-wrapper-->
     <!--start overlay-->
@@ -290,54 +355,13 @@
     <!--End Back To Top Button-->
     <!--footer -->
     <div class="footer">
-        <p class="mb-0">Syndash @2020 | Developed By : <a href="https://themeforest.net/user/codervent"
-                target="_blank">codervent</a>
+        <p class="mb-0">SMKN 1 Sukorejo @2023 | Developed By : <a href="https://themeforest.net/user/codervent"
+                target="_blank">Team Up</a>
         </p>
     </div>
     <!-- end footer -->
     </div>
     <!-- end wrapper -->
-    <!--start switcher-->
-    {{-- <div class="switcher-body">
-        <button class="btn btn-primary btn-switcher shadow-sm" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i
-                class="bx bx-cog bx-spin"></i></button>
-        <div class="offcanvas offcanvas-end shadow border-start-0 p-2" data-bs-scroll="true" data-bs-backdrop="false"
-            tabindex="-1" id="offcanvasScrolling">
-            <div class="offcanvas-header border-bottom">
-                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Theme Customizer</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-            </div>
-            <div class="offcanvas-body">
-                <h6 class="mb-0">Theme Variation</h6>
-                <hr>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="lightmode"
-                        value="option1" checked>
-                    <label class="form-check-label" for="lightmode">Light</label>
-                </div>
-                <hr>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="darkmode"
-                        value="option2">
-                    <label class="form-check-label" for="darkmode">Dark</label>
-                </div>
-                <hr>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="darksidebar"
-                        value="option3">
-                    <label class="form-check-label" for="darksidebar">Semi Dark</label>
-                </div>
-                <hr>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ColorLessIcons"
-                        value="option3">
-                    <label class="form-check-label" for="ColorLessIcons">Color Less Icons</label>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!--end switcher-->
     <!-- JavaScript -->
     <!-- Bootstrap JS -->
     @include('template.script')
@@ -377,8 +401,8 @@
         @endif
     </script>
     <script>
-        $(document).ready(function () {
-            $("#show_hide_password a").on('click', function (event) {
+        $(document).ready(function() {
+            $("#show_hide_password a").on('click', function(event) {
                 event.preventDefault();
                 if ($('#show_hide_password input').attr("type") == "text") {
                     $('#show_hide_password input').attr('type', 'password');
@@ -391,8 +415,8 @@
                 }
             });
         });
-        $(document).ready(function () {
-            $("#show_password a").on('click', function (event) {
+        $(document).ready(function() {
+            $("#show_password a").on('click', function(event) {
                 event.preventDefault();
                 if ($('#show_password input').attr("type") == "text") {
                     $('#show_password input').attr('type', 'password');
@@ -405,8 +429,8 @@
                 }
             });
         });
-        $(document).ready(function () {
-            $("#show_hide a").on('click', function (event) {
+        $(document).ready(function() {
+            $("#show_hide a").on('click', function(event) {
                 event.preventDefault();
                 if ($('#show_hide input').attr("type") == "text") {
                     $('#show_hide input').attr('type', 'password');

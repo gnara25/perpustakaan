@@ -36,8 +36,10 @@
                             <div>
                                 
                                 {{-- <a id="table2-new-row-button" href="tambahkategori" class="btn btn-outline-info btn-sm mb-2">Tambah Kategori</a> --}}
+                                @if (auth()->user()->role == 'petugas')
                                 <a data-bs-toggle="modal" 
                                 data-bs-target="#modaltambah" class="btn btn-outline-info btn-sm mb-3">Tambah Buku Rusak</a>
+                                @endif
                                
                                 <div class="table-responsive" > 
                                     <hr>
