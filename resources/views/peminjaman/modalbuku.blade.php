@@ -35,7 +35,7 @@
                                     <tr>
                                         <td scope="row">{{ $loop->iteration }}</td>
                                         <td>{{ $row->namabuku }}</td>
-                                        <td>{{ $row->idkategori->kategori }}</td>
+                                        <td>{{ $row->kategori }}</td>
                                         <td>{{ $row->kodebuku }}</td>
                                         <td>{{ $row->penerbit }}</td>
                                         <td>{{ $row->tahunterbit }}</td>

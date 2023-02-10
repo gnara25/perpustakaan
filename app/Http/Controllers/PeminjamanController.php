@@ -13,7 +13,7 @@ use App\Models\DaftarAnggota;
 use App\Models\laporanpinjam;
 
 class PeminjamanController extends Controller
-{
+{   
     public function peminjaman(){
 
         $data = Peminjaman::all();

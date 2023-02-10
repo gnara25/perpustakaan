@@ -144,7 +144,8 @@
                         </div>
                         <button type="submit" class="btn btn-info btn-block btn-sm my-3 py-2"
                             style="border-radius: 7px;">Masuk</button>
-                       
+                        <a href="/" class="btn btn-info btn-block btn-sm my-3 py-2"
+                            style="border-radius: 7px;">Kembali</a>
                     </div>
                 </form>
             </div>

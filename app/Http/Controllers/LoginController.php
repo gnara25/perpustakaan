@@ -297,6 +297,6 @@ class LoginController extends Controller
         } 
         //  dd($request);
 
-         return redirect('login')->with('error', 'Email atau Password Salah!');
+         return redirect('loginuser')->with('error', 'Email atau Password Salah!');
     }
 }

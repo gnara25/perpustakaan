@@ -109,6 +109,13 @@
                                                     <td>{{ Auth::user()->name }}
                                                     </td>
                                                 </tr>
+                                                @if (auth()->user()->role == 'user')
+                                                <tr>
+                                                    <th> NISN :</th>
+                                                    <td>{{ Auth::user()->username }}
+                                                    </td>
+                                                </tr>
+                                                @endif
                                                 <tr>
                                                     <th> Sebagai :</th>
                                                     <td>{{ Auth::user()->role }}
