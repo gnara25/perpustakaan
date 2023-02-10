@@ -271,11 +271,6 @@ class CartController extends Controller
 
                             
                         return redirect()->back()->with('berhasil','');
-
-                    
-                    
-
-
                 } else {
                     return redirect()->back()->with('error','');
 
